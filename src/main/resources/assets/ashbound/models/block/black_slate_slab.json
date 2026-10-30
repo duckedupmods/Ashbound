@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/slab",
+ "textures": {
+  "bottom": "ashbound:block/black_slate",
+  "top": "ashbound:block/black_slate",
+  "side": "ashbound:block/black_slate"
+ }
+}

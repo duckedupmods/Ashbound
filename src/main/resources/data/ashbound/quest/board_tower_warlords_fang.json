@@ -1,0 +1,12 @@
+{
+ "title": "Clear The Warlord's Fang",
+ "rank": "C",
+ "text": "Gorrak's orcs raid from the Fang and go home to count the heads. Climb it, floor by floor, and take his off him.",
+ "kill": "ashbound:gorrak",
+ "count": 1,
+ "locate": "ashbound:warlords_fang",
+ "points": 600,
+ "coins": 760,
+ "ash": 400,
+ "icon": "minecraft:iron_axe"
+}

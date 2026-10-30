@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Hollow Circus",
+ "test_origin": [
+  112000,
+  20,
+  0
+ ],
+ "boss": "ashbound:ringmaster",
+ "seal": "The green room is locked from the inside",
+ "broken": "The Harlequin's bell rings the door open",
+ "arrive": [
+  "THE HOLLOW CIRCUS",
+  "D-Rank Gate"
+ ],
+ "rank": "D",
+ "loot": "ashbound:chests/gate_hollow_circus",
+ "built_check": [
+  [
+   -25,
+   -18,
+   -261,
+   "ashbound:circus_cavern_rock"
+  ]
+ ],
+ "clear_top": 21
+}

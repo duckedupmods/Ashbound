@@ -1,0 +1,120 @@
+{
+ "name": "Baldrek Brightvein",
+ "title": "Ore Trader",
+ "tags": [
+  "dwarf",
+  "merchant",
+  "adult",
+  "m",
+  "dwarf"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Baldrek, ore trader. Fair weights, fair prices, and no credit, ever."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "Reedmere wants nails, Stepcliff wants rope, everyone wants it yesterday."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "people": {
+   "text": [
+    "Stone doesn't lie, doesn't rot and doesn't ask how your day went. Fine neighbours, stones."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "other": {
+   "text": [
+    "Lovely folk. Live in a tree. On purpose."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "There's a seam of black iron that rings when you strike it, and something under it rings back."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Mind your head. Actually, you'll be fine, it's the beams that should worry."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "How's trade?",
+     "go": "trade"
+    },
+    {
+     "text": "What's Anvilgate like?",
+     "go": "people"
+    },
+    {
+     "text": "What do you make of the elves?",
+     "go": "other"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

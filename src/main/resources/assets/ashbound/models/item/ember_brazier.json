@@ -1,0 +1,124 @@
+{
+ "parent": "ashbound:block/ember_brazier",
+ "display": {
+  "gui": {
+   "rotation": [
+    30,
+    225,
+    0
+   ],
+   "translation": [
+    0.0,
+    0.23,
+    0.14
+   ],
+   "scale": [
+    0.578,
+    0.578,
+    0.578
+   ]
+  },
+  "ground": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0.0,
+    0.11,
+    0.0
+   ],
+   "scale": [
+    0.231,
+    0.231,
+    0.231
+   ]
+  },
+  "fixed": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0.0,
+    0.22,
+    0.0
+   ],
+   "scale": [
+    0.462,
+    0.462,
+    0.462
+   ]
+  },
+  "thirdperson_righthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.0,
+    0.04,
+    0.16
+   ],
+   "scale": [
+    0.347,
+    0.347,
+    0.347
+   ]
+  },
+  "thirdperson_lefthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.0,
+    0.04,
+    0.16
+   ],
+   "scale": [
+    0.347,
+    0.347,
+    0.347
+   ]
+  },
+  "firstperson_righthand": {
+   "rotation": [
+    0,
+    45,
+    0
+   ],
+   "translation": [
+    0.0,
+    0.17,
+    0.0
+   ],
+   "scale": [
+    0.37,
+    0.37,
+    0.37
+   ]
+  },
+  "firstperson_lefthand": {
+   "rotation": [
+    0,
+    225,
+    0
+   ],
+   "translation": [
+    0.0,
+    0.17,
+    0.0
+   ],
+   "scale": [
+    0.37,
+    0.37,
+    0.37
+   ]
+  }
+ }
+}

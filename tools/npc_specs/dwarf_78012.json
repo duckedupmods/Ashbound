@@ -1,0 +1,60 @@
+{
+ "id": "dwarf_78012",
+ "seed": 78012,
+ "recipe": "dwarf",
+ "role": "miner",
+ "rank": null,
+ "name": "Grimbal Stonehand",
+ "title": "Miner",
+ "age": "adult",
+ "sex": "m",
+ "build": "stout",
+ "hunch": 0,
+ "skin": "tan",
+ "hair": {
+  "style": "short",
+  "color": "grey"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "sharp",
+  "iris": "ice",
+  "brows": "bushy",
+  "mouth": "grin",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "belt",
+   "gloves",
+   "pouches"
+  ],
+  "colors": {
+   "top": "brown",
+   "bottom": "charcoal",
+   "accent": "teal",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "axe",
+ "offhand": null,
+ "back": "sack",
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "dwarf"
+}

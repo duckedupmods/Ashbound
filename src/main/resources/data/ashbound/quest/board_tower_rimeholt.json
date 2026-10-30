@@ -1,0 +1,12 @@
+{
+ "title": "Clear Rimeholt",
+ "rank": "B",
+ "text": "The cold coming off Rimeholt reached the road this year. Jarl Hrimgar won't come down, so go up.",
+ "kill": "ashbound:jarl_hrimgar",
+ "count": 1,
+ "locate": "ashbound:rimeholt",
+ "points": 1100,
+ "coins": 1300,
+ "ash": 680,
+ "icon": "minecraft:packed_ice"
+}

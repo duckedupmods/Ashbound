@@ -1,0 +1,16 @@
+{
+ "title": "The Ravager",
+ "rank": "A",
+ "text": "A ravager has been tearing through the farms of the eastern valley. The farmers have stopped counting.",
+ "kill": "minecraft:ravager",
+ "count": 2,
+ "points": 800,
+ "coins": 1200,
+ "items": [
+  [
+   "minecraft:diamond",
+   6
+  ]
+ ],
+ "repeat": true
+}

@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/ring_of_the_drowned_god.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     -0.126,
+     -0.098
+    ],
+    "scale": [
+     0.7658,
+     0.7658,
+     0.7658
+    ]
+   },
+   "ground": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     -0.063,
+     0
+    ],
+    "scale": [
+     0.3829,
+     0.3829,
+     0.3829
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     -0.126,
+     -0.098
+    ],
+    "scale": [
+     0.7658,
+     0.7658,
+     0.7658
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3063,
+     0.3063,
+     0.3063
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3063,
+     0.3063,
+     0.3063
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3063,
+     0.3063,
+     0.3063
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3063,
+     0.3063,
+     0.3063
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

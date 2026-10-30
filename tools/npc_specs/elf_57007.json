@@ -1,0 +1,59 @@
+{
+ "id": "elf_57007",
+ "seed": 57007,
+ "recipe": "elf",
+ "role": "singer",
+ "rank": null,
+ "name": "Lorien Silverleaf",
+ "title": "Songkeeper",
+ "age": "teen",
+ "sex": "m",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "porcelain",
+ "hair": {
+  "style": "long",
+  "color": "golden"
+ },
+ "headwear": "circlet",
+ "beard": null,
+ "face": {
+  "eye": "round",
+  "iris": "violet",
+  "brows": null,
+  "mouth": "cat",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "cape",
+   "sash"
+  ],
+  "colors": {
+   "top": "cream",
+   "bottom": "brown",
+   "accent": "oxblood",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "book",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "elf"
+}

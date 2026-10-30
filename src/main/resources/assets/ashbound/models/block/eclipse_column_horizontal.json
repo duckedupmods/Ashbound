@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column_horizontal",
+ "textures": {
+  "side": "ashbound:block/eclipse_column",
+  "end": "ashbound:block/eclipse_column_top"
+ }
+}

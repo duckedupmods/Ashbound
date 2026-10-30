@@ -1,0 +1,16 @@
+{
+ "title": "Restless Dead",
+ "rank": "F",
+ "text": "The cemetery keeper says the dead are climbing out of the east yard again. Put them back down.",
+ "kill": "minecraft:zombie",
+ "count": 8,
+ "points": 30,
+ "coins": 40,
+ "items": [
+  [
+   "minecraft:bread",
+   4
+  ]
+ ],
+ "repeat": true
+}

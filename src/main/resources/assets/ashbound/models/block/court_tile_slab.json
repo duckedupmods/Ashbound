@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/slab",
+ "textures": {
+  "bottom": "ashbound:block/court_tiles",
+  "top": "ashbound:block/court_tiles",
+  "side": "ashbound:block/court_tiles"
+ }
+}

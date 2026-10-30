@@ -1,0 +1,25 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "The Silk Archive",
+ "test_origin": [
+  90000,
+  70,
+  0
+ ],
+ "clear_top": 60,
+ "boss": "ashbound:silk_queen",
+ "built_check": [
+  [
+   -25,
+   14,
+   -271,
+   "ashbound:moonglass_lamp"
+  ]
+ ],
+ "arrive": [
+  "THE SILK ARCHIVE",
+  "B-Rank Gate"
+ ],
+ "rank": "B",
+ "loot": "minecraft:chests/stronghold_library"
+}

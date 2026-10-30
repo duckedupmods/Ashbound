@@ -1,0 +1,256 @@
+{
+ "buy": [
+  {
+   "item": {
+    "id": "epicfight:iron_greatsword"
+   },
+   "price": 220
+  },
+  {
+   "item": {
+    "id": "epicfight:iron_longsword"
+   },
+   "price": 180
+  },
+  {
+   "item": {
+    "id": "epicfight:iron_tachi"
+   },
+   "price": 180
+  },
+  {
+   "item": {
+    "id": "epicfight:iron_spear"
+   },
+   "price": 150
+  },
+  {
+   "item": {
+    "id": "epicfight:iron_dagger"
+   },
+   "price": 90
+  },
+  {
+   "item": {
+    "id": "minecraft:iron_helmet"
+   },
+   "price": 120
+  },
+  {
+   "item": {
+    "id": "minecraft:iron_chestplate"
+   },
+   "price": 200
+  },
+  {
+   "item": {
+    "id": "minecraft:iron_leggings"
+   },
+   "price": 170
+  },
+  {
+   "item": {
+    "id": "minecraft:iron_boots"
+   },
+   "price": 110
+  },
+  {
+   "item": {
+    "id": "minecraft:diamond_sword"
+   },
+   "price": 420
+  },
+  {
+   "item": {
+    "id": "minecraft:diamond"
+   },
+   "price": 160
+  },
+  {
+   "item": {
+    "id": "minecraft:anvil"
+   },
+   "price": 260
+  },
+  {
+   "item": {
+    "id": "minecraft:grindstone"
+   },
+   "price": 60
+  },
+  {
+   "item": {
+    "id": "ashbound:gate_forge"
+   },
+   "price": 300
+  },
+  {
+   "item": {
+    "id": "ashbound:apprentice_black_staff"
+   },
+   "price": 140
+  },
+  {
+   "item": {
+    "id": "ashbound:apprentice_white_staff"
+   },
+   "price": 140
+  },
+  {
+   "item": {
+    "id": "ashbound:apprentice_summon_staff"
+   },
+   "price": 160
+  }
+ ],
+ "sell": [
+  {
+   "item": "minecraft:iron_ingot",
+   "price": 6
+  },
+  {
+   "item": "minecraft:gold_ingot",
+   "price": 10
+  },
+  {
+   "item": "minecraft:diamond",
+   "price": 60
+  },
+  {
+   "item": "minecraft:netherite_scrap",
+   "price": 150
+  },
+  {
+   "item": "minecraft:coal",
+   "price": 2
+  },
+  {
+   "item": "minecraft:raw_iron",
+   "price": 4
+  },
+  {
+   "item": "minecraft:raw_gold",
+   "price": 7
+  },
+  {
+   "item": "ashbound:sodden_cork",
+   "price": 2
+  },
+  {
+   "item": "ashbound:mimics_tongue",
+   "price": 18
+  },
+  {
+   "item": "ashbound:mother_of_vinegar",
+   "price": 90
+  },
+  {
+   "item": "ashbound:hangmans_hemp",
+   "price": 2
+  },
+  {
+   "item": "ashbound:gibbet_shackle",
+   "price": 18
+  },
+  {
+   "item": "ashbound:hangmans_hood",
+   "price": 90
+  },
+  {
+   "item": "ashbound:grey_mycelium",
+   "price": 2
+  },
+  {
+   "item": "ashbound:stag_velvet",
+   "price": 18
+  },
+  {
+   "item": "ashbound:mosskings_crown",
+   "price": 90
+  },
+  {
+   "item": "ashbound:corpse_wax",
+   "price": 2
+  },
+  {
+   "item": "ashbound:coffin_bracket",
+   "price": 18
+  },
+  {
+   "item": "ashbound:abbots_death_mask",
+   "price": 90
+  },
+  {
+   "item": "ashbound:lime_gauze",
+   "price": 2
+  },
+  {
+   "item": "ashbound:beak_resin",
+   "price": 18
+  },
+  {
+   "item": "ashbound:surgeons_lamp",
+   "price": 90
+  },
+  {
+   "item": "ashbound:mana_shard",
+   "price": 2
+  },
+  {
+   "item": "ashbound:stolen_visage",
+   "price": 18
+  },
+  {
+   "item": "ashbound:sovereigns_mask",
+   "price": 90
+  },
+  {
+   "item": "ashbound:grave_brass",
+   "price": 2
+  },
+  {
+   "item": "ashbound:soul_wick",
+   "price": 18
+  },
+  {
+   "item": "ashbound:engine_heart",
+   "price": 90
+  },
+  {
+   "item": "ashbound:slag_iron",
+   "price": 2
+  },
+  {
+   "item": "ashbound:crucible_ember",
+   "price": 18
+  },
+  {
+   "item": "ashbound:kiln_fathers_brand",
+   "price": 90
+  },
+  {
+   "item": "ashbound:rime_shard",
+   "price": 2
+  },
+  {
+   "item": "ashbound:frozen_fletch",
+   "price": 18
+  },
+  {
+   "item": "ashbound:marshals_heart",
+   "price": 90
+  },
+  {
+   "item": "ashbound:silk_thread",
+   "price": 2
+  },
+  {
+   "item": "ashbound:ink_gland",
+   "price": 18
+  },
+  {
+   "item": "ashbound:queens_spinneret",
+   "price": 90
+  }
+ ]
+}

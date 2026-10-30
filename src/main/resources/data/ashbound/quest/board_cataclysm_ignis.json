@@ -1,0 +1,14 @@
+{
+ "title": "Ignis",
+ "rank": "S",
+ "text": "A burning arena in the Nether, and a knight in it who's still waiting for a fair fight. Give it one.",
+ "kill": "cataclysm:ignis",
+ "what": "Ignis",
+ "count": 1,
+ "locate": "cataclysm:burning_arena",
+ "dim": "minecraft:the_nether",
+ "points": 3000,
+ "coins": 6000,
+ "ash": 1600,
+ "icon": "minecraft:blaze_powder"
+}

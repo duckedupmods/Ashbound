@@ -1,0 +1,5 @@
+{
+ "loader": "neoforge:obj",
+ "model": "ashbound:models/mesh/last_vigil_reliquary_worn.obj",
+ "flip_v": true
+}

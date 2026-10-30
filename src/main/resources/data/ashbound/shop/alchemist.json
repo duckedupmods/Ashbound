@@ -1,0 +1,164 @@
+{
+ "buy": [
+  {
+   "item": {
+    "id": "minecraft:potion",
+    "components": {
+     "minecraft:potion_contents": {
+      "potion": "minecraft:healing"
+     }
+    }
+   },
+   "price": 100
+  },
+  {
+   "item": {
+    "id": "minecraft:potion",
+    "components": {
+     "minecraft:potion_contents": {
+      "potion": "minecraft:strong_healing"
+     }
+    }
+   },
+   "price": 180
+  },
+  {
+   "item": {
+    "id": "minecraft:splash_potion",
+    "components": {
+     "minecraft:potion_contents": {
+      "potion": "minecraft:healing"
+     }
+    }
+   },
+   "price": 140
+  },
+  {
+   "item": {
+    "id": "minecraft:potion",
+    "components": {
+     "minecraft:potion_contents": {
+      "potion": "minecraft:regeneration"
+     }
+    }
+   },
+   "price": 150
+  },
+  {
+   "item": {
+    "id": "minecraft:potion",
+    "components": {
+     "minecraft:potion_contents": {
+      "potion": "minecraft:swiftness"
+     }
+    }
+   },
+   "price": 80
+  },
+  {
+   "item": {
+    "id": "minecraft:potion",
+    "components": {
+     "minecraft:potion_contents": {
+      "potion": "minecraft:strength"
+     }
+    }
+   },
+   "price": 160
+  },
+  {
+   "item": {
+    "id": "minecraft:potion",
+    "components": {
+     "minecraft:potion_contents": {
+      "potion": "minecraft:night_vision"
+     }
+    }
+   },
+   "price": 60
+  },
+  {
+   "item": {
+    "id": "minecraft:potion",
+    "components": {
+     "minecraft:potion_contents": {
+      "potion": "minecraft:water_breathing"
+     }
+    }
+   },
+   "price": 70
+  },
+  {
+   "item": {
+    "id": "minecraft:potion",
+    "components": {
+     "minecraft:potion_contents": {
+      "potion": "minecraft:fire_resistance"
+     }
+    }
+   },
+   "price": 170
+  },
+  {
+   "item": {
+    "id": "minecraft:potion",
+    "components": {
+     "minecraft:potion_contents": {
+      "potion": "minecraft:slow_falling"
+     }
+    }
+   },
+   "price": 70
+  },
+  {
+   "item": {
+    "id": "minecraft:milk_bucket"
+   },
+   "price": 25
+  },
+  {
+   "item": {
+    "id": "minecraft:honey_bottle"
+   },
+   "price": 15
+  }
+ ],
+ "sell": [
+  {
+   "item": "minecraft:spider_eye",
+   "price": 5
+  },
+  {
+   "item": "minecraft:fermented_spider_eye",
+   "price": 8
+  },
+  {
+   "item": "minecraft:glowstone_dust",
+   "price": 4
+  },
+  {
+   "item": "minecraft:redstone",
+   "price": 2
+  },
+  {
+   "item": "minecraft:nether_wart",
+   "price": 6
+  },
+  {
+   "item": "minecraft:blaze_powder",
+   "price": 15
+  },
+  {
+   "item": "minecraft:phantom_membrane",
+   "price": 12
+  },
+  {
+   "item": "minecraft:ghast_tear",
+   "price": 40
+  },
+  {
+   "item": "minecraft:glow_berries",
+   "price": 2
+  }
+ ]
+}

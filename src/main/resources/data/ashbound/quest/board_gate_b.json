@@ -1,0 +1,12 @@
+{
+ "title": "The Deep Ones Open",
+ "rank": "B",
+ "text": "A gate of this rank doesn't close itself, and it doesn't stay quiet. Go through.",
+ "gate": "B",
+ "what": "Rank B Gate",
+ "count": 1,
+ "points": 550,
+ "coins": 650,
+ "ash": 340,
+ "icon": "minecraft:ender_eye"
+}

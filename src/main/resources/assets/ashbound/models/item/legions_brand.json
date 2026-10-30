@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/legions_brand.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     -0.033,
+     0.876,
+     0.167
+    ],
+    "scale": [
+     0.6667,
+     0.6667,
+     0.6667
+    ]
+   },
+   "ground": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     -0.017,
+     0.438,
+     0
+    ],
+    "scale": [
+     0.3333,
+     0.3333,
+     0.3333
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     -0.033,
+     0.876,
+     0.167
+    ],
+    "scale": [
+     0.6667,
+     0.6667,
+     0.6667
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.2667,
+     0.2667,
+     0.2667
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.2667,
+     0.2667,
+     0.2667
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.2667,
+     0.2667,
+     0.2667
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.2667,
+     0.2667,
+     0.2667
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

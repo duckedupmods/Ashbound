@@ -1,0 +1,81 @@
+{
+ "name": "Joss Vane",
+ "title": "Baker",
+ "tags": [
+  "townsfolk",
+  "baker",
+  "adult",
+  "m"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Joss. Up before dawn every day of my life."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "topic": {
+   "text": [
+    "The guild buys my whole first batch. Adventurers eat like wolves."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "Coin's good for anyone who brings back what comes out of the gates. Better if you bring it back dead."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "You look half starved. Here, the burnt one's free."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "Busy day?",
+     "go": "topic"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

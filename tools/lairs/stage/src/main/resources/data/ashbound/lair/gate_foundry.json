@@ -1,0 +1,29 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Slag Foundry",
+ "test_origin": [
+  62000,
+  0,
+  0
+ ],
+ "clear_top": 22,
+ "safe_radius": 240,
+ "boss": "ashbound:ossric",
+ "built_check": [
+  [
+   -16,
+   -16,
+   -247,
+   "ashbound:brazier"
+  ]
+ ],
+ "seal": "The Kiln-Father's will holds this stone",
+ "broken": "The Foundry's fires go out",
+ "arrive": [
+  "THE SLAG FOUNDRY",
+  "C-Rank Gate"
+ ],
+ "rank": "C",
+ "debris": "foundry",
+ "loot": "ashbound:chests/gate_foundry"
+}

@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/rotwood_plank_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/rotwood_planks"
+  },
+  "type=top": {
+   "model": "ashbound:block/rotwood_plank_slab_top"
+  }
+ }
+}

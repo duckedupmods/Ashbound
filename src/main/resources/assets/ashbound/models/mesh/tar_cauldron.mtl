@@ -1,0 +1,7 @@
+newmtl prop
+Ka 0 0 0
+map_Kd ashbound:block/tar_cauldron
+
+newmtl glow
+Ka 1 1 1
+map_Kd ashbound:block/tar_cauldron

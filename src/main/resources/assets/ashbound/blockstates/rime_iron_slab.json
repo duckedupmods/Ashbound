@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/rime_iron_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/rime_iron_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/rime_iron"
+  }
+ }
+}

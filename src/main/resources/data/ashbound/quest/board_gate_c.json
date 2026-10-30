@@ -1,0 +1,12 @@
+{
+ "title": "A Gate That Bites",
+ "rank": "C",
+ "text": "The Guild has lost people to this one. Take a party, take vials, and come back.",
+ "gate": "C",
+ "what": "Rank C Gate",
+ "count": 1,
+ "points": 300,
+ "coins": 380,
+ "ash": 200,
+ "icon": "minecraft:ender_eye"
+}

@@ -1,0 +1,7 @@
+newmtl blade
+Ka 0 0 0
+map_Kd ashbound:item/heart_of_the_vein_3d
+
+newmtl glow
+Ka 1 1 1
+map_Kd ashbound:item/heart_of_the_vein_3d

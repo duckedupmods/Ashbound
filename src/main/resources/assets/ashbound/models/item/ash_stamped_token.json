@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/ash_stamped_token.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0.033,
+     2.279,
+     0.42
+    ],
+    "scale": [
+     1.427,
+     1.427,
+     1.427
+    ]
+   },
+   "ground": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0.017,
+     1.139,
+     0
+    ],
+    "scale": [
+     0.7135,
+     0.7135,
+     0.7135
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0.033,
+     2.279,
+     0.42
+    ],
+    "scale": [
+     1.427,
+     1.427,
+     1.427
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.5708,
+     0.5708,
+     0.5708
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.5708,
+     0.5708,
+     0.5708
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.5708,
+     0.5708,
+     0.5708
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.5708,
+     0.5708,
+     0.5708
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

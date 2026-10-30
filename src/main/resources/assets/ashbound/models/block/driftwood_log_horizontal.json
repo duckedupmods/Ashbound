@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column_horizontal",
+ "textures": {
+  "side": "ashbound:block/driftwood_log",
+  "end": "ashbound:block/driftwood_log_top"
+ }
+}

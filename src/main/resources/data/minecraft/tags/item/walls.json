@@ -1,0 +1,10 @@
+{
+ "replace": false,
+ "values": [
+  "ashbound:limestone_brick_wall",
+  "ashbound:pale_limestone_wall",
+  "ashbound:greystone_wall",
+  "ashbound:mossy_greystone_wall",
+  "ashbound:archive_stone_wall"
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "title": "Bowmen in the Fog",
+ "rank": "E",
+ "text": "Skeletons with bows are shooting at pilgrims on the west road. Clear the road.",
+ "kill": "#minecraft:skeletons",
+ "count": 10,
+ "points": 70,
+ "coins": 90,
+ "items": [
+  [
+   "minecraft:arrow",
+   32
+  ]
+ ],
+ "repeat": true
+}

@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/outer_stairs",
+ "textures": {
+  "bottom": "ashbound:block/fang_stone",
+  "top": "ashbound:block/fang_stone",
+  "side": "ashbound:block/fang_stone"
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/pale_ice_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/pale_ice_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/pale_ice"
+  }
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Bloodmoon Court",
+ "test_origin": [
+  130000,
+  20,
+  0
+ ],
+ "boss": "ashbound:countess_vael",
+ "seal": "The Hound's collar keeps the Moon Hall shut",
+ "broken": "The silver collar breaks and the Moon Hall opens",
+ "arrive": [
+  "THE BLOODMOON COURT",
+  "A-Rank Gate"
+ ],
+ "rank": "A",
+ "loot": "ashbound:chests/gate_bloodmoon_court",
+ "built_check": [
+  [
+   -25,
+   -12,
+   -314,
+   "minecraft:bedrock"
+  ]
+ ],
+ "clear_top": 27
+}

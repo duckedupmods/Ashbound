@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/fallen_angel"
+  },
+  "facing=east": {
+   "model": "ashbound:block/fallen_angel",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/fallen_angel",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/fallen_angel",
+   "y": 270
+  }
+ }
+}

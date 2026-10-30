@@ -1,0 +1,31 @@
+{
+ "type": "ashbound:tree",
+ "config": {
+  "trees": [
+   {
+    "template": "ashbound:tree/oak_small_0",
+    "weight": 60
+   },
+   {
+    "template": "ashbound:tree/oak_small_1",
+    "weight": 60
+   },
+   {
+    "template": "ashbound:tree/oak_small_2",
+    "weight": 60
+   },
+   {
+    "template": "ashbound:tree/oak_medium_0",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/oak_medium_1",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/oak_medium_2",
+    "weight": 40
+   }
+  ]
+ }
+}

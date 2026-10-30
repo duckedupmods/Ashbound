@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/gallows_sign"
+  },
+  "facing=east": {
+   "model": "ashbound:block/gallows_sign",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/gallows_sign",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/gallows_sign",
+   "y": 270
+  }
+ }
+}

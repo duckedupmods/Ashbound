@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/spire_hoard"
+  },
+  "facing=east": {
+   "model": "ashbound:block/spire_hoard",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/spire_hoard",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/spire_hoard",
+   "y": 270
+  }
+ }
+}

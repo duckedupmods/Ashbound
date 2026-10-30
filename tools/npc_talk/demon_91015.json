@@ -1,0 +1,120 @@
+{
+ "name": "Clemency Ashrow",
+ "title": "Old One",
+ "tags": [
+  "demon",
+  "elder",
+  "elder",
+  "f",
+  "demon"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Clemency. I'm the oldest thing in Hornsend, and yes, that includes the drains."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "Sit a while. It's been a long time since anybody asked."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "people": {
+   "text": [
+    "When the gates cracked, some of us ran out of them. Not to fight. Just to stop being down there."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "other": {
+   "text": [
+    "The Guild will take our coin, but not our names. Elowen tried. I'll give her that much."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "An old demon on Ash Row says the first crack was opened from this side. He says it very quietly."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Yes, the horns are real. No, you can't touch them. Now, how can I help?"
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "What do you remember?",
+     "go": "trade"
+    },
+    {
+     "text": "What is Hornsend?",
+     "go": "people"
+    },
+    {
+     "text": "How does the city treat you?",
+     "go": "other"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

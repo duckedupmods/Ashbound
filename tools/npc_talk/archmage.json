@@ -1,0 +1,81 @@
+{
+ "name": "Elske Barrow",
+ "title": "Archmage of the Arcanum",
+ "tags": [
+  "lead"
+ ],
+ "start": "start",
+ "nodes": {
+  "start": {
+   "text": [
+    "Mind the circles on the floor. One of them still remembers what it was drawn for."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "Can you teach me magic?",
+     "go": "teach"
+    },
+    {
+     "text": "What is the Arcanum?",
+     "go": "arcanum"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "who": {
+   "text": [
+    "Elske Barrow. I hold the top of this tower, which mostly means I hold the keys to it.",
+    "SS rank, once. These days I'd rather read about monsters than set them on fire."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "teach": {
+   "text": [
+    "Not today. The trainers in the court below take novices: black fire, white light, and the summoners' circles.",
+    "Come back with some rank on your card and we'll see what you can hold without burning your hands."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "arcanum": {
+   "text": [
+    "The city's college of magic: the library, the lecture hall, the circles, and this tower over all of it.",
+    "Everything that comes out of a gate leaves a trace. We study the traces, so the Guild knows what it's facing."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

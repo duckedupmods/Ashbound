@@ -1,0 +1,12 @@
+{
+ "title": "Clear The Serpent Ziggurat",
+ "rank": "C",
+ "text": "Hunters who go near come back with bites that don't close. The Coiled King holds the top of the steps. Kill it.",
+ "kill": "ashbound:coiled_king",
+ "count": 1,
+ "locate": "ashbound:serpent_ziggurat",
+ "points": 600,
+ "coins": 760,
+ "ash": 400,
+ "icon": "minecraft:emerald"
+}

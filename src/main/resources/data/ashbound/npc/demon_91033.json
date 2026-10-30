@@ -1,0 +1,63 @@
+{
+ "name": "Biscuit",
+ "title": "Child",
+ "tags": [
+  "demon",
+  "child",
+  "kid",
+  "m",
+  "demon"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "I'm Biscuit! I'm getting my second horn! Look! No, look closer!"
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "Why do people cross the road when they see my mum? She makes really good soup."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Keep your hand off that hilt and we'll get along fine. Everyone does, eventually."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "What are you up to?",
+     "go": "trade"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,60 @@
+{
+ "id": "dwarf_78007",
+ "seed": 78007,
+ "recipe": "dwarf",
+ "role": "miner",
+ "rank": null,
+ "name": "Norri Stonehand",
+ "title": "Miner",
+ "age": "adult",
+ "sex": "m",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "rose",
+ "hair": {
+  "style": "bald",
+  "color": "copper"
+ },
+ "headwear": "helm",
+ "beard": null,
+ "face": {
+  "eye": "sharp",
+  "iris": "brown",
+  "brows": "bushy",
+  "mouth": "frown",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "belt",
+   "gloves",
+   "pouches"
+  ],
+  "colors": {
+   "top": "oxblood",
+   "bottom": "brown",
+   "accent": "red",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "lantern",
+ "offhand": null,
+ "back": "pack",
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "dwarf"
+}

@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Sandsunk Tomb",
+ "test_origin": [
+  118000,
+  20,
+  0
+ ],
+ "boss": "ashbound:sun_king",
+ "seal": "The Guardian's ankh bars the way",
+ "broken": "The ankh breaks and the door grinds open",
+ "arrive": [
+  "THE SANDSUNK TOMB",
+  "C-Rank Gate"
+ ],
+ "rank": "C",
+ "loot": "ashbound:chests/gate_sandsunk_tomb",
+ "built_check": [
+  [
+   -25,
+   -16,
+   -300,
+   "minecraft:bedrock"
+  ]
+ ],
+ "clear_top": 23
+}

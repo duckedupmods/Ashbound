@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/thorn_choker.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0.174,
+     -0.963,
+     -0.57
+    ],
+    "scale": [
+     0.9284,
+     0.9284,
+     0.9284
+    ]
+   },
+   "ground": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0.087,
+     -0.481,
+     0
+    ],
+    "scale": [
+     0.4642,
+     0.4642,
+     0.4642
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0.174,
+     -0.963,
+     -0.57
+    ],
+    "scale": [
+     0.9284,
+     0.9284,
+     0.9284
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3714,
+     0.3714,
+     0.3714
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3714,
+     0.3714,
+     0.3714
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3714,
+     0.3714,
+     0.3714
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3714,
+     0.3714,
+     0.3714
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

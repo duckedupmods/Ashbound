@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/minaret_coffer"
+  },
+  "facing=east": {
+   "model": "ashbound:block/minaret_coffer",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/minaret_coffer",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/minaret_coffer",
+   "y": 270
+  }
+ }
+}

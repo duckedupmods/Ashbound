@@ -1,0 +1,62 @@
+{
+ "id": "dwarf_78003",
+ "seed": 78003,
+ "recipe": "dwarf",
+ "role": "miner",
+ "rank": null,
+ "name": "Gorrik Emberfist",
+ "title": "Miner",
+ "age": "teen",
+ "sex": "m",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "rose",
+ "hair": {
+  "style": "shaggy",
+  "color": "copper"
+ },
+ "headwear": "helm",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "amber",
+  "brows": "stern",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": true,
+  "marks": [
+   "soot"
+  ],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "belt",
+   "gloves",
+   "pouches"
+  ],
+  "colors": {
+   "top": "oxblood",
+   "bottom": "charcoal",
+   "accent": "mustard",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "lantern",
+ "offhand": null,
+ "back": "sack",
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "dwarf"
+}

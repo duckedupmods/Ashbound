@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/crow_perch"
+  },
+  "facing=east": {
+   "model": "ashbound:block/crow_perch",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/crow_perch",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/crow_perch",
+   "y": 270
+  }
+ }
+}

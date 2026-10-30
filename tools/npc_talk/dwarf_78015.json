@@ -1,0 +1,124 @@
+{
+ "name": "Dagni Gravelgut",
+ "title": "Smith",
+ "tags": [
+  "dwarf",
+  "smith",
+  "adult",
+  "m",
+  "dwarf"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Dagni. Smith. Everyone's a smith in the Hold, but I'm the one they ask when it goes wrong."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "Patience. A hot fire, then a cold head. Most folk get one of the two."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "people": {
+   "text": [
+    "Nine hundred steps down to the deep forge and we count every one. Up here's just the porch."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "other": {
+   "text": [
+    "We trade them hinges, they send us lamp oil. Neither side says what it's really for."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "An old crew went to the Gallows Hill for the rope iron. Came back with less crew."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Hah. A surface walker. Lost, or buying?"
+   ],
+   "options": [
+    {
+     "text": "Forge me something from the gates.",
+     "do": "forge"
+    },
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "What makes a good blade?",
+     "go": "trade"
+    },
+    {
+     "text": "What's Anvilgate like?",
+     "go": "people"
+    },
+    {
+     "text": "What do you make of the elves?",
+     "go": "other"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

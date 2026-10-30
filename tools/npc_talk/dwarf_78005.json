@@ -1,0 +1,120 @@
+{
+ "name": "Orrin Hammerfell",
+ "title": "Miner",
+ "tags": [
+  "dwarf",
+  "miner",
+  "adult",
+  "m",
+  "dwarf"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Orrin. I dig. Fourth generation of diggers, and the fifth's already underfoot."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "If your lamp goes blue, leave. Don't think about it, don't finish your sentence. Leave."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "people": {
+   "text": [
+    "Highmourn buys our iron and calls it theirs. Look at their gate hinges. Those are ours."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "other": {
+   "text": [
+    "Lovely folk. Live in a tree. On purpose."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "The elves pay double for anything that came out of a gate. Ask yourself why."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Mind your head. Actually, you'll be fine, it's the beams that should worry."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "How's the digging?",
+     "go": "trade"
+    },
+    {
+     "text": "What's Anvilgate like?",
+     "go": "people"
+    },
+    {
+     "text": "What do you make of the elves?",
+     "go": "other"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

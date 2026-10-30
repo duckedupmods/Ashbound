@@ -1,0 +1,11 @@
+{
+ "type": "ashbound:giant_tree",
+ "template": "ashbound:tower/warlords_fang",
+ "spread": 6,
+ "reach": 18,
+ "tries": 13,
+ "biomes": "#ashbound:has_structure/warlords_fang",
+ "spawn_overrides": {},
+ "step": "surface_structures",
+ "terrain_adaptation": "none"
+}

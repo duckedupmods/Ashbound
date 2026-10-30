@@ -1,0 +1,114 @@
+{
+ "name": "Rook",
+ "title": "Keeper of the Rat's Nest",
+ "start": "start",
+ "nodes": {
+  "start": {
+   "go_if": [
+    [
+     "flag:met_fence",
+     "regular"
+    ]
+   ],
+   "text": [
+    "Shut the door. Slowly. The hinge talks.",
+    "You found the Nest, so somebody talked, or you're cleverer than you look. Either way. I buy what the guild won't pay proper for, and I sell what the guild pretends doesn't exist."
+   ],
+   "options": [
+    {
+     "text": "What do you buy?",
+     "do": "flag:met_fence",
+     "go": "buy"
+    },
+    {
+     "text": "Does the guild know about this place?",
+     "do": "flag:met_fence",
+     "go": "guild"
+    },
+    {
+     "text": "Show me your wares.",
+     "do": "flag:met_fence;shop"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "regular": {
+   "text": [
+    "Back again. Nobody followed you? Good. Show me what the dead gave you."
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "What do you buy?",
+     "go": "buy"
+    },
+    {
+     "text": "Heard anything?",
+     "go": "word"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "buy": {
+   "text": [
+    "Anything that came out of a gate. Corks, hemp, wax, the hard bits off the big ones. The trophies, most of all. A hangman's hood, a crowned skull of moss. There's collectors.",
+    "I'll pay you more than the stuff's worth to you. Less than it's worth to them. That's the whole of my trade."
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "guild": {
+   "text": [
+    "The guild knows. The guild drinks here on its days off. The guild's receptionist bought a ring off me last spring and told her mother it was from a suitor.",
+    "Keep your voice down about it, that's all I ask. Things are only illegal when they're loud."
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "Heard anything?",
+     "go": "word"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "word": {
+   "text": [
+    "A barrel on the carters' road that ate two men. A dead knight walking the drove road in his cage. A stag out by the rot that's more fungus than meat. The guild's posted all of them.",
+    "Bring me what's left of them after. The knight's shackles fetch a fair price. Don't ask me who's buying."
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

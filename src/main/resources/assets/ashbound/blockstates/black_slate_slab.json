@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/black_slate_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/black_slate"
+  },
+  "type=top": {
+   "model": "ashbound:block/black_slate_slab_top"
+  }
+ }
+}

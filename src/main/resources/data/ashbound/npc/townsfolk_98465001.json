@@ -1,0 +1,81 @@
+{
+ "name": "Wren Thorne",
+ "title": "Acolyte of the Pale Flame",
+ "tags": [
+  "townsfolk",
+  "acolyte",
+  "adult",
+  "f"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Wren, a servant of the Pale Flame."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "topic": {
+   "text": [
+    "The light that burns when every other light goes out."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "Something's been knocking under the Drowned Cellar's casks. From the inside."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Walk in its light, traveller."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "What is the Pale Flame?",
+     "go": "topic"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

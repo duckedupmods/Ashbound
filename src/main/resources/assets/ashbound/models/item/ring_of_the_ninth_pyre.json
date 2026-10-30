@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/ring_of_the_ninth_pyre.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     -0.159,
+     -0.124
+    ],
+    "scale": [
+     0.8104,
+     0.8104,
+     0.8104
+    ]
+   },
+   "ground": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     -0.08,
+     0
+    ],
+    "scale": [
+     0.4052,
+     0.4052,
+     0.4052
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     -0.159,
+     -0.124
+    ],
+    "scale": [
+     0.8104,
+     0.8104,
+     0.8104
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3242,
+     0.3242,
+     0.3242
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3242,
+     0.3242,
+     0.3242
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3242,
+     0.3242,
+     0.3242
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3242,
+     0.3242,
+     0.3242
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

@@ -1,0 +1,81 @@
+{
+ "name": "Petra Corrin",
+ "title": "Merchant",
+ "tags": [
+  "townsfolk",
+  "merchant",
+  "adult",
+  "f"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Petra. I buy cheap from those who need coin and sell dear to those who need things."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "topic": {
+   "text": [
+    "Gate salvage sells like fresh bread. Bring me some and we'll talk."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "They hanged a man on Gallows Hill who wouldn't stay hanged. Now the whole hill won't."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Coin first, questions after."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "How's trade?",
+     "go": "topic"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

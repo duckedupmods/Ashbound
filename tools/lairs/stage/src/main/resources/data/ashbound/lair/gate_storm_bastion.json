@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Storm Bastion",
+ "test_origin": [
+  127000,
+  20,
+  0
+ ],
+ "boss": "ashbound:thunder_abbess",
+ "seal": "The Captain's rod locks the spire",
+ "broken": "The rod falls silent and the spire stair opens",
+ "arrive": [
+  "THE STORM BASTION",
+  "A-Rank Gate"
+ ],
+ "rank": "A",
+ "loot": "ashbound:chests/gate_storm_bastion",
+ "built_check": [
+  [
+   -25,
+   20,
+   -287,
+   "ashbound:spire_rock"
+  ]
+ ],
+ "clear_top": 55
+}

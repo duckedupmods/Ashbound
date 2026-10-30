@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column",
+ "textures": {
+  "side": "ashbound:block/rook_column",
+  "end": "ashbound:block/rook_column_top"
+ }
+}

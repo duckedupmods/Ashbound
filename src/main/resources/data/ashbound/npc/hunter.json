@@ -1,0 +1,153 @@
+{
+ "name": "Garrick",
+ "title": "Hunter",
+ "start": "start",
+ "nodes": {
+  "start": {
+   "go_if": [
+    [
+     "flag:hunter_done",
+     "after"
+    ],
+    [
+     "flag:hunter_asked",
+     "waiting"
+    ]
+   ],
+   "text": [
+    "Easy. Hands where I can see them.",
+    "...Huh. Walked out of the dark with nothing but the clothes on your back, did you? I've seen that look before. The Gates spit people out like that sometimes."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "What Gates?",
+     "go": "gates"
+    },
+    {
+     "text": "What is this place?",
+     "go": "where"
+    }
+   ]
+  },
+  "who": {
+   "text": [
+    "Garrick. I hunt the roads, what's left of them, and teach the butts here when I'm back.",
+    "The things that crawl out of the Gates eat anything with four legs. Two weeks out and all I've got is a pair of hares. There are mouths in this city waiting on me."
+   ],
+   "options": [
+    {
+     "text": "What is this place?",
+     "go": "where"
+    },
+    {
+     "text": "Can I help?",
+     "go": "ask"
+    }
+   ]
+  },
+  "gates": {
+   "text": [
+    "Tears in the air. Some call them wounds. Step through one and you're somewhere else. Somewhere dead, full of things that want you dead too.",
+    "The Guild ranks them like it ranks its people, F at the bottom. Nobody's come back from the high ones to say what's in them."
+   ],
+   "options": [
+    {
+     "text": "The Guild?",
+     "go": "where"
+    },
+    {
+     "text": "Can I help you?",
+     "go": "ask"
+    }
+   ]
+  },
+  "where": {
+   "text": [
+    "The Guild's training yard. Highmourn's the capital, the last city with walls worth the name. Work, coin, a bed if you're lucky.",
+    "But nothing's free in here, stranger."
+   ],
+   "options": [
+    {
+     "text": "What do you want?",
+     "go": "ask"
+    }
+   ]
+  },
+  "ask": {
+   "text": [
+    "Meat. Four pork chops. The pigs still root around the fields and the forest edges, if you've got the stomach to run them down.",
+    "Bring me four and I'll see you right."
+   ],
+   "options": [
+    {
+     "text": "I'll find your pigs.",
+     "do": "flag:hunter_asked",
+     "go": "agreed"
+    },
+    {
+     "text": "Not now.",
+     "do": "close"
+    }
+   ]
+  },
+  "agreed": {
+   "text": [
+    "Good. Don't wander too far after dark. And if you see a Gate, don't go poking at it alone."
+   ],
+   "options": [
+    {
+     "text": "I'll be back.",
+     "do": "close"
+    }
+   ]
+  },
+  "waiting": {
+   "text": [
+    "Back already? Got my meat?"
+   ],
+   "options": [
+    {
+     "text": "Here, four pork chops.",
+     "if": "has:minecraft:porkchop|minecraft:cooked_porkchop:4",
+     "do": "take:minecraft:porkchop|minecraft:cooked_porkchop:4;flag:hunter_done;coins:25;give:minecraft:bread:4;give:minecraft:torch:16",
+     "go": "reward"
+    },
+    {
+     "text": "Where were the pigs again?",
+     "go": "ask"
+    },
+    {
+     "text": "Not yet.",
+     "do": "close"
+    }
+   ]
+  },
+  "reward": {
+   "text": [
+    "Good meat. You've got some use in you after all.",
+    "And stranger? The Gates near the roads are F-rank. Weak, they say. Don't believe it. Take friends."
+   ],
+   "options": [
+    {
+     "text": "Thanks, Garrick.",
+     "do": "close"
+    }
+   ]
+  },
+  "after": {
+   "text": [
+    "Still breathing? Good."
+   ],
+   "options": [
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,8 @@
+{
+ "type": "ashbound:giant_tree",
+ "template": "ashbound:tree/elder",
+ "biomes": "#ashbound:has_structure/giant_elder",
+ "spawn_overrides": {},
+ "step": "surface_structures",
+ "terrain_adaptation": "none"
+}

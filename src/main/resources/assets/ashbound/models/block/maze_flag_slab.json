@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/slab",
+ "textures": {
+  "bottom": "ashbound:block/maze_flags",
+  "top": "ashbound:block/maze_flags",
+  "side": "ashbound:block/maze_flags"
+ }
+}

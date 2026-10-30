@@ -1,0 +1,120 @@
+{
+ "name": "Hilda Deepdelve",
+ "title": "Miner",
+ "tags": [
+  "dwarf",
+  "miner",
+  "adult",
+  "f",
+  "dwarf"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Hilda, third shift. Ask me about the rock, not about the sky. Haven't seen it since spring."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "Good iron, bad air. That's the wrong way round, but the pay's the same."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "people": {
+   "text": [
+    "Highmourn buys our iron and calls it theirs. Look at their gate hinges. Those are ours."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "other": {
+   "text": [
+    "An elf once told me my great-grandfather was 'a promising young man'. She meant it, too."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "An old crew went to the Gallows Hill for the rope iron. Came back with less crew."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "You've the look of someone who's never held a proper hammer."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "How's the digging?",
+     "go": "trade"
+    },
+    {
+     "text": "What's Anvilgate like?",
+     "go": "people"
+    },
+    {
+     "text": "What do you make of the elves?",
+     "go": "other"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

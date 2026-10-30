@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/skull_lamp"
+  },
+  "facing=east": {
+   "model": "ashbound:block/skull_lamp",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/skull_lamp",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/skull_lamp",
+   "y": 270
+  }
+ }
+}

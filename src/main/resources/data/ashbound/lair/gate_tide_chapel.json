@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Tide Chapel",
+ "test_origin": [
+  103000,
+  20,
+  0
+ ],
+ "boss": "ashbound:drowned_bell",
+ "seal": "The choir's grille will not lift",
+ "broken": "The choir falls silent, the grille lifts",
+ "arrive": [
+  "THE TIDE CHAPEL",
+  "E-Rank Gate"
+ ],
+ "rank": "E",
+ "loot": "ashbound:chests/gate_tide_chapel",
+ "built_check": [
+  [
+   -24,
+   -22,
+   -272,
+   "minecraft:bedrock"
+  ]
+ ],
+ "clear_top": 25
+}

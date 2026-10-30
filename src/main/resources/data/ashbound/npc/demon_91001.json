@@ -1,0 +1,120 @@
+{
+ "name": "Thanks Ashrow",
+ "title": "Street Sweeper",
+ "tags": [
+  "demon",
+  "sweeper",
+  "teen",
+  "m",
+  "demon"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Thanks. City's lamplighters quit in winter. Guess who's been lighting them."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "Honest. Cold. They pay a third, and only look at me when something's missing."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "people": {
+   "text": [
+    "We pay the tax, the double tax and the horn tax. The horn tax isn't a joke. I wish it was."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "other": {
+   "text": [
+    "Every time something crawls from a gate, somebody throws a stone at our door. We've built a very nice wall from them."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "When a gate boss dies, every horn in Hornsend aches at once. We've learned to stop what we're doing."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "A human, on purpose? Are you lost, or are you the brave sort?"
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "How's the work?",
+     "go": "trade"
+    },
+    {
+     "text": "What is Hornsend?",
+     "go": "people"
+    },
+    {
+     "text": "How does the city treat you?",
+     "go": "other"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

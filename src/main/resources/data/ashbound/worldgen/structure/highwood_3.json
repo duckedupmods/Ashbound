@@ -1,0 +1,8 @@
+{
+ "type": "ashbound:giant_tree",
+ "template": "ashbound:tree/highwood_3",
+ "biomes": "#ashbound:has_structure/highwood",
+ "spawn_overrides": {},
+ "step": "surface_structures",
+ "terrain_adaptation": "none"
+}

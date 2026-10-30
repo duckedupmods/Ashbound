@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/brigands_knuckle_ring.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     1.076,
+     0.841
+    ],
+    "scale": [
+     0.9472,
+     0.9472,
+     0.9472
+    ]
+   },
+   "ground": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     0.538,
+     0
+    ],
+    "scale": [
+     0.4736,
+     0.4736,
+     0.4736
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     1.076,
+     0.841
+    ],
+    "scale": [
+     0.9472,
+     0.9472,
+     0.9472
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3789,
+     0.3789,
+     0.3789
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3789,
+     0.3789,
+     0.3789
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3789,
+     0.3789,
+     0.3789
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3789,
+     0.3789,
+     0.3789
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

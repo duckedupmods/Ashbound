@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/gate_forge"
+  },
+  "facing=east": {
+   "model": "ashbound:block/gate_forge",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/gate_forge",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/gate_forge",
+   "y": 270
+  }
+ }
+}

@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/slab_top",
+ "textures": {
+  "bottom": "ashbound:block/tar_planks",
+  "top": "ashbound:block/tar_planks",
+  "side": "ashbound:block/tar_planks"
+ }
+}

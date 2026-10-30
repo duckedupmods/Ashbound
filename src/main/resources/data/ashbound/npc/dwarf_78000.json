@@ -1,0 +1,120 @@
+{
+ "name": "Velka Coalvein",
+ "title": "Hold Guard",
+ "tags": [
+  "dwarf",
+  "guard",
+  "adult",
+  "f",
+  "dwarf"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Velka. Hold Guard. I stand at the gate and judge your shoes."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "Quiet above. Too quiet below. I prefer it the other way round."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "people": {
+   "text": [
+    "Stone doesn't lie, doesn't rot and doesn't ask how your day went. Fine neighbours, stones."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "other": {
+   "text": [
+    "We trade them hinges, they send us lamp oil. Neither side says what it's really for."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "There's a seam of black iron that rings when you strike it, and something under it rings back."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Hah. A surface walker. Lost, or buying?"
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "Anything to report?",
+     "go": "trade"
+    },
+    {
+     "text": "What's Anvilgate like?",
+     "go": "people"
+    },
+    {
+     "text": "What do you make of the elves?",
+     "go": "other"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

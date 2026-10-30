@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/gallows_timber_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/gallows_timber"
+  },
+  "type=top": {
+   "model": "ashbound:block/gallows_timber_slab_top"
+  }
+ }
+}

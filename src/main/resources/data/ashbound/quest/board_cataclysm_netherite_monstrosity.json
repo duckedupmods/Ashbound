@@ -1,0 +1,14 @@
+{
+ "title": "The Netherite Monstrosity",
+ "rank": "S",
+ "text": "Someone forged this in the Nether and lost control of it. Wendel says he'd like to see the workmanship. He means after.",
+ "kill": "cataclysm:netherite_monstrosity",
+ "what": "The Netherite Monstrosity",
+ "count": 1,
+ "locate": "cataclysm:soul_black_smith",
+ "dim": "minecraft:the_nether",
+ "points": 3000,
+ "coins": 6000,
+ "ash": 1600,
+ "icon": "minecraft:netherite_ingot"
+}

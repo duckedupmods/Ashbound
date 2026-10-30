@@ -1,0 +1,176 @@
+{
+ "ambientocclusion": false,
+ "textures": {
+  "light": "ashbound:block/elf_marble",
+  "mid": "ashbound:block/elf_marble_mid",
+  "dark": "ashbound:block/elf_marble_dark",
+  "water": "ashbound:block/moonwater",
+  "particle": "ashbound:block/elf_marble"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    12,
+    14
+   ],
+   "to": [
+    2,
+    16,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#light",
+     "uv": [
+      14,
+      0.0,
+      16.0,
+      4
+     ]
+    },
+    "east": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      0.0,
+      2,
+      4
+     ]
+    },
+    "down": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      0.0,
+      2,
+      2
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    14,
+    6
+   ],
+   "to": [
+    2,
+    16,
+    14
+   ],
+   "faces": {
+    "north": {
+     "texture": "#light",
+     "uv": [
+      14,
+      0.0,
+      16.0,
+      2
+     ]
+    },
+    "east": {
+     "texture": "#light",
+     "uv": [
+      2,
+      0.0,
+      10,
+      2
+     ]
+    },
+    "down": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      2,
+      2,
+      10
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    2,
+    14,
+    8
+   ],
+   "to": [
+    4,
+    16,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#light",
+     "uv": [
+      12,
+      0.0,
+      14,
+      2
+     ]
+    },
+    "east": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      0.0,
+      8,
+      2
+     ]
+    },
+    "down": {
+     "texture": "#light",
+     "uv": [
+      2,
+      0.0,
+      4,
+      8
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    4,
+    14,
+    12
+   ],
+   "to": [
+    6,
+    16,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#light",
+     "uv": [
+      10,
+      0.0,
+      12,
+      2
+     ]
+    },
+    "east": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      0.0,
+      4,
+      2
+     ]
+    },
+    "down": {
+     "texture": "#light",
+     "uv": [
+      4,
+      0.0,
+      6,
+      4
+     ]
+    }
+   }
+  }
+ ]
+}

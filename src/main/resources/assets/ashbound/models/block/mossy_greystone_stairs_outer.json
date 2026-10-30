@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/outer_stairs",
+ "textures": {
+  "bottom": "ashbound:block/mossy_greystone",
+  "top": "ashbound:block/mossy_greystone",
+  "side": "ashbound:block/mossy_greystone"
+ }
+}

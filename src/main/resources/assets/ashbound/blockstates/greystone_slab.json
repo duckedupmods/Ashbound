@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/greystone_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/greystone"
+  },
+  "type=top": {
+   "model": "ashbound:block/greystone_slab_top"
+  }
+ }
+}

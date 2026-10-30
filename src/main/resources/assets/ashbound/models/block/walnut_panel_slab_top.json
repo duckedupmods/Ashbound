@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/slab_top",
+ "textures": {
+  "bottom": "ashbound:block/walnut_panel",
+  "top": "ashbound:block/walnut_panel",
+  "side": "ashbound:block/walnut_panel"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column_horizontal",
+ "textures": {
+  "side": "ashbound:block/pine_log",
+  "end": "ashbound:block/pine_log_top"
+ }
+}

@@ -1,0 +1,5 @@
+{
+ "loader": "neoforge:obj",
+ "model": "ashbound:models/mesh/void_glass_shard_worn.obj",
+ "flip_v": true
+}

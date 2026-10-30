@@ -1,0 +1,82 @@
+{
+ "buy": [
+  {
+   "item": {
+    "id": "minecraft:apple",
+    "count": 4
+   },
+   "price": 10
+  },
+  {
+   "item": {
+    "id": "minecraft:carrot",
+    "count": 6
+   },
+   "price": 8
+  },
+  {
+   "item": {
+    "id": "minecraft:baked_potato",
+    "count": 4
+   },
+   "price": 12
+  },
+  {
+   "item": {
+    "id": "minecraft:melon_slice",
+    "count": 6
+   },
+   "price": 8
+  },
+  {
+   "item": {
+    "id": "minecraft:sweet_berries",
+    "count": 8
+   },
+   "price": 8
+  },
+  {
+   "item": {
+    "id": "minecraft:beetroot_soup"
+   },
+   "price": 18
+  },
+  {
+   "item": {
+    "id": "minecraft:golden_carrot",
+    "count": 2
+   },
+   "price": 45
+  }
+ ],
+ "sell": [
+  {
+   "item": "minecraft:wheat",
+   "price": 1
+  },
+  {
+   "item": "minecraft:potato",
+   "price": 1
+  },
+  {
+   "item": "minecraft:carrot",
+   "price": 1
+  },
+  {
+   "item": "minecraft:beetroot",
+   "price": 1
+  },
+  {
+   "item": "minecraft:apple",
+   "price": 2
+  },
+  {
+   "item": "minecraft:melon_slice",
+   "price": 1
+  },
+  {
+   "item": "minecraft:sweet_berries",
+   "price": 1
+  }
+ ]
+}

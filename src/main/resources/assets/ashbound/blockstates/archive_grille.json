@@ -1,0 +1,87 @@
+{
+ "multipart": [
+  {
+   "apply": {
+    "model": "ashbound:block/archive_grille_post"
+   }
+  },
+  {
+   "when": {
+    "north": "true"
+   },
+   "apply": {
+    "model": "ashbound:block/archive_grille_side",
+    "uvlock": false
+   }
+  },
+  {
+   "when": {
+    "north": "true"
+   },
+   "apply": {
+    "model": "ashbound:block/archive_grille_silk",
+    "uvlock": false
+   }
+  },
+  {
+   "when": {
+    "east": "true"
+   },
+   "apply": {
+    "model": "ashbound:block/archive_grille_side",
+    "uvlock": false,
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "east": "true"
+   },
+   "apply": {
+    "model": "ashbound:block/archive_grille_silk",
+    "uvlock": false,
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "south": "true"
+   },
+   "apply": {
+    "model": "ashbound:block/archive_grille_side",
+    "uvlock": false,
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "south": "true"
+   },
+   "apply": {
+    "model": "ashbound:block/archive_grille_silk",
+    "uvlock": false,
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "west": "true"
+   },
+   "apply": {
+    "model": "ashbound:block/archive_grille_side",
+    "uvlock": false,
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "west": "true"
+   },
+   "apply": {
+    "model": "ashbound:block/archive_grille_silk",
+    "uvlock": false,
+    "y": 270
+   }
+  }
+ ]
+}

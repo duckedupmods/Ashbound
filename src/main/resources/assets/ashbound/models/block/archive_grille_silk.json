@@ -1,0 +1,145 @@
+{
+ "ambientocclusion": false,
+ "textures": {
+  "silk": "ashbound:block/silk_wall",
+  "particle": "ashbound:block/archive_pewter"
+ },
+ "elements": [
+  {
+   "from": [
+    7.85,
+    10.2,
+    0.0
+   ],
+   "to": [
+    8.15,
+    10.5,
+    7.0
+   ],
+   "faces": {
+    "north": {
+     "texture": "#silk",
+     "uv": [
+      7.85,
+      5.5,
+      8.15,
+      5.8
+     ]
+    },
+    "south": {
+     "texture": "#silk",
+     "uv": [
+      7.85,
+      5.5,
+      8.15,
+      5.8
+     ]
+    },
+    "east": {
+     "texture": "#silk",
+     "uv": [
+      9,
+      5.5,
+      16.0,
+      5.8
+     ]
+    },
+    "west": {
+     "texture": "#silk",
+     "uv": [
+      0.0,
+      5.5,
+      7,
+      5.8
+     ]
+    },
+    "up": {
+     "texture": "#silk",
+     "uv": [
+      7.85,
+      0.0,
+      8.15,
+      7
+     ]
+    },
+    "down": {
+     "texture": "#silk",
+     "uv": [
+      7.85,
+      9,
+      8.15,
+      16.0
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    7.85,
+    4.6,
+    0.5
+   ],
+   "to": [
+    8.15,
+    4.9,
+    6.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#silk",
+     "uv": [
+      7.85,
+      11.1,
+      8.15,
+      11.4
+     ]
+    },
+    "south": {
+     "texture": "#silk",
+     "uv": [
+      7.85,
+      11.1,
+      8.15,
+      11.4
+     ]
+    },
+    "east": {
+     "texture": "#silk",
+     "uv": [
+      9.5,
+      11.1,
+      15.5,
+      11.4
+     ]
+    },
+    "west": {
+     "texture": "#silk",
+     "uv": [
+      0.5,
+      11.1,
+      6.5,
+      11.4
+     ]
+    },
+    "up": {
+     "texture": "#silk",
+     "uv": [
+      7.85,
+      0.5,
+      8.15,
+      6.5
+     ]
+    },
+    "down": {
+     "texture": "#silk",
+     "uv": [
+      7.85,
+      9.5,
+      8.15,
+      15.5
+     ]
+    }
+   }
+  }
+ ]
+}

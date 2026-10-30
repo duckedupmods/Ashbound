@@ -1,0 +1,61 @@
+{
+ "id": "demon_91011",
+ "seed": 91011,
+ "recipe": "demon",
+ "role": "sweeper",
+ "rank": null,
+ "name": "Hope Underwall",
+ "title": "Street Sweeper",
+ "age": "adult",
+ "sex": "f",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "ember",
+ "hair": {
+  "style": "braid",
+  "color": "silver"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "sleepy",
+  "iris": "hazel",
+  "brows": "stern",
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "soot"
+  ],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "tunic",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "belt",
+   "gloves"
+  ],
+  "colors": {
+   "top": "charcoal",
+   "bottom": "grey",
+   "accent": "rust",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "demon"
+}

@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/inner_stairs",
+ "textures": {
+  "bottom": "ashbound:block/cartilage",
+  "top": "ashbound:block/cartilage",
+  "side": "ashbound:block/cartilage"
+ }
+}

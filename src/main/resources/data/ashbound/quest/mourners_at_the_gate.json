@@ -1,0 +1,11 @@
+{
+ "title": "Mourners at the Gate",
+ "rank": "E",
+ "kill": "ashbound:mourner",
+ "count": 5,
+ "what": "Mourners",
+ "points": 50,
+ "coins": 70,
+ "text": "Veiled women keen at the abbey gate every dusk. Anyone who stops to comfort them is found in the morning with their eyes full of wax.",
+ "repeat": true
+}

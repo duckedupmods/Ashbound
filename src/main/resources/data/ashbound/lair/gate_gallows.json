@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "Gallows Hill",
+ "test_origin": [
+  71000,
+  20,
+  0
+ ],
+ "clear_top": 46,
+ "boss": "ashbound:hangman",
+ "built_check": [
+  [
+   -18,
+   24,
+   -215,
+   "ashbound:tallow_lamp"
+  ]
+ ],
+ "seal": "The scaffold gate is locked",
+ "broken": "The last rope goes slack",
+ "arrive": [
+  "GALLOWS HILL",
+  "F-Rank Gate"
+ ],
+ "rank": "F",
+ "loot": "ashbound:chests/gate_gallows"
+}

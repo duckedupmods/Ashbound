@@ -1,0 +1,56 @@
+{
+ "id": "demon_91016",
+ "seed": 91016,
+ "recipe": "demon",
+ "role": "child",
+ "rank": null,
+ "name": "Ribbon",
+ "title": "Child",
+ "age": "kid",
+ "sex": "f",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "char",
+ "hair": {
+  "style": "bob",
+  "color": "blue_black"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "big",
+  "iris": "gold",
+  "brows": "stern",
+  "mouth": "open",
+  "blush": true,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "dress",
+  "bottom": "skirt",
+  "sleeves": "long",
+  "overs": [],
+  "colors": {
+   "top": "brown",
+   "bottom": "brown",
+   "accent": "oxblood",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "demon"
+}

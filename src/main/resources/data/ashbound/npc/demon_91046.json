@@ -1,0 +1,120 @@
+{
+ "name": "Tomorrow Underwall",
+ "title": "Pot Cook",
+ "tags": [
+  "demon",
+  "cook",
+  "adult",
+  "m",
+  "demon"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Tomorrow. Best stew in Highmourn, and I'll fight the Hearth Ward's inn over it."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "Pepper, mostly. We came from a hot place. Everything up here tastes of rain."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "people": {
+   "text": [
+    "Nobody comes here by accident. Which is why everybody here is so glad of a customer."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "other": {
+   "text": [
+    "We're allowed to sweep its streets and mend its drains. At night. Where nobody has to look."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "An old demon on Ash Row says the first crack was opened from this side. He says it very quietly."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Welcome to Hornsend. Mind your purse, not because of us. The city's watch comes through here."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "What's in the pot?",
+     "go": "trade"
+    },
+    {
+     "text": "What is Hornsend?",
+     "go": "people"
+    },
+    {
+     "text": "How does the city treat you?",
+     "go": "other"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

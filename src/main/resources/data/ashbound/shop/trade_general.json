@@ -1,0 +1,104 @@
+{
+ "buy": [
+  {
+   "item": {
+    "id": "minecraft:torch",
+    "count": 16
+   },
+   "price": 20
+  },
+  {
+   "item": {
+    "id": "minecraft:lantern"
+   },
+   "price": 35
+  },
+  {
+   "item": {
+    "id": "minecraft:bread",
+    "count": 3
+   },
+   "price": 18
+  },
+  {
+   "item": {
+    "id": "minecraft:lead"
+   },
+   "price": 30
+  },
+  {
+   "item": {
+    "id": "minecraft:bucket"
+   },
+   "price": 40
+  },
+  {
+   "item": {
+    "id": "minecraft:shears"
+   },
+   "price": 30
+  },
+  {
+   "item": {
+    "id": "minecraft:flint_and_steel"
+   },
+   "price": 25
+  },
+  {
+   "item": {
+    "id": "minecraft:bundle"
+   },
+   "price": 60
+  },
+  {
+   "item": {
+    "id": "minecraft:map"
+   },
+   "price": 40
+  },
+  {
+   "item": {
+    "id": "minecraft:compass"
+   },
+   "price": 90
+  },
+  {
+   "item": {
+    "id": "minecraft:red_bed"
+   },
+   "price": 70
+  },
+  {
+   "item": {
+    "id": "minecraft:campfire"
+   },
+   "price": 45
+  }
+ ],
+ "sell": [
+  {
+   "item": "minecraft:string",
+   "price": 2
+  },
+  {
+   "item": "minecraft:leather",
+   "price": 5
+  },
+  {
+   "item": "minecraft:feather",
+   "price": 1
+  },
+  {
+   "item": "minecraft:bone",
+   "price": 2
+  },
+  {
+   "item": "minecraft:flint",
+   "price": 1
+  },
+  {
+   "item": "minecraft:stick",
+   "price": 1
+  }
+ ]
+}

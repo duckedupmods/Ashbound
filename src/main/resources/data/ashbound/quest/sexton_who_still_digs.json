@@ -1,0 +1,16 @@
+{
+ "title": "The Sexton Who Still Digs",
+ "rank": "E",
+ "count": 1,
+ "points": 110,
+ "coins": 220,
+ "items": [
+  [
+   "ashbound:coffin_bracket",
+   2
+  ]
+ ],
+ "text": "He digs a grave beside the abbey road every night, and every morning there's someone in it. Put him in his own.",
+ "repeat": true,
+ "kill": "ashbound:gravedigger"
+}

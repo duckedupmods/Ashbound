@@ -1,0 +1,16 @@
+{
+ "title": "Embers of the Kiln",
+ "rank": "C",
+ "text": "Ash-covered things with smith's tools are wandering out of the badlands. Burned men, they say. Put out their fires.",
+ "kill": "ashbound:cinderhusk",
+ "count": 6,
+ "points": 260,
+ "coins": 320,
+ "items": [
+  [
+   "minecraft:diamond",
+   2
+  ]
+ ],
+ "repeat": true
+}

@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "hanging=false": {
+   "model": "ashbound:block/rook_lantern"
+  },
+  "hanging=true": {
+   "model": "ashbound:block/rook_lantern"
+  }
+ }
+}

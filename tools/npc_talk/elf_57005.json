@@ -1,0 +1,120 @@
+{
+ "name": "Sylvar Lilacshade",
+ "title": "Herbalist",
+ "tags": [
+  "elf",
+  "herbalist",
+  "adult",
+  "m",
+  "elf"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Sylvar, of the herb rings. Don't touch the blue ones. Or the ones next to the blue ones."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "Rot's creeping in from the east. It takes the bark first, then the birds go quiet."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "people": {
+   "text": [
+    "Nobody built these decks. We asked the boughs, and waited. It's a very different thing."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "other": {
+   "text": [
+    "They buy our lamp oil and never once ask what it's made from. It's the politest thing about them."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "The Silk Archive isn't a ruin. It's a record. Whatever wrote it would like it back."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Peace on your road, traveller. Do wipe your boots."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "What grows up here?",
+     "go": "trade"
+    },
+    {
+     "text": "Tell me about Lumenhollow.",
+     "go": "people"
+    },
+    {
+     "text": "What do you make of the dwarfs?",
+     "go": "other"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

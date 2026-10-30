@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/foundry_anvil"
+  },
+  "facing=east": {
+   "model": "ashbound:block/foundry_anvil",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/foundry_anvil",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/foundry_anvil",
+   "y": 270
+  }
+ }
+}

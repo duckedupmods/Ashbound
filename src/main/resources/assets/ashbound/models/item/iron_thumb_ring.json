@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/iron_thumb_ring.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     2.018,
+     1.577
+    ],
+    "scale": [
+     1.0045,
+     1.0045,
+     1.0045
+    ]
+   },
+   "ground": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     1.009,
+     0
+    ],
+    "scale": [
+     0.5022,
+     0.5022,
+     0.5022
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     2.018,
+     1.577
+    ],
+    "scale": [
+     1.0045,
+     1.0045,
+     1.0045
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.4018,
+     0.4018,
+     0.4018
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.4018,
+     0.4018,
+     0.4018
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.4018,
+     0.4018,
+     0.4018
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.4018,
+     0.4018,
+     0.4018
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

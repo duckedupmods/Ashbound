@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Brigand's Gorge",
+ "test_origin": [
+  106000,
+  20,
+  0
+ ],
+ "boss": "ashbound:red_jack",
+ "seal": "The lieutenant's gate is barred from within",
+ "broken": "The lieutenant's keys spill in the dust",
+ "arrive": [
+  "THE BRIGAND'S GORGE",
+  "E-Rank Gate"
+ ],
+ "rank": "E",
+ "loot": "ashbound:chests/gate_brigands_gorge",
+ "built_check": [
+  [
+   -23,
+   -8,
+   -267,
+   "minecraft:bedrock"
+  ]
+ ],
+ "clear_top": 30
+}

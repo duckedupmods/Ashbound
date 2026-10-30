@@ -1,0 +1,59 @@
+{
+ "buy": [
+  {
+   "item": {
+    "id": "minecraft:book"
+   },
+   "price": 30
+  },
+  {
+   "item": {
+    "id": "minecraft:writable_book"
+   },
+   "price": 45
+  },
+  {
+   "item": {
+    "id": "minecraft:paper",
+    "count": 8
+   },
+   "price": 10
+  },
+  {
+   "item": {
+    "id": "minecraft:map"
+   },
+   "price": 40
+  },
+  {
+   "item": {
+    "id": "minecraft:bookshelf"
+   },
+   "price": 80
+  },
+  {
+   "item": {
+    "id": "minecraft:lectern"
+   },
+   "price": 90
+  }
+ ],
+ "sell": [
+  {
+   "item": "minecraft:paper",
+   "price": 1
+  },
+  {
+   "item": "minecraft:book",
+   "price": 8
+  },
+  {
+   "item": "minecraft:ink_sac",
+   "price": 2
+  },
+  {
+   "item": "minecraft:feather",
+   "price": 1
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "title": "Creeping Death",
+ "rank": "E",
+ "text": "Something keeps blowing holes in the town wall at night. Find the creepers before they find the wall.",
+ "kill": "minecraft:creeper",
+ "count": 5,
+ "points": 70,
+ "coins": 90,
+ "items": [
+  [
+   "minecraft:tnt",
+   2
+  ]
+ ],
+ "repeat": true
+}

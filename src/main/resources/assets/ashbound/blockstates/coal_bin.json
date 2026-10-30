@@ -1,0 +1,1 @@
+{"variants":{"facing=north,piece=0":{"model":"ashbound:block/coal_bin_0"},"facing=east,piece=0":{"model":"ashbound:block/coal_bin_0","y":90},"facing=south,piece=0":{"model":"ashbound:block/coal_bin_0","y":180},"facing=west,piece=0":{"model":"ashbound:block/coal_bin_0","y":270}}}

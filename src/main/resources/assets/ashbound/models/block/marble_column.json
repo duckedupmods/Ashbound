@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column",
+ "textures": {
+  "side": "ashbound:block/marble_column",
+  "end": "ashbound:block/marble_column_top"
+ }
+}

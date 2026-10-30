@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/hangmans_noose.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     0.118,
+     0.143,
+     0.1
+    ],
+    "scale": [
+     0.6794,
+     0.6794,
+     0.6794
+    ]
+   },
+   "ground": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     0.059,
+     0.071,
+     0
+    ],
+    "scale": [
+     0.3397,
+     0.3397,
+     0.3397
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     0.118,
+     0.143,
+     0.1
+    ],
+    "scale": [
+     0.6794,
+     0.6794,
+     0.6794
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.2718,
+     0.2718,
+     0.2718
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.2718,
+     0.2718,
+     0.2718
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.2718,
+     0.2718,
+     0.2718
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.2718,
+     0.2718,
+     0.2718
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

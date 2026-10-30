@@ -1,0 +1,14 @@
+{
+ "title": "The Harbinger",
+ "rank": "A",
+ "text": "An old works has started up by itself. What's running it has been waiting a long time for something to shoot.",
+ "kill": "cataclysm:the_harbinger",
+ "what": "The Harbinger",
+ "count": 1,
+ "locate": "cataclysm:ancient_factory",
+ "dim": "minecraft:overworld",
+ "points": 1800,
+ "coins": 3300,
+ "ash": 1040,
+ "icon": "minecraft:redstone_block"
+}

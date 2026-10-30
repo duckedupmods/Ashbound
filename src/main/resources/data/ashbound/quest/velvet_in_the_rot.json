@@ -1,0 +1,16 @@
+{
+ "title": "Velvet in the Rot",
+ "rank": "F",
+ "count": 1,
+ "points": 70,
+ "coins": 140,
+ "items": [
+  [
+   "ashbound:stag_velvet",
+   2
+  ]
+ ],
+ "text": "A stag the size of a hay cart, more fungus than flesh. It gored a hunting party at dusk and stood over them till morning, grazing.",
+ "repeat": true,
+ "kill": "ashbound:rot_stag"
+}

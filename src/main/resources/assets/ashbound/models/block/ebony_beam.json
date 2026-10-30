@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column",
+ "textures": {
+  "side": "ashbound:block/ebony_beam",
+  "end": "ashbound:block/ebony_beam_top"
+ }
+}

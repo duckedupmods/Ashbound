@@ -1,0 +1,5 @@
+{
+ "loader": "neoforge:obj",
+ "model": "ashbound:models/mesh/frozen_tear_worn.obj",
+ "flip_v": true
+}

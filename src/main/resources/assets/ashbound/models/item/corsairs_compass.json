@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/corsairs_compass.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0.124,
+     1.214,
+     0.019
+    ],
+    "scale": [
+     1.3259,
+     1.3259,
+     1.3259
+    ]
+   },
+   "ground": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0.062,
+     0.607,
+     0
+    ],
+    "scale": [
+     0.6629,
+     0.6629,
+     0.6629
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0.124,
+     1.214,
+     0.019
+    ],
+    "scale": [
+     1.3259,
+     1.3259,
+     1.3259
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.5304,
+     0.5304,
+     0.5304
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.5304,
+     0.5304,
+     0.5304
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.5304,
+     0.5304,
+     0.5304
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.5304,
+     0.5304,
+     0.5304
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

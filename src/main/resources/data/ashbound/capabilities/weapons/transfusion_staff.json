@@ -1,0 +1,10 @@
+{
+ "type": "ashbound:staff",
+ "attributes": {
+  "common": {
+   "impact": 0.5,
+   "armor_negation": 0,
+   "max_strikes": 1
+  }
+ }
+}

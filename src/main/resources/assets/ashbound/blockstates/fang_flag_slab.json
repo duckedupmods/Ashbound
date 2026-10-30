@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/fang_flag_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/fang_flag_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/fang_flags"
+  }
+ }
+}

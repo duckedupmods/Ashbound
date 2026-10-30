@@ -1,0 +1,88 @@
+{
+ "buy": [
+  {
+   "item": {
+    "id": "minecraft:iron_sword"
+   },
+   "price": 40
+  },
+  {
+   "item": {
+    "id": "epicfight:iron_greatsword"
+   },
+   "price": 80
+  },
+  {
+   "item": {
+    "id": "epicfight:iron_spear"
+   },
+   "price": 45
+  },
+  {
+   "item": {
+    "id": "minecraft:iron_axe"
+   },
+   "price": 40
+  },
+  {
+   "item": {
+    "id": "minecraft:iron_helmet"
+   },
+   "price": 35
+  },
+  {
+   "item": {
+    "id": "minecraft:iron_chestplate"
+   },
+   "price": 70
+  },
+  {
+   "item": {
+    "id": "minecraft:iron_leggings"
+   },
+   "price": 60
+  },
+  {
+   "item": {
+    "id": "minecraft:iron_boots"
+   },
+   "price": 30
+  },
+  {
+   "item": {
+    "id": "minecraft:iron_ingot",
+    "count": 4
+   },
+   "price": 30
+  },
+  {
+   "item": {
+    "id": "minecraft:coal",
+    "count": 8
+   },
+   "price": 10
+  }
+ ],
+ "sell": [
+  {
+   "item": "minecraft:iron_ingot",
+   "price": 3
+  },
+  {
+   "item": "minecraft:gold_ingot",
+   "price": 6
+  },
+  {
+   "item": "minecraft:coal",
+   "price": 1
+  },
+  {
+   "item": "minecraft:copper_ingot",
+   "price": 1
+  },
+  {
+   "item": "minecraft:diamond",
+   "price": 30
+  }
+ ]
+}

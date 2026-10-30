@@ -1,0 +1,5 @@
+{
+ "loader": "neoforge:obj",
+ "model": "ashbound:models/mesh/gryphon_torc_worn.obj",
+ "flip_v": true
+}

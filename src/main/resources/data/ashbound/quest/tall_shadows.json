@@ -1,0 +1,16 @@
+{
+ "title": "Tall Shadows",
+ "rank": "B",
+ "text": "Tall black figures stand at the gates at night, staring. The watch can't look at them. Someone has to.",
+ "kill": "minecraft:enderman",
+ "count": 10,
+ "points": 420,
+ "coins": 500,
+ "items": [
+  [
+   "minecraft:ender_pearl",
+   4
+  ]
+ ],
+ "repeat": true
+}

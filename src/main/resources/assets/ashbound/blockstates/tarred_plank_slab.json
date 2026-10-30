@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/tarred_plank_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/tarred_planks"
+  },
+  "type=top": {
+   "model": "ashbound:block/tarred_plank_slab_top"
+  }
+ }
+}

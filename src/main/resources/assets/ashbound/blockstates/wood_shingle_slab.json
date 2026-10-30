@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/wood_shingle_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/wood_shingles"
+  },
+  "type=top": {
+   "model": "ashbound:block/wood_shingle_slab_top"
+  }
+ }
+}

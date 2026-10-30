@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/crypt_stone_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/crypt_stone"
+  },
+  "type=top": {
+   "model": "ashbound:block/crypt_stone_slab_top"
+  }
+ }
+}

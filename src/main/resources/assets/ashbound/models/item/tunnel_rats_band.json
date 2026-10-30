@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/tunnel_rats_band.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     -0.021,
+     1.726,
+     1.336
+    ],
+    "scale": [
+     1.1228,
+     1.1228,
+     1.1228
+    ]
+   },
+   "ground": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     -0.011,
+     0.863,
+     0
+    ],
+    "scale": [
+     0.5614,
+     0.5614,
+     0.5614
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     -0.021,
+     1.726,
+     1.336
+    ],
+    "scale": [
+     1.1228,
+     1.1228,
+     1.1228
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.4491,
+     0.4491,
+     0.4491
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.4491,
+     0.4491,
+     0.4491
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.4491,
+     0.4491,
+     0.4491
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     38.0,
+     -24.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.4491,
+     0.4491,
+     0.4491
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

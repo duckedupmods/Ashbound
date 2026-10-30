@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/limewash_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/limewash"
+  },
+  "type=top": {
+   "model": "ashbound:block/limewash_slab_top"
+  }
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_all",
+ "textures": {
+  "all": "ashbound:block/wildwood_leaves_rose"
+ },
+ "render_type": "minecraft:cutout_mipped"
+}

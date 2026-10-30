@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/rook_slate_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/rook_slate_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/rook_slate"
+  }
+ }
+}

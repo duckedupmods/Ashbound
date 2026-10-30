@@ -1,0 +1,61 @@
+{
+ "id": "dwarf_78014",
+ "seed": 78014,
+ "recipe": "dwarf",
+ "role": "guard",
+ "rank": null,
+ "name": "Torvald Anvilson",
+ "title": "Hold Guard",
+ "age": "teen",
+ "sex": "m",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "rose",
+ "hair": {
+  "style": "short",
+  "color": "auburn"
+ },
+ "headwear": "helm",
+ "beard": null,
+ "face": {
+  "eye": "sleepy",
+  "iris": "hazel",
+  "brows": "bushy",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "mail",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "belt",
+   "greaves",
+   "pauldrons",
+   "tabard"
+  ],
+  "colors": {
+   "top": "linen",
+   "bottom": "brown",
+   "accent": "red",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "axe",
+ "offhand": "shield",
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "dwarf"
+}

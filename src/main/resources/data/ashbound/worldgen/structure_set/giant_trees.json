@@ -1,0 +1,22 @@
+{
+ "placement": {
+  "type": "minecraft:random_spread",
+  "salt": 48120577,
+  "separation": 14,
+  "spacing": 36
+ },
+ "structures": [
+  {
+   "structure": "ashbound:giant_elder",
+   "weight": 4
+  },
+  {
+   "structure": "ashbound:giant_weeper",
+   "weight": 3
+  },
+  {
+   "structure": "ashbound:giant_husk",
+   "weight": 3
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "title": "The Withered King",
+ "rank": "S",
+ "text": "The chapel has seen it in its visions: a three-headed thing of black bone. If it walks, the world ends. Kill it first.",
+ "kill": "minecraft:wither",
+ "count": 1,
+ "points": 2000,
+ "coins": 4000,
+ "items": [
+  [
+   "minecraft:netherite_ingot",
+   1
+  ]
+ ],
+ "repeat": true
+}

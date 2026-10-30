@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/slab",
+ "textures": {
+  "bottom": "ashbound:block/stockade_planks",
+  "top": "ashbound:block/stockade_planks",
+  "side": "ashbound:block/stockade_planks"
+ }
+}

@@ -1,0 +1,81 @@
+{
+ "name": "Petra Flint",
+ "title": "Herbalist",
+ "tags": [
+  "townsfolk",
+  "herbalist",
+  "adult",
+  "f"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Petra. Herbs, poultices, and sometimes advice nobody asked for."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "topic": {
+   "text": [
+    "Moss from the Rotwood heals, but it keeps growing after."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "A gate opened in a ruin past the old road last week. Guild sent three. One came back."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "You're bleeding. No? Give it time."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "What's good for wounds?",
+     "go": "topic"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

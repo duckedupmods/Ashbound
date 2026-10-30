@@ -1,0 +1,120 @@
+{
+ "name": "Valandil Lumenvale",
+ "title": "Grove Warden",
+ "tags": [
+  "elf",
+  "warden",
+  "teen",
+  "m",
+  "elf"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Valandil. Grove Warden. I watch the roots, and I'm watching yours."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "Keep to the bridges after dark. The boughs below aren't all boughs."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "people": {
+   "text": [
+    "Nobody built these decks. We asked the boughs, and waited. It's a very different thing."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "other": {
+   "text": [
+    "Delightful. So busy. They go in and out of the mountain like bees with a grievance."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "The Silk Archive isn't a ruin. It's a record. Whatever wrote it would like it back."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "The lanterns said someone was coming. They're usually right."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "Is the forest safe?",
+     "go": "trade"
+    },
+    {
+     "text": "Tell me about Lumenhollow.",
+     "go": "people"
+    },
+    {
+     "text": "What do you make of the dwarfs?",
+     "go": "other"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

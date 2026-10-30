@@ -1,0 +1,61 @@
+{
+ "id": "dwarf_78015",
+ "seed": 78015,
+ "recipe": "dwarf",
+ "role": "smith",
+ "rank": null,
+ "name": "Dagni Gravelgut",
+ "title": "Smith",
+ "age": "adult",
+ "sex": "m",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "tan",
+ "hair": {
+  "style": "topknot",
+  "color": "copper"
+ },
+ "headwear": "bandana",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "violet",
+  "brows": "bushy",
+  "mouth": "grin",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "soot"
+  ],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "shirt",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "gloves",
+   "leather_apron"
+  ],
+  "colors": {
+   "top": "linen",
+   "bottom": "brown",
+   "accent": "oxblood",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "hammer",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "dwarf"
+}

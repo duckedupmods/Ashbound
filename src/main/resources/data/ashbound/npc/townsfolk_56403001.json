@@ -1,0 +1,81 @@
+{
+ "name": "Fenn Gale",
+ "title": "Smith",
+ "tags": [
+  "townsfolk",
+  "smith",
+  "teen",
+  "m"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Fenn. Hammer and anvil since I was ten."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "topic": {
+   "text": [
+    "Gate iron's better than ours, but it bites back. Bring me some and we'll see."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "Don't take the Rotwood road after dark. The trees lean in when you're not looking."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Mind the sparks."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "Any advice on gear?",
+     "go": "topic"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

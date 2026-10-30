@@ -1,0 +1,16 @@
+{
+ "variants": {
+  "axis=y": {
+   "model": "ashbound:block/walnut_beam"
+  },
+  "axis=z": {
+   "model": "ashbound:block/walnut_beam",
+   "x": 90
+  },
+  "axis=x": {
+   "model": "ashbound:block/walnut_beam",
+   "x": 90,
+   "y": 90
+  }
+ }
+}

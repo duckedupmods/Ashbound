@@ -1,0 +1,61 @@
+{
+ "id": "demon_91000",
+ "seed": 91000,
+ "recipe": "demon",
+ "role": "sweeper",
+ "rank": null,
+ "name": "Patience Ashrow",
+ "title": "Street Sweeper",
+ "age": "teen",
+ "sex": "m",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "char",
+ "hair": {
+  "style": "short",
+  "color": "silver"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "gold",
+  "brows": "soft",
+  "mouth": "smile",
+  "blush": true,
+  "freckles": false,
+  "marks": [
+   "soot"
+  ],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "tunic",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "belt",
+   "gloves"
+  ],
+  "colors": {
+   "top": "oxblood",
+   "bottom": "charcoal",
+   "accent": "oxblood",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "demon"
+}

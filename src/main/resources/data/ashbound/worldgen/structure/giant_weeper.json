@@ -1,0 +1,8 @@
+{
+ "type": "ashbound:giant_tree",
+ "template": "ashbound:tree/weeper",
+ "biomes": "#ashbound:has_structure/giant_weeper",
+ "spawn_overrides": {},
+ "step": "surface_structures",
+ "terrain_adaptation": "none"
+}

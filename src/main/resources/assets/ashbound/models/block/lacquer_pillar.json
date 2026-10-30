@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column",
+ "textures": {
+  "side": "ashbound:block/lacquer_pillar",
+  "end": "ashbound:block/lacquer_pillar_top"
+ }
+}

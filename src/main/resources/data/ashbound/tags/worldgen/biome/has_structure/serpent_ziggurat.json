@@ -1,0 +1,25 @@
+{
+ "replace": false,
+ "values": [
+  {
+   "id": "minecraft:jungle",
+   "required": false
+  },
+  {
+   "id": "minecraft:sparse_jungle",
+   "required": false
+  },
+  {
+   "id": "minecraft:bamboo_jungle",
+   "required": false
+  },
+  {
+   "id": "minecraft:swamp",
+   "required": false
+  },
+  {
+   "id": "minecraft:mangrove_swamp",
+   "required": false
+  }
+ ]
+}

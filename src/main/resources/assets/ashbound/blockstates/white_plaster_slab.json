@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/white_plaster_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/white_plaster_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/white_plaster"
+  }
+ }
+}

@@ -1,0 +1,120 @@
+{
+ "name": "Tauriel Thistledown",
+ "title": "Lantern Keeper",
+ "tags": [
+  "elf",
+  "lamplighter",
+  "adult",
+  "f",
+  "elf"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Tauriel, Lantern Keeper. I'm told it's a calming job. I'm told that by people who aren't me."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "Please don't blow on it. People do. I don't know why people do."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "people": {
+   "text": [
+    "Nobody built these decks. We asked the boughs, and waited. It's a very different thing."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "other": {
+   "text": [
+    "I knew the Hold's first founder. Short temper, short beard. She'd be appalled by the new gate."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "Something has been walking the outer boughs at dusk. It leaves no prints, and the moss doesn't mind it."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "You walk loudly. It's all right. The Tree has forgiven worse."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "Why so many lanterns?",
+     "go": "trade"
+    },
+    {
+     "text": "Tell me about Lumenhollow.",
+     "go": "people"
+    },
+    {
+     "text": "What do you make of the dwarfs?",
+     "go": "other"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

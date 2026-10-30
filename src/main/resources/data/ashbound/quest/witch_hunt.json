@@ -1,0 +1,16 @@
+{
+ "title": "Witch Hunt",
+ "rank": "D",
+ "text": "Two witches are poisoning the wells in the hamlets outside the walls. The chapel wants them stopped.",
+ "kill": "minecraft:witch",
+ "count": 2,
+ "points": 150,
+ "coins": 180,
+ "items": [
+  [
+   "minecraft:golden_apple",
+   1
+  ]
+ ],
+ "repeat": true
+}

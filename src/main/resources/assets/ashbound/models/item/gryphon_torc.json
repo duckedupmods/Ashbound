@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/gryphon_torc.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0.028,
+     -1.2,
+     -0.243
+    ],
+    "scale": [
+     1.0489,
+     1.0489,
+     1.0489
+    ]
+   },
+   "ground": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0.014,
+     -0.6,
+     0
+    ],
+    "scale": [
+     0.5244,
+     0.5244,
+     0.5244
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0.028,
+     -1.2,
+     -0.243
+    ],
+    "scale": [
+     1.0489,
+     1.0489,
+     1.0489
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.4195,
+     0.4195,
+     0.4195
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.4195,
+     0.4195,
+     0.4195
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.4195,
+     0.4195,
+     0.4195
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.4195,
+     0.4195,
+     0.4195
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

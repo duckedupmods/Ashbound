@@ -1,0 +1,16 @@
+{
+ "title": "What Sleeps Below",
+ "rank": "SSS",
+ "text": "Under the deep dark something blind is listening. Every adventurer who answered this request is still down there.",
+ "kill": "minecraft:warden",
+ "count": 1,
+ "points": 8000,
+ "coins": 15000,
+ "items": [
+  [
+   "minecraft:nether_star",
+   1
+  ]
+ ],
+ "repeat": true
+}

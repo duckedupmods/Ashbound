@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/stairs",
+ "textures": {
+  "bottom": "ashbound:block/driftwood_planks",
+  "top": "ashbound:block/driftwood_planks",
+  "side": "ashbound:block/driftwood_planks"
+ }
+}

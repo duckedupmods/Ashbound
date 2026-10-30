@@ -1,0 +1,232 @@
+{
+ "ambientocclusion": false,
+ "textures": {
+  "light": "ashbound:block/elf_marble",
+  "mid": "ashbound:block/elf_marble_mid",
+  "dark": "ashbound:block/elf_marble_dark",
+  "water": "ashbound:block/moonwater",
+  "particle": "ashbound:block/elf_marble"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    6,
+    0
+   ],
+   "to": [
+    2,
+    14,
+    2
+   ],
+   "faces": {
+    "south": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      2,
+      2,
+      10
+     ]
+    },
+    "east": {
+     "texture": "#light",
+     "uv": [
+      14,
+      2,
+      16.0,
+      10
+     ]
+    },
+    "down": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      14,
+      2,
+      16.0
+     ]
+    },
+    "up": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      0.0,
+      2,
+      2
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    8,
+    2
+   ],
+   "to": [
+    2,
+    14,
+    6
+   ],
+   "faces": {
+    "south": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      2,
+      2,
+      8
+     ]
+    },
+    "east": {
+     "texture": "#light",
+     "uv": [
+      10,
+      2,
+      14,
+      8
+     ]
+    },
+    "down": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      10,
+      2,
+      14
+     ]
+    },
+    "up": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      2,
+      2,
+      6
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    10,
+    6
+   ],
+   "to": [
+    2,
+    12,
+    8
+   ],
+   "faces": {
+    "south": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      4,
+      2,
+      6
+     ]
+    },
+    "east": {
+     "texture": "#light",
+     "uv": [
+      8,
+      4,
+      10,
+      6
+     ]
+    },
+    "down": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      8,
+      2,
+      10
+     ]
+    },
+    "up": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      6,
+      2,
+      8
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    2.712,
+    0,
+    0
+   ],
+   "to": [
+    7.832,
+    9.6,
+    0.019
+   ],
+   "faces": {
+    "north": {
+     "texture": "#water",
+     "uv": [
+      8.168,
+      6.4,
+      13.288,
+      16.0
+     ]
+    },
+    "south": {
+     "texture": "#water",
+     "uv": [
+      2.712,
+      6.4,
+      7.832,
+      16.0
+     ]
+    },
+    "east": {
+     "texture": "#water",
+     "uv": [
+      15.981,
+      6.4,
+      16.0,
+      16.0
+     ]
+    },
+    "west": {
+     "texture": "#water",
+     "uv": [
+      0.0,
+      6.4,
+      0.019,
+      16.0
+     ]
+    },
+    "up": {
+     "texture": "#water",
+     "uv": [
+      2.712,
+      0.0,
+      7.832,
+      0.019
+     ]
+    },
+    "down": {
+     "texture": "#water",
+     "uv": [
+      2.712,
+      15.981,
+      7.832,
+      16.0
+     ]
+    }
+   },
+   "light_emission": 10
+  }
+ ],
+ "render_type": "minecraft:translucent"
+}

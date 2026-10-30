@@ -1,0 +1,16 @@
+{
+ "variants": {
+  "axis=y": {
+   "model": "ashbound:block/bastion_column"
+  },
+  "axis=z": {
+   "model": "ashbound:block/bastion_column_horizontal",
+   "x": 90
+  },
+  "axis=x": {
+   "model": "ashbound:block/bastion_column_horizontal",
+   "x": 90,
+   "y": 90
+  }
+ }
+}

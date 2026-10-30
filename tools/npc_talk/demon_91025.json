@@ -1,0 +1,120 @@
+{
+ "name": "Grace Lastgate",
+ "title": "Pot Cook",
+ "tags": [
+  "demon",
+  "cook",
+  "teen",
+  "f",
+  "demon"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Grace. I cook. If you're squeamish, it's chicken."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "It's safe for humans. Mostly. Have you been feeling brave?"
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "people": {
+   "text": [
+    "Nobody comes here by accident. Which is why everybody here is so glad of a customer."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "other": {
+   "text": [
+    "Every time something crawls from a gate, somebody throws a stone at our door. We've built a very nice wall from them."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "When a gate boss dies, every horn in Hornsend aches at once. We've learned to stop what we're doing."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "A human, on purpose? Are you lost, or are you the brave sort?"
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "What's in the pot?",
+     "go": "trade"
+    },
+    {
+     "text": "What is Hornsend?",
+     "go": "people"
+    },
+    {
+     "text": "How does the city treat you?",
+     "go": "other"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

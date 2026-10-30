@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/slab",
+ "textures": {
+  "bottom": "ashbound:block/statue_stone",
+  "top": "ashbound:block/statue_stone",
+  "side": "ashbound:block/statue_stone"
+ }
+}

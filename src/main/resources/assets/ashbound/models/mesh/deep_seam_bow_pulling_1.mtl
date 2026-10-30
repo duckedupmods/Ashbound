@@ -1,0 +1,7 @@
+newmtl blade
+Ka 0 0 0
+map_Kd ashbound:item/deep_seam_bow_pulling_1_3d
+
+newmtl glow
+Ka 1 1 1
+map_Kd ashbound:item/deep_seam_bow_pulling_1_3d

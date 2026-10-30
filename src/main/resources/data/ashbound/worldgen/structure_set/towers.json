@@ -1,0 +1,34 @@
+{
+ "placement": {
+  "type": "minecraft:random_spread",
+  "salt": 71830419,
+  "spacing": 48,
+  "separation": 20,
+  "exclusion_zone": {
+   "other_set": "minecraft:villages",
+   "chunk_count": 6
+  }
+ },
+ "structures": [
+  {
+   "structure": "ashbound:clockwork_spire",
+   "weight": 1
+  },
+  {
+   "structure": "ashbound:serpent_ziggurat",
+   "weight": 1
+  },
+  {
+   "structure": "ashbound:rimeholt",
+   "weight": 1
+  },
+  {
+   "structure": "ashbound:glass_minaret",
+   "weight": 1
+  },
+  {
+   "structure": "ashbound:warlords_fang",
+   "weight": 1
+  }
+ ]
+}

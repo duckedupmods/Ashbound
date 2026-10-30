@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/archive_coffer"
+  },
+  "facing=east": {
+   "model": "ashbound:block/archive_coffer",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/archive_coffer",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/archive_coffer",
+   "y": 270
+  }
+ }
+}

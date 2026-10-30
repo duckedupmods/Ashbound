@@ -1,0 +1,80 @@
+{
+ "buy": [
+  {
+   "item": {
+    "id": "minecraft:leather_helmet"
+   },
+   "price": 30
+  },
+  {
+   "item": {
+    "id": "minecraft:leather_chestplate"
+   },
+   "price": 50
+  },
+  {
+   "item": {
+    "id": "minecraft:leather_leggings"
+   },
+   "price": 45
+  },
+  {
+   "item": {
+    "id": "minecraft:leather_boots"
+   },
+   "price": 30
+  },
+  {
+   "item": {
+    "id": "minecraft:white_wool",
+    "count": 4
+   },
+   "price": 6
+  },
+  {
+   "item": {
+    "id": "minecraft:red_wool",
+    "count": 4
+   },
+   "price": 8
+  },
+  {
+   "item": {
+    "id": "minecraft:black_wool",
+    "count": 4
+   },
+   "price": 8
+  },
+  {
+   "item": {
+    "id": "minecraft:white_banner"
+   },
+   "price": 40
+  },
+  {
+   "item": {
+    "id": "minecraft:red_carpet",
+    "count": 4
+   },
+   "price": 10
+  }
+ ],
+ "sell": [
+  {
+   "item": "minecraft:white_wool",
+   "price": 1
+  },
+  {
+   "item": "minecraft:string",
+   "price": 2
+  },
+  {
+   "item": "minecraft:leather",
+   "price": 5
+  },
+  {
+   "item": "minecraft:rabbit_hide",
+   "price": 2
+  }
+ ]
+}

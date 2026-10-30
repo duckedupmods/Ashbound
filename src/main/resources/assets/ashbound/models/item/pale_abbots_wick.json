@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/pale_abbots_wick.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     -0.972,
+     1.753,
+     -0.201
+    ],
+    "scale": [
+     0.8277,
+     0.8277,
+     0.8277
+    ]
+   },
+   "ground": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     -0.486,
+     0.876,
+     0
+    ],
+    "scale": [
+     0.4139,
+     0.4139,
+     0.4139
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     -0.972,
+     1.753,
+     -0.201
+    ],
+    "scale": [
+     0.8277,
+     0.8277,
+     0.8277
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3311,
+     0.3311,
+     0.3311
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3311,
+     0.3311,
+     0.3311
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3311,
+     0.3311,
+     0.3311
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     12.0,
+     -30.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3311,
+     0.3311,
+     0.3311
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

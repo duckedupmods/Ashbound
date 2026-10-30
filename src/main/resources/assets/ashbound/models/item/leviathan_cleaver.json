@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/leviathan_cleaver.obj",
+  "flip_v": true,
+  "display": {
+   "thirdperson_righthand": {
+    "rotation": [
+     0,
+     -90,
+     0
+    ],
+    "translation": [
+     0,
+     0.5,
+     0.5
+    ],
+    "scale": [
+     0.62,
+     0.62,
+     0.62
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     0,
+     -90,
+     0
+    ],
+    "translation": [
+     0,
+     0.5,
+     0.5
+    ],
+    "scale": [
+     0.62,
+     0.62,
+     0.62
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     0,
+     -90,
+     0
+    ],
+    "translation": [
+     0,
+     0.5,
+     0.5
+    ],
+    "scale": [
+     0.62,
+     0.62,
+     0.62
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     0,
+     -90,
+     0
+    ],
+    "translation": [
+     0,
+     0.5,
+     0.5
+    ],
+    "scale": [
+     0.62,
+     0.62,
+     0.62
+    ]
+   },
+   "gui": {
+    "rotation": [
+     15.94,
+     15.36,
+     -47.16
+    ],
+    "translation": [
+     -2.44,
+     -2.095,
+     0.099
+    ],
+    "scale": [
+     0.3687,
+     0.3687,
+     0.3687
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     15.94,
+     15.36,
+     -47.16
+    ],
+    "translation": [
+     -2.44,
+     -2.095,
+     0.099
+    ],
+    "scale": [
+     0.3687,
+     0.3687,
+     0.3687
+    ]
+   },
+   "ground": {
+    "rotation": [
+     15.94,
+     15.36,
+     -47.16
+    ],
+    "translation": [
+     -1.342,
+     -1.152,
+     0
+    ],
+    "scale": [
+     0.2028,
+     0.2028,
+     0.2028
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

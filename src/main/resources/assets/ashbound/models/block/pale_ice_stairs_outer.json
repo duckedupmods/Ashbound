@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/outer_stairs",
+ "textures": {
+  "bottom": "ashbound:block/pale_ice",
+  "top": "ashbound:block/pale_ice",
+  "side": "ashbound:block/pale_ice"
+ }
+}

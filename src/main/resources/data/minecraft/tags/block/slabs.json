@@ -1,0 +1,22 @@
+{
+ "replace": false,
+ "values": [
+  "ashbound:mossy_fieldstone_slab",
+  "ashbound:limestone_brick_slab",
+  "ashbound:pale_limestone_slab",
+  "ashbound:gilded_tile_slab",
+  "ashbound:statue_stone_slab",
+  "ashbound:clay_roof_tile_slab",
+  "ashbound:greystone_slab",
+  "ashbound:mossy_greystone_slab",
+  "ashbound:slate_shingle_slab",
+  "ashbound:mossy_slate_shingle_slab",
+  "ashbound:wood_shingle_slab",
+  "ashbound:blue_roof_tile_slab",
+  "ashbound:green_roof_tile_slab",
+  "ashbound:archive_stone_slab",
+  "ashbound:archive_tile_slab",
+  "ashbound:walnut_panel_slab",
+  "ashbound:black_slate_slab"
+ ]
+}

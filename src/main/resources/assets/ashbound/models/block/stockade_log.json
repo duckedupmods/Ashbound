@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column",
+ "textures": {
+  "side": "ashbound:block/stockade_log",
+  "end": "ashbound:block/stockade_log_top"
+ }
+}

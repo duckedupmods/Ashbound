@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Fallen Titan",
+ "test_origin": [
+  121000,
+  20,
+  0
+ ],
+ "boss": "ashbound:still_heart",
+ "seal": "A clot of flesh seals the valve door",
+ "broken": "The clot tears and the valve opens",
+ "arrive": [
+  "THE FALLEN TITAN",
+  "B-Rank Gate"
+ ],
+ "rank": "B",
+ "loot": "ashbound:chests/gate_fallen_titan",
+ "built_check": [
+  [
+   -31,
+   -12,
+   -284,
+   "ashbound:dead_flesh"
+  ]
+ ],
+ "clear_top": 21
+}

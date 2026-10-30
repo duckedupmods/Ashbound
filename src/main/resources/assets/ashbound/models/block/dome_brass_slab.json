@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/slab",
+ "textures": {
+  "bottom": "ashbound:block/dome_brass",
+  "top": "ashbound:block/dome_brass",
+  "side": "ashbound:block/dome_brass"
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "title": "Night Crawlers",
+ "rank": "F",
+ "text": "Spiders the size of dogs have been seen on the rooftops of Tanners' Lane. The tanners would like to sleep.",
+ "kill": "minecraft:spider",
+ "count": 6,
+ "points": 30,
+ "coins": 40,
+ "items": [
+  [
+   "minecraft:torch",
+   16
+  ]
+ ],
+ "repeat": true
+}

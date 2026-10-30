@@ -1,0 +1,12 @@
+{
+ "title": "Clear The Glass Minaret",
+ "rank": "B",
+ "text": "Traders have started seeing it from three deserts at once. Climb it and end the Djinn Sultan's reign.",
+ "kill": "ashbound:djinn_sultan",
+ "count": 1,
+ "locate": "ashbound:glass_minaret",
+ "points": 1100,
+ "coins": 1300,
+ "ash": 680,
+ "icon": "minecraft:glass"
+}

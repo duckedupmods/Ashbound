@@ -1,0 +1,16 @@
+{
+ "variants": {
+  "axis=y": {
+   "model": "ashbound:block/tomb_column"
+  },
+  "axis=z": {
+   "model": "ashbound:block/tomb_column_horizontal",
+   "x": 90
+  },
+  "axis=x": {
+   "model": "ashbound:block/tomb_column_horizontal",
+   "x": 90,
+   "y": 90
+  }
+ }
+}

@@ -1,0 +1,7 @@
+newmtl prop
+Ka 0 0 0
+map_Kd ashbound:block/eel_traps
+
+newmtl glow
+Ka 1 1 1
+map_Kd ashbound:block/eel_traps

@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column",
+ "textures": {
+  "side": "ashbound:block/war_log",
+  "end": "ashbound:block/war_log_top"
+ }
+}

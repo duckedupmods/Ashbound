@@ -1,0 +1,82 @@
+{
+ "name": "Joss Vane",
+ "title": "F-rank Ranger",
+ "tags": [
+  "adventurer",
+  "ranger",
+  "adult",
+  "m",
+  "f"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Joss, F-rank Ranger. I hit what I aim at. Usually first."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "topic": {
+   "text": [
+    "Never be the closest one to the monster. Let the shield do that."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "A gate opened in a ruin past the old road last week. Guild sent three. One came back."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "You walk loud for an adventurer."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "Bow advice?",
+     "go": "topic"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

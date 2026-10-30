@@ -1,0 +1,120 @@
+{
+ "name": "Caelir Glimmerwood",
+ "title": "Grove Warden",
+ "tags": [
+  "elf",
+  "warden",
+  "adult",
+  "m",
+  "elf"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Caelir. If the arrows stop, it's because you were polite. Keep it up."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "I've seen rot-beasts walk past a sleeping child and stop to kill a sapling. Think about that."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "people": {
+   "text": [
+    "The Tree was old when Highmourn was a ford and a bad idea. We only live on it. It tolerates us."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "other": {
+   "text": [
+    "Delightful. So busy. They go in and out of the mountain like bees with a grievance."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "The Rotwood used to sing. I remember it. What sings there now isn't the same voice."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Peace on your road, traveller. Do wipe your boots."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "Is the forest safe?",
+     "go": "trade"
+    },
+    {
+     "text": "Tell me about Lumenhollow.",
+     "go": "people"
+    },
+    {
+     "text": "What do you make of the dwarfs?",
+     "go": "other"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/grave_candle_pendant.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     1.539,
+     0.216
+    ],
+    "scale": [
+     0.8011,
+     0.8011,
+     0.8011
+    ]
+   },
+   "ground": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     0.769,
+     0
+    ],
+    "scale": [
+     0.4006,
+     0.4006,
+     0.4006
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     1.539,
+     0.216
+    ],
+    "scale": [
+     0.8011,
+     0.8011,
+     0.8011
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3205,
+     0.3205,
+     0.3205
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3205,
+     0.3205,
+     0.3205
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3205,
+     0.3205,
+     0.3205
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3205,
+     0.3205,
+     0.3205
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

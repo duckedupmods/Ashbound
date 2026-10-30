@@ -1,0 +1,63 @@
+{
+ "name": "Pell",
+ "title": "Child",
+ "tags": [
+  "elf",
+  "child",
+  "kid",
+  "m",
+  "elf"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "I'm Pell. I can whistle to the moths. Listen. Oh. They're asleep."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "A dwarf came and she was so short and SO loud and I liked her."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Ah. Another visitor. The last one was only eighty years ago."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "What are you up to?",
+     "go": "trade"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

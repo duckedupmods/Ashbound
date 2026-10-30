@@ -1,0 +1,10 @@
+{
+ "type": "ashbound:greatsword",
+ "attributes": {
+  "common": {
+   "impact": 2.24,
+   "armor_negation": 20,
+   "max_strikes": 3
+  }
+ }
+}

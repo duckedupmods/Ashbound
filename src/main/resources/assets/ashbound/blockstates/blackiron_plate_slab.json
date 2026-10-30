@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/blackiron_plate_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/blackiron_plate_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/blackiron_plate"
+  }
+ }
+}

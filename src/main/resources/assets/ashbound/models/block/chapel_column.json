@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column",
+ "textures": {
+  "side": "ashbound:block/chapel_column",
+  "end": "ashbound:block/chapel_column_top"
+ }
+}

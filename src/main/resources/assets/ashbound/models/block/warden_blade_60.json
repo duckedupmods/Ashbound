@@ -1,0 +1,1 @@
+{"ambientocclusion":false,"textures":{"steel_0":"ashbound:block/sculpt/steel_0","particle":"ashbound:block/sculpt/steel_0"},"elements":[{"from":[14.0,0.0,10.0],"to":[16.0,16.0,16.0],"faces":{"north":{"texture":"#steel_0","uv":[0.0,0.0,2.0,16.0]},"south":{"texture":"#steel_0","uv":[14.0,0.0,16.0,16.0]},"west":{"texture":"#steel_0","uv":[10.0,0.0,16.0,16.0]}}}]}

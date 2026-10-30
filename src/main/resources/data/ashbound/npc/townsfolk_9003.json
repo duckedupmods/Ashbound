@@ -1,0 +1,62 @@
+{
+ "name": "Button",
+ "title": "Child",
+ "tags": [
+  "townsfolk",
+  "child",
+  "kid",
+  "m"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Button. When I'm big I'm going to have a sword and a guild card and everything."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "topic": {
+   "text": [
+    "Playing gates. I'm the monster. I'm always the monster."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Hi! Do you want to see what I found?"
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "What are you doing out here?",
+     "go": "topic"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

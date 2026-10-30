@@ -1,0 +1,29 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "The Crypt",
+ "test_origin": [
+  77000,
+  40,
+  0
+ ],
+ "clear_top": 20,
+ "safe_radius": 280,
+ "boss": "ashbound:pale_abbot",
+ "built_check": [
+  [
+   -15,
+   -27,
+   -239,
+   "ashbound:vigil_candles"
+  ]
+ ],
+ "seal": "The Iron Gate is locked",
+ "broken": "The vigil ends; the candles gutter out",
+ "arrive": [
+  "THE CRYPT",
+  "E-Rank Gate"
+ ],
+ "rank": "E",
+ "debris": "crypt",
+ "loot": "ashbound:chests/gate_crypt"
+}

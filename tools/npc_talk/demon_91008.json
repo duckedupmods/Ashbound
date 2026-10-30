@@ -1,0 +1,120 @@
+{
+ "name": "Vesper Ashrow",
+ "title": "Street Sweeper",
+ "tags": [
+  "demon",
+  "sweeper",
+  "adult",
+  "f",
+  "demon"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Vesper. City's lamplighters quit in winter. Guess who's been lighting them."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "Honest. Cold. They pay a third, and only look at me when something's missing."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "people": {
+   "text": [
+    "We pay the tax, the double tax and the horn tax. The horn tax isn't a joke. I wish it was."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "other": {
+   "text": [
+    "The Guild will take our coin, but not our names. Elowen tried. I'll give her that much."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "What's behind the gates isn't an army. It's a landlord. It wants its tenants back."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "You stopped. Most walk faster. I'm grateful, in a suspicious way."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "How's the work?",
+     "go": "trade"
+    },
+    {
+     "text": "What is Hornsend?",
+     "go": "people"
+    },
+    {
+     "text": "How does the city treat you?",
+     "go": "other"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

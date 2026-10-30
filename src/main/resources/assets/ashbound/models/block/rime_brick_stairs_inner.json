@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/inner_stairs",
+ "textures": {
+  "bottom": "ashbound:block/rime_bricks",
+  "top": "ashbound:block/rime_bricks",
+  "side": "ashbound:block/rime_bricks"
+ }
+}

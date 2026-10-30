@@ -1,0 +1,5982 @@
+{
+ "blocks": [
+  {
+   "name": "cellar_brick",
+   "kind": "full",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "cellar_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:deepslate_bricks",
+   "base": "cellar_brick"
+  },
+  {
+   "name": "cellar_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "cellar_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "wet_cellar_brick",
+   "kind": "full",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "wine_brick",
+   "kind": "full",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "mouldy_brick",
+   "kind": "full",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "cellar_flags",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "cellar_flag_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "cellar_flags"
+  },
+  {
+   "name": "cellar_flag_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "cellar_silt",
+   "kind": "full",
+   "feel": "minecraft:mud"
+  },
+  {
+   "name": "cask_oak",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "cask_oak_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:dark_oak_planks",
+   "base": "cask_oak"
+  },
+  {
+   "name": "cask_oak_slab",
+   "kind": "slab",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "cask_hoop",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "cask_head",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "sluice_iron",
+   "kind": "full",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "gallows_timber",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "gallows_timber_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:dark_oak_planks",
+   "base": "gallows_timber"
+  },
+  {
+   "name": "gallows_timber_slab",
+   "kind": "slab",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "tarred_planks",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "tarred_plank_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:dark_oak_planks",
+   "base": "tarred_planks"
+  },
+  {
+   "name": "tarred_plank_slab",
+   "kind": "slab",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "notice_planks",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "hill_fieldstone",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "hill_fieldstone_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "hill_fieldstone"
+  },
+  {
+   "name": "hill_fieldstone_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "hill_fieldstone_wall",
+   "kind": "wall",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "hill_earth",
+   "kind": "full",
+   "feel": "minecraft:coarse_dirt"
+  },
+  {
+   "name": "dead_turf",
+   "kind": "full",
+   "feel": "minecraft:grass_block"
+  },
+  {
+   "name": "hangmans_tar",
+   "kind": "full",
+   "feel": "minecraft:mud"
+  },
+  {
+   "name": "gibbet_iron",
+   "kind": "full",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "rotwood_bark",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_wood"
+  },
+  {
+   "name": "root_wall",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_wood"
+  },
+  {
+   "name": "black_briar",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_wood"
+  },
+  {
+   "name": "rotwood_planks",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "rotwood_plank_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:dark_oak_planks",
+   "base": "rotwood_planks"
+  },
+  {
+   "name": "rotwood_plank_slab",
+   "kind": "slab",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "rot_loam",
+   "kind": "full",
+   "feel": "minecraft:coarse_dirt"
+  },
+  {
+   "name": "mycelium_threads",
+   "kind": "full",
+   "feel": "minecraft:mycelium"
+  },
+  {
+   "name": "spore_moss",
+   "kind": "full",
+   "feel": "minecraft:moss_block"
+  },
+  {
+   "name": "glowcap",
+   "kind": "full",
+   "feel": "minecraft:shroomlight"
+  },
+  {
+   "name": "shelf_fungus",
+   "kind": "full",
+   "feel": "minecraft:mushroom_stem"
+  },
+  {
+   "name": "glade_stone",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "glade_stone_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "glade_stone"
+  },
+  {
+   "name": "glade_stone_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "glowcap_stem",
+   "kind": "full",
+   "feel": "minecraft:mushroom_stem"
+  },
+  {
+   "name": "crypt_stone",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "crypt_stone_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "crypt_stone"
+  },
+  {
+   "name": "crypt_stone_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "crypt_bricks",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "crypt_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "crypt_bricks"
+  },
+  {
+   "name": "crypt_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "crypt_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "crypt_tiles",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "crypt_tile_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "crypt_tiles"
+  },
+  {
+   "name": "burial_niche",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "grave_soil",
+   "kind": "full",
+   "feel": "minecraft:coarse_dirt"
+  },
+  {
+   "name": "grave_wax",
+   "kind": "full",
+   "feel": "minecraft:honeycomb_block"
+  },
+  {
+   "name": "coffin_iron",
+   "kind": "full",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "silver_grating",
+   "kind": "full",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "limewash",
+   "kind": "full",
+   "feel": "minecraft:calcite"
+  },
+  {
+   "name": "stained_limewash",
+   "kind": "full",
+   "feel": "minecraft:calcite"
+  },
+  {
+   "name": "plague_cross",
+   "kind": "full",
+   "feel": "minecraft:calcite"
+  },
+  {
+   "name": "limewash_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:calcite",
+   "base": "limewash"
+  },
+  {
+   "name": "limewash_slab",
+   "kind": "slab",
+   "feel": "minecraft:calcite"
+  },
+  {
+   "name": "limewash_wall",
+   "kind": "wall",
+   "feel": "minecraft:calcite"
+  },
+  {
+   "name": "ward_tiles",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "ward_tile_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "ward_tiles"
+  },
+  {
+   "name": "ward_tile_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "tar_planks",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "tar_plank_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:dark_oak_planks",
+   "base": "tar_planks"
+  },
+  {
+   "name": "tar_plank_slab",
+   "kind": "slab",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "tar_timber",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "linen_sheet",
+   "kind": "full",
+   "feel": "minecraft:white_wool"
+  },
+  {
+   "name": "green_tonic",
+   "kind": "full",
+   "feel": "minecraft:moss_block"
+  },
+  {
+   "name": "ward_bricks",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "cracked_ward_bricks",
+   "kind": "full",
+   "feel": "minecraft:cracked_stone_bricks"
+  },
+  {
+   "name": "dark_ward_tiles",
+   "kind": "full",
+   "feel": "minecraft:deepslate_tiles"
+  },
+  {
+   "name": "verdigris_plate",
+   "kind": "full",
+   "feel": "minecraft:weathered_cut_copper"
+  },
+  {
+   "name": "verdigris_plate_slab",
+   "kind": "slab",
+   "feel": "minecraft:weathered_cut_copper_slab"
+  },
+  {
+   "name": "soot_bricks",
+   "kind": "full",
+   "feel": "minecraft:polished_blackstone_bricks"
+  },
+  {
+   "name": "soot_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:polished_blackstone_bricks",
+   "base": "soot_bricks"
+  },
+  {
+   "name": "soot_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:polished_blackstone_bricks"
+  },
+  {
+   "name": "soot_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:polished_blackstone_bricks"
+  },
+  {
+   "name": "black_slate",
+   "kind": "full",
+   "feel": "minecraft:polished_blackstone"
+  },
+  {
+   "name": "black_slate_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:polished_blackstone",
+   "base": "black_slate"
+  },
+  {
+   "name": "black_slate_slab",
+   "kind": "slab",
+   "feel": "minecraft:polished_blackstone"
+  },
+  {
+   "name": "cold_slag",
+   "kind": "full",
+   "feel": "minecraft:basalt"
+  },
+  {
+   "name": "searing_blackstone",
+   "kind": "full",
+   "feel": "minecraft:magma_block"
+  },
+  {
+   "name": "kiln_iron",
+   "kind": "full",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "rusted_kiln_iron",
+   "kind": "full",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "furnace_grate",
+   "kind": "full",
+   "feel": "minecraft:shroomlight"
+  },
+  {
+   "name": "cracked_soot_bricks",
+   "kind": "full",
+   "feel": "minecraft:cracked_polished_blackstone_bricks"
+  },
+  {
+   "name": "soot_tiles",
+   "kind": "full",
+   "feel": "minecraft:deepslate_tiles"
+  },
+  {
+   "name": "bone_bricks",
+   "kind": "full",
+   "feel": "minecraft:bone_block"
+  },
+  {
+   "name": "bone_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:bone_block",
+   "base": "bone_bricks"
+  },
+  {
+   "name": "bone_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:bone_block"
+  },
+  {
+   "name": "bone_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:bone_block"
+  },
+  {
+   "name": "skull_wall",
+   "kind": "full",
+   "feel": "minecraft:bone_block"
+  },
+  {
+   "name": "femur_stack",
+   "kind": "pillar",
+   "feel": "minecraft:bone_block"
+  },
+  {
+   "name": "bone_pit",
+   "kind": "full",
+   "feel": "minecraft:bone_block"
+  },
+  {
+   "name": "brass_plating",
+   "kind": "full",
+   "feel": "minecraft:copper_block"
+  },
+  {
+   "name": "engine_floor",
+   "kind": "full",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "engine_floor_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:polished_deepslate",
+   "base": "engine_floor"
+  },
+  {
+   "name": "engine_floor_slab",
+   "kind": "slab",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "marrow_rock",
+   "kind": "full",
+   "feel": "minecraft:deepslate"
+  },
+  {
+   "name": "bone_ash",
+   "kind": "full",
+   "feel": "minecraft:soul_soil"
+  },
+  {
+   "name": "brass_grate",
+   "kind": "full",
+   "feel": "minecraft:copper_grate"
+  },
+  {
+   "name": "glacier_ice",
+   "kind": "full",
+   "feel": "minecraft:packed_ice"
+  },
+  {
+   "name": "rime_stone",
+   "kind": "full",
+   "feel": "minecraft:stone"
+  },
+  {
+   "name": "icebound_bricks",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "icebound_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "icebound_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "frost_flagstones",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "frost_flagstone_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "frost_flagstone_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "frost_flagstones"
+  },
+  {
+   "name": "packed_rime",
+   "kind": "full",
+   "feel": "minecraft:packed_ice"
+  },
+  {
+   "name": "deep_ice",
+   "kind": "full",
+   "feel": "minecraft:blue_ice"
+  },
+  {
+   "name": "drift_snow",
+   "kind": "full",
+   "feel": "minecraft:snow_block"
+  },
+  {
+   "name": "ice_lantern",
+   "kind": "full",
+   "feel": "minecraft:sea_lantern"
+  },
+  {
+   "name": "temple_bricks",
+   "kind": "full",
+   "feel": "minecraft:mossy_stone_bricks"
+  },
+  {
+   "name": "temple_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:mossy_stone_bricks",
+   "base": "temple_bricks"
+  },
+  {
+   "name": "temple_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:mossy_stone_bricks"
+  },
+  {
+   "name": "temple_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:mossy_stone_bricks"
+  },
+  {
+   "name": "cracked_temple_bricks",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "temple_stone",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "temple_stone_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "temple_tiles",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "temple_pillar",
+   "kind": "pillar",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "gilded_temple_stone",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "carved_temple_stone",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "rune_stone",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "abyss_stone",
+   "kind": "full",
+   "feel": "minecraft:deepslate"
+  },
+  {
+   "name": "mana_crystal_block",
+   "kind": "full",
+   "feel": "minecraft:amethyst_block"
+  },
+  {
+   "name": "pale_crust",
+   "kind": "full",
+   "feel": "minecraft:calcite"
+  },
+  {
+   "name": "abyss_grit",
+   "kind": "full",
+   "feel": "minecraft:gravel"
+  },
+  {
+   "name": "drip_rock",
+   "kind": "full",
+   "feel": "minecraft:dripstone_block"
+  },
+  {
+   "name": "mine_rock",
+   "kind": "full",
+   "feel": "minecraft:deepslate"
+  },
+  {
+   "name": "seam_rock",
+   "kind": "full",
+   "feel": "minecraft:deepslate"
+  },
+  {
+   "name": "ore_rubble",
+   "kind": "full",
+   "feel": "minecraft:tuff"
+  },
+  {
+   "name": "veined_rock",
+   "kind": "full",
+   "feel": "minecraft:deepslate",
+   "light": 7
+  },
+  {
+   "name": "crystal_rock",
+   "kind": "full",
+   "feel": "minecraft:deepslate",
+   "light": 5
+  },
+  {
+   "name": "shaft_timber",
+   "kind": "pillar",
+   "feel": "minecraft:dark_oak_log"
+  },
+  {
+   "name": "shaft_planks",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "shaft_plank_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:dark_oak_planks",
+   "base": "shaft_planks"
+  },
+  {
+   "name": "shaft_plank_slab",
+   "kind": "slab",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "mine_bricks",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "mine_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "mine_bricks"
+  },
+  {
+   "name": "mine_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "mine_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "mine_flags",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "mine_flag_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "mine_flags"
+  },
+  {
+   "name": "mine_flag_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "copper_plate",
+   "kind": "full",
+   "feel": "minecraft:copper_block"
+  },
+  {
+   "name": "copper_plate_slab",
+   "kind": "slab",
+   "feel": "minecraft:copper_block"
+  },
+  {
+   "name": "mine_grating",
+   "kind": "full",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "carved_seam",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "chapel_stone",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "chapel_stone_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "chapel_stone"
+  },
+  {
+   "name": "chapel_stone_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "chapel_stone_wall",
+   "kind": "wall",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "barnacled_stone",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "weeded_stone",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "chapel_tiles",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "chapel_tile_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "reef_rock",
+   "kind": "full",
+   "feel": "minecraft:deepslate"
+  },
+  {
+   "name": "tide_rock",
+   "kind": "full",
+   "feel": "minecraft:deepslate"
+  },
+  {
+   "name": "drowned_sand",
+   "kind": "full",
+   "feel": "minecraft:sandstone"
+  },
+  {
+   "name": "driftwood_planks",
+   "kind": "full",
+   "feel": "minecraft:spruce_planks"
+  },
+  {
+   "name": "driftwood_plank_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:spruce_planks",
+   "base": "driftwood_planks"
+  },
+  {
+   "name": "driftwood_plank_slab",
+   "kind": "slab",
+   "feel": "minecraft:spruce_planks"
+  },
+  {
+   "name": "driftwood_log",
+   "kind": "pillar",
+   "feel": "minecraft:spruce_log"
+  },
+  {
+   "name": "bell_bronze",
+   "kind": "full",
+   "feel": "minecraft:copper_block"
+  },
+  {
+   "name": "pearl_stone",
+   "kind": "full",
+   "feel": "minecraft:sea_lantern",
+   "light": 12
+  },
+  {
+   "name": "carved_chapel",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "chapel_column",
+   "kind": "pillar",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "gorge_sandstone",
+   "kind": "full",
+   "feel": "minecraft:sandstone"
+  },
+  {
+   "name": "gorge_rock",
+   "kind": "full",
+   "feel": "minecraft:terracotta"
+  },
+  {
+   "name": "packed_earth",
+   "kind": "full",
+   "feel": "minecraft:packed_mud"
+  },
+  {
+   "name": "gorge_bricks",
+   "kind": "full",
+   "feel": "minecraft:bricks"
+  },
+  {
+   "name": "gorge_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:bricks",
+   "base": "gorge_bricks"
+  },
+  {
+   "name": "gorge_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:bricks"
+  },
+  {
+   "name": "gorge_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:bricks"
+  },
+  {
+   "name": "gorge_flags",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "gorge_flag_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "stockade_planks",
+   "kind": "full",
+   "feel": "minecraft:spruce_planks"
+  },
+  {
+   "name": "stockade_plank_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:spruce_planks",
+   "base": "stockade_planks"
+  },
+  {
+   "name": "stockade_plank_slab",
+   "kind": "slab",
+   "feel": "minecraft:spruce_planks"
+  },
+  {
+   "name": "stockade_log",
+   "kind": "pillar",
+   "feel": "minecraft:spruce_log"
+  },
+  {
+   "name": "banded_iron",
+   "kind": "full",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "glowing_coals",
+   "kind": "full",
+   "feel": "minecraft:magma_block",
+   "light": 12
+  },
+  {
+   "name": "carved_gorge",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "gorge_pillar",
+   "kind": "pillar",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "rook_stone",
+   "kind": "full",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "rook_stone_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:deepslate_bricks",
+   "base": "rook_stone"
+  },
+  {
+   "name": "rook_stone_slab",
+   "kind": "slab",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "rook_stone_wall",
+   "kind": "wall",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "streaked_rook_stone",
+   "kind": "full",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "rook_slate",
+   "kind": "full",
+   "feel": "minecraft:deepslate_tiles"
+  },
+  {
+   "name": "rook_slate_slab",
+   "kind": "slab",
+   "feel": "minecraft:deepslate_tiles"
+  },
+  {
+   "name": "tower_rock",
+   "kind": "full",
+   "feel": "minecraft:deepslate"
+  },
+  {
+   "name": "nest_thatch",
+   "kind": "full",
+   "feel": "minecraft:hay_block"
+  },
+  {
+   "name": "bone_lattice",
+   "kind": "full",
+   "feel": "minecraft:bone_block"
+  },
+  {
+   "name": "omen_glass",
+   "kind": "full",
+   "feel": "minecraft:crying_obsidian",
+   "light": 11
+  },
+  {
+   "name": "carved_rook",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "rook_column",
+   "kind": "pillar",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "ebony_beam",
+   "kind": "pillar",
+   "feel": "minecraft:dark_oak_log"
+  },
+  {
+   "name": "ebony_planks",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "ebony_plank_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:dark_oak_planks",
+   "base": "ebony_planks"
+  },
+  {
+   "name": "ebony_plank_slab",
+   "kind": "slab",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "big_top_canvas",
+   "kind": "full",
+   "feel": "minecraft:white_wool"
+  },
+  {
+   "name": "circus_boards",
+   "kind": "full",
+   "feel": "minecraft:spruce_planks"
+  },
+  {
+   "name": "circus_board_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:spruce_planks",
+   "base": "circus_boards"
+  },
+  {
+   "name": "circus_board_slab",
+   "kind": "slab",
+   "feel": "minecraft:spruce_planks"
+  },
+  {
+   "name": "sawdust",
+   "kind": "full",
+   "feel": "minecraft:packed_mud"
+  },
+  {
+   "name": "circus_cavern_rock",
+   "kind": "full",
+   "feel": "minecraft:deepslate"
+  },
+  {
+   "name": "circus_bricks",
+   "kind": "full",
+   "feel": "minecraft:bricks"
+  },
+  {
+   "name": "circus_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:bricks",
+   "base": "circus_bricks"
+  },
+  {
+   "name": "circus_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:bricks"
+  },
+  {
+   "name": "circus_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:bricks"
+  },
+  {
+   "name": "ring_tiles",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "ring_tile_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "gilded_trim",
+   "kind": "full",
+   "feel": "minecraft:gold_block"
+  },
+  {
+   "name": "bulb_lights",
+   "kind": "full",
+   "feel": "minecraft:redstone_lamp",
+   "light": 13
+  },
+  {
+   "name": "carved_mask",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "circus_pillar",
+   "kind": "pillar",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "wagon_beam",
+   "kind": "pillar",
+   "feel": "minecraft:spruce_log"
+  },
+  {
+   "name": "bog_mud",
+   "kind": "full",
+   "feel": "minecraft:mud"
+  },
+  {
+   "name": "fen_peat",
+   "kind": "full",
+   "feel": "minecraft:packed_mud"
+  },
+  {
+   "name": "mire_rock",
+   "kind": "full",
+   "feel": "minecraft:tuff"
+  },
+  {
+   "name": "rotten_planks",
+   "kind": "full",
+   "feel": "minecraft:mangrove_planks"
+  },
+  {
+   "name": "rotten_plank_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:mangrove_planks",
+   "base": "rotten_planks"
+  },
+  {
+   "name": "rotten_plank_slab",
+   "kind": "slab",
+   "feel": "minecraft:mangrove_planks"
+  },
+  {
+   "name": "willow_log",
+   "kind": "pillar",
+   "feel": "minecraft:mangrove_log"
+  },
+  {
+   "name": "hag_stone",
+   "kind": "full",
+   "feel": "minecraft:mossy_stone_bricks"
+  },
+  {
+   "name": "hag_stone_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:mossy_stone_bricks",
+   "base": "hag_stone"
+  },
+  {
+   "name": "hag_stone_slab",
+   "kind": "slab",
+   "feel": "minecraft:mossy_stone_bricks"
+  },
+  {
+   "name": "hag_stone_wall",
+   "kind": "wall",
+   "feel": "minecraft:mossy_stone_bricks"
+  },
+  {
+   "name": "coven_flags",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "coven_flag_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "reed_thatch",
+   "kind": "full",
+   "feel": "minecraft:hay_block"
+  },
+  {
+   "name": "witchlight",
+   "kind": "full",
+   "feel": "minecraft:verdant_froglight",
+   "light": 12
+  },
+  {
+   "name": "carved_hex",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "willow_pillar",
+   "kind": "pillar",
+   "feel": "minecraft:mangrove_log"
+  },
+  {
+   "name": "drift_sandstone",
+   "kind": "full",
+   "feel": "minecraft:sandstone"
+  },
+  {
+   "name": "tomb_strata",
+   "kind": "full",
+   "feel": "minecraft:smooth_sandstone"
+  },
+  {
+   "name": "tomb_bricks",
+   "kind": "full",
+   "feel": "minecraft:cut_sandstone"
+  },
+  {
+   "name": "tomb_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:cut_sandstone",
+   "base": "tomb_bricks"
+  },
+  {
+   "name": "tomb_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:cut_sandstone"
+  },
+  {
+   "name": "tomb_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:cut_sandstone"
+  },
+  {
+   "name": "tomb_ashlar",
+   "kind": "full",
+   "feel": "minecraft:smooth_sandstone"
+  },
+  {
+   "name": "tomb_flags",
+   "kind": "full",
+   "feel": "minecraft:smooth_sandstone"
+  },
+  {
+   "name": "tomb_flag_slab",
+   "kind": "slab",
+   "feel": "minecraft:smooth_sandstone"
+  },
+  {
+   "name": "lapis_tiles",
+   "kind": "full",
+   "feel": "minecraft:lapis_block"
+  },
+  {
+   "name": "hieroglyph_stone",
+   "kind": "full",
+   "feel": "minecraft:chiseled_sandstone"
+  },
+  {
+   "name": "sun_carving",
+   "kind": "full",
+   "feel": "minecraft:chiseled_sandstone"
+  },
+  {
+   "name": "tomb_column",
+   "kind": "pillar",
+   "feel": "minecraft:cut_sandstone"
+  },
+  {
+   "name": "cedar_beam",
+   "kind": "pillar",
+   "feel": "minecraft:stripped_spruce_log"
+  },
+  {
+   "name": "sunstone",
+   "kind": "full",
+   "feel": "minecraft:shroomlight",
+   "light": 13
+  },
+  {
+   "name": "tomb_bedrock",
+   "kind": "full",
+   "feel": "minecraft:terracotta"
+  },
+  {
+   "name": "titan_muscle",
+   "kind": "full",
+   "feel": "minecraft:mud"
+  },
+  {
+   "name": "titan_fat",
+   "kind": "full",
+   "feel": "minecraft:honeycomb_block"
+  },
+  {
+   "name": "titan_gum",
+   "kind": "full",
+   "feel": "minecraft:mud"
+  },
+  {
+   "name": "titan_bone",
+   "kind": "full",
+   "feel": "minecraft:bone_block"
+  },
+  {
+   "name": "rib_bone",
+   "kind": "pillar",
+   "feel": "minecraft:bone_block"
+  },
+  {
+   "name": "cartilage",
+   "kind": "full",
+   "feel": "minecraft:calcite"
+  },
+  {
+   "name": "cartilage_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:calcite",
+   "base": "cartilage"
+  },
+  {
+   "name": "cartilage_slab",
+   "kind": "slab",
+   "feel": "minecraft:calcite"
+  },
+  {
+   "name": "cartilage_wall",
+   "kind": "wall",
+   "feel": "minecraft:calcite"
+  },
+  {
+   "name": "cartilage_flags",
+   "kind": "full",
+   "feel": "minecraft:calcite"
+  },
+  {
+   "name": "cartilage_flag_slab",
+   "kind": "slab",
+   "feel": "minecraft:calcite"
+  },
+  {
+   "name": "bile_glow",
+   "kind": "full",
+   "feel": "minecraft:verdant_froglight",
+   "light": 11
+  },
+  {
+   "name": "artery_wall",
+   "kind": "full",
+   "feel": "minecraft:redstone_lamp",
+   "light": 9
+  },
+  {
+   "name": "dead_flesh",
+   "kind": "full",
+   "feel": "minecraft:mud"
+  },
+  {
+   "name": "titan_sinew_wall",
+   "kind": "full",
+   "feel": "minecraft:mushroom_stem"
+  },
+  {
+   "name": "mountain_granite",
+   "kind": "full",
+   "feel": "minecraft:andesite"
+  },
+  {
+   "name": "temple_granite",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "temple_granite_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "temple_granite"
+  },
+  {
+   "name": "temple_granite_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "temple_granite_wall",
+   "kind": "wall",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "granite_flags",
+   "kind": "full",
+   "feel": "minecraft:smooth_stone"
+  },
+  {
+   "name": "granite_flag_slab",
+   "kind": "slab",
+   "feel": "minecraft:smooth_stone"
+  },
+  {
+   "name": "jade_tiles",
+   "kind": "full",
+   "feel": "minecraft:prismarine_bricks"
+  },
+  {
+   "name": "carved_jade",
+   "kind": "full",
+   "feel": "minecraft:prismarine_bricks"
+  },
+  {
+   "name": "red_lacquer",
+   "kind": "full",
+   "feel": "minecraft:crimson_planks"
+  },
+  {
+   "name": "lacquer_pillar",
+   "kind": "pillar",
+   "feel": "minecraft:crimson_stem"
+  },
+  {
+   "name": "roof_tiles",
+   "kind": "full",
+   "feel": "minecraft:deepslate_tiles"
+  },
+  {
+   "name": "temple_beam",
+   "kind": "pillar",
+   "feel": "minecraft:dark_oak_log"
+  },
+  {
+   "name": "gold_lattice",
+   "kind": "full",
+   "feel": "minecraft:gold_block"
+  },
+  {
+   "name": "jade_lamp_stone",
+   "kind": "full",
+   "feel": "minecraft:sea_lantern",
+   "light": 12
+  },
+  {
+   "name": "cloud_stone",
+   "kind": "full",
+   "feel": "minecraft:calcite"
+  },
+  {
+   "name": "spire_rock",
+   "kind": "full",
+   "feel": "minecraft:deepslate"
+  },
+  {
+   "name": "bastion_bricks",
+   "kind": "full",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "bastion_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:deepslate_bricks",
+   "base": "bastion_bricks"
+  },
+  {
+   "name": "bastion_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "bastion_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "bastion_ashlar",
+   "kind": "full",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "rampart_flags",
+   "kind": "full",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "rampart_flag_slab",
+   "kind": "slab",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "storm_copper",
+   "kind": "full",
+   "feel": "minecraft:oxidized_copper"
+  },
+  {
+   "name": "iron_grating",
+   "kind": "full",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "tarred_timber",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "storm_beam",
+   "kind": "pillar",
+   "feel": "minecraft:dark_oak_log"
+  },
+  {
+   "name": "bastion_column",
+   "kind": "pillar",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "bolt_carving",
+   "kind": "full",
+   "feel": "minecraft:chiseled_deepslate"
+  },
+  {
+   "name": "storm_glass_block",
+   "kind": "full",
+   "feel": "minecraft:sea_lantern",
+   "light": 13
+  },
+  {
+   "name": "black_marble",
+   "kind": "full",
+   "feel": "minecraft:polished_blackstone"
+  },
+  {
+   "name": "marble_bricks",
+   "kind": "full",
+   "feel": "minecraft:polished_blackstone_bricks"
+  },
+  {
+   "name": "marble_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:polished_blackstone_bricks",
+   "base": "marble_bricks"
+  },
+  {
+   "name": "marble_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:polished_blackstone_bricks"
+  },
+  {
+   "name": "marble_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:polished_blackstone_bricks"
+  },
+  {
+   "name": "court_tiles",
+   "kind": "full",
+   "feel": "minecraft:polished_blackstone"
+  },
+  {
+   "name": "court_tile_slab",
+   "kind": "slab",
+   "feel": "minecraft:polished_blackstone"
+  },
+  {
+   "name": "crimson_velvet",
+   "kind": "full",
+   "feel": "minecraft:red_wool"
+  },
+  {
+   "name": "silver_plate",
+   "kind": "full",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "manor_oak",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "manor_beam",
+   "kind": "pillar",
+   "feel": "minecraft:dark_oak_log"
+  },
+  {
+   "name": "marble_column",
+   "kind": "pillar",
+   "feel": "minecraft:polished_blackstone"
+  },
+  {
+   "name": "black_hedge",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_leaves"
+  },
+  {
+   "name": "blood_glass",
+   "kind": "full",
+   "feel": "minecraft:redstone_lamp",
+   "light": 11
+  },
+  {
+   "name": "cellar_stone",
+   "kind": "full",
+   "feel": "minecraft:tuff"
+  },
+  {
+   "name": "maze_obsidian",
+   "kind": "full",
+   "feel": "minecraft:obsidian"
+  },
+  {
+   "name": "maze_obsidian_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:obsidian",
+   "base": "maze_obsidian"
+  },
+  {
+   "name": "maze_obsidian_slab",
+   "kind": "slab",
+   "feel": "minecraft:obsidian"
+  },
+  {
+   "name": "maze_obsidian_wall",
+   "kind": "wall",
+   "feel": "minecraft:obsidian"
+  },
+  {
+   "name": "obsidian_ashlar",
+   "kind": "full",
+   "feel": "minecraft:obsidian"
+  },
+  {
+   "name": "labyrinth_basalt",
+   "kind": "full",
+   "feel": "minecraft:basalt"
+  },
+  {
+   "name": "cinder_strata",
+   "kind": "full",
+   "feel": "minecraft:blackstone"
+  },
+  {
+   "name": "maze_flags",
+   "kind": "full",
+   "feel": "minecraft:polished_basalt"
+  },
+  {
+   "name": "maze_flag_slab",
+   "kind": "slab",
+   "feel": "minecraft:polished_basalt"
+  },
+  {
+   "name": "maze_carving",
+   "kind": "full",
+   "feel": "minecraft:chiseled_polished_blackstone"
+  },
+  {
+   "name": "bronze_plating",
+   "kind": "full",
+   "feel": "minecraft:copper_block"
+  },
+  {
+   "name": "basalt_pillar",
+   "kind": "pillar",
+   "feel": "minecraft:polished_basalt"
+  },
+  {
+   "name": "magma_seam",
+   "kind": "full",
+   "feel": "minecraft:magma_block",
+   "light": 12
+  },
+  {
+   "name": "bronze_grate",
+   "kind": "full",
+   "feel": "minecraft:copper_grate"
+  },
+  {
+   "name": "abyss_strata",
+   "kind": "full",
+   "feel": "minecraft:deepslate"
+  },
+  {
+   "name": "lighthouse_bricks",
+   "kind": "full",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "lighthouse_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:deepslate_bricks",
+   "base": "lighthouse_bricks"
+  },
+  {
+   "name": "lighthouse_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "lighthouse_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "wet_flags",
+   "kind": "full",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "wet_flag_slab",
+   "kind": "slab",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "wreck_planks",
+   "kind": "full",
+   "feel": "minecraft:warped_planks"
+  },
+  {
+   "name": "wreck_beam",
+   "kind": "pillar",
+   "feel": "minecraft:warped_stem"
+  },
+  {
+   "name": "tide_brass",
+   "kind": "full",
+   "feel": "minecraft:copper_block"
+  },
+  {
+   "name": "whalebone",
+   "kind": "pillar",
+   "feel": "minecraft:bone_block"
+  },
+  {
+   "name": "whalebone_block",
+   "kind": "full",
+   "feel": "minecraft:bone_block"
+  },
+  {
+   "name": "sea_glow",
+   "kind": "full",
+   "feel": "minecraft:sea_lantern",
+   "light": 9
+  },
+  {
+   "name": "lens_carving",
+   "kind": "full",
+   "feel": "minecraft:chiseled_deepslate"
+  },
+  {
+   "name": "eclipse_marble",
+   "kind": "full",
+   "feel": "minecraft:polished_blackstone"
+  },
+  {
+   "name": "cathedral_bricks",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "cathedral_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "cathedral_bricks"
+  },
+  {
+   "name": "cathedral_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "cathedral_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "ashen_flags",
+   "kind": "full",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "ashen_flag_slab",
+   "kind": "slab",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "fallen_scree",
+   "kind": "full",
+   "feel": "minecraft:tuff"
+  },
+  {
+   "name": "eclipse_strata",
+   "kind": "full",
+   "feel": "minecraft:deepslate"
+  },
+  {
+   "name": "gilt_plating",
+   "kind": "full",
+   "feel": "minecraft:gold_block"
+  },
+  {
+   "name": "eclipse_column",
+   "kind": "pillar",
+   "feel": "minecraft:polished_blackstone"
+  },
+  {
+   "name": "seraph_carving",
+   "kind": "full",
+   "feel": "minecraft:chiseled_polished_blackstone"
+  },
+  {
+   "name": "corona_light",
+   "kind": "full",
+   "feel": "minecraft:shroomlight",
+   "light": 13
+  },
+  {
+   "name": "eclipse_window",
+   "kind": "full",
+   "feel": "minecraft:black_stained_glass"
+  },
+  {
+   "name": "cathedral_planks",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "cathedral_beam",
+   "kind": "pillar",
+   "feel": "minecraft:dark_oak_log"
+  },
+  {
+   "name": "caldera_rock",
+   "kind": "full",
+   "feel": "minecraft:blackstone"
+  },
+  {
+   "name": "pumice_strata",
+   "kind": "full",
+   "feel": "minecraft:tuff"
+  },
+  {
+   "name": "ash_bank",
+   "kind": "full",
+   "feel": "minecraft:gray_concrete"
+  },
+  {
+   "name": "coin_heap",
+   "kind": "full",
+   "feel": "minecraft:raw_gold_block"
+  },
+  {
+   "name": "wyrm_bricks",
+   "kind": "full",
+   "feel": "minecraft:nether_bricks"
+  },
+  {
+   "name": "wyrm_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:nether_bricks",
+   "base": "wyrm_bricks"
+  },
+  {
+   "name": "wyrm_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:nether_bricks"
+  },
+  {
+   "name": "wyrm_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:nether_bricks"
+  },
+  {
+   "name": "wyrm_flags",
+   "kind": "full",
+   "feel": "minecraft:polished_blackstone"
+  },
+  {
+   "name": "wyrm_flag_slab",
+   "kind": "slab",
+   "feel": "minecraft:polished_blackstone"
+  },
+  {
+   "name": "scale_carving",
+   "kind": "full",
+   "feel": "minecraft:chiseled_nether_bricks"
+  },
+  {
+   "name": "hoard_plating",
+   "kind": "full",
+   "feel": "minecraft:gold_block"
+  },
+  {
+   "name": "dragonbone",
+   "kind": "pillar",
+   "feel": "minecraft:bone_block"
+  },
+  {
+   "name": "wyrmfire_vein",
+   "kind": "full",
+   "feel": "minecraft:magma_block",
+   "light": 12
+  },
+  {
+   "name": "weeping_crystal_block",
+   "kind": "full",
+   "feel": "minecraft:amethyst_block",
+   "light": 11
+  },
+  {
+   "name": "spire_footing",
+   "kind": "full",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "spire_footing_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:polished_deepslate",
+   "base": "spire_footing"
+  },
+  {
+   "name": "spire_footing_slab",
+   "kind": "slab",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "spire_footing_wall",
+   "kind": "wall",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "foundry_bricks",
+   "kind": "full",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "foundry_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:deepslate_bricks",
+   "base": "foundry_bricks"
+  },
+  {
+   "name": "foundry_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "foundry_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "blackiron_plate",
+   "kind": "full",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "blackiron_plate_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:iron_block",
+   "base": "blackiron_plate"
+  },
+  {
+   "name": "blackiron_plate_slab",
+   "kind": "slab",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "brass_plate",
+   "kind": "full",
+   "feel": "minecraft:copper_block"
+  },
+  {
+   "name": "brass_plate_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:copper_block",
+   "base": "brass_plate"
+  },
+  {
+   "name": "brass_plate_slab",
+   "kind": "slab",
+   "feel": "minecraft:copper_block"
+  },
+  {
+   "name": "brass_grating",
+   "kind": "full",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "brass_grating_slab",
+   "kind": "slab",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "iron_gear_block",
+   "kind": "full",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "brass_gear_block",
+   "kind": "full",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "steam_pipe",
+   "kind": "pillar",
+   "feel": "minecraft:copper_block"
+  },
+  {
+   "name": "drive_shaft",
+   "kind": "pillar",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "clock_glass",
+   "kind": "full",
+   "feel": "minecraft:glass",
+   "light": 12
+  },
+  {
+   "name": "boiler_glow",
+   "kind": "full",
+   "feel": "minecraft:magma_block",
+   "light": 14
+  },
+  {
+   "name": "spire_column",
+   "kind": "pillar",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "gearwright_tiles",
+   "kind": "full",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "gearwright_tile_slab",
+   "kind": "slab",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "soot_planks",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "soot_plank_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:dark_oak_planks",
+   "base": "soot_planks"
+  },
+  {
+   "name": "soot_plank_slab",
+   "kind": "slab",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "temple_limestone",
+   "kind": "full",
+   "feel": "minecraft:mossy_stone_bricks"
+  },
+  {
+   "name": "temple_limestone_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:mossy_stone_bricks",
+   "base": "temple_limestone"
+  },
+  {
+   "name": "temple_limestone_slab",
+   "kind": "slab",
+   "feel": "minecraft:mossy_stone_bricks"
+  },
+  {
+   "name": "temple_limestone_wall",
+   "kind": "wall",
+   "feel": "minecraft:mossy_stone_bricks"
+  },
+  {
+   "name": "overgrown_limestone",
+   "kind": "full",
+   "feel": "minecraft:moss_block"
+  },
+  {
+   "name": "jade_tile_slab",
+   "kind": "slab",
+   "feel": "minecraft:prismarine_bricks"
+  },
+  {
+   "name": "gold_frieze",
+   "kind": "full",
+   "feel": "minecraft:gold_block"
+  },
+  {
+   "name": "serpent_carving",
+   "kind": "full",
+   "feel": "minecraft:chiseled_stone_bricks"
+  },
+  {
+   "name": "red_plaster",
+   "kind": "full",
+   "feel": "minecraft:red_terracotta"
+  },
+  {
+   "name": "root_wood",
+   "kind": "pillar",
+   "feel": "minecraft:jungle_log"
+  },
+  {
+   "name": "temple_column",
+   "kind": "pillar",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "jade_fire",
+   "kind": "full",
+   "feel": "minecraft:sea_lantern",
+   "light": 14
+  },
+  {
+   "name": "jade_block",
+   "kind": "full",
+   "feel": "minecraft:emerald_block",
+   "light": 6
+  },
+  {
+   "name": "giant_granite",
+   "kind": "full",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "giant_granite_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:polished_deepslate",
+   "base": "giant_granite"
+  },
+  {
+   "name": "giant_granite_slab",
+   "kind": "slab",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "giant_granite_wall",
+   "kind": "wall",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "rime_bricks",
+   "kind": "full",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "rime_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:deepslate_bricks",
+   "base": "rime_bricks"
+  },
+  {
+   "name": "rime_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "rime_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:deepslate_bricks"
+  },
+  {
+   "name": "frost_granite",
+   "kind": "full",
+   "feel": "minecraft:deepslate"
+  },
+  {
+   "name": "pale_ice",
+   "kind": "full",
+   "feel": "minecraft:packed_ice"
+  },
+  {
+   "name": "pale_ice_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:packed_ice",
+   "base": "pale_ice"
+  },
+  {
+   "name": "pale_ice_slab",
+   "kind": "slab",
+   "feel": "minecraft:packed_ice"
+  },
+  {
+   "name": "pale_ice_wall",
+   "kind": "wall",
+   "feel": "minecraft:packed_ice"
+  },
+  {
+   "name": "rune_band",
+   "kind": "full",
+   "feel": "minecraft:chiseled_deepslate"
+  },
+  {
+   "name": "rune_glow",
+   "kind": "full",
+   "feel": "minecraft:sea_lantern",
+   "light": 14
+  },
+  {
+   "name": "ice_glow",
+   "kind": "full",
+   "feel": "minecraft:sea_lantern",
+   "light": 12
+  },
+  {
+   "name": "giant_column",
+   "kind": "pillar",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "frost_flags",
+   "kind": "full",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "frost_flag_slab",
+   "kind": "slab",
+   "feel": "minecraft:polished_deepslate"
+  },
+  {
+   "name": "tarred_pine",
+   "kind": "full",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "tarred_pine_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:dark_oak_planks",
+   "base": "tarred_pine"
+  },
+  {
+   "name": "tarred_pine_slab",
+   "kind": "slab",
+   "feel": "minecraft:dark_oak_planks"
+  },
+  {
+   "name": "pine_log",
+   "kind": "pillar",
+   "feel": "minecraft:spruce_log"
+  },
+  {
+   "name": "rime_iron",
+   "kind": "full",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "rime_iron_slab",
+   "kind": "slab",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "white_fur",
+   "kind": "full",
+   "feel": "minecraft:white_wool"
+  },
+  {
+   "name": "sun_sandstone",
+   "kind": "full",
+   "feel": "minecraft:smooth_sandstone"
+  },
+  {
+   "name": "sun_sandstone_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:smooth_sandstone",
+   "base": "sun_sandstone"
+  },
+  {
+   "name": "sun_sandstone_slab",
+   "kind": "slab",
+   "feel": "minecraft:smooth_sandstone"
+  },
+  {
+   "name": "sun_sandstone_wall",
+   "kind": "wall",
+   "feel": "minecraft:smooth_sandstone"
+  },
+  {
+   "name": "minaret_bricks",
+   "kind": "full",
+   "feel": "minecraft:sandstone"
+  },
+  {
+   "name": "minaret_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:sandstone",
+   "base": "minaret_bricks"
+  },
+  {
+   "name": "minaret_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:sandstone"
+  },
+  {
+   "name": "minaret_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:sandstone"
+  },
+  {
+   "name": "turquoise_tiles",
+   "kind": "full",
+   "feel": "minecraft:prismarine_bricks"
+  },
+  {
+   "name": "turquoise_tile_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:prismarine_bricks",
+   "base": "turquoise_tiles"
+  },
+  {
+   "name": "turquoise_tile_slab",
+   "kind": "slab",
+   "feel": "minecraft:prismarine_bricks"
+  },
+  {
+   "name": "star_frieze",
+   "kind": "full",
+   "feel": "minecraft:chiseled_sandstone"
+  },
+  {
+   "name": "gold_inlay",
+   "kind": "full",
+   "feel": "minecraft:gold_block"
+  },
+  {
+   "name": "brass_screen",
+   "kind": "full",
+   "feel": "minecraft:glass",
+   "light": 10
+  },
+  {
+   "name": "dome_brass",
+   "kind": "full",
+   "feel": "minecraft:copper_block"
+  },
+  {
+   "name": "dome_brass_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:copper_block",
+   "base": "dome_brass"
+  },
+  {
+   "name": "dome_brass_slab",
+   "kind": "slab",
+   "feel": "minecraft:copper_block"
+  },
+  {
+   "name": "sun_glow",
+   "kind": "full",
+   "feel": "minecraft:shroomlight",
+   "light": 15
+  },
+  {
+   "name": "white_plaster",
+   "kind": "full",
+   "feel": "minecraft:white_terracotta"
+  },
+  {
+   "name": "white_plaster_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:white_terracotta",
+   "base": "white_plaster"
+  },
+  {
+   "name": "white_plaster_slab",
+   "kind": "slab",
+   "feel": "minecraft:white_terracotta"
+  },
+  {
+   "name": "minaret_column",
+   "kind": "pillar",
+   "feel": "minecraft:smooth_sandstone"
+  },
+  {
+   "name": "cedar_planks",
+   "kind": "full",
+   "feel": "minecraft:jungle_planks"
+  },
+  {
+   "name": "cedar_plank_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:jungle_planks",
+   "base": "cedar_planks"
+  },
+  {
+   "name": "cedar_plank_slab",
+   "kind": "slab",
+   "feel": "minecraft:jungle_planks"
+  },
+  {
+   "name": "bazaar_flags",
+   "kind": "full",
+   "feel": "minecraft:smooth_sandstone"
+  },
+  {
+   "name": "bazaar_flag_slab",
+   "kind": "slab",
+   "feel": "minecraft:smooth_sandstone"
+  },
+  {
+   "name": "crag_rock",
+   "kind": "full",
+   "feel": "minecraft:red_terracotta"
+  },
+  {
+   "name": "fang_stone",
+   "kind": "full",
+   "feel": "minecraft:red_nether_bricks"
+  },
+  {
+   "name": "fang_stone_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:red_nether_bricks",
+   "base": "fang_stone"
+  },
+  {
+   "name": "fang_stone_slab",
+   "kind": "slab",
+   "feel": "minecraft:red_nether_bricks"
+  },
+  {
+   "name": "fang_stone_wall",
+   "kind": "wall",
+   "feel": "minecraft:red_nether_bricks"
+  },
+  {
+   "name": "crag_ashlar",
+   "kind": "full",
+   "feel": "minecraft:red_sandstone"
+  },
+  {
+   "name": "crag_ashlar_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:red_sandstone",
+   "base": "crag_ashlar"
+  },
+  {
+   "name": "crag_ashlar_slab",
+   "kind": "slab",
+   "feel": "minecraft:red_sandstone"
+  },
+  {
+   "name": "crag_ashlar_wall",
+   "kind": "wall",
+   "feel": "minecraft:red_sandstone"
+  },
+  {
+   "name": "war_timber",
+   "kind": "full",
+   "feel": "minecraft:spruce_planks"
+  },
+  {
+   "name": "war_timber_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:spruce_planks",
+   "base": "war_timber"
+  },
+  {
+   "name": "war_timber_slab",
+   "kind": "slab",
+   "feel": "minecraft:spruce_planks"
+  },
+  {
+   "name": "war_log",
+   "kind": "pillar",
+   "feel": "minecraft:spruce_log"
+  },
+  {
+   "name": "spiked_iron",
+   "kind": "full",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "spiked_iron_slab",
+   "kind": "slab",
+   "feel": "minecraft:iron_block"
+  },
+  {
+   "name": "war_hide",
+   "kind": "full",
+   "feel": "minecraft:red_wool"
+  },
+  {
+   "name": "war_fire",
+   "kind": "full",
+   "feel": "minecraft:shroomlight",
+   "light": 15
+  },
+  {
+   "name": "fang_flags",
+   "kind": "full",
+   "feel": "minecraft:red_sandstone"
+  },
+  {
+   "name": "fang_flag_slab",
+   "kind": "slab",
+   "feel": "minecraft:red_sandstone"
+  },
+  {
+   "name": "tusk_bone",
+   "kind": "full",
+   "feel": "minecraft:bone_block"
+  },
+  {
+   "name": "fang_bone_pile",
+   "kind": "full",
+   "feel": "minecraft:bone_block"
+  },
+  {
+   "name": "hearthstone_bricks",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "hearthstone_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "hearthstone_bricks"
+  },
+  {
+   "name": "hearthstone_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "hearthstone_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "hearthstone_quoin",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "cracked_hearthstone_bricks",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "honeystone_bricks",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "honeystone_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "honeystone_bricks"
+  },
+  {
+   "name": "honeystone_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "honeystone_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "honeystone_quoin",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "cracked_honeystone_bricks",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "rosestone_bricks",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "rosestone_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "rosestone_bricks"
+  },
+  {
+   "name": "rosestone_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "rosestone_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "rosestone_quoin",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "cracked_rosestone_bricks",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "duskstone_bricks",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "duskstone_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "duskstone_bricks"
+  },
+  {
+   "name": "duskstone_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "duskstone_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "duskstone_quoin",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "cracked_duskstone_bricks",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "ashstone_bricks",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "ashstone_brick_stairs",
+   "kind": "stairs",
+   "feel": "minecraft:stone_bricks",
+   "base": "ashstone_bricks"
+  },
+  {
+   "name": "ashstone_brick_slab",
+   "kind": "slab",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "ashstone_brick_wall",
+   "kind": "wall",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "ashstone_quoin",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  },
+  {
+   "name": "cracked_ashstone_bricks",
+   "kind": "full",
+   "feel": "minecraft:stone_bricks"
+  }
+ ],
+ "props": [
+  {
+   "name": "cellar_cask",
+   "kind": "facing",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    14,
+    15
+   ],
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2
+  },
+  {
+   "name": "cellar_cask_upright",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    15,
+    14
+   ],
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2
+  },
+  {
+   "name": "cask_rack",
+   "kind": "facing",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2
+  },
+  {
+   "name": "bottle_rack",
+   "kind": "facing",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1.5
+  },
+  {
+   "name": "cellar_lamp",
+   "kind": "plain",
+   "box": [
+    4,
+    3,
+    4,
+    12,
+    16,
+    12
+   ],
+   "sound": "lantern",
+   "color": "metal",
+   "strength": 2,
+   "light": 15,
+   "solid": false
+  },
+  {
+   "name": "cellar_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "metal",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "cellar_grille",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 4
+  },
+  {
+   "name": "cask_fence",
+   "kind": "fence",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2
+  },
+  {
+   "name": "sluice_grate",
+   "kind": "trapdoor",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 4
+  },
+  {
+   "name": "cellar_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2.5
+  },
+  {
+   "name": "cooper_bench",
+   "kind": "facing",
+   "box": [
+    1,
+    0,
+    3,
+    15,
+    10,
+    13
+   ],
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2
+  },
+  {
+   "name": "wine_spill",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    1,
+    14
+   ],
+   "sound": "glass",
+   "color": "color_red",
+   "strength": 0.3,
+   "solid": false
+  },
+  {
+   "name": "tallow_lamp",
+   "kind": "plain",
+   "box": [
+    3,
+    0,
+    3,
+    13,
+    12,
+    13
+   ],
+   "sound": "lantern",
+   "color": "metal",
+   "strength": 1.5,
+   "light": 14
+  },
+  {
+   "name": "hemp_rope",
+   "kind": "plain",
+   "box": [
+    5,
+    0,
+    5,
+    11,
+    16,
+    11
+   ],
+   "sound": "wool",
+   "color": "wood",
+   "strength": 0.8,
+   "solid": false
+  },
+  {
+   "name": "gibbet_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 5
+  },
+  {
+   "name": "gibbet_plate",
+   "kind": "trapdoor",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 5
+  },
+  {
+   "name": "gallows_trapdoor",
+   "kind": "trapdoor",
+   "sound": "wood",
+   "color": "color_black",
+   "strength": 3
+  },
+  {
+   "name": "gallows_rail",
+   "kind": "fence",
+   "sound": "wood",
+   "color": "color_gray",
+   "strength": 2
+  },
+  {
+   "name": "drop_lever",
+   "kind": "facing",
+   "box": [
+    3,
+    0,
+    2,
+    13,
+    12,
+    14
+   ],
+   "sound": "wood",
+   "color": "metal",
+   "strength": 3
+  },
+  {
+   "name": "gallows_sign",
+   "kind": "facing",
+   "box": [
+    3,
+    0,
+    3,
+    13,
+    15,
+    13
+   ],
+   "sound": "wood",
+   "color": "color_gray",
+   "strength": 1.5
+  },
+  {
+   "name": "gallows_thorn",
+   "kind": "plain",
+   "box": [
+    3,
+    0,
+    3,
+    13,
+    12,
+    13
+   ],
+   "sound": "grass",
+   "color": "color_brown",
+   "strength": 0.2,
+   "solid": false
+  },
+  {
+   "name": "straw_bale",
+   "kind": "facing",
+   "box": [
+    1,
+    0,
+    2,
+    15,
+    10,
+    14
+   ],
+   "sound": "grass",
+   "color": "color_yellow",
+   "strength": 0.5
+  },
+  {
+   "name": "tar_cauldron",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    12,
+    14
+   ],
+   "sound": "metal",
+   "color": "color_black",
+   "strength": 3
+  },
+  {
+   "name": "gallows_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_black",
+   "strength": 2.5
+  },
+  {
+   "name": "stall_counter",
+   "kind": "plain",
+   "box": [
+    0,
+    0,
+    0,
+    16,
+    14,
+    16
+   ],
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1.5
+  },
+  {
+   "name": "awning_red",
+   "kind": "facing",
+   "sound": "wool",
+   "color": "color_red",
+   "strength": 0.8
+  },
+  {
+   "name": "awning_grey",
+   "kind": "facing",
+   "sound": "wool",
+   "color": "color_gray",
+   "strength": 0.8
+  },
+  {
+   "name": "awning_black",
+   "kind": "facing",
+   "sound": "wool",
+   "color": "color_black",
+   "strength": 0.8
+  },
+  {
+   "name": "awning_brown",
+   "kind": "facing",
+   "sound": "wool",
+   "color": "color_brown",
+   "strength": 0.8
+  },
+  {
+   "name": "drape_red",
+   "kind": "facing",
+   "box": [
+    0,
+    6,
+    0,
+    16,
+    16,
+    16
+   ],
+   "sound": "wool",
+   "color": "color_red",
+   "strength": 0.8,
+   "solid": false
+  },
+  {
+   "name": "drape_grey",
+   "kind": "facing",
+   "box": [
+    0,
+    6,
+    0,
+    16,
+    16,
+    16
+   ],
+   "sound": "wool",
+   "color": "color_gray",
+   "strength": 0.8,
+   "solid": false
+  },
+  {
+   "name": "drape_black",
+   "kind": "facing",
+   "box": [
+    0,
+    6,
+    0,
+    16,
+    16,
+    16
+   ],
+   "sound": "wool",
+   "color": "color_black",
+   "strength": 0.8,
+   "solid": false
+  },
+  {
+   "name": "drape_brown",
+   "kind": "facing",
+   "box": [
+    0,
+    6,
+    0,
+    16,
+    16,
+    16
+   ],
+   "sound": "wool",
+   "color": "color_brown",
+   "strength": 0.8,
+   "solid": false
+  },
+  {
+   "name": "glowcap_cluster",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    12,
+    14
+   ],
+   "sound": "fungus",
+   "color": "color_purple",
+   "strength": 0.3,
+   "light": 11,
+   "solid": false
+  },
+  {
+   "name": "glow_bracket",
+   "kind": "facing",
+   "box": [
+    0,
+    4,
+    0,
+    16,
+    14,
+    16
+   ],
+   "sound": "fungus",
+   "color": "color_purple",
+   "strength": 0.5,
+   "light": 10
+  },
+  {
+   "name": "shelf_bracket",
+   "kind": "facing",
+   "box": [
+    0,
+    3,
+    0,
+    16,
+    14,
+    16
+   ],
+   "sound": "fungus",
+   "color": "color_orange",
+   "strength": 0.5
+  },
+  {
+   "name": "dead_campfire",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    6,
+    15
+   ],
+   "sound": "stone",
+   "color": "stone",
+   "strength": 1.5
+  },
+  {
+   "name": "hunter_stake",
+   "kind": "facing",
+   "box": [
+    5,
+    0,
+    5,
+    11,
+    16,
+    11
+   ],
+   "sound": "bone_block",
+   "color": "color_light_gray",
+   "strength": 1.0
+  },
+  {
+   "name": "rot_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2.5
+  },
+  {
+   "name": "rotwood_rail",
+   "kind": "fence",
+   "sound": "wood",
+   "color": "color_gray",
+   "strength": 2
+  },
+  {
+   "name": "awning_pale",
+   "kind": "facing",
+   "sound": "wool",
+   "color": "color_light_gray",
+   "strength": 0.8
+  },
+  {
+   "name": "drape_pale",
+   "kind": "facing",
+   "box": [
+    0,
+    6,
+    0,
+    16,
+    16,
+    16
+   ],
+   "sound": "wool",
+   "color": "color_light_gray",
+   "strength": 0.8,
+   "solid": false
+  },
+  {
+   "name": "crypt_candles",
+   "kind": "plain",
+   "box": [
+    4,
+    0,
+    4,
+    12,
+    10,
+    12
+   ],
+   "sound": "candle",
+   "color": "color_yellow",
+   "strength": 0.5,
+   "light": 12
+  },
+  {
+   "name": "crypt_pew",
+   "kind": "facing",
+   "box": [
+    0,
+    0,
+    0,
+    16,
+    8,
+    16
+   ],
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2
+  },
+  {
+   "name": "grave_railing",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 4
+  },
+  {
+   "name": "vault_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 6
+  },
+  {
+   "name": "crypt_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "metal",
+   "strength": 2,
+   "light": 14
+  },
+  {
+   "name": "crypt_bell",
+   "kind": "plain",
+   "box": [
+    3,
+    0,
+    3,
+    13,
+    16,
+    13
+   ],
+   "sound": "metal",
+   "color": "gold",
+   "strength": 4
+  },
+  {
+   "name": "bone_pile",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    6,
+    15
+   ],
+   "sound": "bone_block",
+   "color": "color_light_gray",
+   "strength": 1
+  },
+  {
+   "name": "burial_shroud",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    1,
+    14,
+    2,
+    15
+   ],
+   "sound": "wool",
+   "color": "color_light_gray",
+   "strength": 0.3,
+   "solid": false
+  },
+  {
+   "name": "reliquary",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 3
+  },
+  {
+   "name": "quicklime",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    8,
+    15
+   ],
+   "sound": "sand",
+   "color": "quartz",
+   "strength": 0.6
+  },
+  {
+   "name": "lime_lamp",
+   "kind": "plain",
+   "box": [
+    4,
+    2,
+    4,
+    12,
+    16,
+    12
+   ],
+   "sound": "lantern",
+   "color": "color_light_green",
+   "strength": 1.5,
+   "light": 14
+  },
+  {
+   "name": "ward_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "warped_stem",
+   "strength": 5
+  },
+  {
+   "name": "apothecary_shelf",
+   "kind": "facing",
+   "sound": "wood",
+   "color": "color_black",
+   "strength": 1.5
+  },
+  {
+   "name": "apothecary_jar",
+   "kind": "plain",
+   "box": [
+    3,
+    0,
+    3,
+    13,
+    14,
+    13
+   ],
+   "sound": "decorated_pot",
+   "color": "terracotta_white",
+   "strength": 1
+  },
+  {
+   "name": "alembic",
+   "kind": "plain",
+   "box": [
+    3,
+    0,
+    3,
+    13,
+    15,
+    13
+   ],
+   "sound": "glass",
+   "color": "color_light_green",
+   "strength": 0.8,
+   "light": 6
+  },
+  {
+   "name": "sick_cot_head",
+   "kind": "facing",
+   "box": [
+    0,
+    0,
+    0,
+    16,
+    9,
+    16
+   ],
+   "sound": "wood",
+   "color": "wool",
+   "strength": 1
+  },
+  {
+   "name": "sick_cot_foot",
+   "kind": "facing",
+   "box": [
+    0,
+    0,
+    0,
+    16,
+    9,
+    16
+   ],
+   "sound": "wood",
+   "color": "wool",
+   "strength": 1
+  },
+  {
+   "name": "ward_linen",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    2,
+    15
+   ],
+   "sound": "wool",
+   "color": "wool",
+   "strength": 0.3,
+   "solid": false
+  },
+  {
+   "name": "brazier",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "sound": "metal",
+   "color": "color_orange",
+   "strength": 3,
+   "light": 15
+  },
+  {
+   "name": "coal_fire",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    6,
+    15
+   ],
+   "sound": "stone",
+   "color": "color_orange",
+   "strength": 1.5,
+   "light": 15
+  },
+  {
+   "name": "foundry_anvil",
+   "kind": "facing",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    13,
+    14
+   ],
+   "sound": "anvil",
+   "color": "metal",
+   "strength": 5
+  },
+  {
+   "name": "bloomery",
+   "kind": "facing",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    16,
+    15
+   ],
+   "sound": "stone",
+   "color": "color_red",
+   "strength": 3.5,
+   "light": 13
+  },
+  {
+   "name": "kiln_coffer",
+   "kind": "coffer",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 4
+  },
+  {
+   "name": "soul_lamp",
+   "kind": "plain",
+   "box": [
+    4,
+    0,
+    4,
+    12,
+    13,
+    12
+   ],
+   "sound": "bone_block",
+   "color": "color_light_blue",
+   "strength": 1.5,
+   "light": 13
+  },
+  {
+   "name": "skull_lamp",
+   "kind": "facing",
+   "box": [
+    4,
+    0,
+    4,
+    12,
+    12,
+    12
+   ],
+   "sound": "bone_block",
+   "color": "color_light_gray",
+   "strength": 1,
+   "light": 10
+  },
+  {
+   "name": "soul_flame",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    8,
+    15
+   ],
+   "sound": "wool",
+   "color": "color_light_blue",
+   "strength": 0,
+   "light": 10,
+   "solid": false
+  },
+  {
+   "name": "soul_pyre",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    8,
+    15
+   ],
+   "sound": "bone_block",
+   "color": "color_light_blue",
+   "strength": 1.5,
+   "light": 14
+  },
+  {
+   "name": "ossuary_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "color_yellow",
+   "strength": 2,
+   "light": 12
+  },
+  {
+   "name": "grind_wheel",
+   "kind": "facing",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    14,
+    14
+   ],
+   "sound": "stone",
+   "color": "stone",
+   "strength": 2.5
+  },
+  {
+   "name": "bone_saw",
+   "kind": "facing",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    14,
+    15
+   ],
+   "sound": "metal",
+   "color": "metal",
+   "strength": 3
+  },
+  {
+   "name": "snow_drift",
+   "kind": "plain",
+   "box": [
+    0,
+    0,
+    0,
+    16,
+    2,
+    16
+   ],
+   "sound": "snow",
+   "color": "snow",
+   "strength": 0.1,
+   "solid": false
+  },
+  {
+   "name": "war_banner",
+   "kind": "facing",
+   "box": [
+    6,
+    0,
+    6,
+    10,
+    16,
+    10
+   ],
+   "sound": "wood",
+   "color": "color_blue",
+   "strength": 1
+  },
+  {
+   "name": "mana_crystal",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    14,
+    14
+   ],
+   "sound": "amethyst_cluster",
+   "color": "color_purple",
+   "strength": 1.5,
+   "light": 11
+  },
+  {
+   "name": "mana_crystal_hanging",
+   "kind": "plain",
+   "box": [
+    2,
+    2,
+    2,
+    14,
+    16,
+    14
+   ],
+   "sound": "amethyst_cluster",
+   "color": "color_purple",
+   "strength": 1.5,
+   "light": 11
+  },
+  {
+   "name": "mana_crystal_wall",
+   "kind": "facing",
+   "box": [
+    2,
+    2,
+    0,
+    14,
+    14,
+    16
+   ],
+   "sound": "amethyst_cluster",
+   "color": "color_purple",
+   "strength": 1.5,
+   "light": 11
+  },
+  {
+   "name": "skull_pile",
+   "kind": "facing",
+   "box": [
+    0,
+    0,
+    0,
+    16,
+    14,
+    16
+   ],
+   "sound": "bone_block",
+   "color": "color_light_gray",
+   "strength": 1.5
+  },
+  {
+   "name": "stalagmite",
+   "kind": "plain",
+   "box": [
+    3,
+    0,
+    3,
+    13,
+    15,
+    13
+   ],
+   "sound": "dripstone_block",
+   "color": "terracotta_brown",
+   "strength": 1.5
+  },
+  {
+   "name": "cellar_sconce",
+   "kind": "facing",
+   "box": [
+    3,
+    2,
+    3,
+    13,
+    15,
+    13
+   ],
+   "sound": "lantern",
+   "color": "metal",
+   "strength": 2,
+   "light": 14,
+   "solid": false
+  },
+  {
+   "name": "mine_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "metal",
+   "strength": 2,
+   "light": 14
+  },
+  {
+   "name": "mine_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "metal",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "mine_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 6
+  },
+  {
+   "name": "mine_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2.5
+  },
+  {
+   "name": "weeping_cluster",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    14,
+    14
+   ],
+   "sound": "amethyst",
+   "color": "color_cyan",
+   "strength": 1.5,
+   "light": 12,
+   "solid": false
+  },
+  {
+   "name": "minecart",
+   "kind": "facing",
+   "box": [
+    1,
+    0,
+    2,
+    15,
+    12,
+    14
+   ],
+   "sound": "metal",
+   "color": "metal",
+   "strength": 3
+  },
+  {
+   "name": "mine_rail",
+   "kind": "facing",
+   "box": [
+    0,
+    0,
+    0,
+    16,
+    2,
+    16
+   ],
+   "sound": "metal",
+   "color": "metal",
+   "strength": 1,
+   "solid": false
+  },
+  {
+   "name": "ore_sacks",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    12,
+    15
+   ],
+   "sound": "wool",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "tide_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "metal",
+   "strength": 2,
+   "light": 14
+  },
+  {
+   "name": "tide_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "metal",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "tide_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 6
+  },
+  {
+   "name": "tide_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2.5
+  },
+  {
+   "name": "drowned_pew",
+   "kind": "facing",
+   "box": [
+    0,
+    0,
+    2,
+    16,
+    10,
+    14
+   ],
+   "sound": "wood",
+   "color": "wood",
+   "strength": 2
+  },
+  {
+   "name": "kelp_strand",
+   "kind": "plain",
+   "box": [
+    4,
+    0,
+    4,
+    12,
+    16,
+    12
+   ],
+   "sound": "wet_grass",
+   "color": "color_green",
+   "strength": 0.2,
+   "solid": false
+  },
+  {
+   "name": "clam_heap",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    8,
+    15
+   ],
+   "sound": "bone_block",
+   "color": "color_white",
+   "strength": 1,
+   "light": 6
+  },
+  {
+   "name": "chapel_font",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    14,
+    14
+   ],
+   "sound": "stone",
+   "color": "stone",
+   "strength": 3,
+   "light": 9
+  },
+  {
+   "name": "gorge_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "metal",
+   "strength": 2,
+   "light": 14
+  },
+  {
+   "name": "gorge_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "metal",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "gorge_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 6
+  },
+  {
+   "name": "gorge_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2.5
+  },
+  {
+   "name": "loot_pile",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    8,
+    15
+   ],
+   "sound": "metal",
+   "color": "gold",
+   "strength": 1,
+   "light": 4
+  },
+  {
+   "name": "gorge_campfire",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    7,
+    15
+   ],
+   "sound": "wood",
+   "color": "color_orange",
+   "strength": 1,
+   "light": 14,
+   "solid": false
+  },
+  {
+   "name": "bandit_tent",
+   "kind": "facing",
+   "box": [
+    0,
+    0,
+    0,
+    16,
+    14,
+    16
+   ],
+   "sound": "wool",
+   "color": "color_red",
+   "strength": 1
+  },
+  {
+   "name": "rook_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "metal",
+   "strength": 2,
+   "light": 14
+  },
+  {
+   "name": "rook_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "metal",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "rook_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 6
+  },
+  {
+   "name": "rook_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2.5
+  },
+  {
+   "name": "crow_nest",
+   "kind": "plain",
+   "box": [
+    0,
+    0,
+    0,
+    16,
+    8,
+    16
+   ],
+   "sound": "grass",
+   "color": "color_brown",
+   "strength": 0.5
+  },
+  {
+   "name": "crow_perch",
+   "kind": "facing",
+   "box": [
+    6,
+    0,
+    6,
+    10,
+    16,
+    10
+   ],
+   "sound": "wood",
+   "color": "color_black",
+   "strength": 2
+  },
+  {
+   "name": "bone_chimes",
+   "kind": "plain",
+   "box": [
+    4,
+    2,
+    4,
+    12,
+    16,
+    12
+   ],
+   "sound": "bone_block",
+   "color": "color_white",
+   "strength": 0.5,
+   "solid": false
+  },
+  {
+   "name": "omen_altar",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    14,
+    15
+   ],
+   "sound": "stone",
+   "color": "color_purple",
+   "strength": 3,
+   "light": 10
+  },
+  {
+   "name": "circus_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "metal",
+   "strength": 2,
+   "light": 14
+  },
+  {
+   "name": "circus_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "metal",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "circus_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 6
+  },
+  {
+   "name": "circus_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2.5
+  },
+  {
+   "name": "circus_drum",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    12,
+    15
+   ],
+   "sound": "wood",
+   "color": "color_red",
+   "strength": 2
+  },
+  {
+   "name": "circus_cage",
+   "kind": "plain",
+   "box": [
+    0,
+    0,
+    0,
+    16,
+    16,
+    16
+   ],
+   "sound": "metal",
+   "color": "gold",
+   "strength": 4
+  },
+  {
+   "name": "circus_tent",
+   "kind": "facing",
+   "box": [
+    0,
+    0,
+    0,
+    16,
+    14,
+    16
+   ],
+   "sound": "wool",
+   "color": "color_red",
+   "strength": 1
+  },
+  {
+   "name": "juggling_clubs",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    4,
+    14
+   ],
+   "sound": "wood",
+   "color": "color_white",
+   "strength": 0.5,
+   "solid": false
+  },
+  {
+   "name": "mire_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "metal",
+   "strength": 2,
+   "light": 14
+  },
+  {
+   "name": "mire_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "metal",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "mire_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 6
+  },
+  {
+   "name": "mire_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2.5
+  },
+  {
+   "name": "coven_cauldron",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    12,
+    15
+   ],
+   "sound": "metal",
+   "color": "color_black",
+   "strength": 3,
+   "light": 10
+  },
+  {
+   "name": "hag_effigy",
+   "kind": "facing",
+   "box": [
+    3,
+    0,
+    3,
+    13,
+    16,
+    13
+   ],
+   "sound": "wood",
+   "color": "wood",
+   "strength": 1,
+   "solid": false
+  },
+  {
+   "name": "fen_toadstools",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    10,
+    14
+   ],
+   "sound": "fungus",
+   "color": "color_red",
+   "strength": 0.3,
+   "light": 7,
+   "solid": false
+  },
+  {
+   "name": "fen_reeds",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "sound": "grass",
+   "color": "plant",
+   "strength": 0.1,
+   "solid": false
+  },
+  {
+   "name": "tomb_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "metal",
+   "strength": 2,
+   "light": 14
+  },
+  {
+   "name": "tomb_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "metal",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "tomb_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 6
+  },
+  {
+   "name": "tomb_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "sand",
+   "strength": 2.5
+  },
+  {
+   "name": "canopic_jars",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    12,
+    14
+   ],
+   "sound": "decorated_pot",
+   "color": "terracotta_orange",
+   "strength": 1
+  },
+  {
+   "name": "sarcophagus",
+   "kind": "facing",
+   "box": [
+    0,
+    0,
+    1,
+    16,
+    12,
+    15
+   ],
+   "sound": "stone",
+   "color": "gold",
+   "strength": 4
+  },
+  {
+   "name": "sun_brazier",
+   "kind": "plain",
+   "box": [
+    3,
+    0,
+    3,
+    13,
+    16,
+    13
+   ],
+   "sound": "metal",
+   "color": "gold",
+   "strength": 3,
+   "light": 14
+  },
+  {
+   "name": "jackal_statue",
+   "kind": "facing",
+   "box": [
+    3,
+    0,
+    3,
+    13,
+    16,
+    13
+   ],
+   "sound": "stone",
+   "color": "color_black",
+   "strength": 3
+  },
+  {
+   "name": "titan_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "color_red",
+   "strength": 2,
+   "light": 14
+  },
+  {
+   "name": "titan_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "color_red",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "titan_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "color_red",
+   "strength": 6
+  },
+  {
+   "name": "titan_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_red",
+   "strength": 2.5
+  },
+  {
+   "name": "breathing_sac",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    14,
+    15
+   ],
+   "sound": "slime_block",
+   "color": "color_pink",
+   "strength": 1,
+   "light": 6
+  },
+  {
+   "name": "rib_spur",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "sound": "bone_block",
+   "color": "sand",
+   "strength": 2,
+   "solid": false
+  },
+  {
+   "name": "eaten_armour",
+   "kind": "plain",
+   "box": [
+    0,
+    0,
+    0,
+    16,
+    8,
+    16
+   ],
+   "sound": "metal",
+   "color": "metal",
+   "strength": 2
+  },
+  {
+   "name": "artery_root",
+   "kind": "plain",
+   "box": [
+    3,
+    0,
+    3,
+    13,
+    16,
+    13
+   ],
+   "sound": "slime_block",
+   "color": "color_red",
+   "strength": 1.5,
+   "light": 5,
+   "solid": false
+  },
+  {
+   "name": "jade_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "gold",
+   "strength": 2,
+   "light": 14
+  },
+  {
+   "name": "jade_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "gold",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "jade_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "gold",
+   "strength": 6
+  },
+  {
+   "name": "jade_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_red",
+   "strength": 2.5
+  },
+  {
+   "name": "incense_burner",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    14,
+    14
+   ],
+   "sound": "metal",
+   "color": "color_black",
+   "strength": 3,
+   "light": 8
+  },
+  {
+   "name": "prayer_wheel",
+   "kind": "plain",
+   "box": [
+    4,
+    0,
+    4,
+    12,
+    16,
+    12
+   ],
+   "sound": "wood",
+   "color": "gold",
+   "strength": 2
+  },
+  {
+   "name": "stone_lantern",
+   "kind": "plain",
+   "box": [
+    3,
+    0,
+    3,
+    13,
+    16,
+    13
+   ],
+   "sound": "stone",
+   "color": "stone",
+   "strength": 3,
+   "light": 13
+  },
+  {
+   "name": "temple_bell",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "sound": "metal",
+   "color": "color_green",
+   "strength": 4
+  },
+  {
+   "name": "storm_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "metal",
+   "strength": 2,
+   "light": 14
+  },
+  {
+   "name": "storm_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "metal",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "storm_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 6
+  },
+  {
+   "name": "storm_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_gray",
+   "strength": 2.5
+  },
+  {
+   "name": "lightning_rod",
+   "kind": "plain",
+   "box": [
+    6,
+    0,
+    6,
+    10,
+    16,
+    10
+   ],
+   "sound": "copper",
+   "color": "color_cyan",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "storm_orb",
+   "kind": "plain",
+   "box": [
+    3,
+    0,
+    3,
+    13,
+    16,
+    13
+   ],
+   "sound": "glass",
+   "color": "color_light_blue",
+   "strength": 2,
+   "light": 14
+  },
+  {
+   "name": "weather_vane",
+   "kind": "plain",
+   "box": [
+    4,
+    0,
+    4,
+    12,
+    16,
+    12
+   ],
+   "sound": "copper",
+   "color": "color_cyan",
+   "strength": 2,
+   "solid": false
+  },
+  {
+   "name": "rope_coil",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    6,
+    14
+   ],
+   "sound": "wool",
+   "color": "color_brown",
+   "strength": 0.5
+  },
+  {
+   "name": "court_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "color_light_gray",
+   "strength": 2,
+   "light": 14
+  },
+  {
+   "name": "court_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "color_light_gray",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "court_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "color_light_gray",
+   "strength": 6
+  },
+  {
+   "name": "court_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_red",
+   "strength": 2.5
+  },
+  {
+   "name": "kneeling_statue",
+   "kind": "facing",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    14,
+    14
+   ],
+   "sound": "stone",
+   "color": "color_black",
+   "strength": 3
+  },
+  {
+   "name": "blood_cask",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    14,
+    15
+   ],
+   "sound": "wood",
+   "color": "color_red",
+   "strength": 2
+  },
+  {
+   "name": "candelabra",
+   "kind": "plain",
+   "box": [
+    4,
+    0,
+    4,
+    12,
+    16,
+    12
+   ],
+   "sound": "metal",
+   "color": "color_light_gray",
+   "strength": 2,
+   "light": 13
+  },
+  {
+   "name": "court_mirror",
+   "kind": "facing",
+   "box": [
+    1,
+    0,
+    6,
+    15,
+    16,
+    10
+   ],
+   "sound": "glass",
+   "color": "gold",
+   "strength": 2,
+   "light": 4
+  },
+  {
+   "name": "maze_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "color_orange",
+   "strength": 2,
+   "light": 14
+  },
+  {
+   "name": "maze_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "color_orange",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "maze_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "color_orange",
+   "strength": 6
+  },
+  {
+   "name": "maze_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_black",
+   "strength": 2.5
+  },
+  {
+   "name": "ember_brazier",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    14,
+    14
+   ],
+   "sound": "metal",
+   "color": "color_orange",
+   "strength": 3,
+   "light": 14
+  },
+  {
+   "name": "bull_skull",
+   "kind": "facing",
+   "box": [
+    1,
+    0,
+    3,
+    15,
+    12,
+    13
+   ],
+   "sound": "bone_block",
+   "color": "sand",
+   "strength": 2
+  },
+  {
+   "name": "cinder_pile",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    6,
+    15
+   ],
+   "sound": "tuff",
+   "color": "color_black",
+   "strength": 1,
+   "light": 5
+  },
+  {
+   "name": "thread_spool",
+   "kind": "plain",
+   "box": [
+    4,
+    0,
+    4,
+    12,
+    10,
+    12
+   ],
+   "sound": "wool",
+   "color": "color_red",
+   "strength": 0.5
+  },
+  {
+   "name": "abyss_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "color_orange",
+   "strength": 2,
+   "light": 13
+  },
+  {
+   "name": "abyss_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "color_orange",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "abyss_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "color_orange",
+   "strength": 6
+  },
+  {
+   "name": "abyss_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_cyan",
+   "strength": 2.5
+  },
+  {
+   "name": "oil_barrels",
+   "kind": "plain",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    14,
+    15
+   ],
+   "sound": "wood",
+   "color": "color_cyan",
+   "strength": 2
+  },
+  {
+   "name": "rope_net",
+   "kind": "plain",
+   "box": [
+    0,
+    0,
+    0,
+    16,
+    16,
+    16
+   ],
+   "sound": "wool",
+   "color": "color_brown",
+   "strength": 0.5,
+   "solid": false
+  },
+  {
+   "name": "ship_wheel",
+   "kind": "facing",
+   "box": [
+    1,
+    0,
+    6,
+    15,
+    16,
+    10
+   ],
+   "sound": "wood",
+   "color": "color_cyan",
+   "strength": 2
+  },
+  {
+   "name": "diving_helmet",
+   "kind": "plain",
+   "box": [
+    3,
+    0,
+    3,
+    13,
+    10,
+    13
+   ],
+   "sound": "metal",
+   "color": "color_orange",
+   "strength": 2,
+   "light": 3
+  },
+  {
+   "name": "eclipse_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "gold",
+   "strength": 2,
+   "light": 14
+  },
+  {
+   "name": "eclipse_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "gold",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "eclipse_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "gold",
+   "strength": 6
+  },
+  {
+   "name": "eclipse_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_black",
+   "strength": 2.5
+  },
+  {
+   "name": "ash_censer",
+   "kind": "plain",
+   "box": [
+    3,
+    0,
+    3,
+    13,
+    15,
+    13
+   ],
+   "sound": "metal",
+   "color": "gold",
+   "strength": 2,
+   "light": 9
+  },
+  {
+   "name": "fallen_angel",
+   "kind": "facing",
+   "box": [
+    1,
+    0,
+    1,
+    15,
+    16,
+    15
+   ],
+   "sound": "stone",
+   "color": "color_black",
+   "strength": 4
+  },
+  {
+   "name": "black_pew",
+   "kind": "facing",
+   "box": [
+    0,
+    0,
+    3,
+    16,
+    12,
+    13
+   ],
+   "sound": "wood",
+   "color": "color_black",
+   "strength": 2
+  },
+  {
+   "name": "feather_drift",
+   "kind": "plain",
+   "box": [
+    0,
+    0,
+    0,
+    16,
+    3,
+    16
+   ],
+   "sound": "wool",
+   "color": "color_black",
+   "strength": 0.3,
+   "solid": false
+  },
+  {
+   "name": "hoard_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "gold",
+   "strength": 2,
+   "light": 13
+  },
+  {
+   "name": "hoard_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "gold",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "hoard_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "gold",
+   "strength": 6
+  },
+  {
+   "name": "hoard_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2.5
+  },
+  {
+   "name": "gold_pile",
+   "kind": "plain",
+   "box": [
+    0,
+    0,
+    0,
+    16,
+    10,
+    16
+   ],
+   "sound": "metal",
+   "color": "gold",
+   "strength": 2
+  },
+  {
+   "name": "dragon_egg",
+   "kind": "plain",
+   "box": [
+    3,
+    0,
+    3,
+    13,
+    15,
+    13
+   ],
+   "sound": "stone",
+   "color": "color_black",
+   "strength": 4,
+   "light": 7
+  },
+  {
+   "name": "wyrm_skull",
+   "kind": "facing",
+   "box": [
+    0,
+    0,
+    1,
+    16,
+    12,
+    15
+   ],
+   "sound": "bone_block",
+   "color": "sand",
+   "strength": 3
+  },
+  {
+   "name": "kobold_totem",
+   "kind": "facing",
+   "box": [
+    4,
+    0,
+    4,
+    12,
+    16,
+    12
+   ],
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1.5,
+   "light": 6
+  },
+  {
+   "name": "gorge_weapon_rack",
+   "kind": "facing",
+   "box": [
+    0,
+    0,
+    5,
+    16,
+    16,
+    11
+   ],
+   "sound": "wood",
+   "color": "wood",
+   "strength": 2
+  },
+  {
+   "name": "spire_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "metal",
+   "strength": 2,
+   "light": 13
+  },
+  {
+   "name": "spire_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "metal",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "spire_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 6
+  },
+  {
+   "name": "spire_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2.5
+  },
+  {
+   "name": "spire_hoard",
+   "kind": "hoard",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 4,
+   "light": 7
+  },
+  {
+   "name": "coil_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "metal",
+   "strength": 2,
+   "light": 13
+  },
+  {
+   "name": "coil_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "metal",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "coil_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 6
+  },
+  {
+   "name": "coil_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2.5
+  },
+  {
+   "name": "coil_hoard",
+   "kind": "hoard",
+   "sound": "wood",
+   "color": "color_green",
+   "strength": 4,
+   "light": 7
+  },
+  {
+   "name": "rime_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "metal",
+   "strength": 2,
+   "light": 13
+  },
+  {
+   "name": "rime_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "metal",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "rime_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 6
+  },
+  {
+   "name": "rime_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2.5
+  },
+  {
+   "name": "rime_hoard",
+   "kind": "hoard",
+   "sound": "wood",
+   "color": "color_light_blue",
+   "strength": 4,
+   "light": 7
+  },
+  {
+   "name": "minaret_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "metal",
+   "strength": 2,
+   "light": 14
+  },
+  {
+   "name": "minaret_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "metal",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "minaret_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 6
+  },
+  {
+   "name": "minaret_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2.5
+  },
+  {
+   "name": "minaret_hoard",
+   "kind": "hoard",
+   "sound": "wood",
+   "color": "color_yellow",
+   "strength": 4,
+   "light": 7
+  },
+  {
+   "name": "fang_lantern",
+   "kind": "lantern",
+   "sound": "lantern",
+   "color": "metal",
+   "strength": 2,
+   "light": 14
+  },
+  {
+   "name": "fang_chain",
+   "kind": "chain",
+   "sound": "chain",
+   "color": "metal",
+   "strength": 3,
+   "solid": false
+  },
+  {
+   "name": "fang_bars",
+   "kind": "bars",
+   "sound": "metal",
+   "color": "metal",
+   "strength": 6
+  },
+  {
+   "name": "fang_coffer",
+   "kind": "coffer",
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 2.5
+  },
+  {
+   "name": "fang_hoard",
+   "kind": "hoard",
+   "sound": "wood",
+   "color": "color_red",
+   "strength": 4,
+   "light": 7
+  },
+  {
+   "name": "ale_cask",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "archery_butts",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "catch_basket",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "churns_sacks",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "dugout",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "eel_traps",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "elf_arch",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "elf_banner",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "elf_lantern",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "fish_rack",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "forge_anvil",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "handcart",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "hay_cart",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "herb_rack",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "hoist_crane",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "lake_lantern",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "lift_basket",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "lift_cage",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "market_stall",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "mine_cart",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "moon_basin",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "mooring_post",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "net_rack",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "ore_pile",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "punt",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "rails",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "reed_sheaves",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "rope_bridge",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "rope_ladder",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "rune_door",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "scarecrow",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "signpost",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "skeps",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "stone_brazier",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "toll_barrier",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "tool_rack",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "washing_line",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "well",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "wheelbarrow",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "wind_chimes",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  },
+  {
+   "name": "woodpile",
+   "kind": "plain",
+   "box": [
+    2,
+    0,
+    2,
+    14,
+    16,
+    14
+   ],
+   "solid": false,
+   "sound": "wood",
+   "color": "color_brown",
+   "strength": 1
+  }
+ ]
+}

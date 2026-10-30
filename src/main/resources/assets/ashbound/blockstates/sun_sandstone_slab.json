@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/sun_sandstone_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/sun_sandstone_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/sun_sandstone"
+  }
+ }
+}

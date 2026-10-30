@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/slab",
+ "textures": {
+  "bottom": "ashbound:block/spiked_iron",
+  "top": "ashbound:block/spiked_iron",
+  "side": "ashbound:block/spiked_iron"
+ }
+}

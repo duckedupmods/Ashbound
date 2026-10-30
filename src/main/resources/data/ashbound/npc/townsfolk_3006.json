@@ -1,0 +1,81 @@
+{
+ "name": "Wendel Wick",
+ "title": "Merchant",
+ "tags": [
+  "townsfolk",
+  "merchant",
+  "adult",
+  "m"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Wendel. Trader, mostly. Survivor, always."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "topic": {
+   "text": [
+    "Gate salvage sells like fresh bread. Bring me some and we'll talk."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "A gate opened in a ruin past the old road last week. Guild sent three. One came back."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Coin first, questions after."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "How's trade?",
+     "go": "topic"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

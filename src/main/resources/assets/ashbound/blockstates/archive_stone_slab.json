@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/archive_stone_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/archive_stone"
+  },
+  "type=top": {
+   "model": "ashbound:block/archive_stone_slab_top"
+  }
+ }
+}

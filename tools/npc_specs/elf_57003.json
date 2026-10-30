@@ -1,0 +1,59 @@
+{
+ "id": "elf_57003",
+ "seed": 57003,
+ "recipe": "elf",
+ "role": "herbalist",
+ "rank": null,
+ "name": "Caladwen Starbark",
+ "title": "Herbalist",
+ "age": "teen",
+ "sex": "f",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "fair",
+ "hair": {
+  "style": "long",
+  "color": "silver"
+ },
+ "headwear": "hood",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "ice",
+  "brows": "soft",
+  "mouth": "cat",
+  "blush": false,
+  "freckles": true,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "sash",
+   "satchel"
+  ],
+  "colors": {
+   "top": "moss",
+   "bottom": "sand",
+   "accent": "wine",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "clasp",
+  "l": "clasp"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": "flowers",
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "elf"
+}

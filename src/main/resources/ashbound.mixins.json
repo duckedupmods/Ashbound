@@ -1,0 +1,22 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.snoringwalrus.ashbound.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "BeardifierMixin",
+    "NoiseChunkMixin",
+    "ChunkGeneratorMixin",
+    "NoiseBasedChunkGeneratorMixin",
+    "ChunkAccessMixin",
+    "SpringFeatureMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "LocalPlayerHurtMixin",
+    "WorldOpenFlowsMixin",
+    "ForgeCameraMixin"
+  ]
+}

@@ -1,0 +1,120 @@
+{
+ "name": "Lorien Silverleaf",
+ "title": "Songkeeper",
+ "tags": [
+  "elf",
+  "singer",
+  "teen",
+  "m",
+  "elf"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Lorien. I keep the songs, the long ones, the ones with nine hundred verses."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "Certainly. It will take until spring. Do sit."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "people": {
+   "text": [
+    "Nobody built these decks. We asked the boughs, and waited. It's a very different thing."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "other": {
+   "text": [
+    "A dwarf told me stone doesn't lie. Stone doesn't do anything, dear. That's rather the point of it."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "The Rotwood used to sing. I remember it. What sings there now isn't the same voice."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Ah. Another visitor. The last one was only eighty years ago."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "Will you sing something?",
+     "go": "trade"
+    },
+    {
+     "text": "Tell me about Lumenhollow.",
+     "go": "people"
+    },
+    {
+     "text": "What do you make of the dwarfs?",
+     "go": "other"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

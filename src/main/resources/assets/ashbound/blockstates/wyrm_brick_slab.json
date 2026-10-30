@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/wyrm_brick_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/wyrm_brick_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/wyrm_bricks"
+  }
+ }
+}

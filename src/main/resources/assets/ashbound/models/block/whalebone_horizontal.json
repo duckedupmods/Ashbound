@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column_horizontal",
+ "textures": {
+  "side": "ashbound:block/whalebone",
+  "end": "ashbound:block/whalebone_top"
+ }
+}

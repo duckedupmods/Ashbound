@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/hill_fieldstone_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/hill_fieldstone"
+  },
+  "type=top": {
+   "model": "ashbound:block/hill_fieldstone_slab_top"
+  }
+ }
+}

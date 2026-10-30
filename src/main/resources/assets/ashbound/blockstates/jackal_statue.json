@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/jackal_statue"
+  },
+  "facing=east": {
+   "model": "ashbound:block/jackal_statue",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/jackal_statue",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/jackal_statue",
+   "y": 270
+  }
+ }
+}

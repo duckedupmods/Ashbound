@@ -1,0 +1,5 @@
+{
+ "loader": "neoforge:obj",
+ "model": "ashbound:models/mesh/grave_candle_pendant_worn.obj",
+ "flip_v": true
+}

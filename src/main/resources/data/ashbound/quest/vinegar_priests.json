@@ -1,0 +1,11 @@
+{
+ "title": "Vinegar Priests",
+ "rank": "F",
+ "kill": "ashbound:drowned_vintner",
+ "count": 4,
+ "what": "Drowned Vintners",
+ "points": 30,
+ "coins": 45,
+ "text": "Men in rotten aprons are pouring something sour into the stream by the cellar ruin. The cattle that drink there stop moving, and then they start again.",
+ "repeat": true
+}

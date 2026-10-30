@@ -1,0 +1,5 @@
+{
+ "loader": "neoforge:obj",
+ "model": "ashbound:models/mesh/legion_sun_disc_worn.obj",
+ "flip_v": true
+}

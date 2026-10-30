@@ -1,0 +1,147 @@
+{
+ "buy": [
+  {
+   "item": {
+    "id": "minecraft:bread",
+    "count": 3
+   },
+   "price": 20
+  },
+  {
+   "item": {
+    "id": "minecraft:cooked_beef",
+    "count": 4
+   },
+   "price": 45
+  },
+  {
+   "item": {
+    "id": "minecraft:golden_carrot",
+    "count": 2
+   },
+   "price": 60
+  },
+  {
+   "item": {
+    "id": "minecraft:torch",
+    "count": 16
+   },
+   "price": 25
+  },
+  {
+   "item": {
+    "id": "minecraft:lantern"
+   },
+   "price": 40
+  },
+  {
+   "item": {
+    "id": "minecraft:lead"
+   },
+   "price": 30
+  },
+  {
+   "item": {
+    "id": "minecraft:arrow",
+    "count": 16
+   },
+   "price": 40
+  },
+  {
+   "item": {
+    "id": "minecraft:shield"
+   },
+   "price": 150
+  },
+  {
+   "item": {
+    "id": "minecraft:potion",
+    "components": {
+     "minecraft:potion_contents": {
+      "potion": "minecraft:healing"
+     }
+    }
+   },
+   "price": 120
+  },
+  {
+   "item": {
+    "id": "minecraft:splash_potion",
+    "components": {
+     "minecraft:potion_contents": {
+      "potion": "minecraft:healing"
+     }
+    }
+   },
+   "price": 160
+  },
+  {
+   "item": {
+    "id": "minecraft:potion",
+    "components": {
+     "minecraft:potion_contents": {
+      "potion": "minecraft:regeneration"
+     }
+    }
+   },
+   "price": 180
+  },
+  {
+   "item": {
+    "id": "minecraft:potion",
+    "components": {
+     "minecraft:potion_contents": {
+      "potion": "minecraft:fire_resistance"
+     }
+    }
+   },
+   "price": 200
+  }
+ ],
+ "sell": [
+  {
+   "item": "minecraft:rotten_flesh",
+   "price": 2
+  },
+  {
+   "item": "minecraft:bone",
+   "price": 3
+  },
+  {
+   "item": "minecraft:string",
+   "price": 3
+  },
+  {
+   "item": "minecraft:spider_eye",
+   "price": 4
+  },
+  {
+   "item": "minecraft:leather",
+   "price": 5
+  },
+  {
+   "item": "minecraft:gunpowder",
+   "price": 6
+  },
+  {
+   "item": "minecraft:feather",
+   "price": 2
+  },
+  {
+   "item": "minecraft:iron_nugget",
+   "price": 2
+  },
+  {
+   "item": "minecraft:gold_nugget",
+   "price": 4
+  },
+  {
+   "item": "minecraft:ender_pearl",
+   "price": 25
+  },
+  {
+   "item": "minecraft:emerald",
+   "price": 40
+  }
+ ]
+}

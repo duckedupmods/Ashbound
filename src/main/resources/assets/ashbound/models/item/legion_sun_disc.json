@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/legion_sun_disc.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0.052,
+     1.722,
+     0.112
+    ],
+    "scale": [
+     0.7946,
+     0.7946,
+     0.7946
+    ]
+   },
+   "ground": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0.026,
+     0.861,
+     0
+    ],
+    "scale": [
+     0.3973,
+     0.3973,
+     0.3973
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0.052,
+     1.722,
+     0.112
+    ],
+    "scale": [
+     0.7946,
+     0.7946,
+     0.7946
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3178,
+     0.3178,
+     0.3178
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3178,
+     0.3178,
+     0.3178
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3178,
+     0.3178,
+     0.3178
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.3178,
+     0.3178,
+     0.3178
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

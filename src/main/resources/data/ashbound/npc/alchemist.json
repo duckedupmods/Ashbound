@@ -1,0 +1,134 @@
+{
+ "name": "Wenna Morrow",
+ "title": "Phial-Keeper",
+ "start": "start",
+ "nodes": {
+  "start": {
+   "go_if": [
+    [
+     "flag:met_alchemist",
+     "regular"
+    ]
+   ],
+   "text": [
+    "Don't touch the green one. Don't touch any of them, actually. Hands where I can see them.",
+    "You've the look of somebody who goes into the gates. You'll want things that close holes in you faster than they open. That's my trade."
+   ],
+   "options": [
+    {
+     "text": "What do you sell?",
+     "do": "flag:met_alchemist",
+     "go": "sell"
+    },
+    {
+     "text": "What's in the vials on your chest?",
+     "do": "flag:met_alchemist",
+     "go": "vials"
+    },
+    {
+     "text": "Show me your wares.",
+     "do": "flag:met_alchemist;shop"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "regular": {
+   "text": [
+    "{player}. Still breathing. My potions or your luck?"
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "What do you buy?",
+     "go": "buy"
+    },
+    {
+     "text": "Any advice for the gates?",
+     "go": "advice"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "sell": {
+   "text": [
+    "Mending draughts, the red ones. Dark-sight for the Crypt, gill-water for the Cellar, a slowfall for anyone fool enough to climb Gallows Hill in the wind.",
+    "Strength, if you can pay for it. It tastes of iron and burns going down. That's how you know it's working."
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "What do you buy?",
+     "go": "buy"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "buy": {
+   "text": [
+    "Spider eyes. Glowstone. Wart, if anyone still goes down to the Nether.",
+    "And what the gates leave. Rot-mycelium, corpse wax, cork that's been soaking in something for a hundred years. Good bases, all of them. Better in my pot than on your boots."
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "vials": {
+   "text": [
+    "Green: it stops the heart for a breath, then starts it again harder. Red: it does the opposite. The violet one... the violet one's mine.",
+    "I tried one of each on a man from the Crypt once, the thing that came out of it, I mean. The green worked. Twice."
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "Any advice for the gates?",
+     "go": "advice"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "advice": {
+   "text": [
+    "Drink before, not during. The dead don't wait while you uncork.",
+    "And if something in there spits on you and it fizzes, come straight to me. Don't go to the chapel. Prayer's slower."
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

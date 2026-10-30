@@ -1,0 +1,1130 @@
+[
+ {
+  "title": "The Road to Highmourn",
+  "sub": "You came out of a crack in the world with nothing. Find the city.",
+  "quests": [
+   {
+    "key": "the_road/capital",
+    "title": "Find Highmourn",
+    "text": "You woke in the ash with the clothes on your back and a crack in the world closing behind you. Every road in these lands runs to one city, and it's a long way off. Follow the compass and the roads. You'll know the walls when you see them.",
+    "flag": "story/capital",
+    "deps": [],
+    "where": "capital",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_road/gate_of_oaths",
+    "title": "The Gate of Oaths",
+    "text": "Highmourn's south gate stands open to anyone who'll keep the peace inside it. Walk in.",
+    "flag": "story/reach_gate_of_oaths",
+    "deps": [
+     "the_road/capital"
+    ],
+    "where": "at:0,175",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 18
+   },
+   {
+    "key": "the_road/dunstan",
+    "title": "A Bed and a Word",
+    "text": "A stranger's first stop is the Pilgrim's Rest, on the green west of the High Street. Ask Dunstan Pell what's being said.",
+    "flag": "story/meet_dunstan",
+    "deps": [
+     "the_road/gate_of_oaths"
+    ],
+    "where": "at:-117,123",
+    "who": "innkeeper",
+    "say": [
+     "You've the look of someone the road spat out. Sit. The first one's on the house, and so is this.",
+     "Highmourn feeds people who work. See the market so you know what things cost, then get up to the guild hall and ask for Elowen."
+    ],
+    "reply": "Thanks, Dunstan.",
+    "reach": 0
+   },
+   {
+    "key": "the_road/market",
+    "title": "The Market",
+    "text": "Follow the High Street to the fountain. Everything in this city that can be sold is sold here, and the waystone by it will bring you back from anywhere. Touch it. Every village has one too.",
+    "flag": "story/reach_market",
+    "deps": [
+     "the_road/dunstan"
+    ],
+    "where": "at:-30,92",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 16
+   },
+   {
+    "key": "the_road/guild_square",
+    "title": "The Guild Square",
+    "text": "Stair Street and the grand stair take you up the bank to the Guild Square. The hall is the one with the clock.",
+    "flag": "story/reach_guild_square",
+    "deps": [
+     "the_road/market"
+    ],
+    "where": "at:0,-91",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 14
+   },
+   {
+    "key": "the_road/guild",
+    "title": "Sign the Guild's Register",
+    "text": "Elowen keeps the register at the first desk in the Hall of Quests, the guild hall's west wing. Nobody fights the gates without a card.",
+    "flag": "story/registered",
+    "deps": [
+     "the_road/guild_square"
+    ],
+    "where": "at:-12,-117",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_road/halvard",
+    "title": "Behind the Desk",
+    "text": "Elowen says the Guild Master wants a look at anyone new. Halvard Saltblood is across the hall.",
+    "flag": "story/meet_halvard",
+    "deps": [
+     "the_road/guild"
+    ],
+    "where": "at:13,-109",
+    "who": "guild_master",
+    "say": [
+     "So you're the one the road spat out. Elowen has you down as F. That's fair.",
+     "Hear me. The gates are opening faster than I can close them, and I've buried better than you. Read the board. Then walk this city and meet the people holding it up. You'll need every one of them."
+    ],
+    "reply": "Where do I start?",
+    "reach": 0
+   },
+   {
+    "key": "the_road/board",
+    "title": "The Gate Board",
+    "text": "Ask Elowen to show you the requests. They're how the Guild pays, and how your rank climbs.",
+    "flag": "story/board",
+    "deps": [
+     "the_road/halvard"
+    ],
+    "where": "at:-12,-117",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   }
+  ]
+ },
+ {
+  "title": "Know the City",
+  "sub": "Halvard's orders: learn who keeps Highmourn standing.",
+  "quests": [
+   {
+    "key": "know_the_city/brann",
+    "title": "The Quartermaster",
+    "text": "Brann Holt sells the Guild's kit, just east of the square.",
+    "flag": "story/meet_brann",
+    "deps": [
+     "the_road/board"
+    ],
+    "where": "at:35,-92",
+    "who": "quartermaster",
+    "say": [
+     "Halvard sent you? Then you're short of everything.",
+     "Coin buys from me, and the Guild pays coin for requests. Ash is another matter: Ash is for the Tree, not my shelves. Press K when you've got some. Now go and see Garrick in the yard, before you hurt yourself."
+    ],
+    "reply": "Understood.",
+    "reach": 0
+   },
+   {
+    "key": "know_the_city/garrick",
+    "title": "The Training Yard",
+    "text": "Garrick runs the butts in the training yard, west of the square.",
+    "flag": "story/meet_garrick",
+    "deps": [
+     "know_the_city/brann"
+    ],
+    "where": "at:-41,-99",
+    "who": "hunter",
+    "say": [
+     "Easy. Halvard's stray, is it?",
+     "I hunt what comes out of the gates so the farms don't have to. Your guard and your feet keep you alive in there. Learn them here, on something that can't kill you. Then see Hesta. A good arm's wasted on bad steel."
+    ],
+    "reply": "I'll go.",
+    "reach": 0
+   },
+   {
+    "key": "know_the_city/hesta",
+    "title": "The Gatesmith",
+    "text": "Hesta Kell keeps the smithy on the terrace, west of the yard.",
+    "flag": "story/meet_hesta",
+    "deps": [
+     "know_the_city/garrick"
+    ],
+    "where": "at:-66,-122",
+    "who": "smith",
+    "say": [
+     "What falls out of the gates, I make into what goes back into them. Plain work, done right.",
+     "The great work's down in the Ashforge with Wendel. He'll want to see you."
+    ],
+    "reply": "On my way.",
+    "reach": 0
+   },
+   {
+    "key": "know_the_city/wendel",
+    "title": "The Ashforge",
+    "text": "Wendel Blackwood is Forgemaster of the Ashforge, in the west of the lower city.",
+    "flag": "story/meet_wendel",
+    "deps": [
+     "know_the_city/hesta"
+    ],
+    "where": "at:-104,-49",
+    "who": "forgemaster",
+    "say": [
+     "Stand back from the sparks. Hesta sends me everyone who's never held a hammer. Fine.",
+     "Bring me what a gate drops and you'll strike with me, and the piece will be as good as your timing. Not before. Now, if you've the stomach for it, there's someone at the Rat's Nest who knows what the Guild doesn't."
+    ],
+    "reply": "I'll find them.",
+    "reach": 0
+   },
+   {
+    "key": "know_the_city/rook",
+    "title": "The Rat's Nest",
+    "text": "Rook keeps a door in the Hearth ward that most people walk past.",
+    "flag": "story/meet_rook",
+    "deps": [
+     "know_the_city/wendel"
+    ],
+    "where": "at:-116,3",
+    "who": "fence",
+    "say": [
+     "Never met you. Neither of us was here.",
+     "I buy what the Guild doesn't ask about and I hear what it doesn't want heard. West of here there's a quarter this city pretends it hasn't got. Walk it once. Keep your hands where they can see them."
+    ],
+    "reply": "Noted.",
+    "reach": 0
+   },
+   {
+    "key": "know_the_city/hornsend",
+    "title": "Hornsend",
+    "text": "The demons Highmourn won't house live in Hornsend, at the city's west end. Walk through it. They've done you no harm.",
+    "flag": "story/reach_hornsend",
+    "deps": [
+     "know_the_city/rook"
+    ],
+    "where": "at:-161,39",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 16
+   },
+   {
+    "key": "know_the_city/wenna",
+    "title": "The Phial-Keeper",
+    "text": "Wenna Morrow keeps the apothecary by the market.",
+    "flag": "story/meet_wenna",
+    "deps": [
+     "know_the_city/hornsend"
+    ],
+    "where": "at:-58,89",
+    "who": "alchemist",
+    "say": [
+     "You should have a healer's worry on you by now, and if you don't, you will.",
+     "Buy your vials before the gate, not after. It's never after. And when you're done here, go east, past the river. Elske likes to look at the new ones."
+    ],
+    "reply": "I will.",
+    "reach": 0
+   },
+   {
+    "key": "know_the_city/elske",
+    "title": "The Arcanum",
+    "text": "Elske Barrow is Archmage of the Arcanum, in its tower in the east of the city.",
+    "flag": "story/meet_elske",
+    "deps": [
+     "know_the_city/wenna"
+    ],
+    "where": "at:188,-64",
+    "who": "archmage",
+    "say": [
+     "Halvard's list, is it? Every stray is on it.",
+     "Everyone has mana, even you. Whether you learn what it's for is your business, and my doors are open if you do. Go up to the citadel next. Mother Ysolde asks to see everyone before the gates do."
+    ],
+    "reply": "Thank you, Archmage.",
+    "reach": 0
+   },
+   {
+    "key": "know_the_city/ysolde",
+    "title": "The Sanctuary of Embers",
+    "text": "Take the Stair of Champions up to the citadel. Mother Ysolde tends the Pale Flame in the Sanctuary, east of the court.",
+    "flag": "story/meet_ysolde",
+    "deps": [
+     "know_the_city/elske"
+    ],
+    "where": "at:55,-169",
+    "who": "priestess",
+    "say": [
+     "You came up past the eight on the stair. Every one of them stood where you're standing.",
+     "Come back to me when you're hurt. There's no shame in it. Look in on the Keep as you cross the court, and then go and see the Hall of Heroes. Someone should read those names."
+    ],
+    "reply": "I will, Mother.",
+    "reach": 0
+   },
+   {
+    "key": "know_the_city/keep",
+    "title": "The Lord's Keep",
+    "text": "The Lord of Highmourn holds the great hall in the Keep, west across the court. See who you're fighting for.",
+    "flag": "story/reach_keep",
+    "deps": [
+     "know_the_city/ysolde"
+    ],
+    "where": "at:-73,-166",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 12
+   },
+   {
+    "key": "know_the_city/heroes",
+    "title": "The Hall of Heroes",
+    "text": "Behind the citadel the Guild keeps its dead. Go and read the names.",
+    "flag": "story/reach_heroes",
+    "deps": [
+     "know_the_city/keep"
+    ],
+    "where": "at:3,-248",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 12
+   },
+   {
+    "key": "know_the_city/report",
+    "title": "Report to Halvard",
+    "text": "You've seen the city. Go back down to the guild hall and tell Halvard.",
+    "flag": "story/meet_report",
+    "deps": [
+     "know_the_city/heroes"
+    ],
+    "where": "at:13,-109",
+    "who": "guild_master",
+    "say": [
+     "You found your way back. Good. Now you know who's holding this city up, and whose names are on that wall.",
+     "No more walking. There are cracks on the roads and the board's full of them. Go through one. Put down what rules it. Come back."
+    ],
+    "reply": "I'll close one.",
+    "reach": 0
+   }
+  ]
+ },
+ {
+  "title": "First Blood",
+  "sub": "Your first gate, and the first blade you make from it.",
+  "quests": [
+   {
+    "key": "first_blood/first_gate",
+    "title": "Close a Gate",
+    "text": "The cracks in the world open wherever they please. Go through one, and put down what rules it.",
+    "flag": "story/first_gate",
+    "deps": [
+     "know_the_city/report"
+    ],
+    "where": "gate:F",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "first_blood/first_forge",
+    "title": "Work the Anvil",
+    "text": "Take what the gate dropped to Wendel Blackwood in the Ashforge, and strike with him.",
+    "flag": "story/first_forge",
+    "deps": [
+     "first_blood/first_gate"
+    ],
+    "where": "at:-104,-49",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "first_blood/masterwork",
+    "title": "A Masterwork",
+    "text": "Keep time with the master. Do it well enough and he'll make that piece for you from then on.",
+    "flag": "story/masterwork",
+    "deps": [
+     "first_blood/first_forge"
+    ],
+    "where": "at:-104,-49",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "first_blood/plus_five",
+    "title": "Raised to +5",
+    "text": "Upgrades at the Gate Forge. A poor run wastes the drops, never the piece.",
+    "flag": "story/plus_five",
+    "deps": [
+     "first_blood/masterwork"
+    ],
+    "where": "at:-104,-49",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "first_blood/boss_weapon",
+    "title": "A Boss's Own Weapon",
+    "text": "One boss in five leaves its weapon behind. Keep them, even the doubles: an old forge may want them.",
+    "flag": "story/boss_weapon",
+    "deps": [
+     "first_blood/plus_five"
+    ],
+    "where": "gate:F",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "first_blood/rank_e",
+    "title": "Rank E",
+    "text": "Finish requests from the board for Guild Points, then ask Elowen for an evaluation.",
+    "flag": "story/rank_e",
+    "deps": [
+     "first_blood/boss_weapon"
+    ],
+    "where": "at:-12,-117",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   }
+  ]
+ },
+ {
+  "title": "The Cold Forge",
+  "sub": "Something under the Ashforge is older than the city.",
+  "quests": [
+   {
+    "key": "the_cold_forge/told",
+    "title": "An Old Rumour",
+    "text": "Ask Wendel Blackwood about the dead forge below the armoury.",
+    "flag": "cold/told",
+    "deps": [
+     "first_blood/rank_e"
+    ],
+    "where": "at:-104,-49",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_cold_forge/seen",
+    "title": "Cold Stone",
+    "text": "Go down the stair in the armoury and put your hand on it.",
+    "flag": "cold/seen",
+    "deps": [
+     "the_cold_forge/told"
+    ],
+    "where": "at:-125,-50",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_cold_forge/hunt",
+    "title": "What the Stone Wants",
+    "text": "Tell Wendel what you saw.",
+    "flag": "cold/hunt",
+    "deps": [
+     "the_cold_forge/seen"
+    ],
+    "where": "at:-104,-49",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_cold_forge/shard_e",
+    "title": "Shard of the First Fire",
+    "text": "Rank E: kill a gate's boss with the hunt in mind, and take what falls out of it.",
+    "flag": "cold/shard_e",
+    "deps": [
+     "the_cold_forge/hunt"
+    ],
+    "where": "gate:E",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_cold_forge/rank_d",
+    "title": "Rank D",
+    "text": "The next shard is deeper than your card allows. Earn your evaluation from Elowen.",
+    "flag": "story/rank_d",
+    "deps": [
+     "the_cold_forge/shard_e"
+    ],
+    "where": "at:-12,-117",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_cold_forge/shard_d",
+    "title": "Shard of the Second Fire",
+    "text": "Rank D: the same, deeper in.",
+    "flag": "cold/shard_d",
+    "deps": [
+     "the_cold_forge/rank_d"
+    ],
+    "where": "gate:D",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_cold_forge/rank_c",
+    "title": "Rank C",
+    "text": "One more rank, and one more shard.",
+    "flag": "story/rank_c",
+    "deps": [
+     "the_cold_forge/shard_d"
+    ],
+    "where": "at:-12,-117",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_cold_forge/shard_c",
+    "title": "Shard of the Third Fire",
+    "text": "Rank C: the last of them.",
+    "flag": "cold/shard_c",
+    "deps": [
+     "the_cold_forge/rank_c"
+    ],
+    "where": "gate:C",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_cold_forge/ember",
+    "title": "The First Ember",
+    "text": "Bring all three shards to Wendel. Stand back when he says so.",
+    "flag": "cold/ember",
+    "deps": [
+     "the_cold_forge/shard_c"
+    ],
+    "where": "at:-104,-49",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_cold_forge/lit",
+    "title": "The Cold Forge Wakes",
+    "text": "Press the Ember to the stone.",
+    "flag": "cold/lit",
+    "deps": [
+     "the_cold_forge/ember"
+    ],
+    "where": "at:-125,-50",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_cold_forge/brand",
+    "title": "The Founder's Brand",
+    "text": "It burns, but it won't work for you. Ask Wendel why.",
+    "flag": "cold/brand",
+    "deps": [
+     "the_cold_forge/lit"
+    ],
+    "where": "at:-104,-49",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_cold_forge/proved",
+    "title": "The Forge's Trial",
+    "text": "Press the Brand to the altar, and put down what comes. Bring friends.",
+    "flag": "cold/proved",
+    "deps": [
+     "the_cold_forge/brand"
+    ],
+    "where": "at:-125,-50",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_cold_forge/joined",
+    "title": "Two Made One",
+    "text": "Lay two boss weapons of a kind in its hands, and hold them together when they fight you.",
+    "flag": "cold/joined",
+    "deps": [
+     "the_cold_forge/proved"
+    ],
+    "where": "at:-125,-50",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   }
+  ]
+ },
+ {
+  "title": "The Deep Gates",
+  "sub": "Nobody's come back from the high ones to say what's in them.",
+  "quests": [
+   {
+    "key": "the_deep_gates/rank_b",
+    "title": "Rank B",
+    "text": "Elowen will see you for an evaluation when the points are there.",
+    "flag": "story/rank_b",
+    "deps": [
+     "the_cold_forge/joined"
+    ],
+    "where": "at:-12,-117",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_deep_gates/gate_b",
+    "title": "A Rank B Gate",
+    "text": "Close one.",
+    "flag": "story/gate_b",
+    "deps": [
+     "the_deep_gates/rank_b"
+    ],
+    "where": "gate:B",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_deep_gates/rank_a",
+    "title": "Rank A",
+    "text": "Few get this far. Elowen will write it in herself.",
+    "flag": "story/rank_a",
+    "deps": [
+     "the_deep_gates/gate_b"
+    ],
+    "where": "at:-12,-117",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_deep_gates/gate_a",
+    "title": "A Rank A Gate",
+    "text": "Close one.",
+    "flag": "story/gate_a",
+    "deps": [
+     "the_deep_gates/rank_a"
+    ],
+    "where": "gate:A",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_deep_gates/rank_s",
+    "title": "Rank S",
+    "text": "The last card the Guild prints without a council.",
+    "flag": "story/rank_s",
+    "deps": [
+     "the_deep_gates/gate_a"
+    ],
+    "where": "at:-12,-117",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_deep_gates/gate_s",
+    "title": "A Rank S Gate",
+    "text": "Close one. Take friends.",
+    "flag": "story/gate_s",
+    "deps": [
+     "the_deep_gates/rank_s"
+    ],
+    "where": "gate:S",
+    "who": "",
+    "say": [],
+    "reply": "Go on.",
+    "reach": 0
+   },
+   {
+    "key": "the_deep_gates/name",
+    "title": "A Name in the Hall",
+    "text": "Halvard wants you at the guild hall.",
+    "flag": "story/meet_name",
+    "deps": [
+     "the_deep_gates/gate_s"
+    ],
+    "where": "at:13,-109",
+    "who": "guild_master",
+    "say": [
+     "S. I've written that word on a card twice in thirty years, and the other one's in the Hall of Heroes.",
+     "You came through my door with mud on your boots and nothing to your name. It's on the wall now. Large, and at the front. The gates aren't done with us. But they've learned what comes through them."
+    ],
+    "reply": "They have.",
+    "reach": 0
+   }
+  ]
+ },
+ {
+  "title": "The Hunter's Ledger",
+  "sub": "Every boss of the gates and towers, rank by rank.",
+  "quests": [
+   {
+    "key": "hunters_ledger/cellar",
+    "title": "The Cask Mother",
+    "text": "Rank F: The Drowned Cellar. Put down what rules it.",
+    "flag": "kill/cask_mother",
+    "deps": [],
+    "where": "gate:F",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/gallows",
+    "title": "The Hangman",
+    "text": "Rank F: Gallows Hill. Put down what rules it.",
+    "flag": "kill/hangman",
+    "deps": [],
+    "where": "gate:F",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/rotwood",
+    "title": "The Mossking",
+    "text": "Rank F: The Rotwood. Put down what rules it.",
+    "flag": "kill/mossking",
+    "deps": [],
+    "where": "gate:F",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/crypt",
+    "title": "The Pale Abbot",
+    "text": "Rank E: The Crypt. Put down what rules it.",
+    "flag": "kill/pale_abbot",
+    "deps": [
+     "hunters_ledger/cellar"
+    ],
+    "where": "gate:E",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/weeping_mine",
+    "title": "The Vein",
+    "text": "Rank E: The Weeping Mine. Put down what rules it.",
+    "flag": "kill/the_vein",
+    "deps": [
+     "hunters_ledger/cellar"
+    ],
+    "where": "gate:E",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/tide_chapel",
+    "title": "Drowned Bell",
+    "text": "Rank E: The Tide Chapel. Put down what rules it.",
+    "flag": "kill/drowned_bell",
+    "deps": [
+     "hunters_ledger/cellar"
+    ],
+    "where": "gate:E",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/brigands_gorge",
+    "title": "Red Jack",
+    "text": "Rank E: The Brigand's Gorge. Put down what rules it.",
+    "flag": "kill/red_jack",
+    "deps": [
+     "hunters_ledger/cellar"
+    ],
+    "where": "gate:E",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/plague",
+    "title": "The Surgeon",
+    "text": "Rank D: The Plague Ward. Put down what rules it.",
+    "flag": "kill/surgeon",
+    "deps": [
+     "hunters_ledger/crypt"
+    ],
+    "where": "gate:D",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/rookery",
+    "title": "Raven Mother",
+    "text": "Rank D: The Rookery. Put down what rules it.",
+    "flag": "kill/raven_mother",
+    "deps": [
+     "hunters_ledger/crypt"
+    ],
+    "where": "gate:D",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/hollow_circus",
+    "title": "Ringmaster",
+    "text": "Rank D: The Hollow Circus. Put down what rules it.",
+    "flag": "kill/ringmaster",
+    "deps": [
+     "hunters_ledger/crypt"
+    ],
+    "where": "gate:D",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/mirefen_coven",
+    "title": "Mother Mire",
+    "text": "Rank D: The Mirefen Coven. Put down what rules it.",
+    "flag": "kill/mother_mire",
+    "deps": [
+     "hunters_ledger/crypt"
+    ],
+    "where": "gate:D",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/temple",
+    "title": "The Faceless Sovereign",
+    "text": "Rank C: The Faceless Temple. Put down what rules it.",
+    "flag": "kill/sovereign",
+    "deps": [
+     "hunters_ledger/plague"
+    ],
+    "where": "gate:C",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/ossuary",
+    "title": "The Assembler",
+    "text": "Rank C: The Ossuary Engine. Put down what rules it.",
+    "flag": "kill/assembler",
+    "deps": [
+     "hunters_ledger/plague"
+    ],
+    "where": "gate:C",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/foundry",
+    "title": "Ossric, the Kiln-Father",
+    "text": "Rank C: The Slag Foundry. Put down what rules it.",
+    "flag": "kill/ossric",
+    "deps": [
+     "hunters_ledger/plague"
+    ],
+    "where": "gate:C",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/sandsunk_tomb",
+    "title": "Sun King",
+    "text": "Rank C: The Sandsunk Tomb. Put down what rules it.",
+    "flag": "kill/sun_king",
+    "deps": [
+     "hunters_ledger/plague"
+    ],
+    "where": "gate:C",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/clockwork_spire",
+    "title": "Grand Horologe",
+    "text": "Rank C: The Clockwork Spire. Put down what rules it.",
+    "flag": "kill/grand_horologe",
+    "deps": [
+     "hunters_ledger/plague"
+    ],
+    "where": "gate:C",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/serpent_ziggurat",
+    "title": "Coiled King",
+    "text": "Rank C: The Coiled Spire. Put down what rules it.",
+    "flag": "kill/coiled_king",
+    "deps": [
+     "hunters_ledger/plague"
+    ],
+    "where": "gate:C",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/warlords_fang",
+    "title": "Gorrak",
+    "text": "Rank C: The Warlord's Fang. Put down what rules it.",
+    "flag": "kill/gorrak",
+    "deps": [
+     "hunters_ledger/plague"
+    ],
+    "where": "gate:C",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/frost",
+    "title": "The Winter Marshal",
+    "text": "Rank B: The Frozen Procession. Put down what rules it.",
+    "flag": "kill/winter_marshal",
+    "deps": [
+     "hunters_ledger/temple"
+    ],
+    "where": "gate:B",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/silk",
+    "title": "The Silk Queen",
+    "text": "Rank B: The Silk Archive. Put down what rules it.",
+    "flag": "kill/silk_queen",
+    "deps": [
+     "hunters_ledger/temple"
+    ],
+    "where": "gate:B",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/fallen_titan",
+    "title": "Still Heart",
+    "text": "Rank B: The Fallen Titan. Put down what rules it.",
+    "flag": "kill/still_heart",
+    "deps": [
+     "hunters_ledger/temple"
+    ],
+    "where": "gate:B",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/jade_monastery",
+    "title": "Thousand Hands",
+    "text": "Rank B: The Jade Monastery. Put down what rules it.",
+    "flag": "kill/thousand_hands",
+    "deps": [
+     "hunters_ledger/temple"
+    ],
+    "where": "gate:B",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/rimeholt",
+    "title": "Jarl Hrimgar",
+    "text": "Rank B: Rimeholt. Put down what rules it.",
+    "flag": "kill/jarl_hrimgar",
+    "deps": [
+     "hunters_ledger/temple"
+    ],
+    "where": "gate:B",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/glass_minaret",
+    "title": "Djinn Sultan",
+    "text": "Rank B: The Glass Minaret. Put down what rules it.",
+    "flag": "kill/djinn_sultan",
+    "deps": [
+     "hunters_ledger/temple"
+    ],
+    "where": "gate:B",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/storm_bastion",
+    "title": "Thunder Abbess",
+    "text": "Rank A: The Storm Bastion. Put down what rules it.",
+    "flag": "kill/thunder_abbess",
+    "deps": [
+     "hunters_ledger/frost"
+    ],
+    "where": "gate:A",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/bloodmoon_court",
+    "title": "Countess Vael",
+    "text": "Rank A: The Bloodmoon Court. Put down what rules it.",
+    "flag": "kill/countess_vael",
+    "deps": [
+     "hunters_ledger/frost"
+    ],
+    "where": "gate:A",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/obsidian_labyrinth",
+    "title": "Minotaur",
+    "text": "Rank A: The Obsidian Labyrinth. Put down what rules it.",
+    "flag": "kill/minotaur",
+    "deps": [
+     "hunters_ledger/frost"
+    ],
+    "where": "gate:A",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/abyssal_lighthouse",
+    "title": "Keeper In Light",
+    "text": "Rank S: The Abyssal Lighthouse. Put down what rules it.",
+    "flag": "kill/keeper_in_light",
+    "deps": [
+     "hunters_ledger/storm_bastion"
+    ],
+    "where": "gate:S",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/eclipse_cathedral",
+    "title": "Fallen Seraph",
+    "text": "Rank S: The Eclipse Cathedral. Put down what rules it.",
+    "flag": "kill/fallen_seraph",
+    "deps": [
+     "hunters_ledger/storm_bastion"
+    ],
+    "where": "gate:S",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   },
+   {
+    "key": "hunters_ledger/wyrms_hoard",
+    "title": "Ignavar",
+    "text": "Rank S: The Wyrm's Hoard. Put down what rules it.",
+    "flag": "kill/ignavar",
+    "deps": [
+     "hunters_ledger/storm_bastion"
+    ],
+    "where": "gate:S",
+    "who": "",
+    "say": [],
+    "reply": "",
+    "reach": 0
+   }
+  ]
+ }
+]

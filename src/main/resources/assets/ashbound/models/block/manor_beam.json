@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column",
+ "textures": {
+  "side": "ashbound:block/manor_beam",
+  "end": "ashbound:block/manor_beam_top"
+ }
+}

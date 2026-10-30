@@ -1,0 +1,61 @@
+{
+ "id": "demon_91034",
+ "seed": 91034,
+ "recipe": "demon",
+ "role": "elder",
+ "rank": null,
+ "name": "Amends Hornsend",
+ "title": "Old One",
+ "age": "elder",
+ "sex": "f",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "ember",
+ "hair": {
+  "style": "long",
+  "color": "white"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "closed",
+  "iris": "violet",
+  "brows": "stern",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "wrinkles"
+  ],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "mantle",
+   "sash"
+  ],
+  "colors": {
+   "top": "brown",
+   "bottom": "brown",
+   "accent": "mustard",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "cane",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "demon"
+}

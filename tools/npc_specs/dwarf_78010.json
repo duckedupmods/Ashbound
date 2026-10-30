@@ -1,0 +1,58 @@
+{
+ "id": "dwarf_78010",
+ "seed": 78010,
+ "recipe": "dwarf",
+ "role": "child",
+ "rank": null,
+ "name": "Pim",
+ "title": "Child",
+ "age": "kid",
+ "sex": "m",
+ "build": "average",
+ "hunch": 0,
+ "skin": "tan",
+ "hair": {
+  "style": "shaggy",
+  "color": "ash_blonde"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "round",
+  "iris": "brown",
+  "brows": "stern",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "tunic",
+  "bottom": "shorts",
+  "sleeves": "long",
+  "overs": [
+   "belt"
+  ],
+  "colors": {
+   "top": "red",
+   "bottom": "brown",
+   "accent": "oxblood",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "clasp",
+  "l": "clasp"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": "bread",
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "dwarf"
+}

@@ -1,0 +1,63 @@
+{
+ "name": "Wick",
+ "title": "Child",
+ "tags": [
+  "demon",
+  "child",
+  "kid",
+  "m",
+  "demon"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "I'm Wick. Are you a knight? Knights are scared of us. You don't look scared."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "trade": {
+   "text": [
+    "Racing the rats on Ash Row. The rats are winning. They've got more legs."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Welcome to Hornsend. Mind your purse, not because of us. The city's watch comes through here."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "What are you up to?",
+     "go": "trade"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

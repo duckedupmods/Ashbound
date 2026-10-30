@@ -1,0 +1,12 @@
+{
+ "title": "Close It Before Dark",
+ "rank": "E",
+ "text": "The farms have seen a gate in the fields, and the lights in it aren't lanterns. Go in and put down what rules it.",
+ "gate": "E",
+ "what": "Rank E Gate",
+ "count": 1,
+ "points": 80,
+ "coins": 110,
+ "ash": 60,
+ "icon": "minecraft:ender_eye"
+}

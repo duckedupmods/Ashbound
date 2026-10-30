@@ -1,0 +1,58 @@
+{
+ "id": "demon_91027",
+ "seed": 91027,
+ "recipe": "demon",
+ "role": "cook",
+ "rank": null,
+ "name": "Mercy Stepdown",
+ "title": "Pot Cook",
+ "age": "adult",
+ "sex": "m",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "ember",
+ "hair": {
+  "style": "shaggy",
+  "color": "black"
+ },
+ "headwear": "bandana",
+ "beard": null,
+ "face": {
+  "eye": "sleepy",
+  "iris": "gold",
+  "brows": "soft",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "shirt",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "apron"
+  ],
+  "colors": {
+   "top": "charcoal",
+   "bottom": "brown",
+   "accent": "oxblood",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "demon"
+}

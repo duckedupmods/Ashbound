@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/outer_stairs",
+ "textures": {
+  "bottom": "ashbound:block/cask_oak",
+  "top": "ashbound:block/cask_oak",
+  "side": "ashbound:block/cask_oak"
+ }
+}

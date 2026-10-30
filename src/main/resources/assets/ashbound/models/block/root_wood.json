@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column",
+ "textures": {
+  "side": "ashbound:block/root_wood",
+  "end": "ashbound:block/root_wood_top"
+ }
+}

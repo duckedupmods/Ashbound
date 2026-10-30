@@ -1,0 +1,33 @@
+{
+ "name": "demon",
+ "race": "demon",
+ "_doc": "Hornsend's folk: those who walked out of the gates and stayed. Lean, horned, tailed, skin of ember, char or dusk, in patched working clothes. Read by tools/folkforge.py (roll), built with the demon body.",
+ "sex": {"m": 1, "f": 1},
+ "age": {"adult": 5, "teen": 1},
+ "build": {"slim": 3, "average": 2},
+ "skin": {"ember": 3, "char": 2, "dusk": 2},
+ "hair_color": {"black": 3, "blue_black": 2, "silver": 2, "white": 1, "auburn": 1},
+ "beard": {"": 1},
+ "brows": {"stern": 2, "soft": 2},
+ "iris": {"gold": 4, "violet": 2, "hazel": 1},
+ "colors": {
+  "top": {"charcoal": 3, "brown": 2, "oxblood": 2, "grey": 2, "rust": 1, "linen": 1},
+  "bottom": {"charcoal": 3, "brown": 3, "grey": 1},
+  "accent": {"oxblood": 2, "rust": 2, "mustard": 1, "teal": 1},
+  "leather": {"dark": 3, "tan": 1}
+ },
+ "roles": {
+  "sweeper": {"w": 4, "title": "Street Sweeper", "outfit": [{"top": "tunic", "sleeves": "rolled", "overs": ["belt", "gloves"]}, {"top": "jerkin", "overs": ["belt"]}], "marks": {"soot": 0.5}, "weapon": {"lantern": 1, "": 2}},
+  "cook": {"w": 2, "title": "Pot Cook", "outfit": [{"top": "shirt", "sleeves": "rolled", "overs": ["apron"]}], "headwear": {"bandana": 2, "": 1}},
+  "smith": {"w": 2, "title": "Tinker", "outfit": [{"top": "shirt", "sleeves": "rolled", "overs": ["leather_apron", "gloves"]}], "marks": {"soot": 0.8}, "weapon": "hammer"},
+  "fence": {"w": 1, "title": "Finder", "outfit": [{"top": "coat", "overs": ["belt", "mantle"]}], "marks": {"scar_cheek": 0.4}},
+  "elder": {"w": 1, "title": "Old One", "age": "elder", "outfit": [{"top": "robe", "overs": ["mantle", "sash"]}], "weapon": {"cane": 1}, "hair_color": {"white": 2, "silver": 2}, "hunch": 0.15},
+  "child": {"w": 2, "title": "Child", "age": "kid", "outfit": {"f": [[{"top": "dress", "bottom": "skirt"}, 2]], "m": [[{"top": "tunic", "bottom": "shorts"}, 1]]}}
+ },
+ "names": {
+  "m": ["Patience", "Penance", "Sorrow", "Thanks", "Reason", "Mercy", "Sunday", "Honest", "Tomorrow", "Pardon"],
+  "f": ["Grace", "Hope", "Charity", "Solace", "Promise", "Vesper", "Clemency", "Prudence", "Quiet", "Amends"],
+  "kid": ["Pip", "Ember", "Wick", "Ribbon", "Biscuit", "Tuesday"],
+  "surname": ["Underwall", "Ashrow", "Stepdown", "of the Drains", "Lastgate", "Nameless", "Hornsend", "Coldhearth"]
+ }
+}

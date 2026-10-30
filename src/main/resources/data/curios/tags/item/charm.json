@@ -1,0 +1,25 @@
+{
+ "replace": false,
+ "values": [
+  "ashbound:poachers_rabbit_foot",
+  "ashbound:delvers_lamp",
+  "ashbound:loaded_dice",
+  "ashbound:knucklebone_charm",
+  "ashbound:bundle_of_briar_twigs",
+  "ashbound:snow_hares_tail",
+  "ashbound:ash_stamped_token",
+  "ashbound:spore_pouch",
+  "ashbound:harpy_feather",
+  "ashbound:smugglers_purse",
+  "ashbound:void_marble",
+  "ashbound:salt_ward",
+  "ashbound:grub_lantern",
+  "ashbound:kraken_eye",
+  "ashbound:corsairs_compass",
+  "ashbound:blight_vial",
+  "ashbound:reliquary_finger_bone",
+  "ashbound:gryphon_plume",
+  "ashbound:delvers_last_pick",
+  "ashbound:rift_key"
+ ]
+}

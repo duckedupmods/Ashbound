@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/gilded_tile_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/gilded_tiles"
+  },
+  "type=top": {
+   "model": "ashbound:block/gilded_tile_slab_top"
+  }
+ }
+}

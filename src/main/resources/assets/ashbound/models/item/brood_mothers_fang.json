@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/brood_mothers_fang.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     -0.001,
+     2.395,
+     0.336
+    ],
+    "scale": [
+     0.6872,
+     0.6872,
+     0.6872
+    ]
+   },
+   "ground": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     -0.001,
+     1.198,
+     0
+    ],
+    "scale": [
+     0.3436,
+     0.3436,
+     0.3436
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     -0.001,
+     2.395,
+     0.336
+    ],
+    "scale": [
+     0.6872,
+     0.6872,
+     0.6872
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.2749,
+     0.2749,
+     0.2749
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.2749,
+     0.2749,
+     0.2749
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.2749,
+     0.2749,
+     0.2749
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     8.0,
+     -22.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.2749,
+     0.2749,
+     0.2749
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

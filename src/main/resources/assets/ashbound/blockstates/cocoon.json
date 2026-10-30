@@ -1,0 +1,79 @@
+{
+ "variants": {
+  "facing=north,pose=stand": {
+   "model": "ashbound:block/cocoon_stand"
+  },
+  "facing=east,pose=stand": {
+   "model": "ashbound:block/cocoon_stand",
+   "y": 90
+  },
+  "facing=south,pose=stand": {
+   "model": "ashbound:block/cocoon_stand",
+   "y": 180
+  },
+  "facing=west,pose=stand": {
+   "model": "ashbound:block/cocoon_stand",
+   "y": 270
+  },
+  "facing=north,pose=seat": {
+   "model": "ashbound:block/cocoon_seat"
+  },
+  "facing=east,pose=seat": {
+   "model": "ashbound:block/cocoon_seat",
+   "y": 90
+  },
+  "facing=south,pose=seat": {
+   "model": "ashbound:block/cocoon_seat",
+   "y": 180
+  },
+  "facing=west,pose=seat": {
+   "model": "ashbound:block/cocoon_seat",
+   "y": 270
+  },
+  "facing=north,pose=hang": {
+   "model": "ashbound:block/cocoon_hang"
+  },
+  "facing=east,pose=hang": {
+   "model": "ashbound:block/cocoon_hang",
+   "y": 90
+  },
+  "facing=south,pose=hang": {
+   "model": "ashbound:block/cocoon_hang",
+   "y": 180
+  },
+  "facing=west,pose=hang": {
+   "model": "ashbound:block/cocoon_hang",
+   "y": 270
+  },
+  "facing=north,pose=pressed": {
+   "model": "ashbound:block/cocoon_pressed"
+  },
+  "facing=east,pose=pressed": {
+   "model": "ashbound:block/cocoon_pressed",
+   "y": 90
+  },
+  "facing=south,pose=pressed": {
+   "model": "ashbound:block/cocoon_pressed",
+   "y": 180
+  },
+  "facing=west,pose=pressed": {
+   "model": "ashbound:block/cocoon_pressed",
+   "y": 270
+  },
+  "facing=north,pose=upper": {
+   "model": "ashbound:block/cocoon_upper"
+  },
+  "facing=east,pose=upper": {
+   "model": "ashbound:block/cocoon_upper",
+   "y": 90
+  },
+  "facing=south,pose=upper": {
+   "model": "ashbound:block/cocoon_upper",
+   "y": 180
+  },
+  "facing=west,pose=upper": {
+   "model": "ashbound:block/cocoon_upper",
+   "y": 270
+  }
+ }
+}

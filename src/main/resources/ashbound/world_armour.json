@@ -1,0 +1,242 @@
+[
+ {
+  "id": "corsair",
+  "prefix": "Corsair's",
+  "cls": "light",
+  "rarity": "uncommon",
+  "rank": "D",
+  "about": "sea-stained leathers off a drowned crew",
+  "pieces": [
+   {
+    "id": "corsair_hood",
+    "name": "Corsair's Hood",
+    "slot": "helm"
+   },
+   {
+    "id": "corsair_jerkin",
+    "name": "Corsair's Jerkin",
+    "slot": "chest"
+   },
+   {
+    "id": "corsair_breeches",
+    "name": "Corsair's Breeches",
+    "slot": "legs"
+   },
+   {
+    "id": "corsair_boots",
+    "name": "Corsair's Boots",
+    "slot": "boots"
+   }
+  ]
+ },
+ {
+  "id": "deserter",
+  "prefix": "Deserter's",
+  "cls": "medium",
+  "rarity": "uncommon",
+  "rank": "D",
+  "about": "a soldier's kit worn by the man who ran",
+  "pieces": [
+   {
+    "id": "deserter_helm",
+    "name": "Deserter's Helm",
+    "slot": "helm"
+   },
+   {
+    "id": "deserter_hauberk",
+    "name": "Deserter's Hauberk",
+    "slot": "chest"
+   },
+   {
+    "id": "deserter_tassets",
+    "name": "Deserter's Tassets",
+    "slot": "legs"
+   },
+   {
+    "id": "deserter_boots",
+    "name": "Deserter's Boots",
+    "slot": "boots"
+   }
+  ]
+ },
+ {
+  "id": "alchemist",
+  "prefix": "Alchemist's",
+  "cls": "robe",
+  "rarity": "rare",
+  "rank": "C",
+  "about": "a Blightkin alchemist's robes, goggles and all",
+  "pieces": [
+   {
+    "id": "alchemist_hood",
+    "name": "Alchemist's Hood",
+    "slot": "helm"
+   },
+   {
+    "id": "alchemist_robe",
+    "name": "Alchemist's Robe",
+    "slot": "chest"
+   },
+   {
+    "id": "alchemist_wraps",
+    "name": "Alchemist's Wraps",
+    "slot": "legs"
+   },
+   {
+    "id": "alchemist_slippers",
+    "name": "Alchemist's Slippers",
+    "slot": "boots"
+   }
+  ]
+ },
+ {
+  "id": "hollow_knight",
+  "prefix": "Hollow Knight's",
+  "cls": "heavy",
+  "rarity": "rare",
+  "rank": "C",
+  "about": "the Fallen Order's plate, the knight inside long gone",
+  "pieces": [
+   {
+    "id": "hollow_knight_helm",
+    "name": "Hollow Knight's Helm",
+    "slot": "helm"
+   },
+   {
+    "id": "hollow_knight_cuirass",
+    "name": "Hollow Knight's Cuirass",
+    "slot": "chest"
+   },
+   {
+    "id": "hollow_knight_greaves",
+    "name": "Hollow Knight's Greaves",
+    "slot": "legs"
+   },
+   {
+    "id": "hollow_knight_sabatons",
+    "name": "Hollow Knight's Sabatons",
+    "slot": "boots"
+   }
+  ]
+ },
+ {
+  "id": "mantis",
+  "prefix": "Mantis",
+  "cls": "light",
+  "rarity": "epic",
+  "rank": "B",
+  "about": "a brood reaper's chitin, its scythes still on the arms",
+  "pieces": [
+   {
+    "id": "mantis_hood",
+    "name": "Mantis Hood",
+    "slot": "helm"
+   },
+   {
+    "id": "mantis_jerkin",
+    "name": "Mantis Jerkin",
+    "slot": "chest"
+   },
+   {
+    "id": "mantis_breeches",
+    "name": "Mantis Breeches",
+    "slot": "legs"
+   },
+   {
+    "id": "mantis_boots",
+    "name": "Mantis Boots",
+    "slot": "boots"
+   }
+  ]
+ },
+ {
+  "id": "barrow_lord",
+  "prefix": "Barrow Lord's",
+  "cls": "heavy",
+  "rarity": "epic",
+  "rank": "B",
+  "about": "a barrow lord's grave-plate, crowned, furred and still cold",
+  "pieces": [
+   {
+    "id": "barrow_lord_helm",
+    "name": "Barrow Lord's Helm",
+    "slot": "helm"
+   },
+   {
+    "id": "barrow_lord_cuirass",
+    "name": "Barrow Lord's Cuirass",
+    "slot": "chest"
+   },
+   {
+    "id": "barrow_lord_greaves",
+    "name": "Barrow Lord's Greaves",
+    "slot": "legs"
+   },
+   {
+    "id": "barrow_lord_sabatons",
+    "name": "Barrow Lord's Sabatons",
+    "slot": "boots"
+   }
+  ]
+ },
+ {
+  "id": "aurora",
+  "prefix": "Aurora",
+  "cls": "robe",
+  "rarity": "legendary",
+  "rank": "A",
+  "about": "vestments of the cold chaplains, an ice crown and the northern lights",
+  "pieces": [
+   {
+    "id": "aurora_hood",
+    "name": "Aurora Hood",
+    "slot": "helm"
+   },
+   {
+    "id": "aurora_robe",
+    "name": "Aurora Robe",
+    "slot": "chest"
+   },
+   {
+    "id": "aurora_wraps",
+    "name": "Aurora Wraps",
+    "slot": "legs"
+   },
+   {
+    "id": "aurora_slippers",
+    "name": "Aurora Slippers",
+    "slot": "boots"
+   }
+  ]
+ },
+ {
+  "id": "gryphon_rider",
+  "prefix": "Gryphon Rider's",
+  "cls": "medium",
+  "rarity": "legendary",
+  "rank": "A",
+  "about": "the Sky Legion's riding armour, winged helm and feathered shoulders",
+  "pieces": [
+   {
+    "id": "gryphon_rider_helm",
+    "name": "Gryphon Rider's Helm",
+    "slot": "helm"
+   },
+   {
+    "id": "gryphon_rider_hauberk",
+    "name": "Gryphon Rider's Hauberk",
+    "slot": "chest"
+   },
+   {
+    "id": "gryphon_rider_tassets",
+    "name": "Gryphon Rider's Tassets",
+    "slot": "legs"
+   },
+   {
+    "id": "gryphon_rider_boots",
+    "name": "Gryphon Rider's Boots",
+    "slot": "boots"
+   }
+  ]
+ }
+]

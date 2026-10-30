@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/spore_pouch.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     -0.193,
+     1.289,
+     0.169
+    ],
+    "scale": [
+     1.0801,
+     1.0801,
+     1.0801
+    ]
+   },
+   "ground": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     -0.097,
+     0.644,
+     0
+    ],
+    "scale": [
+     0.5401,
+     0.5401,
+     0.5401
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     -0.193,
+     1.289,
+     0.169
+    ],
+    "scale": [
+     1.0801,
+     1.0801,
+     1.0801
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.4321,
+     0.4321,
+     0.4321
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.4321,
+     0.4321,
+     0.4321
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.4321,
+     0.4321,
+     0.4321
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.4321,
+     0.4321,
+     0.4321
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

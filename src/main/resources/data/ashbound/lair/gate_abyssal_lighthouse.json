@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Abyssal Lighthouse",
+ "test_origin": [
+  136000,
+  20,
+  0
+ ],
+ "boss": "ashbound:keeper_in_light",
+ "seal": "The Angler's lure is the only light that opens this door",
+ "broken": "The lure lights the door and it opens",
+ "arrive": [
+  "THE ABYSSAL LIGHTHOUSE",
+  "S-Rank Gate"
+ ],
+ "rank": "S",
+ "loot": "ashbound:chests/gate_abyssal_lighthouse",
+ "built_check": [
+  [
+   -27,
+   -14,
+   -316,
+   "minecraft:bedrock"
+  ]
+ ],
+ "clear_top": 21
+}

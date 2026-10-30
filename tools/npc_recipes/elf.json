@@ -1,0 +1,32 @@
+{
+ "name": "elf",
+ "race": "elf",
+ "_doc": "Lumenhollow's folk: tall, slender, long-haired, in leaf greens, moonlight silver and lilac. Read by tools/folkforge.py (roll), built with the elf body.",
+ "age": {"adult": 5, "teen": 2},
+ "build": {"slim": 4, "average": 1},
+ "skin": {"porcelain": 3, "fair": 3, "rose": 1, "olive": 1, "tan": 1},
+ "hair_color": {"silver": 3, "white": 2, "golden": 2, "ash_blonde": 2, "rose": 1, "blue_black": 1, "copper": 1},
+ "beard": {"": 1},
+ "iris": {"green": 3, "violet": 2, "ice": 2, "gold": 2, "hazel": 1},
+ "colors": {
+  "top": {"forest": 3, "moss": 2, "teal": 2, "cream": 2, "white": 1, "plum": 1, "sky": 1},
+  "bottom": {"forest": 2, "olive": 2, "sand": 1, "grey": 1, "cream": 1},
+  "accent": {"plum": 2, "teal": 2, "mustard": 1, "sky": 1, "white": 1, "wine": 1},
+  "leather": {"tan": 3, "dark": 1}
+ },
+ "roles": {
+  "warden": {"w": 3, "title": "Grove Warden", "outfit": [{"top": "jerkin", "overs": ["belt", "bracers", "cloak"]}], "headwear": {"hood": 1, "circlet": 1, "": 2}, "back": {"bow_quiver": 3, "quiver": 1}, "weapon": {"spear": 1, "": 2}},
+  "weaver": {"w": 2, "title": "Silk Weaver", "sex": {"f": 3, "m": 1}, "outfit": [{"top": "dress", "bottom": "skirt", "overs": ["sash"]}, {"top": "robe", "overs": ["sash", "mantle"]}], "headwear": {"circlet": 1, "": 2}, "prop": {"basket": 1, "": 1}},
+  "herbalist": {"w": 3, "title": "Herbalist", "outfit": [{"top": "robe", "overs": ["satchel", "sash"]}, {"top": "tunic", "overs": ["belt", "satchel", "apron"]}], "headwear": {"hood": 1, "": 2}, "prop": {"flowers": 2, "basket": 1}, "weapon": {"staff": 1, "": 1}},
+  "lamplighter": {"w": 2, "title": "Lantern Keeper", "outfit": [{"top": "coat", "overs": ["belt", "mantle"]}], "weapon": {"lantern": 2, "staff": 1}, "colors": {"top": {"navy": 2, "teal": 1, "plum": 1}}},
+  "singer": {"w": 2, "title": "Songkeeper", "outfit": [{"top": "robe", "overs": ["cape", "sash"]}], "headwear": {"circlet": 2, "": 1}, "weapon": {"book": 1, "": 2}, "colors": {"top": {"white": 2, "cream": 1, "sky": 1}}},
+  "elder": {"w": 1, "title": "Elder of the Tree", "age": "elder", "outfit": [{"top": "robe", "overs": ["mantle", "sash"]}], "headwear": {"circlet": 1, "": 1}, "weapon": {"staff": 2, "cane": 1}, "hair_color": {"white": 2, "silver": 2}, "hunch": 0.1},
+  "child": {"w": 2, "title": "Child", "age": "kid", "outfit": {"f": [[{"top": "dress", "bottom": "skirt"}, 2]], "m": [[{"top": "tunic", "bottom": "shorts"}, 1]]}, "headwear": {"": 3, "bow": 1}, "prop": {"flowers": 2, "kitten": 1, "": 2}}
+ },
+ "names": {
+  "m": ["Aerin", "Thalion", "Caelir", "Ithil", "Faelan", "Lorien", "Sylvar", "Eredin", "Valandil", "Nimor", "Aelar", "Elrian"],
+  "f": ["Elaria", "Nimue", "Sylwen", "Lirael", "Aenwyn", "Ithilwen", "Faelis", "Miriel", "Caladwen", "Elowyn", "Tauriel", "Neria"],
+  "kid": ["Pell", "Lis", "Tavi", "Wren", "Ilo", "Sefa", "Nim", "Ari"],
+  "surname": ["Moonbough", "Silverleaf", "Lumenvale", "Dawnpetal", "Starbark", "Mistwhisper", "Thistledown", "Glimmerwood", "Fernsong", "Lilacshade"]
+ }
+}

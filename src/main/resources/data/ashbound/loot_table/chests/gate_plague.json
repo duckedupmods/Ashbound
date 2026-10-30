@@ -1,0 +1,97 @@
+{
+ "type": "minecraft:chest",
+ "pools": [
+  {
+   "rolls": 1,
+   "entries": [
+    {
+     "type": "minecraft:loot_table",
+     "value": "minecraft:chests/simple_dungeon"
+    }
+   ]
+  },
+  {
+   "rolls": 1,
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:beakmask_coat",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:beakmask_breeches",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:beakmask_boots",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:empty",
+     "weight": 5
+    }
+   ]
+  },
+  {
+   "rolls": {
+    "type": "minecraft:uniform",
+    "min": 2,
+    "max": 5
+   },
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:lime_gauze",
+     "weight": 4,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 6
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:glass_bottle",
+     "weight": 2,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 3
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:paper",
+     "weight": 2,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 4
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:golden_apple",
+     "weight": 1
+    }
+   ]
+  }
+ ]
+}

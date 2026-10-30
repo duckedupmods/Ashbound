@@ -1,0 +1,81 @@
+{
+ "name": "Corra Rook",
+ "title": "Scholar",
+ "tags": [
+  "townsfolk",
+  "scholar",
+  "adult",
+  "f"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Corra. I write down what the adventurers forget to."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "topic": {
+   "text": [
+    "Each rank is a deeper wound in the world. Nobody knows what's at the bottom."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "A gate opened in a ruin past the old road last week. Guild sent three. One came back."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Have you been inside a gate? Did you take notes?"
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "What do you know about the gates?",
+     "go": "topic"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

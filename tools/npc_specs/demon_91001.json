@@ -1,0 +1,61 @@
+{
+ "id": "demon_91001",
+ "seed": 91001,
+ "recipe": "demon",
+ "role": "sweeper",
+ "rank": null,
+ "name": "Thanks Ashrow",
+ "title": "Street Sweeper",
+ "age": "teen",
+ "sex": "m",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "ember",
+ "hair": {
+  "style": "shaggy",
+  "color": "black"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "hazel",
+  "brows": "stern",
+  "mouth": "cat",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "soot"
+  ],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "tunic",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "belt",
+   "gloves"
+  ],
+  "colors": {
+   "top": "rust",
+   "bottom": "brown",
+   "accent": "oxblood",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "lantern",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "demon"
+}

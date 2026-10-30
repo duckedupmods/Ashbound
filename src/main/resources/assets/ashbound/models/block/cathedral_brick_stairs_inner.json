@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/inner_stairs",
+ "textures": {
+  "bottom": "ashbound:block/cathedral_bricks",
+  "top": "ashbound:block/cathedral_bricks",
+  "side": "ashbound:block/cathedral_bricks"
+ }
+}

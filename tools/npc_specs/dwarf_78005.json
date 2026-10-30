@@ -1,0 +1,62 @@
+{
+ "id": "dwarf_78005",
+ "seed": 78005,
+ "recipe": "dwarf",
+ "role": "miner",
+ "rank": null,
+ "name": "Orrin Hammerfell",
+ "title": "Miner",
+ "age": "adult",
+ "sex": "m",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "weathered",
+ "hair": {
+  "style": "short",
+  "color": "dark_brown"
+ },
+ "headwear": "helm",
+ "beard": null,
+ "face": {
+  "eye": "round",
+  "iris": "gold",
+  "brows": "bushy",
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "soot"
+  ],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "belt",
+   "gloves",
+   "pouches"
+  ],
+  "colors": {
+   "top": "rust",
+   "bottom": "charcoal",
+   "accent": "mustard",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "axe",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "dwarf"
+}

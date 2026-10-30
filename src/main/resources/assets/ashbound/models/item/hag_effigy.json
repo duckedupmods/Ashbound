@@ -1,0 +1,124 @@
+{
+ "parent": "ashbound:block/hag_effigy",
+ "display": {
+  "gui": {
+   "rotation": [
+    30,
+    225,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.35,
+    -0.2
+   ],
+   "scale": [
+    0.575,
+    0.575,
+    0.575
+   ]
+  },
+  "ground": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.16,
+    0.0
+   ],
+   "scale": [
+    0.23,
+    0.23,
+    0.23
+   ]
+  },
+  "fixed": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.32,
+    0.0
+   ],
+   "scale": [
+    0.46,
+    0.46,
+    0.46
+   ]
+  },
+  "thirdperson_righthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.06,
+    -0.23
+   ],
+   "scale": [
+    0.345,
+    0.345,
+    0.345
+   ]
+  },
+  "thirdperson_lefthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.06,
+    -0.23
+   ],
+   "scale": [
+    0.345,
+    0.345,
+    0.345
+   ]
+  },
+  "firstperson_righthand": {
+   "rotation": [
+    0,
+    45,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.26,
+    0.0
+   ],
+   "scale": [
+    0.368,
+    0.368,
+    0.368
+   ]
+  },
+  "firstperson_lefthand": {
+   "rotation": [
+    0,
+    225,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.26,
+    0.0
+   ],
+   "scale": [
+    0.368,
+    0.368,
+    0.368
+   ]
+  }
+ }
+}

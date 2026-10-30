@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/wet_flag_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/wet_flag_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/wet_flags"
+  }
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/ship_wheel"
+  },
+  "facing=east": {
+   "model": "ashbound:block/ship_wheel",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/ship_wheel",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/ship_wheel",
+   "y": 270
+  }
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "hanging=false": {
+   "model": "ashbound:block/court_lantern"
+  },
+  "hanging=true": {
+   "model": "ashbound:block/court_lantern"
+  }
+ }
+}

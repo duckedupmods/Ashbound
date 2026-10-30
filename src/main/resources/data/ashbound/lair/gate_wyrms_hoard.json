@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Wyrm's Hoard",
+ "test_origin": [
+  142000,
+  20,
+  0
+ ],
+ "boss": "ashbound:ignavar",
+ "seal": "Only the Wyrm Priest's scale opens the crater gate",
+ "broken": "The scale fits the lock and the crater gate opens",
+ "arrive": [
+  "THE WYRM'S HOARD",
+  "S-Rank Gate"
+ ],
+ "rank": "S",
+ "loot": "ashbound:chests/gate_wyrms_hoard",
+ "built_check": [
+  [
+   -35,
+   -16,
+   -366,
+   "minecraft:bedrock"
+  ]
+ ],
+ "clear_top": 27
+}

@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/outer_stairs",
+ "textures": {
+  "bottom": "ashbound:block/crypt_tiles",
+  "top": "ashbound:block/crypt_tiles",
+  "side": "ashbound:block/crypt_tiles"
+ }
+}

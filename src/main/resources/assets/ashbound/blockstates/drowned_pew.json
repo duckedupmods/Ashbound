@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/drowned_pew"
+  },
+  "facing=east": {
+   "model": "ashbound:block/drowned_pew",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/drowned_pew",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/drowned_pew",
+   "y": 270
+  }
+ }
+}

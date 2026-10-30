@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/gearwright_tile_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/gearwright_tile_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/gearwright_tiles"
+  }
+ }
+}

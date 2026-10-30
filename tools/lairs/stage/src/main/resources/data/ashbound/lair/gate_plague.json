@@ -1,0 +1,29 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Plague Ward",
+ "test_origin": [
+  65000,
+  20,
+  0
+ ],
+ "clear_top": 26,
+ "safe_radius": 240,
+ "boss": "ashbound:surgeon",
+ "built_check": [
+  [
+   -18,
+   -5,
+   -211,
+   "ashbound:lime_lamp"
+  ]
+ ],
+ "seal": "The ward's walls will not give",
+ "broken": "The theatre falls quiet",
+ "arrive": [
+  "THE PLAGUE WARD",
+  "D-Rank Gate"
+ ],
+ "rank": "D",
+ "debris": "plague",
+ "loot": "ashbound:chests/gate_plague"
+}

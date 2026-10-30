@@ -1,0 +1,424 @@
+{
+ "sword": [
+  {
+   "path": "biped/combat/sword_auto1",
+   "length": 0.6,
+   "basis": 1.6,
+   "factor": 1.0,
+   "recovery": 0.4,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.1,
+    0.0,
+    0.1,
+    0.4
+   ],
+   "name": "SWORD_AUTO1"
+  },
+  {
+   "path": "biped/combat/sword_auto2",
+   "length": 0.6,
+   "basis": 1.6,
+   "factor": 1.0,
+   "recovery": 0.4,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.1,
+    0.05,
+    0.15,
+    0.4
+   ],
+   "name": "SWORD_AUTO2"
+  },
+  {
+   "path": "biped/combat/sword_auto3",
+   "length": 0.6,
+   "basis": 1.6,
+   "factor": 1.0,
+   "recovery": 0.6,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.1,
+    0.05,
+    0.15,
+    0.6
+   ],
+   "name": "SWORD_AUTO3"
+  }
+ ],
+ "sword_dual": [
+  {
+   "path": "biped/combat/sword_dual_auto1",
+   "length": 0.6,
+   "basis": 1.6,
+   "factor": 1.0,
+   "recovery": 0.3,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.08,
+    0.1,
+    0.2,
+    0.3,
+    0.0,
+    0.2
+   ],
+   "name": "SWORD_DUAL_AUTO1"
+  },
+  {
+   "path": "biped/combat/sword_dual_auto2",
+   "length": 0.6,
+   "basis": 1.6,
+   "factor": 1.0,
+   "recovery": 0.3,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.1,
+    0.1,
+    0.2,
+    0.3,
+    0.0,
+    0.2
+   ],
+   "name": "SWORD_DUAL_AUTO2"
+  },
+  {
+   "path": "biped/combat/sword_dual_auto3",
+   "length": 0.75,
+   "basis": 1.6,
+   "factor": 1.0,
+   "recovery": 0.6,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.1,
+    0.0,
+    0.25,
+    0.25,
+    0.35,
+    0.6,
+    3.4028235e+38
+   ],
+   "name": "SWORD_DUAL_AUTO3"
+  }
+ ],
+ "dagger": [
+  {
+   "path": "biped/combat/dagger_auto1",
+   "length": 0.65,
+   "basis": 2.4,
+   "factor": 1.0,
+   "recovery": 0.25,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.05,
+    0.05,
+    0.15,
+    0.25
+   ],
+   "name": "DAGGER_AUTO1"
+  },
+  {
+   "path": "biped/combat/dagger_auto2",
+   "length": 0.65,
+   "basis": 2.4,
+   "factor": 1.0,
+   "recovery": 0.25,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.05,
+    0.0,
+    0.1,
+    0.25
+   ],
+   "name": "DAGGER_AUTO2"
+  },
+  {
+   "path": "biped/combat/dagger_auto3",
+   "length": 1.1,
+   "basis": 2.4,
+   "factor": 1.0,
+   "recovery": 0.4,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.05,
+    0.2,
+    0.25,
+    0.4
+   ],
+   "name": "DAGGER_AUTO3"
+  }
+ ],
+ "dagger_dual": [
+  {
+   "path": "biped/combat/dagger_dual_auto1",
+   "length": 1.05,
+   "basis": 2.4,
+   "factor": 1.0,
+   "recovery": 0.25,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.05,
+    0.1,
+    0.2,
+    0.25
+   ],
+   "name": "DAGGER_DUAL_AUTO1"
+  },
+  {
+   "path": "biped/combat/dagger_dual_auto2",
+   "length": 1.0,
+   "basis": 2.4,
+   "factor": 1.0,
+   "recovery": 0.16,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.05,
+    0.0,
+    0.1,
+    0.16
+   ],
+   "name": "DAGGER_DUAL_AUTO2"
+  },
+  {
+   "path": "biped/combat/dagger_dual_auto3",
+   "length": 0.9833,
+   "basis": 2.4,
+   "factor": 1.0,
+   "recovery": 0.2,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.05,
+    0.0,
+    0.1,
+    0.2
+   ],
+   "name": "DAGGER_DUAL_AUTO3"
+  },
+  {
+   "path": "biped/combat/dagger_dual_auto4",
+   "length": 1.15,
+   "basis": 2.4,
+   "factor": 1.0,
+   "recovery": 0.6,
+   "phases": 2,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.15,
+    0.0,
+    0.1,
+    0.1,
+    0.2,
+    0.2,
+    0.2,
+    0.2,
+    0.2,
+    0.3,
+    0.6,
+    0.6
+   ],
+   "name": "DAGGER_DUAL_AUTO4"
+  }
+ ],
+ "spear": [
+  {
+   "path": "biped/combat/spear_twohand_auto1",
+   "length": 1.0667,
+   "basis": 1.2,
+   "factor": 1.0,
+   "recovery": 0.45,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.1,
+    0.2,
+    0.3,
+    0.45,
+    0.0,
+    0.55
+   ],
+   "name": "SPEAR_TWOHAND_AUTO1"
+  },
+  {
+   "path": "biped/combat/spear_twohand_auto2",
+   "length": 1.05,
+   "basis": 1.2,
+   "factor": 1.0,
+   "recovery": 0.7,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.1,
+    0.2,
+    0.3,
+    0.7
+   ],
+   "name": "SPEAR_TWOHAND_AUTO2"
+  }
+ ],
+ "spear_1h": [
+  {
+   "path": "biped/combat/spear_onehand_auto",
+   "length": 1.1667,
+   "basis": 1.2,
+   "factor": 1.0,
+   "recovery": 0.75,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.1,
+    0.35,
+    0.45,
+    0.75
+   ],
+   "name": "SPEAR_ONEHAND_AUTO"
+  }
+ ],
+ "greatsword": [
+  {
+   "path": "biped/combat/greatsword_auto1",
+   "length": 1.25,
+   "basis": 1.0,
+   "factor": 1.0,
+   "recovery": 0.65,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.25,
+    0.15,
+    0.25,
+    0.65,
+    0.0,
+    0.5
+   ],
+   "name": "GREATSWORD_AUTO1"
+  },
+  {
+   "path": "biped/combat/greatsword_auto2",
+   "length": 1.7167,
+   "basis": 1.0,
+   "factor": 1.0,
+   "recovery": 1.5,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.1,
+    0.5,
+    0.65,
+    1.5,
+    0.0,
+    0.5
+   ],
+   "name": "GREATSWORD_AUTO2"
+  }
+ ],
+ "titan": [
+  {
+   "path": "biped/combat/sword_dual_auto1",
+   "length": 0.6,
+   "basis": 1.6,
+   "factor": 1.0,
+   "recovery": 0.3,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.08,
+    0.1,
+    0.2,
+    0.3,
+    0.0,
+    0.2
+   ],
+   "name": "SWORD_DUAL_AUTO1"
+  },
+  {
+   "path": "biped/combat/sword_dual_auto2",
+   "length": 0.6,
+   "basis": 1.6,
+   "factor": 1.0,
+   "recovery": 0.3,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.1,
+    0.1,
+    0.2,
+    0.3,
+    0.0,
+    0.2
+   ],
+   "name": "SWORD_DUAL_AUTO2"
+  },
+  {
+   "path": "biped/combat/sword_dual_auto3",
+   "length": 0.75,
+   "basis": 1.6,
+   "factor": 1.0,
+   "recovery": 0.6,
+   "phases": 1,
+   "damage": [
+    1.0
+   ],
+   "floats": [
+    0.1,
+    0.0,
+    0.25,
+    0.25,
+    0.35,
+    0.6,
+    3.4028235e+38
+   ],
+   "name": "SWORD_DUAL_AUTO3"
+  }
+ ]
+}

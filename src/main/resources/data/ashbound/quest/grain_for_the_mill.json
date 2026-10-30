@@ -1,0 +1,16 @@
+{
+ "title": "Grain for the Mill",
+ "rank": "F",
+ "text": "The baker is short of wheat since the fields outside the walls went dark. Bring what you can.",
+ "collect": "minecraft:wheat",
+ "count": 16,
+ "points": 20,
+ "coins": 20,
+ "items": [
+  [
+   "minecraft:bread",
+   8
+  ]
+ ],
+ "repeat": true
+}

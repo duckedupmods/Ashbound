@@ -1,0 +1,12 @@
+{
+ "title": "A Crack by the Road",
+ "rank": "F",
+ "text": "A crack's opened where the carts go. Nothing in it should trouble you for long. Close it before something walks out.",
+ "gate": "F",
+ "what": "Rank F Gate",
+ "count": 1,
+ "points": 40,
+ "coins": 60,
+ "ash": 30,
+ "icon": "minecraft:ender_eye"
+}

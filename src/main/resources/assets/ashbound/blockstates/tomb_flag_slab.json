@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/tomb_flag_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/tomb_flag_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/tomb_flags"
+  }
+ }
+}

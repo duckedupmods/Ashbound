@@ -1,0 +1,14 @@
+{
+ "title": "Maledictus",
+ "rank": "A",
+ "text": "A prison in the ice, and its one prisoner isn't asleep. Don't let it find the door.",
+ "kill": "cataclysm:maledictus",
+ "what": "Maledictus",
+ "count": 1,
+ "locate": "cataclysm:frosted_prison",
+ "dim": "minecraft:overworld",
+ "points": 1800,
+ "coins": 3300,
+ "ash": 1040,
+ "icon": "minecraft:blue_ice"
+}

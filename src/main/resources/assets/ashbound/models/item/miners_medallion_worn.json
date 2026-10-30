@@ -1,0 +1,5 @@
+{
+ "loader": "neoforge:obj",
+ "model": "ashbound:models/mesh/miners_medallion_worn.obj",
+ "flip_v": true
+}

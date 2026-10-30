@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/archive_chair"
+  },
+  "facing=east": {
+   "model": "ashbound:block/archive_chair",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/archive_chair",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/archive_chair",
+   "y": 270
+  }
+ }
+}

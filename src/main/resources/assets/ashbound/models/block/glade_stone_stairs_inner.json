@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/inner_stairs",
+ "textures": {
+  "bottom": "ashbound:block/glade_stone",
+  "top": "ashbound:block/glade_stone",
+  "side": "ashbound:block/glade_stone"
+ }
+}

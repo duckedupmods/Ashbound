@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/circus_board_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/circus_board_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/circus_boards"
+  }
+ }
+}

@@ -1,0 +1,59 @@
+{
+ "id": "demon_91005",
+ "seed": 91005,
+ "recipe": "demon",
+ "role": "sweeper",
+ "rank": null,
+ "name": "Penance Hornsend",
+ "title": "Street Sweeper",
+ "age": "adult",
+ "sex": "m",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "ember",
+ "hair": {
+  "style": "short",
+  "color": "black"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "round",
+  "iris": "gold",
+  "brows": "soft",
+  "mouth": "frown",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "tunic",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "belt",
+   "gloves"
+  ],
+  "colors": {
+   "top": "linen",
+   "bottom": "charcoal",
+   "accent": "mustard",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "lantern",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "demon"
+}

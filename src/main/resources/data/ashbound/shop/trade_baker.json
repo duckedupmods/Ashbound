@@ -1,0 +1,59 @@
+{
+ "buy": [
+  {
+   "item": {
+    "id": "minecraft:bread",
+    "count": 3
+   },
+   "price": 15
+  },
+  {
+   "item": {
+    "id": "minecraft:cookie",
+    "count": 6
+   },
+   "price": 12
+  },
+  {
+   "item": {
+    "id": "minecraft:cake"
+   },
+   "price": 60
+  },
+  {
+   "item": {
+    "id": "minecraft:pumpkin_pie",
+    "count": 2
+   },
+   "price": 25
+  },
+  {
+   "item": {
+    "id": "minecraft:honey_bottle"
+   },
+   "price": 30
+  }
+ ],
+ "sell": [
+  {
+   "item": "minecraft:wheat",
+   "price": 1
+  },
+  {
+   "item": "minecraft:egg",
+   "price": 1
+  },
+  {
+   "item": "minecraft:sugar_cane",
+   "price": 1
+  },
+  {
+   "item": "minecraft:pumpkin",
+   "price": 3
+  },
+  {
+   "item": "minecraft:milk_bucket",
+   "price": 8
+  }
+ ]
+}

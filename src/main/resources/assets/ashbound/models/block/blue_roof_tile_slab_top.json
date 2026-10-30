@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/slab_top",
+ "textures": {
+  "bottom": "ashbound:block/blue_roof_tiles",
+  "top": "ashbound:block/blue_roof_tiles",
+  "side": "ashbound:block/blue_roof_tiles"
+ }
+}

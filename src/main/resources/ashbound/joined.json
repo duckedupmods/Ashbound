@@ -1,0 +1,72 @@
+[
+ {
+  "id": "oathbinder",
+  "name": "Oathbinder",
+  "kind": "sword",
+  "damage": 7.6,
+  "speed": 1.6
+ },
+ {
+  "id": "twinfang",
+  "name": "Twinfang",
+  "kind": "dagger",
+  "damage": 4.6,
+  "speed": 2.4
+ },
+ {
+  "id": "concord",
+  "name": "Concord",
+  "kind": "hammer",
+  "damage": 18.15,
+  "speed": 0.85
+ },
+ {
+  "id": "unison",
+  "name": "Unison",
+  "kind": "spear",
+  "damage": 8.57,
+  "speed": 1.2
+ },
+ {
+  "id": "two_hearted",
+  "name": "Two-Hearted",
+  "kind": "twohander",
+  "damage": 20.2,
+  "speed": 0.85
+ },
+ {
+  "id": "the_closed_hand",
+  "name": "The Closed Hand",
+  "kind": "shield",
+  "damage": 0,
+  "speed": 0
+ },
+ {
+  "id": "twinstring",
+  "name": "Twinstring",
+  "kind": "bow",
+  "damage": 0,
+  "speed": 0
+ },
+ {
+  "id": "black_accord",
+  "name": "Black Accord",
+  "kind": "black",
+  "damage": 0,
+  "speed": 0
+ },
+ {
+  "id": "white_accord",
+  "name": "White Accord",
+  "kind": "white",
+  "damage": 0,
+  "speed": 0
+ },
+ {
+  "id": "bound_accord",
+  "name": "Bound Accord",
+  "kind": "summon",
+  "damage": 0,
+  "speed": 0
+ }
+]

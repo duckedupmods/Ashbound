@@ -1,0 +1,10 @@
+{
+ "type": "epicfight:dagger",
+ "attributes": {
+  "common": {
+   "impact": 0.32,
+   "armor_negation": 15,
+   "max_strikes": 1
+  }
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Drowned Cellar",
+ "test_origin": [
+  68000,
+  20,
+  0
+ ],
+ "clear_top": 27,
+ "safe_radius": 240,
+ "boss": "ashbound:cask_mother",
+ "built_check": [
+  [
+   -20,
+   -2,
+   -206,
+   "ashbound:cellar_lamp"
+  ]
+ ],
+ "seal": "The vault doors will not give",
+ "broken": "The cistern falls still",
+ "arrive": [
+  "THE DROWNED CELLAR",
+  "F-Rank Gate"
+ ],
+ "rank": "F",
+ "debris": "cellar",
+ "loot": "ashbound:chests/gate_cellar"
+}

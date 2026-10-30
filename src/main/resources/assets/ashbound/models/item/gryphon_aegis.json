@@ -1,0 +1,139 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/gryphon_aegis.obj",
+  "flip_v": true,
+  "display": {
+   "thirdperson_righthand": {
+    "rotation": [
+     0,
+     90,
+     0
+    ],
+    "translation": [
+     10,
+     6,
+     -4
+    ],
+    "scale": [
+     1,
+     1,
+     1
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     0,
+     90,
+     0
+    ],
+    "translation": [
+     10,
+     6,
+     12
+    ],
+    "scale": [
+     1,
+     1,
+     1
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     0,
+     180,
+     5
+    ],
+    "translation": [
+     -10,
+     2,
+     -10
+    ],
+    "scale": [
+     1.25,
+     1.25,
+     1.25
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     0,
+     180,
+     5
+    ],
+    "translation": [
+     10,
+     0,
+     -10
+    ],
+    "scale": [
+     1.25,
+     1.25,
+     1.25
+    ]
+   },
+   "gui": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     1.725,
+     2.954,
+     5.368
+    ],
+    "scale": [
+     0.4625,
+     0.4625,
+     0.4625
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     1.725,
+     2.954,
+     5.368
+    ],
+    "scale": [
+     0.4625,
+     0.4625,
+     0.4625
+    ]
+   },
+   "ground": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0.949,
+     1.625,
+     0
+    ],
+    "scale": [
+     0.2544,
+     0.2544,
+     0.2544
+    ]
+   }
+  }
+ },
+ "perspectives": {},
+ "overrides": [
+  {
+   "predicate": {
+    "minecraft:blocking": 1
+   },
+   "model": "ashbound:item/gryphon_aegis_blocking"
+  }
+ ]
+}

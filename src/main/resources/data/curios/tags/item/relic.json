@@ -1,0 +1,21 @@
+{
+ "replace": false,
+ "values": [
+  "ashbound:barrow_kings_signet",
+  "ashbound:rime_hourglass",
+  "ashbound:void_pearl",
+  "ashbound:mantis_molt",
+  "ashbound:spore_heart",
+  "ashbound:legions_brand",
+  "ashbound:thornborn_rose",
+  "ashbound:chimera_gland",
+  "ashbound:kiln_fathers_coal",
+  "ashbound:pale_abbots_wick",
+  "ashbound:hangmans_noose",
+  "ashbound:cask_mothers_tap",
+  "ashbound:mosskings_acorn",
+  "ashbound:silk_matrons_spindle",
+  "ashbound:stormspire_lodestone",
+  "ashbound:warhorn_of_the_last_keep"
+ ]
+}

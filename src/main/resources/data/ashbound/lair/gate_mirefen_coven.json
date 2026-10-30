@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Mirefen Coven",
+ "test_origin": [
+  115000,
+  20,
+  0
+ ],
+ "boss": "ashbound:mother_mire",
+ "seal": "The Matron's hex holds the door",
+ "broken": "The hex-knot unravels",
+ "arrive": [
+  "THE MIREFEN COVEN",
+  "D-Rank Gate"
+ ],
+ "rank": "D",
+ "loot": "ashbound:chests/gate_mirefen_coven",
+ "built_check": [
+  [
+   -24,
+   -18,
+   -274,
+   "minecraft:bedrock"
+  ]
+ ],
+ "clear_top": 21
+}

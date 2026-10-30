@@ -1,0 +1,124 @@
+{
+ "parent": "ashbound:block/court_mirror",
+ "display": {
+  "gui": {
+   "rotation": [
+    30,
+    225,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.32,
+    -0.19
+   ],
+   "scale": [
+    0.579,
+    0.579,
+    0.579
+   ]
+  },
+  "ground": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.15,
+    0.0
+   ],
+   "scale": [
+    0.231,
+    0.231,
+    0.231
+   ]
+  },
+  "fixed": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.3,
+    0.0
+   ],
+   "scale": [
+    0.463,
+    0.463,
+    0.463
+   ]
+  },
+  "thirdperson_righthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.06,
+    -0.21
+   ],
+   "scale": [
+    0.347,
+    0.347,
+    0.347
+   ]
+  },
+  "thirdperson_lefthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.06,
+    -0.21
+   ],
+   "scale": [
+    0.347,
+    0.347,
+    0.347
+   ]
+  },
+  "firstperson_righthand": {
+   "rotation": [
+    0,
+    45,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.24,
+    0.0
+   ],
+   "scale": [
+    0.37,
+    0.37,
+    0.37
+   ]
+  },
+  "firstperson_lefthand": {
+   "rotation": [
+    0,
+    225,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.24,
+    0.0
+   ],
+   "scale": [
+    0.37,
+    0.37,
+    0.37
+   ]
+  }
+ }
+}

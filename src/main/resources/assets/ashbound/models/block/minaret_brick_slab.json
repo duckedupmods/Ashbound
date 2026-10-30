@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/slab",
+ "textures": {
+  "bottom": "ashbound:block/minaret_bricks",
+  "top": "ashbound:block/minaret_bricks",
+  "side": "ashbound:block/minaret_bricks"
+ }
+}

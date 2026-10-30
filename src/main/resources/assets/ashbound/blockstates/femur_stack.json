@@ -1,0 +1,16 @@
+{
+ "variants": {
+  "axis=x": {
+   "model": "ashbound:block/femur_stack_horizontal",
+   "x": 90,
+   "y": 90
+  },
+  "axis=y": {
+   "model": "ashbound:block/femur_stack"
+  },
+  "axis=z": {
+   "model": "ashbound:block/femur_stack_horizontal",
+   "x": 90
+  }
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/frost_flagstone_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/frost_flagstones"
+  },
+  "type=top": {
+   "model": "ashbound:block/frost_flagstone_slab_top"
+  }
+ }
+}

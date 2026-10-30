@@ -1,0 +1,124 @@
+{
+ "parent": "ashbound:block/incense_burner",
+ "display": {
+  "gui": {
+   "rotation": [
+    30,
+    225,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.33,
+    -0.19
+   ],
+   "scale": [
+    0.56,
+    0.56,
+    0.56
+   ]
+  },
+  "ground": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.15,
+    0.0
+   ],
+   "scale": [
+    0.224,
+    0.224,
+    0.224
+   ]
+  },
+  "fixed": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.3,
+    0.0
+   ],
+   "scale": [
+    0.448,
+    0.448,
+    0.448
+   ]
+  },
+  "thirdperson_righthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.06,
+    -0.22
+   ],
+   "scale": [
+    0.336,
+    0.336,
+    0.336
+   ]
+  },
+  "thirdperson_lefthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.06,
+    -0.22
+   ],
+   "scale": [
+    0.336,
+    0.336,
+    0.336
+   ]
+  },
+  "firstperson_righthand": {
+   "rotation": [
+    0,
+    45,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.24,
+    0.0
+   ],
+   "scale": [
+    0.359,
+    0.359,
+    0.359
+   ]
+  },
+  "firstperson_lefthand": {
+   "rotation": [
+    0,
+    225,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.24,
+    0.0
+   ],
+   "scale": [
+    0.359,
+    0.359,
+    0.359
+   ]
+  }
+ }
+}

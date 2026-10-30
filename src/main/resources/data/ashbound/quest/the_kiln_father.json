@@ -1,0 +1,16 @@
+{
+ "title": "The Kiln-Father",
+ "rank": "A",
+ "text": "Deep in the Cold Kiln the old smith-god still burns. Many have gone in. None have come back. The Guild will pay anything.",
+ "kill": "ashbound:ossric",
+ "count": 1,
+ "points": 900,
+ "coins": 2000,
+ "items": [
+  [
+   "minecraft:netherite_scrap",
+   2
+  ]
+ ],
+ "repeat": true
+}

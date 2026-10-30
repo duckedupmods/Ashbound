@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/bonewright_greatblade.obj",
+  "flip_v": true,
+  "display": {
+   "thirdperson_righthand": {
+    "rotation": [
+     0,
+     -90,
+     0
+    ],
+    "translation": [
+     0,
+     0.5,
+     0.5
+    ],
+    "scale": [
+     0.62,
+     0.62,
+     0.62
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     0,
+     -90,
+     0
+    ],
+    "translation": [
+     0,
+     0.5,
+     0.5
+    ],
+    "scale": [
+     0.62,
+     0.62,
+     0.62
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     0,
+     -90,
+     0
+    ],
+    "translation": [
+     0,
+     0.5,
+     0.5
+    ],
+    "scale": [
+     0.62,
+     0.62,
+     0.62
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     0,
+     -90,
+     0
+    ],
+    "translation": [
+     0,
+     0.5,
+     0.5
+    ],
+    "scale": [
+     0.62,
+     0.62,
+     0.62
+    ]
+   },
+   "gui": {
+    "rotation": [
+     15.94,
+     15.36,
+     -47.16
+    ],
+    "translation": [
+     -2.205,
+     -2.205,
+     -0.0
+    ],
+    "scale": [
+     0.3445,
+     0.3445,
+     0.3445
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     15.94,
+     15.36,
+     -47.16
+    ],
+    "translation": [
+     -2.205,
+     -2.205,
+     -0.0
+    ],
+    "scale": [
+     0.3445,
+     0.3445,
+     0.3445
+    ]
+   },
+   "ground": {
+    "rotation": [
+     15.94,
+     15.36,
+     -47.16
+    ],
+    "translation": [
+     -1.213,
+     -1.213,
+     0
+    ],
+    "scale": [
+     0.1895,
+     0.1895,
+     0.1895
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

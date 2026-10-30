@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/template_glass_pane_noside_alt",
+ "textures": {
+  "edge": "ashbound:block/leaded_glass_pane_top",
+  "pane": "ashbound:block/leaded_arch_window"
+ },
+ "render_type": "minecraft:translucent"
+}

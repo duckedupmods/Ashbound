@@ -1,0 +1,81 @@
+{
+ "name": "Abel Ashby",
+ "title": "Farmer",
+ "tags": [
+  "townsfolk",
+  "farmer",
+  "adult",
+  "m"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Abel. I grow what grows. Turnips, mostly. Turnips don't care about gates."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "topic": {
+   "text": [
+    "Something's been at the sheep. Not wolves. Wolves leave bones."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "They hanged a man on Gallows Hill who wouldn't stay hanged. Now the whole hill won't."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Fine day for it. Well. It's a day."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "How are the crops?",
+     "go": "topic"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,79 @@
+{
+ "type": "ashbound:tree",
+ "config": {
+  "trees": [
+   {
+    "template": "ashbound:tree/pine_small_0",
+    "weight": 18
+   },
+   {
+    "template": "ashbound:tree/pine_small_1",
+    "weight": 18
+   },
+   {
+    "template": "ashbound:tree/pine_small_2",
+    "weight": 18
+   },
+   {
+    "template": "ashbound:tree/pine_medium_0",
+    "weight": 24
+   },
+   {
+    "template": "ashbound:tree/pine_medium_1",
+    "weight": 24
+   },
+   {
+    "template": "ashbound:tree/pine_medium_2",
+    "weight": 24
+   },
+   {
+    "template": "ashbound:tree/pine_large_0",
+    "weight": 18
+   },
+   {
+    "template": "ashbound:tree/pine_large_1",
+    "weight": 18
+   },
+   {
+    "template": "ashbound:tree/pine_large_2",
+    "weight": 18
+   },
+   {
+    "template": "ashbound:tree/oak_small_0",
+    "weight": 12
+   },
+   {
+    "template": "ashbound:tree/oak_small_1",
+    "weight": 12
+   },
+   {
+    "template": "ashbound:tree/oak_small_2",
+    "weight": 12
+   },
+   {
+    "template": "ashbound:tree/oak_medium_0",
+    "weight": 16
+   },
+   {
+    "template": "ashbound:tree/oak_medium_1",
+    "weight": 16
+   },
+   {
+    "template": "ashbound:tree/oak_medium_2",
+    "weight": 16
+   },
+   {
+    "template": "ashbound:tree/oak_large_0",
+    "weight": 12
+   },
+   {
+    "template": "ashbound:tree/oak_large_1",
+    "weight": 12
+   },
+   {
+    "template": "ashbound:tree/oak_large_2",
+    "weight": 12
+   }
+  ]
+ }
+}

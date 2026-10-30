@@ -1,0 +1,79 @@
+{
+ "type": "ashbound:tree",
+ "config": {
+  "trees": [
+   {
+    "template": "ashbound:tree/birch_small_0",
+    "weight": 35
+   },
+   {
+    "template": "ashbound:tree/birch_small_1",
+    "weight": 35
+   },
+   {
+    "template": "ashbound:tree/birch_small_2",
+    "weight": 35
+   },
+   {
+    "template": "ashbound:tree/birch_medium_0",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/birch_medium_1",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/birch_medium_2",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/birch_large_0",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/birch_large_1",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/birch_large_2",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/woods_log_0",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_log_1",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_log_2",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_stump_0",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_stump_1",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_stump_2",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_stone_0",
+    "weight": 1
+   },
+   {
+    "template": "ashbound:tree/woods_stone_1",
+    "weight": 1
+   },
+   {
+    "template": "ashbound:tree/woods_stone_2",
+    "weight": 1
+   }
+  ]
+ }
+}

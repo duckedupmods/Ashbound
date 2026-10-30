@@ -1,0 +1,16 @@
+{
+ "title": "The Knight in the Cage",
+ "rank": "F",
+ "count": 1,
+ "points": 70,
+ "coins": 140,
+ "items": [
+  [
+   "ashbound:gibbet_shackle",
+   2
+  ]
+ ],
+ "text": "Hanged in his armour for a crime nobody remembers. He walks the old drove road in his cage and asks everyone he meets whether they were the judge. Nobody's answer has been right.",
+ "repeat": true,
+ "kill": "ashbound:gibbet_knight"
+}

@@ -1,0 +1,63 @@
+{
+ "id": "dwarf_78008",
+ "seed": 78008,
+ "recipe": "dwarf",
+ "role": "miner",
+ "rank": null,
+ "name": "Brokk Ironbeard",
+ "title": "Miner",
+ "age": "adult",
+ "sex": "m",
+ "build": "average",
+ "hunch": 0,
+ "skin": "weathered",
+ "hair": {
+  "style": "short",
+  "color": "grey"
+ },
+ "headwear": "cap",
+ "beard": null,
+ "face": {
+  "eye": "sharp",
+  "iris": "brown",
+  "brows": "stern",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "soot",
+   "scar"
+  ],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "belt",
+   "gloves",
+   "pouches"
+  ],
+  "colors": {
+   "top": "brown",
+   "bottom": "grey",
+   "accent": "teal",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "axe",
+ "offhand": null,
+ "back": "pack",
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "dwarf"
+}

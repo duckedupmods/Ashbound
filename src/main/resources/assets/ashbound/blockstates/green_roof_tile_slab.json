@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/green_roof_tile_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/green_roof_tiles"
+  },
+  "type=top": {
+   "model": "ashbound:block/green_roof_tile_slab_top"
+  }
+ }
+}

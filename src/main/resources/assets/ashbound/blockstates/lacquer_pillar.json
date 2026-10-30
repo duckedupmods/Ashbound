@@ -1,0 +1,16 @@
+{
+ "variants": {
+  "axis=y": {
+   "model": "ashbound:block/lacquer_pillar"
+  },
+  "axis=z": {
+   "model": "ashbound:block/lacquer_pillar_horizontal",
+   "x": 90
+  },
+  "axis=x": {
+   "model": "ashbound:block/lacquer_pillar_horizontal",
+   "x": 90,
+   "y": 90
+  }
+ }
+}

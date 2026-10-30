@@ -1,0 +1,12 @@
+{
+ "title": "By Order of the Guild Master",
+ "rank": "A",
+ "text": "Halvard wants this one shut, and he doesn't ask twice.",
+ "gate": "A",
+ "what": "Rank A Gate",
+ "count": 1,
+ "points": 900,
+ "coins": 1100,
+ "ash": 520,
+ "icon": "minecraft:ender_eye"
+}

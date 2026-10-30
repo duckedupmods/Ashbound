@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/glow_bracket"
+  },
+  "facing=east": {
+   "model": "ashbound:block/glow_bracket",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/glow_bracket",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/glow_bracket",
+   "y": 270
+  }
+ }
+}

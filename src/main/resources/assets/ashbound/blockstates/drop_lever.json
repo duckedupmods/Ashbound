@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/drop_lever"
+  },
+  "facing=east": {
+   "model": "ashbound:block/drop_lever",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/drop_lever",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/drop_lever",
+   "y": 270
+  }
+ }
+}

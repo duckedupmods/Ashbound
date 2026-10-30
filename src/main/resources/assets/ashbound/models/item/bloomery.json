@@ -1,0 +1,124 @@
+{
+ "parent": "ashbound:block/bloomery",
+ "display": {
+  "gui": {
+   "rotation": [
+    30,
+    225,
+    0
+   ],
+   "translation": [
+    -0.67,
+    0.4,
+    -0.69
+   ],
+   "scale": [
+    0.527,
+    0.527,
+    0.527
+   ]
+  },
+  "ground": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    -0.03,
+    0.0,
+    0.42
+   ],
+   "scale": [
+    0.211,
+    0.211,
+    0.211
+   ]
+  },
+  "fixed": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    -0.07,
+    0.0,
+    0.83
+   ],
+   "scale": [
+    0.421,
+    0.421,
+    0.421
+   ]
+  },
+  "thirdperson_righthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.4,
+    -0.46,
+    0.12
+   ],
+   "scale": [
+    0.316,
+    0.316,
+    0.316
+   ]
+  },
+  "thirdperson_lefthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.4,
+    -0.46,
+    0.12
+   ],
+   "scale": [
+    0.316,
+    0.316,
+    0.316
+   ]
+  },
+  "firstperson_righthand": {
+   "rotation": [
+    0,
+    45,
+    0
+   ],
+   "translation": [
+    0.43,
+    0.0,
+    0.51
+   ],
+   "scale": [
+    0.337,
+    0.337,
+    0.337
+   ]
+  },
+  "firstperson_lefthand": {
+   "rotation": [
+    0,
+    225,
+    0
+   ],
+   "translation": [
+    -0.43,
+    0.0,
+    -0.51
+   ],
+   "scale": [
+    0.337,
+    0.337,
+    0.337
+   ]
+  }
+ }
+}

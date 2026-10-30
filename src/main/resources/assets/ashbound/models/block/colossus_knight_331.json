@@ -1,0 +1,1 @@
+{"ambientocclusion":false,"textures":{"marble_dark_2":"ashbound:block/sculpt/marble_dark_2","particle":"ashbound:block/sculpt/marble_dark_2"},"elements":[{"from":[0.0,0.0,0.0],"to":[16.0,2.0,2.0],"faces":{"north":{"texture":"#marble_dark_2","uv":[0.0,14.0,16.0,16.0]}}}]}

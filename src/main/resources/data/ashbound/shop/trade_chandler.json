@@ -1,0 +1,69 @@
+{
+ "buy": [
+  {
+   "item": {
+    "id": "minecraft:candle",
+    "count": 4
+   },
+   "price": 12
+  },
+  {
+   "item": {
+    "id": "minecraft:white_candle",
+    "count": 4
+   },
+   "price": 14
+  },
+  {
+   "item": {
+    "id": "minecraft:red_candle",
+    "count": 4
+   },
+   "price": 14
+  },
+  {
+   "item": {
+    "id": "minecraft:torch",
+    "count": 16
+   },
+   "price": 20
+  },
+  {
+   "item": {
+    "id": "minecraft:lantern"
+   },
+   "price": 35
+  },
+  {
+   "item": {
+    "id": "minecraft:soul_lantern"
+   },
+   "price": 45
+  },
+  {
+   "item": {
+    "id": "minecraft:honeycomb",
+    "count": 2
+   },
+   "price": 20
+  }
+ ],
+ "sell": [
+  {
+   "item": "minecraft:honeycomb",
+   "price": 3
+  },
+  {
+   "item": "minecraft:string",
+   "price": 2
+  },
+  {
+   "item": "minecraft:coal",
+   "price": 2
+  },
+  {
+   "item": "minecraft:charcoal",
+   "price": 2
+  }
+ ]
+}

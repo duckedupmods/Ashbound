@@ -1,0 +1,877 @@
+{
+ "variants": {
+  "piece=0": {
+   "model": "ashbound:block/elf_statue_0"
+  },
+  "piece=1": {
+   "model": "ashbound:block/elf_statue_1"
+  },
+  "piece=2": {
+   "model": "ashbound:block/elf_statue_2"
+  },
+  "piece=3": {
+   "model": "ashbound:block/elf_statue_3"
+  },
+  "piece=4": {
+   "model": "ashbound:block/elf_statue_4"
+  },
+  "piece=5": {
+   "model": "ashbound:block/elf_statue_5"
+  },
+  "piece=6": {
+   "model": "ashbound:block/elf_statue_6"
+  },
+  "piece=7": {
+   "model": "ashbound:block/elf_statue_7"
+  },
+  "piece=8": {
+   "model": "ashbound:block/elf_statue_8"
+  },
+  "piece=9": {
+   "model": "ashbound:block/elf_statue_9"
+  },
+  "piece=10": {
+   "model": "ashbound:block/elf_statue_10"
+  },
+  "piece=11": {
+   "model": "ashbound:block/elf_statue_11"
+  },
+  "piece=12": {
+   "model": "ashbound:block/elf_statue_12"
+  },
+  "piece=13": {
+   "model": "ashbound:block/elf_statue_13"
+  },
+  "piece=14": {
+   "model": "ashbound:block/elf_statue_14"
+  },
+  "piece=15": {
+   "model": "ashbound:block/elf_statue_15"
+  },
+  "piece=16": {
+   "model": "ashbound:block/elf_statue_16"
+  },
+  "piece=17": {
+   "model": "ashbound:block/elf_statue_17"
+  },
+  "piece=18": {
+   "model": "ashbound:block/elf_statue_18"
+  },
+  "piece=19": {
+   "model": "ashbound:block/elf_statue_19"
+  },
+  "piece=20": {
+   "model": "ashbound:block/elf_statue_20"
+  },
+  "piece=21": {
+   "model": "ashbound:block/elf_statue_21"
+  },
+  "piece=22": {
+   "model": "ashbound:block/elf_statue_22"
+  },
+  "piece=23": {
+   "model": "ashbound:block/elf_statue_23"
+  },
+  "piece=24": {
+   "model": "ashbound:block/elf_statue_24"
+  },
+  "piece=25": {
+   "model": "ashbound:block/elf_statue_25"
+  },
+  "piece=26": {
+   "model": "ashbound:block/elf_statue_26"
+  },
+  "piece=27": {
+   "model": "ashbound:block/elf_statue_27"
+  },
+  "piece=28": {
+   "model": "ashbound:block/elf_statue_28"
+  },
+  "piece=29": {
+   "model": "ashbound:block/elf_statue_29"
+  },
+  "piece=30": {
+   "model": "ashbound:block/elf_statue_30"
+  },
+  "piece=31": {
+   "model": "ashbound:block/elf_statue_31"
+  },
+  "piece=32": {
+   "model": "ashbound:block/elf_statue_32"
+  },
+  "piece=33": {
+   "model": "ashbound:block/elf_statue_33"
+  },
+  "piece=34": {
+   "model": "ashbound:block/elf_statue_34"
+  },
+  "piece=35": {
+   "model": "ashbound:block/elf_statue_35"
+  },
+  "piece=36": {
+   "model": "ashbound:block/elf_statue_36"
+  },
+  "piece=37": {
+   "model": "ashbound:block/elf_statue_37"
+  },
+  "piece=38": {
+   "model": "ashbound:block/elf_statue_38"
+  },
+  "piece=39": {
+   "model": "ashbound:block/elf_statue_39"
+  },
+  "piece=40": {
+   "model": "ashbound:block/elf_statue_40"
+  },
+  "piece=41": {
+   "model": "ashbound:block/elf_statue_41"
+  },
+  "piece=42": {
+   "model": "ashbound:block/elf_statue_42"
+  },
+  "piece=43": {
+   "model": "ashbound:block/elf_statue_43"
+  },
+  "piece=44": {
+   "model": "ashbound:block/elf_statue_44"
+  },
+  "piece=45": {
+   "model": "ashbound:block/elf_statue_45"
+  },
+  "piece=46": {
+   "model": "ashbound:block/elf_statue_46"
+  },
+  "piece=47": {
+   "model": "ashbound:block/elf_statue_47"
+  },
+  "piece=48": {
+   "model": "ashbound:block/elf_statue_48"
+  },
+  "piece=49": {
+   "model": "ashbound:block/elf_statue_49"
+  },
+  "piece=50": {
+   "model": "ashbound:block/elf_statue_50"
+  },
+  "piece=51": {
+   "model": "ashbound:block/elf_statue_51"
+  },
+  "piece=52": {
+   "model": "ashbound:block/elf_statue_52"
+  },
+  "piece=53": {
+   "model": "ashbound:block/elf_statue_53"
+  },
+  "piece=54": {
+   "model": "ashbound:block/elf_statue_54"
+  },
+  "piece=55": {
+   "model": "ashbound:block/elf_statue_55"
+  },
+  "piece=56": {
+   "model": "ashbound:block/elf_statue_56"
+  },
+  "piece=57": {
+   "model": "ashbound:block/elf_statue_57"
+  },
+  "piece=58": {
+   "model": "ashbound:block/elf_statue_58"
+  },
+  "piece=59": {
+   "model": "ashbound:block/elf_statue_59"
+  },
+  "piece=60": {
+   "model": "ashbound:block/elf_statue_60"
+  },
+  "piece=61": {
+   "model": "ashbound:block/elf_statue_61"
+  },
+  "piece=62": {
+   "model": "ashbound:block/elf_statue_62"
+  },
+  "piece=63": {
+   "model": "ashbound:block/elf_statue_63"
+  },
+  "piece=64": {
+   "model": "ashbound:block/elf_statue_64"
+  },
+  "piece=65": {
+   "model": "ashbound:block/elf_statue_65"
+  },
+  "piece=66": {
+   "model": "ashbound:block/elf_statue_66"
+  },
+  "piece=67": {
+   "model": "ashbound:block/elf_statue_67"
+  },
+  "piece=68": {
+   "model": "ashbound:block/elf_statue_68"
+  },
+  "piece=69": {
+   "model": "ashbound:block/elf_statue_69"
+  },
+  "piece=70": {
+   "model": "ashbound:block/elf_statue_70"
+  },
+  "piece=71": {
+   "model": "ashbound:block/elf_statue_71"
+  },
+  "piece=72": {
+   "model": "ashbound:block/elf_statue_72"
+  },
+  "piece=73": {
+   "model": "ashbound:block/elf_statue_73"
+  },
+  "piece=74": {
+   "model": "ashbound:block/elf_statue_74"
+  },
+  "piece=75": {
+   "model": "ashbound:block/elf_statue_75"
+  },
+  "piece=76": {
+   "model": "ashbound:block/elf_statue_76"
+  },
+  "piece=77": {
+   "model": "ashbound:block/elf_statue_77"
+  },
+  "piece=78": {
+   "model": "ashbound:block/elf_statue_78"
+  },
+  "piece=79": {
+   "model": "ashbound:block/elf_statue_79"
+  },
+  "piece=80": {
+   "model": "ashbound:block/elf_statue_80"
+  },
+  "piece=81": {
+   "model": "ashbound:block/elf_statue_81"
+  },
+  "piece=82": {
+   "model": "ashbound:block/elf_statue_82"
+  },
+  "piece=83": {
+   "model": "ashbound:block/elf_statue_83"
+  },
+  "piece=84": {
+   "model": "ashbound:block/elf_statue_84"
+  },
+  "piece=85": {
+   "model": "ashbound:block/elf_statue_85"
+  },
+  "piece=86": {
+   "model": "ashbound:block/elf_statue_86"
+  },
+  "piece=87": {
+   "model": "ashbound:block/elf_statue_87"
+  },
+  "piece=88": {
+   "model": "ashbound:block/elf_statue_88"
+  },
+  "piece=89": {
+   "model": "ashbound:block/elf_statue_89"
+  },
+  "piece=90": {
+   "model": "ashbound:block/elf_statue_90"
+  },
+  "piece=91": {
+   "model": "ashbound:block/elf_statue_91"
+  },
+  "piece=92": {
+   "model": "ashbound:block/elf_statue_92"
+  },
+  "piece=93": {
+   "model": "ashbound:block/elf_statue_93"
+  },
+  "piece=94": {
+   "model": "ashbound:block/elf_statue_94"
+  },
+  "piece=95": {
+   "model": "ashbound:block/elf_statue_95"
+  },
+  "piece=96": {
+   "model": "ashbound:block/elf_statue_96"
+  },
+  "piece=97": {
+   "model": "ashbound:block/elf_statue_97"
+  },
+  "piece=98": {
+   "model": "ashbound:block/elf_statue_98"
+  },
+  "piece=99": {
+   "model": "ashbound:block/elf_statue_99"
+  },
+  "piece=100": {
+   "model": "ashbound:block/elf_statue_100"
+  },
+  "piece=101": {
+   "model": "ashbound:block/elf_statue_101"
+  },
+  "piece=102": {
+   "model": "ashbound:block/elf_statue_102"
+  },
+  "piece=103": {
+   "model": "ashbound:block/elf_statue_103"
+  },
+  "piece=104": {
+   "model": "ashbound:block/elf_statue_104"
+  },
+  "piece=105": {
+   "model": "ashbound:block/elf_statue_105"
+  },
+  "piece=106": {
+   "model": "ashbound:block/elf_statue_106"
+  },
+  "piece=107": {
+   "model": "ashbound:block/elf_statue_107"
+  },
+  "piece=108": {
+   "model": "ashbound:block/elf_statue_108"
+  },
+  "piece=109": {
+   "model": "ashbound:block/elf_statue_109"
+  },
+  "piece=110": {
+   "model": "ashbound:block/elf_statue_110"
+  },
+  "piece=111": {
+   "model": "ashbound:block/elf_statue_111"
+  },
+  "piece=112": {
+   "model": "ashbound:block/elf_statue_112"
+  },
+  "piece=113": {
+   "model": "ashbound:block/elf_statue_113"
+  },
+  "piece=114": {
+   "model": "ashbound:block/elf_statue_114"
+  },
+  "piece=115": {
+   "model": "ashbound:block/elf_statue_115"
+  },
+  "piece=116": {
+   "model": "ashbound:block/elf_statue_116"
+  },
+  "piece=117": {
+   "model": "ashbound:block/elf_statue_117"
+  },
+  "piece=118": {
+   "model": "ashbound:block/elf_statue_118"
+  },
+  "piece=119": {
+   "model": "ashbound:block/elf_statue_119"
+  },
+  "piece=120": {
+   "model": "ashbound:block/elf_statue_120"
+  },
+  "piece=121": {
+   "model": "ashbound:block/elf_statue_121"
+  },
+  "piece=122": {
+   "model": "ashbound:block/elf_statue_122"
+  },
+  "piece=123": {
+   "model": "ashbound:block/elf_statue_123"
+  },
+  "piece=124": {
+   "model": "ashbound:block/elf_statue_124"
+  },
+  "piece=125": {
+   "model": "ashbound:block/elf_statue_125"
+  },
+  "piece=126": {
+   "model": "ashbound:block/elf_statue_126"
+  },
+  "piece=127": {
+   "model": "ashbound:block/elf_statue_127"
+  },
+  "piece=128": {
+   "model": "ashbound:block/elf_statue_128"
+  },
+  "piece=129": {
+   "model": "ashbound:block/elf_statue_129"
+  },
+  "piece=130": {
+   "model": "ashbound:block/elf_statue_130"
+  },
+  "piece=131": {
+   "model": "ashbound:block/elf_statue_131"
+  },
+  "piece=132": {
+   "model": "ashbound:block/elf_statue_132"
+  },
+  "piece=133": {
+   "model": "ashbound:block/elf_statue_133"
+  },
+  "piece=134": {
+   "model": "ashbound:block/elf_statue_134"
+  },
+  "piece=135": {
+   "model": "ashbound:block/elf_statue_135"
+  },
+  "piece=136": {
+   "model": "ashbound:block/elf_statue_136"
+  },
+  "piece=137": {
+   "model": "ashbound:block/elf_statue_137"
+  },
+  "piece=138": {
+   "model": "ashbound:block/elf_statue_138"
+  },
+  "piece=139": {
+   "model": "ashbound:block/elf_statue_139"
+  },
+  "piece=140": {
+   "model": "ashbound:block/elf_statue_140"
+  },
+  "piece=141": {
+   "model": "ashbound:block/elf_statue_141"
+  },
+  "piece=142": {
+   "model": "ashbound:block/elf_statue_142"
+  },
+  "piece=143": {
+   "model": "ashbound:block/elf_statue_143"
+  },
+  "piece=144": {
+   "model": "ashbound:block/elf_statue_144"
+  },
+  "piece=145": {
+   "model": "ashbound:block/elf_statue_145"
+  },
+  "piece=146": {
+   "model": "ashbound:block/elf_statue_146"
+  },
+  "piece=147": {
+   "model": "ashbound:block/elf_statue_147"
+  },
+  "piece=148": {
+   "model": "ashbound:block/elf_statue_148"
+  },
+  "piece=149": {
+   "model": "ashbound:block/elf_statue_149"
+  },
+  "piece=150": {
+   "model": "ashbound:block/elf_statue_150"
+  },
+  "piece=151": {
+   "model": "ashbound:block/elf_statue_151"
+  },
+  "piece=152": {
+   "model": "ashbound:block/elf_statue_152"
+  },
+  "piece=153": {
+   "model": "ashbound:block/elf_statue_153"
+  },
+  "piece=154": {
+   "model": "ashbound:block/elf_statue_154"
+  },
+  "piece=155": {
+   "model": "ashbound:block/elf_statue_155"
+  },
+  "piece=156": {
+   "model": "ashbound:block/elf_statue_156"
+  },
+  "piece=157": {
+   "model": "ashbound:block/elf_statue_157"
+  },
+  "piece=158": {
+   "model": "ashbound:block/elf_statue_158"
+  },
+  "piece=159": {
+   "model": "ashbound:block/elf_statue_159"
+  },
+  "piece=160": {
+   "model": "ashbound:block/elf_statue_160"
+  },
+  "piece=161": {
+   "model": "ashbound:block/elf_statue_161"
+  },
+  "piece=162": {
+   "model": "ashbound:block/elf_statue_162"
+  },
+  "piece=163": {
+   "model": "ashbound:block/elf_statue_163"
+  },
+  "piece=164": {
+   "model": "ashbound:block/elf_statue_164"
+  },
+  "piece=165": {
+   "model": "ashbound:block/elf_statue_165"
+  },
+  "piece=166": {
+   "model": "ashbound:block/elf_statue_166"
+  },
+  "piece=167": {
+   "model": "ashbound:block/elf_statue_167"
+  },
+  "piece=168": {
+   "model": "ashbound:block/elf_statue_168"
+  },
+  "piece=169": {
+   "model": "ashbound:block/elf_statue_169"
+  },
+  "piece=170": {
+   "model": "ashbound:block/elf_statue_170"
+  },
+  "piece=171": {
+   "model": "ashbound:block/elf_statue_171"
+  },
+  "piece=172": {
+   "model": "ashbound:block/elf_statue_172"
+  },
+  "piece=173": {
+   "model": "ashbound:block/elf_statue_173"
+  },
+  "piece=174": {
+   "model": "ashbound:block/elf_statue_174"
+  },
+  "piece=175": {
+   "model": "ashbound:block/elf_statue_175"
+  },
+  "piece=176": {
+   "model": "ashbound:block/elf_statue_176"
+  },
+  "piece=177": {
+   "model": "ashbound:block/elf_statue_177"
+  },
+  "piece=178": {
+   "model": "ashbound:block/elf_statue_178"
+  },
+  "piece=179": {
+   "model": "ashbound:block/elf_statue_179"
+  },
+  "piece=180": {
+   "model": "ashbound:block/elf_statue_180"
+  },
+  "piece=181": {
+   "model": "ashbound:block/elf_statue_181"
+  },
+  "piece=182": {
+   "model": "ashbound:block/elf_statue_182"
+  },
+  "piece=183": {
+   "model": "ashbound:block/elf_statue_183"
+  },
+  "piece=184": {
+   "model": "ashbound:block/elf_statue_184"
+  },
+  "piece=185": {
+   "model": "ashbound:block/elf_statue_185"
+  },
+  "piece=186": {
+   "model": "ashbound:block/elf_statue_186"
+  },
+  "piece=187": {
+   "model": "ashbound:block/elf_statue_187"
+  },
+  "piece=188": {
+   "model": "ashbound:block/elf_statue_188"
+  },
+  "piece=189": {
+   "model": "ashbound:block/elf_statue_189"
+  },
+  "piece=190": {
+   "model": "ashbound:block/elf_statue_190"
+  },
+  "piece=191": {
+   "model": "ashbound:block/elf_statue_191"
+  },
+  "piece=192": {
+   "model": "ashbound:block/elf_statue_192"
+  },
+  "piece=193": {
+   "model": "ashbound:block/elf_statue_193"
+  },
+  "piece=194": {
+   "model": "ashbound:block/elf_statue_194"
+  },
+  "piece=195": {
+   "model": "ashbound:block/elf_statue_195"
+  },
+  "piece=196": {
+   "model": "ashbound:block/elf_statue_196"
+  },
+  "piece=197": {
+   "model": "ashbound:block/elf_statue_197"
+  },
+  "piece=198": {
+   "model": "ashbound:block/elf_statue_198"
+  },
+  "piece=199": {
+   "model": "ashbound:block/elf_statue_199"
+  },
+  "piece=200": {
+   "model": "ashbound:block/elf_statue_200"
+  },
+  "piece=201": {
+   "model": "ashbound:block/elf_statue_201"
+  },
+  "piece=202": {
+   "model": "ashbound:block/elf_statue_202"
+  },
+  "piece=203": {
+   "model": "ashbound:block/elf_statue_203"
+  },
+  "piece=204": {
+   "model": "ashbound:block/elf_statue_204"
+  },
+  "piece=205": {
+   "model": "ashbound:block/elf_statue_205"
+  },
+  "piece=206": {
+   "model": "ashbound:block/elf_statue_206"
+  },
+  "piece=207": {
+   "model": "ashbound:block/elf_statue_207"
+  },
+  "piece=208": {
+   "model": "ashbound:block/elf_statue_208"
+  },
+  "piece=209": {
+   "model": "ashbound:block/elf_statue_209"
+  },
+  "piece=210": {
+   "model": "ashbound:block/elf_statue_210"
+  },
+  "piece=211": {
+   "model": "ashbound:block/elf_statue_211"
+  },
+  "piece=212": {
+   "model": "ashbound:block/elf_statue_212"
+  },
+  "piece=213": {
+   "model": "ashbound:block/elf_statue_213"
+  },
+  "piece=214": {
+   "model": "ashbound:block/elf_statue_214"
+  },
+  "piece=215": {
+   "model": "ashbound:block/elf_statue_215"
+  },
+  "piece=216": {
+   "model": "ashbound:block/elf_statue_216"
+  },
+  "piece=217": {
+   "model": "ashbound:block/elf_statue_217"
+  },
+  "piece=218": {
+   "model": "ashbound:block/elf_statue_218"
+  },
+  "piece=219": {
+   "model": "ashbound:block/elf_statue_219"
+  },
+  "piece=220": {
+   "model": "ashbound:block/elf_statue_220"
+  },
+  "piece=221": {
+   "model": "ashbound:block/elf_statue_221"
+  },
+  "piece=222": {
+   "model": "ashbound:block/elf_statue_222"
+  },
+  "piece=223": {
+   "model": "ashbound:block/elf_statue_223"
+  },
+  "piece=224": {
+   "model": "ashbound:block/elf_statue_224"
+  },
+  "piece=225": {
+   "model": "ashbound:block/elf_statue_225"
+  },
+  "piece=226": {
+   "model": "ashbound:block/elf_statue_226"
+  },
+  "piece=227": {
+   "model": "ashbound:block/elf_statue_227"
+  },
+  "piece=228": {
+   "model": "ashbound:block/elf_statue_228"
+  },
+  "piece=229": {
+   "model": "ashbound:block/elf_statue_229"
+  },
+  "piece=230": {
+   "model": "ashbound:block/elf_statue_230"
+  },
+  "piece=231": {
+   "model": "ashbound:block/elf_statue_231"
+  },
+  "piece=232": {
+   "model": "ashbound:block/elf_statue_232"
+  },
+  "piece=233": {
+   "model": "ashbound:block/elf_statue_233"
+  },
+  "piece=234": {
+   "model": "ashbound:block/elf_statue_234"
+  },
+  "piece=235": {
+   "model": "ashbound:block/elf_statue_235"
+  },
+  "piece=236": {
+   "model": "ashbound:block/elf_statue_236"
+  },
+  "piece=237": {
+   "model": "ashbound:block/elf_statue_237"
+  },
+  "piece=238": {
+   "model": "ashbound:block/elf_statue_238"
+  },
+  "piece=239": {
+   "model": "ashbound:block/elf_statue_239"
+  },
+  "piece=240": {
+   "model": "ashbound:block/elf_statue_240"
+  },
+  "piece=241": {
+   "model": "ashbound:block/elf_statue_241"
+  },
+  "piece=242": {
+   "model": "ashbound:block/elf_statue_242"
+  },
+  "piece=243": {
+   "model": "ashbound:block/elf_statue_243"
+  },
+  "piece=244": {
+   "model": "ashbound:block/elf_statue_244"
+  },
+  "piece=245": {
+   "model": "ashbound:block/elf_statue_245"
+  },
+  "piece=246": {
+   "model": "ashbound:block/elf_statue_246"
+  },
+  "piece=247": {
+   "model": "ashbound:block/elf_statue_247"
+  },
+  "piece=248": {
+   "model": "ashbound:block/elf_statue_248"
+  },
+  "piece=249": {
+   "model": "ashbound:block/elf_statue_249"
+  },
+  "piece=250": {
+   "model": "ashbound:block/elf_statue_250"
+  },
+  "piece=251": {
+   "model": "ashbound:block/elf_statue_251"
+  },
+  "piece=252": {
+   "model": "ashbound:block/elf_statue_252"
+  },
+  "piece=253": {
+   "model": "ashbound:block/elf_statue_253"
+  },
+  "piece=254": {
+   "model": "ashbound:block/elf_statue_254"
+  },
+  "piece=255": {
+   "model": "ashbound:block/elf_statue_255"
+  },
+  "piece=256": {
+   "model": "ashbound:block/elf_statue_256"
+  },
+  "piece=257": {
+   "model": "ashbound:block/elf_statue_257"
+  },
+  "piece=258": {
+   "model": "ashbound:block/elf_statue_258"
+  },
+  "piece=259": {
+   "model": "ashbound:block/elf_statue_259"
+  },
+  "piece=260": {
+   "model": "ashbound:block/elf_statue_260"
+  },
+  "piece=261": {
+   "model": "ashbound:block/elf_statue_261"
+  },
+  "piece=262": {
+   "model": "ashbound:block/elf_statue_262"
+  },
+  "piece=263": {
+   "model": "ashbound:block/elf_statue_263"
+  },
+  "piece=264": {
+   "model": "ashbound:block/elf_statue_264"
+  },
+  "piece=265": {
+   "model": "ashbound:block/elf_statue_265"
+  },
+  "piece=266": {
+   "model": "ashbound:block/elf_statue_266"
+  },
+  "piece=267": {
+   "model": "ashbound:block/elf_statue_267"
+  },
+  "piece=268": {
+   "model": "ashbound:block/elf_statue_268"
+  },
+  "piece=269": {
+   "model": "ashbound:block/elf_statue_269"
+  },
+  "piece=270": {
+   "model": "ashbound:block/elf_statue_270"
+  },
+  "piece=271": {
+   "model": "ashbound:block/elf_statue_271"
+  },
+  "piece=272": {
+   "model": "ashbound:block/elf_statue_272"
+  },
+  "piece=273": {
+   "model": "ashbound:block/elf_statue_273"
+  },
+  "piece=274": {
+   "model": "ashbound:block/elf_statue_274"
+  },
+  "piece=275": {
+   "model": "ashbound:block/elf_statue_275"
+  },
+  "piece=276": {
+   "model": "ashbound:block/elf_statue_276"
+  },
+  "piece=277": {
+   "model": "ashbound:block/elf_statue_277"
+  },
+  "piece=278": {
+   "model": "ashbound:block/elf_statue_278"
+  },
+  "piece=279": {
+   "model": "ashbound:block/elf_statue_279"
+  },
+  "piece=280": {
+   "model": "ashbound:block/elf_statue_280"
+  },
+  "piece=281": {
+   "model": "ashbound:block/elf_statue_281"
+  },
+  "piece=282": {
+   "model": "ashbound:block/elf_statue_282"
+  },
+  "piece=283": {
+   "model": "ashbound:block/elf_statue_283"
+  },
+  "piece=284": {
+   "model": "ashbound:block/elf_statue_284"
+  },
+  "piece=285": {
+   "model": "ashbound:block/elf_statue_285"
+  },
+  "piece=286": {
+   "model": "ashbound:block/elf_statue_286"
+  },
+  "piece=287": {
+   "model": "ashbound:block/elf_statue_287"
+  },
+  "piece=288": {
+   "model": "ashbound:block/elf_statue_288"
+  },
+  "piece=289": {
+   "model": "ashbound:block/elf_statue_289"
+  },
+  "piece=290": {
+   "model": "ashbound:block/elf_statue_290"
+  }
+ }
+}

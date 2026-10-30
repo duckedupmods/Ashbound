@@ -1,0 +1,34 @@
+{
+ "variants": {
+  "facing=north,low=false": {
+   "model": "ashbound:block/archive_papers"
+  },
+  "facing=east,low=false": {
+   "model": "ashbound:block/archive_papers",
+   "y": 90
+  },
+  "facing=south,low=false": {
+   "model": "ashbound:block/archive_papers",
+   "y": 180
+  },
+  "facing=west,low=false": {
+   "model": "ashbound:block/archive_papers",
+   "y": 270
+  },
+  "facing=north,low=true": {
+   "model": "ashbound:block/archive_papers_low"
+  },
+  "facing=east,low=true": {
+   "model": "ashbound:block/archive_papers_low",
+   "y": 90
+  },
+  "facing=south,low=true": {
+   "model": "ashbound:block/archive_papers_low",
+   "y": 180
+  },
+  "facing=west,low=true": {
+   "model": "ashbound:block/archive_papers_low",
+   "y": 270
+  }
+ }
+}

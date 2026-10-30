@@ -1,0 +1,119 @@
+{
+ "name": "Hesta Kell",
+ "title": "Gatesmith",
+ "start": "start",
+ "nodes": {
+  "start": {
+   "go_if": [
+    [
+     "flag:met_smith",
+     "regular"
+    ]
+   ],
+   "text": [
+    "Mind the sparks. And the trough. Last one who fell in that lost his eyebrows and his pride.",
+    "You're new. Guild tag, or will be. Either way, you'll come back to me with your arms full of dead things' leavings and ask me to make you something that keeps you alive. They all do."
+   ],
+   "options": [
+    {
+     "text": "What is that forge?",
+     "do": "flag:met_smith",
+     "go": "forge"
+    },
+    {
+     "text": "What can you make?",
+     "do": "flag:met_smith",
+     "go": "make"
+    },
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "Later.",
+     "do": "close"
+    }
+   ]
+  },
+  "regular": {
+   "text": [
+    "{player}. Still got all your fingers? Good. What've you brought me?"
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "Tell me about the forge again.",
+     "go": "forge"
+    },
+    {
+     "text": "What does each gate give?",
+     "go": "gates"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "forge": {
+   "text": [
+    "The black one. A Gate Forge. Iron won't take what comes out of the gates, it cracks, it sweats, it screams on the anvil. The Gate Forge takes it.",
+    "Every gate leaves its own leavings. The common muck every one of them drops, the hard stuff off the big ones, and the trophy off whatever rules the place. Bring it, use the forge, and it'll make that gate's armour and weapons. The helm always wants the trophy."
+   ],
+   "options": [
+    {
+     "text": "What does each gate give?",
+     "go": "gates"
+    },
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "make": {
+   "text": [
+    "Plain iron, for those who've not been down yet. A sword, a greatsword, a spear, an axe, a coat of plate. It'll keep you alive in an F gate. Probably.",
+    "Past that, it's the Gate Forge. Gear made of the dead things you killed. It fights like them, too."
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "What is that forge?",
+     "go": "forge"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "gates": {
+   "text": [
+    "The Drowned Cellar: corks, a mimic's tongue, and the Cask Mother's vinegar. Diver's gear, and a falchion and a mallet that drag what they hit under.",
+    "Gallows Hill: hemp and gibbet shackles and the Hangman's hood. A headsman's kit. It chokes. The Rotwood: mycelium, stag velvet, the Mossking's crown. It rots what it touches.",
+    "The Crypt's further out and harder. Corpse wax and coffin brackets and the Abbot's death-mask. A candle-blade that seals them in wax. Don't go there green."
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

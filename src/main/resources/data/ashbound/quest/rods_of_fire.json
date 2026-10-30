@@ -1,0 +1,16 @@
+{
+ "title": "Rods of Fire",
+ "rank": "C",
+ "text": "The alchemist on Phial Court pays well for blaze rods, and better if you don't ask what for.",
+ "collect": "minecraft:blaze_rod",
+ "count": 8,
+ "points": 240,
+ "coins": 300,
+ "items": [
+  [
+   "minecraft:experience_bottle",
+   8
+  ]
+ ],
+ "repeat": true
+}

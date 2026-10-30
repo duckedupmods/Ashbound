@@ -1,0 +1,16 @@
+{
+ "title": "The Drowned",
+ "rank": "D",
+ "text": "Bodies are walking out of the canal at night. The ferrymen won't work until they stop.",
+ "kill": "minecraft:drowned",
+ "count": 8,
+ "points": 130,
+ "coins": 160,
+ "items": [
+  [
+   "minecraft:trident",
+   1
+  ]
+ ],
+ "repeat": true
+}

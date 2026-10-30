@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/marble_brick_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/marble_brick_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/marble_bricks"
+  }
+ }
+}

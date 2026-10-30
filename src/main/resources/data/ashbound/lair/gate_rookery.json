@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Rookery",
+ "test_origin": [
+  109000,
+  20,
+  0
+ ],
+ "boss": "ashbound:raven_mother",
+ "seal": "The captain's door is barred with talons",
+ "broken": "The captain's talon turns the lock",
+ "arrive": [
+  "THE ROOKERY",
+  "D-Rank Gate"
+ ],
+ "rank": "D",
+ "loot": "ashbound:chests/gate_rookery",
+ "built_check": [
+  [
+   -28,
+   32,
+   -277,
+   "minecraft:bedrock"
+  ]
+ ],
+ "clear_top": 65
+}

@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/void_marble.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     5.535,
+     1.177
+    ],
+    "scale": [
+     1.6742,
+     1.6742,
+     1.6742
+    ]
+   },
+   "ground": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     2.768,
+     0
+    ],
+    "scale": [
+     0.8371,
+     0.8371,
+     0.8371
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     -0.0,
+     5.535,
+     1.177
+    ],
+    "scale": [
+     1.6742,
+     1.6742,
+     1.6742
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.6697,
+     0.6697,
+     0.6697
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.6697,
+     0.6697,
+     0.6697
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.6697,
+     0.6697,
+     0.6697
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.6697,
+     0.6697,
+     0.6697
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

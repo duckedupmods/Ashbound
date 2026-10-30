@@ -1,0 +1,742 @@
+{
+  "woods_log_0": [
+    2,
+    1,
+    2
+  ],
+  "woods_log_1": [
+    2,
+    1,
+    2
+  ],
+  "woods_log_2": [
+    2,
+    1,
+    2
+  ],
+  "woods_stump_0": [
+    3,
+    1,
+    3
+  ],
+  "woods_stump_1": [
+    3,
+    1,
+    3
+  ],
+  "woods_stump_2": [
+    3,
+    1,
+    3
+  ],
+  "woods_ring_0": [
+    5,
+    1,
+    5
+  ],
+  "woods_ring_1": [
+    5,
+    1,
+    5
+  ],
+  "woods_ring_2": [
+    5,
+    1,
+    5
+  ],
+  "woods_carcass_0": [
+    4,
+    1,
+    6
+  ],
+  "woods_carcass_1": [
+    4,
+    1,
+    6
+  ],
+  "woods_carcass_2": [
+    4,
+    1,
+    6
+  ],
+  "woods_stone_0": [
+    3,
+    1,
+    3
+  ],
+  "woods_stone_1": [
+    3,
+    1,
+    3
+  ],
+  "woods_stone_2": [
+    3,
+    1,
+    3
+  ],
+  "oak_small_0": [
+    6,
+    2,
+    4
+  ],
+  "oak_small_1": [
+    5,
+    2,
+    6
+  ],
+  "oak_small_2": [
+    6,
+    2,
+    4
+  ],
+  "oak_medium_0": [
+    7,
+    2,
+    9
+  ],
+  "oak_medium_1": [
+    10,
+    2,
+    8
+  ],
+  "oak_medium_2": [
+    9,
+    2,
+    10
+  ],
+  "oak_large_0": [
+    11,
+    3,
+    13
+  ],
+  "oak_large_1": [
+    17,
+    3,
+    13
+  ],
+  "oak_large_2": [
+    13,
+    3,
+    14
+  ],
+  "birch_small_0": [
+    3,
+    1,
+    3
+  ],
+  "birch_small_1": [
+    2,
+    1,
+    4
+  ],
+  "birch_small_2": [
+    2,
+    1,
+    5
+  ],
+  "birch_medium_0": [
+    7,
+    2,
+    4
+  ],
+  "birch_medium_1": [
+    7,
+    2,
+    5
+  ],
+  "birch_medium_2": [
+    5,
+    2,
+    7
+  ],
+  "birch_large_0": [
+    6,
+    2,
+    9
+  ],
+  "birch_large_1": [
+    9,
+    2,
+    10
+  ],
+  "birch_large_2": [
+    9,
+    2,
+    7
+  ],
+  "gloom_small_0": [
+    7,
+    2,
+    7
+  ],
+  "gloom_small_1": [
+    7,
+    2,
+    8
+  ],
+  "gloom_small_2": [
+    8,
+    2,
+    7
+  ],
+  "gloom_medium_0": [
+    12,
+    3,
+    12
+  ],
+  "gloom_medium_1": [
+    12,
+    3,
+    11
+  ],
+  "gloom_medium_2": [
+    11,
+    3,
+    12
+  ],
+  "gloom_large_0": [
+    15,
+    5,
+    13
+  ],
+  "gloom_large_1": [
+    14,
+    5,
+    15
+  ],
+  "gloom_large_2": [
+    16,
+    5,
+    15
+  ],
+  "pine_small_0": [
+    3,
+    1,
+    3
+  ],
+  "pine_small_1": [
+    3,
+    1,
+    3
+  ],
+  "pine_small_2": [
+    3,
+    1,
+    3
+  ],
+  "pine_medium_0": [
+    5,
+    2,
+    5
+  ],
+  "pine_medium_1": [
+    6,
+    2,
+    6
+  ],
+  "pine_medium_2": [
+    6,
+    2,
+    6
+  ],
+  "pine_large_0": [
+    9,
+    3,
+    9
+  ],
+  "pine_large_1": [
+    7,
+    3,
+    8
+  ],
+  "pine_large_2": [
+    8,
+    3,
+    8
+  ],
+  "thorn_small_0": [
+    6,
+    2,
+    1
+  ],
+  "thorn_small_1": [
+    2,
+    2,
+    6
+  ],
+  "thorn_small_2": [
+    3,
+    2,
+    5
+  ],
+  "thorn_medium_0": [
+    6,
+    2,
+    7
+  ],
+  "thorn_medium_1": [
+    4,
+    2,
+    9
+  ],
+  "thorn_medium_2": [
+    7,
+    2,
+    6
+  ],
+  "thorn_large_0": [
+    14,
+    3,
+    14
+  ],
+  "thorn_large_1": [
+    16,
+    3,
+    10
+  ],
+  "thorn_large_2": [
+    15,
+    3,
+    10
+  ],
+  "strangler_small_0": [
+    7,
+    2,
+    7
+  ],
+  "strangler_small_1": [
+    7,
+    2,
+    8
+  ],
+  "strangler_small_2": [
+    8,
+    2,
+    5
+  ],
+  "strangler_medium_0": [
+    10,
+    3,
+    12
+  ],
+  "strangler_medium_1": [
+    14,
+    3,
+    13
+  ],
+  "strangler_medium_2": [
+    14,
+    3,
+    12
+  ],
+  "strangler_large_0": [
+    17,
+    4,
+    18
+  ],
+  "strangler_large_1": [
+    18,
+    4,
+    18
+  ],
+  "strangler_large_2": [
+    16,
+    4,
+    17
+  ],
+  "willow_small_0": [
+    7,
+    2,
+    6
+  ],
+  "willow_small_1": [
+    7,
+    2,
+    7
+  ],
+  "willow_small_2": [
+    8,
+    2,
+    7
+  ],
+  "willow_medium_0": [
+    10,
+    2,
+    8
+  ],
+  "willow_medium_1": [
+    11,
+    2,
+    11
+  ],
+  "willow_medium_2": [
+    10,
+    2,
+    11
+  ],
+  "willow_large_0": [
+    10,
+    3,
+    14
+  ],
+  "willow_large_1": [
+    16,
+    3,
+    11
+  ],
+  "willow_large_2": [
+    10,
+    3,
+    13
+  ],
+  "stilt_small_0": [
+    5,
+    2,
+    5
+  ],
+  "stilt_small_1": [
+    6,
+    2,
+    5
+  ],
+  "stilt_small_2": [
+    6,
+    2,
+    5
+  ],
+  "stilt_medium_0": [
+    7,
+    2,
+    7
+  ],
+  "stilt_medium_1": [
+    7,
+    2,
+    8
+  ],
+  "stilt_medium_2": [
+    8,
+    2,
+    7
+  ],
+  "stilt_large_0": [
+    12,
+    3,
+    12
+  ],
+  "stilt_large_1": [
+    12,
+    2,
+    12
+  ],
+  "stilt_large_2": [
+    11,
+    2,
+    11
+  ],
+  "blood_small_0": [
+    6,
+    2,
+    5
+  ],
+  "blood_small_1": [
+    6,
+    2,
+    4
+  ],
+  "blood_small_2": [
+    7,
+    2,
+    8
+  ],
+  "blood_medium_0": [
+    9,
+    2,
+    5
+  ],
+  "blood_medium_1": [
+    9,
+    2,
+    13
+  ],
+  "blood_medium_2": [
+    12,
+    2,
+    14
+  ],
+  "blood_large_0": [
+    16,
+    3,
+    21
+  ],
+  "blood_large_1": [
+    10,
+    3,
+    17
+  ],
+  "blood_large_2": [
+    18,
+    3,
+    8
+  ],
+  "snag_small_0": [
+    1,
+    2,
+    2
+  ],
+  "snag_small_1": [
+    1,
+    2,
+    2
+  ],
+  "snag_small_2": [
+    2,
+    2,
+    2
+  ],
+  "snag_medium_0": [
+    4,
+    2,
+    6
+  ],
+  "snag_medium_1": [
+    4,
+    2,
+    5
+  ],
+  "snag_medium_2": [
+    4,
+    2,
+    5
+  ],
+  "snag_large_0": [
+    6,
+    3,
+    5
+  ],
+  "snag_large_1": [
+    5,
+    3,
+    9
+  ],
+  "snag_large_2": [
+    5,
+    3,
+    6
+  ],
+  "pale_small_0": [
+    4,
+    2,
+    3
+  ],
+  "pale_small_1": [
+    7,
+    2,
+    3
+  ],
+  "pale_small_2": [
+    5,
+    2,
+    3
+  ],
+  "pale_medium_0": [
+    11,
+    2,
+    8
+  ],
+  "pale_medium_1": [
+    7,
+    2,
+    6
+  ],
+  "pale_medium_2": [
+    11,
+    2,
+    8
+  ],
+  "pale_large_0": [
+    9,
+    3,
+    11
+  ],
+  "pale_large_1": [
+    7,
+    3,
+    9
+  ],
+  "pale_large_2": [
+    15,
+    3,
+    13
+  ],
+  "elder": [
+    48,
+    9,
+    42
+  ],
+  "weeper": [
+    19,
+    8,
+    21
+  ],
+  "husk": [
+    22,
+    11,
+    20
+  ],
+  "highwood_0": [
+    12,
+    3,
+    15
+  ],
+  "highwood_1": [
+    12,
+    3,
+    14
+  ],
+  "highwood_2": [
+    11,
+    4,
+    10
+  ],
+  "highwood_3": [
+    13,
+    4,
+    12
+  ],
+  "highwood_4": [
+    15,
+    3,
+    8
+  ],
+  "highwood_5": [
+    14,
+    3,
+    13
+  ],
+  "highwood_6": [
+    16,
+    4,
+    12
+  ],
+  "highwood_7": [
+    12,
+    3,
+    12
+  ],
+  "highwood_8": [
+    14,
+    3,
+    11
+  ],
+  "highwood_9": [
+    13,
+    3,
+    13
+  ],
+  "highwood_10": [
+    14,
+    3,
+    12
+  ],
+  "highwood_11": [
+    15,
+    4,
+    10
+  ],
+  "bush_0": [
+    4,
+    -1,
+    3
+  ],
+  "bush_1": [
+    3,
+    -1,
+    3
+  ],
+  "bush_2": [
+    1,
+    -1,
+    1
+  ],
+  "bush_3": [
+    3,
+    -1,
+    3
+  ],
+  "bush_4": [
+    2,
+    -1,
+    0
+  ],
+  "bush_5": [
+    4,
+    -1,
+    2
+  ],
+  "bush_6": [
+    1,
+    -1,
+    1
+  ],
+  "bush_7": [
+    1,
+    -1,
+    2
+  ],
+  "boulder_0": [
+    2,
+    1,
+    2
+  ],
+  "boulder_1": [
+    2,
+    1,
+    2
+  ],
+  "boulder_2": [
+    3,
+    1,
+    2
+  ],
+  "boulder_3": [
+    3,
+    1,
+    2
+  ],
+  "boulder_4": [
+    3,
+    1,
+    3
+  ],
+  "boulder_5": [
+    2,
+    1,
+    2
+  ],
+  "clockwork_spire": [
+    23,
+    8,
+    23
+  ],
+  "serpent_ziggurat": [
+    24,
+    5,
+    24
+  ],
+  "rimeholt": [
+    27,
+    7,
+    29
+  ],
+  "glass_minaret": [
+    24,
+    5,
+    24
+  ],
+  "warlords_fang": [
+    30,
+    7,
+    30
+  ]
+}

@@ -1,0 +1,16 @@
+{
+ "variants": {
+  "axis=y": {
+   "model": "ashbound:block/mire_chain"
+  },
+  "axis=z": {
+   "model": "ashbound:block/mire_chain",
+   "x": 90
+  },
+  "axis=x": {
+   "model": "ashbound:block/mire_chain",
+   "x": 90,
+   "y": 90
+  }
+ }
+}

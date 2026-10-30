@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column",
+ "textures": {
+  "side": "ashbound:block/femur_stack",
+  "end": "ashbound:block/femur_stack_top"
+ }
+}

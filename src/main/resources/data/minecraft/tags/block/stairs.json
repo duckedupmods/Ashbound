@@ -1,0 +1,21 @@
+{
+ "replace": false,
+ "values": [
+  "ashbound:limestone_brick_stairs",
+  "ashbound:pale_limestone_stairs",
+  "ashbound:gilded_tile_stairs",
+  "ashbound:statue_stone_stairs",
+  "ashbound:clay_roof_tile_stairs",
+  "ashbound:greystone_stairs",
+  "ashbound:mossy_greystone_stairs",
+  "ashbound:slate_shingle_stairs",
+  "ashbound:mossy_slate_shingle_stairs",
+  "ashbound:wood_shingle_stairs",
+  "ashbound:blue_roof_tile_stairs",
+  "ashbound:green_roof_tile_stairs",
+  "ashbound:archive_stone_stairs",
+  "ashbound:archive_tile_stairs",
+  "ashbound:walnut_panel_stairs",
+  "ashbound:black_slate_stairs"
+ ]
+}

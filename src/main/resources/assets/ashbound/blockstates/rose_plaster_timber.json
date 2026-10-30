@@ -1,0 +1,73 @@
+{
+ "variants": {
+  "frame=0": {
+   "model": "ashbound:block/rose_plaster_timber_0"
+  },
+  "frame=1": {
+   "model": "ashbound:block/rose_plaster_timber_1"
+  },
+  "frame=2": {
+   "model": "ashbound:block/rose_plaster_timber_2"
+  },
+  "frame=3": {
+   "model": "ashbound:block/rose_plaster_timber_3"
+  },
+  "frame=4": {
+   "model": "ashbound:block/rose_plaster_timber_4"
+  },
+  "frame=5": {
+   "model": "ashbound:block/rose_plaster_timber_5"
+  },
+  "frame=6": {
+   "model": "ashbound:block/rose_plaster_timber_6"
+  },
+  "frame=7": {
+   "model": "ashbound:block/rose_plaster_timber_7"
+  },
+  "frame=8": {
+   "model": "ashbound:block/rose_plaster_timber_8"
+  },
+  "frame=9": {
+   "model": "ashbound:block/rose_plaster_timber_9"
+  },
+  "frame=10": {
+   "model": "ashbound:block/rose_plaster_timber_10"
+  },
+  "frame=11": {
+   "model": "ashbound:block/rose_plaster_timber_11"
+  },
+  "frame=12": {
+   "model": "ashbound:block/rose_plaster_timber_12"
+  },
+  "frame=13": {
+   "model": "ashbound:block/rose_plaster_timber_13"
+  },
+  "frame=14": {
+   "model": "ashbound:block/rose_plaster_timber_14"
+  },
+  "frame=15": {
+   "model": "ashbound:block/rose_plaster_timber_15"
+  },
+  "frame=16": {
+   "model": "ashbound:block/rose_plaster_timber_16"
+  },
+  "frame=17": {
+   "model": "ashbound:block/rose_plaster_timber_17"
+  },
+  "frame=18": {
+   "model": "ashbound:block/rose_plaster_timber_18"
+  },
+  "frame=19": {
+   "model": "ashbound:block/rose_plaster_timber_19"
+  },
+  "frame=20": {
+   "model": "ashbound:block/rose_plaster_timber_20"
+  },
+  "frame=21": {
+   "model": "ashbound:block/rose_plaster_timber_21"
+  },
+  "frame=22": {
+   "model": "ashbound:block/rose_plaster_timber_22"
+  }
+ }
+}

@@ -1,0 +1,124 @@
+{
+ "parent": "ashbound:block/wyrm_skull",
+ "display": {
+  "gui": {
+   "rotation": [
+    30,
+    225,
+    0
+   ],
+   "translation": [
+    -0.52,
+    1.85,
+    0.47
+   ],
+   "scale": [
+    0.556,
+    0.556,
+    0.556
+   ]
+  },
+  "ground": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0.0,
+    0.73,
+    0.29
+   ],
+   "scale": [
+    0.222,
+    0.222,
+    0.222
+   ]
+  },
+  "fixed": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0.0,
+    1.47,
+    0.58
+   ],
+   "scale": [
+    0.445,
+    0.445,
+    0.445
+   ]
+  },
+  "thirdperson_righthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.31,
+    -0.01,
+    1.14
+   ],
+   "scale": [
+    0.334,
+    0.334,
+    0.334
+   ]
+  },
+  "thirdperson_lefthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.31,
+    -0.01,
+    1.14
+   ],
+   "scale": [
+    0.334,
+    0.334,
+    0.334
+   ]
+  },
+  "firstperson_righthand": {
+   "rotation": [
+    0,
+    45,
+    0
+   ],
+   "translation": [
+    0.33,
+    1.18,
+    0.33
+   ],
+   "scale": [
+    0.356,
+    0.356,
+    0.356
+   ]
+  },
+  "firstperson_lefthand": {
+   "rotation": [
+    0,
+    225,
+    0
+   ],
+   "translation": [
+    -0.33,
+    1.18,
+    -0.33
+   ],
+   "scale": [
+    0.356,
+    0.356,
+    0.356
+   ]
+  }
+ }
+}

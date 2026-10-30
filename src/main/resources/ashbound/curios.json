@@ -1,0 +1,1630 @@
+[
+ {
+  "id": "brigands_knuckle_ring",
+  "name": "Brigand's Knuckle-Ring",
+  "slot": "ring",
+  "rarity": "uncommon",
+  "faction": "Brigands",
+  "stats": {
+   "dmg%": 3
+  },
+  "effect": "",
+  "worn": {
+   "model": "brigands_knuckle_ring",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    8.1,
+    -0.0
+   ],
+   "depth": 3.4
+  }
+ },
+ {
+  "id": "tunnel_rats_band",
+  "name": "Tunnel Rat's Band",
+  "slot": "ring",
+  "rarity": "uncommon",
+  "faction": "Delvers",
+  "stats": {
+   "move%": 5
+  },
+  "effect": "",
+  "worn": {
+   "model": "tunnel_rats_band",
+   "scale": 0.45,
+   "top": [
+    0.021,
+    6.6,
+    -0.0
+   ],
+   "depth": 2.24
+  }
+ },
+ {
+  "id": "gravediggers_loop",
+  "name": "Gravedigger's Loop",
+  "slot": "ring",
+  "rarity": "uncommon",
+  "faction": "Grave-born",
+  "stats": {
+   "armour%": 6
+  },
+  "effect": "",
+  "worn": {
+   "model": "gravediggers_loop",
+   "scale": 0.45,
+   "top": [
+    0.023,
+    7.98,
+    0.021
+   ],
+   "depth": 3.282
+  }
+ },
+ {
+  "id": "spore_stained_ring",
+  "name": "Spore-Stained Ring",
+  "slot": "ring",
+  "rarity": "uncommon",
+  "faction": "Sporefolk",
+  "stats": {
+   "mana_regen%": 3
+  },
+  "effect": "",
+  "worn": {
+   "model": "spore_stained_ring",
+   "scale": 0.45,
+   "top": [
+    0.022,
+    8.16,
+    0.04
+   ],
+   "depth": 4.08
+  }
+ },
+ {
+  "id": "bowstring_ring",
+  "name": "Bowstring Ring",
+  "slot": "ring",
+  "rarity": "uncommon",
+  "faction": "Sky Legion",
+  "stats": {
+   "arrow%": 3
+  },
+  "effect": "",
+  "worn": {
+   "model": "bowstring_ring",
+   "scale": 0.45,
+   "top": [
+    0.026,
+    6.8,
+    0.0
+   ],
+   "depth": 4.2
+  }
+ },
+ {
+  "id": "iron_thumb_ring",
+  "name": "Iron Thumb-Ring",
+  "slot": "ring",
+  "rarity": "uncommon",
+  "faction": "Fallen Order",
+  "stats": {
+   "kb%": 10
+  },
+  "effect": "",
+  "worn": {
+   "model": "iron_thumb_ring",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    6.25,
+    0.0
+   ],
+   "depth": 3.8
+  }
+ },
+ {
+  "id": "knotted_bone_ring",
+  "name": "Knotted Bone Ring",
+  "slot": "ring",
+  "rarity": "uncommon",
+  "faction": "Blightkin",
+  "stats": {
+   "thrall_dmg%": 3
+  },
+  "effect": "",
+  "worn": {
+   "model": "knotted_bone_ring",
+   "scale": 0.45,
+   "top": [
+    0.023,
+    6.19,
+    0.0
+   ],
+   "depth": 2.42
+  }
+ },
+ {
+  "id": "corsairs_doubloon",
+  "name": "Corsair's Doubloon",
+  "slot": "ring",
+  "rarity": "rare",
+  "faction": "Corsairs",
+  "stats": {
+   "luck": 1,
+   "move%": 4
+  },
+  "effect": "",
+  "worn": {
+   "model": "corsairs_doubloon",
+   "scale": 0.45,
+   "top": [
+    0.023,
+    10.34,
+    0.32
+   ],
+   "depth": 2.44
+  }
+ },
+ {
+  "id": "tarnished_signet",
+  "name": "Tarnished Signet",
+  "slot": "ring",
+  "rarity": "rare",
+  "faction": "Fallen Order",
+  "stats": {
+   "armour%": 6,
+   "kb%": 6
+  },
+  "effect": "",
+  "worn": {
+   "model": "tarnished_signet",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    7.4,
+    0.1
+   ],
+   "depth": 2.8
+  }
+ },
+ {
+  "id": "ember_coil",
+  "name": "Ember Coil",
+  "slot": "ring",
+  "rarity": "rare",
+  "faction": "Ash Legion",
+  "stats": {
+   "spell%": 3,
+   "mana_regen%": 2
+  },
+  "effect": "",
+  "worn": {
+   "model": "ember_coil",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    9.57,
+    0.0
+   ],
+   "depth": 3.6
+  }
+ },
+ {
+  "id": "briar_band",
+  "name": "Briar Band",
+  "slot": "ring",
+  "rarity": "rare",
+  "faction": "Thornborn",
+  "stats": {
+   "heal%": 3,
+   "health%": 2
+  },
+  "effect": "",
+  "worn": {
+   "model": "briar_band",
+   "scale": 0.45,
+   "top": [
+    -0.028,
+    7.8,
+    0.05
+   ],
+   "depth": 1.9
+  }
+ },
+ {
+  "id": "frostbitten_ring",
+  "name": "Frostbitten Ring",
+  "slot": "ring",
+  "rarity": "rare",
+  "faction": "Rimebound",
+  "stats": {
+   "health%": 3,
+   "tough%": 3
+  },
+  "effect": "",
+  "worn": {
+   "model": "frostbitten_ring",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    9.685,
+    0.0
+   ],
+   "depth": 2.0
+  }
+ },
+ {
+  "id": "hollow_eye_ring",
+  "name": "Hollow-Eye Ring",
+  "slot": "ring",
+  "rarity": "rare",
+  "faction": "Voidborn",
+  "stats": {
+   "speed%": 5,
+   "health%": -1
+  },
+  "effect": "",
+  "worn": {
+   "model": "hollow_eye_ring",
+   "scale": 0.45,
+   "top": [
+    0.024,
+    6.9,
+    0.225
+   ],
+   "depth": 2.65
+  }
+ },
+ {
+  "id": "salt_khans_seal",
+  "name": "Salt Khan's Seal",
+  "slot": "ring",
+  "rarity": "epic",
+  "faction": "Salt-Cursed",
+  "stats": {
+   "dmg%": 4,
+   "speed%": 2
+  },
+  "effect": "Kills give +10% move speed for 3 s",
+  "worn": {
+   "model": "salt_khans_seal",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    9.7,
+    0.025
+   ],
+   "depth": 3.85
+  }
+ },
+ {
+  "id": "chitin_loop",
+  "name": "Chitin Loop",
+  "slot": "ring",
+  "rarity": "epic",
+  "faction": "Brood",
+  "stats": {
+   "tough%": 5,
+   "speed%": 5
+  },
+  "effect": "Every 5th hit gives back a little stamina",
+  "worn": {
+   "model": "chitin_loop",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    9.487,
+    0.0
+   ],
+   "depth": 2.66
+  }
+ },
+ {
+  "id": "rime_band",
+  "name": "Rime Band",
+  "slot": "ring",
+  "rarity": "epic",
+  "faction": "Rimebound",
+  "stats": {
+   "health%": 4,
+   "armour%": 4
+  },
+  "effect": "Whoever hits you is slowed for 1 s (10 s cooldown)",
+  "worn": {
+   "model": "rime_band",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    7.8,
+    -0.0
+   ],
+   "depth": 2.9
+  }
+ },
+ {
+  "id": "marksmans_gyre",
+  "name": "Marksman's Gyre",
+  "slot": "ring",
+  "rarity": "epic",
+  "faction": "Sky Legion",
+  "stats": {
+   "arrow%": 6
+  },
+  "effect": "Fully drawn arrows go through one enemy",
+  "worn": {
+   "model": "marksmans_gyre",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    10.751,
+    0.0
+   ],
+   "depth": 5.38
+  }
+ },
+ {
+  "id": "ring_of_the_drowned_god",
+  "name": "Ring of the Drowned God",
+  "slot": "ring",
+  "rarity": "legendary",
+  "faction": "Corsairs",
+  "stats": {
+   "armour%": 4,
+   "health%": 4
+  },
+  "effect": "Breathe underwater and swim fast; +15% damage while wet",
+  "worn": {
+   "model": "ring_of_the_drowned_god",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    11.45,
+    0.0
+   ],
+   "depth": 4.6
+  }
+ },
+ {
+  "id": "ring_of_the_ninth_pyre",
+  "name": "Ring of the Ninth Pyre",
+  "slot": "ring",
+  "rarity": "legendary",
+  "faction": "Ash Legion",
+  "stats": {
+   "spell%": 4,
+   "mana_regen%": 2
+  },
+  "effect": "Every 4th spell costs no mana and hits 50% harder",
+  "worn": {
+   "model": "ring_of_the_ninth_pyre",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    11.53,
+    0.0
+   ],
+   "depth": 2.8
+  }
+ },
+ {
+  "id": "wardens_oathring",
+  "name": "Warden's Oathring",
+  "slot": "ring",
+  "rarity": "legendary",
+  "faction": "Fallen Order",
+  "stats": {
+   "armour%": 7,
+   "kb%": 9
+  },
+  "effect": "A blocked hit taunts enemies within 8 blocks and gives 2 hearts of absorption (8 s cooldown)",
+  "worn": {
+   "model": "wardens_oathring",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    10.683,
+    0.0
+   ],
+   "depth": 3.0
+  }
+ },
+ {
+  "id": "wolf_tooth_necklace",
+  "name": "Wolf-Tooth Necklace",
+  "slot": "amulet",
+  "rarity": "uncommon",
+  "faction": "Brigands",
+  "stats": {
+   "health%": 3
+  },
+  "effect": "",
+  "worn": {
+   "model": "wolf_tooth_necklace_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    7.345,
+    0.0
+   ],
+   "depth": 1.5
+  }
+ },
+ {
+  "id": "miners_medallion",
+  "name": "Miner's Medallion",
+  "slot": "amulet",
+  "rarity": "uncommon",
+  "faction": "Delvers",
+  "stats": {
+   "tough%": 10
+  },
+  "effect": "",
+  "worn": {
+   "model": "miners_medallion_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    7.343,
+    0.325
+   ],
+   "depth": 1.95
+  }
+ },
+ {
+  "id": "shell_pendant",
+  "name": "Shell Pendant",
+  "slot": "amulet",
+  "rarity": "uncommon",
+  "faction": "Corsairs",
+  "stats": {
+   "mana": 12
+  },
+  "effect": "",
+  "worn": {
+   "model": "shell_pendant_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    7.345,
+    0.55
+   ],
+   "depth": 2.7
+  }
+ },
+ {
+  "id": "grave_candle_pendant",
+  "name": "Grave Candle Pendant",
+  "slot": "amulet",
+  "rarity": "uncommon",
+  "faction": "Grave-born",
+  "stats": {
+   "heal%": 3
+  },
+  "effect": "",
+  "worn": {
+   "model": "grave_candle_pendant_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    7.343,
+    0.0
+   ],
+   "depth": 3.8
+  }
+ },
+ {
+  "id": "spore_bead_string",
+  "name": "Spore Bead String",
+  "slot": "amulet",
+  "rarity": "uncommon",
+  "faction": "Sporefolk",
+  "stats": {
+   "mana_regen%": 3
+  },
+  "effect": "",
+  "worn": {
+   "model": "spore_bead_string_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    7.004,
+    0.038
+   ],
+   "depth": 3.876
+  }
+ },
+ {
+  "id": "thorn_choker",
+  "name": "Thorn Choker",
+  "slot": "amulet",
+  "rarity": "uncommon",
+  "faction": "Thornborn",
+  "stats": {
+   "armour%": 6
+  },
+  "effect": "",
+  "worn": {
+   "model": "thorn_choker_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    11.3,
+    0.5
+   ],
+   "depth": 2.4
+  }
+ },
+ {
+  "id": "ash_prayer_beads",
+  "name": "Ash Prayer Beads",
+  "slot": "amulet",
+  "rarity": "uncommon",
+  "faction": "Ash Legion",
+  "stats": {
+   "spell%": 3
+  },
+  "effect": "",
+  "worn": {
+   "model": "ash_prayer_beads_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    7.004,
+    0.4
+   ],
+   "depth": 2.6
+  }
+ },
+ {
+  "id": "moonpetal_locket",
+  "name": "Moonpetal Locket",
+  "slot": "amulet",
+  "rarity": "rare",
+  "faction": "Sky Legion",
+  "stats": {
+   "mana": 4,
+   "mana_regen%": 3
+  },
+  "effect": "",
+  "worn": {
+   "model": "moonpetal_locket_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    7.343,
+    0.275
+   ],
+   "depth": 1.95
+  }
+ },
+ {
+  "id": "legion_sun_disc",
+  "name": "Legion Sun-Disc",
+  "slot": "amulet",
+  "rarity": "rare",
+  "faction": "Salt-Cursed",
+  "stats": {
+   "spell%": 3,
+   "health%": 2
+  },
+  "effect": "",
+  "worn": {
+   "model": "legion_sun_disc_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    7.343,
+    0.175
+   ],
+   "depth": 1.55
+  }
+ },
+ {
+  "id": "frozen_tear",
+  "name": "Frozen Tear",
+  "slot": "amulet",
+  "rarity": "rare",
+  "faction": "Rimebound",
+  "stats": {
+   "health%": 4,
+   "kb%": 2
+  },
+  "effect": "",
+  "worn": {
+   "model": "frozen_tear_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    7.343,
+    -0.0
+   ],
+   "depth": 3.4
+  }
+ },
+ {
+  "id": "brood_mothers_fang",
+  "name": "Brood Mother's Fang",
+  "slot": "amulet",
+  "rarity": "rare",
+  "faction": "Brood",
+  "stats": {
+   "thrall_dmg%": 3,
+   "thrall_hp%": 3
+  },
+  "effect": "",
+  "worn": {
+   "model": "brood_mothers_fang_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    7.345,
+    0.0
+   ],
+   "depth": 3.0
+  }
+ },
+ {
+  "id": "gilded_pyx",
+  "name": "Gilded Pyx",
+  "slot": "amulet",
+  "rarity": "rare",
+  "faction": "Fallen Order",
+  "stats": {
+   "heal%": 4,
+   "mana": 4
+  },
+  "effect": "",
+  "worn": {
+   "model": "gilded_pyx_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    7.343,
+    0.0
+   ],
+   "depth": 3.6
+  }
+ },
+ {
+  "id": "void_glass_shard",
+  "name": "Void-Glass Shard",
+  "slot": "amulet",
+  "rarity": "rare",
+  "faction": "Voidborn",
+  "stats": {
+   "spell%": 6,
+   "health%": -1.5
+  },
+  "effect": "",
+  "worn": {
+   "model": "void_glass_shard_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    7.345,
+    0.0
+   ],
+   "depth": 2.42
+  }
+ },
+ {
+  "id": "augurs_ember",
+  "name": "Augur's Ember",
+  "slot": "amulet",
+  "rarity": "epic",
+  "faction": "Ash Legion",
+  "stats": {
+   "spell%": 6
+  },
+  "effect": "Spells set the target on fire for 2 s",
+  "worn": {
+   "model": "augurs_ember_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    7.343,
+    0.0
+   ],
+   "depth": 3.6
+  }
+ },
+ {
+  "id": "briar_heart",
+  "name": "Briar Heart",
+  "slot": "amulet",
+  "rarity": "epic",
+  "faction": "Thornborn",
+  "stats": {
+   "health%": 3,
+   "mana_regen%": 3
+  },
+  "effect": "Each kill heals half a heart",
+  "worn": {
+   "model": "briar_heart_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    7.348,
+    0.225
+   ],
+   "depth": 4.05
+  }
+ },
+ {
+  "id": "gryphon_torc",
+  "name": "Gryphon Torc",
+  "slot": "amulet",
+  "rarity": "epic",
+  "faction": "Sky Legion",
+  "stats": {
+   "speed%": 4,
+   "move%": 4
+  },
+  "effect": "Dodges cost 25% less stamina",
+  "worn": {
+   "model": "gryphon_torc_worn",
+   "scale": 0.6,
+   "top": [
+    0.002,
+    10.45,
+    0.075
+   ],
+   "depth": 2.55
+  }
+ },
+ {
+  "id": "bulwark_gorget",
+  "name": "Bulwark Gorget",
+  "slot": "amulet",
+  "rarity": "epic",
+  "faction": "Fallen Order",
+  "stats": {
+   "armour%": 8,
+   "tough%": 8
+  },
+  "effect": "+20% threat: monsters pick you first",
+  "worn": {
+   "model": "bulwark_gorget_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    8.705,
+    0.205
+   ],
+   "depth": 3.31
+  }
+ },
+ {
+  "id": "last_vigil_reliquary",
+  "name": "Last Vigil Reliquary",
+  "slot": "amulet",
+  "rarity": "legendary",
+  "faction": "Fallen Order",
+  "stats": {
+   "spell%": 3,
+   "health%": 3
+  },
+  "effect": "Below 30% health a soul shield absorbs 6 hearts (2 min cooldown)",
+  "worn": {
+   "model": "last_vigil_reliquary_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    7.343,
+    -0.0
+   ],
+   "depth": 3.4
+  }
+ },
+ {
+  "id": "heart_of_the_hive",
+  "name": "Heart of the Hive",
+  "slot": "amulet",
+  "rarity": "legendary",
+  "faction": "Brood",
+  "stats": {
+   "thrall_dmg%": 4,
+   "health%": 2
+  },
+  "effect": "A thrall that dies bursts into 3 broodlings for 8 s",
+  "worn": {
+   "model": "heart_of_the_hive_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    7.343,
+    0.0
+   ],
+   "depth": 3.84
+  }
+ },
+ {
+  "id": "salt_saints_censer",
+  "name": "Salt Saint's Censer",
+  "slot": "amulet",
+  "rarity": "legendary",
+  "faction": "Salt-Cursed",
+  "stats": {
+   "heal%": 4,
+   "mana": 4
+  },
+  "effect": "Your heals also clear one bad effect and give the ally +20% damage for 3 s",
+  "worn": {
+   "model": "salt_saints_censer_worn",
+   "scale": 0.6,
+   "top": [
+    0.0,
+    7.343,
+    -0.0
+   ],
+   "depth": 6.3
+  }
+ },
+ {
+  "id": "poachers_rabbit_foot",
+  "name": "Poacher's Rabbit Foot",
+  "slot": "charm",
+  "rarity": "uncommon",
+  "faction": "Brigands",
+  "stats": {
+   "luck": 1.5
+  },
+  "effect": "",
+  "worn": {
+   "model": "poachers_rabbit_foot",
+   "scale": 0.45,
+   "top": [
+    -0.0,
+    7.398,
+    0.5
+   ],
+   "depth": 4.4
+  }
+ },
+ {
+  "id": "delvers_lamp",
+  "name": "Delver's Lamp",
+  "slot": "charm",
+  "rarity": "uncommon",
+  "faction": "Delvers",
+  "stats": {
+   "tough%": 10
+  },
+  "effect": "",
+  "worn": {
+   "model": "delvers_lamp",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    5.841,
+    0.0
+   ],
+   "depth": 4.6
+  }
+ },
+ {
+  "id": "loaded_dice",
+  "name": "Loaded Dice",
+  "slot": "charm",
+  "rarity": "uncommon",
+  "faction": "Corsairs",
+  "stats": {
+   "coins%": 10
+  },
+  "effect": "",
+  "worn": {
+   "model": "loaded_dice",
+   "scale": 0.45,
+   "top": [
+    -0.211,
+    4.395,
+    -0.0
+   ],
+   "depth": 4.252
+  }
+ },
+ {
+  "id": "knucklebone_charm",
+  "name": "Knucklebone Charm",
+  "slot": "charm",
+  "rarity": "uncommon",
+  "faction": "Grave-born",
+  "stats": {
+   "ash%": 6
+  },
+  "effect": "",
+  "worn": {
+   "model": "knucklebone_charm",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    9.604,
+    0.0
+   ],
+   "depth": 3.098
+  }
+ },
+ {
+  "id": "bundle_of_briar_twigs",
+  "name": "Bundle of Briar Twigs",
+  "slot": "charm",
+  "rarity": "uncommon",
+  "faction": "Thornborn",
+  "stats": {
+   "stamina_regen%": 10
+  },
+  "effect": "",
+  "worn": {
+   "model": "bundle_of_briar_twigs",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    9.004,
+    0.0
+   ],
+   "depth": 1.8
+  }
+ },
+ {
+  "id": "snow_hares_tail",
+  "name": "Snow Hare's Tail",
+  "slot": "charm",
+  "rarity": "uncommon",
+  "faction": "Rimebound",
+  "stats": {
+   "safe_fall": 6
+  },
+  "effect": "",
+  "worn": {
+   "model": "snow_hares_tail",
+   "scale": 0.45,
+   "top": [
+    -0.1,
+    5.398,
+    0.0
+   ],
+   "depth": 5.916
+  }
+ },
+ {
+  "id": "ash_stamped_token",
+  "name": "Ash-Stamped Token",
+  "slot": "charm",
+  "rarity": "uncommon",
+  "faction": "Ash Legion",
+  "stats": {
+   "elite_dmg%": 6
+  },
+  "effect": "",
+  "worn": {
+   "model": "ash_stamped_token",
+   "scale": 0.45,
+   "top": [
+    -0.0,
+    5.798,
+    0.05
+   ],
+   "depth": 1.3
+  }
+ },
+ {
+  "id": "spore_pouch",
+  "name": "Spore Pouch",
+  "slot": "charm",
+  "rarity": "rare",
+  "faction": "Sporefolk",
+  "stats": {
+   "health%": 2,
+   "mana_regen%": 3
+  },
+  "effect": "",
+  "worn": {
+   "model": "spore_pouch",
+   "scale": 0.45,
+   "top": [
+    0.202,
+    7.7,
+    0.0
+   ],
+   "depth": 5.2
+  }
+ },
+ {
+  "id": "harpy_feather",
+  "name": "Harpy Feather",
+  "slot": "charm",
+  "rarity": "rare",
+  "faction": "Sky Legion",
+  "stats": {
+   "safe_fall": 5,
+   "move%": 3
+  },
+  "effect": "",
+  "worn": {
+   "model": "harpy_feather",
+   "scale": 0.45,
+   "top": [
+    0.782,
+    8.079,
+    -0.0
+   ],
+   "depth": 0.9
+  }
+ },
+ {
+  "id": "smugglers_purse",
+  "name": "Smuggler's Purse",
+  "slot": "charm",
+  "rarity": "rare",
+  "faction": "Brigands",
+  "stats": {
+   "coins%": 11,
+   "luck": 0.5
+  },
+  "effect": "",
+  "worn": {
+   "model": "smugglers_purse",
+   "scale": 0.45,
+   "top": [
+    1.481,
+    3.8,
+    0.0
+   ],
+   "depth": 5.6
+  }
+ },
+ {
+  "id": "void_marble",
+  "name": "Void Marble",
+  "slot": "charm",
+  "rarity": "rare",
+  "faction": "Voidborn",
+  "stats": {
+   "stamina_regen%": 6,
+   "dodge_cost%": 10
+  },
+  "effect": "",
+  "worn": {
+   "model": "void_marble",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    2.94,
+    0.0
+   ],
+   "depth": 5.719
+  }
+ },
+ {
+  "id": "salt_ward",
+  "name": "Salt Ward",
+  "slot": "charm",
+  "rarity": "rare",
+  "faction": "Salt-Cursed",
+  "stats": {
+   "poison_short%": 25,
+   "health%": 2
+  },
+  "effect": "",
+  "worn": {
+   "model": "salt_ward",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    5.894,
+    0.1
+   ],
+   "depth": 1.4
+  }
+ },
+ {
+  "id": "grub_lantern",
+  "name": "Grub Lantern",
+  "slot": "charm",
+  "rarity": "rare",
+  "faction": "Brood",
+  "stats": {
+   "tough%": 15
+  },
+  "effect": "Night vision underground",
+  "worn": {
+   "model": "grub_lantern",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    4.45,
+    0.0
+   ],
+   "depth": 4.8
+  }
+ },
+ {
+  "id": "kraken_eye",
+  "name": "Kraken Eye",
+  "slot": "charm",
+  "rarity": "epic",
+  "faction": "Corsairs",
+  "stats": {
+   "oxygen": 3,
+   "swim%": 45
+  },
+  "effect": "Monsters in water glow for you",
+  "worn": {
+   "model": "kraken_eye",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    3.59,
+    0.096
+   ],
+   "depth": 6.108
+  }
+ },
+ {
+  "id": "corsairs_compass",
+  "name": "Corsair's Compass",
+  "slot": "charm",
+  "rarity": "epic",
+  "faction": "Corsairs",
+  "stats": {
+   "luck": 1.5,
+   "move%": 5
+  },
+  "effect": "Points to the nearest unlooted structure chest",
+  "worn": {
+   "model": "corsairs_compass",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    6.903,
+    0.2
+   ],
+   "depth": 2.0
+  }
+ },
+ {
+  "id": "blight_vial",
+  "name": "Blight Vial",
+  "slot": "charm",
+  "rarity": "epic",
+  "faction": "Blightkin",
+  "stats": {
+   "health%": 6
+  },
+  "effect": "Immune to poison; your hits rot the foe for 3 s (a quarter of the hit, undead too)",
+  "worn": {
+   "model": "blight_vial",
+   "scale": 0.45,
+   "top": [
+    -0.0,
+    4.2,
+    0.203
+   ],
+   "depth": 4.806
+  }
+ },
+ {
+  "id": "reliquary_finger_bone",
+  "name": "Reliquary Finger-Bone",
+  "slot": "charm",
+  "rarity": "epic",
+  "faction": "Grave-born",
+  "stats": {
+   "ash%": 12
+  },
+  "effect": "Undead deal 10% less damage to you",
+  "worn": {
+   "model": "reliquary_finger_bone",
+   "scale": 0.45,
+   "top": [
+    0.0,
+    7.494,
+    0.0
+   ],
+   "depth": 3.0
+  }
+ },
+ {
+  "id": "gryphon_plume",
+  "name": "Gryphon Plume",
+  "slot": "charm",
+  "rarity": "legendary",
+  "faction": "Sky Legion",
+  "stats": {
+   "move%": 10
+  },
+  "effect": "Double jump; slow fall while holding jump",
+  "worn": {
+   "model": "gryphon_plume",
+   "scale": 0.45,
+   "top": [
+    -0.0,
+    10.05,
+    0.0
+   ],
+   "depth": 2.52
+  }
+ },
+ {
+  "id": "delvers_last_pick",
+  "name": "Delver's Last Pick",
+  "slot": "charm",
+  "rarity": "legendary",
+  "faction": "Delvers",
+  "stats": {
+   "tough%": 8,
+   "mining%": 26
+  },
+  "effect": "Mined ore: 20% chance of a double drop; breaking ore shows ore within 6 blocks for 5 s (30 s cooldown)",
+  "worn": {
+   "model": "delvers_last_pick",
+   "scale": 0.45,
+   "top": [
+    -0.0,
+    7.4,
+    0.1
+   ],
+   "depth": 2.6
+  }
+ },
+ {
+  "id": "rift_key",
+  "name": "Rift Key",
+  "slot": "charm",
+  "rarity": "legendary",
+  "faction": "Voidborn",
+  "stats": {
+   "move%": 10
+  },
+  "effect": "Mark a spot; use again to rift back to it (5 min cooldown)",
+  "worn": {
+   "model": "rift_key",
+   "scale": 0.45,
+   "top": [
+    1.28,
+    8.236,
+    0.0
+   ],
+   "depth": 2.0
+  }
+ },
+ {
+  "id": "barrow_kings_signet",
+  "name": "Barrow King's Signet",
+  "slot": "relic",
+  "rarity": "legendary",
+  "faction": "Grave-born",
+  "stats": {
+   "health%": 3
+  },
+  "effect": "Kills are souls; at 10 / 8 / 6 souls a ghost warrior fights with you for 15 / 20 / 25 s (III: two ghosts)",
+  "worn": {
+   "model": "barrow_kings_signet",
+   "scale": 0.4,
+   "top": [
+    0.027,
+    11.25,
+    -0.0
+   ],
+   "depth": 4.86
+  }
+ },
+ {
+  "id": "rime_hourglass",
+  "name": "Rime Hourglass",
+  "slot": "relic",
+  "rarity": "legendary",
+  "faction": "Rimebound",
+  "stats": {
+   "armour%": 6
+  },
+  "effect": "A killing blow freezes you in ice for 2 s, then you stand up at 30 / 40 / 50% health (10 / 8 / 6 min cooldown)",
+  "worn": {
+   "model": "rime_hourglass",
+   "scale": 0.4,
+   "top": [
+    -0.0,
+    11.3,
+    0.0
+   ],
+   "depth": 4.6
+  }
+ },
+ {
+  "id": "void_pearl",
+  "name": "Void Pearl",
+  "slot": "relic",
+  "rarity": "legendary",
+  "faction": "Voidborn",
+  "stats": {
+   "move%": 5
+  },
+  "effect": "Dodges blink 3 blocks further and leave a rift that slows for 2 / 3 / 4 s (III: it also hurts)",
+  "worn": {
+   "model": "void_pearl",
+   "scale": 0.4,
+   "top": [
+    -0.418,
+    6.555,
+    -0.0
+   ],
+   "depth": 7.821
+  }
+ },
+ {
+  "id": "mantis_molt",
+  "name": "Mantis Molt",
+  "slot": "relic",
+  "rarity": "legendary",
+  "faction": "Brood",
+  "stats": {
+   "speed%": 3
+  },
+  "effect": "A dodge that slips an attack gives back 50 / 75 / 100% of its stamina; your next hit staggers",
+  "worn": {
+   "model": "mantis_molt",
+   "scale": 0.4,
+   "top": [
+    -0.0,
+    11.553,
+    0.11
+   ],
+   "depth": 2.78
+  }
+ },
+ {
+  "id": "spore_heart",
+  "name": "Spore Heart",
+  "slot": "relic",
+  "rarity": "legendary",
+  "faction": "Sporefolk",
+  "stats": {
+   "health%": 3
+  },
+  "effect": "Getting hit puffs poison spores round you (5 / 4 / 3 s cooldown; III: bigger cloud)",
+  "worn": {
+   "model": "spore_heart",
+   "scale": 0.4,
+   "top": [
+    0.0,
+    7.784,
+    -0.0
+   ],
+   "depth": 5.4
+  }
+ },
+ {
+  "id": "legions_brand",
+  "name": "Legion's Brand",
+  "slot": "relic",
+  "rarity": "legendary",
+  "faction": "Ash Legion",
+  "stats": {
+   "dmg%": 3
+  },
+  "effect": "Every 3rd combo hit bursts into teal fire for 30 / 45 / 60% extra damage",
+  "worn": {
+   "model": "legions_brand",
+   "scale": 0.4,
+   "top": [
+    0.057,
+    11.88,
+    0.0
+   ],
+   "depth": 1.968
+  }
+ },
+ {
+  "id": "thornborn_rose",
+  "name": "Thornborn Rose",
+  "slot": "relic",
+  "rarity": "legendary",
+  "faction": "Thornborn",
+  "stats": {
+   "armour%": 6
+  },
+  "effect": "Hits heal 3 / 4 / 5% of the damage dealt; blocking reflects 10 / 15 / 20%",
+  "worn": {
+   "model": "thornborn_rose",
+   "scale": 0.4,
+   "top": [
+    0.0,
+    9.081,
+    0.45
+   ],
+   "depth": 4.3
+  }
+ },
+ {
+  "id": "chimera_gland",
+  "name": "Chimera Gland",
+  "slot": "relic",
+  "rarity": "legendary",
+  "faction": "Blightkin",
+  "stats": {
+   "health%": 3
+  },
+  "effect": "Each kill gives a random buff for 6 / 8 / 10 s (III: two at once)",
+  "worn": {
+   "model": "chimera_gland",
+   "scale": 0.4,
+   "top": [
+    0.0,
+    6.6,
+    0.0
+   ],
+   "depth": 8.0
+  }
+ },
+ {
+  "id": "kiln_fathers_coal",
+  "name": "Kiln-Father's Coal",
+  "slot": "relic",
+  "rarity": "legendary",
+  "faction": "Foundry",
+  "stats": {
+   "dmg%": 3
+  },
+  "effect": "[V] Become molten for 6 / 8 / 10 s: hits burn, +15 / 20 / 25% damage, immune to fire (90 s cooldown)",
+  "worn": {
+   "model": "kiln_fathers_coal",
+   "scale": 0.4,
+   "top": [
+    0.116,
+    4.572,
+    0.0
+   ],
+   "depth": 5.6
+  }
+ },
+ {
+  "id": "pale_abbots_wick",
+  "name": "Pale Abbot's Wick",
+  "slot": "relic",
+  "rarity": "legendary",
+  "faction": "Crypt",
+  "stats": {
+   "heal%": 3
+  },
+  "effect": "[V] A candle ward (6 blocks): allies inside heal 0.5 / 0.75 / 1 heart a second for 5 s (60 s cooldown)",
+  "worn": {
+   "model": "pale_abbots_wick",
+   "scale": 0.4,
+   "top": [
+    1.356,
+    8.57,
+    0.0
+   ],
+   "depth": 7.6
+  }
+ },
+ {
+  "id": "hangmans_noose",
+  "name": "Hangman's Noose",
+  "slot": "relic",
+  "rarity": "legendary",
+  "faction": "Gallows Hill",
+  "stats": {
+   "kb%": 10
+  },
+  "effect": "[V] Yank one enemy to you and stun it 1 / 1.5 / 2 s; bosses aren't stunned (20 s cooldown)",
+  "worn": {
+   "model": "hangmans_noose",
+   "scale": 0.4,
+   "top": [
+    -0.2,
+    12.758,
+    0.0
+   ],
+   "depth": 3.0
+  }
+ },
+ {
+  "id": "cask_mothers_tap",
+  "name": "Cask Mother's Tap",
+  "slot": "relic",
+  "rarity": "legendary",
+  "faction": "Drowned Cellar",
+  "stats": {
+   "health%": 3
+  },
+  "effect": "Potions you drink also work on allies within 6 / 8 / 10 blocks at 50 / 75 / 100%",
+  "worn": {
+   "model": "cask_mothers_tap",
+   "scale": 0.4,
+   "top": [
+    -0.0,
+    5.0,
+    0.4
+   ],
+   "depth": 6.2
+  }
+ },
+ {
+  "id": "mosskings_acorn",
+  "name": "Mossking's Acorn",
+  "slot": "relic",
+  "rarity": "legendary",
+  "faction": "Rotwood",
+  "stats": {
+   "tough%": 10
+  },
+  "effect": "[V] Roots burst up and hold enemies within 4 blocks for 2 / 2.5 / 3 s (40 s cooldown)",
+  "worn": {
+   "model": "mosskings_acorn",
+   "scale": 0.4,
+   "top": [
+    0.1,
+    7.79,
+    0.1
+   ],
+   "depth": 7.6
+  }
+ },
+ {
+  "id": "silk_matrons_spindle",
+  "name": "Silk Matron's Spindle",
+  "slot": "relic",
+  "rarity": "legendary",
+  "faction": "Silk Archive",
+  "stats": {
+   "move%": 5
+  },
+  "effect": "Dodging leaves a web: the first enemy in it is bound for 1 / 1.5 / 2 s (6 s cooldown)",
+  "worn": {
+   "model": "silk_matrons_spindle",
+   "scale": 0.4,
+   "top": [
+    0.786,
+    9.05,
+    -0.0
+   ],
+   "depth": 5.4
+  }
+ },
+ {
+  "id": "stormspire_lodestone",
+  "name": "Stormspire Lodestone",
+  "slot": "relic",
+  "rarity": "legendary",
+  "faction": "tower hoards",
+  "stats": {
+   "speed%": 3
+  },
+  "effect": "Every 10 / 8 / 6 s your next hit calls lightning that jumps to 2 / 3 / 4 enemies",
+  "worn": {
+   "model": "stormspire_lodestone",
+   "scale": 0.4,
+   "top": [
+    0.639,
+    7.353,
+    0.125
+   ],
+   "depth": 6.45
+  }
+ },
+ {
+  "id": "warhorn_of_the_last_keep",
+  "name": "Warhorn of the Last Keep",
+  "slot": "relic",
+  "rarity": "legendary",
+  "faction": "tower hoards",
+  "stats": {
+   "health%": 3
+  },
+  "effect": "[V] Party within 12 blocks gets +10 / 15 / 20% damage and +25% knockback resistance for 10 s (60 s cooldown)",
+  "worn": {
+   "model": "warhorn_of_the_last_keep",
+   "scale": 0.4,
+   "top": [
+    0.723,
+    6.882,
+    0.0
+   ],
+   "depth": 4.6
+  }
+ }
+]

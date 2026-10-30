@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Eclipse Cathedral",
+ "test_origin": [
+  139000,
+  20,
+  0
+ ],
+ "boss": "ashbound:fallen_seraph",
+ "seal": "The Warden's halo is the only light the choir door knows",
+ "broken": "The halo burns in the lock and the choir door opens",
+ "arrive": [
+  "THE ECLIPSE CATHEDRAL",
+  "S-Rank Gate"
+ ],
+ "rank": "S",
+ "loot": "ashbound:chests/gate_eclipse_cathedral",
+ "built_check": [
+  [
+   -27,
+   12,
+   -324,
+   "ashbound:eclipse_strata"
+  ]
+ ],
+ "clear_top": 49
+}

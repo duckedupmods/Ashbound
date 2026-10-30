@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Weeping Mine",
+ "test_origin": [
+  100000,
+  20,
+  0
+ ],
+ "boss": "ashbound:the_vein",
+ "seal": "The pump-house grille is chained shut",
+ "broken": "The Foreman's keys turn the lock",
+ "arrive": [
+  "THE WEEPING MINE",
+  "E-Rank Gate"
+ ],
+ "rank": "E",
+ "loot": "ashbound:chests/gate_weeping_mine",
+ "built_check": [
+  [
+   -24,
+   -24,
+   -268,
+   "ashbound:mine_rock"
+  ]
+ ],
+ "clear_top": 17
+}

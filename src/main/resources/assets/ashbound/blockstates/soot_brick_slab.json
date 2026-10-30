@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/soot_brick_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/soot_bricks"
+  },
+  "type=top": {
+   "model": "ashbound:block/soot_brick_slab_top"
+  }
+ }
+}

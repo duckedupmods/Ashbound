@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/scriveners_blade.obj",
+  "flip_v": true,
+  "display": {
+   "thirdperson_righthand": {
+    "rotation": [
+     0,
+     -90,
+     0
+    ],
+    "translation": [
+     0,
+     0.5,
+     0.5
+    ],
+    "scale": [
+     0.62,
+     0.62,
+     0.62
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     0,
+     -90,
+     0
+    ],
+    "translation": [
+     0,
+     0.5,
+     0.5
+    ],
+    "scale": [
+     0.62,
+     0.62,
+     0.62
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     0,
+     -90,
+     25
+    ],
+    "translation": [
+     1.13,
+     3.2,
+     1.13
+    ],
+    "scale": [
+     0.496,
+     0.496,
+     0.496
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     0,
+     90,
+     -25
+    ],
+    "translation": [
+     1.13,
+     3.2,
+     1.13
+    ],
+    "scale": [
+     0.496,
+     0.496,
+     0.496
+    ]
+   },
+   "gui": {
+    "rotation": [
+     15.94,
+     15.36,
+     -47.16
+    ],
+    "translation": [
+     -3.113,
+     -2.682,
+     0.123
+    ],
+    "scale": [
+     0.4771,
+     0.4771,
+     0.4771
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     15.94,
+     15.36,
+     -47.16
+    ],
+    "translation": [
+     -3.113,
+     -2.682,
+     0.123
+    ],
+    "scale": [
+     0.4771,
+     0.4771,
+     0.4771
+    ]
+   },
+   "ground": {
+    "rotation": [
+     15.94,
+     15.36,
+     -47.16
+    ],
+    "translation": [
+     -1.712,
+     -1.475,
+     0
+    ],
+    "scale": [
+     0.2624,
+     0.2624,
+     0.2624
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

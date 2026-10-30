@@ -1,0 +1,22 @@
+{
+ "replace": false,
+ "values": [
+  "ashbound:cellar_silt",
+  "ashbound:dead_turf",
+  "ashbound:hill_earth",
+  "ashbound:hangmans_tar",
+  "ashbound:mycelium_threads",
+  "ashbound:rot_loam",
+  "ashbound:grave_soil",
+  "ashbound:bone_ash",
+  "ashbound:drift_snow",
+  "ashbound:abyss_grit",
+  "ashbound:sawdust",
+  "ashbound:bog_mud",
+  "ashbound:fen_peat",
+  "ashbound:titan_muscle",
+  "ashbound:titan_fat",
+  "ashbound:titan_gum",
+  "ashbound:dead_flesh"
+ ]
+}

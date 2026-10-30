@@ -1,0 +1,744 @@
+{
+ "chance": 0.3,
+ "pay": [
+  [
+   30,
+   15
+  ],
+  [
+   60,
+   30
+  ],
+  [
+   110,
+   60
+  ],
+  [
+   220,
+   120
+  ],
+  [
+   380,
+   200
+  ],
+  [
+   800,
+   400
+  ],
+  [
+   1500,
+   800
+  ],
+  [
+   3000,
+   1500
+  ],
+  [
+   6000,
+   3000
+  ]
+ ],
+ "foes": [
+  [
+   "minecraft:zombie",
+   "minecraft:skeleton",
+   "minecraft:spider"
+  ],
+  [
+   "minecraft:zombie",
+   "minecraft:creeper",
+   "minecraft:skeleton",
+   "minecraft:husk"
+  ],
+  [
+   "minecraft:drowned",
+   "minecraft:witch",
+   "minecraft:creeper",
+   "minecraft:stray"
+  ],
+  [
+   "minecraft:pillager",
+   "minecraft:phantom",
+   "ashbound:cinderhusk"
+  ],
+  [
+   "minecraft:enderman",
+   "minecraft:pillager",
+   "minecraft:blaze"
+  ],
+  [
+   "minecraft:wither_skeleton",
+   "minecraft:evoker",
+   "minecraft:enderman"
+  ],
+  [
+   "minecraft:wither_skeleton",
+   "minecraft:ravager",
+   "minecraft:evoker"
+  ],
+  [
+   "minecraft:ravager",
+   "minecraft:wither_skeleton"
+  ],
+  [
+   "minecraft:ravager",
+   "minecraft:wither_skeleton"
+  ]
+ ],
+ "list": [
+  {
+   "id": "pest_fields",
+   "who": [
+    "farmer",
+    "baker"
+   ],
+   "title": "Trouble in the Fields",
+   "hook": "Oh, thank goodness. You've got a sword, haven't you?",
+   "ask": "They've been coming down to the fields after dark. I've not slept in a week. Get rid of {n} {target} for me?",
+   "thanks": "I'll sleep tonight. Bless you.",
+   "n": [
+    4,
+    8
+   ],
+   "mul": 1.0,
+   "to": 8,
+   "gift": [
+    [
+     "minecraft:bread",
+     6
+    ]
+   ],
+   "kill": "@foes",
+   "from": 0
+  },
+  {
+   "id": "guard_short",
+   "who": [
+    "guard"
+   ],
+   "title": "Short a Patrol",
+   "hook": "You. You look like you can use that.",
+   "ask": "We're two patrols short and I've {n} {target} too close to the road. Clear them and I'll see you're paid.",
+   "thanks": "Good work. I never saw you, and neither did the paperwork.",
+   "n": [
+    4,
+    8
+   ],
+   "mul": 1.0,
+   "to": 8,
+   "gift": [],
+   "kill": "@foes",
+   "from": 0
+  },
+  {
+   "id": "grudge",
+   "who": [
+    "townsfolk",
+    "merchant"
+   ],
+   "title": "A Small Grudge",
+   "hook": "Could I trouble you? It's a little embarrassing.",
+   "ask": "One of them chased me clean up a tree last week, in front of everybody. Kill {n} {target}. Any of them. It's the principle.",
+   "thanks": "That's better. I feel taller.",
+   "n": [
+    3,
+    6
+   ],
+   "mul": 1.0,
+   "to": 8,
+   "gift": [],
+   "kill": "@foes",
+   "from": 0
+  },
+  {
+   "id": "lost_dog",
+   "who": [
+    "child"
+   ],
+   "title": "For Biscuit",
+   "hook": "Are you a real adventurer?",
+   "ask": "The monsters scared my dog and she ran off. She came back, but I'm still cross. Can you beat up {n} {target}? I've saved up.",
+   "thanks": "You're the best! I'm telling everyone!",
+   "n": [
+    2,
+    4
+   ],
+   "mul": 0.7,
+   "to": 8,
+   "gift": [
+    [
+     "minecraft:cookie",
+     3
+    ]
+   ],
+   "kill": "@foes",
+   "from": 0
+  },
+  {
+   "id": "scholar_sample",
+   "who": [
+    "scholar",
+    "acolyte"
+   ],
+   "title": "A Matter of Study",
+   "hook": "Ah, an adventurer. Perfect timing.",
+   "ask": "I'm writing on how they behave when they're cornered. For that I need a few fewer of them. Say, {n} {target}.",
+   "thanks": "Fascinating. I shan't ask what it was like. Actually, I shall, but later.",
+   "n": [
+    4,
+    8
+   ],
+   "mul": 1.0,
+   "to": 8,
+   "gift": [
+    [
+     "minecraft:experience_bottle",
+     3
+    ]
+   ],
+   "kill": "@foes",
+   "from": 0
+  },
+  {
+   "id": "baker_wheat",
+   "who": [
+    "baker",
+    "farmer"
+   ],
+   "title": "Short on Flour",
+   "hook": "You wouldn't happen to be heading past any farms?",
+   "ask": "The mill's run dry and I've orders to fill. If you could find me {n} {target}, I'd pay above the market.",
+   "thanks": "You've saved my morning. Here, and take a loaf.",
+   "n": [
+    12,
+    24
+   ],
+   "mul": 0.8,
+   "to": 8,
+   "gift": [
+    [
+     "minecraft:bread",
+     4
+    ]
+   ],
+   "collect": "minecraft:wheat",
+   "from": 0
+  },
+  {
+   "id": "merchant_leather",
+   "who": [
+    "merchant"
+   ],
+   "title": "A Rushed Order",
+   "hook": "Have you a moment? And a strong back?",
+   "ask": "A buyer wants a shipment by the week's end and I'm short {n} {target}. Find them and we'll both do well.",
+   "thanks": "Just in time. A pleasure, as always.",
+   "n": [
+    6,
+    12
+   ],
+   "mul": 0.8,
+   "to": 8,
+   "gift": [],
+   "collect": "minecraft:leather",
+   "from": 0
+  },
+  {
+   "id": "smith_iron",
+   "who": [
+    "smith"
+   ],
+   "title": "Iron for the Forge",
+   "hook": "You've the look of someone who goes where the ore is.",
+   "ask": "Orders stacked to the rafters, and my iron's gone. {n} {target} would see me through the month.",
+   "thanks": "That's good iron. You've an eye.",
+   "n": [
+    6,
+    12
+   ],
+   "mul": 1.1,
+   "to": 8,
+   "gift": [],
+   "collect": "minecraft:iron_ingot",
+   "from": 1
+  },
+  {
+   "id": "barmaid_sugar",
+   "who": [
+    "barmaid"
+   ],
+   "title": "A Sweet Tooth",
+   "hook": "Oh! Perfect. You look like you get about.",
+   "ask": "We're out of the good stuff and the regulars are getting ideas. Bring me {n} {target} and the next one's on me.",
+   "thanks": "You're a lifesaver. Don't tell the cook.",
+   "n": [
+    8,
+    16
+   ],
+   "mul": 0.8,
+   "to": 8,
+   "gift": [
+    [
+     "minecraft:honey_bottle",
+     2
+    ]
+   ],
+   "collect": "minecraft:sugar",
+   "from": 0
+  },
+  {
+   "id": "herbal_kit",
+   "who": [
+    "acolyte"
+   ],
+   "title": "Bandages for the Shrine",
+   "hook": "Forgive me, might I ask you something?",
+   "ask": "We go through linen faster than the faithful bring it. {n} {target} would mean a great deal to the sick.",
+   "thanks": "May the road be kind to you.",
+   "n": [
+    8,
+    16
+   ],
+   "mul": 0.8,
+   "to": 8,
+   "gift": [],
+   "collect": "minecraft:string",
+   "from": 0
+  },
+  {
+   "id": "child_flowers",
+   "who": [
+    "child"
+   ],
+   "title": "Flowers for Gran",
+   "hook": "Hey! Hey, you! Are you busy?",
+   "ask": "It's my gran's birthday and I'm not allowed past the wall. Can you get me {n} {target}? They're her favourite!",
+   "thanks": "She's going to cry! The good kind!",
+   "n": [
+    3,
+    6
+   ],
+   "mul": 0.6,
+   "to": 8,
+   "gift": [
+    [
+     "minecraft:cookie",
+     2
+    ]
+   ],
+   "collect": "minecraft:dandelion",
+   "from": 0
+  },
+  {
+   "id": "town_letter",
+   "who": [
+    "townsfolk",
+    "merchant"
+   ],
+   "title": "A Letter to Anvilgate",
+   "hook": "I don't suppose you're travelling north?",
+   "ask": "My brother-in-law works the Hold. He doesn't write, so I must. Would you take this to any dwarf at Anvilgate? They'll pass it on, and pay you for the trouble. They always do.",
+   "thanks": "From who? Hah! Here, for your boots.",
+   "n": [
+    1,
+    1
+   ],
+   "mul": 2.0,
+   "to": 8,
+   "gift": [],
+   "deliver": "dwarf",
+   "to_name": "any dwarf at Anvilgate",
+   "from": 0
+  },
+  {
+   "id": "guard_report",
+   "who": [
+    "guard"
+   ],
+   "title": "Sealed Orders",
+   "hook": "You there. Reliable, are you?",
+   "ask": "This goes to any smith, sealed. Don't open it, don't ask. They'll pay on delivery.",
+   "thanks": "About time. Here's your coin. Off you go.",
+   "n": [
+    1,
+    1
+   ],
+   "mul": 1.0,
+   "to": 8,
+   "gift": [],
+   "deliver": "smith",
+   "to_name": "any smith",
+   "from": 0
+  },
+  {
+   "id": "scholar_elves",
+   "who": [
+    "scholar"
+   ],
+   "title": "A Query for the Elves",
+   "hook": "Do you ever go near Lumenhollow?",
+   "ask": "I've been asking the same elf the same question for eleven years. Please take this letter to anyone at the Tree.",
+   "thanks": "Ah. Tell them we'll reply in a decade or so. For your trouble.",
+   "n": [
+    1,
+    1
+   ],
+   "mul": 2.0,
+   "to": 8,
+   "gift": [],
+   "deliver": "elf",
+   "to_name": "any elf at Lumenhollow",
+   "from": 0
+  },
+  {
+   "id": "hold_shafts",
+   "who": [
+    "miner"
+   ],
+   "title": "Things in the Shafts",
+   "hook": "You. Tall one. Can you swing that thing?",
+   "ask": "Lost a whole level to them last week. {n} {target}, gone, and the crew'll go back down. I'll stand you a drink as well.",
+   "thanks": "Hah! Not bad for someone with their head in the weather.",
+   "n": [
+    4,
+    8
+   ],
+   "mul": 1.0,
+   "to": 8,
+   "gift": [
+    [
+     "minecraft:coal",
+     8
+    ]
+   ],
+   "kill": "@foes",
+   "from": 0
+  },
+  {
+   "id": "hold_road",
+   "who": [
+    "dwarf"
+   ],
+   "title": "Clearing the Pass",
+   "hook": "Hold on. You've got the arms for it.",
+   "ask": "The pass is thick with them and the mules won't go near. See off {n} {target}. We pay in good iron.",
+   "thanks": "Well struck. Here, this is honest metal.",
+   "n": [
+    4,
+    8
+   ],
+   "mul": 1.0,
+   "to": 8,
+   "gift": [
+    [
+     "minecraft:iron_ingot",
+     3
+    ]
+   ],
+   "kill": "@foes",
+   "from": 0
+  },
+  {
+   "id": "hold_coal",
+   "who": [
+    "smith",
+    "miner"
+   ],
+   "title": "Coal for the Deep Forge",
+   "hook": "You. You got pockets?",
+   "ask": "Deep forge eats coal like a dragon with a cough. {n} {target}. Don't dawdle.",
+   "thanks": "That'll keep her burning. Good.",
+   "n": [
+    16,
+    32
+   ],
+   "mul": 0.8,
+   "to": 8,
+   "gift": [],
+   "collect": "minecraft:coal",
+   "from": 0
+  },
+  {
+   "id": "hold_copper",
+   "who": [
+    "merchant"
+   ],
+   "title": "Copper, Quick",
+   "hook": "A word, tall one, while there's a profit in it.",
+   "ask": "Stepcliff wants rails and I'm short. {n} {target} and we'll split it the way I say.",
+   "thanks": "Fair weight. Rare, for a surface walker.",
+   "n": [
+    12,
+    24
+   ],
+   "mul": 0.8,
+   "to": 8,
+   "gift": [],
+   "collect": "minecraft:copper_ingot",
+   "from": 1
+  },
+  {
+   "id": "hold_ale",
+   "who": [
+    "dwarf"
+   ],
+   "title": "A Dry Shift",
+   "hook": "This is serious, so listen.",
+   "ask": "The cellar's dry. The CELLAR. Bring {n} {target} so we can brew before the third shift finds out.",
+   "thanks": "You've saved more lives than you'll ever know.",
+   "n": [
+    16,
+    24
+   ],
+   "mul": 0.8,
+   "to": 8,
+   "gift": [
+    [
+     "minecraft:iron_ingot",
+     2
+    ]
+   ],
+   "collect": "minecraft:wheat",
+   "from": 0
+  },
+  {
+   "id": "hold_hinges",
+   "who": [
+    "dwarf"
+   ],
+   "title": "Invoice for the Elves",
+   "hook": "You're heading somewhere with trees?",
+   "ask": "They owe for forty hinges, and they've owed for sixty years. Hand this to any elf at Lumenhollow. Smile while you do it.",
+   "thanks": "Ah, the hinges. Do tell them we adore their urgency. For your trouble.",
+   "n": [
+    1,
+    1
+   ],
+   "mul": 2.0,
+   "to": 8,
+   "gift": [],
+   "deliver": "elf",
+   "to_name": "any elf at Lumenhollow",
+   "from": 0
+  },
+  {
+   "id": "tree_wardens",
+   "who": [
+    "warden"
+   ],
+   "title": "Thinning the Dusk",
+   "hook": "Stay a moment. You move like one who's fought.",
+   "ask": "They gather where the roots run thin. Remove {n} {target}. Quietly, if your kind can manage it.",
+   "thanks": "Adequately done. The Tree noticed.",
+   "n": [
+    4,
+    8
+   ],
+   "mul": 1.0,
+   "to": 8,
+   "gift": [
+    [
+     "minecraft:arrow",
+     16
+    ]
+   ],
+   "kill": "@foes",
+   "from": 0
+  },
+  {
+   "id": "tree_rot",
+   "who": [
+    "herbalist",
+    "elder"
+   ],
+   "title": "Before the Rot Spreads",
+   "hook": "Wait. You've come from the east road, haven't you?",
+   "ask": "They carry the rot on them. Each one that falls buys the forest another season. {n} {target}, if you would.",
+   "thanks": "That is one more season. Thank you, little-lived one.",
+   "n": [
+    4,
+    8
+   ],
+   "mul": 1.2,
+   "to": 8,
+   "gift": [
+    [
+     "minecraft:golden_apple",
+     1
+    ]
+   ],
+   "kill": "@foes",
+   "from": 1
+  },
+  {
+   "id": "tree_oil",
+   "who": [
+    "lamplighter"
+   ],
+   "title": "Oil for the Lanterns",
+   "hook": "Forgive me. Might you have a moment? Or a year?",
+   "ask": "The lanterns run low and the moths are shy this season. {n} {target} would keep them through to spring.",
+   "thanks": "One more night for each of them. They'd thank you.",
+   "n": [
+    4,
+    8
+   ],
+   "mul": 1.0,
+   "to": 8,
+   "gift": [],
+   "collect": "minecraft:honeycomb",
+   "from": 0
+  },
+  {
+   "id": "tree_herbs",
+   "who": [
+    "herbalist"
+   ],
+   "title": "Fresh Cuttings",
+   "hook": "Your boots have been somewhere interesting.",
+   "ask": "I've need of {n} {target}. Cut clean, not pulled. I'll know.",
+   "thanks": "Hm. Mostly cut clean. It will do.",
+   "n": [
+    6,
+    12
+   ],
+   "mul": 0.8,
+   "to": 8,
+   "gift": [
+    [
+     "minecraft:glistering_melon_slice",
+     2
+    ]
+   ],
+   "collect": "minecraft:fern",
+   "from": 0
+  },
+  {
+   "id": "tree_wool",
+   "who": [
+    "weaver"
+   ],
+   "title": "Thread for the Loom",
+   "hook": "You're wearing that on purpose? Never mind. I've a request.",
+   "ask": "Our silk won't dress everyone. Bring me {n} {target} and I shall see what I can do for your dignity.",
+   "thanks": "A start. Do come back in forty years.",
+   "n": [
+    8,
+    16
+   ],
+   "mul": 0.8,
+   "to": 8,
+   "gift": [],
+   "collect": "minecraft:white_wool",
+   "from": 0
+  },
+  {
+   "id": "tree_song",
+   "who": [
+    "singer"
+   ],
+   "title": "A Verse for the Hold",
+   "hook": "Would you carry something for me? It's only a verse.",
+   "ask": "A dwarf once asked me how a song ended, a long time ago. It's finished now. Please take it to any dwarf at Anvilgate.",
+   "thanks": "It took them how long? Hah! Fair enough. For your walk.",
+   "n": [
+    1,
+    1
+   ],
+   "mul": 2.0,
+   "to": 8,
+   "gift": [],
+   "deliver": "dwarf",
+   "to_name": "any dwarf at Anvilgate",
+   "from": 0
+  },
+  {
+   "id": "horn_stones",
+   "who": [
+    "demon"
+   ],
+   "title": "The Night Watch",
+   "hook": "You stopped. Could I ask you something, then?",
+   "ask": "They come up the drains at night, and when they do it's our doors that get stoned for it. Kill {n} {target} and I'll make sure Hornsend remembers.",
+   "thanks": "That's the first time anybody's done that for us. Thank you.",
+   "n": [
+    4,
+    8
+   ],
+   "mul": 1.1,
+   "to": 8,
+   "gift": [
+    [
+     "minecraft:blaze_powder",
+     2
+    ]
+   ],
+   "kill": "@foes",
+   "from": 0
+  },
+  {
+   "id": "horn_soup",
+   "who": [
+    "cook"
+   ],
+   "title": "Pepper for the Pot",
+   "hook": "You've got a kind face. Unusual, up here.",
+   "ask": "Nobody on the market will sell to me. If you'd buy {n} {target} and bring them here, the whole Row eats tonight.",
+   "thanks": "Sit, sit. It's safe. Mostly.",
+   "n": [
+    6,
+    12
+   ],
+   "mul": 0.8,
+   "to": 8,
+   "gift": [
+    [
+     "minecraft:rabbit_stew",
+     2
+    ]
+   ],
+   "collect": "minecraft:red_mushroom",
+   "from": 0
+  },
+  {
+   "id": "horn_coal",
+   "who": [
+    "sweeper",
+    "smith"
+   ],
+   "title": "A Cold Quarter",
+   "hook": "I wouldn't normally ask.",
+   "ask": "The city's coal stops at the top of the steps. {n} {target} would see the old ones through the week.",
+   "thanks": "They'll never know who sent it. I will.",
+   "n": [
+    12,
+    24
+   ],
+   "mul": 0.8,
+   "to": 8,
+   "gift": [],
+   "collect": "minecraft:coal",
+   "from": 0
+  },
+  {
+   "id": "horn_letter",
+   "who": [
+    "demon"
+   ],
+   "title": "A Name for the Guild",
+   "hook": "Would you carry a letter? It won't bite.",
+   "ask": "It's only a name, for the register. It needs to reach any guard in the city, and they'll throw it away. But it'll have been delivered.",
+   "thanks": "From who? Hornsend? ...Fine. Here. Don't tell anyone.",
+   "n": [
+    1,
+    1
+   ],
+   "mul": 1.5,
+   "to": 8,
+   "gift": [],
+   "deliver": "guard",
+   "to_name": "any guard",
+   "from": 0
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column",
+ "textures": {
+  "side": "ashbound:block/wreck_beam",
+  "end": "ashbound:block/wreck_beam_top"
+ }
+}

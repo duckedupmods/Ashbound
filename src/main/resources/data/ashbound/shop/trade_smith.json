@@ -1,0 +1,65 @@
+{
+ "buy": [
+  {
+   "item": {
+    "id": "minecraft:iron_sword"
+   },
+   "price": 90
+  },
+  {
+   "item": {
+    "id": "minecraft:iron_axe"
+   },
+   "price": 85
+  },
+  {
+   "item": {
+    "id": "minecraft:iron_pickaxe"
+   },
+   "price": 85
+  },
+  {
+   "item": {
+    "id": "minecraft:iron_shovel"
+   },
+   "price": 50
+  },
+  {
+   "item": {
+    "id": "minecraft:shield"
+   },
+   "price": 120
+  },
+  {
+   "item": {
+    "id": "minecraft:iron_ingot"
+   },
+   "price": 20
+  },
+  {
+   "item": {
+    "id": "minecraft:chain",
+    "count": 4
+   },
+   "price": 25
+  }
+ ],
+ "sell": [
+  {
+   "item": "minecraft:iron_ingot",
+   "price": 6
+  },
+  {
+   "item": "minecraft:coal",
+   "price": 2
+  },
+  {
+   "item": "minecraft:copper_ingot",
+   "price": 2
+  },
+  {
+   "item": "minecraft:raw_iron",
+   "price": 4
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/chapel_stone_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/chapel_stone_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/chapel_stone"
+  }
+ }
+}

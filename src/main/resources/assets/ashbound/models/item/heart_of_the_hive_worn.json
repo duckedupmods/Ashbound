@@ -1,0 +1,5 @@
+{
+ "loader": "neoforge:obj",
+ "model": "ashbound:models/mesh/heart_of_the_hive_worn.obj",
+ "flip_v": true
+}

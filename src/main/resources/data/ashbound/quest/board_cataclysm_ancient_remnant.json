@@ -1,0 +1,14 @@
+{
+ "title": "The Ancient Remnant",
+ "rank": "A",
+ "text": "Grave-robbers opened a pyramid and only the sand came back. Something very large and very dead is in there.",
+ "kill": "cataclysm:ancient_remnant",
+ "what": "The Ancient Remnant",
+ "count": 1,
+ "locate": "cataclysm:cursed_pyramid",
+ "dim": "minecraft:overworld",
+ "points": 1800,
+ "coins": 3300,
+ "ash": 1040,
+ "icon": "minecraft:sandstone"
+}

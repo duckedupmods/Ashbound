@@ -1,0 +1,213 @@
+{
+ "name": "Elowen",
+ "title": "Guild Receptionist",
+ "start": "start",
+ "nodes": {
+  "start": {
+   "go_if": [
+    [
+     "registered",
+     "welcome"
+    ]
+   ],
+   "text": [
+    "Oh! A new face. Welcome to the Adventurers' Guild of Highmourn!",
+    "I'm Elowen. Registrations, requests, rewards and rank evaluations all go through me. Are you here to sign up?"
+   ],
+   "options": [
+    {
+     "text": "I want to register.",
+     "go": "register"
+    },
+    {
+     "text": "What is this place?",
+     "go": "about"
+    },
+    {
+     "text": "Maybe later.",
+     "do": "close"
+    }
+   ]
+  },
+  "about": {
+   "text": [
+    "The people of Highmourn bring us their troubles: the dead that won't stay buried, beasts on the roads, crypts that need clearing. We post them on the board as requests.",
+    "Adventurers take them, do the job, and come back to me for the reward. Simple, isn't it? Well... the coming back part isn't always."
+   ],
+   "options": [
+    {
+     "text": "I want to register.",
+     "go": "register",
+     "if": "!registered"
+    },
+    {
+     "text": "Tell me about the ranks.",
+     "go": "ranks"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "register": {
+   "text": [
+    "Everyone starts at F rank. No exceptions, not even for heroes from far away.",
+    "Finish requests to earn Guild Points. When you have enough, come back to me for an evaluation and I'll raise your rank. Shall I write you in?"
+   ],
+   "options": [
+    {
+     "text": "Sign me up.",
+     "do": "register",
+     "go": "registered"
+    },
+    {
+     "text": "Not yet.",
+     "do": "close"
+    }
+   ]
+  },
+  "registered": {
+   "text": [
+    "There! {player}, F-rank adventurer of the Guild.",
+    "Here's your guild card. Please don't lose it, the replacement fee is outrageous. The board is open to you whenever you're ready."
+   ],
+   "options": [
+    {
+     "text": "Show me the requests.",
+     "do": "quests"
+    },
+    {
+     "text": "Thank you, Elowen.",
+     "do": "close"
+    }
+   ]
+  },
+  "welcome": {
+   "go_if": [
+    [
+     "rank_up",
+     "eval_ready"
+    ]
+   ],
+   "text": [
+    "Welcome back, {player}! What can the Guild do for you today?"
+   ],
+   "options": [
+    {
+     "text": "Show me the requests.",
+     "do": "quests"
+    },
+    {
+     "text": "How's my rank?",
+     "go": "rank_info"
+    },
+    {
+     "text": "Tell me about the ranks.",
+     "go": "ranks"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "eval_ready": {
+   "text": [
+    "{player}! I was hoping you'd come by. You've earned enough points for a rank evaluation.",
+    "Shall we do it now?"
+   ],
+   "options": [
+    {
+     "text": "Evaluate me.",
+     "do": "rank_up",
+     "go": "promoted"
+    },
+    {
+     "text": "Show me the requests first.",
+     "do": "quests"
+    },
+    {
+     "text": "Later.",
+     "do": "close"
+    }
+   ]
+  },
+  "promoted": {
+   "text": [
+    "Congratulations! As of today, you are a {rank}-rank adventurer.",
+    "Harder requests are open to you now, and the pay's better too. Just... be careful out there, all right?"
+   ],
+   "options": [
+    {
+     "text": "Show me the requests.",
+     "do": "quests"
+    },
+    {
+     "text": "Thank you.",
+     "do": "close"
+    }
+   ]
+  },
+  "rank_info": {
+   "go_if": [
+    [
+     "max_rank",
+     "rank_max"
+    ]
+   ],
+   "text": [
+    "You're {rank}-rank, with {points} Guild Points.",
+    "Your next evaluation needs {next}. Keep at it, I have high hopes for you."
+   ],
+   "options": [
+    {
+     "text": "Show me the requests.",
+     "do": "quests"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rank_max": {
+   "text": [
+    "SSS rank... In all my years at this desk I never thought I'd write that on someone's card.",
+    "There's nothing higher I can give you. Only the stories they'll tell about you."
+   ],
+   "options": [
+    {
+     "text": "Show me the requests.",
+     "do": "quests"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "ranks": {
+   "text": [
+    "F, E, D, C, B, A, and then S. Beyond S there's SS, and SSS, the stuff of legends. Only a handful have ever made SSS.",
+    "You can take requests of your own rank, or one above it if you're feeling brave. Three at a time, and please report back when they're done."
+   ],
+   "options": [
+    {
+     "text": "I want to register.",
+     "go": "register",
+     "if": "!registered"
+    },
+    {
+     "text": "Show me the requests.",
+     "do": "quests",
+     "if": "registered"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

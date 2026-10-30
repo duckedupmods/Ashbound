@@ -1,0 +1,25 @@
+{
+ "replace": false,
+ "values": [
+  "ashbound:wolf_tooth_necklace",
+  "ashbound:miners_medallion",
+  "ashbound:shell_pendant",
+  "ashbound:grave_candle_pendant",
+  "ashbound:spore_bead_string",
+  "ashbound:thorn_choker",
+  "ashbound:ash_prayer_beads",
+  "ashbound:moonpetal_locket",
+  "ashbound:legion_sun_disc",
+  "ashbound:frozen_tear",
+  "ashbound:brood_mothers_fang",
+  "ashbound:gilded_pyx",
+  "ashbound:void_glass_shard",
+  "ashbound:augurs_ember",
+  "ashbound:briar_heart",
+  "ashbound:gryphon_torc",
+  "ashbound:bulwark_gorget",
+  "ashbound:last_vigil_reliquary",
+  "ashbound:heart_of_the_hive",
+  "ashbound:salt_saints_censer"
+ ]
+}

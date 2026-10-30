@@ -1,0 +1,14 @@
+{
+ "title": "The Ender Guardian",
+ "rank": "S",
+ "text": "Beyond the End, a ruined citadel, and what still stands watch over it. Nobody's paying you to come back quickly.",
+ "kill": "cataclysm:ender_guardian",
+ "what": "The Ender Guardian",
+ "count": 1,
+ "locate": "cataclysm:ruined_citadel",
+ "dim": "minecraft:the_end",
+ "points": 3000,
+ "coins": 6000,
+ "ash": 1600,
+ "icon": "minecraft:purpur_block"
+}

@@ -1,0 +1,14 @@
+{
+ "title": "Scylla",
+ "rank": "S",
+ "text": "Storm without end over an old acropolis on the water. The ships that went to look never came home.",
+ "kill": "cataclysm:scylla",
+ "what": "Scylla",
+ "count": 1,
+ "locate": "cataclysm:acropolis",
+ "dim": "minecraft:overworld",
+ "points": 3000,
+ "coins": 6000,
+ "ash": 1600,
+ "icon": "minecraft:lightning_rod"
+}

@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/brass_grating_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/brass_grating_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/brass_grating"
+  }
+ }
+}

@@ -1,0 +1,92 @@
+{
+ "name": "Brann Holt",
+ "title": "Quartermaster",
+ "start": "start",
+ "nodes": {
+  "start": {
+   "go_if": [
+    [
+     "registered",
+     "regular"
+    ]
+   ],
+   "text": [
+    "Hm. Another one fresh off the road, by the look of those boots.",
+    "Rope, torches, bread, potions. Things that keep you breathing down a hole. You pay in coin, same as the Guild pays you. No credit, no haggling."
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "You were an adventurer?",
+     "go": "past"
+    },
+    {
+     "text": "Just looking.",
+     "do": "close"
+    }
+   ]
+  },
+  "regular": {
+   "text": [
+    "{player}. Still in one piece, I see. What'll it be?"
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "Any advice?",
+     "go": "advice"
+    },
+    {
+     "text": "You were an adventurer?",
+     "go": "past"
+    },
+    {
+     "text": "Later.",
+     "do": "close"
+    }
+   ]
+  },
+  "past": {
+   "text": [
+    "B-rank. Eleven years. Lost the eye in a gate the Guild marked C. It was no C. Lost the party with it.",
+    "The tag's cracked, same as me. Now I sell the rope to the ones who still go down. Better business. Fewer funerals."
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "Any advice?",
+     "go": "advice"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "advice": {
+   "text": [
+    "Always carry more light than you think. Never fight on an empty belly.",
+    "And if a gate goes quiet, it's not empty. It's waiting. Bring me what you strip off the dead; I'll pay fair."
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

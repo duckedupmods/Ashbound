@@ -1,0 +1,124 @@
+{
+ "parent": "ashbound:block/mine_rail",
+ "display": {
+  "gui": {
+   "rotation": [
+    30,
+    225,
+    0
+   ],
+   "translation": [
+    -0.99,
+    3.27,
+    0.74
+   ],
+   "scale": [
+    0.45,
+    0.45,
+    0.45
+   ]
+  },
+  "ground": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0.0,
+    1.28,
+    0.56
+   ],
+   "scale": [
+    0.18,
+    0.18,
+    0.18
+   ]
+  },
+  "fixed": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0.0,
+    2.56,
+    1.12
+   ],
+   "scale": [
+    0.36,
+    0.36,
+    0.36
+   ]
+  },
+  "thirdperson_righthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.6,
+    -0.08,
+    2.01
+   ],
+   "scale": [
+    0.27,
+    0.27,
+    0.27
+   ]
+  },
+  "thirdperson_lefthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.6,
+    -0.08,
+    2.01
+   ],
+   "scale": [
+    0.27,
+    0.27,
+    0.27
+   ]
+  },
+  "firstperson_righthand": {
+   "rotation": [
+    0,
+    45,
+    0
+   ],
+   "translation": [
+    0.63,
+    2.05,
+    0.63
+   ],
+   "scale": [
+    0.288,
+    0.288,
+    0.288
+   ]
+  },
+  "firstperson_lefthand": {
+   "rotation": [
+    0,
+    225,
+    0
+   ],
+   "translation": [
+    -0.63,
+    2.05,
+    -0.63
+   ],
+   "scale": [
+    0.288,
+    0.288,
+    0.288
+   ]
+  }
+ }
+}

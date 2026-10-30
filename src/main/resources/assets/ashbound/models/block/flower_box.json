@@ -1,0 +1,167 @@
+{
+ "parent": "minecraft:block/block",
+ "ambientocclusion": false,
+ "textures": {
+  "particle": "ashbound:block/flower_box_side",
+  "side": "ashbound:block/flower_box_side",
+  "top": "ashbound:block/flower_box_top",
+  "flowers": "ashbound:block/flower_box_flowers"
+ },
+ "elements": [
+  {
+   "from": [
+    1,
+    0,
+    1
+   ],
+   "to": [
+    15,
+    7,
+    15
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      1,
+      9,
+      15,
+      16
+     ],
+     "texture": "#side"
+    },
+    "south": {
+     "uv": [
+      1,
+      9,
+      15,
+      16
+     ],
+     "texture": "#side"
+    },
+    "east": {
+     "uv": [
+      1,
+      9,
+      15,
+      16
+     ],
+     "texture": "#side"
+    },
+    "west": {
+     "uv": [
+      1,
+      9,
+      15,
+      16
+     ],
+     "texture": "#side"
+    },
+    "up": {
+     "uv": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "texture": "#top"
+    },
+    "down": {
+     "uv": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "texture": "#side"
+    }
+   }
+  },
+  {
+   "from": [
+    1,
+    4,
+    8
+   ],
+   "to": [
+    15,
+    16,
+    8
+   ],
+   "shade": false,
+   "rotation": {
+    "origin": [
+     8,
+     8,
+     8
+    ],
+    "axis": "y",
+    "angle": 45,
+    "rescale": true
+   },
+   "faces": {
+    "north": {
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ],
+     "texture": "#flowers"
+    },
+    "south": {
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ],
+     "texture": "#flowers"
+    }
+   }
+  },
+  {
+   "from": [
+    8,
+    4,
+    1
+   ],
+   "to": [
+    8,
+    16,
+    15
+   ],
+   "shade": false,
+   "rotation": {
+    "origin": [
+     8,
+     8,
+     8
+    ],
+    "axis": "y",
+    "angle": 45,
+    "rescale": true
+   },
+   "faces": {
+    "east": {
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ],
+     "texture": "#flowers"
+    },
+    "west": {
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ],
+     "texture": "#flowers"
+    }
+   }
+  }
+ ],
+ "render_type": "minecraft:cutout"
+}

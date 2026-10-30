@@ -1,0 +1,11 @@
+{
+ "title": "Witch Pitch",
+ "rank": "F",
+ "kill": "ashbound:tar_witch",
+ "count": 4,
+ "what": "Tar Witches",
+ "points": 30,
+ "coins": 45,
+ "text": "Tar on the well-rope at Low Hatch, and something in the bucket that wasn't water. The witches who boiled the gibbet pitch are boiling again.",
+ "repeat": true
+}

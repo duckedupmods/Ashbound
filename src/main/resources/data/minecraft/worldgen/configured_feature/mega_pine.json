@@ -1,0 +1,31 @@
+{
+ "type": "ashbound:tree",
+ "config": {
+  "trees": [
+   {
+    "template": "ashbound:tree/pine_medium_0",
+    "weight": 30
+   },
+   {
+    "template": "ashbound:tree/pine_medium_1",
+    "weight": 30
+   },
+   {
+    "template": "ashbound:tree/pine_medium_2",
+    "weight": 30
+   },
+   {
+    "template": "ashbound:tree/pine_large_0",
+    "weight": 70
+   },
+   {
+    "template": "ashbound:tree/pine_large_1",
+    "weight": 70
+   },
+   {
+    "template": "ashbound:tree/pine_large_2",
+    "weight": 70
+   }
+  ]
+ }
+}

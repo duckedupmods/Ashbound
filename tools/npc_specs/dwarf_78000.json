@@ -1,0 +1,61 @@
+{
+ "id": "dwarf_78000",
+ "seed": 78000,
+ "recipe": "dwarf",
+ "role": "guard",
+ "rank": null,
+ "name": "Velka Coalvein",
+ "title": "Hold Guard",
+ "age": "adult",
+ "sex": "f",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "weathered",
+ "hair": {
+  "style": "bun",
+  "color": "dark_brown"
+ },
+ "headwear": "helm",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "brown",
+  "brows": "soft",
+  "mouth": "flat",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "mail",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "belt",
+   "greaves",
+   "pauldrons",
+   "tabard"
+  ],
+  "colors": {
+   "top": "linen",
+   "bottom": "brown",
+   "accent": "teal",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "mace",
+ "offhand": "shield",
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "dwarf"
+}

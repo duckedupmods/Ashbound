@@ -1,0 +1,56 @@
+{
+ "id": "elf_57009",
+ "seed": 57009,
+ "recipe": "elf",
+ "role": "child",
+ "rank": null,
+ "name": "Pell",
+ "title": "Child",
+ "age": "kid",
+ "sex": "m",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "porcelain",
+ "hair": {
+  "style": "shaggy",
+  "color": "blue_black"
+ },
+ "headwear": "bow",
+ "beard": null,
+ "face": {
+  "eye": "big",
+  "iris": "green",
+  "brows": "soft",
+  "mouth": "smile",
+  "blush": true,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "tunic",
+  "bottom": "shorts",
+  "sleeves": "long",
+  "overs": [],
+  "colors": {
+   "top": "moss",
+   "bottom": "forest",
+   "accent": "plum",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "clasp",
+  "l": "clasp"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": "kitten",
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "elf"
+}

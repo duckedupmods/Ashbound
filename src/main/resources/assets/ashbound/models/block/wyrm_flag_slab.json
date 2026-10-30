@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/slab",
+ "textures": {
+  "bottom": "ashbound:block/wyrm_flags",
+  "top": "ashbound:block/wyrm_flags",
+  "side": "ashbound:block/wyrm_flags"
+ }
+}

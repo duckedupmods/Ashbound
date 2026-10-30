@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/mine_rail"
+  },
+  "facing=east": {
+   "model": "ashbound:block/mine_rail",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/mine_rail",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/mine_rail",
+   "y": 270
+  }
+ }
+}

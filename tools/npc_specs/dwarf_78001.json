@@ -1,0 +1,63 @@
+{
+ "id": "dwarf_78001",
+ "seed": 78001,
+ "recipe": "dwarf",
+ "role": "miner",
+ "rank": null,
+ "name": "Borin Brightvein",
+ "title": "Miner",
+ "age": "adult",
+ "sex": "m",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "weathered",
+ "hair": {
+  "style": "topknot",
+  "color": "black"
+ },
+ "headwear": "cap",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "brown",
+  "brows": "bushy",
+  "mouth": "flat",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "soot",
+   "scar"
+  ],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "belt",
+   "gloves",
+   "pouches"
+  ],
+  "colors": {
+   "top": "charcoal",
+   "bottom": "charcoal",
+   "accent": "mustard",
+   "leather": "red"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "lantern",
+ "offhand": null,
+ "back": "sack",
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "dwarf"
+}

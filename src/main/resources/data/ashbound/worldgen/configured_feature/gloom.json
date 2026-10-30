@@ -1,0 +1,103 @@
+{
+ "type": "ashbound:tree",
+ "config": {
+  "trees": [
+   {
+    "template": "ashbound:tree/gloom_small_0",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/gloom_small_1",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/gloom_small_2",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/gloom_medium_0",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/gloom_medium_1",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/gloom_medium_2",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/gloom_large_0",
+    "weight": 35
+   },
+   {
+    "template": "ashbound:tree/gloom_large_1",
+    "weight": 35
+   },
+   {
+    "template": "ashbound:tree/gloom_large_2",
+    "weight": 35
+   },
+   {
+    "template": "ashbound:tree/woods_log_0",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_log_1",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_log_2",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_stump_0",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_stump_1",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_stump_2",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_stone_0",
+    "weight": 1
+   },
+   {
+    "template": "ashbound:tree/woods_stone_1",
+    "weight": 1
+   },
+   {
+    "template": "ashbound:tree/woods_stone_2",
+    "weight": 1
+   },
+   {
+    "template": "ashbound:tree/woods_ring_0",
+    "weight": 2
+   },
+   {
+    "template": "ashbound:tree/woods_ring_1",
+    "weight": 2
+   },
+   {
+    "template": "ashbound:tree/woods_ring_2",
+    "weight": 2
+   },
+   {
+    "template": "ashbound:tree/woods_carcass_0",
+    "weight": 1
+   },
+   {
+    "template": "ashbound:tree/woods_carcass_1",
+    "weight": 1
+   },
+   {
+    "template": "ashbound:tree/woods_carcass_2",
+    "weight": 1
+   }
+  ]
+ }
+}

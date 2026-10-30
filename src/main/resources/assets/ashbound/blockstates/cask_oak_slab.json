@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/cask_oak_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/cask_oak"
+  },
+  "type=top": {
+   "model": "ashbound:block/cask_oak_slab_top"
+  }
+ }
+}

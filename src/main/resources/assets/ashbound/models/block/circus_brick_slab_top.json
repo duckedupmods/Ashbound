@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/slab_top",
+ "textures": {
+  "bottom": "ashbound:block/circus_bricks",
+  "top": "ashbound:block/circus_bricks",
+  "side": "ashbound:block/circus_bricks"
+ }
+}

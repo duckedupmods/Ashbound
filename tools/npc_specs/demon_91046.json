@@ -1,0 +1,58 @@
+{
+ "id": "demon_91046",
+ "seed": 91046,
+ "recipe": "demon",
+ "role": "cook",
+ "rank": null,
+ "name": "Tomorrow Underwall",
+ "title": "Pot Cook",
+ "age": "adult",
+ "sex": "m",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "char",
+ "hair": {
+  "style": "topknot",
+  "color": "black"
+ },
+ "headwear": "bandana",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "hazel",
+  "brows": "soft",
+  "mouth": "flat",
+  "blush": false,
+  "freckles": true,
+  "marks": [],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "shirt",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "apron"
+  ],
+  "colors": {
+   "top": "rust",
+   "bottom": "grey",
+   "accent": "oxblood",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "demon"
+}

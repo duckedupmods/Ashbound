@@ -1,0 +1,60 @@
+{
+ "id": "dwarf_78009",
+ "seed": 78009,
+ "recipe": "dwarf",
+ "role": "merchant",
+ "rank": null,
+ "name": "Baldrek Brightvein",
+ "title": "Ore Trader",
+ "age": "adult",
+ "sex": "m",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "fair",
+ "hair": {
+  "style": "bald",
+  "color": "auburn"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "green",
+  "brows": "stern",
+  "mouth": "grin",
+  "blush": false,
+  "freckles": true,
+  "marks": [],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "coat",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "belt",
+   "pouches",
+   "scarf"
+  ],
+  "colors": {
+   "top": "navy",
+   "bottom": "brown",
+   "accent": "oxblood",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "dwarf"
+}

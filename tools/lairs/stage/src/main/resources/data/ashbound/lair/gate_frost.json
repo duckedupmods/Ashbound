@@ -1,0 +1,28 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Frozen Procession",
+ "test_origin": [
+  59000,
+  0,
+  0
+ ],
+ "clear_top": 32,
+ "safe_radius": 340,
+ "boss": "ashbound:winter_marshal",
+ "built_check": [
+  [
+   -15,
+   0,
+   -306,
+   "ashbound:icebound_bricks"
+  ]
+ ],
+ "seal": "The glacier will not yield",
+ "broken": "The procession halts",
+ "arrive": [
+  "THE FROZEN PROCESSION",
+  "B-Rank Gate"
+ ],
+ "rank": "B",
+ "debris": "frost"
+}

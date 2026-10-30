@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/circus_tent"
+  },
+  "facing=east": {
+   "model": "ashbound:block/circus_tent",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/circus_tent",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/circus_tent",
+   "y": 270
+  }
+ }
+}

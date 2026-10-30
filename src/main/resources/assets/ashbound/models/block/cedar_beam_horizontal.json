@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column_horizontal",
+ "textures": {
+  "side": "ashbound:block/cedar_beam",
+  "end": "ashbound:block/cedar_beam_top"
+ }
+}

@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/stairs",
+ "textures": {
+  "bottom": "ashbound:block/rook_stone",
+  "top": "ashbound:block/rook_stone",
+  "side": "ashbound:block/rook_stone"
+ }
+}

@@ -1,0 +1,124 @@
+{
+ "parent": "ashbound:block/bone_pile",
+ "display": {
+  "gui": {
+   "rotation": [
+    30,
+    225,
+    0
+   ],
+   "translation": [
+    -0.14,
+    2.87,
+    1.26
+   ],
+   "scale": [
+    0.574,
+    0.574,
+    0.574
+   ]
+  },
+  "ground": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    -0.06,
+    1.25,
+    0.14
+   ],
+   "scale": [
+    0.229,
+    0.229,
+    0.229
+   ]
+  },
+  "fixed": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    -0.12,
+    2.49,
+    0.28
+   ],
+   "scale": [
+    0.459,
+    0.459,
+    0.459
+   ]
+  },
+  "thirdperson_righthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.08,
+    0.28,
+    1.86
+   ],
+   "scale": [
+    0.344,
+    0.344,
+    0.344
+   ]
+  },
+  "thirdperson_lefthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.08,
+    0.28,
+    1.86
+   ],
+   "scale": [
+    0.344,
+    0.344,
+    0.344
+   ]
+  },
+  "firstperson_righthand": {
+   "rotation": [
+    0,
+    45,
+    0
+   ],
+   "translation": [
+    0.09,
+    2.0,
+    0.22
+   ],
+   "scale": [
+    0.367,
+    0.367,
+    0.367
+   ]
+  },
+  "firstperson_lefthand": {
+   "rotation": [
+    0,
+    225,
+    0
+   ],
+   "translation": [
+    -0.09,
+    2.0,
+    -0.22
+   ],
+   "scale": [
+    0.367,
+    0.367,
+    0.367
+   ]
+  }
+ }
+}

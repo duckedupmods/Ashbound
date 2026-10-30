@@ -1,0 +1,12 @@
+{
+ "title": "Clear The Clockwork Spire",
+ "rank": "C",
+ "text": "It keeps winding itself, and what it winds comes out and walks. Stop the Grand Horologe at the top.",
+ "kill": "ashbound:grand_horologe",
+ "count": 1,
+ "locate": "ashbound:clockwork_spire",
+ "points": 600,
+ "coins": 760,
+ "ash": 400,
+ "icon": "minecraft:clock"
+}

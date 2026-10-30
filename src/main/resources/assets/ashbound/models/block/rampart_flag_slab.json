@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/slab",
+ "textures": {
+  "bottom": "ashbound:block/rampart_flags",
+  "top": "ashbound:block/rampart_flags",
+  "side": "ashbound:block/rampart_flags"
+ }
+}

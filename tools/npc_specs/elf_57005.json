@@ -1,0 +1,60 @@
+{
+ "id": "elf_57005",
+ "seed": 57005,
+ "recipe": "elf",
+ "role": "herbalist",
+ "rank": null,
+ "name": "Sylvar Lilacshade",
+ "title": "Herbalist",
+ "age": "adult",
+ "sex": "m",
+ "build": "average",
+ "hunch": 0,
+ "skin": "olive",
+ "hair": {
+  "style": "ponytail",
+  "color": "ash_blonde"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "ice",
+  "brows": "soft",
+  "mouth": "flat",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "tunic",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "apron",
+   "belt",
+   "satchel"
+  ],
+  "colors": {
+   "top": "moss",
+   "bottom": "olive",
+   "accent": "mustard",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "clasp",
+  "l": "clasp"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": "flowers",
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "elf"
+}

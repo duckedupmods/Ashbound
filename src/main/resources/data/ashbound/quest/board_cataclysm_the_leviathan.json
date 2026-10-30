@@ -1,0 +1,14 @@
+{
+ "title": "The Leviathan",
+ "rank": "S",
+ "text": "Sailors have stopped going near the drowned city. Whatever's under it has started to come up. You'll want to breathe water.",
+ "kill": "cataclysm:the_leviathan",
+ "what": "The Leviathan",
+ "count": 1,
+ "locate": "cataclysm:sunken_city",
+ "dim": "minecraft:overworld",
+ "points": 3000,
+ "coins": 6000,
+ "ash": 1600,
+ "icon": "minecraft:heart_of_the_sea"
+}

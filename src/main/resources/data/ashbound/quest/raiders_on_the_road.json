@@ -1,0 +1,16 @@
+{
+ "title": "Raiders on the Road",
+ "rank": "B",
+ "text": "A band of pillagers has been robbing the caravans. The merchants want it broken.",
+ "kill": "minecraft:pillager",
+ "count": 12,
+ "points": 450,
+ "coins": 520,
+ "items": [
+  [
+   "minecraft:emerald",
+   12
+  ]
+ ],
+ "repeat": true
+}

@@ -1,0 +1,958 @@
+{
+ "type": "minecraft:chest",
+ "pools": [
+  {
+   "rolls": 1,
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:coiled_kings_fang",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "rolls": 1,
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:champions_plume",
+     "weight": 1,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 3,
+        "max": 5
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rolls": 1,
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:jade_scale",
+     "weight": 1,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 14,
+        "max": 22
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rolls": 1,
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:hedge_knights_sword",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:wolfbiter",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:emberwake",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:starfall",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:cutpurse_knife",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:vipers_kiss",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:shadowfang",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:bloodmoon_kris",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:smiths_hammer",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:frostmaul",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:thunderhead",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:worldbreaker",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:boar_spear",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:gilded_partisan",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:wyrmtongue",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:heavens_lance",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:mercenarys_zweihander",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:headsmans_cleaver",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:grave_reaver",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:dragonspine",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:oak_round_shield",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:lion_crest",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:mirror_of_ash",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:aegis_of_dawn",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:hunters_bow",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:raven_recurve",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:stormstring",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:phoenix_wing",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:charred_branch",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:ember_rod",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:void_eye_staff",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:last_star",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:pilgrims_staff",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:moonpetal_staff",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:seraph_staff",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:sunspire",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:bone_rattle",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:raven_totem",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:lichcaller",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:hollow_kings_crown",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:brigands_falchion",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:corsairs_cutlass",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:thornheart",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:chainsworn",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:tunnel_rats_shiv",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:gillblade",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:mantis_talon",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:void_splinter",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:miners_maul",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:barnacle_maul",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:rockgrinder",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:legions_pillar",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:whalers_harpoon",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:dune_pilum",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:wardens_bardiche",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:tidecallers_trident",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:barrowsteel_greatsword",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:dune_cleaver",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:chimera_jaw",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:kingsbarrow",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:raiders_targe",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:legion_scutum",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:brood_carapace",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:gryphon_aegis",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:poachers_bow",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:thornbow",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:kraken_bow",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:khans_horn",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:vat_stirrer",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:augurs_rod",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:alembic_of_ruin",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:riftcaller",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:censer_staff",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:oracles_laurel",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:everbloom",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:auroras_vigil",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:kennel_crook",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:broodcaller",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:sporemother",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:bone_gate",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "rolls": 1,
+   "entries": [
+    {
+     "type": "minecraft:empty",
+     "weight": 2380
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:hedge_knights_sword",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:wolfbiter",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:emberwake",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:starfall",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:cutpurse_knife",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:vipers_kiss",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:shadowfang",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:bloodmoon_kris",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:smiths_hammer",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:frostmaul",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:thunderhead",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:worldbreaker",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:boar_spear",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:gilded_partisan",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:wyrmtongue",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:heavens_lance",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:mercenarys_zweihander",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:headsmans_cleaver",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:grave_reaver",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:dragonspine",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:oak_round_shield",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:lion_crest",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:mirror_of_ash",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:aegis_of_dawn",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:hunters_bow",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:raven_recurve",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:stormstring",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:phoenix_wing",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:charred_branch",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:ember_rod",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:void_eye_staff",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:last_star",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:pilgrims_staff",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:moonpetal_staff",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:seraph_staff",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:sunspire",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:bone_rattle",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:raven_totem",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:lichcaller",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:hollow_kings_crown",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:brigands_falchion",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:corsairs_cutlass",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:thornheart",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:chainsworn",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:tunnel_rats_shiv",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:gillblade",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:mantis_talon",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:void_splinter",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:miners_maul",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:barnacle_maul",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:rockgrinder",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:legions_pillar",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:whalers_harpoon",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:dune_pilum",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:wardens_bardiche",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:tidecallers_trident",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:barrowsteel_greatsword",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:dune_cleaver",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:chimera_jaw",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:kingsbarrow",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:raiders_targe",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:legion_scutum",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:brood_carapace",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:gryphon_aegis",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:poachers_bow",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:thornbow",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:kraken_bow",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:khans_horn",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:vat_stirrer",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:augurs_rod",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:alembic_of_ruin",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:riftcaller",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:censer_staff",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:oracles_laurel",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:everbloom",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:auroras_vigil",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:kennel_crook",
+     "weight": 12
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:broodcaller",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:sporemother",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ashbound:bone_gate",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "rolls": {
+    "type": "minecraft:uniform",
+    "min": 3,
+    "max": 6
+   },
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:gold_ingot",
+     "weight": 5,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 3,
+        "max": 8
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:diamond",
+     "weight": 3,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 3
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:emerald",
+     "weight": 3,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 6
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:golden_apple",
+     "weight": 2
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:experience_bottle",
+     "weight": 4,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 3,
+        "max": 8
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:iron_ingot",
+     "weight": 4,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 4,
+        "max": 10
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

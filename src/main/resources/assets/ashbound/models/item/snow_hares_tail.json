@@ -1,0 +1,131 @@
+{
+ "loader": "neoforge:separate_transforms",
+ "gui_light": "side",
+ "base": {
+  "loader": "neoforge:obj",
+  "model": "ashbound:models/mesh/snow_hares_tail.obj",
+  "flip_v": true,
+  "display": {
+   "gui": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0.122,
+     2.484,
+     0.594
+    ],
+    "scale": [
+     1.3793,
+     1.3793,
+     1.3793
+    ]
+   },
+   "ground": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0.061,
+     1.242,
+     0
+    ],
+    "scale": [
+     0.6897,
+     0.6897,
+     0.6897
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0.122,
+     2.484,
+     0.594
+    ],
+    "scale": [
+     1.3793,
+     1.3793,
+     1.3793
+    ]
+   },
+   "thirdperson_righthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.5517,
+     0.5517,
+     0.5517
+    ]
+   },
+   "thirdperson_lefthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.5517,
+     0.5517,
+     0.5517
+    ]
+   },
+   "firstperson_righthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.5517,
+     0.5517,
+     0.5517
+    ]
+   },
+   "firstperson_lefthand": {
+    "rotation": [
+     12.0,
+     -28.0,
+     0.0
+    ],
+    "translation": [
+     0,
+     2,
+     0
+    ],
+    "scale": [
+     0.5517,
+     0.5517,
+     0.5517
+    ]
+   }
+  }
+ },
+ "perspectives": {}
+}

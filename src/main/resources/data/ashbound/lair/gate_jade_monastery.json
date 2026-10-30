@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Jade Monastery",
+ "test_origin": [
+  124000,
+  20,
+  0
+ ],
+ "boss": "ashbound:thousand_hands",
+ "seal": "The Abbot's prayer binds the stair",
+ "broken": "The prayer breaks and the stair to heaven opens",
+ "arrive": [
+  "THE JADE MONASTERY",
+  "B-Rank Gate"
+ ],
+ "rank": "B",
+ "loot": "ashbound:chests/gate_jade_monastery",
+ "built_check": [
+  [
+   -25,
+   10,
+   -306,
+   "minecraft:bedrock"
+  ]
+ ],
+ "clear_top": 43
+}

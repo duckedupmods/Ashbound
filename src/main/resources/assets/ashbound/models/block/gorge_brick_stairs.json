@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/stairs",
+ "textures": {
+  "bottom": "ashbound:block/gorge_bricks",
+  "top": "ashbound:block/gorge_bricks",
+  "side": "ashbound:block/gorge_bricks"
+ }
+}

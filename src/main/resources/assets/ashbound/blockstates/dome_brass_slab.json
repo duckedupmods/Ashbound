@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/dome_brass_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/dome_brass_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/dome_brass"
+  }
+ }
+}

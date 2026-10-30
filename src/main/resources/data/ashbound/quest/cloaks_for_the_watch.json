@@ -1,0 +1,16 @@
+{
+ "title": "Cloaks for the Watch",
+ "rank": "E",
+ "text": "The night watch needs new cloaks before winter. The tailor needs wool, any colour.",
+ "collect": "#minecraft:wool",
+ "count": 16,
+ "points": 50,
+ "coins": 60,
+ "items": [
+  [
+   "minecraft:leather_boots",
+   1
+  ]
+ ],
+ "repeat": true
+}

@@ -1,0 +1,60 @@
+{
+ "id": "elf_57006",
+ "seed": 57006,
+ "recipe": "elf",
+ "role": "warden",
+ "rank": null,
+ "name": "Thalion Lumenvale",
+ "title": "Grove Warden",
+ "age": "adult",
+ "sex": "m",
+ "build": "average",
+ "hunch": 0,
+ "skin": "porcelain",
+ "hair": {
+  "style": "ponytail",
+  "color": "silver"
+ },
+ "headwear": "circlet",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "ice",
+  "brows": "stern",
+  "mouth": "flat",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "belt",
+   "bracers",
+   "cloak"
+  ],
+  "colors": {
+   "top": "teal",
+   "bottom": "forest",
+   "accent": "mustard",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "spear",
+ "offhand": null,
+ "back": "quiver",
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "elf"
+}

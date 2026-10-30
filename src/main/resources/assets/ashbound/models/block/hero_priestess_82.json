@@ -1,0 +1,1 @@
+{"ambientocclusion":false,"textures":{"gold_0":"ashbound:block/sculpt/gold_0","particle":"ashbound:block/sculpt/gold_0"},"elements":[{"from":[6.667,0.0,13.333],"to":[9.333,16.0,16.0],"faces":{"north":{"texture":"#gold_0","uv":[6.667,0.0,9.333,16.0]},"west":{"texture":"#gold_0","uv":[13.333,0.0,16.0,16.0]},"east":{"texture":"#gold_0","uv":[0.0,0.0,2.667,16.0]}}}]}

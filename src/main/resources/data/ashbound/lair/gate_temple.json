@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Faceless Temple",
+ "test_origin": [
+  53000,
+  -26,
+  0
+ ],
+ "clear_top": 36,
+ "boss": "ashbound:sovereign",
+ "built_check": [
+  [
+   -12,
+   1,
+   -236,
+   "ashbound:brazier"
+  ]
+ ],
+ "seal": "The temple's stone will not yield",
+ "broken": "The temple falls silent",
+ "arrive": [
+  "THE FACELESS TEMPLE",
+  "C-Rank Gate"
+ ],
+ "rank": "C",
+ "loot": "ashbound:chests/gate_temple"
+}

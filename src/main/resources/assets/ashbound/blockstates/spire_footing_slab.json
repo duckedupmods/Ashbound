@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/spire_footing_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/spire_footing_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/spire_footing"
+  }
+ }
+}

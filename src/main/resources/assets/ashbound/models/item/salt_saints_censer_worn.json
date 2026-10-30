@@ -1,0 +1,5 @@
+{
+ "loader": "neoforge:obj",
+ "model": "ashbound:models/mesh/salt_saints_censer_worn.obj",
+ "flip_v": true
+}

@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/outer_stairs",
+ "textures": {
+  "bottom": "ashbound:block/hill_fieldstone",
+  "top": "ashbound:block/hill_fieldstone",
+  "side": "ashbound:block/hill_fieldstone"
+ }
+}

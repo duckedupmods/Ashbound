@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/drape_pale"
+  },
+  "facing=east": {
+   "model": "ashbound:block/drape_pale",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/drape_pale",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/drape_pale",
+   "y": 270
+  }
+ }
+}

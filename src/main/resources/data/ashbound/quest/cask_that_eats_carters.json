@@ -1,0 +1,16 @@
+{
+ "title": "The Cask That Eats Carters",
+ "rank": "F",
+ "count": 1,
+ "points": 70,
+ "coins": 140,
+ "items": [
+  [
+   "ashbound:mimics_tongue",
+   2
+  ]
+ ],
+ "text": "Two carters stopped by the road for a barrel nobody owned. Their mules came home alone. Find the barrel. Do not open it.",
+ "repeat": true,
+ "kill": "ashbound:barrel_mimic"
+}

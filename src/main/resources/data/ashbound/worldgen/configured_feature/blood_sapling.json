@@ -1,0 +1,31 @@
+{
+ "type": "ashbound:tree",
+ "config": {
+  "trees": [
+   {
+    "template": "ashbound:tree/blood_small_0",
+    "weight": 60
+   },
+   {
+    "template": "ashbound:tree/blood_small_1",
+    "weight": 60
+   },
+   {
+    "template": "ashbound:tree/blood_small_2",
+    "weight": 60
+   },
+   {
+    "template": "ashbound:tree/blood_medium_0",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/blood_medium_1",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/blood_medium_2",
+    "weight": 40
+   }
+  ]
+ }
+}

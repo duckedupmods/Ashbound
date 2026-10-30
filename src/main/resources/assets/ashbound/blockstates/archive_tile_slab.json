@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/archive_tile_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/archive_tiles"
+  },
+  "type=top": {
+   "model": "ashbound:block/archive_tile_slab_top"
+  }
+ }
+}

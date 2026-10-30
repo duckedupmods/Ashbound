@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/temple_limestone_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/temple_limestone_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/temple_limestone"
+  }
+ }
+}

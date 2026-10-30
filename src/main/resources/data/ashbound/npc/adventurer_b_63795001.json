@@ -1,0 +1,82 @@
+{
+ "name": "Benedek Dunmore",
+ "title": "B-rank Black Mage",
+ "tags": [
+  "adventurer",
+  "black_mage",
+  "adult",
+  "m",
+  "b"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Benedek, B-rank Black Mage. I set things on fire. Thoughtfully."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "topic": {
+   "text": [
+    "It wants out. You just choose where it goes."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "Something's been knocking under the Drowned Cellar's casks. From the inside."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "If you hear crackling, run."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "Is magic hard?",
+     "go": "topic"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

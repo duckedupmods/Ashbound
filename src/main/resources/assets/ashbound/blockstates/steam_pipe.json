@@ -1,0 +1,16 @@
+{
+ "variants": {
+  "axis=y": {
+   "model": "ashbound:block/steam_pipe"
+  },
+  "axis=z": {
+   "model": "ashbound:block/steam_pipe_horizontal",
+   "x": 90
+  },
+  "axis=x": {
+   "model": "ashbound:block/steam_pipe_horizontal",
+   "x": 90,
+   "y": 90
+  }
+ }
+}

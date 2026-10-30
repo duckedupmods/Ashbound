@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/grain_sacks"
+  },
+  "facing=east": {
+   "model": "ashbound:block/grain_sacks",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/grain_sacks",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/grain_sacks",
+   "y": 270
+  }
+ }
+}

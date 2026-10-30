@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/inner_stairs",
+ "textures": {
+  "bottom": "ashbound:block/mine_flags",
+  "top": "ashbound:block/mine_flags",
+  "side": "ashbound:block/mine_flags"
+ }
+}

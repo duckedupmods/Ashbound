@@ -1,0 +1,60 @@
+{
+ "id": "demon_91008",
+ "seed": 91008,
+ "recipe": "demon",
+ "role": "sweeper",
+ "rank": null,
+ "name": "Vesper Ashrow",
+ "title": "Street Sweeper",
+ "age": "adult",
+ "sex": "f",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "dusk",
+ "hair": {
+  "style": "bun",
+  "color": "silver"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "round",
+  "iris": "gold",
+  "brows": "stern",
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "soot"
+  ],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "belt"
+  ],
+  "colors": {
+   "top": "linen",
+   "bottom": "charcoal",
+   "accent": "rust",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "lantern",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "demon"
+}

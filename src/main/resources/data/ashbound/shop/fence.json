@@ -1,0 +1,88 @@
+{
+ "buy": [
+  {
+   "item": {
+    "id": "minecraft:ender_pearl"
+   },
+   "price": 60
+  },
+  {
+   "item": {
+    "id": "minecraft:name_tag"
+   },
+   "price": 80
+  },
+  {
+   "item": {
+    "id": "minecraft:saddle"
+   },
+   "price": 90
+  },
+  {
+   "item": {
+    "id": "minecraft:golden_apple"
+   },
+   "price": 150
+  },
+  {
+   "item": {
+    "id": "minecraft:experience_bottle",
+    "count": 4
+   },
+   "price": 100
+  },
+  {
+   "item": {
+    "id": "minecraft:spyglass"
+   },
+   "price": 70
+  },
+  {
+   "item": {
+    "id": "minecraft:tnt",
+    "count": 2
+   },
+   "price": 80
+  },
+  {
+   "item": {
+    "id": "minecraft:compass"
+   },
+   "price": 30
+  },
+  {
+   "item": {
+    "id": "minecraft:totem_of_undying"
+   },
+   "price": 900
+  },
+  {
+   "item": {
+    "id": "minecraft:enchanted_golden_apple"
+   },
+   "price": 1200
+  }
+ ],
+ "sell": [
+  {
+   "item": "minecraft:diamond",
+   "price": 35
+  },
+  {
+   "item": "minecraft:emerald",
+   "price": 45
+  },
+  {
+   "item": "minecraft:gold_ingot",
+   "price": 7
+  },
+  {
+   "item": "minecraft:amethyst_shard",
+   "price": 4
+  },
+  {
+   "item": "minecraft:ender_pearl",
+   "price": 25
+  }
+ ]
+}

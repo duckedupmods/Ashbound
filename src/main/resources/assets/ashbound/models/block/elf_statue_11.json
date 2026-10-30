@@ -1,0 +1,82 @@
+{
+ "ambientocclusion": false,
+ "textures": {
+  "light": "ashbound:block/elf_marble",
+  "mid": "ashbound:block/elf_marble_mid",
+  "dark": "ashbound:block/elf_marble_dark",
+  "water": "ashbound:block/moonwater",
+  "particle": "ashbound:block/elf_marble"
+ },
+ "elements": [
+  {
+   "from": [
+    8.168,
+    0,
+    0
+   ],
+   "to": [
+    13.288,
+    16,
+    0.019
+   ],
+   "faces": {
+    "north": {
+     "texture": "#water",
+     "uv": [
+      2.712,
+      0.0,
+      7.832,
+      16.0
+     ]
+    },
+    "south": {
+     "texture": "#water",
+     "uv": [
+      8.168,
+      0.0,
+      13.288,
+      16.0
+     ]
+    },
+    "east": {
+     "texture": "#water",
+     "uv": [
+      15.981,
+      0.0,
+      16.0,
+      16.0
+     ]
+    },
+    "west": {
+     "texture": "#water",
+     "uv": [
+      0.0,
+      0.0,
+      0.019,
+      16.0
+     ]
+    },
+    "up": {
+     "texture": "#water",
+     "uv": [
+      8.168,
+      0.0,
+      13.288,
+      0.019
+     ]
+    },
+    "down": {
+     "texture": "#water",
+     "uv": [
+      8.168,
+      15.981,
+      13.288,
+      16.0
+     ]
+    }
+   },
+   "light_emission": 10
+  }
+ ],
+ "render_type": "minecraft:translucent"
+}

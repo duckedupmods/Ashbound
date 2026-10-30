@@ -1,0 +1,16 @@
+{
+ "title": "The Last Dragon",
+ "rank": "SS",
+ "text": "At the end of the world there is a dragon. You knew this request would come one day.",
+ "kill": "minecraft:ender_dragon",
+ "count": 1,
+ "points": 4000,
+ "coins": 8000,
+ "items": [
+  [
+   "minecraft:elytra",
+   1
+  ]
+ ],
+ "repeat": true
+}

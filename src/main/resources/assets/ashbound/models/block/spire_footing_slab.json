@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/slab",
+ "textures": {
+  "bottom": "ashbound:block/spire_footing",
+  "top": "ashbound:block/spire_footing",
+  "side": "ashbound:block/spire_footing"
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "hanging=false": {
+   "model": "ashbound:block/jade_lantern"
+  },
+  "hanging=true": {
+   "model": "ashbound:block/jade_lantern"
+  }
+ }
+}

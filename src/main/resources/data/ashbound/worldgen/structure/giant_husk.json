@@ -1,0 +1,8 @@
+{
+ "type": "ashbound:giant_tree",
+ "template": "ashbound:tree/husk",
+ "biomes": "#ashbound:has_structure/giant_husk",
+ "spawn_overrides": {},
+ "step": "surface_structures",
+ "terrain_adaptation": "none"
+}

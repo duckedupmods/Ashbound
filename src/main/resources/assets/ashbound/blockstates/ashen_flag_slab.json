@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/ashen_flag_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/ashen_flag_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/ashen_flags"
+  }
+ }
+}

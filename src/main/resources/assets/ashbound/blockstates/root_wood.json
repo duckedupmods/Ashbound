@@ -1,0 +1,16 @@
+{
+ "variants": {
+  "axis=y": {
+   "model": "ashbound:block/root_wood"
+  },
+  "axis=z": {
+   "model": "ashbound:block/root_wood_horizontal",
+   "x": 90
+  },
+  "axis=x": {
+   "model": "ashbound:block/root_wood_horizontal",
+   "x": 90,
+   "y": 90
+  }
+ }
+}

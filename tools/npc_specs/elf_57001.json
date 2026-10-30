@@ -1,0 +1,59 @@
+{
+ "id": "elf_57001",
+ "seed": 57001,
+ "recipe": "elf",
+ "role": "singer",
+ "rank": null,
+ "name": "Elrian Lilacshade",
+ "title": "Songkeeper",
+ "age": "adult",
+ "sex": "m",
+ "build": "average",
+ "hunch": 0,
+ "skin": "porcelain",
+ "hair": {
+  "style": "long",
+  "color": "ash_blonde"
+ },
+ "headwear": "circlet",
+ "beard": null,
+ "face": {
+  "eye": "sleepy",
+  "iris": "green",
+  "brows": "thin",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "cape",
+   "sash"
+  ],
+  "colors": {
+   "top": "sky",
+   "bottom": "brown",
+   "accent": "oxblood",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "elf"
+}

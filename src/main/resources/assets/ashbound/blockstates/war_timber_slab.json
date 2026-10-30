@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/war_timber_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/war_timber_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/war_timber"
+  }
+ }
+}

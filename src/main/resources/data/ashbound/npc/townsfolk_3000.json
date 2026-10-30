@@ -1,0 +1,62 @@
+{
+ "name": "Mabry Fenwick",
+ "title": "Tavern Hand",
+ "tags": [
+  "townsfolk",
+  "barmaid",
+  "adult",
+  "f"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Mabry. Ten years behind this bar. I've heard every story twice."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "topic": {
+   "text": [
+    "They hanged a man on Gallows Hill who wouldn't stay hanged. Now the whole hill won't."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Sit anywhere that isn't sticky."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "Hear any good stories?",
+     "go": "topic"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

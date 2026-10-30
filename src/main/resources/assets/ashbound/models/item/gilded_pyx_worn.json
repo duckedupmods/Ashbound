@@ -1,0 +1,5 @@
+{
+ "loader": "neoforge:obj",
+ "model": "ashbound:models/mesh/gilded_pyx_worn.obj",
+ "flip_v": true
+}

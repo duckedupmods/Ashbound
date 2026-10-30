@@ -1,0 +1,124 @@
+{
+ "parent": "ashbound:block/storm_chain",
+ "display": {
+  "gui": {
+   "rotation": [
+    30,
+    225,
+    0
+   ],
+   "translation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    0.585,
+    0.585,
+    0.585
+   ]
+  },
+  "ground": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    0.234,
+    0.234,
+    0.234
+   ]
+  },
+  "fixed": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    0.468,
+    0.468,
+    0.468
+   ]
+  },
+  "thirdperson_righthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    0.351,
+    0.351,
+    0.351
+   ]
+  },
+  "thirdperson_lefthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    0.351,
+    0.351,
+    0.351
+   ]
+  },
+  "firstperson_righthand": {
+   "rotation": [
+    0,
+    45,
+    0
+   ],
+   "translation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    0.375,
+    0.375,
+    0.375
+   ]
+  },
+  "firstperson_lefthand": {
+   "rotation": [
+    0,
+    225,
+    0
+   ],
+   "translation": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    0.375,
+    0.375,
+    0.375
+   ]
+  }
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "title": "Three Rank C Gates",
+ "rank": "C",
+ "text": "The board's overflowing. Close three of them and the Guild pays over the odds.",
+ "gate": "C",
+ "what": "Rank C Gates",
+ "count": 3,
+ "points": 1200,
+ "coins": 1520,
+ "ash": 800,
+ "icon": "minecraft:ender_eye"
+}

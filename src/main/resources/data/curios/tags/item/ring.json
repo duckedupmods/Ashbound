@@ -1,0 +1,25 @@
+{
+ "replace": false,
+ "values": [
+  "ashbound:brigands_knuckle_ring",
+  "ashbound:tunnel_rats_band",
+  "ashbound:gravediggers_loop",
+  "ashbound:spore_stained_ring",
+  "ashbound:bowstring_ring",
+  "ashbound:iron_thumb_ring",
+  "ashbound:knotted_bone_ring",
+  "ashbound:corsairs_doubloon",
+  "ashbound:tarnished_signet",
+  "ashbound:ember_coil",
+  "ashbound:briar_band",
+  "ashbound:frostbitten_ring",
+  "ashbound:hollow_eye_ring",
+  "ashbound:salt_khans_seal",
+  "ashbound:chitin_loop",
+  "ashbound:rime_band",
+  "ashbound:marksmans_gyre",
+  "ashbound:ring_of_the_drowned_god",
+  "ashbound:ring_of_the_ninth_pyre",
+  "ashbound:wardens_oathring"
+ ]
+}

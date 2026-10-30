@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/slab",
+ "textures": {
+  "bottom": "ashbound:block/coven_flags",
+  "top": "ashbound:block/coven_flags",
+  "side": "ashbound:block/coven_flags"
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "The Rotwood",
+ "test_origin": [
+  74000,
+  20,
+  0
+ ],
+ "clear_top": 46,
+ "boss": "ashbound:mossking",
+ "built_check": [
+  [
+   -24,
+   21,
+   -257,
+   "ashbound:glowcap_cluster"
+  ]
+ ],
+ "seal": "The roots hold fast",
+ "broken": "The old king's heart goes still",
+ "arrive": [
+  "THE ROTWOOD",
+  "F-Rank Gate"
+ ],
+ "rank": "F",
+ "loot": "ashbound:chests/gate_rotwood"
+}

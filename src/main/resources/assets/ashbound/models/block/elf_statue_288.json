@@ -1,0 +1,112 @@
+{
+ "ambientocclusion": false,
+ "textures": {
+  "light": "ashbound:block/elf_marble",
+  "mid": "ashbound:block/elf_marble_mid",
+  "dark": "ashbound:block/elf_marble_dark",
+  "water": "ashbound:block/moonwater",
+  "particle": "ashbound:block/elf_marble"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    8,
+    14
+   ],
+   "to": [
+    2,
+    14,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#light",
+     "uv": [
+      14,
+      2,
+      16.0,
+      8
+     ]
+    },
+    "east": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      2,
+      2,
+      8
+     ]
+    },
+    "down": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      0.0,
+      2,
+      2
+     ]
+    },
+    "up": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      14,
+      2,
+      16.0
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    10,
+    12
+   ],
+   "to": [
+    2,
+    14,
+    14
+   ],
+   "faces": {
+    "north": {
+     "texture": "#light",
+     "uv": [
+      14,
+      2,
+      16.0,
+      6
+     ]
+    },
+    "east": {
+     "texture": "#light",
+     "uv": [
+      2,
+      2,
+      4,
+      6
+     ]
+    },
+    "down": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      2,
+      2,
+      4
+     ]
+    },
+    "up": {
+     "texture": "#light",
+     "uv": [
+      0.0,
+      12,
+      2,
+      14
+     ]
+    }
+   }
+  }
+ ]
+}

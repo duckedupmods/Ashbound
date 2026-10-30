@@ -1,0 +1,14 @@
+{
+ "replace": false,
+ "values": [
+  "ashbound:wildwood_leaves",
+  "ashbound:wildwood_leaves_sunlit",
+  "ashbound:wildwood_leaves_shade",
+  "ashbound:wildwood_leaves_amber",
+  "ashbound:wildwood_leaves_crimson",
+  "ashbound:wildwood_leaves_rose",
+  "ashbound:wildwood_blossom",
+  "ashbound:wildwood_needles",
+  "ashbound:wildwood_leaves_lilac"
+ ]
+}

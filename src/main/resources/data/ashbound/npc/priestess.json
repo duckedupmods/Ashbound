@@ -1,0 +1,129 @@
+{
+ "name": "Mother Ysolde",
+ "title": "of the Pale Flame",
+ "start": "start",
+ "nodes": {
+  "start": {
+   "go_if": [
+    [
+     "flag:met_priestess",
+     "regular"
+    ]
+   ],
+   "text": [
+    "Be still. The flame sees you, even if I don't.",
+    "I keep the Pale Flame, child. It burns for the ones who go into the gates, and it burns lower each year. Come to me torn and I'll close you. Come to me whole and I'll bless you, for what that's worth now."
+   ],
+   "options": [
+    {
+     "text": "Heal me.",
+     "if": "hurt",
+     "do": "flag:met_priestess;heal",
+     "go": "healed"
+    },
+    {
+     "text": "Bless me. (40 coins)",
+     "if": "coins:40",
+     "do": "flag:met_priestess;pay:40;effect:resistance:300:0;effect:regeneration:30:0",
+     "go": "blessed"
+    },
+    {
+     "text": "Why the veil?",
+     "do": "flag:met_priestess",
+     "go": "veil"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "regular": {
+   "text": [
+    "You came back. The flame takes note of that. Most don't."
+   ],
+   "options": [
+    {
+     "text": "Heal me.",
+     "if": "hurt",
+     "do": "heal",
+     "go": "healed"
+    },
+    {
+     "text": "Bless me. (40 coins)",
+     "if": "coins:40",
+     "do": "pay:40;effect:resistance:300:0;effect:regeneration:30:0",
+     "go": "blessed"
+    },
+    {
+     "text": "What are the gates?",
+     "go": "gates"
+    },
+    {
+     "text": "Why the veil?",
+     "go": "veil"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "healed": {
+   "text": [
+    "There. The flesh remembers how it was. Don't make it forget again too soon."
+   ],
+   "options": [
+    {
+     "text": "Bless me. (40 coins)",
+     "if": "coins:40",
+     "do": "pay:40;effect:resistance:300:0;effect:regeneration:30:0",
+     "go": "blessed"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "blessed": {
+   "text": [
+    "Walk in the Pale Flame. While it's on you, their blows land softer. It doesn't last. Nothing given does."
+   ],
+   "options": [
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "veil": {
+   "text": [
+    "I looked into the first gate when it opened. Before the guild, before the walls were finished. I looked in, and something in there looked back, and it hasn't stopped.",
+    "The veil's so it can't see out through me. The candles are so I can still see you."
+   ],
+   "options": [
+    {
+     "text": "What are the gates?",
+     "go": "gates"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "gates": {
+   "text": [
+    "Doors. Doors into places that went wrong, a cellar, a hill, an abbey, a wood. Something ended badly in each and it never stopped ending.",
+    "Close one and it opens again, given a day. They don't heal. Nothing heals that was made by grief. So we go in, and we cut down what's there, and we come home. And the Flame burns lower."
+   ],
+   "options": [
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

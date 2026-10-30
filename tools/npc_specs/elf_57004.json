@@ -1,0 +1,59 @@
+{
+ "id": "elf_57004",
+ "seed": 57004,
+ "recipe": "elf",
+ "role": "singer",
+ "rank": null,
+ "name": "Aerin Fernsong",
+ "title": "Songkeeper",
+ "age": "teen",
+ "sex": "m",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "fair",
+ "hair": {
+  "style": "long",
+  "color": "golden"
+ },
+ "headwear": "circlet",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "ice",
+  "brows": "worried",
+  "mouth": "cat",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "cape",
+   "sash"
+  ],
+  "colors": {
+   "top": "white",
+   "bottom": "brown",
+   "accent": "oxblood",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "elf"
+}

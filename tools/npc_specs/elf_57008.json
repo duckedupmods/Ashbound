@@ -1,0 +1,59 @@
+{
+ "id": "elf_57008",
+ "seed": 57008,
+ "recipe": "elf",
+ "role": "herbalist",
+ "rank": null,
+ "name": "Eredin Glimmerwood",
+ "title": "Herbalist",
+ "age": "adult",
+ "sex": "m",
+ "build": "average",
+ "hunch": 0,
+ "skin": "porcelain",
+ "hair": {
+  "style": "long",
+  "color": "white"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "sleepy",
+  "iris": "violet",
+  "brows": "soft",
+  "mouth": "frown",
+  "blush": false,
+  "freckles": true,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "sash",
+   "satchel"
+  ],
+  "colors": {
+   "top": "moss",
+   "bottom": "forest",
+   "accent": "mustard",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "clasp",
+  "l": "clasp"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": "basket",
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "elf"
+}

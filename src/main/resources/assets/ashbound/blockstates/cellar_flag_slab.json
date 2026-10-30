@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/cellar_flag_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/cellar_flags"
+  },
+  "type=top": {
+   "model": "ashbound:block/cellar_flag_slab_top"
+  }
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/copper_plate_slab"
+  },
+  "type=top": {
+   "model": "ashbound:block/copper_plate_slab_top"
+  },
+  "type=double": {
+   "model": "ashbound:block/copper_plate"
+  }
+ }
+}

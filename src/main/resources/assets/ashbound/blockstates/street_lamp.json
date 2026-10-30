@@ -1,0 +1,25 @@
+{
+ "variants": {
+  "axis=x,part=0": {
+   "model": "ashbound:block/street_lamp_lower"
+  },
+  "axis=x,part=1": {
+   "model": "ashbound:block/street_lamp_middle"
+  },
+  "axis=x,part=2": {
+   "model": "ashbound:block/street_lamp_upper"
+  },
+  "axis=z,part=0": {
+   "model": "ashbound:block/street_lamp_lower",
+   "y": 90
+  },
+  "axis=z,part=1": {
+   "model": "ashbound:block/street_lamp_middle",
+   "y": 90
+  },
+  "axis=z,part=2": {
+   "model": "ashbound:block/street_lamp_upper",
+   "y": 90
+  }
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/war_banner"
+  },
+  "facing=east": {
+   "model": "ashbound:block/war_banner",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/war_banner",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/war_banner",
+   "y": 270
+  }
+ }
+}

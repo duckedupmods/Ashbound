@@ -1,0 +1,6 @@
+{
+ "parent": "minecraft:item/generated",
+ "textures": {
+  "layer0": "ashbound:block/lit_leaded_glass"
+ }
+}

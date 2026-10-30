@@ -1,0 +1,221 @@
+{
+ "name": "Wendel Blackwood",
+ "title": "Forgemaster",
+ "tags": [
+  "lead"
+ ],
+ "start": "start",
+ "nodes": {
+  "start": {
+   "text": [
+    "Stand back from the sparks. What do you need, steel or advice?"
+   ],
+   "options": [
+    {
+     "text": "Show me your steel.",
+     "do": "shop"
+    },
+    {
+     "text": "Forge me something from the gates.",
+     "do": "forge"
+    },
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "Any advice on gear?",
+     "go": "advice"
+    },
+    {
+     "text": "What's that dead forge below the armoury?",
+     "if": "!cold_told",
+     "go": "cold_told"
+    },
+    {
+     "text": "I found the old forge. Ash came out of it.",
+     "if": "cold_seen&!cold_hunt",
+     "go": "cold_hunt"
+    },
+    {
+     "text": "About the First Ember.",
+     "if": "cold_hunt&!cold_ember&!shards_ready",
+     "go": "cold_wait"
+    },
+    {
+     "text": "I have the three shards.",
+     "if": "shards_ready&!cold_ember",
+     "go": "cold_bind"
+    },
+    {
+     "text": "What do I do with the Ember?",
+     "if": "cold_ember&!cold_lit",
+     "go": "cold_go"
+    },
+    {
+     "text": "The old forge is awake, but it won't work for me.",
+     "if": "cold_lit&!cold_brand",
+     "go": "cold_brand"
+    },
+    {
+     "text": "About that Brand.",
+     "if": "cold_brand&!cold_proved",
+     "go": "cold_brand_again"
+    },
+    {
+     "text": "The old forge is awake.",
+     "if": "cold_proved",
+     "go": "cold_awake"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "who": {
+   "text": [
+    "Wendel Blackwood, Forgemaster of the Forge Ward. Every hammer down this street answers to me.",
+    "My father forged for the Warden's own guard. The blade on that statue up the hill? Measured from his."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "advice": {
+   "text": [
+    "Iron's honest. A greatsword hits hard and slow, a tachi fast and clean, a spear keeps them off you.",
+    "Gate iron's better than ours, but it bites back. Bring me some and we'll talk."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "cold_told": {
+   "text": [
+    "That one? It's said to have been here before the capital was built. The Ashforge was raised on top of it, and nobody remembers why.",
+    "I've no clue what it does, but I've heard the rumours and the stories: it needs a First Ember. Get your hands on one and we'll see if it turns on.",
+    "Still, good luck with it. Go down the stair in the armoury and put your hand on it, if you like."
+   ],
+   "options": [
+    {
+     "text": "I'll go and see.",
+     "do": "flag:cold_told;mark:cold/told;close"
+    }
+   ]
+  },
+  "cold_hunt": {
+   "text": [
+    "Ash, out of the runes? Eighty years I've walked over that vault and it's never so much as sneezed. It noticed you.",
+    "My father's notes say the Ember was broken long ago, and the shards were swallowed by the gates. Rank E, rank D, rank C: the things that rule those places carry them, whether they know it or not.",
+    "Kill one of each and bring me what falls out. I'll bind them. Don't ask me what happens after."
+   ],
+   "options": [
+    {
+     "text": "I'll find them.",
+     "do": "flag:cold_hunt;mark:cold/hunt;close"
+    }
+   ]
+  },
+  "cold_wait": {
+   "text": [
+    "One shard each from a rank E, a rank D and a rank C boss. Three, in your hand, here. Then we'll talk."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "cold_bind": {
+   "text": [
+    "Put them on the anvil. Stand back, and I mean it this time.",
+    "There. A First Ember, the first made in a very long time, and it's warm in a way I don't like. Take it to the old forge and press it to the stone."
+   ],
+   "options": [
+    {
+     "text": "I'll take it down.",
+     "do": "bind_ember;close"
+    }
+   ]
+  },
+  "cold_go": {
+   "text": [
+    "Down the armoury stair. Hold it in your hand and press it to the stone. I'll be up here, a sensible distance away."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "cold_awake": {
+   "text": [
+    "I felt it through the floor. Every hammer in the ward rang on its own.",
+    "Those hands will take two boss weapons of a kind and make one of them. What comes out won't be anything we forged. Bring it your best, it doesn't work for less."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "cold_brand": {
+   "text": [
+    "No, it wouldn't. My father's notes end on this: the forge tests the hand before it lends its own.",
+    "This was in the Forgemaster's strongbox, and in his father's. The Founder's Brand. Press it to the altar and the forge calls up the worst thing that ever worked at it. Ossric, the Kiln-Father. Yes, that one. Don't ask how.",
+    "Put him down, down there, in front of it. Take friends, and take it seriously. I've only the one Brand."
+   ],
+   "options": [
+    {
+     "text": "Give it here.",
+     "do": "give_brand;close"
+    }
+   ]
+  },
+  "cold_brand_again": {
+   "text": [
+    "Hold it in your hand and press it to the altar. Then stand well back from wherever the floor starts to burn."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

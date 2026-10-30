@@ -1,0 +1,1866 @@
+{
+ "_about": "written by tools/balance.py --solve; mobs: [health x, damage x, role, rank] on top of each monster's own numbers; foreman_hp: a tower foreman's health",
+ "player": {
+  "hp": 20.0,
+  "hp_per_level": 0.4
+ },
+ "party": {
+  "hp_per_player": 0.6,
+  "boss_dmg_per_player": 0.05,
+  "radius": 32
+ },
+ "haunt_rank": {
+  "black_banner": "E",
+  "deep_delvers": "E",
+  "barrow_host": "D",
+  "drowned_corsairs": "D",
+  "sporefolk": "D",
+  "salt_cursed": "C",
+  "thornborn": "C",
+  "rimebound": "C",
+  "blightkin": "C",
+  "broodmothers": "C",
+  "sky_legion": "B",
+  "hollow_order": "B",
+  "ash_legion": "A",
+  "voidborn": "S"
+ },
+ "foreman_hp": {
+  "warlords_fang": 222,
+  "serpent_ziggurat": 222,
+  "clockwork_spire": 214,
+  "rimeholt": 257,
+  "glass_minaret": 235
+ },
+ "ranks": {
+  "F": {
+   "normal": [
+    1.036,
+    1.151
+   ],
+   "elite": [
+    1.031,
+    0.909
+   ],
+   "boss": [
+    2.65,
+    0.527
+   ]
+  },
+  "E": {
+   "normal": [
+    0.929,
+    0.849
+   ],
+   "elite": [
+    0.916,
+    0.772
+   ],
+   "boss": [
+    3.463,
+    0.467
+   ]
+  },
+  "D": {
+   "normal": [
+    0.897,
+    1.074
+   ],
+   "elite": [
+    1.056,
+    0.92
+   ],
+   "boss": [
+    4.29,
+    0.57
+   ]
+  },
+  "C": {
+   "normal": [
+    0.996,
+    1.355
+   ],
+   "elite": [
+    0.538,
+    0.839
+   ],
+   "boss": [
+    2.241,
+    0.448
+   ]
+  },
+  "B": {
+   "normal": [
+    0.862,
+    1.306
+   ],
+   "elite": [
+    1.039,
+    1.139
+   ],
+   "boss": [
+    3.122,
+    0.644
+   ]
+  },
+  "A": {
+   "normal": [
+    1.212,
+    1.586
+   ],
+   "elite": [
+    0.97,
+    1.229
+   ],
+   "boss": [
+    4.488,
+    0.689
+   ]
+  },
+  "S": {
+   "normal": [
+    1.211,
+    1.708
+   ],
+   "elite": [
+    0.909,
+    1.245
+   ],
+   "boss": [
+    4.0,
+    0.678
+   ]
+  }
+ },
+ "levels": {
+  "a": 80,
+  "p": 1.55,
+  "max": 100
+ },
+ "ash_per_hp": {
+  "F": 1.061,
+  "E": 4.061,
+  "D": 5.481,
+  "C": 11.435,
+  "B": 15.709,
+  "A": 12.812,
+  "S": 14.109
+ },
+ "coins_per_hp": {
+  "F": 0.1089,
+  "E": 0.1424,
+  "D": 0.134,
+  "C": 0.1581,
+  "B": 0.1885,
+  "A": 0.1433,
+  "S": 0.1624
+ },
+ "armour": {
+  "robe": {
+   "F": [
+    5.5,
+    0.0
+   ],
+   "E": [
+    6.5,
+    0.0
+   ],
+   "D": [
+    7.5,
+    0.0
+   ],
+   "C": [
+    9.5,
+    0.0
+   ],
+   "B": [
+    10.5,
+    0.0
+   ],
+   "A": [
+    11.5,
+    0.0
+   ],
+   "S": [
+    12.5,
+    0.0
+   ]
+  },
+  "light": {
+   "F": [
+    8.5,
+    0.0
+   ],
+   "E": [
+    9.5,
+    0.0
+   ],
+   "D": [
+    11.5,
+    0.0
+   ],
+   "C": [
+    12.5,
+    0.0
+   ],
+   "B": [
+    13.5,
+    0.0
+   ],
+   "A": [
+    14.5,
+    0.0
+   ],
+   "S": [
+    15.5,
+    0.0
+   ]
+  },
+  "heavy": {
+   "F": [
+    15.5,
+    2.4
+   ],
+   "E": [
+    16.5,
+    2.61
+   ],
+   "D": [
+    17.5,
+    2.79
+   ],
+   "C": [
+    18.5,
+    3.0
+   ],
+   "B": [
+    18.5,
+    3.24
+   ],
+   "A": [
+    19.5,
+    3.48
+   ],
+   "S": [
+    20.5,
+    3.75
+   ]
+  },
+  "medium": {
+   "F": [
+    12,
+    0.8
+   ],
+   "E": [
+    13,
+    0.9
+   ],
+   "D": [
+    14,
+    1.0
+   ],
+   "C": [
+    15,
+    1.1
+   ],
+   "B": [
+    16,
+    1.2
+   ],
+   "A": [
+    17,
+    1.3
+   ],
+   "S": [
+    18,
+    1.4
+   ]
+  }
+ },
+ "mobs": {
+  "acid_slug": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "acolyte": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "alchemist": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "anchor_hauler": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "angler_knight": [
+   0.909,
+   1.245,
+   "elite",
+   "S"
+  ],
+  "anvil_breaker": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "arbalest": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "ash_augur": [
+   1.212,
+   1.586,
+   "normal",
+   "A"
+  ],
+  "ash_centurion": [
+   0.97,
+   1.229,
+   "elite",
+   "A"
+  ],
+  "ash_choir": [
+   1.211,
+   1.708,
+   "normal",
+   "S"
+  ],
+  "ash_cultist": [
+   1.211,
+   1.708,
+   "normal",
+   "S"
+  ],
+  "ash_legionary": [
+   1.212,
+   1.586,
+   "normal",
+   "A"
+  ],
+  "ash_lictor": [
+   1.212,
+   1.586,
+   "normal",
+   "A"
+  ],
+  "ash_salamander": [
+   1.212,
+   1.586,
+   "normal",
+   "A"
+  ],
+  "assembler": [
+   2.241,
+   0.448,
+   "boss",
+   "C"
+  ],
+  "augur": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "bandit_lieutenant": [
+   0.916,
+   0.772,
+   "elite",
+   "E"
+  ],
+  "banner_captain": [
+   0.916,
+   0.772,
+   "elite",
+   "E"
+  ],
+  "banner_hound": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "bark_wight": [
+   1.036,
+   1.151,
+   "normal",
+   "F"
+  ],
+  "barnacle_choir": [
+   0.916,
+   0.772,
+   "elite",
+   "E"
+  ],
+  "barrel_mimic": [
+   1.031,
+   0.909,
+   "elite",
+   "F"
+  ],
+  "barrow_king": [
+   1.056,
+   0.92,
+   "elite",
+   "D"
+  ],
+  "barrow_reaper": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "barrow_wight": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "basalt_brute": [
+   1.212,
+   1.586,
+   "normal",
+   "A"
+  ],
+  "basalt_ogre": [
+   1.212,
+   1.586,
+   "normal",
+   "A"
+  ],
+  "bell_leper": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "bellows_priest": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "bile_priest": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "blade_dancer": [
+   1.0,
+   1.139,
+   "elite",
+   "B"
+  ],
+  "blaster": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "blind_burrower": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "bloated_patient": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "blood_mage": [
+   1.212,
+   1.586,
+   "normal",
+   "A"
+  ],
+  "blood_thrall": [
+   1.212,
+   1.586,
+   "normal",
+   "A"
+  ],
+  "bloom_witch": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "bog_troll": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "bone_hound": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "bone_hyena": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "bound_scholar": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "bramble_brute": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "brass_sentry": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "briar_warden": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "brood_mite": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "brood_queen": [
+   0.538,
+   0.839,
+   "elite",
+   "C"
+  ],
+  "burrow_leech": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "cantor": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "capguard": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "carrion_crow": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "cart_golem": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "cask_brute": [
+   1.036,
+   1.151,
+   "normal",
+   "F"
+  ],
+  "cask_mother": [
+   2.65,
+   0.527,
+   "boss",
+   "F"
+  ],
+  "cellar_eel": [
+   1.036,
+   1.151,
+   "normal",
+   "F"
+  ],
+  "cherub_husk": [
+   1.211,
+   1.708,
+   "normal",
+   "S"
+  ],
+  "chimera": [
+   0.538,
+   0.839,
+   "elite",
+   "C"
+  ],
+  "cinderhusk": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "circus_puppet": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "clockwork_duelist": [
+   1.0,
+   0.839,
+   "elite",
+   "C"
+  ],
+  "coffin_knight": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "cogling": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "coiled_king": [
+   2.241,
+   0.448,
+   "boss",
+   "C"
+  ],
+  "coilspawn": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "cold_chaplain": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "countess_vael": [
+   4.488,
+   0.689,
+   "boss",
+   "A"
+  ],
+  "counts_hound": [
+   0.97,
+   1.229,
+   "elite",
+   "A"
+  ],
+  "coven_matron": [
+   1.056,
+   0.92,
+   "elite",
+   "D"
+  ],
+  "crab_knight": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "crawling_convict": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "crowbrute": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "crucible_bearer": [
+   0.538,
+   0.839,
+   "elite",
+   "C"
+  ],
+  "cutpurse": [
+   1.036,
+   1.151,
+   "normal",
+   "F"
+  ],
+  "deep_thing": [
+   1.211,
+   1.708,
+   "normal",
+   "S"
+  ],
+  "delver": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "deserter": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "djinn_sultan": [
+   3.122,
+   0.644,
+   "boss",
+   "B"
+  ],
+  "drake": [
+   1.211,
+   1.708,
+   "normal",
+   "S"
+  ],
+  "dread_captain": [
+   1.056,
+   0.92,
+   "elite",
+   "D"
+  ],
+  "drill_mole": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "drowned_bell": [
+   3.463,
+   0.467,
+   "boss",
+   "E"
+  ],
+  "drowned_corsair": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "drowned_keeper": [
+   1.211,
+   1.708,
+   "normal",
+   "S"
+  ],
+  "drowned_vintner": [
+   1.036,
+   1.151,
+   "normal",
+   "F"
+  ],
+  "duelist": [
+   1.212,
+   1.586,
+   "normal",
+   "A"
+  ],
+  "dune_behemoth": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "dune_scorpion": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "elder_cap": [
+   1.056,
+   0.92,
+   "elite",
+   "D"
+  ],
+  "embalmer": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "ember_oracle": [
+   1.212,
+   1.586,
+   "normal",
+   "A"
+  ],
+  "eyeless": [
+   1.211,
+   1.708,
+   "normal",
+   "S"
+  ],
+  "facetaker": [
+   0.538,
+   0.839,
+   "elite",
+   "C"
+  ],
+  "fallen_blade": [
+   1.211,
+   1.708,
+   "normal",
+   "S"
+  ],
+  "fallen_seraph": [
+   4.0,
+   0.678,
+   "boss",
+   "S"
+  ],
+  "feather_blade": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "feathered_champion": [
+   1.0,
+   0.839,
+   "elite",
+   "C"
+  ],
+  "fen_crawler": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "fire_eater": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "fist_abbot": [
+   1.039,
+   1.139,
+   "elite",
+   "B"
+  ],
+  "footpad": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "foreman": [
+   0.916,
+   0.772,
+   "elite",
+   "E"
+  ],
+  "frost_chaplain": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "frost_troll": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "frostbound": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "frostbound_archer": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "gale_knight": [
+   1.212,
+   1.586,
+   "normal",
+   "A"
+  ],
+  "gatekeeper": [
+   0.97,
+   1.229,
+   "elite",
+   "A"
+  ],
+  "ghoul": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "gibbet_knight": [
+   1.031,
+   0.909,
+   "elite",
+   "F"
+  ],
+  "glacier_hulk": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "glass_golem": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "goblin_cutthroat": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "goblin_shaman": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "gorge_ogre": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "gorged_butler": [
+   1.212,
+   1.586,
+   "normal",
+   "A"
+  ],
+  "gorrak": [
+   2.241,
+   0.448,
+   "boss",
+   "C"
+  ],
+  "grand_horologe": [
+   2.241,
+   0.448,
+   "boss",
+   "C"
+  ],
+  "grand_master": [
+   1.039,
+   1.139,
+   "elite",
+   "B"
+  ],
+  "grave_rat": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "gravedigger": [
+   0.916,
+   0.772,
+   "elite",
+   "E"
+  ],
+  "gryphon_rider": [
+   1.039,
+   1.139,
+   "elite",
+   "B"
+  ],
+  "hag_sister": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "halo_knight": [
+   1.211,
+   1.708,
+   "normal",
+   "S"
+  ],
+  "hangman": [
+   2.65,
+   0.527,
+   "boss",
+   "F"
+  ],
+  "harlequin": [
+   1.056,
+   0.92,
+   "elite",
+   "D"
+  ],
+  "harpooner": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "harpy": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "hatchetman": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "heart_warden": [
+   1.039,
+   1.139,
+   "elite",
+   "B"
+  ],
+  "hedge_hexer": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "hive_juggernaut": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "hive_soldier": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "hoard_golem": [
+   1.211,
+   1.708,
+   "normal",
+   "S"
+  ],
+  "hollow": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "hollow_chaplain": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "hollow_destrier": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "hollow_knight": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "hollow_squire": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "hoplite": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "horned_runner": [
+   1.212,
+   1.586,
+   "normal",
+   "A"
+  ],
+  "huskarl": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "icicle_shiv": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "ignavar": [
+   4.0,
+   0.678,
+   "boss",
+   "S"
+  ],
+  "incense_monk": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "inkbound": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "inkcap_stalker": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "jackal_runner": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "jade_acolyte": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "jaguar_stalker": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "jailer": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "jarl_hrimgar": [
+   3.122,
+   0.644,
+   "boss",
+   "B"
+  ],
+  "keeper_in_light": [
+   4.0,
+   0.678,
+   "boss",
+   "S"
+  ],
+  "knife_dancer": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "knife_juggler": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "kobold": [
+   1.211,
+   1.708,
+   "normal",
+   "S"
+  ],
+  "kraken_spawn": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "labyrinth_imp": [
+   1.212,
+   1.586,
+   "normal",
+   "A"
+  ],
+  "lamp_miner": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "lamp_siren": [
+   1.211,
+   1.708,
+   "normal",
+   "S"
+  ],
+  "lector": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "lime_friar": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "mantis_reaper": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "marrow_brute": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "mask_crawler": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "minotaur": [
+   4.488,
+   0.689,
+   "boss",
+   "A"
+  ],
+  "mire_thrall": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "mirror_guard": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "morel_shaman": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "mossking": [
+   2.65,
+   0.527,
+   "boss",
+   "F"
+  ],
+  "mother_mire": [
+   4.29,
+   0.57,
+   "boss",
+   "D"
+  ],
+  "mound_brute": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "mourner": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "net_thrower": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "noose_walker": [
+   1.036,
+   1.151,
+   "normal",
+   "F"
+  ],
+  "oracle": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "orc_brute": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "orc_raider": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "orderly": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "ossipede": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "ossric": [
+   2.241,
+   0.448,
+   "boss",
+   "C"
+  ],
+  "pale_abbot": [
+   3.463,
+   0.467,
+   "boss",
+   "E"
+  ],
+  "pallbearer": [
+   0.538,
+   0.839,
+   "elite",
+   "C"
+  ],
+  "peltast": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "phase_blade": [
+   1.211,
+   1.708,
+   "normal",
+   "S"
+  ],
+  "pit_boss": [
+   0.916,
+   0.772,
+   "elite",
+   "E"
+  ],
+  "plague_doctor": [
+   1.056,
+   0.92,
+   "elite",
+   "D"
+  ],
+  "raven_mother": [
+   4.29,
+   0.57,
+   "boss",
+   "D"
+  ],
+  "red_jack": [
+   3.463,
+   0.467,
+   "boss",
+   "E"
+  ],
+  "rift_seer": [
+   1.211,
+   1.708,
+   "normal",
+   "S"
+  ],
+  "rime_knight": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "rime_thrall": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "rime_warden": [
+   0.538,
+   0.839,
+   "elite",
+   "C"
+  ],
+  "ringmaster": [
+   4.29,
+   0.57,
+   "boss",
+   "D"
+  ],
+  "riveter": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "rook_captain": [
+   1.056,
+   0.92,
+   "elite",
+   "D"
+  ],
+  "rose_knight": [
+   0.538,
+   0.839,
+   "elite",
+   "C"
+  ],
+  "rot_seer": [
+   1.036,
+   1.151,
+   "normal",
+   "F"
+  ],
+  "rot_stag": [
+   1.031,
+   0.909,
+   "elite",
+   "F"
+  ],
+  "rune_seer": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "salt_khan": [
+   0.538,
+   0.839,
+   "elite",
+   "C"
+  ],
+  "salt_legionary": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "sand_colossus": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "sand_reaver": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "sandwraith": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "scaleguard": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "sentinel": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "seraph_warden": [
+   0.909,
+   1.245,
+   "elite",
+   "S"
+  ],
+  "shadow_monk": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "shard_crawler": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "shulk_brute": [
+   1.211,
+   1.708,
+   "normal",
+   "S"
+  ],
+  "siege_knight": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "silk_mite": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "silk_queen": [
+   3.122,
+   0.644,
+   "boss",
+   "B"
+  ],
+  "sinew_stalker": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "slagling": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "sodden_reveller": [
+   1.036,
+   1.151,
+   "normal",
+   "F"
+  ],
+  "sovereign": [
+   2.241,
+   0.448,
+   "boss",
+   "C"
+  ],
+  "spark_hound": [
+   1.212,
+   1.586,
+   "normal",
+   "A"
+  ],
+  "spitter": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "spore_tick": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "sporemaw": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "standard_bearer": [
+   1.039,
+   1.139,
+   "elite",
+   "B"
+  ],
+  "steam_driller": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "steam_hulk": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "still_heart": [
+   3.122,
+   0.644,
+   "boss",
+   "B"
+  ],
+  "stitched": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "stitched_stalker": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "stone_lion": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "storm_caller": [
+   1.212,
+   1.586,
+   "normal",
+   "A"
+  ],
+  "storm_captain": [
+   0.97,
+   1.229,
+   "elite",
+   "A"
+  ],
+  "strongman": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "sun_guardian": [
+   0.538,
+   0.839,
+   "elite",
+   "C"
+  ],
+  "sun_king": [
+   2.241,
+   0.448,
+   "boss",
+   "C"
+  ],
+  "surgeon": [
+   4.29,
+   0.57,
+   "boss",
+   "D"
+  ],
+  "talos": [
+   0.862,
+   1.306,
+   "normal",
+   "B"
+  ],
+  "tar_witch": [
+   1.036,
+   1.151,
+   "normal",
+   "F"
+  ],
+  "the_dropped": [
+   1.036,
+   1.151,
+   "normal",
+   "F"
+  ],
+  "the_rooted": [
+   1.036,
+   1.151,
+   "normal",
+   "F"
+  ],
+  "the_vein": [
+   3.463,
+   0.467,
+   "boss",
+   "E"
+  ],
+  "thorn_beetle": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "thorn_crawler": [
+   1.036,
+   1.151,
+   "normal",
+   "F"
+  ],
+  "thorn_dancer": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "thousand_hands": [
+   3.122,
+   0.644,
+   "boss",
+   "B"
+  ],
+  "thunder_abbess": [
+   4.488,
+   0.689,
+   "boss",
+   "A"
+  ],
+  "thunder_ogre": [
+   1.212,
+   1.586,
+   "normal",
+   "A"
+  ],
+  "tide_caller": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "tide_crab": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "tide_priest": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "tinker_adept": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "tomb_scarab": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "tunnel_rat": [
+   0.929,
+   0.849,
+   "normal",
+   "E"
+  ],
+  "vat_brute": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "vat_guard": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "venom_priest": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "void_herald": [
+   0.909,
+   1.245,
+   "elite",
+   "S"
+  ],
+  "void_mite": [
+   1.211,
+   1.708,
+   "normal",
+   "S"
+  ],
+  "void_sentinel": [
+   1.211,
+   1.708,
+   "normal",
+   "S"
+  ],
+  "vulture_priest": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "wailing_shroud": [
+   0.897,
+   1.074,
+   "normal",
+   "D"
+  ],
+  "warg_rider": [
+   1.0,
+   0.839,
+   "elite",
+   "C"
+  ],
+  "weaver": [
+   1.039,
+   1.139,
+   "elite",
+   "B"
+  ],
+  "wickling": [
+   0.996,
+   1.355,
+   "normal",
+   "C"
+  ],
+  "winter_marshal": [
+   3.122,
+   0.644,
+   "boss",
+   "B"
+  ],
+  "winter_wolf": [
+   1.0,
+   1.139,
+   "elite",
+   "B"
+  ],
+  "wyrm_priest": [
+   0.909,
+   1.245,
+   "elite",
+   "S"
+  ]
+ }
+}

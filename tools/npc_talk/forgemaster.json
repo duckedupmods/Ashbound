@@ -1,0 +1,69 @@
+{
+ "name": "Wendel Blackwood",
+ "title": "Forgemaster",
+ "tags": [
+  "lead"
+ ],
+ "start": "start",
+ "nodes": {
+  "start": {
+   "text": [
+    "Stand back from the sparks. What do you need, steel or advice?"
+   ],
+   "options": [
+    {
+     "text": "Show me your steel.",
+     "do": "shop"
+    },
+    {
+     "text": "Forge me something from the gates.",
+     "do": "forge"
+    },
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "Any advice on gear?",
+     "go": "advice"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "who": {
+   "text": [
+    "Wendel Blackwood, Forgemaster of the Forge Ward. Every hammer down this street answers to me.",
+    "My father forged for the Warden's own guard. The blade on that statue up the hill? Measured from his."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "advice": {
+   "text": [
+    "Iron's honest. A greatsword hits hard and slow, a tachi fast and clean, a spear keeps them off you.",
+    "Gate iron's better than ours, but it bites back. Bring me some and we'll talk."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

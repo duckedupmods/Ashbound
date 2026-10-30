@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:item/generated",
+ "textures": {
+  "layer0": "ashbound:block/leaded_arch_window"
+ },
+ "render_type": "minecraft:translucent"
+}

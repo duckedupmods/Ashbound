@@ -1,0 +1,7 @@
+newmtl blade
+Ka 0 0 0
+map_Kd ashbound:item/brigands_knuckle_ring_3d
+
+newmtl glow
+Ka 1 1 1
+map_Kd ashbound:item/brigands_knuckle_ring_3d

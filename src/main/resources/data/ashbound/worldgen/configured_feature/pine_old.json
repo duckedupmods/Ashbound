@@ -1,0 +1,43 @@
+{
+ "type": "ashbound:tree",
+ "config": {
+  "trees": [
+   {
+    "template": "ashbound:tree/pine_small_0",
+    "weight": 10
+   },
+   {
+    "template": "ashbound:tree/pine_small_1",
+    "weight": 10
+   },
+   {
+    "template": "ashbound:tree/pine_small_2",
+    "weight": 10
+   },
+   {
+    "template": "ashbound:tree/pine_medium_0",
+    "weight": 35
+   },
+   {
+    "template": "ashbound:tree/pine_medium_1",
+    "weight": 35
+   },
+   {
+    "template": "ashbound:tree/pine_medium_2",
+    "weight": 35
+   },
+   {
+    "template": "ashbound:tree/pine_large_0",
+    "weight": 55
+   },
+   {
+    "template": "ashbound:tree/pine_large_1",
+    "weight": 55
+   },
+   {
+    "template": "ashbound:tree/pine_large_2",
+    "weight": 55
+   }
+  ]
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column",
+ "textures": {
+  "side": "ashbound:block/spire_column",
+  "end": "ashbound:block/spire_column_top"
+ }
+}

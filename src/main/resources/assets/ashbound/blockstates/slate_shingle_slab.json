@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "ashbound:block/slate_shingle_slab"
+  },
+  "type=double": {
+   "model": "ashbound:block/slate_shingles"
+  },
+  "type=top": {
+   "model": "ashbound:block/slate_shingle_slab_top"
+  }
+ }
+}

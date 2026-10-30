@@ -1,0 +1,8 @@
+{
+ "size": 1,
+ "order": 90,
+ "icon": "ashbound:slot/empty_relic_slot",
+ "validators": [
+  "curios:tag"
+ ]
+}

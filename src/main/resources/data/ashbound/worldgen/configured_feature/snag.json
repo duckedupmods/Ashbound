@@ -1,0 +1,44 @@
+{
+ "type": "ashbound:tree",
+ "config": {
+  "trees": [
+   {
+    "template": "ashbound:tree/snag_small_0",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/snag_small_1",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/snag_small_2",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/snag_medium_0",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/snag_medium_1",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/snag_medium_2",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/snag_large_0",
+    "weight": 20
+   },
+   {
+    "template": "ashbound:tree/snag_large_1",
+    "weight": 20
+   },
+   {
+    "template": "ashbound:tree/snag_large_2",
+    "weight": 20
+   }
+  ],
+  "hardy": true
+ }
+}

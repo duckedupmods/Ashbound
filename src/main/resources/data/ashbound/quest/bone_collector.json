@@ -1,0 +1,16 @@
+{
+ "title": "The Bone Collector",
+ "rank": "F",
+ "text": "The chapel's ossuary is running short. The chaplain pays for bones, and asks no questions about where they came from.",
+ "collect": "minecraft:bone",
+ "count": 12,
+ "points": 25,
+ "coins": 30,
+ "items": [
+  [
+   "minecraft:candle",
+   4
+  ]
+ ],
+ "repeat": true
+}

@@ -1,0 +1,61 @@
+{
+ "id": "elf_57013",
+ "seed": 57013,
+ "recipe": "elf",
+ "role": "elder",
+ "rank": null,
+ "name": "Nimue Moonbough",
+ "title": "Elder of the Tree",
+ "age": "elder",
+ "sex": "f",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "fair",
+ "hair": {
+  "style": "bun",
+  "color": "silver"
+ },
+ "headwear": "circlet",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "green",
+  "brows": "bushy",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "wrinkles"
+  ],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "mantle",
+   "sash"
+  ],
+  "colors": {
+   "top": "moss",
+   "bottom": "olive",
+   "accent": "teal",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "staff",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": null,
+  "role": null
+ },
+ "race": "elf"
+}

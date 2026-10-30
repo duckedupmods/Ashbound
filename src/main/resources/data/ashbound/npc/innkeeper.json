@@ -1,0 +1,160 @@
+{
+ "name": "Dunstan Pell",
+ "title": "Keeper of the Pilgrim's Rest",
+ "start": "start",
+ "nodes": {
+  "start": {
+   "go_if": [
+    [
+     "flag:met_innkeeper",
+     "regular"
+    ]
+   ],
+   "text": [
+    "Boots off the table. Blood off the boots. Then we'll talk.",
+    "Dunstan. This is my house. Twenty years a halberd on the walls, and now I keep the only fire in Highmourn nobody's tried to put out. Food, ale, and whatever's being said. All three for coin."
+   ],
+   "options": [
+    {
+     "text": "What's being said?",
+     "do": "flag:met_innkeeper",
+     "go": "rumours"
+    },
+    {
+     "text": "I'll take an ale. (6 coins)",
+     "if": "coins:6",
+     "do": "flag:met_innkeeper;pay:6;effect:strength:120:0;effect:nausea:8:0",
+     "go": "ale"
+    },
+    {
+     "text": "Show me your wares.",
+     "do": "flag:met_innkeeper;shop"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "regular": {
+   "text": [
+    "{player}. Sit where you can see the door. Everyone does, these days."
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "What's being said?",
+     "go": "rumours"
+    },
+    {
+     "text": "An ale. (6 coins)",
+     "if": "coins:6",
+     "do": "pay:6;effect:strength:120:0;effect:nausea:8:0",
+     "go": "ale"
+    },
+    {
+     "text": "What was it like on the walls?",
+     "go": "walls"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "ale": {
+   "text": [
+    "There. Black ale, brewed in the cellar under us. It's strong. It's meant to be. Men walk out of here braver than they walked in, and some of them even walk back."
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "What's being said?",
+     "go": "rumours"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumours": {
+   "text": [
+    "Carters won't take the cellar road. There's a barrel out there nobody owns, and the last two who stopped to look in it didn't come back. They call it Old Bung, like it's a pet.",
+    "Shepherds off Gallows Hill say a knight in a gibbet cage stopped them on the drove road and asked if they were the judge. Ser Aldric, they call him. Hanged before my grandfather was born."
+   ],
+   "options": [
+    {
+     "text": "What else?",
+     "go": "rumours2"
+    },
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumours2": {
+   "text": [
+    "Woodcutters by the rotten grove saw a stag the size of a hay cart. Stood over a dead hunting party all night, grazing on them. Old Velvet.",
+    "And out at the abbey, a sexton digs one grave every night. Every morning, someone's in it. Brother Spade. That one's posted at E-rank. Don't go green."
+   ],
+   "options": [
+    {
+     "text": "Where do I take work like that?",
+     "go": "guild"
+    },
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "guild": {
+   "text": [
+    "The guild hall, up the avenue. The board by the door. Elowen posts the bounties as fast as the farmers bring them in, and lately they bring them in fast.",
+    "Bring me what you kill, too. Not the monster bits. Meat. I don't ask where the pork's from."
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "walls": {
+   "text": [
+    "Cold. Then loud. Then quiet, which was worse. The first gates opened out past the farms and the things that came out didn't care about walls. They walked through the river.",
+    "I lost an ear and most of my friends. Kept the halberd. It's over the door if anyone starts trouble."
+   ],
+   "options": [
+    {
+     "text": "Show me your wares.",
+     "do": "shop"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

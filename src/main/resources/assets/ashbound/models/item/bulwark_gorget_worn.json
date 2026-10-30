@@ -1,0 +1,5 @@
+{
+ "loader": "neoforge:obj",
+ "model": "ashbound:models/mesh/bulwark_gorget_worn.obj",
+ "flip_v": true
+}

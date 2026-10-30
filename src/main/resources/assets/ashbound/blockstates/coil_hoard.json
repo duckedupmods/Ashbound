@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/coil_hoard"
+  },
+  "facing=east": {
+   "model": "ashbound:block/coil_hoard",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/coil_hoard",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/coil_hoard",
+   "y": 270
+  }
+ }
+}

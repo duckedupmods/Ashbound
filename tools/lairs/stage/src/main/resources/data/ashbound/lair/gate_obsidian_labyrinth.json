@@ -1,0 +1,27 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Obsidian Labyrinth",
+ "test_origin": [
+  133000,
+  20,
+  0
+ ],
+ "boss": "ashbound:minotaur",
+ "seal": "The Gatekeeper's key locks the ninth gate",
+ "broken": "The key turns and the ninth gate grinds open",
+ "arrive": [
+  "THE OBSIDIAN LABYRINTH",
+  "A-Rank Gate"
+ ],
+ "rank": "A",
+ "loot": "ashbound:chests/gate_obsidian_labyrinth",
+ "built_check": [
+  [
+   -26,
+   -16,
+   -313,
+   "ashbound:labyrinth_basalt"
+  ]
+ ],
+ "clear_top": 23
+}

@@ -1,0 +1,367 @@
+{
+ "name": "dwarf",
+ "race": "dwarf",
+ "_doc": "Anvilgate's folk: short, broad, bearded, in leather and wool the colours of ore and embers. Read by tools/folkforge.py (roll), built with the dwarf body.",
+ "sex": {
+  "m": 3,
+  "f": 2
+ },
+ "age": {
+  "adult": 5,
+  "teen": 1
+ },
+ "build": {
+  "broad": 3,
+  "stout": 3,
+  "average": 1
+ },
+ "skin": {
+  "rose": 2,
+  "fair": 2,
+  "weathered": 3,
+  "tan": 2,
+  "olive": 1
+ },
+ "hair_color": {
+  "copper": 3,
+  "auburn": 3,
+  "chestnut": 2,
+  "dark_brown": 2,
+  "black": 2,
+  "ash_blonde": 1,
+  "grey": 1
+ },
+ "beard": {
+  "beard": 1
+ },
+ "brows": {
+  "bushy": 3,
+  "stern": 2,
+  "soft": 1
+ },
+ "colors": {
+  "top": {
+   "oxblood": 2,
+   "rust": 2,
+   "brown": 2,
+   "charcoal": 2,
+   "mustard": 1,
+   "navy": 1,
+   "forest": 1
+  },
+  "bottom": {
+   "brown": 3,
+   "charcoal": 3,
+   "grey": 1
+  },
+  "accent": {
+   "mustard": 2,
+   "teal": 2,
+   "red": 2,
+   "rust": 1,
+   "oxblood": 1
+  },
+  "leather": {
+   "dark": 3,
+   "tan": 2,
+   "red": 1
+  }
+ },
+ "roles": {
+  "miner": {
+   "w": 4,
+   "title": "Miner",
+   "outfit": [
+    {
+     "top": "jerkin",
+     "sleeves": "rolled",
+     "overs": [
+      "belt",
+      "gloves",
+      "pouches"
+     ]
+    }
+   ],
+   "headwear": {
+    "helm": 2,
+    "cap": 1,
+    "": 1
+   },
+   "marks": {
+    "soot": 0.7,
+    "scar": 0.2
+   },
+   "weapon": {
+    "axe": 2,
+    "lantern": 2,
+    "hammer": 1
+   },
+   "back": {
+    "pack": 1,
+    "sack": 1,
+    "": 2
+   }
+  },
+  "smith": {
+   "w": 3,
+   "title": "Smith",
+   "outfit": [
+    {
+     "top": "shirt",
+     "sleeves": "rolled",
+     "overs": [
+      "leather_apron",
+      "gloves"
+     ]
+    }
+   ],
+   "headwear": {
+    "bandana": 2,
+    "": 1
+   },
+   "marks": {
+    "soot": 0.8,
+    "scar_cheek": 0.2
+   },
+   "weapon": "hammer",
+   "colors": {
+    "top": {
+     "grey": 2,
+     "linen": 1,
+     "charcoal": 2
+    }
+   }
+  },
+  "guard": {
+   "w": 3,
+   "title": "Hold Guard",
+   "build": {
+    "broad": 3,
+    "stout": 1
+   },
+   "outfit": [
+    {
+     "top": "mail",
+     "overs": [
+      "belt",
+      "pauldrons",
+      "greaves",
+      "tabard"
+     ]
+    }
+   ],
+   "headwear": "helm",
+   "weapon": {
+    "axe": 2,
+    "mace": 1,
+    "spear": 1
+   },
+   "offhand": {
+    "shield": 2,
+    "": 1
+   },
+   "colors": {
+    "accent": {
+     "red": 2,
+     "teal": 1
+    }
+   }
+  },
+  "brewer": {
+   "w": 2,
+   "title": "Brewer",
+   "build": {
+    "stout": 3
+   },
+   "outfit": [
+    {
+     "top": "shirt",
+     "sleeves": "rolled",
+     "overs": [
+      "apron",
+      "belt"
+     ]
+    }
+   ],
+   "weapon": {
+    "mug": 2,
+    "bucket": 1
+   },
+   "pose": {
+    "hang": 1
+   }
+  },
+  "merchant": {
+   "w": 2,
+   "title": "Ore Trader",
+   "outfit": [
+    {
+     "top": "coat",
+     "overs": [
+      "belt",
+      "pouches",
+      "scarf"
+     ]
+    }
+   ],
+   "headwear": {
+    "cap": 1,
+    "": 1
+   },
+   "weapon": {
+    "book": 1,
+    "": 1
+   },
+   "colors": {
+    "top": {
+     "wine": 1,
+     "navy": 1,
+     "forest": 1
+    }
+   }
+  },
+  "elder": {
+   "w": 2,
+   "title": "Hold Elder",
+   "age": "elder",
+   "outfit": [
+    {
+     "top": "robe",
+     "overs": [
+      "mantle",
+      "sash"
+     ]
+    }
+   ],
+   "weapon": {
+    "cane": 2,
+    "staff": 1
+   },
+   "hair_color": {
+    "white": 2,
+    "grey": 2,
+    "silver": 1
+   },
+   "colors": {
+    "top": {
+     "oxblood": 1,
+     "navy": 1,
+     "charcoal": 1
+    }
+   }
+  },
+  "child": {
+   "w": 2,
+   "title": "Child",
+   "age": "kid",
+   "build": {
+    "stout": 1,
+    "average": 1
+   },
+   "outfit": {
+    "f": [
+     [
+      {
+       "top": "dress",
+       "bottom": "skirt",
+       "overs": [
+        "apron"
+       ]
+      },
+      1
+     ],
+     [
+      {
+       "top": "tunic",
+       "bottom": "shorts"
+      },
+      1
+     ]
+    ],
+    "m": [
+     [
+      {
+       "top": "tunic",
+       "bottom": "shorts",
+       "overs": [
+        "belt"
+       ]
+      },
+      1
+     ]
+    ]
+   },
+   "headwear": {
+    "": 3,
+    "cap": 1
+   },
+   "prop": {
+    "": 2,
+    "bread": 1,
+    "kitten": 1
+   },
+   "colors": {
+    "top": {
+     "mustard": 1,
+     "rust": 1,
+     "teal": 1,
+     "red": 1
+    }
+   }
+  }
+ },
+ "names": {
+  "m": [
+   "Thrain",
+   "Borin",
+   "Dvalin",
+   "Gorrik",
+   "Hurn",
+   "Brokk",
+   "Dagni",
+   "Orrin",
+   "Torvald",
+   "Grimbal",
+   "Kazrin",
+   "Norri",
+   "Baldrek",
+   "Fundin"
+  ],
+  "f": [
+   "Hilda",
+   "Brenna",
+   "Dagna",
+   "Thyra",
+   "Kerra",
+   "Ingrid",
+   "Marga",
+   "Velka",
+   "Runa",
+   "Grenda",
+   "Svala",
+   "Torva"
+  ],
+  "kid": [
+   "Pim",
+   "Tuk",
+   "Bram",
+   "Nell",
+   "Odda",
+   "Kip",
+   "Rolli",
+   "Hesk"
+  ],
+  "surname": [
+   "Ironbeard",
+   "Stonehand",
+   "Coalvein",
+   "Deepdelve",
+   "Anvilson",
+   "Copperkettle",
+   "Hammerfell",
+   "Gravelgut",
+   "Emberfist",
+   "Brightvein"
+  ]
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "type": "ashbound:tree",
+ "config": {
+  "trees": [
+   {
+    "template": "ashbound:tree/stilt_small_0",
+    "weight": 60
+   },
+   {
+    "template": "ashbound:tree/stilt_small_1",
+    "weight": 60
+   },
+   {
+    "template": "ashbound:tree/stilt_small_2",
+    "weight": 60
+   },
+   {
+    "template": "ashbound:tree/stilt_medium_0",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/stilt_medium_1",
+    "weight": 40
+   },
+   {
+    "template": "ashbound:tree/stilt_medium_2",
+    "weight": 40
+   }
+  ],
+  "hardy": true
+ }
+}

@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/stairs",
+ "textures": {
+  "bottom": "ashbound:block/foundry_bricks",
+  "top": "ashbound:block/foundry_bricks",
+  "side": "ashbound:block/foundry_bricks"
+ }
+}

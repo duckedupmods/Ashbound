@@ -1,0 +1,81 @@
+{
+ "name": "Halvard Saltblood",
+ "title": "Guild Master",
+ "tags": [
+  "lead"
+ ],
+ "start": "start",
+ "nodes": {
+  "start": {
+   "text": [
+    "You're standing in my hall with mud on your boots. Speak, then."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "What does the Guild do?",
+     "go": "guild"
+    },
+    {
+     "text": "Tell me about the gates.",
+     "go": "gates"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "who": {
+   "text": [
+    "Halvard. Shieldbearer, S-rank, thirty years on the roads before they sat me behind a desk.",
+    "The shield on the wall is mine. The dent in it is a Kiln-Father's. I'd rather not talk about the rest."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "guild": {
+   "text": [
+    "The town brings us its troubles, Elowen writes them up, and people like you go and deal with them.",
+    "Do it well and your rank goes up. Do it badly and we hang your name in the Hall of Heroes - small, at the back."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "gates": {
+   "text": [
+    "The gates open where the old world broke. Each one's ranked, F to SSS, by what crawls out of it.",
+    "Never walk into one above your rank alone. I've buried enough heroes who thought they were the exception."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

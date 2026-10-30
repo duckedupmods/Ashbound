@@ -1,0 +1,43 @@
+{
+ "type": "ashbound:tree",
+ "config": {
+  "trees": [
+   {
+    "template": "ashbound:tree/thorn_small_0",
+    "weight": 30
+   },
+   {
+    "template": "ashbound:tree/thorn_small_1",
+    "weight": 30
+   },
+   {
+    "template": "ashbound:tree/thorn_small_2",
+    "weight": 30
+   },
+   {
+    "template": "ashbound:tree/thorn_medium_0",
+    "weight": 45
+   },
+   {
+    "template": "ashbound:tree/thorn_medium_1",
+    "weight": 45
+   },
+   {
+    "template": "ashbound:tree/thorn_medium_2",
+    "weight": 45
+   },
+   {
+    "template": "ashbound:tree/thorn_large_0",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/thorn_large_1",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/thorn_large_2",
+    "weight": 25
+   }
+  ]
+ }
+}

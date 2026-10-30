@@ -1,0 +1,213 @@
+{
+ "ambientocclusion": false,
+ "textures": {
+  "pewter": "ashbound:block/archive_pewter",
+  "particle": "ashbound:block/archive_pewter"
+ },
+ "elements": [
+  {
+   "from": [
+    7.0,
+    0.0,
+    7.0
+   ],
+   "to": [
+    9.0,
+    16.0,
+    9.0
+   ],
+   "faces": {
+    "north": {
+     "texture": "#pewter",
+     "uv": [
+      7,
+      0.0,
+      9,
+      16.0
+     ]
+    },
+    "south": {
+     "texture": "#pewter",
+     "uv": [
+      7,
+      0.0,
+      9,
+      16.0
+     ]
+    },
+    "east": {
+     "texture": "#pewter",
+     "uv": [
+      7,
+      0.0,
+      9,
+      16.0
+     ]
+    },
+    "west": {
+     "texture": "#pewter",
+     "uv": [
+      7,
+      0.0,
+      9,
+      16.0
+     ]
+    },
+    "up": {
+     "texture": "#pewter",
+     "uv": [
+      7,
+      7,
+      9,
+      9
+     ]
+    },
+    "down": {
+     "texture": "#pewter",
+     "uv": [
+      7,
+      7,
+      9,
+      9
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    6.5,
+    0.0,
+    6.5
+   ],
+   "to": [
+    9.5,
+    1.0,
+    9.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#pewter",
+     "uv": [
+      6.5,
+      15.0,
+      9.5,
+      16.0
+     ]
+    },
+    "south": {
+     "texture": "#pewter",
+     "uv": [
+      6.5,
+      15.0,
+      9.5,
+      16.0
+     ]
+    },
+    "east": {
+     "texture": "#pewter",
+     "uv": [
+      6.5,
+      15.0,
+      9.5,
+      16.0
+     ]
+    },
+    "west": {
+     "texture": "#pewter",
+     "uv": [
+      6.5,
+      15.0,
+      9.5,
+      16.0
+     ]
+    },
+    "up": {
+     "texture": "#pewter",
+     "uv": [
+      6.5,
+      6.5,
+      9.5,
+      9.5
+     ]
+    },
+    "down": {
+     "texture": "#pewter",
+     "uv": [
+      6.5,
+      6.5,
+      9.5,
+      9.5
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    6.5,
+    15.0,
+    6.5
+   ],
+   "to": [
+    9.5,
+    16.0,
+    9.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#pewter",
+     "uv": [
+      6.5,
+      0.0,
+      9.5,
+      1.0
+     ]
+    },
+    "south": {
+     "texture": "#pewter",
+     "uv": [
+      6.5,
+      0.0,
+      9.5,
+      1.0
+     ]
+    },
+    "east": {
+     "texture": "#pewter",
+     "uv": [
+      6.5,
+      0.0,
+      9.5,
+      1.0
+     ]
+    },
+    "west": {
+     "texture": "#pewter",
+     "uv": [
+      6.5,
+      0.0,
+      9.5,
+      1.0
+     ]
+    },
+    "up": {
+     "texture": "#pewter",
+     "uv": [
+      6.5,
+      6.5,
+      9.5,
+      9.5
+     ]
+    },
+    "down": {
+     "texture": "#pewter",
+     "uv": [
+      6.5,
+      6.5,
+      9.5,
+      9.5
+     ]
+    }
+   }
+  }
+ ]
+}

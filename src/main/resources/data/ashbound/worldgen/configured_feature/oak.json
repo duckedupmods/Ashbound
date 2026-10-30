@@ -1,0 +1,135 @@
+{
+ "type": "ashbound:tree",
+ "config": {
+  "trees": [
+   {
+    "template": "ashbound:tree/oak_small_0",
+    "weight": 30
+   },
+   {
+    "template": "ashbound:tree/oak_small_1",
+    "weight": 30
+   },
+   {
+    "template": "ashbound:tree/oak_small_2",
+    "weight": 30
+   },
+   {
+    "template": "ashbound:tree/oak_medium_0",
+    "weight": 45
+   },
+   {
+    "template": "ashbound:tree/oak_medium_1",
+    "weight": 45
+   },
+   {
+    "template": "ashbound:tree/oak_medium_2",
+    "weight": 45
+   },
+   {
+    "template": "ashbound:tree/oak_large_0",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/oak_large_1",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/oak_large_2",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/bush_0",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/bush_1",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/bush_2",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/bush_3",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/bush_4",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/bush_5",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/bush_6",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/bush_7",
+    "weight": 25
+   },
+   {
+    "template": "ashbound:tree/boulder_0",
+    "weight": 12
+   },
+   {
+    "template": "ashbound:tree/boulder_1",
+    "weight": 12
+   },
+   {
+    "template": "ashbound:tree/boulder_2",
+    "weight": 12
+   },
+   {
+    "template": "ashbound:tree/boulder_3",
+    "weight": 12
+   },
+   {
+    "template": "ashbound:tree/boulder_4",
+    "weight": 12
+   },
+   {
+    "template": "ashbound:tree/boulder_5",
+    "weight": 12
+   },
+   {
+    "template": "ashbound:tree/woods_log_0",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_log_1",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_log_2",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_stump_0",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_stump_1",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_stump_2",
+    "weight": 3
+   },
+   {
+    "template": "ashbound:tree/woods_stone_0",
+    "weight": 1
+   },
+   {
+    "template": "ashbound:tree/woods_stone_1",
+    "weight": 1
+   },
+   {
+    "template": "ashbound:tree/woods_stone_2",
+    "weight": 1
+   }
+  ]
+ }
+}

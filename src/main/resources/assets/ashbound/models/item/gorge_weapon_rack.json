@@ -1,0 +1,124 @@
+{
+ "parent": "ashbound:block/gorge_weapon_rack",
+ "display": {
+  "gui": {
+   "rotation": [
+    30,
+    225,
+    0
+   ],
+   "translation": [
+    0.33,
+    -0.62,
+    0.02
+   ],
+   "scale": [
+    0.557,
+    0.557,
+    0.557
+   ]
+  },
+  "ground": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.21,
+    -0.18
+   ],
+   "scale": [
+    0.223,
+    0.223,
+    0.223
+   ]
+  },
+  "fixed": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0.0,
+    -0.42,
+    -0.37
+   ],
+   "scale": [
+    0.445,
+    0.445,
+    0.445
+   ]
+  },
+  "thirdperson_righthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    -0.2,
+    0.11,
+    -0.36
+   ],
+   "scale": [
+    0.334,
+    0.334,
+    0.334
+   ]
+  },
+  "thirdperson_lefthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    -0.2,
+    0.11,
+    -0.36
+   ],
+   "scale": [
+    0.334,
+    0.334,
+    0.334
+   ]
+  },
+  "firstperson_righthand": {
+   "rotation": [
+    0,
+    45,
+    0
+   ],
+   "translation": [
+    -0.21,
+    -0.34,
+    -0.21
+   ],
+   "scale": [
+    0.356,
+    0.356,
+    0.356
+   ]
+  },
+  "firstperson_lefthand": {
+   "rotation": [
+    0,
+    225,
+    0
+   ],
+   "translation": [
+    0.21,
+    -0.34,
+    0.21
+   ],
+   "scale": [
+    0.356,
+    0.356,
+    0.356
+   ]
+  }
+ }
+}

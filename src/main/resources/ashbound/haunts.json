@@ -1,0 +1,241 @@
+{
+ "factions": {
+  "black_banner": {
+   "mobs": {
+    "banner_hound": 4,
+    "deserter": 4,
+    "hatchetman": 3,
+    "arbalest": 3,
+    "anvil_breaker": 1
+   },
+   "elite": "banner_captain"
+  },
+  "barrow_host": {
+   "mobs": {
+    "ossipede": 4,
+    "barrow_wight": 4,
+    "barrow_reaper": 3,
+    "wailing_shroud": 2,
+    "mound_brute": 1
+   },
+   "elite": "barrow_king"
+  },
+  "drowned_corsairs": {
+   "mobs": {
+    "kraken_spawn": 4,
+    "drowned_corsair": 4,
+    "harpooner": 3,
+    "tide_caller": 2,
+    "anchor_hauler": 1
+   },
+   "elite": "dread_captain"
+  },
+  "deep_delvers": {
+   "mobs": {
+    "drill_mole": 3,
+    "delver": 4,
+    "tunnel_rat": 3,
+    "blaster": 3,
+    "steam_driller": 1
+   },
+   "elite": "pit_boss"
+  },
+  "sporefolk": {
+   "mobs": {
+    "spore_tick": 4,
+    "capguard": 4,
+    "inkcap_stalker": 3,
+    "morel_shaman": 2,
+    "sporemaw": 1
+   },
+   "elite": "elder_cap"
+  },
+  "sky_legion": {
+   "mobs": {
+    "harpy": 4,
+    "hoplite": 4,
+    "peltast": 3,
+    "oracle": 2,
+    "talos": 1
+   },
+   "elite": "gryphon_rider"
+  },
+  "salt_cursed": {
+   "mobs": {
+    "bone_hyena": 4,
+    "salt_legionary": 4,
+    "sand_reaver": 3,
+    "vulture_priest": 2,
+    "dune_behemoth": 1
+   },
+   "elite": "salt_khan"
+  },
+  "thornborn": {
+   "mobs": {
+    "thorn_beetle": 4,
+    "briar_warden": 4,
+    "thorn_dancer": 3,
+    "bloom_witch": 2,
+    "bramble_brute": 1
+   },
+   "elite": "rose_knight"
+  },
+  "rimebound": {
+   "mobs": {
+    "crawling_convict": 4,
+    "jailer": 4,
+    "icicle_shiv": 3,
+    "cold_chaplain": 2,
+    "glacier_hulk": 1
+   },
+   "elite": "rime_warden"
+  },
+  "blightkin": {
+   "mobs": {
+    "acid_slug": 4,
+    "vat_guard": 4,
+    "stitched_stalker": 3,
+    "alchemist": 2,
+    "vat_brute": 1
+   },
+   "elite": "chimera"
+  },
+  "hollow_order": {
+   "mobs": {
+    "hollow_squire": 4,
+    "hollow_knight": 4,
+    "hollow_destrier": 2,
+    "hollow_chaplain": 2,
+    "siege_knight": 1
+   },
+   "elite": "grand_master"
+  },
+  "broodmothers": {
+   "mobs": {
+    "brood_mite": 5,
+    "hive_soldier": 4,
+    "mantis_reaper": 3,
+    "spitter": 2,
+    "hive_juggernaut": 1
+   },
+   "elite": "brood_queen"
+  },
+  "ash_legion": {
+   "mobs": {
+    "ash_salamander": 4,
+    "ash_legionary": 4,
+    "ash_lictor": 3,
+    "ash_augur": 2,
+    "basalt_brute": 1
+   },
+   "elite": "ash_centurion"
+  },
+  "voidborn": {
+   "mobs": {
+    "void_mite": 4,
+    "void_sentinel": 4,
+    "phase_blade": 3,
+    "rift_seer": 2,
+    "shulk_brute": 1
+   },
+   "elite": "void_herald"
+  }
+ },
+ "structures": {
+  "dungeons_arise:bandit_towers": "black_banner",
+  "dungeons_arise:bandit_village": "black_banner",
+  "dungeons_arise:illager_campsite": "black_banner",
+  "dungeons_arise:illager_fort": "black_banner",
+  "dungeons_arise:illager_windmill": "black_banner",
+  "nova_structures:illager_camp": "black_banner",
+  "nova_structures:illager_hideout": "black_banner",
+  "nova_structures:illager_manor": "black_banner",
+  "nova_structures:ruin_town": "black_banner",
+  "nova_structures:wild_ruin": "black_banner",
+  "nova_structures:remnant_*": "black_banner",
+  "towns_and_towers:pillager_outpost_*": "black_banner",
+  "nova_structures:creeping_crypt": "barrow_host",
+  "nova_structures:undead_crypt": "barrow_host",
+  "nova_structures:remnant_graveyard": "barrow_host",
+  "nova_structures:remnant_birch_graveyard": "barrow_host",
+  "betterdungeons:skeleton_dungeon": "barrow_host",
+  "betterdungeons:zombie_dungeon": "barrow_host",
+  "betterdungeons:small_dungeon": "barrow_host",
+  "betterstrongholds:stronghold": "barrow_host",
+  "cataclysm:abandoned_spire": "barrow_host",
+  "dungeons_arise:undead_pirate_ship": "drowned_corsairs",
+  "dungeons_arise:illager_corsair": "drowned_corsairs",
+  "dungeons_arise:illager_galley": "drowned_corsairs",
+  "dungeons_arise:lighthouse": "drowned_corsairs",
+  "towns_and_towers:wreckage_ocean": "drowned_corsairs",
+  "cataclysm:sunken_city": "drowned_corsairs",
+  "betteroceanmonuments:ocean_monument": "drowned_corsairs",
+  "nova_structures:conduit_ruin": "drowned_corsairs",
+  "nova_structures:trident_trial_monument": "drowned_corsairs",
+  "dungeons_arise:foundry": "deep_delvers",
+  "dungeons_arise:mining_complex": "deep_delvers",
+  "dungeons_arise:mining_system": "deep_delvers",
+  "dungeons_arise:scorched_mines": "deep_delvers",
+  "cataclysm:ancient_factory": "deep_delvers",
+  "nova_structures:bunker": "deep_delvers",
+  "nova_structures:deepslate_camp": "deep_delvers",
+  "nova_structures:badlands_miner_outpost": "deep_delvers",
+  "nova_structures:remnant_miner_hut": "deep_delvers",
+  "dungeons_arise:giant_mushroom": "sporefolk",
+  "dungeons_arise:mushroom_house": "sporefolk",
+  "dungeons_arise:mushroom_mines": "sporefolk",
+  "dungeons_arise:mushroom_village": "sporefolk",
+  "dungeons_arise:heavenly_challenger": "sky_legion",
+  "dungeons_arise:heavenly_conqueror": "sky_legion",
+  "dungeons_arise:heavenly_rider": "sky_legion",
+  "dungeons_arise:aviary": "sky_legion",
+  "dungeons_arise:small_blimp": "sky_legion",
+  "dungeons_arise:coliseum": "sky_legion",
+  "dungeons_arise:typhon": "sky_legion",
+  "dungeons_arise:ceryneian_hind": "sky_legion",
+  "cataclysm:cursed_pyramid": "salt_cursed",
+  "cataclysm:desert_site": "salt_cursed",
+  "cataclysm:desert_temple": "salt_cursed",
+  "cataclysm:desert_occupied_village": "salt_cursed",
+  "nova_structures:desert_ruins": "salt_cursed",
+  "nova_structures:remnant_desert_remnant": "salt_cursed",
+  "dungeons_arise:shiraz_palace": "salt_cursed",
+  "towns_and_towers:mimic_desert": "salt_cursed",
+  "dungeons_arise:jungle_tree_house": "thornborn",
+  "dungeons_arise:thornborn_towers": "thornborn",
+  "dungeons_arise:kisegi_sanctuary": "thornborn",
+  "dungeons_arise:keep_kayra": "thornborn",
+  "dungeons_arise:abandoned_temple": "thornborn",
+  "nova_structures:jungle_ruins": "thornborn",
+  "cataclysm:frosted_prison": "rimebound",
+  "nova_structures:stray_fort": "rimebound",
+  "dungeons_arise:plague_asylum": "blightkin",
+  "nova_structures:toxic_lair": "blightkin",
+  "nova_structures:witch_villa": "blightkin",
+  "nova_structures:mangrove_witch_hut": "blightkin",
+  "tlc:lost_castle": "hollow_order",
+  "nova_structures:lone_citadel": "hollow_order",
+  "nova_structures:remnant_taiga_castle": "hollow_order",
+  "cataclysm:ruined_citadel": "hollow_order",
+  "cataclysm:acropolis": "hollow_order",
+  "dungeons_arise:monastery": "hollow_order",
+  "betterdungeons:spider_dungeon": "broodmothers",
+  "cataclysm:amethyst_nest": "broodmothers",
+  "dungeons_arise:mechanical_nest": "broodmothers",
+  "dungeons_arise:infested_temple": "broodmothers",
+  "betterfortresses:fortress": "ash_legion",
+  "nova_structures:nether_keep": "ash_legion",
+  "nova_structures:nether_port": "ash_legion",
+  "nova_structures:nether_skeleton_tower_*": "ash_legion",
+  "nova_structures:piglin_camp": "ash_legion",
+  "nova_structures:piglin_donjon": "ash_legion",
+  "nova_structures:piglin_outstation": "ash_legion",
+  "nova_structures:skeleton_camp_*": "ash_legion",
+  "cataclysm:burning_arena": "ash_legion",
+  "cataclysm:soul_black_smith": "ash_legion",
+  "betterdungeons:small_nether_dungeon": "ash_legion",
+  "nova_structures:end_castle": "voidborn",
+  "nova_structures:end_lighthouse": "voidborn",
+  "nova_structures:end_ship": "voidborn"
+ }
+}

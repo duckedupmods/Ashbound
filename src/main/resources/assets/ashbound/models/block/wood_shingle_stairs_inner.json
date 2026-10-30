@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/inner_stairs",
+ "textures": {
+  "bottom": "ashbound:block/wood_shingles",
+  "top": "ashbound:block/wood_shingles",
+  "side": "ashbound:block/wood_shingles"
+ }
+}

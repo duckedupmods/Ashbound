@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/rook_coffer"
+  },
+  "facing=east": {
+   "model": "ashbound:block/rook_coffer",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/rook_coffer",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/rook_coffer",
+   "y": 270
+  }
+ }
+}

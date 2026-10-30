@@ -1,0 +1,82 @@
+{
+ "name": "Niall Hale",
+ "title": "E-rank Blade",
+ "tags": [
+  "adventurer",
+  "striker",
+  "adult",
+  "m",
+  "e"
+ ],
+ "start": "start",
+ "nodes": {
+  "who": {
+   "text": [
+    "Niall. The sword's heavier than it looks. So am I."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "topic": {
+   "text": [
+    "One swing, one less problem."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "rumor": {
+   "text": [
+    "Coin's good for anyone who brings back what comes out of the gates. Better if you bring it back dead."
+   ],
+   "options": [
+    {
+     "text": "Something else.",
+     "go": "start"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "start": {
+   "text": [
+    "Don't stand so close. I swing wide."
+   ],
+   "options": [
+    {
+     "text": "Who are you?",
+     "go": "who"
+    },
+    {
+     "text": "Why a greatsword?",
+     "go": "topic"
+    },
+    {
+     "text": "Heard any rumours?",
+     "go": "rumor"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

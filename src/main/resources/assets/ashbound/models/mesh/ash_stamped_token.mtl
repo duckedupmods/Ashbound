@@ -1,0 +1,7 @@
+newmtl blade
+Ka 0 0 0
+map_Kd ashbound:item/ash_stamped_token_3d
+
+newmtl glow
+Ka 1 1 1
+map_Kd ashbound:item/ash_stamped_token_3d

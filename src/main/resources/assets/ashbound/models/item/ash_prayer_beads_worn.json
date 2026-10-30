@@ -1,0 +1,5 @@
+{
+ "loader": "neoforge:obj",
+ "model": "ashbound:models/mesh/ash_prayer_beads_worn.obj",
+ "flip_v": true
+}

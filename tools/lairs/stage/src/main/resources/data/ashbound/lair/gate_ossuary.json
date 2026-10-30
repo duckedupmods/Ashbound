@@ -1,0 +1,29 @@
+{
+ "dimension": "ashbound:gates",
+ "title": "the Ossuary Engine",
+ "test_origin": [
+  56000,
+  -8,
+  0
+ ],
+ "clear_top": 30,
+ "safe_radius": 240,
+ "boss": "ashbound:assembler",
+ "built_check": [
+  [
+   -19,
+   -19,
+   -255,
+   "ashbound:soul_lamp"
+  ]
+ ],
+ "seal": "The Engine's brass will not yield",
+ "broken": "The Engine falls silent",
+ "arrive": [
+  "THE OSSUARY ENGINE",
+  "C-Rank Gate"
+ ],
+ "rank": "C",
+ "debris": "ossuary",
+ "loot": "ashbound:chests/gate_ossuary"
+}

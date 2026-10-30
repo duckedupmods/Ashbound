@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/sick_cot_foot"
+  },
+  "facing=east": {
+   "model": "ashbound:block/sick_cot_foot",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/sick_cot_foot",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/sick_cot_foot",
+   "y": 270
+  }
+ }
+}

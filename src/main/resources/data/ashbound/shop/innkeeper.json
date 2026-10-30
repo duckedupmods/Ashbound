@@ -1,0 +1,123 @@
+{
+ "buy": [
+  {
+   "item": {
+    "id": "minecraft:bread",
+    "count": 3
+   },
+   "price": 15
+  },
+  {
+   "item": {
+    "id": "minecraft:cooked_mutton",
+    "count": 3
+   },
+   "price": 30
+  },
+  {
+   "item": {
+    "id": "minecraft:cooked_porkchop",
+    "count": 4
+   },
+   "price": 40
+  },
+  {
+   "item": {
+    "id": "minecraft:rabbit_stew"
+   },
+   "price": 25
+  },
+  {
+   "item": {
+    "id": "minecraft:mushroom_stew"
+   },
+   "price": 15
+  },
+  {
+   "item": {
+    "id": "minecraft:pumpkin_pie",
+    "count": 2
+   },
+   "price": 20
+  },
+  {
+   "item": {
+    "id": "minecraft:baked_potato",
+    "count": 4
+   },
+   "price": 12
+  },
+  {
+   "item": {
+    "id": "minecraft:cooked_salmon",
+    "count": 3
+   },
+   "price": 25
+  },
+  {
+   "item": {
+    "id": "minecraft:torch",
+    "count": 16
+   },
+   "price": 20
+  }
+ ],
+ "sell": [
+  {
+   "item": "minecraft:porkchop",
+   "price": 3
+  },
+  {
+   "item": "minecraft:beef",
+   "price": 3
+  },
+  {
+   "item": "minecraft:mutton",
+   "price": 3
+  },
+  {
+   "item": "minecraft:chicken",
+   "price": 2
+  },
+  {
+   "item": "minecraft:rabbit",
+   "price": 3
+  },
+  {
+   "item": "minecraft:salmon",
+   "price": 3
+  },
+  {
+   "item": "minecraft:cod",
+   "price": 2
+  },
+  {
+   "item": "minecraft:wheat",
+   "price": 1
+  },
+  {
+   "item": "minecraft:potato",
+   "price": 1
+  },
+  {
+   "item": "minecraft:carrot",
+   "price": 1
+  },
+  {
+   "item": "minecraft:egg",
+   "price": 1
+  },
+  {
+   "item": "minecraft:sweet_berries",
+   "price": 1
+  },
+  {
+   "item": "minecraft:brown_mushroom",
+   "price": 1
+  },
+  {
+   "item": "minecraft:red_mushroom",
+   "price": 1
+  }
+ ]
+}

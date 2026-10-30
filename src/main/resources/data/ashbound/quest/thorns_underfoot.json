@@ -1,0 +1,11 @@
+{
+ "title": "Thorns Underfoot",
+ "rank": "F",
+ "kill": "ashbound:thorn_crawler",
+ "count": 5,
+ "what": "Thorn Crawlers",
+ "points": 30,
+ "coins": 45,
+ "text": "Briars that walk. They lie across the path like a hedge until someone steps over them. Burn them, cut them, anything.",
+ "repeat": true
+}
