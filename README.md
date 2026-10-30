@@ -1,6 +1,6 @@
 # Ashbound
 
-A dark-fantasy gate-dungeon mod for Minecraft 1.21.1 (NeoForge), built on Epic Fight. By Snoring Walrus Games.
+A dark-fantasy gate-dungeon mod for Minecraft 1.21.1 (NeoForge), built on Epic Fight. By Ducked Up Mods.
 
 Alpha 0.1. Start a new world: updates may change world generation and saved data.
 
