@@ -13,7 +13,8 @@
     "SpringFeatureMixin",
     "JumpingAccessor",
     "MountSneakMixin",
-    "AnimationPlayerMixin"
+    "AnimationPlayerMixin",
+    "ColliderMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -677,7 +677,13 @@ public final class MobSkills {
 
 	static void anim(Mob m, AnimationAccessor<? extends StaticAnimation> a) {
 		LivingEntityPatch<?> p = EpicFightCapabilities.getEntityPatch(m, LivingEntityPatch.class);
-		if (p != null && a != null) p.playAnimationSynchronized(a, 0.0F);
+		if (p != null && a != null) p.playAnimationSynchronized(fits(m, a), 0.0F);
+	}
+
+	/** A spider's body has no hands: a swing meant for a biped comes out as its bite. */
+	static AnimationAccessor<? extends StaticAnimation> fits(Mob m, AnimationAccessor<? extends StaticAnimation> a) {
+		boolean bite = a == Animations.SPIDER_ATTACK || a == Animations.SPIDER_JUMP_ATTACK;
+		return m instanceof net.minecraft.world.entity.monster.Spider && !bite && a.get() instanceof yesman.epicfight.api.animation.types.AttackAnimation ? Animations.SPIDER_ATTACK : a;
 	}
 
 	private static void trail(ServerLevel level, Mob m, String gate) {

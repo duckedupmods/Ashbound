@@ -402,6 +402,33 @@ public final class SelfTest {
 	}
 
 	@GameTest(template = "selftest")
+	public static void noSwingsWithoutHands(GameTestHelper h) {
+		Checks c = new Checks("a body only plays what it can");
+		var cog = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "cogling")).create(h.getLevel());
+		var duelist = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "clockwork_duelist")).create(h.getLevel());
+		var dual = yesman.epicfight.gameasset.Animations.BIPED_MOB_SWORD_DUAL3;
+		if (cog instanceof net.minecraft.world.entity.Mob m && duelist instanceof net.minecraft.world.entity.Mob d) {
+			c.check(MobSkills.fits(m, dual) == yesman.epicfight.gameasset.Animations.SPIDER_ATTACK, "a cogling's spin comes out as a bite");
+			c.check(MobSkills.fits(m, yesman.epicfight.gameasset.Animations.BIPED_MOB_THROW) == yesman.epicfight.gameasset.Animations.SPIDER_ATTACK, "and so does its pull");
+			c.check(MobSkills.fits(d, dual) == dual, "a duelist keeps its two swords");
+		} else c.check(false, "the monsters exist");
+		if (cog != null) {
+			var at = h.absoluteVec(new net.minecraft.world.phys.Vec3(2, 1, 2));
+			cog.setPos(at.x, at.y, at.z);
+			h.getLevel().addFreshEntity(cog);
+			var patch = yesman.epicfight.world.capabilities.EpicFightCapabilities.getEntityPatch(cog, yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch.class);
+			c.check(patch != null && !patch.getArmature().hasJoint("Tool_R"), "a cogling has no hand");
+			if (patch != null) {
+				var hand = yesman.epicfight.gameasset.Armatures.BIPED.get().searchJointByName("Tool_R");
+				var hits = new yesman.epicfight.api.collider.MultiOBBCollider(3, 0.35, 0.5, 1, 0, 0, -1).updateAndSelectCollideEntity(patch, null, 0, 0.1f, hand, 1);
+				c.check(hits.isEmpty(), "and a swing from a hand it hasn't got hits nothing, where it used to take the server down");
+			}
+			cog.discard();
+		}
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
 	public static void nothingShovesBosses(GameTestHelper h) {
 		Checks c = new Checks("a boss can't be shoved");
 		Thrall t = Mounts.REVENANT.get().create(h.getLevel());
