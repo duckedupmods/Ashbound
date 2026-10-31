@@ -6,7 +6,12 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleType;
@@ -79,10 +84,17 @@ public final class Gates {
 
 	/** The level each rank from E up starts at (tools/balance.py MID_LEVEL, halfway between ranks). */
 	private static final int[] FROM_LEVEL = {10, 20, 31, 45, 60, 75};
-	/** Every 20 s, for each player: this chance of a try, higher on the road to the capital. At most this many open round anyone. */
-	private static final float CHANCE = 0.03f, ROAD_CHANCE = 0.06f;
+	/**
+	 * A party, or a player on their own, gets one roll every 2-5 minutes (ticks), at this chance. A roll that lands is owed
+	 * until there's somewhere for it to open. At most this many open round anyone.
+	 */
+	private static final float CHANCE = 0.2f;
+	private static final int ROLL_FROM = 2400, ROLL_SPREAD = 3600, LOOK_EVERY = 100;
 	private static final int TRIES = 20;
-	private static final int NEAR_MAX = 1, CLEAR_ROUND = 300, GROUP = 128, OPENS_FROM = 80, OPENS_SPREAD = 100;
+	private static final int NEAR_MAX = 2, CLEAR_ROUND = 200, GROUP = 128, OPENS_FROM = 80, OPENS_SPREAD = 100;
+	private static final String[] WAYS = {"south", "south-west", "west", "north-west", "north", "north-east", "east", "south-east"};
+	private static final Map<UUID, Long> NEXT_ROLL = new HashMap<>();
+	private static final Set<UUID> OWED = new HashSet<>();
 
 	static void register(IEventBus bus) {
 		ENTITIES.register(bus);
@@ -118,7 +130,7 @@ public final class Gates {
 	/** How often this rank opens round a player of that rank: most at their own, falling away both ways, up slower than it pays to risk. */
 	static double odds(int rank, int home, boolean road) {
 		int d = rank - home;
-		double w = d >= 0 ? 60 * Math.pow(0.4, d) : 24 * Math.pow(0.4, -d - 1);
+		double w = d >= 0 ? 60 * Math.pow(0.5, d) : 24 * Math.pow(0.4, -d - 1);
 		return road && rank == 0 ? w * 2 : w;
 	}
 
@@ -169,21 +181,43 @@ public final class Gates {
 	}
 
 	private static void tick(ServerTickEvent.Post e) {
-		if (e.getServer().getTickCount() % 400 != 0) return;
+		if (e.getServer().getTickCount() % LOOK_EVERY != 0) return;
 		ServerLevel level = e.getServer().getLevel(Level.OVERWORLD);
 		if (level == null) return;
-		List<ServerPlayer> rolled = new ArrayList<>();   // friends together get the one roll between them, not one each
+		RandomSource r = level.random;
+		long now = level.getGameTime();
+		List<ServerPlayer> rolled = new ArrayList<>();   // a party, or friends together, get the one roll between them, not one each
 		for (ServerPlayer p : level.players()) {
-			if (p.isSpectator() || rolled.stream().anyMatch(o -> o.distanceTo(p) < GROUP)) continue;
+			if (p.isSpectator() || rolled.stream().anyMatch(o -> Party.same(o, p) || o.distanceTo(p) < GROUP)) continue;
 			rolled.add(p);
-			if (level.random.nextFloat() > (Coins.flag(p, "found_capital") ? CHANCE : ROAD_CHANCE)) continue;
-			int near = level.getEntitiesOfClass(GateEntity.class, p.getBoundingBox().inflate(CLEAR_ROUND, 400, CLEAR_ROUND), g -> !g.closing()).size();
-			if (near < NEAR_MAX) tryOpen(level, p);
+			UUID who = p.getUUID();
+			if (now >= NEXT_ROLL.computeIfAbsent(who, k -> now + ROLL_FROM + r.nextInt(ROLL_SPREAD))) {
+				NEXT_ROLL.put(who, now + ROLL_FROM + r.nextInt(ROLL_SPREAD));
+				if (r.nextFloat() < CHANCE) OWED.add(who);
+			}
+			if (!OWED.contains(who)) continue;
+			List<ServerPlayer> party = new ArrayList<>(List.of(p));
+			for (ServerPlayer o : Party.others(p)) if (o.level() == level && !o.isSpectator()) party.add(o);
+			ServerPlayer host = party.get(r.nextInt(party.size()));   // it can come up round any of them
+			int near = level.getEntitiesOfClass(GateEntity.class, host.getBoundingBox().inflate(CLEAR_ROUND, 400, CLEAR_ROUND), g -> !g.closing()).size();
+			if (near >= NEAR_MAX) continue;
+			GateEntity g = tryOpen(level, host);
+			if (g == null) continue;
+			OWED.remove(who);
+			for (ServerPlayer o : party) tell(o, g);
 		}
 	}
 
+	/** You feel it go. How far and which way, never what rank: that's for its colour to tell you. */
+	private static void tell(ServerPlayer p, GateEntity g) {
+		double dx = g.getX() - p.getX(), dz = g.getZ() - p.getZ();
+		int way = Mth.positiveModulo(Math.round((float) (Mth.atan2(-dx, dz) * Mth.RAD_TO_DEG) / 45), 8);
+		p.sendSystemMessage(Component.literal("A gate has torn open " + Math.round(Math.sqrt(dx * dx + dz * dz)) + " blocks to the " + WAYS[way] + ".").withStyle(net.minecraft.ChatFormatting.LIGHT_PURPLE));
+		p.playNotifySound(net.minecraft.sounds.SoundEvents.ENDER_DRAGON_GROWL, net.minecraft.sounds.SoundSource.AMBIENT, 0.5f, 0.6f);
+	}
+
 	/** Somewhere open, on solid dry ground, with nothing over it, not in the city. */
-	private static void tryOpen(ServerLevel level, ServerPlayer p) {
+	private static GateEntity tryOpen(ServerLevel level, ServerPlayer p) {
 		RandomSource r = level.random;
 		for (int tries = 0; tries < TRIES; tries++) {
 			double a = r.nextDouble() * Math.PI * 2, d = OPENS_FROM + r.nextDouble() * OPENS_SPREAD;
@@ -195,9 +229,9 @@ public final class Gates {
 			if (!g.getFluidState().isEmpty() || !g.isFaceSturdy(level, ground, net.minecraft.core.Direction.UP)) continue;
 			if (!clear(level, x, y, z)) continue;
 			float yaw = (float) Math.toDegrees(Math.atan2(-(p.getX() - x - 0.5), p.getZ() - z - 0.5));
-			spawn(level, new Vec3(x + 0.5, y, z + 0.5), yaw, roll(r, p));
-			return;
+			return spawn(level, new Vec3(x + 0.5, y, z + 0.5), yaw, roll(r, p));
 		}
+		return null;
 	}
 
 	private static boolean clear(ServerLevel level, int x, int y, int z) {

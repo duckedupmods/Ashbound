@@ -4,12 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.snoringwalrus.ashbound.mixin.JumpingAccessor;
+import com.snoringwalrus.ashbound.mixin.VehicleFloatAccessor;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
@@ -35,6 +37,11 @@ import net.minecraft.world.phys.Vec3;
  * Getting on and off is a move, not a cut. It appears beside you and rears, and you vault up as it comes down; to get off it stops,
  * you drop to the side you came from, and only then does it toss its head and fade. The rider stays a passenger all the way
  * through, carried along that arc by getPassengerAttachmentPoint, so nobody jumps from one place to another.
+ *
+ * A mount with Wings (Mounts.TRACKS) takes to the air: jump, then jump again up there. Hold jump to climb; forward goes where you
+ * look. Its wind runs out after a while and it comes down in a long glide, and fills again on the ground. A Stormdrake glides down
+ * like that from the start. At the last rank of Wings the wind never runs out, on any mount. A second person climbs up behind by right-clicking the
+ * mount or whoever's riding it; the one in front steers.
  */
 public class Mount extends Mob {
 	/** ticks a new mount waits for its rider, how long it grows in, the vault up, the hop down, the fade, and how long it rears */
@@ -45,8 +52,15 @@ public class Mount extends Mob {
 	private static final EntityDataAccessor<Boolean> LEAVING = SynchedEntityData.defineId(Mount.class, EntityDataSerializers.BOOLEAN);
 	/** which side the rider gets on or off: 1 its left, -1 its right, 0 straight up and down */
 	private static final EntityDataAccessor<Integer> SIDE = SynchedEntityData.defineId(Mount.class, EntityDataSerializers.INT);
-	/** glide: blocks a tick forward and the steepest fall */
-	private static final double GLIDE = 0.62, SINK = -0.1;
+	/** in the air: blocks a tick forward, the drake's and the others', climbing, hanging still, and the fall with no wind left */
+	private static final double SOAR = 1.0, FLY = 0.72, CLIMB = 0.4, HANG = -0.03, SINK = -0.1;
+	/** how many ticks on the ground fill the wind; how many it holds depends on Wings */
+	private static final float FILL_TICKS = 300;
+	/** the rider's wind, kept here because the mount itself is gone each time they get off */
+	public static float wind = 1;
+	/** the second seat: how far behind the first, in blocks */
+	private static final double BEHIND = 0.85;
+	private static final int SOFT_LANDING = 160;
 	/** a charge needs this share of top speed, and hits each monster this often (ticks) */
 	private static final double CHARGE_AT = 0.75;
 	private static final int CHARGE_EVERY = 20;
@@ -111,12 +125,41 @@ public class Mount extends Mob {
 		if (!onGround() || isInWater()) {
 			entityData.set(LEAVING, true);
 			left = HOP;
-			p.stopRiding();
+			letGo(p);
 			return;
 		}
 		entityData.set(SIDE, clear(p, 1) ? 1 : clear(p, -1) ? -1 : 0);
 		entityData.set(LEAVING, true);
 		level().playSound(null, getX(), getY(), getZ(), SoundEvents.ARMOR_EQUIP_LEATHER.value(), SoundSource.PLAYERS, 0.8f, 1);
+	}
+
+	/** Someone letting go in the air comes down softly: you can't always pick where a mount lands. */
+	private void letGo(Player p) {
+		if (!onGround() && !isInWater()) p.addEffect(new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.SLOW_FALLING, SOFT_LANDING));
+		p.stopRiding();
+	}
+
+	/** The one behind getting down: only them, the mount stays with its rider. */
+	void hopOff(Player p) {
+		letGo(p);
+	}
+
+	/** Up behind the rider, if there's a seat. */
+	boolean board(Player p) {
+		if (leaving() || p.isPassenger() || p == getFirstPassenger() || !canAddPassenger(p) || !isVehicle()) return false;
+		return p.startRiding(this, true);
+	}
+
+	@Override
+	protected boolean canAddPassenger(Entity e) {
+		return getPassengers().size() < 2;
+	}
+
+	@Override
+	protected net.minecraft.world.InteractionResult mobInteract(Player p, net.minecraft.world.InteractionHand hand) {
+		if (hand != net.minecraft.world.InteractionHand.MAIN_HAND || leaving() || p.isPassenger() || getPassengers().size() != 1) return net.minecraft.world.InteractionResult.PASS;
+		if (!level().isClientSide) board(p);
+		return net.minecraft.world.InteractionResult.sidedSuccess(level().isClientSide);
 	}
 
 	private boolean clear(Player p, int side) {
@@ -190,9 +233,11 @@ public class Mount extends Mob {
 			entityData.set(LEAVING, true);
 		}
 		if (rider != null && !leaving() && tickCount > VAULT && rider.isShiftKeyDown()) leave();
+		if (getPassengers().size() > 1 && getPassengers().get(1) instanceof Player behind && behind.isShiftKeyDown()) hopOff(behind);
+		if (rider instanceof ServerPlayer sp) ((VehicleFloatAccessor) sp.connection).ashbound$floating(0);
 		if (tickCount == VAULT) level().playSound(null, getX(), getY(), getZ(), SoundEvents.HORSE_LAND, SoundSource.PLAYERS, 0.7f, 0.8f);
 		if (rider != null && leaving() && left >= HOP) {
-			rider.stopRiding();
+			letGo(rider);
 			level().playSound(null, getX(), getY(), getZ(), SoundEvents.EVOKER_CAST_SPELL, SoundSource.PLAYERS, 0.5f, 1.3f);
 		}
 		if (faded >= FADE) {
@@ -240,20 +285,33 @@ public class Mount extends Mob {
 		Vec3 v = getDeltaMovement();
 		if (isInWater()) {
 			setDeltaMovement(v.x, Math.min(0.12, v.y + 0.06), v.z);
+			gliding = false;
 		} else if (onGround()) {
 			gliding = false;
+			wind = Math.min(1, wind + 1 / FILL_TICKS);
 			if (jump && !jumpHeld) {
-				setDeltaMovement(v.x, kind.jump(), v.z);
+				setDeltaMovement(v.x, kind.jump() * Mounts.jumpFor(p), v.z);
 				hasImpulse = true;
 			}
-		} else if (kind.glides()) {
-			gliding = jump && !jumpHeld && v.y < 0 || gliding && jump;
-			if (gliding) {
-				Vec3 f = Vec3.directionFromRotation(0, getYRot());
-				setDeltaMovement(f.x * GLIDE, Math.max(SINK, v.y), f.z * GLIDE);
-			}
+		} else {
+			if (jump && !jumpHeld && (kind.glides() || Mounts.airTicks(p) > 0)) gliding = true;
+			if (gliding) fly(p, jump);
 		}
-		jumpHeld = jump && !gliding || jump && onGround();
+		jumpHeld = jump;
+	}
+
+	/** Up here it goes at the rider's word, not by what its legs last did. */
+	private void fly(Player p, boolean climbing) {
+		int air = Mounts.airTicks(p);
+		boolean tireless = Mounts.tireless(p), forward = p.zza > 0;
+		if (!tireless && air > 0) wind = Math.max(0, wind - 1f / air);
+		boolean lift = air > 0 && (tireless || wind > 0);
+		double speed = (kind.glides() ? SOAR : FLY) * Mth.lerp(pace, FROM_REST, 1);
+		Vec3 f = Vec3.directionFromRotation(0, getYRot()), look = Vec3.directionFromRotation(p.getXRot(), getYRot());
+		double up = !lift ? SINK : climbing ? CLIMB : forward ? look.y * speed : HANG;
+		double ahead = forward ? (lift ? Math.hypot(look.x, look.z) : 1) * speed : 0;
+		setDeltaMovement(f.x * ahead, up, f.z * ahead);
+		hasImpulse = true;
 	}
 
 	@Override
@@ -265,11 +323,13 @@ public class Mount extends Mob {
 
 	@Override
 	protected float getRiddenSpeed(Player p) {
-		return (float) getAttributeValue(Attributes.MOVEMENT_SPEED) * Mth.lerp(pace, FROM_REST, 1);
+		return (float) getAttributeValue(Attributes.MOVEMENT_SPEED) * Mth.lerp(pace, FROM_REST, 1) * Mounts.speedFor(p);
 	}
 
 	@Override
 	protected Vec3 getPassengerAttachmentPoint(Entity rider, EntityDimensions size, float scale) {
+		if (getPassengers().indexOf(rider) > 0)   // the seat behind: no vault, they just climb up
+			return new Vec3(0, kind.seatY() * kind.scale() + 0.05, (kind.seatZ() * kind.scale() - BEHIND)).yRot(-getYRot() * Mth.DEG_TO_RAD);
 		float a = seated(), e = a * a * (3 - 2 * a);
 		double foot = rider.getVehicleAttachmentPoint(this).y, seat = kind.seatY() * kind.scale() + 0.1;
 		double y = Mth.lerp(e, foot, seat) + Math.sin(a * Math.PI) * OVER;
@@ -287,9 +347,10 @@ public class Mount extends Mob {
 		return src.is(DamageTypeTags.BYPASSES_INVULNERABILITY) && super.hurt(src, amount);
 	}
 
+	/** So someone can right-click their way up behind the rider. It still can't be struck. */
 	@Override
 	public boolean isPickable() {
-		return false;
+		return !leaving();
 	}
 
 	@Override

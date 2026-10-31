@@ -132,6 +132,16 @@ public final class AshboundClient {
 		event.registerEntityRenderer(Mounts.CHAMPION.get(), com.snoringwalrus.ashbound.client.ThrallRender::new);
 	}
 
+	@SubscribeEvent
+	static void items(net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent event) {
+		event.registerItem(com.snoringwalrus.ashbound.client.PetRender.items(), java.util.stream.Stream.concat(Curios.PET_ITEMS.stream(), java.util.stream.Stream.of(Bag.POUCH)).map(i -> i.get()).toArray(net.minecraft.world.item.Item[]::new));
+	}
+
+	@SubscribeEvent
+	static void menus(net.neoforged.neoforge.client.event.RegisterMenuScreensEvent event) {
+		event.register(Bag.MENU.get(), com.snoringwalrus.ashbound.client.BagScreen::new);
+	}
+
 	/** the curio key (V) */
 	@SubscribeEvent
 	static void keys(net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent event) {

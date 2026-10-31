@@ -30,18 +30,20 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.registries.DeferredItem;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.gameasset.Armatures;
 
 /**
- * Strike with the Master: gear is made at the anvil, not picked off a list. You feed the fire, answer the master's
- * rhythm, and finish it (client/ForgeStrikeScreen plays it, client/ForgeScene stages it). Weapons and plate are hammered,
- * leather and robes stitched ({@link Craft}). A made piece is always yours; how well you worked it is its {@link Quality}.
- * The same work upgrades a piece +1 to +10 (harder each +; a poor run wastes the materials, never the piece) and fuses
- * two boss weapons into the next one up. Each gate's metal behaves in its own way ({@link Metal}), each kind of gear has
- * its own rhythm ({@link #pattern}), and a friend can take the master's side of the anvil. The server only holds the
- * session: nothing is taken until the work is done, and walking off costs nothing.
+ * The forge gives you the piece there and then. It's always yours; how fine it comes out is luck ({@link Quality}), and every
+ * Temper Ember you burn on it pushes the luck your way. The same goes for upgrades, +1 to +10: harder each +, and one that
+ * doesn't take spends the materials, never the piece.
+ *
+ * Only the Joining, at the Cold Forge, is still done by hand: you feed the fire, answer the master's rhythm and finish it
+ * (client/ForgeStrikeScreen plays it, client/ForgeScene stages it), and a friend can take the master's side of the anvil.
+ * Each gate's metal behaves in its own way ({@link Metal}), each kind of gear has its own rhythm ({@link #pattern}). The server
+ * only holds the session: nothing is taken until the work is done, and walking off costs nothing.
  */
 public final class Smithing {
 	private Smithing() {}
@@ -156,12 +158,42 @@ public final class Smithing {
 
 	// ---------------------------------------------------------------- what's what
 
-	public static final int MAKE = 0, UPGRADE = 1, FUSE = 2, QUICK = 3;
+	public static final int MAKE = 0, UPGRADE = 1, FUSE = 2;
 	/** What the two at the anvil tell each other and anyone watching (Net.ForgeRelay, Net.ForgeEcho). */
 	public static final int SWING = 0, MASTER = 1, BELLOWS = 2, STAGE = 3, BEGIN = 5, END = 6, LEAVE = 7, JOINED = 8, RESULT = 9;
 	public static final int TOP = 10;
 	private static final Gear.Cost FUSE_COST = new Gear.Cost(10, 5, 3);
 	private static final String RANKS = "FEDCBAS";
+
+	/** The drop that betters the forge's luck: dropped by elites and bosses, burned at the forge. */
+	public static final DeferredItem<Item> TEMPER = Weapons.ITEMS.registerItem("temper_ember", p -> new Item(p.rarity(net.minecraft.world.item.Rarity.RARE)));
+	public static final int MOST_EMBERS = 8;
+	/** What each ember adds to the roll, and where the roll (0 to 1, plus the embers) stops being each quality. */
+	private static final float EMBER = 0.06f;
+	private static final float[] ROLL_TOPS = {0.25f, 0.8f, 0.97f, Float.MAX_VALUE};
+
+	private static Quality rolled(float roll) {
+		int i = 0;
+		while (roll >= ROLL_TOPS[i]) i++;
+		return Quality.values()[i];
+	}
+
+	/** The chance of each quality with this many embers on it. */
+	public static float[] odds(int embers) {
+		float from = embers * EMBER, was = 0;
+		float[] out = new float[ROLL_TOPS.length];
+		for (int i = 0; i < out.length; i++) {
+			float upTo = Math.max(0, Math.min(1, ROLL_TOPS[i] - from));
+			out[i] = upTo - was;
+			was = upTo;
+		}
+		return out;
+	}
+
+	/** The chance an upgrade takes from this +, with this many embers on it. */
+	public static float upgradeChance(int plus, int embers) {
+		return Math.max(0, Math.min(1, 1 - need(plus) + embers * EMBER));
+	}
 
 	private static final Map<String, Gear.Dungeon> HOME = new HashMap<>();
 	private static final Map<String, String> KIND = new HashMap<>();
@@ -210,7 +242,7 @@ public final class Smithing {
 		return plus < 5 ? new Gear.Cost(6 + 3 * plus, 1 + plus / 2, 0) : new Gear.Cost(10 + 3 * plus, 2 + plus / 2, 1 + (plus - 5) / 2);
 	}
 
-	/** The score a run must reach to raise a piece from this +. */
+	/** What the roll must reach to raise a piece from this +. */
 	public static float need(int plus) {
 		return 0.45f + plus * 0.045f;
 	}
@@ -238,7 +270,7 @@ public final class Smithing {
 	private static Order order(ServerPlayer p, Net.Job j) {
 		var items = p.getInventory().items;
 		switch (j.type()) {
-			case MAKE, QUICK -> {
+			case MAKE -> {
 				if (j.gate() < 0 || j.gate() >= Gear.DUNGEONS.size()) return null;
 				Gear.Dungeon d = Gear.DUNGEONS.get(j.gate());
 				if (j.recipe() < 0 || j.recipe() >= d.recipes().size()) return null;
@@ -265,24 +297,38 @@ public final class Smithing {
 		}
 	}
 
-	/** The forge's FORGE button: starts the work, or hands over what the smith makes for you. */
-	static void request(ServerPlayer p, BlockPos at, Net.Job j) {
+	/** The forge's button: the piece, there and then, or for the Joining, to the anvil. */
+	static void request(ServerPlayer p, BlockPos at, Net.Job j, int wanted) {
 		Order o = order(p, j);
 		if (o == null || (j.type() == FUSE) != (ColdForge.altar(p.level(), at) != null) || (j.type() == FUSE && !Coins.flag(p, "cold_proved"))) return;   // the Joining is the Cold Forge's alone
 		if (!GateForge.affords(p, o.d, o.cost)) {
 			p.displayClientMessage(Component.literal("You're short of what that takes").withStyle(ChatFormatting.RED), true);
 			return;
 		}
-		if (j.type() != QUICK) {
+		if (j.type() == FUSE) {
 			begin(p, at, j);
 			return;
 		}
-		if (!p.getData(Coins.FLAGS).contains("made:" + id(o.out)) || nearestSmith(p.level(), at) == null) return;
+		int embers = Math.max(0, Math.min(Math.min(wanted, MOST_EMBERS), GateForge.count(p, TEMPER.get())));
+		float roll = p.getRandom().nextFloat() + embers * EMBER;
 		GateForge.pay(p, o.d, o.cost);
-		ItemStack made = make(o.out, Quality.FINE, "", p);
-		if (!p.getInventory().add(made)) p.drop(made, false);
+		GateForge.take(p, TEMPER.get(), embers);
 		p.level().playSound(null, at, SoundEvents.ANVIL_USE, SoundSource.BLOCKS, 0.8f, 0.9f);
-		p.displayClientMessage(Component.literal("Made for you: ").append(made.getHoverName().copy().withStyle(ChatFormatting.GOLD)), true);
+		if (p.level() instanceof ServerLevel sl) sl.sendParticles(ParticleTypes.LAVA, at.getX() + 0.5, at.getY() + 1.1, at.getZ() + 0.5, 6 + embers * 2, 0.25, 0.1, 0.25, 0);
+		if (j.type() == MAKE) {
+			Quality q = rolled(roll);
+			Component made = give(p, o.out, q, "", 0, 0);
+			p.displayClientMessage(Component.literal(q.title + ": ").withStyle(q.colour).append(made), true);
+			return;
+		}
+		ItemStack it = p.getInventory().items.get(j.slot());
+		if (roll < need(plus(it))) {
+			p.displayClientMessage(Component.literal("It didn't take. Your materials are spent, the piece is unharmed").withStyle(ChatFormatting.GRAY), true);
+			return;
+		}
+		raise(it);
+		if (plus(it) >= 5) Story.mark(p, "story/plus_five");
+		p.displayClientMessage(Component.literal("It took: ").withStyle(ChatFormatting.GREEN).append(it.getHoverName()), true);
 	}
 
 	private static Npc nearestSmith(Level l, BlockPos at) {
@@ -446,32 +492,14 @@ public final class Smithing {
 		float score = p.level().getGameTime() - s.began < 100 ? 0 : Math.max(0, Math.min(1, m.score()));
 		Quality q = Quality.of(score);
 		var items = p.getInventory().items;
-		switch (s.job.type()) {
-			case MAKE -> {
-				GateForge.pay(p, o.d, o.cost);
-				give(p, o.out, q, m.name(), 0, 0);
-			}
-			case UPGRADE -> {
-				ItemStack it = items.get(s.job.slot());
-				GateForge.pay(p, o.d, o.cost);
-				if (score >= need(plus(it))) {
-					raise(it);
-					if (plus(it) >= 5) Story.mark(p, "story/plus_five");
-				}
-				else p.displayClientMessage(Component.literal("It didn't take. Your materials are spent, the piece is unharmed").withStyle(ChatFormatting.GRAY), true);
-			}
-			case FUSE -> {
-				ItemStack a = items.get(s.job.slot()), b = items.get(s.job.gate());
-				int carried = Math.max(plus(a), plus(b)), stage = Joined.after(a, b);
-				String name = m.name() == null || m.name().isBlank() ? tag(a).getString("ash_name") : m.name();
-				GateForge.pay(p, o.d, o.cost);
-				a.shrink(1);
-				b.shrink(1);
-				give(p, o.out, q, name, carried, stage);
-				Story.mark(p, "cold/joined");
-			}
-			default -> {}
-		}
+		ItemStack a = items.get(s.job.slot()), b = items.get(s.job.gate());
+		int carried = Math.max(plus(a), plus(b)), stage = Joined.after(a, b);
+		String name = m.name() == null || m.name().isBlank() ? tag(a).getString("ash_name") : m.name();
+		GateForge.pay(p, o.d, o.cost);
+		a.shrink(1);
+		b.shrink(1);
+		give(p, o.out, q, name, carried, stage);
+		Story.mark(p, "cold/joined");
 	}
 
 	static void raise(ItemStack it) {
@@ -481,7 +509,7 @@ public final class Smithing {
 		dress(it);
 	}
 
-	private static void give(ServerPlayer p, Item out, Quality q, String name, int plus, int joined) {
+	private static Component give(ServerPlayer p, Item out, Quality q, String name, int plus, int joined) {
 		ItemStack made = make(out, q, name, p);
 		if (joined > 0) {
 			Joined.setStage(made, joined);
@@ -492,15 +520,11 @@ public final class Smithing {
 		Story.mark(p, "story/first_forge");
 		if (q.ordinal() >= Quality.MASTERWORK.ordinal()) Story.mark(p, "story/masterwork");
 		if (!p.getInventory().add(made)) p.drop(made, false);
-		if (q.ordinal() >= Quality.MASTERWORK.ordinal()) {
-			List<String> flags = p.getData(Coins.FLAGS);
-			String f = "made:" + id(out);
-			if (!flags.contains(f)) flags.add(f);
-		}
 		if (q == Quality.PERFECT) {
 			Component news = p.getDisplayName().copy().append(" forged ").append(shown.copy().withStyle(ChatFormatting.GOLD));
 			for (ServerPlayer o : p.server.getPlayerList().getPlayers()) o.sendSystemMessage(news);
 		}
+		return shown;
 	}
 
 	/** The piece, marked with how well it was made and by whom. */

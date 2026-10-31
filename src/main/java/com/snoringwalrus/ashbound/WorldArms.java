@@ -62,7 +62,7 @@ public final class WorldArms {
 		UNCOMMON("Uncommon", ChatFormatting.GREEN, 1, 1.0, 12), RARE("Rare", ChatFormatting.BLUE, 2, 1.2, 6),
 		EPIC("Epic", ChatFormatting.LIGHT_PURPLE, 3, 1.4, 2), LEGENDARY("Legendary", ChatFormatting.GOLD, 4, 1.6, 1);
 
-		final String title;
+		public final String title;
 		final ChatFormatting colour;
 		final int affixes, weight;
 		final double power;

@@ -1,25 +1,37 @@
 package com.snoringwalrus.ashbound;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import net.blay09.mods.waystones.api.MutableWaystone;
+import net.blay09.mods.waystones.api.Waystone;
 import net.blay09.mods.waystones.api.WaystoneStyle;
 import net.blay09.mods.waystones.api.WaystoneStyles;
 import net.blay09.mods.waystones.api.WaystonesAPI;
 import net.blay09.mods.waystones.core.WaystoneManagerImpl;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
 /**
@@ -33,6 +45,9 @@ final class Waypoints {
 	/** From the capital's centre: the market fountain (tools/capital_city.py FOUNTAIN). */
 	private static final int PLAZA_X = -30, PLAZA_Z = 92;
 	private static final int COME_NEAR = 80, SEARCH_FROM = 5, SEARCH_TO = 22, FLOOR_SLACK = 4, EVERY = 40;
+	private static final String GIVEN = "warp_given", BAG_GIVEN = "bag_given";
+	private static final int SHARE_EVERY = 100;
+	private static final ResourceLocation STONE = ResourceLocation.fromNamespaceAndPath("waystones", "warp_stone");
 
 	private static final class State extends SavedData {
 		final Set<String> up = new HashSet<>();
@@ -122,11 +137,57 @@ final class Waypoints {
 		}
 	}
 
+	/** Everyone carries a Warp Stone, whenever they started, once they've their class: it takes you to any waystone you've found. */
+	private static void handOut(ServerPlayer p) {
+		if (Classes.of(p) == null) return;
+		if (!Coins.flag(p, BAG_GIVEN)) {
+			Coins.setFlag(p, BAG_GIVEN);
+			ItemStack bag = new ItemStack(Bag.POUCH.get());
+			if (!p.getInventory().add(bag)) p.drop(bag, false);
+			p.sendSystemMessage(Component.literal("You carry a Bottomless Bag. Right-click it to open it, sneak and right-click to put your whole pack in.").withStyle(ChatFormatting.GOLD));
+		}
+		if (Coins.flag(p, GIVEN)) return;
+		Coins.setFlag(p, GIVEN);
+		ItemStack s = new ItemStack(BuiltInRegistries.ITEM.get(STONE));
+		if (!p.getInventory().add(s)) p.drop(s, false);
+		p.sendSystemMessage(Component.literal("You carry a Warp Stone. Right-click a waystone to mark it, hold right-click on the stone to go to any that you or your party have marked.").withStyle(ChatFormatting.GOLD));
+		p.sendSystemMessage(Component.literal("Press J for your Journal: it's where your quests are, and it'll show you how they work.").withStyle(ChatFormatting.GOLD));
+		p.sendSystemMessage(Component.literal("Press I for your Bottomless Bag: it holds anything, as much as you like, and your party shares it.").withStyle(ChatFormatting.GOLD));
+	}
+
+	/** What one of a party has found, they all have: that takes in whoever joined late, and whoever was away when it was found. */
+	private static void share(MinecraftServer server) {
+		Set<ServerPlayer> seen = new HashSet<>();
+		for (ServerPlayer p : server.getPlayerList().getPlayers()) {
+			if (!seen.add(p)) continue;
+			List<ServerPlayer> party = new ArrayList<>(Party.others(p));
+			if (party.isEmpty()) continue;
+			party.add(p);
+			seen.addAll(party);
+			Map<UUID, Waystone> found = new LinkedHashMap<>();
+			for (ServerPlayer m : party) for (Waystone w : WaystonesAPI.getActivatedWaystones(m)) found.put(w.getWaystoneUid(), w);
+			for (ServerPlayer m : party) {
+				List<Waystone> news = found.values().stream().filter(w -> !WaystonesAPI.isWaystoneActivated(m, w)).toList();
+				news.forEach(w -> WaystonesAPI.activateWaystone(m, w));
+				if (news.isEmpty()) continue;
+				Component what = news.size() == 1 ? news.get(0).getName() : Component.literal(news.size() + " waystones");
+				m.displayClientMessage(Component.literal("Your party marked ").append(what).withStyle(ChatFormatting.GOLD), true);
+			}
+		}
+	}
+
 	static void init() {
 		NeoForge.EVENT_BUS.addListener((ServerTickEvent.Post e) -> {
+			if (e.getServer().getTickCount() % SHARE_EVERY == 0) share(e.getServer());
 			if (e.getServer().getTickCount() % EVERY != 0) return;
 			ServerLevel level = e.getServer().overworld();
 			for (ServerPlayer p : level.players()) comeNear(level, p);
+			for (ServerPlayer p : e.getServer().getPlayerList().getPlayers()) handOut(p);
+		});
+		NeoForge.EVENT_BUS.addListener((PlayerInteractEvent.RightClickItem e) -> {
+			if (e.getLevel().dimension() != Lairs.GATES || !BuiltInRegistries.ITEM.getKey(e.getItemStack().getItem()).equals(STONE)) return;
+			e.setCanceled(true);
+			e.getEntity().displayClientMessage(Component.literal("Nothing answers in here. A gate has only the one way out.").withStyle(ChatFormatting.RED), true);
 		});
 	}
 }

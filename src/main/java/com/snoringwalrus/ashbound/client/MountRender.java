@@ -294,18 +294,7 @@ public class MountRender extends EntityRenderer<Mount> {
 		Now now = now(e, pt);
 		Matrix4f[] world = pose(m, now);
 		int frame = (int) (now.t / 20 * FPS) % m.frames;
-		float shift = (float) frame / m.frames;
-		VertexConsumer lit = buf.getBuffer(RenderType.entityCutoutNoCull(texture(e, "")));
-		for (int i = 0; i < world.length; i++) {
-			Bone b = m.bones.get(i);
-			ps.pushPose();
-			ps.last().pose().mul(world[i]);
-			ps.last().normal().mul(new Matrix3f(world[i]));
-			quads(lit, ps.last(), b.lit, 0, light, 0, 0);
-			quads(lit, ps.last(), b.glow, 0, LightTexture.FULL_BRIGHT, 0, 0);
-			quads(lit, ps.last(), b.flame, shift, LightTexture.FULL_BRIGHT, now.t, 0.012f);
-			ps.popPose();
-		}
+		bones(m, world, texture(e, ""), (float) frame / m.frames, now.t, ps, buf, light);
 		if (!e.kind.burns()) return;
 		// what burns under the hide keeps burning at night
 		VertexConsumer hot = buf.getBuffer(RenderType.eyes(texture(e, "_hot")));
@@ -316,6 +305,36 @@ public class MountRender extends EntityRenderer<Mount> {
 			quads(hot, ps.last(), m.bones.get(i).lit, 0, LightTexture.FULL_BRIGHT, 0, 0);
 			ps.popPose();
 		}
+	}
+
+	private static void bones(Model m, Matrix4f[] world, ResourceLocation texture, float shift, float t, PoseStack ps, MultiBufferSource buf, int light) {
+		VertexConsumer lit = buf.getBuffer(RenderType.entityCutoutNoCull(texture));
+		for (int i = 0; i < world.length; i++) {
+			Bone b = m.bones.get(i);
+			ps.pushPose();
+			ps.last().pose().mul(world[i]);
+			ps.last().normal().mul(new Matrix3f(world[i]));
+			quads(lit, ps.last(), b.lit, 0, light, 0, 0);
+			quads(lit, ps.last(), b.glow, 0, LightTexture.FULL_BRIGHT, 0, 0);
+			quads(lit, ps.last(), b.flame, shift, LightTexture.FULL_BRIGHT, t, 0.012f);
+			ps.popPose();
+		}
+	}
+
+	/** A pet (client/PetRender), standing on the pose stack: a walking pace from 0 to 1, or its wings going, with no Mount behind it. */
+	static void pet(String id, float t, float stride, float pace, boolean flap, float look, PoseStack ps, MultiBufferSource buf, int light) {
+		Model m = model("pet_" + id);
+		Now n = new Now();
+		n.t = t;
+		n.p = Mth.frac(stride);
+		n.move = pace;
+		n.walk = 1;
+		n.duty = DUTY_WALK;
+		n.run4 = GALLOP;
+		n.look = look;
+		n.twoLegs = flap;
+		n.air = flap ? 1 : 0;
+		bones(m, pose(m, n), ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "textures/entity/mount_pet_" + id + ".png"), (float) ((int) (t / 20 * FPS) % m.frames) / m.frames, t, ps, buf, light);
 	}
 
 	private static void quads(VertexConsumer to, PoseStack.Pose at, float[] v, float shift, int light, float t, float wave) {

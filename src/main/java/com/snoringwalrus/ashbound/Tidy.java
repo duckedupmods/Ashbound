@@ -27,7 +27,7 @@ public final class Tidy {
 	public static void act(ServerPlayer p, int what) {
 		AbstractContainerMenu m = p.containerMenu;
 		boolean box = m instanceof ChestMenu || m instanceof ShulkerBoxMenu;
-		if (!m.stillValid(p) || !box && m != p.inventoryMenu || !box && what != SORT) return;
+		if (!m.stillValid(p) || !box && m != p.inventoryMenu && !(m instanceof top.theillusivec4.curios.common.inventory.container.CuriosContainer) || !box && what != SORT) return;
 		switch (what) {
 			case SORT -> sort(box ? theirs(p, m) : pack(p, m));
 			case TAKE -> theirs(p, m).forEach(s -> m.clicked(s.index, 0, ClickType.QUICK_MOVE, p));
@@ -72,9 +72,10 @@ public final class Tidy {
 		for (int i = 0; i < slots.size(); i++) slots.get(i).set(i < all.size() ? all.get(i) : ItemStack.EMPTY);
 	}
 
-	private static int shelf(ItemStack s) {
+	/** 0 weapons and tools, 1 armour, 2 food, 3 goods, 4 blocks. Nothing wears out, but what would have still has a limit. */
+	public static int shelf(ItemStack s) {
 		if (s.getItem() instanceof ArmorItem) return 1;
-		if (s.isDamageableItem()) return 0;
+		if (s.has(DataComponents.MAX_DAMAGE)) return 0;
 		if (s.has(DataComponents.FOOD)) return 2;
 		return s.getItem() instanceof BlockItem ? 4 : 3;
 	}

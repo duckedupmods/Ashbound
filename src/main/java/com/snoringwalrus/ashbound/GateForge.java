@@ -24,7 +24,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 /**
  * The Gate Forge: an anvil on a quenched furnace where the gates' drops become their gear. Use it to open the forge
  * (ForgeScreen): every dungeon's weapons and armour, each at its cost in that dungeon's common drop, elite drop and
- * the boss's trophy, then upgrades and fusion; the work itself is done by hand at the anvil ({@link Smithing}).
+ * the boss's trophy, then upgrades; what comes of it is {@link Smithing}'s.
  */
 public final class GateForge {
 	private GateForge() {}
@@ -53,7 +53,7 @@ public final class GateForge {
 
 		@Override
 		protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
-			if (player instanceof ServerPlayer p && !Smithing.join(p, pos)) PacketDistributor.sendToPlayer(p, new Net.ForgeOpen(pos, known(p)));
+			if (player instanceof ServerPlayer p && !Smithing.join(p, pos)) PacketDistributor.sendToPlayer(p, new Net.ForgeOpen(pos));
 			return InteractionResult.sidedSuccess(level.isClientSide);
 		}
 	}
@@ -66,7 +66,7 @@ public final class GateForge {
 		return n;
 	}
 
-	private static void take(Player p, Item it, int n) {
+	static void take(Player p, Item it, int n) {
 		for (ItemStack s : p.getInventory().items) {
 			if (n <= 0) return;
 			if (s.is(it)) {
@@ -102,15 +102,10 @@ public final class GateForge {
 
 	/** Opens the forge for you at a smith's side (Talk). */
 	static void open(ServerPlayer p, Npc smith) {
-		PacketDistributor.sendToPlayer(p, new Net.ForgeOpen(smith.blockPosition(), known(p)));
+		PacketDistributor.sendToPlayer(p, new Net.ForgeOpen(smith.blockPosition()));
 	}
 
 	static void onCraft(Net.ForgeCraft m, ServerPlayer p) {
-		if (at(p, m.pos()) && p.distanceToSqr(m.pos().getCenter()) <= 64) Smithing.request(p, m.pos(), m.job());
-	}
-
-	/** What this player's smiths will make for them (a Masterwork of theirs at any anvil). */
-	private static String known(ServerPlayer p) {
-		return String.join(",", p.getData(Coins.FLAGS).stream().filter(f -> f.startsWith("made:")).map(f -> f.substring(5)).toList());
+		if (at(p, m.pos()) && p.distanceToSqr(m.pos().getCenter()) <= 64) Smithing.request(p, m.pos(), m.job(), m.embers());
 	}
 }

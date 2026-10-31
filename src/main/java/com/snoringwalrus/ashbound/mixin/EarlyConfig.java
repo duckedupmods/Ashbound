@@ -19,13 +19,14 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
  * file makes it happen once, so whatever a player changes afterwards stays theirs.
  */
 public class EarlyConfig implements IMixinConfigPlugin {
-	private static final String MARK = "ashbound-layout-2.done";
+	private static final String MARK = "ashbound-layout-2.done", FREE_WARPS = "ashbound-warps-free.done";
 	private static final String MAP = "module;id=xaerominimap:minimap;x=0;y=0;centered=false;fromRight=true;fromBottom=false;flippedVer=false;flippedHor=false;";
 	/** the box's top right corner: across the screen, and up from the bottom of it */
 	private static final String LOOK_X = "0.995", LOOK_Y = "0.56";
 
 	@Override
 	public void onLoad(String pkg) {
+		waystones(FMLPaths.CONFIGDIR.get().resolve("waystones-common.toml"));
 		if (!FMLLoader.getDist().isClient()) return;
 		Path dir = FMLPaths.CONFIGDIR.get();
 		try {
@@ -36,6 +37,19 @@ public class EarlyConfig implements IMixinConfigPlugin {
 			Files.writeString(dir.resolve(MARK), "");
 		} catch (IOException | RuntimeException e) {
 			// a layout isn't worth a crash at launch; it's tried again next time
+		}
+	}
+
+	/** Warping's free: levels here are ours, and vanilla experience is what it'd charge. On servers too, once. */
+	private static void waystones(Path f) {
+		try {
+			Path done = f.resolveSibling(FREE_WARPS);
+			if (Files.exists(done)) return;
+			if (Files.exists(f)) Files.writeString(f, Files.readString(f).replace("enableCosts = true", "enableCosts = false"));
+			else write(f, "[teleports]\n\tenableCosts = false\n");
+			Files.writeString(done, "");
+		} catch (IOException | RuntimeException e) {
+			// tried again next time
 		}
 	}
 

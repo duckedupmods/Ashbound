@@ -142,6 +142,15 @@ final class Party {
 		return out;
 	}
 
+	/** Who p shares with, online or not, by name: p first, and only p if they're alone. */
+	static Map<UUID, String> circle(ServerPlayer p) {
+		Map<UUID, String> out = new LinkedHashMap<>();
+		out.put(p.getUUID(), name(p));
+		Group g = group(p);
+		if (g != null) out.putAll(g.names);
+		return out;
+	}
+
 	/** These players and everyone online in their parties, each once. */
 	static Set<ServerPlayer> with(Collection<ServerPlayer> there) {
 		Set<ServerPlayer> out = new LinkedHashSet<>(there);

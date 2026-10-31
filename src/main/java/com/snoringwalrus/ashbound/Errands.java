@@ -104,6 +104,19 @@ public final class Errands {
 							String hook, String ask, String thanks, String toName, List<ItemStack> gift) {}
 
 	private static List<Template> LIST = List.of();
+	/** What a wayfarer at a ruin asks ({@link Wayfarers}): whatever holds the place, and they pay out of their pack. */
+	private static final String HAUNT = "@haunt", WAYFARER = "wayfarer_";
+	private static final double WAYFARER_PAY = 2;
+	private static final int FEW = 3, MANY = 6;
+	private static final List<Template> WAYFARE = List.of(
+			wayfare("0", "A Bad Place to Camp", "You're not with them, are you? Thank the gods.", "I came for what's buried here and they came for me. Put down {n} of them and I'll make it worth your while.", "That'll do. Here, I won't be needing this where I'm going."),
+			wayfare("1", "Someone Else's Ruin", "Quietly, now. They've got ears.", "This place was empty a season ago. Now I can't get to my cache. {n} of them, that's all it would take.", "Clear road at last. Take this, you've earned it."),
+			wayfare("2", "The Last of the Party", "There were four of us this morning.", "I can't fight them alone, not any more. See {n} of them dead, for the ones I lost. I've a little put by.", "It doesn't bring them back. But thank you. Take it, they'd have wanted you to."),
+			wayfare("3", "Treasure, They Said", "Don't suppose you came for the treasure too?", "I've found nothing here but teeth. If you're going in anyway, thin them out by {n} and I'll share what I've found on the road.", "Ha! Better you than me. Fair's fair, here."));
+
+	private static Template wayfare(String id, String title, String hook, String ask, String thanks) {
+		return new Template(WAYFARER + id, List.of(), 0, 99, KILL, HAUNT, FEW, MANY, WAYFARER_PAY, title, hook, ask, thanks, "", List.of());
+	}
 	private static float CHANCE = 0.3f;
 	private static int[][] PAY = {{30, 15}};
 	private static List<List<String>> FOES = List.of(List.of("minecraft:zombie"));
@@ -157,6 +170,7 @@ public final class Errands {
 
 	private static Template template(String id) {
 		for (Template t : LIST) if (t.id().equals(id)) return t;
+		for (Template t : WAYFARE) if (t.id().equals(id)) return t;
 		return null;
 	}
 
@@ -165,18 +179,19 @@ public final class Errands {
 	private record Offer(Template t, String target, int count, int coins, int points) {
 		String objective() {
 			return switch (t.type()) {
-				case KILL -> "Slay " + count + " " + name(target, count, true);
+				case KILL -> target.equals(HAUNT) ? "Slay " + count + " of those holding the place" : "Slay " + count + " " + name(target, count, true);
 				case COLLECT -> "Bring " + count + " " + name(target, count, false);
 				default -> "Take the letter to " + t.toName();
 			};
 		}
 
 		String reward() {
-			return Errands.reward(coins, points, t.gift());
+			return Errands.reward(coins, points, t.gift()) + (t.id().startsWith(WAYFARER) ? ", and something from their pack" : "");
 		}
 	}
 
 	private static String name(String id, int n, boolean mob) {
+		if (id.equals(HAUNT)) return "them";
 		ResourceLocation r = ResourceLocation.parse(id);
 		String s = (mob ? BuiltInRegistries.ENTITY_TYPE.get(r).getDescription() : new ItemStack(BuiltInRegistries.ITEM.get(r)).getHoverName()).getString();
 		return n > 1 && !s.endsWith("s") ? s + "s" : s;
@@ -203,8 +218,13 @@ public final class Errands {
 		if (npc.is("lead") || s.errands().size() >= MAX || s.asked().contains(key(p, npc))) return null;
 		for (Errand e : s.errands()) if (e.giver().equals(npc.getStringUUID())) return null;
 		Random r = new Random(key(p, npc).hashCode() ^ p.getUUID().hashCode());
-		if (r.nextFloat() >= CHANCE) return null;
 		int rank = Math.min(Guild.of(p).rank(), PAY.length - 1);
+		if (Wayfarers.is(npc)) {
+			if (!npc.shopId().equals(npc.kindId())) return null;   // a peddler's here to sell
+			Template t = WAYFARE.get(r.nextInt(WAYFARE.size()));
+			return new Offer(t, HAUNT, FEW + r.nextInt(MANY - FEW + 1), (int) Math.round(PAY[rank][0] * t.mul()), Guild.of(p).registered() ? (int) Math.round(PAY[rank][1] * t.mul()) : 0);
+		}
+		if (r.nextFloat() >= CHANCE) return null;
 		List<Template> can = new ArrayList<>();
 		for (Template t : LIST) if (rank >= t.from() && rank <= t.to() && t.who().stream().anyMatch(npc::is)) can.add(t);
 		if (can.isEmpty()) return null;
@@ -263,6 +283,18 @@ public final class Errands {
 			views.add(new View(e.title(), e.objective() + left, where, ready(p, e)));
 		}
 		PacketDistributor.sendToPlayer(p, new Net.ErrandSync(views));
+	}
+
+	/** They've a favour to ask you. */
+	static boolean asks(ServerPlayer p, Npc npc) {
+		return offer(p, npc) != null;
+	}
+
+	/** They're waiting for what you've come to hand over. */
+	static boolean owed(ServerPlayer p, Npc npc) {
+		for (Errand e : p.getData(STATE).errands())
+			if (e.type() == DELIVER ? !e.giver().equals(npc.getStringUUID()) && npc.is(e.target()) : e.giver().equals(npc.getStringUUID()) && ready(p, e)) return true;
+		return false;
 	}
 
 	// ---------------------------------------------------------------- in the conversation (Talk)
@@ -372,7 +404,7 @@ public final class Errands {
 		list.remove(e);
 		set(p, list, s.asked());
 		Template t = template(e.template());
-		List<ItemStack> gift = t == null ? List.of() : t.gift();
+		List<ItemStack> gift = t == null ? List.of() : e.template().startsWith(WAYFARER) ? List.of(Wayfarers.find(p)) : t.gift();
 		Coins.give(p, e.coins());
 		if (e.points() > 0) Guild.points(p, e.points());
 		for (ItemStack i : gift) p.getInventory().placeItemBackInInventory(i.copy());
@@ -392,7 +424,7 @@ public final class Errands {
 		List<Errand> list = new ArrayList<>();
 		boolean changed = false;
 		for (Errand e : s.errands()) {
-			if (e.type() == KILL && e.target().equals(id) && e.progress() < e.count()) {
+			if (e.type() == KILL && (e.target().equals(id) || e.target().equals(HAUNT) && Haunts.garrison(ev.getEntity())) && e.progress() < e.count()) {
 				e = e.advanced();
 				changed = true;
 				if (e.progress() >= e.count())

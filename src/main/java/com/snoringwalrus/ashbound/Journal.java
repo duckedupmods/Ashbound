@@ -26,6 +26,8 @@ public final class Journal {
 	public record Chapter(String title, String sub, List<Quest> quests) {}
 
 	public static final List<Chapter> CHAPTERS = load();
+	/** Said both ways, in place of a quest: this player's been through the Journal's lesson. */
+	public static final String TAUGHT = "#taught";
 	private static final Map<String, Quest> BY_KEY = new HashMap<>();
 
 	static {

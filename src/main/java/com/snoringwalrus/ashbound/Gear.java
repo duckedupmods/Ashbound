@@ -71,6 +71,8 @@ public final class Gear {
 			"frost", 0xbfe8ff, "silk", 0xc79aff);
 
 	public static final List<Dungeon> DUNGEONS = load();
+	/** a plain arrow at full draw: 2 damage at speed 3 */
+	private static final double FULL_DRAW = 6;
 	static final Map<String, DeferredItem<Item>> ITEMS = new LinkedHashMap<>();
 	static final List<DeferredItem<Item>> MATS = new ArrayList<>(), WEAPONS = new ArrayList<>();
 	static final Map<String, Weapon> WEAPON = new HashMap<>();
@@ -189,7 +191,13 @@ public final class Gear {
 				return new ShieldItem(p.durability(wear));
 			}
 			case "bow" -> {
-				return new BowItem(p.durability(wear * 2 / 3));
+				return new BowItem(p.durability(wear * 2 / 3)) {
+					@Override
+					public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> lines, TooltipFlag flag) {
+						tooltip(w, lines);
+						lines.add(Component.literal(Math.round(FULL_DRAW * power(w, stack)) + " arrow damage at full draw").withStyle(net.minecraft.ChatFormatting.DARK_GREEN));
+					}
+				};
 			}
 			case "black", "white", "summon" -> {
 				return new Spells.Staff(w, p.stacksTo(1));
@@ -238,9 +246,13 @@ public final class Gear {
 		for (ItemStack s : List.of(p.getMainHandItem(), p.getOffhandItem())) {
 			Weapon w = WEAPON.get(BuiltInRegistries.ITEM.getKey(s.getItem()).getPath());
 			if (w != null && w.kind().equals("bow") && BuiltInRegistries.ITEM.getKey(s.getItem()).getNamespace().equals(Ashbound.ID))
-				return 2.3 * scale(w.rank()) * (w.boss() ? 1.1 : 1) * Smithing.mult(s);
+				return power(w, s);
 		}
 		return 1;
+	}
+
+	private static double power(Weapon w, ItemStack s) {
+		return 2.3 * scale(w.rank()) * (w.boss() ? 1.1 : 1) * Smithing.mult(s);
 	}
 
 	/** the bows and shields, for their drawn and raised looks (client) */

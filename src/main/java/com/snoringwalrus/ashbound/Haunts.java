@@ -133,6 +133,8 @@ public final class Haunts {
 		final Map<String, Integer> sent = new HashMap<>();
 		/** when each place was cleared */
 		final Map<String, Long> cleared = new HashMap<>();
+		/** the places that have had their chance of a stranger ({@link Wayfarers}) */
+		final Set<String> met = new HashSet<>();
 
 		static State get(ServerLevel level) {
 			return level.getDataStorage().computeIfAbsent(new SavedData.Factory<>(State::new, State::load, null), "ashbound_haunts");
@@ -143,6 +145,7 @@ public final class Haunts {
 			CompoundTag a = tag.getCompound("sent"), b = tag.getCompound("cleared");
 			for (String k : a.getAllKeys()) s.sent.put(k, a.getInt(k));
 			for (String k : b.getAllKeys()) s.cleared.put(k, b.getLong(k));
+			s.met.addAll(tag.getCompound("met").getAllKeys());
 			return s;
 		}
 
@@ -153,6 +156,9 @@ public final class Haunts {
 			cleared.forEach(b::putLong);
 			tag.put("sent", a);
 			tag.put("cleared", b);
+			CompoundTag c = new CompoundTag();
+			met.forEach(k -> c.putBoolean(k, true));
+			tag.put("met", c);
 			return tag;
 		}
 	}
@@ -168,6 +174,7 @@ public final class Haunts {
 			if (level.getDifficulty() == Difficulty.PEACEFUL) continue;
 			Haunt h = hauntAt(level, p.blockPosition());
 			if (h == null || !served.add(h.key())) continue;
+			Wayfarers.visit(level, p, h);
 			State st = State.get(level);
 			long now = level.getGameTime();
 			Long when = st.cleared.get(h.key());
@@ -208,12 +215,31 @@ public final class Haunts {
 		return level.getEntitiesOfClass(Mob.class, box, m -> m.isAlive() && m.getTags().contains(h.tag())).size();
 	}
 
-	/** somewhere 10-28 blocks off, inside one of the structure's pieces, on a floor with room to stand, out of sight */
+	/** a monster of this kind round the player */
 	private static boolean spawn(ServerLevel level, ServerPlayer p, Haunt h, String kind) {
 		EntityType<?> type = BuiltInRegistries.ENTITY_TYPE.getOptional(ResourceLocation.fromNamespaceAndPath(Ashbound.ID, kind)).orElse(null);
 		if (type == null) return false;
 		RandomSource r = level.getRandom();
-		int room = (int) Math.ceil(type.getHeight()), wide = type.getWidth() > 1.2f ? 1 : 0;
+		BlockPos at = spot(level, p, h, (int) Math.ceil(type.getHeight()), type.getWidth() > 1.2f ? 1 : 0);
+		if (at == null) return false;
+		Entity e = type.create(level);
+		if (!(e instanceof Mob mob)) return false;
+		mob.moveTo(at.getX() + 0.5, at.getY(), at.getZ() + 0.5, r.nextFloat() * 360f, 0f);
+		mob.addTag(h.tag());
+		mob.setPersistenceRequired();
+		var range = mob.getAttribute(Attributes.FOLLOW_RANGE);
+		if (range != null && range.getBaseValue() < 32) range.setBaseValue(32);
+		EventHooks.finalizeMobSpawn(mob, level, level.getCurrentDifficultyAt(at), MobSpawnType.STRUCTURE, null);
+		int best = 1;
+		for (ServerPlayer q : level.players()) if (q.distanceToSqr(p) < 64 * 64) best = Math.max(best, Levels.level(q));
+		Balance.soften(mob, kind, best);
+		level.addFreshEntity(mob);
+		return true;
+	}
+
+	/** somewhere 10-28 blocks off, inside one of the structure's pieces, on a floor with room to stand, out of sight */
+	static BlockPos spot(ServerLevel level, ServerPlayer p, Haunt h, int room, int wide) {
+		RandomSource r = level.getRandom();
 		for (int t = 0; t < 16; t++) {
 			double a = r.nextDouble() * Math.PI * 2, d = 10 + r.nextDouble() * 18;
 			int x = p.getBlockX() + (int) Math.round(Math.cos(a) * d), z = p.getBlockZ() + (int) Math.round(Math.sin(a) * d);
@@ -222,22 +248,10 @@ public final class Haunts {
 				if (!inPiece(h, at) || !stand(level, at, room, wide)) continue;
 				if (level.getNearestPlayer(x + 0.5, y + 1, z + 0.5, 8, false) != null) break;
 				if (d < 20 && sees(level, p, at, room)) break;      // out in the open, far is far enough
-				Entity e = type.create(level);
-				if (!(e instanceof Mob mob)) return false;
-				mob.moveTo(x + 0.5, y, z + 0.5, r.nextFloat() * 360f, 0f);
-				mob.addTag(h.tag());
-				mob.setPersistenceRequired();
-				var range = mob.getAttribute(Attributes.FOLLOW_RANGE);
-				if (range != null && range.getBaseValue() < 32) range.setBaseValue(32);
-				EventHooks.finalizeMobSpawn(mob, level, level.getCurrentDifficultyAt(at), MobSpawnType.STRUCTURE, null);
-				int best = 1;
-				for (ServerPlayer q : level.players()) if (q.distanceToSqr(p) < 64 * 64) best = Math.max(best, Levels.level(q));
-				Balance.soften(mob, kind, best);
-				level.addFreshEntity(mob);
-				return true;
+				return at;
 			}
 		}
-		return false;
+		return null;
 	}
 
 	private static boolean inPiece(Haunt h, BlockPos at) {
@@ -269,7 +283,11 @@ public final class Haunts {
 	}
 
 	static boolean ours(Entity e) {
-		if (!e.isAlive()) return false;
+		return e.isAlive() && garrison(e);
+	}
+
+	/** One of a place's garrison, alive or just killed. */
+	static boolean garrison(Entity e) {
 		for (String t : e.getTags()) if (t.startsWith(TAG + ":")) return true;
 		return false;
 	}

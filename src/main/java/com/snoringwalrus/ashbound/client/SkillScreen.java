@@ -25,7 +25,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
  * it there, right click a key to empty it. The first key is locked: it's whatever you're holding. What's still to choose
  * is under your skills, with its level.
  */
-public class SkillScreen extends Screen {
+public class SkillScreen extends Screen implements MenuTabs.Panel {
 	private static final int W = 420, H = 240, PAD = 12, TOP = 30, CARD_W = 150, CARD_H = 36, GAP = 3, SLOT = 26, SLOT_GAP = 8, ROW = (H - TOP - PAD) / 3, ROWS = 5;
 	private int picked;
 
@@ -45,6 +45,11 @@ public class SkillScreen extends Screen {
 
 	private int top() {
 		return (height - H) / 2;
+	}
+
+	@Override
+	public int panelTop() {
+		return top();
 	}
 
 	private static boolean in(double mx, double my, int x, int y, int w, int h) {

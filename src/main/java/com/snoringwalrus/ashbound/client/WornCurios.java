@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.snoringwalrus.ashbound.Ashbound;
 import com.snoringwalrus.ashbound.Curios;
+import com.snoringwalrus.ashbound.Pets;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;

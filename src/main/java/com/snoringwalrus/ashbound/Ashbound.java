@@ -31,6 +31,7 @@ public final class Ashbound {
 		BattleMode.init();
 		Incidents.init();
 		Waypoints.init();
+		Marks.init();
 		Party.init();
 		Classes.init();
 		Weapons.ITEMS.register(bus);
@@ -43,6 +44,7 @@ public final class Ashbound {
 		SilkMobs.register(bus);
 		GateMobs.register(bus);
 		Mounts.register(bus);
+		Bag.register(bus);
 		Skills.register();
 		Forms.register();
 		Books.register();

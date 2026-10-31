@@ -5,7 +5,6 @@ import java.util.List;
 import com.snoringwalrus.ashbound.Gear;
 import com.snoringwalrus.ashbound.GateForge;
 import com.snoringwalrus.ashbound.Net;
-import com.snoringwalrus.ashbound.Npc;
 import com.snoringwalrus.ashbound.Smithing;
 
 import net.minecraft.ChatFormatting;
@@ -22,14 +21,13 @@ import net.neoforged.neoforge.network.PacketDistributor;
  * The Gate Forge, in the shop's ash look: the gates down the left in rank order (those whose drops you carry lit,
  * scroll for the rest), the picked one's gear under its tabs (weapons, then each armour class), then what you carry
  * that can be upgraded or fused, and on the right the piece you picked, big, with its stats, what it takes of the
- * gate's three drops against what you carry, and the ember FORGE button. The work itself is done at the anvil
- * (ForgeStrikeScreen); a smith will make for you what you've already made a Masterwork of.
+ * gate's three drops against what you carry, how many Temper Embers to burn on it and what that does for the odds, and the
+ * ember FORGE button. The piece comes straight out; the Joining alone goes to the anvil (ForgeStrikeScreen).
  */
 public class ForgeScreen extends Screen {
 	private static final int ROW = 24, GAP = 3, DETAIL = 160, SIDE = 112;
 
 	private final BlockPos pos;
-	private final java.util.Set<String> known;
 	private int result;
 	private static final String[] TABS = {"weapon", "robe", "light", "medium", "heavy", "upgrade", "fusion"};
 	private static final String[] TAB_NAMES = {"Weapons", "Robe", "Light", "Medium", "Heavy", "Upgrade", "Fusion"};
@@ -41,18 +39,18 @@ public class ForgeScreen extends Screen {
 	private final List<Gear.Dungeon> gates = Gear.DUNGEONS.stream()
 			.sorted(java.util.Comparator.comparingInt((Gear.Dungeon d) -> "FEDCBAS".indexOf(d.rank()))).toList();
 	private int gate, tab, selected, scroll, gateScroll;
-	private AshUi.AshButton forge, quick;
+	private AshUi.AshButton forge, less, more;
+	private int embers;
 	private ItemStack hoverStack;
 	private int resultY = -100;
 	/** At the Cold Forge: the Joining and nothing else. At a Gate Forge everything else, and no Joining. */
 	private final boolean cold;
 
-	public ForgeScreen(BlockPos pos, String known) {
+	public ForgeScreen(BlockPos pos) {
 		super(Component.literal("Gate Forge"));
 		this.pos = pos;
 		cold = com.snoringwalrus.ashbound.ColdForge.isLit(net.minecraft.client.Minecraft.getInstance().level.getBlockState(pos));
 		if (cold) tab = FUSION;
-		this.known = java.util.Set.of(known.isEmpty() ? new String[0] : known.split(","));
 	}
 
 	private Gear.Dungeon dungeon() {
@@ -94,8 +92,8 @@ public class ForgeScreen extends Screen {
 		return tab != FUSION || second(e) >= 0;
 	}
 
-	private boolean smithNear() {
-		return !minecraft.level.getEntitiesOfClass(Npc.class, new net.minecraft.world.phys.AABB(pos).inflate(9), GateForge::smith).isEmpty();
+	private int embersHeld() {
+		return GateForge.count(minecraft.player, Smithing.TEMPER.get());
 	}
 
 	private boolean carries(Gear.Dungeon d) {
@@ -164,21 +162,22 @@ public class ForgeScreen extends Screen {
 
 	@Override
 	protected void init() {
-		forge = addRenderableWidget(new AshUi.AshButton(dx() + 10, py() + ph() - 34, DETAIL - 20, 22, Component.literal("FORGE"), b -> craft(false), true));
-		quick = addRenderableWidget(new AshUi.AshButton(dx() + 10, py() + ph() - 58, DETAIL - 20, 18, Component.literal("Have the smith make it"), b -> craft(true), false));
+		forge = addRenderableWidget(new AshUi.AshButton(dx() + 10, py() + ph() - 34, DETAIL - 20, 22, Component.literal("FORGE"), b -> craft(), true));
+		less = addRenderableWidget(new AshUi.AshButton(dx() + DETAIL - 56, py() + ph() - 64, 20, 14, Component.literal("-"), b -> embers = Math.max(0, embers - 1), false));
+		more = addRenderableWidget(new AshUi.AshButton(dx() + DETAIL - 32, py() + ph() - 64, 20, 14, Component.literal("+"), b -> embers = Math.min(Math.min(Smithing.MOST_EMBERS, embersHeld()), embers + 1), false));
 	}
 
-	private void craft(boolean bySmith) {
+	private void craft() {
 		if (selected < 0 || selected >= list().size()) return;
 		Entry e = list().get(selected);
 		Net.Job job;
 		if (tab == UPGRADE) job = new Net.Job(Smithing.UPGRADE, -1, -1, e.slot());
 		else if (tab == FUSION) {
 			job = new Net.Job(Smithing.FUSE, second(e), 0, e.slot());
-		} else job = new Net.Job(bySmith ? Smithing.QUICK : Smithing.MAKE, Gear.DUNGEONS.indexOf(e.gate()), e.gate().recipes().indexOf(e.recipe()), -1);
-		PacketDistributor.sendToServer(new Net.ForgeCraft(pos, job));
-		if (bySmith) return;
-		onClose();
+		} else job = new Net.Job(Smithing.MAKE, Gear.DUNGEONS.indexOf(e.gate()), e.gate().recipes().indexOf(e.recipe()), -1);
+		PacketDistributor.sendToServer(new Net.ForgeCraft(pos, job, embers));
+		if (tab == FUSION) onClose();   // that one's done by hand, at the anvil
+		embers = 0;
 	}
 
 	@Override
@@ -342,7 +341,7 @@ public class ForgeScreen extends Screen {
 		AshUi.panel(g, x, y, w, h);
 		List<Entry> l = list();
 		forge.visible = selected >= 0 && selected < l.size();
-		quick.visible = false;
+		less.visible = more.visible = forge.visible && tab != FUSION;
 		if (!forge.visible) return;
 		Entry rc = l.get(selected);
 		Gear.Dungeon d = rc.gate();
@@ -367,10 +366,7 @@ public class ForgeScreen extends Screen {
 			int n = Smithing.plus(s);
 			g.drawString(font, "+" + n + " to +" + (n + 1) + ": 4% stronger", x + 10, sy, AshUi.TEXT, false);
 			sy += 10;
-			String bar = Smithing.need(n) < 0.6f ? "Work it decently" : Smithing.need(n) < 0.75f ? "Work it well" : "Near-Masterwork work";
-			g.drawString(font, bar, x + 10, sy, AshUi.EMBER_LT, false);
-			sy += 10;
-			g.drawString(font, font.plainSubstrByWidth("A poor run wastes the drops,", w - 20), x + 10, sy, AshUi.MUTED, false);
+			g.drawString(font, font.plainSubstrByWidth("If it doesn't take, the drops go,", w - 20), x + 10, sy, AshUi.MUTED, false);
 			sy += 10;
 			g.drawString(font, "never the piece.", x + 10, sy, AshUi.MUTED, false);
 			sy += 10;
@@ -431,11 +427,22 @@ public class ForgeScreen extends Screen {
 		boolean can = canDo(rc);
 		forge.active = can;
 		forge.setMessage(Component.literal(tab == UPGRADE ? "UPGRADE" : tab == FUSION ? "FUSE" : "FORGE"));
-		boolean byHand = rc.recipe() != null && known.contains(rc.recipe().id()) && smithNear();
-		quick.visible = byHand;
-		quick.active = can;
-		if (byHand) return;
-		String note = minecraft.player.isCreative() ? "Creative: free" : can ? "You have what it takes" : "Clear the gate for more";
-		g.drawString(font, note, x + (w - font.width(note)) / 2, y + h - 48, can ? AshUi.MUTED : AshUi.BAD, false);
+		if (tab == FUSION) {
+			String note = minecraft.player.isCreative() ? "Creative: free" : can ? "You have what it takes" : "Clear the gate for more";
+			g.drawString(font, note, x + (w - font.width(note)) / 2, y + h - 48, can ? AshUi.MUTED : AshUi.BAD, false);
+			return;
+		}
+		embers = Math.min(embers, embersHeld());
+		less.active = embers > 0;
+		more.active = embers < Math.min(Smithing.MOST_EMBERS, embersHeld());
+		g.renderItem(new ItemStack(Smithing.TEMPER.get()), x + 10, y + h - 66);
+		g.drawString(font, embers + " of " + embersHeld(), x + 30, y + h - 61, AshUi.BODY, false);
+		String chance;
+		if (tab == UPGRADE) chance = "Chance it takes: " + Math.round(Smithing.upgradeChance(Smithing.plus(s), embers) * 100) + "%";
+		else {
+			float[] odds = Smithing.odds(embers);
+			chance = "Masterwork " + Math.round(odds[2] * 100) + "%  Perfect " + Math.round(odds[3] * 100) + "%";
+		}
+		g.drawString(font, chance, x + (w - font.width(chance)) / 2, y + h - 46, can ? AshUi.EMBER_LT : AshUi.BAD, false);
 	}
 }

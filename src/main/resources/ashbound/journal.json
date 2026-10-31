@@ -343,7 +343,7 @@
    {
     "key": "first_blood/first_forge",
     "title": "Work the Anvil",
-    "text": "Take what the gate dropped to Wendel Blackwood in the Ashforge, and strike with him.",
+    "text": "Take what the gate dropped to Wendel Blackwood in the Ashforge, and have him forge something.",
     "flag": "story/first_forge",
     "deps": [
      "first_blood/first_gate"
@@ -357,7 +357,7 @@
    {
     "key": "first_blood/masterwork",
     "title": "A Masterwork",
-    "text": "Keep time with the master. Do it well enough and he'll make that piece for you from then on.",
+    "text": "Forge until one comes out a Masterwork. Temper Embers, burned at the forge, better the odds.",
     "flag": "story/masterwork",
     "deps": [
      "first_blood/first_forge"
@@ -371,7 +371,7 @@
    {
     "key": "first_blood/plus_five",
     "title": "Raised to +5",
-    "text": "Upgrades at the Gate Forge. A poor run wastes the drops, never the piece.",
+    "text": "Upgrades at the Gate Forge. One that doesn't take spends the drops, never the piece.",
     "flag": "story/plus_five",
     "deps": [
      "first_blood/masterwork"

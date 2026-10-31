@@ -51,6 +51,9 @@ public final class GateLoot {
 		return w != null && w.role() == Role.ELITE;
 	}
 
+	/** Temper Embers: a boss always leaves one or two each, these are the rest. */
+	private static final float EMBER_COMMON = 0.03f, EMBER_ELITE = 0.35f;
+
 	private static ItemStack mat(Gear.Dungeon d, int which, int n) {
 		Item it = Gear.item(d.mats()[which]);
 		return it == null ? ItemStack.EMPTY : new ItemStack(it, n);
@@ -80,14 +83,17 @@ public final class GateLoot {
 			// rates from tools/balance.py MATS: a full set takes about two clears, a weapon about half of one
 			case COMMON -> {
 				if (r.nextFloat() < 0.5f) spill(e, mat(d, 0, 1));
+				if (r.nextFloat() < EMBER_COMMON) spill(e, new ItemStack(Smithing.TEMPER.get()));
 			}
 			case CASTER -> {
 				if (r.nextFloat() < 0.5f) spill(e, mat(d, 0, 1));
 				if (r.nextFloat() < 0.05f) spill(e, mat(d, 1, 1));
+				if (r.nextFloat() < EMBER_COMMON) spill(e, new ItemStack(Smithing.TEMPER.get()));
 			}
 			case ELITE -> {
 				spill(e, mat(d, 0, 3));
 				spill(e, mat(d, 1, 1));
+				if (r.nextFloat() < EMBER_ELITE) spill(e, new ItemStack(Smithing.TEMPER.get()));
 			}
 			case BOSS -> boss(e, d, r);
 		}
@@ -101,6 +107,7 @@ public final class GateLoot {
 			if (level.dimension() == Lairs.GATES) ColdForge.bossDown(p, d);   // not a tower's, or one that got out
 			Story.mark(p, "kill/" + d.boss());
 			give(p, mat(d, 2, 1));
+			give(p, new ItemStack(Smithing.TEMPER.get(), 1 + r.nextInt(2)));
 			give(p, mat(d, 1, 1 + r.nextInt(2)));
 			give(p, mat(d, 0, 4 + r.nextInt(4)));
 			Books.drops(p, d.rank(), r).forEach(b -> give(p, b));

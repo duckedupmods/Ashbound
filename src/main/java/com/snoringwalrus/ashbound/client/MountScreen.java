@@ -105,7 +105,7 @@ public class MountScreen extends Screen {
 	}
 
 	/** Drawn on a real clock, not the game's ticks: at 20 steps a second it would stutter however fast the screen runs. */
-	private void preview(GuiGraphics g, Mount m, int x, int y, int w, int h) {
+	static void preview(GuiGraphics g, Mount m, long opened, int x, int y, int w, int h) {
 		float ticks = (System.nanoTime() - opened) / 5.0E7f;
 		m.tickCount = (int) ticks;
 		m.gait = m.gaitO = SHOW_GAIT;
@@ -132,7 +132,7 @@ public class MountScreen extends Screen {
 		Mounts.Kind k = Mounts.ALL.get(picked);
 		int x = infoX(), w = infoW(), y = top() + TOP;
 		int ph = 104;
-		if (MountRender.ready(k.id())) preview(g, mount(k), x, y, w, ph);
+		if (MountRender.ready(k.id())) preview(g, mount(k), opened, x, y, w, ph);
 		int ty = y + ph + 2;
 		g.pose().pushPose();
 		g.pose().translate(x, ty, 0);

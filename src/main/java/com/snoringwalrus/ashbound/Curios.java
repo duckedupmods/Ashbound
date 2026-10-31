@@ -63,6 +63,7 @@ public final class Curios {
 
 	public static final List<Spec> SPECS = load();
 	static final List<DeferredItem<Item>> ITEMS = new ArrayList<>();
+	public static final List<DeferredItem<Item>> PET_ITEMS = new ArrayList<>();
 
 	private record Attr(Holder<Attribute> attr, AttributeModifier.Operation op, double scale, String label) {}
 
@@ -127,22 +128,54 @@ public final class Curios {
 
 	/** registers them (on the weapons' item register) */
 	static void init() {
-		for (Spec s : SPECS)
-			ITEMS.add(Weapons.ITEMS.registerItem(s.id(), p -> new Curio(p.stacksTo(1)
-					.component(DataComponents.ITEM_NAME, Component.translatable("item.ashbound." + s.id()).withStyle(s.tier().colour)), s)));
+		for (Spec s : SPECS) ITEMS.add(register(s));
+		for (Spec s : Pets.specs()) {
+			DeferredItem<Item> item = register(s);
+			ITEMS.add(item);
+			PET_ITEMS.add(item);
+		}
 		NeoForge.EVENT_BUS.addListener(Curios::chests);
 		NeoForge.EVENT_BUS.addListener(Curios::died);
 	}
 
+	private static DeferredItem<Item> register(Spec s) {
+		return Weapons.ITEMS.registerItem(s.id(), p -> new Curio(p.stacksTo(1)
+				.component(DataComponents.ITEM_NAME, Component.translatable("item.ashbound." + s.id()).withStyle(s.tier().colour)), s));
+	}
+
 	// ---------------------------------------------------------------- where they turn up (like the world weapons, rarer)
 
-	private static Item item(Spec s) {
+	public static Item item(Spec s) {
 		return BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(Ashbound.ID, s.id()));
+	}
+
+	private static String buff(String key, double value) {
+		Attr a = ATTR.get(key);
+		return num(value) + (key.endsWith("%") ? "%" : "") + " " + (a != null ? a.label() : OWN.getOrDefault(key, key));
+	}
+
+	/** What a curio gives, a line a stat. */
+	public static List<String> buffs(Spec s) {
+		attrs();
+		return s.stats().entrySet().stream().map(e -> buff(e.getKey(), e.getValue())).toList();
 	}
 
 	/** a random curio (relics: false) or relic (true), rarer tiers less often, luck tilting it up */
 	static Item pick(RandomSource r, boolean relic, int luck) {
 		List<Spec> pool = SPECS.stream().filter(s -> s.slot().equals("relic") == relic).toList();
+		int total = 0;
+		for (Spec s : pool) total += weight(s.tier(), luck);
+		int k = r.nextInt(Math.max(1, total));
+		for (Spec s : pool) {
+			k -= weight(s.tier(), luck);
+			if (k < 0) return item(s);
+		}
+		return null;
+	}
+
+	/** a random pet, the same way */
+	static Item pet(RandomSource r, int luck) {
+		List<Spec> pool = Pets.specs();
 		int total = 0;
 		for (Spec s : pool) total += weight(s.tier(), luck);
 		int k = r.nextInt(Math.max(1, total));
@@ -172,12 +205,16 @@ public final class Curios {
 			if (boss) {
 				if (r.nextFloat() < 0.12f) WorldArms.spill(d, pick(r, false, 2), own);
 				if (r.nextFloat() < 0.06f) WorldArms.spill(d, pick(r, true, 0), own);
+				if (r.nextFloat() < 0.08f) WorldArms.spill(d, pet(r, 2), own);
 			} else if (foreman) {
 				if (r.nextFloat() < 0.05f) WorldArms.spill(d, pick(r, false, 1), own);
 				if (r.nextFloat() < 0.02f) WorldArms.spill(d, pick(r, true, 0), own);
+				if (r.nextFloat() < 0.04f) WorldArms.spill(d, pet(r, 1), own);
 			} else if (elite) {
 				if (r.nextFloat() < 0.04f) WorldArms.spill(d, pick(r, false, 1), own);
+				if (r.nextFloat() < 0.02f) WorldArms.spill(d, pet(r, 1), own);
 			} else if (d instanceof Enemy && r.nextFloat() < 0.002f) WorldArms.spill(d, pick(r, false, 0), own);
+			else if (d instanceof Enemy && r.nextFloat() < 0.001f) WorldArms.spill(d, pet(r, 0), own);
 		}
 	}
 
@@ -193,6 +230,9 @@ public final class Curios {
 		LootPool.Builder pool = LootPool.lootPool().setRolls(ConstantValue.exactly(1)).when(LootItemRandomChanceCondition.randomChance(chance));
 		for (Spec s : SPECS) if (!s.slot().equals("relic")) pool.add(LootItem.lootTableItem(item(s)).setWeight(s.tier().weight));
 		e.getTable().addPool(pool.name("ashbound_curios").build());
+		LootPool.Builder pets = LootPool.lootPool().setRolls(ConstantValue.exactly(1)).when(LootItemRandomChanceCondition.randomChance(big ? 0.05f : 0.015f));
+		for (Spec s : Pets.specs()) pets.add(LootItem.lootTableItem(item(s)).setWeight(s.tier().weight));
+		e.getTable().addPool(pets.name("ashbound_pets").build());
 		if (!big) return;
 		LootPool.Builder relics = LootPool.lootPool().setRolls(ConstantValue.exactly(1)).when(LootItemRandomChanceCondition.randomChance(0.03f));
 		for (Spec s : SPECS) if (s.slot().equals("relic")) relics.add(LootItem.lootTableItem(item(s)));
@@ -289,18 +329,14 @@ public final class Curios {
 				case "amulet" -> "Amulet";
 				case "charm" -> "Charm";
 				case "relic" -> "Relic";
+				case "pet" -> "Pet";
 				default -> "Ring";
 			};
 			lines.add(Component.literal(spec.tier().title + " " + slot).withStyle(spec.tier().colour));
 			lines.add(Component.literal(spec.faction()).withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
 			attrs();
-			for (var e : spec.stats().entrySet()) {
-				Attr a = ATTR.get(e.getKey());
-				String label = a != null ? a.label() : OWN.getOrDefault(e.getKey(), e.getKey());
-				String pct = e.getKey().endsWith("%") ? "%" : "";
-				lines.add(Component.literal(num(e.getValue()) + pct + " " + label)
-						.withStyle(e.getValue() < 0 ? ChatFormatting.RED : ChatFormatting.BLUE));
-			}
+			for (var e : spec.stats().entrySet())
+				lines.add(Component.literal(buff(e.getKey(), e.getValue())).withStyle(e.getValue() < 0 ? ChatFormatting.RED : ChatFormatting.BLUE));
 			if (spec.slot().equals("relic")) {
 				int t = CurioFx.tier(stack);
 				lines.add(Component.literal("Power " + CurioFx.roman(t) + (t < 3 ? "  (raise it at a Gate Forge with boss trophies and Ash)" : ""))

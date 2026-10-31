@@ -157,7 +157,7 @@ public final class ColdForge {
 			}
 			BlockPos work = altar(p.level(), e.getPos());
 			if (Coins.flag(p, "cold_proved")) {
-				if (!Smithing.join(p, work)) PacketDistributor.sendToPlayer(p, new Net.ForgeOpen(e.getPos(), ""));
+				if (!Smithing.join(p, work)) PacketDistributor.sendToPlayer(p, new Net.ForgeOpen(e.getPos()));
 			} else if (p.getMainHandItem().is(BRAND.get())) rite(p, s, e.getPos());
 			else say(p, Coins.flag(p, "cold_brand") ? "The hands wait for the Brand." : "The fire burns, the hands don't move. It wants something of you first. Ask Wendel.");
 			return;

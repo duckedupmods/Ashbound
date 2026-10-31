@@ -11,6 +11,8 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.player.Player;
@@ -19,7 +21,9 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -29,6 +33,9 @@ import net.neoforged.neoforge.registries.DeferredHolder;
  * A mount isn't kept in the world: the key calls it and sends it away, it can't be hurt, and it's gone when you get off, so
  * there's nothing to lose or to fetch. It won't come into a gate. Models: tools/voxmounts.py. Saved picks are flags, an op can
  * clear one with /ashbound mount reset PLAYER, or give one with /ashbound mount set PLAYER KIND.
+ *
+ * A mount learns with coins (TRACKS, client/MountUpScreen), and what it's learned stays with the player. Nothing flies at first: the
+ * first rank of Wings is what gets it off the ground. Only the Stormdrake can glide before that.
  */
 public final class Mounts {
 	private Mounts() {}
@@ -49,10 +56,29 @@ public final class Mounts {
 					"Climbs ledges three blocks high", 0.255, 0.72, 3.1, false, false, 0.8f, 2.211f, -0.311f, 1.3f, 1.5f, 1.6f, 3.7f, false),
 			new Kind("thornback", "Thornback", "The old boar of the wood", "A hillside that decided to walk. It does not go around things.",
 					"Charges through monsters at full speed", 0.225, 0.6, 1.1, false, true, 0.72f, 2.454f, -0.122f, 1.5f, 1.6f, 1.2f, 2.6f, true),
-			new Kind("stormdrake", "Stormdrake", "The lightning wyvern", "Too heavy to fly for long, but off a high place it owns the sky.",
-					"Hold jump in the air to glide", 0.24, 0.72, 1.1, true, false, 0.78f, 2.267f, 0.118f, 1.4f, 1.6f, 1.5f, 3.2f, false));
+			new Kind("stormdrake", "Stormdrake", "The lightning wyvern", "The others borrow the sky for a while. This one was born to it.",
+					"Glides from the first day", 0.24, 0.72, 1.1, true, false, 0.78f, 2.267f, 0.118f, 1.4f, 1.6f, 1.5f, 3.2f, false));
 
-	private static final String FLAG = "mount_";
+	/** One thing a mount can learn: what each rank costs and says it does. */
+	public record Track(String id, String name, String about, int[] costs, String[] ranks) {}
+
+	public static final int WINGS = 0, STRIDE = 1, LEAP = 2, HIDE = 3;
+	public static final List<Track> TRACKS = List.of(
+			new Track("wings", "Wings", "Can't fly yet", new int[] {800, 4000, 15000, 50000},
+					new String[] {"Flies for 20 seconds", "Flies for 40 seconds", "Flies for 75 seconds", "Flies without tiring"}),
+			new Track("stride", "Stride", "Faster on the ground", new int[] {150, 400, 1000, 2500, 6000},
+					new String[] {"5% faster", "10% faster", "15% faster", "20% faster", "25% faster"}),
+			new Track("leap", "Leap", "Jumps higher", new int[] {200, 800, 3000},
+					new String[] {"Jumps 8% harder", "Jumps 16% harder", "Jumps 24% harder"}),
+			new Track("hide", "Hide", "Shields you while you ride", new int[] {300, 1500, 6000},
+					new String[] {"3% less damage riding", "6% less damage riding", "10% less damage riding"}));
+
+	/** by rank of Wings: ticks of air in a full wind */
+	private static final int[] AIR = {0, 400, 800, 1500, 2400};
+	private static final float STRIDE_STEP = 0.05f, LEAP_STEP = 0.08f;
+	private static final float[] HIDE_OFF = {0, 0.03f, 0.06f, 0.1f};
+
+	private static final String FLAG = "mount_", TRAINED = "mountup_";
 	private static final int ASK_EVERY = 60;
 	/** You don't get on with something hitting you (ticks since the last hit). */
 	private static final int CALM = 60;
@@ -60,6 +86,8 @@ public final class Mounts {
 
 	/** Your own mount on your own screen; empty until you've picked one. */
 	public static String client = "";
+	/** And what yours has learned, by track. */
+	public static int[] clientRanks = new int[TRACKS.size()];
 
 	public static Kind byId(String id) {
 		for (Kind k : ALL)
@@ -71,6 +99,50 @@ public final class Mounts {
 		for (Kind k : ALL)
 			if (Coins.flag(p, FLAG + k.id())) return k;
 		return null;
+	}
+
+	/** How far along a track p's mount is. A rider's client drives the mount, so this has to work there too. */
+	public static int rank(Player p, int track) {
+		if (p.level().isClientSide) return clientRanks[track];
+		Track t = TRACKS.get(track);
+		for (int r = t.costs().length; r > 0; r--)
+			if (Coins.flag(p, TRAINED + t.id() + r)) return r;
+		return 0;
+	}
+
+	static int airTicks(Player p) {
+		return AIR[rank(p, WINGS)];
+	}
+
+	public static boolean tireless(Player p) {
+		return rank(p, WINGS) == AIR.length - 1;
+	}
+
+	static float speedFor(Player p) {
+		return 1 + STRIDE_STEP * rank(p, STRIDE);
+	}
+
+	static float jumpFor(Player p) {
+		return 1 + LEAP_STEP * rank(p, LEAP);
+	}
+
+	private static void sendRanks(ServerPlayer p) {
+		List<Integer> ranks = new ArrayList<>();
+		for (int t = 0; t < TRACKS.size(); t++) ranks.add(rank(p, t));
+		PacketDistributor.sendToPlayer(p, new Net.MountRanks(ranks));
+	}
+
+	/** The next rank of a track, if p can pay for it. */
+	public static void upgrade(ServerPlayer p, int track) {
+		if (of(p) == null || track < 0 || track >= TRACKS.size()) return;
+		Track t = TRACKS.get(track);
+		int r = rank(p, track);
+		if (r >= t.costs().length || !Coins.pay(p, t.costs()[r])) return;
+		Coins.setFlag(p, TRAINED + t.id() + (r + 1));
+		sendRanks(p);
+		p.playNotifySound(net.minecraft.sounds.SoundEvents.PLAYER_LEVELUP, net.minecraft.sounds.SoundSource.PLAYERS, 0.6f, 1.2f);
+		String learned = track == WINGS && r == 0 ? " can fly now: jump, then jump again in the air" : ": " + t.ranks()[r];
+		p.sendSystemMessage(Component.literal(of(p).name() + learned).withStyle(ChatFormatting.GOLD));
 	}
 
 	public static EntityType<Mount> type(Kind k) {
@@ -100,13 +172,14 @@ public final class Mounts {
 		Coins.setFlag(p, FLAG + k.id());
 		Classes.asking(p, false);
 		PacketDistributor.sendToPlayer(p, new Net.MountState(k.id()));
-		p.sendSystemMessage(Component.literal(k.name() + " answers to you now. Press the mount key (H) to call it.").withStyle(ChatFormatting.GOLD));
+		p.sendSystemMessage(Component.literal(k.name() + " answers to you now. Press H to call it. Train it from the Mount button in your inventory: it can't fly until it has Wings.").withStyle(ChatFormatting.GOLD));
 	}
 
 	/** The key: on if you're not riding, off if you are. */
 	public static void toggle(ServerPlayer p) {
 		if (p.getVehicle() instanceof Mount m) {
-			m.leave();
+			if (m.getFirstPassenger() == p) m.leave();
+			else m.hopOff(p);
 			return;
 		}
 		Kind k = of(p);
@@ -176,7 +249,19 @@ public final class Mounts {
 			if (e.getEntity() instanceof ServerPlayer p) {
 				Kind k = of(p);
 				if (k != null) PacketDistributor.sendToPlayer(p, new Net.MountState(k.id()));
+				sendRanks(p);
 			}
+		});
+		// Hide: a good mount takes some of what's aimed at you
+		NeoForge.EVENT_BUS.addListener((LivingIncomingDamageEvent e) -> {
+			if (e.getEntity() instanceof ServerPlayer p && p.getVehicle() instanceof Mount) e.setAmount(e.getAmount() * (1 - HIDE_OFF[rank(p, HIDE)]));
+		});
+		// right-clicking whoever's riding is the same as right-clicking their mount
+		NeoForge.EVENT_BUS.addListener((PlayerInteractEvent.EntityInteract e) -> {
+			if (e.getHand() != InteractionHand.MAIN_HAND || !(e.getTarget() instanceof Player t) || !(t.getVehicle() instanceof Mount m) || e.getEntity().isPassenger()) return;
+			if (!e.getLevel().isClientSide) m.board(e.getEntity());
+			e.setCanceled(true);
+			e.setCancellationResult(InteractionResult.sidedSuccess(e.getLevel().isClientSide));
 		});
 		// a mount doesn't outlive its rider's visit
 		NeoForge.EVENT_BUS.addListener((PlayerEvent.PlayerLoggedOutEvent e) -> {

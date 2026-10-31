@@ -96,6 +96,36 @@
     }
    },
    "price": 200
+  },
+  {
+   "item": {
+    "id": "ashbound:road_sparrow"
+   },
+   "price": 500
+  },
+  {
+   "item": {
+    "id": "ashbound:tabby_cat"
+   },
+   "price": 500
+  },
+  {
+   "item": {
+    "id": "ashbound:lantern_moth"
+   },
+   "price": 700
+  },
+  {
+   "item": {
+    "id": "ashbound:hill_pup"
+   },
+   "price": 700
+  },
+  {
+   "item": {
+    "id": "ashbound:coin_fox"
+   },
+   "price": 3000
   }
  ],
  "sell": [

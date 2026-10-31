@@ -42,6 +42,9 @@ public final class CurioKeys {
 	public static final KeyMapping MOUNT = new KeyMapping("key.ashbound.mount", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_H,
 			"key.categories.ashbound");
 
+	public static final KeyMapping BAG = new KeyMapping("key.ashbound.bag", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_I,
+			"key.categories.ashbound");
+
 	/** The skill keys past the first, which is R above. */
 	private static final KeyMapping[] SLOTS = {SKILL, slot(1, GLFW.GLFW_KEY_Z), slot(2, GLFW.GLFW_KEY_X), slot(3, GLFW.GLFW_KEY_C)};
 	public static final KeyMapping SKILLS = new KeyMapping("key.ashbound.skills", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_N, "key.categories.ashbound");
@@ -69,6 +72,7 @@ public final class CurioKeys {
 		e.register(HEAL_TARGET);
 		e.register(POWER);
 		e.register(MOUNT);
+		e.register(BAG);
 		e.register(SKILLS);
 		e.register(FORM);
 		e.register(PING);
@@ -158,6 +162,7 @@ public final class CurioKeys {
 		if (p == null) return;
 		PartyMap.tick();
 		while (PING.consumeClick()) Pings.send();
+		while (BAG.consumeClick()) PacketDistributor.sendToServer(new Net.BagAct(com.snoringwalrus.ashbound.Bag.OPEN, net.minecraft.world.item.ItemStack.EMPTY));
 		while (HEAL_TARGET.consumeClick()) stepHealTarget(p);
 		// they've gone
 		if (!healTarget.isEmpty() && !stillHere(p)) setHealTarget("");
@@ -172,7 +177,10 @@ public final class CurioKeys {
 		while (SKILLS.consumeClick()) if (mc.screen == null) mc.setScreen(new SkillScreen());
 		while (FORM.consumeClick()) PacketDistributor.sendToServer(new Net.CurioKey(Net.FORM));
 		clearKeys(mc);
-		while (MOUNT.consumeClick()) PacketDistributor.sendToServer(new Net.CurioKey(Net.MOUNT));
+		while (MOUNT.consumeClick()) {
+			if (p.isShiftKeyDown() && !p.isPassenger() && !com.snoringwalrus.ashbound.Mounts.client.isEmpty()) mc.setScreen(new MountUpScreen());
+			else PacketDistributor.sendToServer(new Net.CurioKey(Net.MOUNT));
+		}
 		while (JOURNAL.consumeClick()) if (mc.screen == null) QuestScreen.open();
 		boolean jump = mc.options.keyJump.isDown();
 		if (p.onGround() || p.isInWater() || p.getAbilities().flying) jumped = false;

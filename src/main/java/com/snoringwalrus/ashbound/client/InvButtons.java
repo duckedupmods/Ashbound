@@ -9,14 +9,13 @@ import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.ContainerScreen;
-import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.gui.screens.inventory.ShulkerBoxScreen;
 import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.network.PacketDistributor;
 
-/** Small iron buttons along the top right of a chest or your inventory: the server does the work, see Tidy. */
+/** Small iron buttons along the top right of a chest: the server does the work, see Tidy. */
 final class InvButtons {
 	private InvButtons() {}
 
@@ -24,8 +23,7 @@ final class InvButtons {
 
 	static void hooks() {
 		NeoForge.EVENT_BUS.addListener((ScreenEvent.Init.Post e) -> {
-			if (e.getScreen() instanceof InventoryScreen s) e.addListener(new Press(s, 0, "Sort", Tidy.SORT));
-			else if (e.getScreen() instanceof ContainerScreen || e.getScreen() instanceof ShulkerBoxScreen) {
+			if (e.getScreen() instanceof ContainerScreen || e.getScreen() instanceof ShulkerBoxScreen) {
 				AbstractContainerScreen<?> s = (AbstractContainerScreen<?>) e.getScreen();
 				e.addListener(new Press(s, 0, "Sort", Tidy.SORT));
 				e.addListener(new Press(s, 1, "Stash", Tidy.STASH));

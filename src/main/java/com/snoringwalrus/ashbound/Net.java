@@ -141,9 +141,9 @@ public final class Net {
 
 	/** The Gate Forge at pos was used: open it. */
 	/** Open the forge at pos; `known` is what the smith will make for you (ids, comma separated). */
-	public record ForgeOpen(BlockPos pos, String known) implements CustomPacketPayload {
+	public record ForgeOpen(BlockPos pos) implements CustomPacketPayload {
 		public static final Type<ForgeOpen> TYPE = id("forge_open");
-		public static final StreamCodec<ByteBuf, ForgeOpen> CODEC = StreamCodec.composite(BlockPos.STREAM_CODEC, ForgeOpen::pos, ByteBufCodecs.STRING_UTF8, ForgeOpen::known, ForgeOpen::new);
+		public static final StreamCodec<ByteBuf, ForgeOpen> CODEC = StreamCodec.composite(BlockPos.STREAM_CODEC, ForgeOpen::pos, ForgeOpen::new);
 		@Override public Type<ForgeOpen> type() { return TYPE; }
 	}
 
@@ -282,6 +282,55 @@ public final class Net {
 		@Override public Type<TomeRead> type() { return TYPE; }
 	}
 
+	/** What your mount has learned, by track. */
+	public record MountRanks(List<Integer> ranks) implements CustomPacketPayload {
+		public static final Type<MountRanks> TYPE = id("mount_ranks");
+		public static final StreamCodec<ByteBuf, MountRanks> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT.apply(ByteBufCodecs.list()), MountRanks::ranks, MountRanks::new);
+		@Override public Type<MountRanks> type() { return TYPE; }
+	}
+
+	/** Buy the next rank of a track. */
+	public record MountUp(int track) implements CustomPacketPayload {
+		public static final Type<MountUp> TYPE = id("mount_up");
+		public static final StreamCodec<ByteBuf, MountUp> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, MountUp::track, MountUp::new);
+		@Override public Type<MountUp> type() { return TYPE; }
+	}
+
+	/** One kind in the Bottomless Bag: a single of it, how many, and whose when it's a party's. */
+	public record BagLine(ItemStack stack, long count, String who) {
+		public static final StreamCodec<RegistryFriendlyByteBuf, BagLine> CODEC = StreamCodec.composite(
+				ItemStack.STREAM_CODEC, BagLine::stack, ByteBufCodecs.VAR_LONG, BagLine::count, ByteBufCodecs.STRING_UTF8, BagLine::who, BagLine::new);
+	}
+
+	/** All that's in the bag you have open, and how many it's shared by. */
+	public record BagLines(List<BagLine> lines, int sharing) implements CustomPacketPayload {
+		public static final Type<BagLines> TYPE = id("bag_lines");
+		public static final StreamCodec<RegistryFriendlyByteBuf, BagLines> CODEC = StreamCodec.composite(
+				BagLine.CODEC.apply(ByteBufCodecs.list()), BagLines::lines, ByteBufCodecs.VAR_INT, BagLines::sharing, BagLines::new);
+		@Override public Type<BagLines> type() { return TYPE; }
+	}
+
+	/** What's done with the bag (Bag.OPEN and so on), and to what. */
+	public record PetAct(String pet) implements CustomPacketPayload {
+		public static final Type<PetAct> TYPE = id("pet_act");
+		public static final StreamCodec<ByteBuf, PetAct> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, PetAct::pet, PetAct::new);
+		@Override public Type<PetAct> type() { return TYPE; }
+	}
+
+	/** The pets you have to hand, and the one that's out. */
+	public record PetList(List<String> owned, String worn) implements CustomPacketPayload {
+		public static final Type<PetList> TYPE = id("pet_list");
+		public static final StreamCodec<ByteBuf, PetList> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), PetList::owned, ByteBufCodecs.STRING_UTF8, PetList::worn, PetList::new);
+		@Override public Type<PetList> type() { return TYPE; }
+	}
+
+	public record BagAct(int what, ItemStack item) implements CustomPacketPayload {
+		public static final Type<BagAct> TYPE = id("bag_act");
+		public static final StreamCodec<RegistryFriendlyByteBuf, BagAct> CODEC = StreamCodec.composite(
+				ByteBufCodecs.VAR_INT, BagAct::what, ItemStack.OPTIONAL_STREAM_CODEC, BagAct::item, BagAct::new);
+		@Override public Type<BagAct> type() { return TYPE; }
+	}
+
 	/** A Tidy button. */
 	public record InvTidy(int what) implements CustomPacketPayload {
 		public static final Type<InvTidy> TYPE = id("inv_tidy");
@@ -325,6 +374,14 @@ public final class Net {
 		public static final Type<Ping> TYPE = id("ping");
 		public static final StreamCodec<ByteBuf, Ping> CODEC = StreamCodec.composite(ByteBufCodecs.DOUBLE, Ping::x, ByteBufCodecs.DOUBLE, Ping::y, ByteBufCodecs.DOUBLE, Ping::z, Ping::new);
 		@Override public Type<Ping> type() { return TYPE; }
+	}
+
+	/** What hangs over the heads round you (Marks): entity ids, and the mark for each. */
+	public record NpcMarks(List<Integer> ids, List<Integer> marks) implements CustomPacketPayload {
+		public static final Type<NpcMarks> TYPE = id("npc_marks");
+		public static final StreamCodec<ByteBuf, NpcMarks> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT.apply(ByteBufCodecs.list()), NpcMarks::ids,
+				ByteBufCodecs.VAR_INT.apply(ByteBufCodecs.list()), NpcMarks::marks, NpcMarks::new);
+		@Override public Type<NpcMarks> type() { return TYPE; }
 	}
 
 	public record PingAt(String who, double x, double y, double z) implements CustomPacketPayload {
@@ -415,9 +472,9 @@ public final class Net {
 		@Override public Type<ForgeDone> type() { return TYPE; }
 	}
 
-	public record ForgeCraft(BlockPos pos, Job job) implements CustomPacketPayload {
+	public record ForgeCraft(BlockPos pos, Job job, int embers) implements CustomPacketPayload {
 		public static final Type<ForgeCraft> TYPE = id("forge_craft");
-		public static final StreamCodec<ByteBuf, ForgeCraft> CODEC = StreamCodec.composite(BlockPos.STREAM_CODEC, ForgeCraft::pos, Job.CODEC, ForgeCraft::job, ForgeCraft::new);
+		public static final StreamCodec<ByteBuf, ForgeCraft> CODEC = StreamCodec.composite(BlockPos.STREAM_CODEC, ForgeCraft::pos, Job.CODEC, ForgeCraft::job, ByteBufCodecs.VAR_INT, ForgeCraft::embers, ForgeCraft::new);
 		@Override public Type<ForgeCraft> type() { return TYPE; }
 	}
 
@@ -489,8 +546,11 @@ public final class Net {
 	public static Consumer<GuildJobs> onGuildJobs = m -> {};
 	public static Consumer<SpellFx> onSpellFx = m -> {};
 	public static List<PartyMember> clientParty = List.of();
+	public static BagLines clientBag = new BagLines(List.of(), 1);
+	public static PetList clientPets = new PetList(List.of(), "");
 	public static volatile List<PartySpot> clientSpots = List.of();
 	public static Consumer<PingAt> onPing = m -> {};
+	public static Consumer<NpcMarks> onNpcMarks = m -> {};
 	public static Consumer<ForgeEcho> onForgeEcho = m -> {};
 	public static Consumer<QuestBoard> onBoard = m -> {};
 	public static Runnable onCard = () -> {};
@@ -543,6 +603,7 @@ public final class Net {
 			r.playToClient(PartySync.TYPE, PartySync.CODEC, (m, ctx) -> clientParty = m.members());
 			r.playToClient(PartySpots.TYPE, PartySpots.CODEC, (m, ctx) -> clientSpots = m.spots());
 			r.playToClient(PingAt.TYPE, PingAt.CODEC, (m, ctx) -> onPing.accept(m));
+			r.playToClient(NpcMarks.TYPE, NpcMarks.CODEC, (m, ctx) -> onNpcMarks.accept(m));
 			r.playToServer(Ping.TYPE, Ping.CODEC, (m, ctx) -> Party.ping((ServerPlayer) ctx.player(), m));
 			r.playToServer(JournalPick.TYPE, JournalPick.CODEC, (m, ctx) -> Story.pick((ServerPlayer) ctx.player(), m.key()));
 			r.playToServer(ForgeRelay.TYPE, ForgeRelay.CODEC, (m, ctx) -> Smithing.onRelay(m, (ServerPlayer) ctx.player()));
@@ -567,7 +628,15 @@ public final class Net {
 				if (m.key().isEmpty()) onMountAsk.run();
 			});
 			r.playToServer(MountPick.TYPE, MountPick.CODEC, (m, ctx) -> Mounts.pick((ServerPlayer) ctx.player(), m.key()));
+			r.playToServer(MountUp.TYPE, MountUp.CODEC, (m, ctx) -> Mounts.upgrade((ServerPlayer) ctx.player(), m.track()));
+			r.playToClient(MountRanks.TYPE, MountRanks.CODEC, (m, ctx) -> {
+				for (int i = 0; i < Mounts.clientRanks.length && i < m.ranks().size(); i++) Mounts.clientRanks[i] = m.ranks().get(i);
+			});
 			r.playToServer(InvTidy.TYPE, InvTidy.CODEC, (m, ctx) -> Tidy.act((ServerPlayer) ctx.player(), m.what()));
+			r.playToServer(BagAct.TYPE, BagAct.CODEC, (m, ctx) -> Bag.act((ServerPlayer) ctx.player(), m));
+			r.playToClient(BagLines.TYPE, BagLines.CODEC, (m, ctx) -> clientBag = m);
+			r.playToServer(PetAct.TYPE, PetAct.CODEC, (m, ctx) -> Pets.act((ServerPlayer) ctx.player(), m.pet()));
+			r.playToClient(PetList.TYPE, PetList.CODEC, (m, ctx) -> clientPets = m);
 			r.playToServer(TomeRead.TYPE, TomeRead.CODEC, (m, ctx) -> Books.confirm((ServerPlayer) ctx.player(), m.form()));
 			r.playToClient(BookOffer.TYPE, BookOffer.CODEC, (m, ctx) -> Books.onOffer.accept(m));
 			r.playToServer(BookSwap.TYPE, BookSwap.CODEC, (m, ctx) -> Books.swap((ServerPlayer) ctx.player(), m.give()));

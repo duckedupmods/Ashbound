@@ -14,7 +14,11 @@
     "JumpingAccessor",
     "MountSneakMixin",
     "AnimationPlayerMixin",
-    "ColliderMixin"
+    "ColliderMixin",
+    "NoWearMixin",
+    "VehicleFloatAccessor",
+    "SlotAccessor",
+    "SlotAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

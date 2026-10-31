@@ -128,13 +128,21 @@ public final class Story {
 		Set<String> done = done(p);
 		Journal.Quest q = followed(p, done);
 		Net.GuildJob j = job(p);
-		PacketDistributor.sendToPlayer(p, new Net.JournalState(String.join(",", done), j != null ? "req:" + j.id() : q == null ? "" : q.key()));
+		Set<String> told = new java.util.HashSet<>(done);
+		if (Coins.flag(p, TAUGHT)) told.add(Journal.TAUGHT);
+		PacketDistributor.sendToPlayer(p, new Net.JournalState(String.join(",", told), j != null ? "req:" + j.id() : q == null ? "" : q.key()));
 		PacketDistributor.sendToPlayer(p, new Net.GuildJobs(Guild.jobs(p)));
 		point(p);
 	}
 
+	private static final String TAUGHT = "journal_taught";
+
 	/** From the Journal: follow this one; empty, just send the state. */
 	static void pick(ServerPlayer p, String key) {
+		if (key.equals(Journal.TAUGHT)) {
+			Coins.setFlag(p, TAUGHT);
+			return;
+		}
 		if (!key.isEmpty() && (Journal.of(key) != null || key.startsWith("req:"))) {
 			List<String> flags = new ArrayList<>(p.getData(Coins.FLAGS));
 			flags.removeIf(f -> f.startsWith("track:"));

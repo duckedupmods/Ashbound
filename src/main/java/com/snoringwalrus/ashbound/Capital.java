@@ -64,7 +64,7 @@ public final class Capital {
 
 	/** The valley floor's height: the file's heights are over this. */
 	public static final int FLOOR = 72;
-	private static final int CAPITAL_NEAR = 10000, CAPITAL_FAR = 15000;
+	private static final int CAPITAL_NEAR = 5000, CAPITAL_FAR = 9000;
 	/** Villages go out this far every way from spawn, at most one to a SQUARE, kept SQUARE_EDGE in from its sides so two are never close. */
 	private static final int RANGE = 20000, SQUARE = 1800, SQUARE_EDGE = 280, TRIES = 8, ROAD_ROUND_CITY = 3500, ROAD_LANE = 1400;
 	/** For a name that's been used already. */
@@ -505,7 +505,7 @@ public final class Capital {
 		}
 	}
 
-	/** Where in this world it stands: of a few spots 10,000-15,000 out, the one with the most land round it. */
+	/** Where in this world it stands: of a few spots 5,000-9,000 out, the one with the most land round it. */
 	static Site choose(ServerLevel level, Data d) {
 		ChunkGenerator gen = level.getChunkSource().getGenerator();
 		Climate.Sampler sampler = level.getChunkSource().randomState().sampler();

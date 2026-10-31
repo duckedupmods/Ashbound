@@ -1,0 +1,582 @@
+[
+ {
+  "id": "ash_crow",
+  "name": "Ash Crow",
+  "where": "hover",
+  "size": 0.62,
+  "rarity": "uncommon",
+  "stats": {
+   "ash%": 3
+  },
+  "box": [
+   0.0,
+   0.255,
+   -0.006,
+   1.043
+  ]
+ },
+ {
+  "id": "road_sparrow",
+  "name": "Road Sparrow",
+  "where": "hover",
+  "size": 0.52,
+  "rarity": "uncommon",
+  "stats": {
+   "move%": 2
+  },
+  "box": [
+   0.0,
+   0.255,
+   -0.006,
+   1.043
+  ]
+ },
+ {
+  "id": "barn_owl",
+  "name": "Barn Owl",
+  "where": "hover",
+  "size": 0.55,
+  "rarity": "uncommon",
+  "stats": {
+   "mining%": 6
+  },
+  "box": [
+   0.0,
+   0.344,
+   -0.028,
+   0.917
+  ]
+ },
+ {
+  "id": "tabby_cat",
+  "name": "Tabby Cat",
+  "where": "heel",
+  "size": 0.5,
+  "rarity": "uncommon",
+  "stats": {
+   "move%": 2
+  },
+  "box": [
+   0.0,
+   0.538,
+   0.022,
+   1.076
+  ]
+ },
+ {
+  "id": "smoke_cat",
+  "name": "Smoke Cat",
+  "where": "heel",
+  "size": 0.5,
+  "rarity": "uncommon",
+  "stats": {
+   "dodge_cost%": 4
+  },
+  "box": [
+   0.0,
+   0.538,
+   0.022,
+   1.076
+  ]
+ },
+ {
+  "id": "hill_pup",
+  "name": "Hill Pup",
+  "where": "heel",
+  "size": 0.52,
+  "rarity": "uncommon",
+  "stats": {
+   "armour%": 2
+  },
+  "box": [
+   0.0,
+   0.539,
+   0.048,
+   1.099
+  ]
+ },
+ {
+  "id": "moss_pup",
+  "name": "Moss Pup",
+  "where": "heel",
+  "size": 0.52,
+  "rarity": "uncommon",
+  "stats": {
+   "stamina_regen%": 5
+  },
+  "box": [
+   0.0,
+   0.539,
+   0.048,
+   1.099
+  ]
+ },
+ {
+  "id": "field_rabbit",
+  "name": "Field Rabbit",
+  "where": "heel",
+  "size": 0.46,
+  "rarity": "uncommon",
+  "stats": {
+   "safe_fall": 2
+  },
+  "box": [
+   0.0,
+   0.597,
+   0.004,
+   1.193
+  ]
+ },
+ {
+  "id": "cellar_rat",
+  "name": "Cellar Rat",
+  "where": "heel",
+  "size": 0.4,
+  "rarity": "uncommon",
+  "stats": {
+   "coins%": 3
+  },
+  "box": [
+   0.0,
+   0.632,
+   0.092,
+   1.265
+  ]
+ },
+ {
+  "id": "lantern_moth",
+  "name": "Lantern Moth",
+  "where": "hover",
+  "size": 0.42,
+  "rarity": "uncommon",
+  "stats": {
+   "mana_regen%": 5
+  },
+  "box": [
+   0.0,
+   0.121,
+   0.092,
+   1.194
+  ]
+ },
+ {
+  "id": "dust_moth",
+  "name": "Dust Moth",
+  "where": "hover",
+  "size": 0.42,
+  "rarity": "uncommon",
+  "stats": {
+   "mana": 5
+  },
+  "box": [
+   0.0,
+   0.121,
+   0.092,
+   1.194
+  ]
+ },
+ {
+  "id": "pond_newt",
+  "name": "Pond Newt",
+  "where": "heel",
+  "size": 0.42,
+  "rarity": "uncommon",
+  "stats": {
+   "swim%": 8
+  },
+  "box": [
+   -0.045,
+   0.329,
+   -0.137,
+   1.189
+  ]
+ },
+ {
+  "id": "rime_owl",
+  "name": "Rime Owl",
+  "where": "hover",
+  "size": 0.6,
+  "rarity": "rare",
+  "stats": {
+   "elite_dmg%": 3
+  },
+  "box": [
+   0.0,
+   0.344,
+   -0.028,
+   0.917
+  ]
+ },
+ {
+  "id": "hunting_hawk",
+  "name": "Hunting Hawk",
+  "where": "hover",
+  "size": 0.66,
+  "rarity": "rare",
+  "stats": {
+   "arrow%": 4
+  },
+  "box": [
+   0.0,
+   0.255,
+   -0.006,
+   1.043
+  ]
+ },
+ {
+  "id": "coin_fox",
+  "name": "Coin Fox",
+  "where": "heel",
+  "size": 0.5,
+  "rarity": "rare",
+  "stats": {
+   "coins%": 6
+  },
+  "box": [
+   0.0,
+   0.512,
+   -0.179,
+   1.631
+  ]
+ },
+ {
+  "id": "snow_fox",
+  "name": "Snow Fox",
+  "where": "heel",
+  "size": 0.5,
+  "rarity": "rare",
+  "stats": {
+   "speed%": 3
+  },
+  "box": [
+   0.0,
+   0.512,
+   -0.179,
+   1.631
+  ]
+ },
+ {
+  "id": "iron_pup",
+  "name": "Iron Pup",
+  "where": "heel",
+  "size": 0.54,
+  "rarity": "rare",
+  "stats": {
+   "armour%": 4
+  },
+  "box": [
+   0.0,
+   0.539,
+   0.048,
+   1.099
+  ]
+ },
+ {
+  "id": "ember_rat",
+  "name": "Ember Rat",
+  "where": "heel",
+  "size": 0.42,
+  "rarity": "rare",
+  "stats": {
+   "dmg%": 3
+  },
+  "box": [
+   0.0,
+   0.632,
+   0.092,
+   1.265
+  ]
+ },
+ {
+  "id": "moon_hare",
+  "name": "Moon Hare",
+  "where": "heel",
+  "size": 0.48,
+  "rarity": "rare",
+  "stats": {
+   "move%": 3
+  },
+  "box": [
+   0.0,
+   0.597,
+   0.004,
+   1.193
+  ]
+ },
+ {
+  "id": "tide_moth",
+  "name": "Tide Moth",
+  "where": "hover",
+  "size": 0.44,
+  "rarity": "rare",
+  "stats": {
+   "spell%": 3
+  },
+  "box": [
+   0.0,
+   0.121,
+   0.092,
+   1.194
+  ]
+ },
+ {
+  "id": "fire_newt",
+  "name": "Fire Newt",
+  "where": "heel",
+  "size": 0.44,
+  "rarity": "rare",
+  "stats": {
+   "tough%": 5
+  },
+  "box": [
+   -0.045,
+   0.329,
+   -0.137,
+   1.189
+  ]
+ },
+ {
+  "id": "marrow_skull",
+  "name": "Marrow Skull",
+  "where": "hover",
+  "size": 0.5,
+  "rarity": "rare",
+  "stats": {
+   "thrall_dmg%": 6
+  },
+  "box": [
+   0.0,
+   0.356,
+   0.006,
+   0.713
+  ]
+ },
+ {
+  "id": "bog_wisp",
+  "name": "Bog Wisp",
+  "where": "hover",
+  "size": 0.5,
+  "rarity": "rare",
+  "stats": {
+   "heal%": 4
+  },
+  "box": [
+   0.0,
+   0.312,
+   0.005,
+   0.625
+  ]
+ },
+ {
+  "id": "thorn_wisp",
+  "name": "Thorn Wisp",
+  "where": "hover",
+  "size": 0.5,
+  "rarity": "rare",
+  "stats": {
+   "mana_regen%": 9
+  },
+  "box": [
+   0.0,
+   0.312,
+   0.005,
+   0.625
+  ]
+ },
+ {
+  "id": "soot_cat",
+  "name": "Soot Cat",
+  "where": "heel",
+  "size": 0.5,
+  "rarity": "epic",
+  "stats": {
+   "move%": 4
+  },
+  "box": [
+   0.0,
+   0.538,
+   0.022,
+   1.076
+  ]
+ },
+ {
+  "id": "dusk_moth",
+  "name": "Dusk Moth",
+  "where": "hover",
+  "size": 0.46,
+  "rarity": "epic",
+  "stats": {
+   "spell%": 5
+  },
+  "box": [
+   0.0,
+   0.121,
+   0.092,
+   1.194
+  ]
+ },
+ {
+  "id": "hatchling",
+  "name": "Stormling",
+  "where": "hover",
+  "size": 0.44,
+  "rarity": "epic",
+  "stats": {
+   "dmg%": 4
+  },
+  "box": [
+   0.0,
+   0.393,
+   -0.137,
+   1.318
+  ]
+ },
+ {
+  "id": "grave_pup",
+  "name": "Grave Pup",
+  "where": "heel",
+  "size": 0.56,
+  "rarity": "epic",
+  "stats": {
+   "thrall_hp%": 10
+  },
+  "box": [
+   0.0,
+   0.539,
+   0.048,
+   1.099
+  ]
+ },
+ {
+  "id": "storm_hawk",
+  "name": "Storm Hawk",
+  "where": "hover",
+  "size": 0.68,
+  "rarity": "epic",
+  "stats": {
+   "speed%": 5
+  },
+  "box": [
+   0.0,
+   0.297,
+   -0.133,
+   1.297
+  ]
+ },
+ {
+  "id": "candle_skull",
+  "name": "Candle Skull",
+  "where": "hover",
+  "size": 0.52,
+  "rarity": "epic",
+  "stats": {
+   "mana": 15
+  },
+  "box": [
+   0.0,
+   0.356,
+   0.006,
+   0.713
+  ]
+ },
+ {
+  "id": "spirit_fox",
+  "name": "Spirit Fox",
+  "where": "heel",
+  "size": 0.52,
+  "rarity": "epic",
+  "stats": {
+   "ash%": 7
+  },
+  "box": [
+   0.0,
+   0.512,
+   -0.179,
+   1.631
+  ]
+ },
+ {
+  "id": "frost_wisp",
+  "name": "Frost Wisp",
+  "where": "hover",
+  "size": 0.52,
+  "rarity": "epic",
+  "stats": {
+   "health%": 4
+  },
+  "box": [
+   0.0,
+   0.312,
+   0.005,
+   0.625
+  ]
+ },
+ {
+  "id": "cinder_phoenix",
+  "name": "Cinder Phoenix",
+  "where": "hover",
+  "size": 0.7,
+  "rarity": "legendary",
+  "stats": {
+   "dmg%": 5,
+   "health%": 3
+  },
+  "box": [
+   0.0,
+   0.297,
+   -0.133,
+   1.297
+  ]
+ },
+ {
+  "id": "ember_hatchling",
+  "name": "Emberling",
+  "where": "hover",
+  "size": 0.46,
+  "rarity": "legendary",
+  "stats": {
+   "dmg%": 6,
+   "elite_dmg%": 4
+  },
+  "box": [
+   0.0,
+   0.393,
+   -0.137,
+   1.318
+  ]
+ },
+ {
+  "id": "gilded_vixen",
+  "name": "Gilded Vixen",
+  "where": "heel",
+  "size": 0.54,
+  "rarity": "legendary",
+  "stats": {
+   "coins%": 12,
+   "ash%": 8
+  },
+  "box": [
+   0.0,
+   0.512,
+   -0.181,
+   1.635
+  ]
+ },
+ {
+  "id": "hollow_skull",
+  "name": "Hollow Moon Skull",
+  "where": "hover",
+  "size": 0.56,
+  "rarity": "legendary",
+  "stats": {
+   "spell%": 6,
+   "mana_regen%": 10
+  },
+  "box": [
+   0.0,
+   0.356,
+   0.006,
+   0.713
+  ]
+ }
+]

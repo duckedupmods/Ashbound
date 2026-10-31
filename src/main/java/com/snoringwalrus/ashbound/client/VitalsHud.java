@@ -38,7 +38,7 @@ public final class VitalsHud {
 
 	private static final int X = 6, Y = 6, SOCKET = 28, WING_H = 10, BAR_H = 3, MEMBER_W = 80, MEMBER_H = 3, NOTCHES = 10, TIP = 5;
 	/** up from the bottom of the screen */
-	private static final int XP_UP = 25, STAMINA_UP = 32, WING_UP = 46, ROW_UP = 13;
+	private static final int XP_UP = 25, STAMINA_UP = 32, WING_UP = 46, ROW_UP = 13, WIND_UP = 66;
 	/** how far the held item's name and the action bar rise to clear them */
 	private static final int LIFT = 14, TOP_OF_ROW = 30;
 	private static final float HOLD_MS = 500, DRAIN = 0.4f, FOLLOW = 14;
@@ -89,20 +89,32 @@ public final class VitalsHud {
 		NeoForge.EVENT_BUS.addListener((RenderGuiLayerEvent.Post e) -> {
 			if (LIFTED.contains(e.getName())) e.getGuiGraphics().pose().popPose();
 		});
-		Net.onForge = m -> Minecraft.getInstance().setScreen(new ForgeScreen(m.pos(), m.known()));
+		Net.onForge = m -> Minecraft.getInstance().setScreen(new ForgeScreen(m.pos()));
 		Net.onForgeStart = ForgeStrikeScreen::open;
 		Net.onForgeEcho = ForgeScene::echo;
 		Net.onColdWake = ColdScene::play;
 		Net.onIntro = IntroScene::play;
 		Net.onPing = Pings::got;
 		Pings.hooks(bus);
+		NpcMarkers.hooks();
+		PetRender.hooks();
 		Net.onJournal = QuestScreen::state;
 		Net.onGuildJobs = QuestScreen::jobs;
 		QuestHud.hooks(bus);
 		InvButtons.hooks();
+		MenuTabs.hooks();
 		BossHud.hooks();
 		SpellFx.hooks();
 		NeoForge.EVENT_BUS.addListener((ClientPlayerNetworkEvent.LoggingOut e) -> Net.clientParty = java.util.List.of());
+	}
+
+	/** How long your mount can stay up, over the armour and food, only while it's not full. */
+	private static void wind(GuiGraphics g, LocalPlayer p) {
+		if (!(p.getVehicle() instanceof Mount m) || m.getFirstPassenger() != p || com.snoringwalrus.ashbound.Mounts.tireless(p) || Mount.wind >= 1) return;
+		int w = 100, h = 3, x = (g.guiWidth() - w) / 2, y = g.guiHeight() - WIND_UP;
+		frame(g, x, y, w, h);
+		g.fill(x, y, x + w, y + h, 0xFF102028);
+		g.fill(x, y, x + Math.round(w * Mount.wind), y + h, Mount.wind < 0.2f ? 0xFFE05030 : 0xFF8FD8FF);
 	}
 
 	/** Long enough to tell you've grown, never the width of the screen: a little more each time the maximum doubles. */
@@ -126,6 +138,7 @@ public final class VitalsHud {
 		LocalPlayer p = mc.player;
 		if (p == null || mc.options.hideGui || mc.gameMode == null) return;
 		if (!Net.clientParty.isEmpty()) party(g, mc, X, Y);
+		wind(g, p);
 		if (!mc.gameMode.canHurtPlayer()) return;
 		long now = System.currentTimeMillis();
 		float step = Math.min(0.1f, (now - last) / 1000f);

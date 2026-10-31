@@ -486,6 +486,148 @@ public final class SelfTest {
 	}
 
 	@GameTest(template = "selftest")
+	public static void listOfThirteen(GameTestHelper h) {
+		Checks c = new Checks("the list of thirteen");
+		FakePlayer p = player(h, 20);
+		ItemStack sword = new ItemStack(Items.IRON_SWORD);
+		sword.hurtAndBreak(50, h.getLevel(), null, i -> {});
+		c.check(sword.getDamageValue() == 0 && !sword.isBarVisible(), "nothing wears out");
+		ItemStack worn = new ItemStack(Items.IRON_SWORD);
+		worn.setDamageValue(100);
+		c.check(!worn.isBarVisible(), "and what was worn shows no bar");
+		var bows = Gear.DUNGEONS.stream().flatMap(d -> d.weapons().stream()).filter(w -> w.kind().equals("bow") && !w.boss()).toList();
+		p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, new ItemStack(Gear.item(bows.get(0).id())));
+		double low = Gear.bowPower(p);
+		p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, new ItemStack(Gear.item(bows.get(bows.size() - 1).id())));
+		c.check(Gear.bowPower(p) > low * 1.3, "a bow of a higher rank hits harder: " + Gear.bowPower(p) + " over " + low);
+		ItemStack tip = p.getMainHandItem();
+		c.check(tip.getTooltipLines(net.minecraft.world.item.Item.TooltipContext.of(h.getLevel()), p, net.minecraft.world.item.TooltipFlag.NORMAL).stream().anyMatch(l -> l.getString().contains("arrow damage")), "and it says so");
+		for (int e = 0; e <= Smithing.MOST_EMBERS; e++) {
+			float sum = 0;
+			for (float o : Smithing.odds(e)) sum += o;
+			c.near(sum, 1, 0.001, "the forge's odds add up with " + e + " embers");
+		}
+		c.check(Smithing.odds(0)[3] < 0.05f && Smithing.odds(Smithing.MOST_EMBERS)[3] > 0.4f, "embers buy a Perfect");
+		c.check(Smithing.odds(0)[1] > 0.5f, "most pieces come out Fine");
+		c.check(Smithing.upgradeChance(0, 0) > Smithing.upgradeChance(9, 0) && Smithing.upgradeChance(9, Smithing.MOST_EMBERS) > 0.5f, "upgrades get harder, and embers help");
+		c.check(!Wayfarers.find(p).isEmpty(), "a wayfarer's pack has something in it");
+		int[] at = Capital.centre();
+		if (at != null) c.check(Math.hypot(at[0], at[1]) < 9100 && Math.hypot(at[0], at[1]) > 4900, "the capital's 5-9k out: " + at[0] + ", " + at[1]);
+		double total = 0;
+		for (int i = 0; i < GateEntity.RANKS.length; i++) if (GateDungeons.has(i)) total += Gates.odds(i, 0, true);
+		c.check(Gates.odds(1, 0, true) / total > 0.12, "more E gates early than there were");
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void pets(GameTestHelper h) {
+		Checks c = new Checks("pets");
+		c.check(Pets.ALL.size() >= 36, "a lot of pets (" + Pets.ALL.size() + ")");
+		for (WorldArms.Tier t : WorldArms.Tier.values()) c.check(Pets.specs().stream().anyMatch(s -> s.tier() == t), "pets of every rarity: " + t);
+		c.check(Curios.SPECS.stream().noneMatch(s -> s.slot().equals("pet")), "and they don't crowd the curios' own drops");
+		var slots = top.theillusivec4.curios.api.CuriosApi.getPlayerSlots(h.getLevel());
+		c.check(slots.containsKey("pet") && slots.get("pet").getSize() == 1, "players have one pet slot");
+		for (Curios.Spec s : Pets.specs()) {
+			Item item = BuiltInRegistries.ITEM.get(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(Ashbound.ID, s.id()));
+			c.check(item instanceof Curios.Curio, s.id() + " is an item");
+			c.check(new ItemStack(item).is(net.minecraft.tags.ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("curios", "pet"))), s.id() + " fits the slot");
+		}
+		FakePlayer p = player(h, 8);
+		ItemStack fox = new ItemStack(BuiltInRegistries.ITEM.get(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "coin_fox")));
+		var inv = top.theillusivec4.curios.api.CuriosApi.getCuriosInventory(p).orElse(null);
+		c.check(inv != null, "a player has curios");
+		if (inv != null) {
+			double before = Curios.stat(p, "coins%");
+			inv.setEquippedCurio("pet", 0, fox);
+			c.near(Curios.stat(p, "coins%") - before, 6, 0.001, "a worn pet's buff counts");
+			c.check(Pets.worn(p) != null && Pets.worn(p).id().equals("coin_fox"), "and it's the one worn");
+		}
+		var tip = fox.getTooltipLines(Item.TooltipContext.of(h.getLevel()), p, net.minecraft.world.item.TooltipFlag.NORMAL);
+		c.check(tip.stream().anyMatch(l -> l.getString().contains("Rare Pet")) && tip.stream().anyMatch(l -> l.getString().contains("heel")), "the tooltip says what it is");
+		c.check(Curios.pet(h.getLevel().getRandom(), 2) != null, "a boss has a pet to drop");
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void mountTraining(GameTestHelper h) {
+		Checks c = new Checks("mount training");
+		FakePlayer p = player(h, 8);
+		Classes.pick(p, "shade");
+		Mounts.pick(p, "ashmane");
+		c.check(Mounts.airTicks(p) == 0 && !Mounts.tireless(p), "nothing flies at the start");
+		Coins.set(p, 799);
+		Mounts.upgrade(p, Mounts.WINGS);
+		c.check(Mounts.rank(p, Mounts.WINGS) == 0 && Coins.of(p) == 799, "a rank you can't pay for doesn't happen");
+		Coins.set(p, 1000);
+		Mounts.upgrade(p, Mounts.WINGS);
+		c.check(Mounts.rank(p, Mounts.WINGS) == 1 && Coins.of(p) == 200 && Mounts.airTicks(p) > 0, "the first rank of Wings flies");
+		Coins.set(p, 1_000_000);
+		for (int t = 0; t < Mounts.TRACKS.size(); t++)
+			for (int i = 0; i < 8; i++) Mounts.upgrade(p, t);
+		for (int t = 0; t < Mounts.TRACKS.size(); t++) {
+			Mounts.Track track = Mounts.TRACKS.get(t);
+			c.check(track.costs().length == track.ranks().length, track.id() + " says what each rank does");
+			c.check(Mounts.rank(p, t) == track.costs().length, track.id() + " tops out");
+		}
+		c.check(Mounts.tireless(p), "any mount at the top of Wings never tires");
+		int spent = 0;
+		for (Mounts.Track t : Mounts.TRACKS) for (int n : t.costs()) spent += n;
+		c.check(Coins.of(p) == 1_000_000 - spent + 800, "each rank paid for once");
+		c.near(Mounts.speedFor(p), 1.25, 0.001, "top stride");
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void bottomlessBag(GameTestHelper h) {
+		Checks c = new Checks("the bag");
+		FakePlayer a = player(h, 8), b = player(h, 8);
+		var menu = new Bag.Menu(1, a.getInventory());
+		a.containerMenu = menu;
+		Bag.store(a, new ItemStack(Items.STONE, 64));
+		for (int i = 0; i < 1000; i++) Bag.store(a, new ItemStack(Items.STONE, 64));
+		c.check(Bag.count(a, new ItemStack(Items.STONE)) == 64 * 1001, "it holds far more than a chest");
+		ItemStack named = new ItemStack(Items.IRON_SWORD);
+		named.set(net.minecraft.core.component.DataComponents.CUSTOM_NAME, net.minecraft.network.chat.Component.literal("Mine"));
+		Bag.store(a, named);
+		c.check(Bag.count(a, new ItemStack(Items.IRON_SWORD)) == 0 && Bag.count(a, named) == 1, "different things stay apart");
+		ItemStack got = Bag.take(a, new ItemStack(Items.STONE), 1000);
+		c.check(got.getCount() == 64, "a stack at most comes out");
+		c.check(Bag.take(a, new ItemStack(Items.DIAMOND), 5).isEmpty(), "what isn't in it can't come out");
+		c.check(Bag.count(b, new ItemStack(Items.STONE)) == 0, "a stranger can't reach it");
+		Party.form(a, b);
+		c.check(Bag.count(b, new ItemStack(Items.STONE)) == 64 * 1000, "the party can");
+		c.check(Bag.take(b, new ItemStack(Items.STONE), 64).getCount() == 64, "and can take from it");
+		Bag.store(b, new ItemStack(Items.TORCH, 10));
+		c.check(Bag.count(a, new ItemStack(Items.TORCH)) == 10, "both ways");
+		Party.remove(h.getLevel().getServer(), b.getUUID(), " left the party");
+		c.check(Bag.count(a, new ItemStack(Items.TORCH)) == 0 && Bag.count(b, new ItemStack(Items.TORCH)) == 10, "what you put in leaves with you");
+		c.check(Bag.count(a, new ItemStack(Items.STONE)) == 64 * 999 && Bag.count(b, new ItemStack(Items.STONE)) == 0, "and what you didn't stays");
+		a.getInventory().setItem(12, new ItemStack(Items.TORCH, 3));
+		a.getInventory().setItem(0, new ItemStack(Items.TORCH, 3));
+		menu.setCarried(new ItemStack(Items.DIAMOND, 5));
+		Bag.act(a, new Net.BagAct(Bag.RIGHT, ItemStack.EMPTY));
+		c.check(menu.getCarried().getCount() == 4 && Bag.count(a, new ItemStack(Items.DIAMOND)) == 1, "right click puts in one");
+		Bag.act(a, new Net.BagAct(Bag.LEFT, ItemStack.EMPTY));
+		c.check(menu.getCarried().isEmpty() && Bag.count(a, new ItemStack(Items.DIAMOND)) == 5, "left click puts in the lot");
+		Bag.act(a, new Net.BagAct(Bag.RIGHT, new ItemStack(Items.STONE)));
+		c.check(menu.getCarried().getCount() == 32, "right click takes half a stack");
+		menu.setCarried(ItemStack.EMPTY);
+		Bag.act(a, new Net.BagAct(Bag.PUT_PACK, ItemStack.EMPTY));
+		c.check(a.getInventory().getItem(12).isEmpty() && a.getInventory().getItem(0).getCount() == 3 && Bag.count(a, new ItemStack(Items.TORCH)) == 3, "put in all leaves the hotbar");
+		for (int i = 0; i < 36; i++) a.getInventory().setItem(i, new ItemStack(Items.DIRT));
+		long before = Bag.count(a, new ItemStack(Items.STONE));
+		Bag.act(a, new Net.BagAct(Bag.QUICK, new ItemStack(Items.STONE)));
+		c.check(Bag.count(a, new ItemStack(Items.STONE)) == before, "a full pack keeps nothing it can't hold, and loses nothing");
+		a.getInventory().clearContent();
+		a.getInventory().setItem(9, new ItemStack(Items.TORCH, 7));
+		menu.quickMoveStack(a, 0);
+		c.check(a.getInventory().getItem(9).isEmpty() && Bag.count(a, new ItemStack(Items.TORCH)) == 10, "shift-click puts it in");
+		c.check(Tidy.shelf(new ItemStack(Items.IRON_SWORD)) == 0 && Tidy.shelf(new ItemStack(Gear.item(Gear.DUNGEONS.get(0).weapons().get(0).id()))) == 0, "weapons are on their shelf without wear");
+		a.containerMenu = a.inventoryMenu;
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
 	public static void thrallsSwing(GameTestHelper h) {
 		Checks c = new Checks("summons swing");
 		Thrall t = Mounts.REVENANT.get().create(h.getLevel());
@@ -625,7 +767,7 @@ public final class SelfTest {
 		Checks c = new Checks("gateOdds");
 		double total = 0;
 		for (int i = 0; i < GateEntity.RANKS.length; i++) if (GateDungeons.has(i)) total += Gates.odds(i, 0, true);
-		c.check(Gates.odds(0, 0, true) / total > 0.7, "most gates on the road to the capital are F");
+		c.check(Gates.odds(0, 0, true) / total > 0.6, "most gates on the road to the capital are F");
 		c.check(Gates.odds(0, 0, false) > Gates.odds(1, 0, false) && Gates.odds(1, 0, false) > Gates.odds(2, 0, false), "from F, each rank up is rarer");
 		c.check(Gates.odds(6, 6, false) > Gates.odds(0, 6, false), "a late player sees their own rank");
 		FakePlayer p = player(h, 40);

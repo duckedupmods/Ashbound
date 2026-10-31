@@ -18,9 +18,10 @@ import net.neoforged.neoforge.network.PacketDistributor;
 
 /**
  * The Journal: the chapters down the side, the quests of the picked one, and the picked quest with what it asks and a
- * button to set the compass on it. Done, open and locked come from the server (Net.JournalState).
+ * button to set the compass on it. Done, open and locked come from the server (Net.JournalState). The first time it's opened
+ * it walks you through itself, one lit panel at a time ({@link #TEACH}); the ? up in the corner plays that again.
  */
-public class QuestScreen extends Screen {
+public class QuestScreen extends Screen implements MenuTabs.Panel {
 	private static final int SIDE = 130, DETAIL = 190, ROW = 18, GAP = 2;
 
 	private static Set<String> done = new HashSet<>();
@@ -30,6 +31,20 @@ public class QuestScreen extends Screen {
 
 	private int chapter, picked, scroll;
 	private AshUi.AshButton follow;
+	/** Where in the lesson: -1 when it's not on. */
+	private int step = -1;
+	private static final int LESSON_W = 240, ASK = 12;
+	private static final int CHAPTERS = 0, QUESTS = 1, DETAILS = 2, NONE = 3;
+
+	private record Teach(String title, String text, int lit) {}
+
+	private static final List<Teach> TEACH = List.of(
+			new Teach("YOUR JOURNAL", "This is your story, in chapters. Each one is a stretch of the road, and the numbers show how far through it you are. Guild Requests, at the bottom, are the jobs you've taken from the board.", CHAPTERS),
+			new Teach("QUESTS", "Yellow is open: you can do it now. Green is done. ? ? ? is locked until you've finished what comes before it. Click one to read what it asks of you.", QUESTS),
+			new Teach("FOLLOW", "Pick an open quest and press FOLLOW. That's the one you're after now. You follow one at a time, and you can change your mind whenever you like.", DETAILS),
+			new Teach("THE COMPASS", "The bar along the top of the screen is your compass. The gold mark on it is your quest: turn until the mark is in the middle, and walk. Its name and how far it is sit under the bar.", NONE),
+			new Teach("FINISHING A QUEST", "Some end when you get there, some when the deed's done, some when you talk to the right person. It ticks itself off and the next one opens. The compass moves on to it by itself.", NONE),
+			new Teach("WHO TO TALK TO", "A gold ! over someone's head: they've something for you. A green ?: they're waiting for what you owe them. A star: someone worth knowing, like a shopkeeper or a smith. Right-click to talk.", NONE));
 
 	public QuestScreen() {
 		super(Component.literal("Journal"));
@@ -38,10 +53,13 @@ public class QuestScreen extends Screen {
 	/** What the server says. */
 	public static void state(Net.JournalState m) {
 		Set<String> was = done;
+		boolean first = !joined;
 		done = new HashSet<>(List.of(m.done().isEmpty() ? new String[0] : m.done().split(",")));
 		tracked = m.tracked();
 		if (joined) for (String key : done) if (!was.contains(key) && Journal.of(key) != null) QuestHud.finished(Journal.of(key).title());
 		joined = true;
+		if (first || done.contains(Journal.TAUGHT)) return;
+		if (Minecraft.getInstance().screen instanceof QuestScreen s && s.step < 0) s.step = 0;
 	}
 
 	/** What the Guild has for you and what's out there, as quests of a last chapter. */
@@ -101,12 +119,18 @@ public class QuestScreen extends Screen {
 		return Math.max(1, (ph() - 40) / (ROW + GAP));
 	}
 
+	@Override
+	public int panelTop() {
+		return py();
+	}
+
 	private int dx() {
 		return listX() + listW() + 6;
 	}
 
 	@Override
 	protected void init() {
+		if (step < 0 && joined && !done.contains(Journal.TAUGHT)) step = 0;
 		follow = addRenderableWidget(new AshUi.AshButton(dx() + 10, py() + ph() - 34, DETAIL - 20, 22, Component.literal("FOLLOW"), b -> {
 			Journal.Quest q = picked < quests().size() ? quests().get(picked) : null;
 			if (q != null) PacketDistributor.sendToServer(new Net.JournalPick(q.key()));
@@ -120,6 +144,18 @@ public class QuestScreen extends Screen {
 
 	@Override
 	public boolean mouseClicked(double mx, double my, int button) {
+		if (step >= 0) {
+			if (++step >= TEACH.size()) {
+				step = -1;
+				done.add(Journal.TAUGHT);
+				PacketDistributor.sendToServer(new Net.JournalPick(Journal.TAUGHT));
+			}
+			return true;
+		}
+		if (mx >= px() + SIDE - ASK - 4 && mx < px() + SIDE - 4 && my >= py() + 4 && my < py() + 4 + ASK) {
+			step = 0;
+			return true;
+		}
 		if (super.mouseClicked(mx, my, button)) return true;
 		if (mx >= px() + 8 && mx < px() + SIDE - 2 && my >= py() + 32) {
 			int c = (int) ((my - py() - 32) / (ROW + 6));
@@ -210,5 +246,37 @@ public class QuestScreen extends Screen {
 		follow.visible = can;
 		follow.setMessage(Component.literal(q != null && q.key().equals(tracked) ? "FOLLOWING" : "FOLLOW"));
 		follow.render(g, mx, my, pt);
+		g.drawString(font, "?", x + SIDE - ASK + (ASK - font.width("?")) / 2 - 4, y + 6, AshUi.EMBER_LT, true);
+		if (step >= 0) lesson(g);
+	}
+
+	/** Everything but the panel it's about goes dark, and it speaks from a box under the middle of the screen. */
+	private void lesson(GuiGraphics g) {
+		Teach t = TEACH.get(step);
+		int x = px(), y = py(), h = ph(), left = t.lit() == CHAPTERS ? x : t.lit() == QUESTS ? listX() : t.lit() == DETAILS ? dx() : width,
+				right = t.lit() == CHAPTERS ? x + SIDE : t.lit() == QUESTS ? listX() + listW() : t.lit() == DETAILS ? dx() + DETAIL : width;
+		g.pose().pushPose();
+		g.pose().translate(0, 0, 400);
+		int dim = 0xC0000000;
+		g.fill(0, 0, left, height, dim);
+		g.fill(right, 0, width, height, dim);
+		if (right > left) {
+			g.fill(left, 0, right, y, dim);
+			g.fill(left, y + h, right, height, dim);
+		}
+		List<FormattedCharSequence> lines = font.split(Component.literal(t.text()), LESSON_W - 20);
+		int bw = LESSON_W, bh = 40 + lines.size() * 10;
+		// beside the lit panel if there's one, so it's not over what it's about
+		int bx = t.lit() == CHAPTERS ? right + 12 : t.lit() == NONE ? (width - bw) / 2 : Math.max(8, left - bw - 12), by = (height - bh) / 2;
+		AshUi.panel(g, bx, by, bw, bh);
+		AshUi.header(g, bx, by, bw, 20, t.title());
+		int ty = by + 27;
+		for (FormattedCharSequence line : lines) {
+			g.drawString(font, line, bx + 10, ty, AshUi.BODY, false);
+			ty += 10;
+		}
+		String more = (step + 1) + " / " + TEACH.size() + "   click to go on";
+		g.drawString(font, more, bx + bw - 10 - font.width(more), by + bh - 11, AshUi.MUTED, false);
+		g.pose().popPose();
 	}
 }
