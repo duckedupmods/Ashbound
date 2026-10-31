@@ -512,7 +512,9 @@ def merge(lst, entries, key):
 def tag(tool, names):
     path = P.GAME + "src/main/resources/data/minecraft/tags/block/mineable/%s.json" % tool
     have = json.load(open(path, encoding="utf-8"))["values"] if os.path.exists(path) else []
-    P.dump(path, {"replace": False, "values": have + ["ashbound:" + n for n in names if "ashbound:" + n not in have]})
+    # optional: one name that isn't a block would lose the whole tag, vanilla's blocks too, and nothing could be mined
+    known = {v if isinstance(v, str) else v["id"] for v in have}
+    P.dump(path, {"replace": False, "values": have + [{"id": "ashbound:" + n, "required": False} for n in names if "ashbound:" + n not in known]})
 
 
 def loot_self(n):

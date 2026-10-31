@@ -3,6 +3,7 @@ package com.snoringwalrus.ashbound;
 import java.util.function.Consumer;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -84,6 +85,16 @@ public class GateEntity extends Entity {
 		b.define(RANK, 0);
 		b.define(OPENED, 0L);
 		b.define(CLOSED, -1L);
+	}
+
+	/** One that only this client sees, tearing open now (IntroScene): it's never added on the server, so nothing's behind it. */
+	public static GateEntity vision(Level level, Vec3 at, float yaw, int rank) {
+		GateEntity g = Gates.GATE.get().create(level);
+		if (g == null) return null;
+		g.moveTo(at.x, at.y, at.z, yaw, 0);
+		g.setRank(rank);
+		g.opened(level.getGameTime());
+		return g;
 	}
 
 	public int rank() {
@@ -224,7 +235,37 @@ public class GateEntity extends Entity {
 				if (!(here.isAir() || here.canBeReplaced()) || !here.getFluidState().isEmpty()) continue;
 				if (!burnt.canSurvive(level, at)) continue;
 				level.setBlock(at, burnt, 3);
+				for (Direction way : Direction.Plane.HORIZONTAL) {
+					charUp(level, at, way, burnt);
+					charDown(level, at, way, burnt);
+				}
 			}
+	}
+
+	/** The char on a face: the cell in front of it takes that side. */
+	private static void burn(ServerLevel level, BlockPos cell, Direction way, BlockState burnt) {
+		BlockState there = level.getBlockState(cell);
+		BlockState s = there.is(burnt.getBlock()) ? there : !there.isAir() && !there.canBeReplaced() || !there.getFluidState().isEmpty() ? null
+				: burnt.setValue(GateScorch.FLOOR, false);
+		if (s != null && GateScorch.holds(level, cell, way)) level.setBlock(cell, s.setValue(GateScorch.side(way), true), 3);
+	}
+
+	/** Ground rising beside the burnt patch: up its face. */
+	private static void charUp(ServerLevel level, BlockPos at, Direction way, BlockState burnt) {
+		for (int up = 0; up < GateScorch.CLIMB; up++) {
+			BlockPos cell = at.above(up);
+			if (!GateScorch.holds(level, cell, way)) return;
+			burn(level, cell, way, burnt);
+		}
+	}
+
+	/** Ground dropping away beside it: down the bank, from the air in front of it. */
+	private static void charDown(ServerLevel level, BlockPos at, Direction way, BlockState burnt) {
+		for (int down = 1; down <= GateScorch.CLIMB; down++) {
+			BlockPos cell = at.below(down).relative(way);
+			if (!GateScorch.holds(level, cell, way.getOpposite())) return;
+			burn(level, cell, way.getOpposite(), burnt);
+		}
 	}
 
 	/** Shut: a shockwave that throws everything near back (the flash and the rest are drawn by the client). */

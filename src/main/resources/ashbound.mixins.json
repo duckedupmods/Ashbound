@@ -2,6 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "com.snoringwalrus.ashbound.mixin",
+  "plugin": "com.snoringwalrus.ashbound.mixin.EarlyConfig",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "BeardifierMixin",
@@ -9,7 +10,10 @@
     "ChunkGeneratorMixin",
     "NoiseBasedChunkGeneratorMixin",
     "ChunkAccessMixin",
-    "SpringFeatureMixin"
+    "SpringFeatureMixin",
+    "JumpingAccessor",
+    "MountSneakMixin",
+    "AnimationPlayerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -17,6 +21,8 @@
   "client": [
     "LocalPlayerHurtMixin",
     "WorldOpenFlowsMixin",
-    "ForgeCameraMixin"
+    "ForgeCameraMixin",
+    "ThirdPersonCameraMixin",
+    "MountPoseMixin"
   ]
 }

@@ -42,9 +42,10 @@ public final class JoinedSkills {
 	private record Later(ServerPlayer p, Runnable then) {}
 
 	private static final List<List<Later>> SOON = new ArrayList<>();
+	private static final int AHEAD = 400;
 
 	static void init() {
-		for (int i = 0; i < 40; i++) SOON.add(new ArrayList<>());
+		for (int i = 0; i < AHEAD; i++) SOON.add(new ArrayList<>());
 		NeoForge.EVENT_BUS.addListener((ServerTickEvent.Post e) -> {
 			List<Later> now = SOON.remove(0);
 			SOON.add(new ArrayList<>());
@@ -52,7 +53,7 @@ public final class JoinedSkills {
 		});
 	}
 
-	private static void later(ServerPlayer p, int ticks, Runnable then) {
+	static void later(ServerPlayer p, int ticks, Runnable then) {
 		SOON.get(ticks).add(new Later(p, then));
 	}
 
@@ -84,7 +85,7 @@ public final class JoinedSkills {
 				anim(p, Animations.DANCING_EDGE);
 				later(p, 7, () -> line(p, 9, 1.6, 2.2));
 			}
-			case "dagger" -> twoShadows(p);
+			case "dagger" -> twoShadows(p, 1.5);
 			case "hammer" -> {
 				anim(p, Animations.THE_GUILLOTINE);
 				later(p, 14, () -> ring(p, p.position(), 6, 2.5, 0.6));
@@ -105,59 +106,73 @@ public final class JoinedSkills {
 		}
 	}
 
-	private static void anim(ServerPlayer p, yesman.epicfight.api.animation.AnimationManager.AnimationAccessor<? extends yesman.epicfight.api.animation.types.StaticAnimation> a) {
+	static void anim(ServerPlayer p, yesman.epicfight.api.animation.AnimationManager.AnimationAccessor<? extends yesman.epicfight.api.animation.types.StaticAnimation> a) {
 		ServerPlayerPatch pp = EpicFightCapabilities.getEntityPatch(p, ServerPlayerPatch.class);
 		if (pp != null) pp.playAnimationSynchronized(a, 0f);
 	}
 
-	private static float strength(ServerPlayer p) {
-		return (float) p.getAttributeValue(Attributes.ATTACK_DAMAGE);
+	/**
+	 * What a skill's multipliers are of: one blow, weighed by how fast the weapon swings, or a dagger's skills would be a
+	 * quarter of a hammer's. With a bow it's a sword-sized share of a full shot, not the bare hand it's really holding.
+	 */
+	static float strength(ServerPlayer p) {
+		if (p.getMainHandItem().getItem() instanceof net.minecraft.world.item.BowItem || p.getOffhandItem().getItem() instanceof net.minecraft.world.item.BowItem) return (float) (BOW_BLOW * Gear.bowPower(p));
+		return (float) (p.getAttributeValue(Attributes.ATTACK_DAMAGE) * p.getAttributeValue(Attributes.ATTACK_SPEED) / SWORD_PACE);
 	}
 
-	private static void strike(ServerPlayer p, LivingEntity e, float amount) {
+	private static final double SWORD_PACE = 1.6, BOW_BLOW = 3.3;
+
+	static void strike(ServerPlayer p, LivingEntity e, float amount) {
 		e.invulnerableTime = 0;
 		e.hurt(p.damageSources().playerAttack(p), amount);
 	}
 
 	/** A blow along where you're looking, through everything in it. */
-	private static void line(ServerPlayer p, double length, double width, double mult) {
+	static void line(ServerPlayer p, double length, double width, double mult) {
+		ServerLevel l = p.serverLevel();
+		Spells.skillFx(l, "line", p.position().add(0, 0.6, 0), p.getLookAngle(), (float) length, p);
+		lineHit(p, length, width, mult);
+		l.playSound(null, p.blockPosition(), SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 1.2f, 0.6f);
+	}
+
+	/** {@link #line}'s blow, for a skill with its own look. */
+	static void lineHit(ServerPlayer p, double length, double width, double mult) {
+		lineAmount(p, length, width, strength(p) * (float) mult);
+	}
+
+	/** Everything along where you're looking takes this much. */
+	static void lineAmount(ServerPlayer p, double length, double width, float amount) {
 		ServerLevel l = p.serverLevel();
 		Vec3 from = p.getEyePosition().add(0, -0.4, 0), dir = p.getLookAngle();
-		float amount = strength(p) * (float) mult;
-		for (double d = 1; d < length; d += 0.5) {
-			Vec3 at = from.add(dir.scale(d));
-			l.sendParticles(ParticleTypes.FLAME, at.x, at.y, at.z, 3, 0.15, 0.15, 0.15, 0.01);
-			if ((int) (d * 2) % 3 == 0) l.sendParticles(ParticleTypes.SWEEP_ATTACK, at.x, at.y, at.z, 1, 0, 0, 0, 0);
-		}
 		AABB box = new AABB(from, from.add(dir.scale(length))).inflate(width);
 		for (LivingEntity e : l.getEntitiesOfClass(LivingEntity.class, box, x -> x instanceof Enemy && x.isAlive())) {
 			Vec3 to = e.getBoundingBox().getCenter().subtract(from);
 			double along = to.dot(dir);
 			if (along > 0 && along < length + 1 && to.subtract(dir.scale(along)).length() <= width + e.getBbWidth() / 2) strike(p, e, amount);
 		}
-		l.playSound(null, p.blockPosition(), SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 1.2f, 0.6f);
 	}
 
 	/** A ring going out round a spot; lift throws them up. */
-	private static void ring(ServerPlayer p, Vec3 at, double radius, double mult, double lift) {
+	static void ring(ServerPlayer p, Vec3 at, double radius, double mult, double lift) {
 		ServerLevel l = p.serverLevel();
-		int n = (int) (radius * 12);
-		for (int i = 0; i < n; i++) {
-			double a = Mth.TWO_PI * i / n;
-			l.sendParticles(ParticleTypes.FLAME, at.x + Math.cos(a) * radius, at.y + 0.2, at.z + Math.sin(a) * radius, 1, 0, 0.1, 0, 0.02);
-			l.sendParticles(ParticleTypes.LAVA, at.x + Math.cos(a) * radius * 0.6, at.y + 0.2, at.z + Math.sin(a) * radius * 0.6, 1, 0, 0, 0, 0);
-		}
+		Spells.skillFx(l, "ring", at, Vec3.ZERO, (float) radius, null);
+		ringHit(p, at, radius, mult, lift);
+		l.playSound(null, p.blockPosition(), SoundEvents.ANVIL_LAND, SoundSource.PLAYERS, 0.9f, 0.5f);
+	}
+
+	/** {@link #ring}'s blow, for a skill with its own look. */
+	static void ringHit(ServerPlayer p, Vec3 at, double radius, double mult, double lift) {
+		ServerLevel l = p.serverLevel();
 		float amount = strength(p) * (float) mult;
 		for (LivingEntity e : l.getEntitiesOfClass(LivingEntity.class, new AABB(at, at).inflate(radius, 3, radius), x -> x instanceof Enemy && x.isAlive())) {
 			if (e.distanceToSqr(at) > (radius + 1) * (radius + 1)) continue;
 			strike(p, e, amount);
 			if (lift > 0) e.push(0, lift, 0);
 		}
-		l.playSound(null, p.blockPosition(), SoundEvents.ANVIL_LAND, SoundSource.PLAYERS, 0.9f, 0.5f);
 	}
 
 	/** Behind what you're looking at, and two blows in the back. */
-	private static void twoShadows(ServerPlayer p) {
+	static void twoShadows(ServerPlayer p, double mult) {
 		ServerLevel l = p.serverLevel();
 		Vec3 from = p.getEyePosition(), dir = p.getLookAngle();
 		LivingEntity t = null;
@@ -176,7 +191,7 @@ public final class JoinedSkills {
 		Vec3 back = target.position().subtract(target.getLookAngle().multiply(1, 0, 1).normalize().scale(target.getBbWidth() / 2 + 1));
 		p.teleportTo(back.x, target.getY(), back.z);
 		p.lookAt(net.minecraft.commands.arguments.EntityAnchorArgument.Anchor.EYES, target.getEyePosition());
-		float amount = strength(p) * 1.5f;
+		float amount = strength(p) * (float) mult;
 		strike(p, target, amount);
 		later(p, 7, () -> {
 			if (target.isAlive()) strike(p, target, amount);
@@ -197,7 +212,7 @@ public final class JoinedSkills {
 	}
 
 	/** A fan of seven, each of them a full shot. */
-	private static void volley(ServerPlayer p, ItemStack bow) {
+	static void volley(ServerPlayer p, ItemStack bow) {
 		ServerLevel l = p.serverLevel();
 		for (int i = -3; i <= 3; i++) {
 			Arrow a = new Arrow(l, p, new ItemStack(Items.ARROW), bow);

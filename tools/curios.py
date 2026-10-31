@@ -1210,7 +1210,7 @@ def to_game():
     rows, tags = [], {}
     for sp in ITEMS:
         iid, name, slot, rar, faction, fn, over = sp
-        W.export(build(sp), iid, preview=False)
+        W.export(build(sp), iid, preview=False, join=False)
         tip, yaw = SLOT_POSE[slot]
         r = gui3d.mul(gui3d.rx(math.radians(tip)), gui3d.ry(math.radians(yaw)))
         sc, tr = gui3d.fit(iid, r)
@@ -1229,7 +1229,7 @@ def to_game():
         mesh = iid
         if slot == "amulet":
             mesh = iid + "_worn"
-            W.export(build_worn(sp), mesh, preview=False)
+            W.export(build_worn(sp), mesh, preview=False, join=False)
             W.G.dump(W.ASSETS + "models/item/%s.json" % mesh,
                      {"loader": "neoforge:obj", "model": "ashbound:models/mesh/%s.obj" % mesh, "flip_v": True})
         lo, hi = mesh_bounds(mesh)

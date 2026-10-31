@@ -46,5 +46,5 @@ public final class WorldBlocks {
 			.mapColor(MapColor.STONE).strength(1.8f, 6f).sound(SoundType.STONE).requiresCorrectToolForDrops());
 	static final DeferredBlock<Block> MOSSY_FIELDSTONE_SLAB = block("mossy_fieldstone_slab", SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE));
 	static final DeferredBlock<Block> VIGIL_CANDLES = block("vigil_candles", Block::new, BlockBehaviour.Properties.of()
-			.mapColor(MapColor.WOOL).strength(0.8f).sound(SoundType.CANDLE).lightLevel(s -> 12));
+			.mapColor(MapColor.WOOL).strength(0.8f).sound(SoundType.CANDLE).lightLevel(s -> 12).noOcclusion());
 }

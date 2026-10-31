@@ -41,6 +41,7 @@ public final class AshboundClient {
 		com.snoringwalrus.ashbound.client.LevelHud.hooks(bus);
 		com.snoringwalrus.ashbound.client.CurioKeys.hooks();
 		com.snoringwalrus.ashbound.client.RelicHud.hooks(bus);
+		com.snoringwalrus.ashbound.client.CurioKeys.skillHud(bus);
 		com.snoringwalrus.ashbound.client.WornCurios.hooks(bus);
 		// the Ash Tree is the only skill screen: K opens it in place of Epic Fight's, and skill books don't open
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.client.event.ScreenEvent.Opening e) -> {
@@ -126,6 +127,9 @@ public final class AshboundClient {
 		event.registerBlockEntityRenderer(VillageSpin.ENTITY.get(), ctx -> new VillageSpin.Renderer());
 		event.registerEntityRenderer(Spells.BOLT.get(), net.minecraft.client.renderer.entity.NoopRenderer::new);
 		event.registerEntityRenderer(MobBolt.TYPE.get(), net.minecraft.client.renderer.entity.NoopRenderer::new);
+		for (Mounts.Kind k : Mounts.ALL) event.registerEntityRenderer(Mounts.type(k), com.snoringwalrus.ashbound.client.MountRender::new);
+		event.registerEntityRenderer(Mounts.REVENANT.get(), com.snoringwalrus.ashbound.client.ThrallRender::new);
+		event.registerEntityRenderer(Mounts.CHAMPION.get(), com.snoringwalrus.ashbound.client.ThrallRender::new);
 	}
 
 	/** the curio key (V) */

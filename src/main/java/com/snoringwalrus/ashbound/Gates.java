@@ -35,7 +35,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 /**
  * Gates open by themselves round the world, out of sight of whoever's near (48-144 blocks off), never in the
- * capital or its land. Rarer the deadlier. Nobody is told a rank: its colour is all you get.
+ * capital or its land. Mostly the rank you're ready for, rarer the further from it. Nobody is told a rank: its colour is all you get.
  *
  * /ashbound gate [F..SSS] opens one 13 blocks in front of you; /ashbound gate close closes those near you (as if cleared).
  */
@@ -74,10 +74,11 @@ public final class Gates {
 			.mapColor(MapColor.COLOR_BLACK).noCollission().instabreak().noLootTable().replaceable().randomTicks().noOcclusion()
 			.sound(SoundType.SAND).pushReaction(PushReaction.DESTROY).lightLevel(s -> s.getValue(GateScorch.FADING) ? 1 : 5));
 
-	/** How often each rank opens, F to SSS (only ranks with a built dungeon, GateDungeons). */
-	private static final double[] ODDS = {30, 24, 17, 12, 8, 5, 2.5, 1, 0.5};
-	/** Every 20 s, for each player: this chance of a try. At most this many open round anyone. */
-	private static final float CHANCE = 0.08f;
+	/** The level each rank from E up starts at (tools/balance.py MID_LEVEL, halfway between ranks). */
+	private static final int[] FROM_LEVEL = {10, 20, 31, 45, 60, 75};
+	/** Every 20 s, for each player: this chance of a try, higher on the road to the capital. At most this many open round anyone. */
+	private static final float CHANCE = 0.08f, ROAD_CHANCE = 0.2f;
+	private static final int TRIES = 20;
 	private static final int NEAR_MAX = 2;
 
 	static void register(IEventBus bus) {
@@ -103,11 +104,28 @@ public final class Gates {
 		return -1;
 	}
 
-	static int roll(RandomSource r) {
+	/** The rank a player's ready for: F until they've found the capital, then their guild rank or level, whichever's higher. */
+	static int home(ServerPlayer p) {
+		if (!Coins.flag(p, "found_capital")) return 0;
+		int rank = p.getData(Guild.CARD).rank();
+		for (int i = 0; i < FROM_LEVEL.length; i++) if (Levels.level(p) >= FROM_LEVEL[i]) rank = Math.max(rank, i + 1);
+		return rank;
+	}
+
+	/** How often this rank opens round a player of that rank: most at their own, falling away both ways, up slower than it pays to risk. */
+	static double odds(int rank, int home, boolean road) {
+		int d = rank - home;
+		double w = d >= 0 ? 60 * Math.pow(0.4, d) : 24 * Math.pow(0.4, -d - 1);
+		return road && rank == 0 ? w * 2 : w;
+	}
+
+	static int roll(RandomSource r, ServerPlayer p) {
+		int home = home(p);
+		boolean road = !Coins.flag(p, "found_capital");
 		double total = 0;
-		for (int i = 0; i < ODDS.length; i++) if (GateDungeons.has(i)) total += ODDS[i];
+		for (int i = 0; i < GateEntity.RANKS.length; i++) if (GateDungeons.has(i)) total += odds(i, home, road);
 		double x = r.nextDouble() * total;
-		for (int i = 0; i < ODDS.length; i++) if (GateDungeons.has(i) && (x -= ODDS[i]) < 0) return i;
+		for (int i = 0; i < GateEntity.RANKS.length; i++) if (GateDungeons.has(i) && (x -= odds(i, home, road)) < 0) return i;
 		return 0;
 	}
 
@@ -136,7 +154,7 @@ public final class Gates {
 			src.sendFailure(Component.literal("No dungeon of that rank is built yet."));
 			return 0;
 		}
-		spawn(level, at, p.getYRot() + 180f, rank < 0 ? roll(level.random) : rank);
+		spawn(level, at, p.getYRot() + 180f, rank < 0 ? roll(level.random, p) : rank);
 		return 1;
 	}
 
@@ -152,7 +170,7 @@ public final class Gates {
 		ServerLevel level = e.getServer().getLevel(Level.OVERWORLD);
 		if (level == null) return;
 		for (ServerPlayer p : level.players()) {
-			if (p.isSpectator() || level.random.nextFloat() > CHANCE) continue;
+			if (p.isSpectator() || level.random.nextFloat() > (Coins.flag(p, "found_capital") ? CHANCE : ROAD_CHANCE)) continue;
 			int near = level.getEntitiesOfClass(GateEntity.class, p.getBoundingBox().inflate(256, 400, 256), g -> !g.closing()).size();
 			if (near < NEAR_MAX) tryOpen(level, p);
 		}
@@ -161,7 +179,7 @@ public final class Gates {
 	/** Somewhere open, on solid dry ground, with nothing over it, not in the city. */
 	private static void tryOpen(ServerLevel level, ServerPlayer p) {
 		RandomSource r = level.random;
-		for (int tries = 0; tries < 8; tries++) {
+		for (int tries = 0; tries < TRIES; tries++) {
 			double a = r.nextDouble() * Math.PI * 2, d = 48 + r.nextDouble() * 96;
 			int x = Mth.floor(p.getX() + Math.cos(a) * d), z = Mth.floor(p.getZ() + Math.sin(a) * d);
 			if (!level.hasChunkAt(new BlockPos(x, 0, z)) || Capital.blocksStructures(new ChunkPos(x >> 4, z >> 4))) continue;
@@ -171,7 +189,7 @@ public final class Gates {
 			if (!g.getFluidState().isEmpty() || !g.isFaceSturdy(level, ground, net.minecraft.core.Direction.UP)) continue;
 			if (!clear(level, x, y, z)) continue;
 			float yaw = (float) Math.toDegrees(Math.atan2(-(p.getX() - x - 0.5), p.getZ() - z - 0.5));
-			spawn(level, new Vec3(x + 0.5, y, z + 0.5), yaw, roll(r));
+			spawn(level, new Vec3(x + 0.5, y, z + 0.5), yaw, roll(r, p));
 			return;
 		}
 	}

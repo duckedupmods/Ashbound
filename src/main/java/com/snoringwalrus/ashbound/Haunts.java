@@ -7,9 +7,11 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -91,12 +93,12 @@ public final class Haunts {
 	record Haunt(String faction, String key, BoundingBox box, StructureStart start) {
 		int cap() {
 			int area = box.getXSpan() * box.getZSpan();
-			return Math.min(14, 3 + area / 500);
+			return Math.min(8, 3 + area / 800);
 		}
 
-		/** how many come in all before the place is clear */
+		/** how many come in all before the place is clear: a big place keeps its numbers, they just come in waves */
 		int garrison() {
-			return cap() * 2;
+			return Math.min(14, 3 + box.getXSpan() * box.getZSpan() / 500) * 2;
 		}
 
 		boolean big() {
@@ -158,13 +160,14 @@ public final class Haunts {
 	// ---------------------------------------------------------------- the garrison turning up
 
 	private static void tick(ServerTickEvent.Post e) {
-		if (e.getServer().getTickCount() % 40 != 19) return;
+		if (e.getServer().getTickCount() % 60 != 19) return;
+		Set<String> served = new HashSet<>();   // a place fills at one speed, however many walk in
 		for (ServerPlayer p : e.getServer().getPlayerList().getPlayers()) {
 			if (p.isSpectator() || p.isCreative()) continue;
 			ServerLevel level = p.serverLevel();
 			if (level.getDifficulty() == Difficulty.PEACEFUL) continue;
 			Haunt h = hauntAt(level, p.blockPosition());
-			if (h == null) continue;
+			if (h == null || !served.add(h.key())) continue;
 			State st = State.get(level);
 			long now = level.getGameTime();
 			Long when = st.cleared.get(h.key());
@@ -227,6 +230,9 @@ public final class Haunts {
 				var range = mob.getAttribute(Attributes.FOLLOW_RANGE);
 				if (range != null && range.getBaseValue() < 32) range.setBaseValue(32);
 				EventHooks.finalizeMobSpawn(mob, level, level.getCurrentDifficultyAt(at), MobSpawnType.STRUCTURE, null);
+				int best = 1;
+				for (ServerPlayer q : level.players()) if (q.distanceToSqr(p) < 64 * 64) best = Math.max(best, Levels.level(q));
+				Balance.soften(mob, kind, best);
 				level.addFreshEntity(mob);
 				return true;
 			}

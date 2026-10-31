@@ -26,17 +26,17 @@ import net.minecraft.world.phys.Vec3;
 
 /**
  * The pieces the mage's magic is drawn with (SpellFx puts them together): flipbooks of Cycles fire and smoke from one
- * atlas (tools/vfx_atlas.py), spell circles, beams, crystal, beads of liquid, black holes, domes. All go through
+ * atlas (tools/vfx_atlas.py), spell circles, beams, crystal, needles of liquid, black holes, domes. All go through
  * spell_fx.fsh, whose modes are the constants here; the lightmap slot carries the mode, these aren't lit by the world.
  */
 final class SpellParticles {
 	private SpellParticles() {}
 
-	static final int FIRE = 0, SMOKE = 1, CIRCLE = 2, DROP = 3, HOLE = 4, CRYSTAL = 5, STREAK = 6, GLOW = 7, PLAIN = 8;
+	static final int FIRE = 0, SMOKE = 1, CIRCLE = 2, DROP = 3, HOLE = 4, CRYSTAL = 5, STREAK = 6, GLOW = 7, PLAIN = 8, INK = 18, STAR = 19, CRESCENT = 20, SHEET = 21;
 	/** the atlas's flipbooks */
 	static final int BLAST = 0, FLAME = 1, ROLL = 2;
 
-	private static final ResourceLocation ATLAS = ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "textures/vfx/spell.png");
+	static final ResourceLocation ATLAS = ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "textures/vfx/spell.png");
 	private static final float CELL = 1 / 8f;
 
 	static final ParticleRenderType TYPE = new ParticleRenderType() {
@@ -48,6 +48,7 @@ final class SpellParticles {
 			RenderSystem.disableCull();
 			RenderSystem.setShader(() -> GateShaders.spell);
 			RenderSystem.setShaderTexture(0, ATLAS);
+			Bloom.begin();
 			return tesselator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
 		}
 
@@ -59,6 +60,15 @@ final class SpellParticles {
 
 	/** Anything of ours: its colour, no collision unless it asks, and never culled for being large. */
 	abstract static class Fx extends Particle {
+		/** What the shader's second lightmap slot gets: {@link #param(float)}. */
+		int param;
+		final int seed = random.nextInt(127);
+
+		/** How far through its life it is, for the modes that burn away, and its seed. */
+		final int param(float k) {
+			return Math.round(Mth.clamp(k, 0, 1) * 255) + seed * 256;
+		}
+
 		Fx(ClientLevel level, Vec3 at, int rgb) {
 			super(level, at.x, at.y, at.z);
 			rCol = (rgb >> 16 & 255) / 255f;
@@ -70,7 +80,8 @@ final class SpellParticles {
 		}
 
 		final void corner(VertexConsumer b, Vector3f p, float u, float v, float a, int mode) {
-			b.addVertex(p.x, p.y, p.z).setUv(u, v).setColor(rCol, gCol, bCol, a).setLight(mode);
+			b.addVertex(p.x, p.y, p.z).setUv(u, v).setColor(rCol, gCol, bCol, a).setLight(mode | param << 16);
+			Bloom.vertex(p, u, v, rCol, gCol, bCol, a, mode | param << 16);
 		}
 
 		final Vector3f here(Camera cam, float partial) {
@@ -88,7 +99,7 @@ final class SpellParticles {
 
 		/** A flipbook's frame, or a quad of a drawn mode. */
 		final void frame(VertexConsumer b, Vector3f c, Vector3f side, Vector3f up, int sheet, int mode, float k, float a) {
-			if (mode > CIRCLE) {
+			if (mode > CIRCLE && mode != INK) {
 				quad(b, c, side, up, -1, 1, 1, -1, a, mode);
 				return;
 			}
@@ -109,6 +120,30 @@ final class SpellParticles {
 				corner(b, new Vector3f(p).add(side), 1, 0, s, STREAK);
 				corner(b, new Vector3f(q).add(side), 1, 0, t, STREAK);
 				corner(b, new Vector3f(q).sub(side), -1, 0, t, STREAK);
+			}
+		}
+
+		/** The same line as a ribbon in another of the shader's modes: x across it, y along it in blocks. */
+		final void ribbon(VertexConsumer b, Vector3f[] pts, float width, float a0, float a1, int mode) {
+			blade(b, pts, width, width, a0, a1, mode);
+		}
+
+		/** A ribbon that narrows from one width to another along its length. */
+		final void blade(VertexConsumer b, Vector3f[] pts, float w0, float w1, float a0, float a1, int mode) {
+			float along = 0;
+			for (int i = 0; i + 1 < pts.length; i++) {
+				Vector3f p = pts[i], q = pts[i + 1];
+				Vector3f side = new Vector3f(q).sub(p).cross(new Vector3f(p).add(q).mul(0.5f));
+				if (side.lengthSquared() < 1e-10f) continue;
+				side.normalize();
+				float i0 = i / (pts.length - 1f), i1 = (i + 1) / (pts.length - 1f), next = along + q.distance(p);
+				float s = a0 + (a1 - a0) * i0, t = a0 + (a1 - a0) * i1;
+				Vector3f sp = new Vector3f(side).mul(w0 + (w1 - w0) * i0), sq = new Vector3f(side).mul(w0 + (w1 - w0) * i1);
+				corner(b, new Vector3f(p).sub(sp), -1, along, s, mode);
+				corner(b, new Vector3f(p).add(sp), 1, along, s, mode);
+				corner(b, new Vector3f(q).add(sq), 1, next, t, mode);
+				corner(b, new Vector3f(q).sub(sq), -1, next, t, mode);
+				along = next;
 			}
 		}
 
@@ -156,6 +191,17 @@ final class SpellParticles {
 			return this;
 		}
 
+		/** Shoots out and stops: speed kept each tick. */
+		Flip drag(float f) {
+			friction = f;
+			return this;
+		}
+
+		Flip falls(float g) {
+			gravity = g;
+			return this;
+		}
+
 		float fade(float k) {
 			return Math.min(1, k * 8) * (mode == SMOKE ? 1 - k * k : 1 - k * k * k);
 		}
@@ -175,6 +221,7 @@ final class SpellParticles {
 				side = new Vector3f(r).mul(co * size).add(new Vector3f(u).mul(si * size));
 				up = new Vector3f(u).mul(co * size).sub(new Vector3f(r).mul(si * size));
 			}
+			param = param(k);
 			frame(b, c, side, up, sheet, mode, k, peak * fade(k));
 		}
 	}
@@ -247,8 +294,49 @@ final class SpellParticles {
 			float r = radius * (mode == CIRCLE ? open : 0.5f + 0.5f * open), a = spin * t;
 			Vector3f side = new Vector3f(Mth.cos(a) * r, 0, Mth.sin(a) * r), up = new Vector3f(-Mth.sin(a) * r, 0, Mth.cos(a) * r);
 			float alpha = peak * Math.min(1, t / 4) * Math.min(1, (1 - k) * 4);
-			if (mode == CIRCLE) quad(b, here(cam, partial), side, up, 0.5f, 0.5f, 1, 1, alpha, CIRCLE);
-			else quad(b, here(cam, partial), side, up, -1, 1, 1, -1, alpha, mode);
+			param = param(k);
+			quad(b, here(cam, partial), side, up, -1, 1, 1, -1, alpha, mode == CIRCLE ? FxKit.RUNE : mode);
+		}
+	}
+
+	/**
+	 * A blade's sweep: a crescent in a plane whose head races round, thin at both ends, burning away from the tail in the
+	 * shader. The head's fast and the burn is slow, which is most of what makes a cut read as heavy.
+	 */
+	static final class Arc extends Fx {
+		private static final int STEPS = 30;
+		private final Vector3f u, v;
+		private final float radius, width, from, to;
+
+		Arc(ClientLevel level, Vec3 at, Vec3 u, Vec3 v, int rgb, float radius, float width, float from, float to, int life) {
+			super(level, at, rgb);
+			this.u = new Vector3f((float) u.x, (float) u.y, (float) u.z).normalize();
+			this.v = new Vector3f((float) v.x, (float) v.y, (float) v.z).normalize();
+			this.radius = radius;
+			this.width = width;
+			this.from = from;
+			this.to = to;
+			lifetime = life;
+		}
+
+		private Vector3f on(Vector3f c, float angle, float r) {
+			return new Vector3f(c).add(new Vector3f(u).mul(Mth.cos(angle) * r)).add(new Vector3f(v).mul(Mth.sin(angle) * r));
+		}
+
+		@Override
+		public void render(VertexConsumer b, Camera cam, float partial) {
+			float k = Math.min(1, (age + partial) / lifetime), head = 1 - (1 - Math.min(1, k * 2.4f)) * (1 - Math.min(1, k * 2.4f));
+			param = param(k);
+			Vector3f c = here(cam, partial);
+			for (int i = 0; i < STEPS; i++) {
+				float t0 = i / (float) STEPS, t1 = (i + 1) / (float) STEPS;
+				float a0 = from + (to - from) * t0 * head, a1 = from + (to - from) * t1 * head;
+				float w0 = width * Mth.sin(t0 * Mth.PI * 0.92f + 0.1f), w1 = width * Mth.sin(t1 * Mth.PI * 0.92f + 0.1f);
+				corner(b, on(c, a0, radius - w0), -1, t0, 1, FxKit.SLASH);
+				corner(b, on(c, a0, radius + w0 * 0.3f), 1, t0, 1, FxKit.SLASH);
+				corner(b, on(c, a1, radius + w1 * 0.3f), 1, t1, 1, FxKit.SLASH);
+				corner(b, on(c, a1, radius - w1), -1, t1, 1, FxKit.SLASH);
+			}
 		}
 	}
 
@@ -257,6 +345,13 @@ final class SpellParticles {
 		final Entity on;
 		final Vec3 reach;
 		final float width, peak, fall;
+		int mode = FxKit.FLOW;
+
+		/** Crackling, not streaming. */
+		Beam lightning() {
+			mode = FxKit.ARC;
+			return this;
+		}
 
 		Beam(ClientLevel level, Vec3 at, Vec3 reach, int rgb, float width, int life, float peak, Entity on, float fall) {
 			super(level, at, rgb);
@@ -286,8 +381,10 @@ final class SpellParticles {
 		public void render(VertexConsumer b, Camera cam, float partial) {
 			float t = age + partial, k = t / lifetime, a = peak * Math.min(1, t / 3) * (1 - k * k);
 			Vector3f p = here(cam, partial), q = new Vector3f(p).add((float) reach.x, (float) reach.y, (float) reach.z);
-			Vector3f m = new Vector3f(p).lerp(q, 0.5f);
-			strip(b, new Vector3f[] {p, m, q}, width * Math.min(1, t / 2 + 0.3f), a, a * fall);
+			Vector3f[] pts = new Vector3f[9];
+			for (int i = 0; i < pts.length; i++) pts[i] = new Vector3f(p).lerp(q, i / 8f);
+			param = param(k);
+			ribbon(b, pts, width * Math.min(1, t / 2 + 0.3f), a, a * fall, mode);
 		}
 	}
 
@@ -538,9 +635,15 @@ final class SpellParticles {
 					frame(b, c, new Vector3f(r).mul(0.8f), new Vector3f(u).mul(0.8f), 0, GLOW, 0, 0.5f);
 				}
 				case LIQUID -> {
-					Vector3f ax = new Vector3f((float) v.x, (float) v.y, (float) v.z).normalize(0.62f);
-					Vector3f side = new Vector3f(ax).cross(c).normalize(0.34f);
-					frame(b, c, side, ax, 0, DROP, 0, 1);
+					Vector3f ax = new Vector3f((float) v.x, (float) v.y, (float) v.z).normalize(0.9f);
+					Vector3f side = new Vector3f(ax).cross(c).normalize(0.9f);
+					frame(b, c, new Vector3f(r).mul(1.1f), new Vector3f(u).mul(1.1f), 0, GLOW, 0, 0.5f);
+					param = param(0.05f);
+					frame(b, c, side, ax, 0, CRESCENT, 0, 1);
+				}
+				case HEX -> {
+					frame(b, c, new Vector3f(r).mul(1.3f), new Vector3f(u).mul(1.3f), 0, GLOW, 0, 0.5f);
+					frame(b, c, new Vector3f(r).mul(0.62f), new Vector3f(u).mul(0.62f), 0, HOLE, 0, 1);
 				}
 				case VOID -> {
 					frame(b, c, new Vector3f(r).mul(0.85f), new Vector3f(u).mul(0.85f), 0, HOLE, 0, 1);

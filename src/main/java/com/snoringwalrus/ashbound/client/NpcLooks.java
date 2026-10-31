@@ -148,6 +148,14 @@ public final class NpcLooks {
 		};
 		Net.onShop = m -> Minecraft.getInstance().setScreen(new ShopScreen(m));
 		Net.onCard = () -> Minecraft.getInstance().setScreen(new GuildCardScreen());
+		Net.onClassAsk = () -> {
+			if (Minecraft.getInstance().screen == null) Minecraft.getInstance().setScreen(new ClassScreen());
+		};
+		com.snoringwalrus.ashbound.Books.onTome = f -> Minecraft.getInstance().setScreen(new TomeScreen(f));
+		com.snoringwalrus.ashbound.Books.onOffer = m -> Minecraft.getInstance().setScreen(new ReplaceScreen(m.skill(), m.rank()));
+		Net.onMountAsk = () -> {
+			if (Minecraft.getInstance().screen == null) Minecraft.getInstance().setScreen(new MountScreen());
+		};
 		Net.onBoard = m -> {
 			Minecraft mc = Minecraft.getInstance();
 			if (mc.screen instanceof QuestBoardScreen b && b.entity() == m.entity()) b.set(m);

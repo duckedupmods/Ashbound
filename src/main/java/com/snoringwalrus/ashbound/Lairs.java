@@ -409,7 +409,7 @@ public final class Lairs {
 					}
 				}
 				level.addFreshEntity(e);
-			} else if (k.startsWith("loot:") && level.getBlockEntity(bp) instanceof RandomizableContainerBlockEntity c) {
+			} else if (k.startsWith("loot:") && SilkProps.stocked(level, bp) instanceof RandomizableContainerBlockEntity c) {
 				c.setLootTable(l.loot == null ? BuiltInLootTables.SIMPLE_DUNGEON
 						: ResourceKey.create(Registries.LOOT_TABLE, l.loot), level.getRandom().nextLong());
 			}

@@ -1,0 +1,53 @@
+{
+ "replace": false,
+ "values": [
+  {
+   "id": "ashbound:cathedral_planks",
+   "required": false
+  },
+  {
+   "id": "ashbound:cedar_planks",
+   "required": false
+  },
+  {
+   "id": "ashbound:driftwood_planks",
+   "required": false
+  },
+  {
+   "id": "ashbound:ebony_planks",
+   "required": false
+  },
+  {
+   "id": "ashbound:rotten_planks",
+   "required": false
+  },
+  {
+   "id": "ashbound:rotwood_planks",
+   "required": false
+  },
+  {
+   "id": "ashbound:shaft_planks",
+   "required": false
+  },
+  {
+   "id": "ashbound:soot_planks",
+   "required": false
+  },
+  {
+   "id": "ashbound:stockade_planks",
+   "required": false
+  },
+  {
+   "id": "ashbound:tar_planks",
+   "required": false
+  },
+  {
+   "id": "ashbound:tarred_planks",
+   "required": false
+  },
+  {
+   "id": "ashbound:wreck_planks",
+   "required": false
+  }
+ ]
+}

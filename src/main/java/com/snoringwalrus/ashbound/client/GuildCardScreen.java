@@ -1,5 +1,6 @@
 package com.snoringwalrus.ashbound.client;
 
+import com.snoringwalrus.ashbound.Classes;
 import com.snoringwalrus.ashbound.Coins;
 import com.snoringwalrus.ashbound.Errands;
 import com.snoringwalrus.ashbound.Guild;
@@ -86,7 +87,8 @@ public class GuildCardScreen extends Screen {
 		g.pose().scale(1.5f, 1.5f, 1f);
 		g.drawString(font, Component.literal(p.getName().getString()).withStyle(ChatFormatting.BOLD), 0, 0, AshUi.TEXT, true);
 		g.pose().popPose();
-		String sub = c.registered() ? c.rankName() + "-rank adventurer  ·  level " + Levels.clientLevel : "Not registered. See the receptionist.";
+		Classes.Cls cls = Classes.byId(Classes.client);
+		String sub = c.registered() ? c.rankName() + "-rank " + (cls == null ? "adventurer" : cls.name()) + "  ·  level " + Levels.clientLevel : "Not registered. See the receptionist.";
 		g.drawString(font, sub, x + 64, py + 30, c.registered() ? AshUi.MUTED : AshUi.BAD, false);
 		AshUi.seal(g, x + W - 58, py - 2, 46, c.rank());
 

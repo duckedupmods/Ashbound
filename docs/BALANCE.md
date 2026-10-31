@@ -258,3 +258,99 @@ Fight's real regen run a tick at a time (`swing_duty`, `cast_rate`).
 Result, sword in medium armour: stamina allows 52% of a fight at F, 59% at C, 64% at S. Solved uptime for bosses is 60%, so low ranks run a
 little long: solo boss 240 s at F, 210 s from B, inside the 150-270 target. Monster numbers unchanged, no re-solve.
 Not measured: the real impact of our monsters' hits, so how many blocks a guard takes is untested.
+
+
+## Skills, Forms and staffs (10/31)
+
+Basic melee is about 1.3 x weapon damage a second. A skill adds (multiplier / cooldown) of weapon damage a second per target hit:
+
+| Skill | Hit x | Cooldown | Per second, rank I | Rank V | Shape |
+|---|---|---|---|---|---|
+| Bastion Slam | 1.2 | 14 | .09 | .15 | ring, aggro, resistance |
+| Oath Charge | 1.8 | 12 | .15 | .27 | line, heals 8% |
+| Rift Slam | 2.2 | 16 | .14 | .25 | wide ring, throws |
+| Headsman's Drop | 5 | 20 | .25 | .45 | single, slow |
+| Blood Price | 3 | 12 | .25 | .45 | ring, costs 1/7 health |
+| Steel Tempest | 3.9 | 15 | .26 | .47 | small ring |
+| Skyfall | 2.5 | 14 | .18 | .32 | ring on landing |
+| Spear Wall | 2.6 | 12 | .22 | .39 | long line |
+| Vanish | 3.2 | 16 | .20 | .36 | single, teleports |
+| Viper Bite | 1.2 | 10 | .12 | .22 | cone + poison |
+| Snare Field | .8 | 14 | .06 | .11 | pins the group |
+
+So a skill is 5-20% more damage at rank I and 8-36% at rank V, on top of its effect; rank V is the book chase, not the baseline. The single-target
+ones top the list because they can't hit a crowd. Hunter's Deadeye is 6 x an arrow. Mage skills are in bolts, 20 x power each: Cinder Field 7 pulses of .6 over 14s, Black Hole 3 over 18s, Judgement 2.5 over 16s.
+
+Staffs: anyone not of the staff's class gets .85 of it; its class gets .85 x (1.10 + .03 per rank, +.10 boss). That's 1.0 at a rank C normal staff, what the solved balance assumed, .9 at rank F and 1.15 at a rank S boss staff.
+The first key on a staff: Braided Bolts 3 x 1.4 bolts over 15s (twice the mana), Great Heal 20% over 30s, Greater Host 4 thralls over 45s.
+
+Summons: horde is 4 at 1.2 x per rank step, Bound Champion 1 at 2.2 x, more health, and it cleaves round what it hits.
+
+Forms (damage dealt / taken, seconds, rest): drake 2.2/2, 20, 120; hammerfall 1.4/1.2, 15, 90; communion 1.3-2.5/1.3, 18, 100; tyrant 1.6/1 (2.5 on the ground), 18, 90; noone 3/any hit leaves 1 health, 12, 80; stag 2/1.5, 15, 80;
+offering 2/1.3, 15, 90; crown 1/.7, 20, 120. Over a whole fight that's +15-25% damage for one key lost for good, so the price is real and the risk is what you're buying. **None of this has been played.** Expect to move these once it has.
+
+
+## The later skills (10/31)
+
+Each path has three skills, at levels 5, 20 and 35. Key numbers, rank I (each rank +20%):
+
+| Skill | Hit x | Cooldown | Shape |
+|---|---|---|---|
+| Crossing Oath | 1.1 x 2 | 10 | line, heals 3% each |
+| Last Oath | 4-8 | 30 | long line, more the lower your health |
+| Fault Line | .8 x up to 2 per target | 14 | six rings walking forward |
+| Worldbreaker | 2 x 3 | 40 | rings 5, 7, 9.5 |
+| Beheading | 6, 14 under 25% | 30 | single |
+| Crimson Rite | 6 | 40 | costs half your health, ring 8 |
+| Razor Gale | .7 | 13 | seven rings walking forward |
+| Eye of the Storm | .7 x 10 | 40 | pulls in |
+| Dragon's Descent | 4.5 | 36 | ring 7 where you aim |
+| Thousand Thrusts | .55 x 8 | 28 | line |
+| Death Blossom | 2.2, up to 5 targets | 30 | teleports |
+| Plague Bloom | 2.4 | 30 | only on the poisoned |
+| Piercing Star | 2 x 4.5 x bow x 2 | 32 | line 40 |
+
+Reaper's Mark and Killing Ground: everyone hits a third harder. Red Thirst: 15% back. Mage skills, in bolts: Flame Lance 1.6/10s, Meteor 6/30s, Void Lances 1.6/12s, Event Horizon .9 x 6 + 2/32s, Holy Lance 1.8/10s, Heaven's Wrath .7 x 8/36s, Marrow Burst 1 per thrall/16s. Sanctify 3% a second for 8s, Second Dawn full heal + 80% less damage for 3s, once in 90s. **None of this has been played.**
+
+
+## Pass 8: skills and the 15% party (10/31 evening)
+
+Supersedes the numbers in "The later skills" and "Skills, Forms and staffs" where they differ, and the skill levels: now 5, 20, 35, one of two at each.
+`python tools/balance.py` prints PASS 8 (all 54, as a share of the class's own damage, mana skills net of the bolts that mana would have bought) and PARTY.
+
+**Party** (balance.json `party`, `tools/balance.py` PARTY): +15% health a player (was +60%), boss damage still +5%. Ash and coins a head are 1 / (1 + 0.25 (n - 1)), because at 15% a party of four clears 2.75x as fast and would otherwise level 2.75x as fast. Result: boss 210 s alone, 121 s for 2, 76 s for 4, 54 s for 8; levels 1.4-1.6x solo.
+
+**Bugs found:**
+- Skill multipliers were of the raw weapon hit, so a hammer's were ~4x a dagger's. Now JoinedSkills.strength = hit x attack speed / 1.6.
+- With a bow in hand strength was the bare hand (~1), so Snare Field and Spike Pit did nothing. Now 3.3 x bowPower, about a sword blow.
+- Vanilla poison is flat, so the Venom path did nothing past rank E. Viper Bite adds SkillArts.venom, .2 x strength a second for 6 s.
+- Death Blossom hit a lone boss once. Now five cuts round whoever's there, 1.3 each.
+- Deadeye was really ~9 arrows; the speed multiplies base damage. Now x2 at speed 4.5, 3 arrows, 16 s. Piercing Star was only 3 arrows, now 6.75.
+- Legion cost 120 and Second Dawn 100 on a 100 bar. Now 95 and 90. Killing Ground's duration ignored rank.
+- Flame Lance and Void Lances cost more than the bolts they replaced on one target: 16 mana now.
+
+**Number changes, rank I:** Bastion 1.4, Rift 2.6, Fault Line 1.1 a ring, Razor Gale 1.0, Spear Hedge 1.1, Unbroken 5, Worldbreaker 2.6 x 3 / 36 s, Crimson Rite 9, Eye of the Storm .9 x 10 / 36 s, Dragon's Descent 7 / 32 s, Thousand Thrusts .75 x 8, Toxic Cloud .35 x 6, Plague Bloom 6, Snare 1.2, Cinder Field .45 x 7, Killing Ground 10 s / 34 s.
+
+**Monsters re-solved with skills counted.** A rank's typical player adds this much to a long fight: F, E +12%, D +26%, C +41%, B, A +47%, S +54% (one skill for each level reached, used 70% of the time, books on the way up). Elite and boss health rise by exactly that; normal monsters and all monster damage are unchanged.
+
+Flagged, kept on purpose: Bastion Slam, Unbroken and Snare Field are low in damage because their worth is taunt, damage reduction and pinning. Holy Lance and Judgement read high because they're a Mender's only damage. PASS 1's "hits per normal" flags are weapon character, as before. None of this has been played.
+
+Hit-stop costs no damage: a held swing's ticks are played double straight after (HitStop, AnimationPlayerMixin).
+
+## Pass 9: the difficulty curve and camps (10/31, 23/23 headless, unplayed)
+
+The user: a camp "disintegrated" a party; wants a little easy at first, epic late. Party health was not the cause: it
+never touched normal monsters' damage. The causes were in the camps, and every rank was solved to the same flat targets.
+
+- **CURVE in tools/balance.py replaces the flat SOLVE.** Medium armour survives 13 normal hits at F down to 6 at S; a
+  normal takes 3 sword hits at F, 5 at S; an elite 9 s to 20 s; a solo boss 110 s to 330 s; boss big attacks 5 to 2.4.
+  The class hit targets move with it. Armour never drops from one rank to the next.
+- **Camps (Haunts.java):** at most 8 alive at once (was 14), the total stays, they arrive in waves. A place fills at one
+  speed however many players walk in, one monster per 3 s (was one per 2 s per player).
+- **A place outside a gate is at most one rank above the best player within 64 blocks** (Balance.soften). Before, a
+  rank S void monster hit a level 5 player for 22.7 raw, more than their whole health bar; now 4.6. It pays Ash and
+  coins at the lowered rank. It still drops its own loot.
+- **Crowds (Balance.crowded):** the first blow in a second is in full, blows from other monsters inside that second do
+  40% at F, 45, 55, 65, 75, 85, 100% at S. Bosses always hit in full. A boss's hit doesn't start the window.
+- balance.json gains rank_normal, band_top and crowd. Dungeons are the same length in Ash: progress() re-solves Ash per
+  health.

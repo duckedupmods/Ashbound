@@ -3,6 +3,34 @@
  "values": [
   "ashbound:wildwood_log",
   "ashbound:wildwood_wood",
-  "ashbound:mossy_wildwood_wood"
+  "ashbound:mossy_wildwood_wood",
+  {
+   "id": "ashbound:driftwood_log",
+   "required": false
+  },
+  {
+   "id": "ashbound:stockade_log",
+   "required": false
+  },
+  {
+   "id": "ashbound:pine_log",
+   "required": false
+  },
+  {
+   "id": "ashbound:willow_log",
+   "required": false
+  },
+  {
+   "id": "ashbound:war_log",
+   "required": false
+  },
+  {
+   "id": "ashbound:rotwood_bark",
+   "required": false
+  },
+  {
+   "id": "ashbound:root_wood",
+   "required": false
+  }
  ]
 }

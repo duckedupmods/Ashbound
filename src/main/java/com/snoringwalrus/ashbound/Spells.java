@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.UUID;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -101,6 +103,22 @@ public final class Spells {
 		PacketDistributor.sendToPlayersNear(l, null, at.x, at.y, at.z, FX_RANGE, new Net.SpellFx(kind, gate, at.toVector3f(), r, on == null ? -1 : on.getId()));
 	}
 
+	/** A skill's look on every client near. */
+	static void skillFx(ServerLevel l, String id, Vec3 at, Vec3 dir, float r, Entity on) {
+		PacketDistributor.sendToPlayersNear(l, null, at.x, at.y, at.z, FX_RANGE, new Net.SkillFx(id, at.toVector3f(), dir.toVector3f(), r, on == null ? -1 : on.getId()));
+	}
+
+	/** Sends someone's thralls away, for the Crown of the Hollow King. */
+	static void dismiss(ServerPlayer p) {
+		for (Iterator<Thrall> it = THRALLS.iterator(); it.hasNext(); ) {
+			Thrall t = it.next();
+			if (!t.owner().equals(p.getUUID())) continue;
+			fx((ServerLevel) t.mob().level(), FX_GONE, "", t.mob().position(), 0, null);
+			t.mob().discard();
+			it.remove();
+		}
+	}
+
 	/** what the client last heard: mana now and at most */
 	public static float clientMana = 100, clientMax = 100;
 
@@ -152,7 +170,8 @@ public final class Spells {
 		if (p.tickCount % 5 == 0) PacketDistributor.sendToPlayer(p, new Net.Mana(m, cap));
 	}
 
-	private static boolean spend(ServerPlayer p, float cost) {
+	static boolean spend(ServerPlayer p, float cost) {
+		if (Forms.paysInBlood(p, cost)) return true;
 		if (p.isCreative()) return true;
 		float m = p.getData(MANA);
 		if (m < cost) return false;
@@ -196,7 +215,61 @@ public final class Spells {
 
 	/** a staff's strength: its rank on the ladder, a boss's a touch more */
 	static double power(Gear.Weapon w, Player p) {
-		return Gear.scale(w.rank()) * (w.boss() ? 1.15 : 1) * p.getAttributeValue(SPELL_POWER) * Passives.spellMult(p) * Smithing.mult(p.getMainHandItem());
+		return Gear.scale(w.rank()) * (w.boss() ? 1.15 : 1) * boost(w, p) * p.getAttributeValue(SPELL_POWER) * Passives.spellMult(p) * Smithing.mult(p.getMainHandItem());
+	}
+
+	/**
+	 * A staff answers its own class best: more each rank up the ladder, and more again from a boss. Anyone else gets
+	 * {@link #BOOST_FLOOR} of it, so a matching rank C staff lands where the balance solved it (docs/BALANCE.md).
+	 */
+	static double boost(Gear.Weapon w, Player p) {
+		Classes.Cls c = Classes.of(p);
+		if (c == null) return 1;
+		return BOOST_FLOOR * (c.id().equals(classOf(w.kind())) ? boostOf(w) : 1);
+	}
+
+	public static final double BOOST_FLOOR = 0.85;
+
+	private static double boostOf(Gear.Weapon w) {
+		return 1 + BOOST_BASE + BOOST_RANK * Math.max(0, "FEDCBAS".indexOf(w.rank())) + (w.boss() ? BOOST_BOSS : 0);
+	}
+
+	private static final double BOOST_BASE = 0.1, BOOST_RANK = 0.03, BOOST_BOSS = 0.1;
+
+	private static String classOf(String school) {
+		return switch (school) { case "white" -> "mender"; case "summon" -> "caller"; default -> "ashcaster"; };
+	}
+
+	/** The staff in your main hand, if it is one. */
+	static Gear.Weapon held(ServerPlayer p) {
+		return p.getMainHandItem().getItem() instanceof Staff s ? s.weapon : null;
+	}
+
+	/** The first skill key on a staff, in seconds. */
+	static int heldCooldown(String school) {
+		return switch (school) { case "white" -> 30; case "summon" -> 45; default -> 15; };
+	}
+
+	/** Every staff's own skill: what a Joined one does, smaller. */
+	static void heldSkill(ServerPlayer p, Gear.Weapon w) {
+		switch (w.kind()) {
+			case "white" -> accordHeal(p, HELD_HEAL);
+			case "summon" -> summon(p, look(w), 4, power(w, p));
+			default -> {
+				ServerLevel level = p.serverLevel();
+				fx(level, FX_CAST, look(w), p.getEyePosition(), 2, p);
+				for (int i = 0; i < 3; i++) fire(p, look(w), 1.5, (float) (28.0 * power(w, p)), Passives.overload(p), i);
+				level.playSound(null, p.blockPosition(), SoundEvents.BLAZE_SHOOT, SoundSource.PLAYERS, 1f, 0.7f);
+			}
+		}
+	}
+
+	private static final float HELD_HEAL = 0.2f, ACCORD_HEAL = 0.35f;
+
+	/** A Caller's skill: thralls from the staff in hand, this much stronger. */
+	static void host(ServerPlayer p, int count, double mult) {
+		Gear.Weapon w = held(p);
+		if (w != null) summon(p, look(w), count, power(w, p) * mult);
 	}
 
 	static Gear.Dungeon home(Gear.Weapon w) {
@@ -207,10 +280,24 @@ public final class Spells {
 		return Gear.DUNGEONS.get(0);
 	}
 
+	/** How a staff's magic looks: its dungeon's, but the plain staffs have none and mustn't borrow the first one's. */
+	static String look(Gear.Weapon w) {
+		return switch (w.id()) {
+			case "apprentice_black_staff" -> SpellLook.HEX;
+			case "apprentice_white_staff" -> "";
+			case "apprentice_summon_staff" -> SpellLook.GRAVE;
+			default -> home(w).gate();
+		};
+	}
+
 	public static class Staff extends Item {
 		/** swings a second: slower than a spear's 1.2. Without it a staff swings as fast as a bare fist */
 		private static final double SWING = 1.0;
 		final Gear.Weapon weapon;
+
+		public String kind() {
+			return weapon.kind();
+		}
 
 		public Staff(Gear.Weapon weapon, Properties p) {
 			super(p.attributes(net.minecraft.world.item.component.ItemAttributeModifiers.builder()
@@ -240,19 +327,22 @@ public final class Spells {
 		@Override
 		public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> lines, TooltipFlag flag) {
 			String what = switch (weapon.kind()) {
-				case "white" -> "White staff: heals you and those near";
-				case "summon" -> "Summoner staff: calls " + Component.translatable("entity.ashbound." + home(weapon).summon()).getString() + "s to fight for you";
-				default -> "Black staff: hurls " + home(weapon).element().toLowerCase() + " bolts";
+				case "white" -> "White staff: heals you and those near, or one ally from afar: aim at them, or pick a party member with G";
+				case "summon" -> "Summoner staff: calls revenants of " + home(weapon).element().toLowerCase() + " to fight for you";
+				default -> "Black staff: hurls " + (look(weapon).equals(SpellLook.HEX) ? "black fire" : home(weapon).element().toLowerCase() + " bolts");
 			};
 			lines.add(Component.literal(what).withStyle(ChatFormatting.AQUA));
 			lines.add(Component.literal(cost(weapon.kind()) + " mana").withStyle(ChatFormatting.BLUE));
+			lines.add(Component.literal("Skill: " + Skills.heldName(weapon.kind())).withStyle(ChatFormatting.GOLD));
+			lines.add(Component.literal("+" + Math.round((boostOf(weapon) - 1) * 100) + "% power for a " + Classes.byId(classOf(weapon.kind())).name()).withStyle(ChatFormatting.GOLD));
 			lines.add(Passives.staminaLine(null, stack));
 			Gear.tooltip(weapon, lines);
 		}
 	}
 
 	private static List<String> previews() {
-		List<String> out = new ArrayList<>(List.of("heal", "radiance", "summon", "overload", "great_heal", "host", "braid"));
+		List<String> out = new ArrayList<>(List.of("heal", "radiance", "summon", "overload", "great_heal", "host", "braid", SpellLook.HEX, SpellLook.GRAVE,
+				"mob_tell", "mob_slam", "mob_quake", "mob_roar", "mob_strike", "mob_thunder", "mob_cloud", "mob_breath", "mob_beam", "mob_pull", "mob_blink", "mob_summon", "mob_heal", "mob_phase"));
 		for (Gear.Dungeon d : Gear.DUNGEONS) out.add(d.gate());
 		return out;
 	}
@@ -286,7 +376,13 @@ public final class Spells {
 				for (int i = 0; i < 3; i++) fire(p, "foundry", 1.5, 0, false, i);
 			}
 			default -> {
-				if (Gear.of(name) == null) return 0;
+				if (name.startsWith("mob_")) {   // in the Foundry's fire; what's aimed goes from your eyes, the rest lands ahead of you
+					Vec3 look = p.getLookAngle();
+					boolean aimed = name.equals("mob_beam") || name.equals("mob_breath") || name.equals("mob_pull");
+					skillFx(level, name + ":foundry", aimed ? p.getEyePosition().add(look) : ahead, name.equals("mob_tell") || name.equals("mob_cloud") ? new Vec3(40, 0, 0) : look, aimed ? 14 : 3.5f, null);
+					return 1;
+				}
+				if (Gear.of(name) == null && !name.equals(SpellLook.HEX) && !name.equals(SpellLook.GRAVE)) return 0;
 				fx(level, FX_CAST, name, p.getEyePosition(), 1, p);
 				fire(p, name, 1.6, 0, false, -1);
 			}
@@ -319,11 +415,11 @@ public final class Spells {
 		double pw = power(w, p);
 		ServerLevel level = p.serverLevel();
 		switch (w.kind()) {
-			case "white" -> heal(p, d, pw);
-			case "summon" -> summon(p, d, w.boss() ? 3 : 2, pw);
+			case "white" -> heal(p, d, look(w), pw);
+			case "summon" -> summon(p, look(w), w.boss() ? 3 : 2, pw);
 			default -> {
-				fx(level, FX_CAST, d.gate(), p.getEyePosition(), 1, p);
-				fire(p, d.gate(), 1.6, (float) (20.0 * pw), Passives.overload(p), -1);
+				fx(level, FX_CAST, look(w), p.getEyePosition(), 1, p);
+				fire(p, look(w), 1.6, (float) (20.0 * pw), Passives.overload(p), -1);
 				level.playSound(null, p.blockPosition(), SoundEvents.BLAZE_SHOOT, SoundSource.PLAYERS, 0.6f, 1.4f);
 			}
 		}
@@ -390,17 +486,21 @@ public final class Spells {
 	static void accordBolts(ServerPlayer p, Gear.Weapon w) {
 		ServerLevel level = p.serverLevel();
 		double pw = power(w, p);
-		fx(level, FX_CAST, home(w).gate(), p.getEyePosition(), 2, p);
-		for (int i = 0; i < 3; i++) fire(p, home(w).gate(), 1.5, (float) (40.0 * pw), Passives.overload(p), i);
+		fx(level, FX_CAST, look(w), p.getEyePosition(), 2, p);
+		for (int i = 0; i < 3; i++) fire(p, look(w), 1.5, (float) (40.0 * pw), Passives.overload(p), i);
 		level.playSound(null, p.blockPosition(), SoundEvents.BLAZE_SHOOT, SoundSource.PLAYERS, 1f, 0.7f);
 	}
 
 	/** Everyone near back up by a third, and a guard of golden hearts. */
 	static void accordHeal(ServerPlayer p) {
+		accordHeal(p, ACCORD_HEAL);
+	}
+
+	static void accordHeal(ServerPlayer p, float share) {
 		ServerLevel level = p.serverLevel();
 		fx(level, FX_GREAT_HEAL, "", p.position(), 10, null);
 		for (Player o : level.getEntitiesOfClass(Player.class, p.getBoundingBox().inflate(10))) {
-			o.heal(o.getMaxHealth() * 0.35f);
+			o.heal(o.getMaxHealth() * share);
 			o.addEffect(new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.ABSORPTION, 300, 2));
 			fx(level, FX_BLESS, "", o.position(), 0, o);
 		}
@@ -409,36 +509,99 @@ public final class Spells {
 
 	/** Twice the usual host. */
 	static void accordSummon(ServerPlayer p, Gear.Weapon w) {
-		summon(p, home(w), 6, power(w, p));
+		summon(p, look(w), 6, power(w, p));
 	}
 
-	private static void heal(ServerPlayer p, Gear.Dungeon d, double pw) {
+	/** How far a white staff reaches one ally, and how much harder it mends them than the circle does. */
+	private static final double HEAL_REACH = 32, HEAL_AIM = 0.992;
+	private static final float HEAL_ONE = 1.25f;
+	/** Who each player has picked with the target key (client/CurioKeys): their name. */
+	private static final Map<UUID, String> HEAL_TARGET = new HashMap<>();
+
+	public static void pickHealTarget(ServerPlayer p, String name) {
+		if (name.isEmpty()) HEAL_TARGET.remove(p.getUUID());
+		else HEAL_TARGET.put(p.getUUID(), name);
+	}
+
+	private static boolean reachable(ServerPlayer p, ServerPlayer o) {
+		return o != p && o.isAlive() && !o.isSpectator() && o.level() == p.level() && o.distanceTo(p) <= HEAL_REACH && p.hasLineOfSight(o);
+	}
+
+	/** The player the crosshair's on, give or take a little, else the one picked with the key if they're in reach. */
+	static ServerPlayer healTarget(ServerPlayer p) {
+		ServerPlayer best = null;
+		double aim = HEAL_AIM;
+		for (ServerPlayer o : p.serverLevel().players()) {
+			if (!reachable(p, o)) continue;
+			double dot = p.getLookAngle().dot(o.getBoundingBox().getCenter().subtract(p.getEyePosition()).normalize());
+			if (dot > aim) {
+				aim = dot;
+				best = o;
+			}
+		}
+		if (best != null) return best;
+		String name = HEAL_TARGET.get(p.getUUID());
+		if (name == null) return null;
+		for (ServerPlayer o : p.serverLevel().players())
+			if (o.getName().getString().equals(name)) {
+				if (reachable(p, o)) return o;
+				p.displayClientMessage(Component.literal(name + " is out of reach").withStyle(ChatFormatting.BLUE), true);
+			}
+		return null;
+	}
+
+	private static final int BEAM_TICKS = 50, BEAM_PULSES = 5;
+
+	private static void healBeam(ServerLevel l, ServerPlayer from, ServerPlayer to, int ticks, String gate) {
+		PacketDistributor.sendToPlayersNear(l, null, from.getX(), from.getY(), from.getZ(), FX_RANGE, new Net.HealBeam(from.getId(), to.getId(), ticks, gate));
+	}
+
+	/** One ally: the mend comes down a beam a little at a time, for as long as they stay in reach. */
+	private static void beam(ServerPlayer p, ServerPlayer to, String look, float amount) {
 		ServerLevel level = p.serverLevel();
+		healBeam(level, p, to, BEAM_TICKS, look);
+		boolean[] cut = {false};
+		for (int i = 0; i < BEAM_PULSES; i++)
+			JoinedSkills.later(p, i * BEAM_TICKS / BEAM_PULSES, () -> {
+				if (cut[0]) return;
+				if (!reachable(p, to)) {
+					cut[0] = true;
+					healBeam(level, p, to, 0, look);
+					return;
+				}
+				to.heal(amount / BEAM_PULSES);
+			});
+	}
+
+	private static void heal(ServerPlayer p, Gear.Dungeon d, String look, double pw) {
+		ServerLevel level = p.serverLevel();
+		ServerPlayer one = healTarget(p);
 		// the tree: Mending Aura reaches further and heals more, Martyr heals more, Purify, Blessing, Sanctuary
 		boolean aura = Passives.has(p, "heal_chain");
 		int reach = aura ? 12 : 8;
-		float amount = (float) (9.0 * pw * (aura ? 1.15 : 1) * (Passives.has(p, "martyr") ? 1.5 : 1));
+		float amount = (float) (9.0 * pw * (aura ? 1.15 : 1) * (Passives.has(p, "martyr") ? 1.5 : 1)) * (one != null ? HEAL_ONE : 1);
 		boolean purify = Passives.has(p, "purify"), bless = Passives.has(p, "blessing");
-		List<LivingEntity> near = level.getEntitiesOfClass(LivingEntity.class, p.getBoundingBox().inflate(reach),
+		List<LivingEntity> near = one != null ? List.of(one) : level.getEntitiesOfClass(LivingEntity.class, p.getBoundingBox().inflate(reach),
 				e -> e == p || e instanceof Player || ownerOf(e) != null);
 		for (LivingEntity e : near) {
-			e.heal(amount);
+			if (one == null) e.heal(amount);
 			if (purify) for (var bad : List.of(MobEffects.POISON, MobEffects.WITHER, MobEffects.MOVEMENT_SLOWDOWN)) e.removeEffect(bad);
 			if (bless) Passives.blessed(e, level.getGameTime() + 100);
 			e.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 80, 0));
-			fx(level, FX_BLESS, d.gate(), e.position(), 0, e);
+			if (one == null) fx(level, FX_BLESS, look, e.position(), 0, e);
 		}
-		fx(level, FX_HEAL, d.gate(), p.position(), reach, null);
+		if (one != null) beam(p, one, look, amount);
+		else fx(level, FX_HEAL, look, p.position(), reach, null);
 		// the tree: Aegis shields whoever was healed, Radiance burns the monsters in reach
 		if (Passives.has(p, "aegis")) for (LivingEntity e : near) {
 			e.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 0));
-			fx(level, FX_GUARD, d.gate(), e.position(), 0, e);
+			fx(level, FX_GUARD, look, e.position(), 0, e);
 		}
 		if (Passives.has(p, "radiance"))
 			for (LivingEntity m : level.getEntitiesOfClass(LivingEntity.class, p.getBoundingBox().inflate(reach),
 					m -> m instanceof net.minecraft.world.entity.monster.Enemy && ownerOf(m) == null && m.isAlive())) {
 				m.hurt(p.damageSources().indirectMagic(p, p), amount * 0.5f);
-				fx(level, FX_LANCE, d.gate(), m.position(), 0, m);
+				fx(level, FX_LANCE, look, m.position(), 0, m);
 			}
 		if (Passives.has(p, "sanctuary")) {
 			var cloud = new net.minecraft.world.entity.AreaEffectCloud(level, p.getX(), p.getY(), p.getZ());
@@ -447,7 +610,7 @@ public final class Spells {
 			cloud.setRadiusPerTick(0);
 			cloud.setDuration(80);
 			cloud.setParticle(Vfx.wisp(d.colour(), 0.3f, 16, -0.01f, true));
-			fx(level, FX_WARD, d.gate(), p.position(), 3.5f, null);
+			fx(level, FX_WARD, look, p.position(), 3.5f, null);
 			cloud.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 40, 1));
 			level.addFreshEntity(cloud);
 		}
@@ -502,22 +665,25 @@ public final class Spells {
 		return null;
 	}
 
-	private static void summon(ServerPlayer p, Gear.Dungeon d, int count, double pw) {
+	private static void summon(ServerPlayer p, String look, int count, double pw) {
+		if (Forms.active(p, "crown")) return;
 		ServerLevel level = p.serverLevel();
-		EntityType<?> type = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.fromNamespaceAndPath(Ashbound.ID, d.summon()));
+		boolean great = count == 1;
 		// at most four at once (six with Legion): the oldest goes
-		int most = Passives.has(p, "legion") ? 6 : 4;
+		int most = Math.max(count, Passives.has(p, "legion") ? 6 : 4);
 		List<Thrall> mine = THRALLS.stream().filter(t -> t.owner().equals(p.getUUID())).toList();
 		for (int k = 0; k < mine.size() + count - most; k++) {
 			mine.get(k).mob().discard();
 			THRALLS.remove(mine.get(k));
 		}
-		fx(level, FX_SUMMON, d.gate(), p.position().add(p.getLookAngle().multiply(1, 0, 1).normalize().scale(1.5)), count > 3 ? 7 : 3.6f, null);
+		fx(level, FX_SUMMON, look, p.position().add(p.getLookAngle().multiply(1, 0, 1).normalize().scale(1.5)), count > 3 ? 7 : 3.6f, null);
+		if (great) skillFx(level, "champion_rise", p.position().add(p.getLookAngle().multiply(1, 0, 1).normalize().scale(2.2)), Vec3.ZERO, 0, null);
 		for (int k = 0; k < count; k++) {
 			double a = p.getYRot() * Math.PI / 180 + (k - (count - 1) / 2.0) * 0.9;
 			double x = p.getX() - Math.sin(a) * 2.2, z = p.getZ() + Math.cos(a) * 2.2;
-			Entity e = type.create(level);
-			if (!(e instanceof Mob m)) return;
+			com.snoringwalrus.ashbound.Thrall m = (great ? Mounts.CHAMPION : Mounts.REVENANT).get().create(level);
+			if (m == null) return;
+			m.tint(SpellLook.colour(look));
 			m.moveTo(x, p.getY(), z, p.getYRot(), 0);
 			m.finalizeSpawn(level, level.getCurrentDifficultyAt(m.blockPosition()), MobSpawnType.MOB_SUMMONED, null);
 			m.addTag(THRALL);
@@ -532,7 +698,7 @@ public final class Spells {
 			var dmg = m.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE);
 			if (dmg != null) dmg.setBaseValue(THRALL_DMG * pw * (1 + Passives.stat(p, "thrall_dmg%") / 100)); // the same for every school's thrall
 			level.addFreshEntity(m);
-			fx(level, FX_RISE, d.gate(), new Vec3(x, p.getY(), z), 0, null);
+			fx(level, FX_RISE, look, new Vec3(x, p.getY(), z), 0, null);
 			THRALLS.add(new Thrall(m, p.getUUID(), level.getGameTime() + (Passives.has(p, "long_thralls") ? 900 : 600)));
 		}
 		level.playSound(null, p.blockPosition(), SoundEvents.EVOKER_PREPARE_SUMMON, SoundSource.PLAYERS, 1f, 1f);
@@ -555,7 +721,7 @@ public final class Spells {
 				continue;
 			}
 			if (m.distanceToSqr(owner) > 32 * 32) m.teleportTo(owner.getX() + 1, owner.getY(), owner.getZ() + 1);
-			if (m.tickCount % 6 == 0) level.sendParticles(Vfx.wisp(THRALL_GLOW, 0.35f, 14, -0.02f, true), m.getX(), m.getY() + 0.15, m.getZ(), 1, 0.3, 0, 0.3, 0.005);
+			if (!(m instanceof com.snoringwalrus.ashbound.Thrall) && m.tickCount % 6 == 0) level.sendParticles(Vfx.wisp(THRALL_GLOW, 0.35f, 14, -0.02f, true), m.getX(), m.getY() + 0.15, m.getZ(), 1, 0.3, 0, 0.3, 0.005);
 		}
 	}
 

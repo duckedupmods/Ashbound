@@ -2766,5 +2766,19 @@
  "item.ashbound.bound_accord": "Bound Accord",
  "item.ashbound.founders_brand": "The Founder's Brand",
  "key.ashbound.joined_skill": "Joined Weapon Skill",
- "key.ashbound.journal": "Journal"
+ "key.ashbound.journal": "Journal",
+ "key.ashbound.heal_target": "Heal target (look at a player, or next in party)",
+ "entity.ashbound.thrall_revenant": "Bound Revenant",
+  "entity.ashbound.thrall_champion": "Bound Champion",
+  "key.ashbound.form": "Awakening Form",
+  "key.ashbound.skills": "Skills",
+  "key.ashbound.skill_1": "Skill key 2",
+  "key.ashbound.skill_2": "Skill key 3",
+  "key.ashbound.skill_3": "Skill key 4",
+  "key.ashbound.mount": "Call or dismiss your mount",
+ "entity.ashbound.mount_ashmane": "Ashmane",
+ "entity.ashbound.mount_rimehorn": "Rimehorn",
+ "entity.ashbound.mount_gravefang": "Gravefang",
+ "entity.ashbound.mount_thornback": "Thornback",
+ "entity.ashbound.mount_stormdrake": "Stormdrake"
 }

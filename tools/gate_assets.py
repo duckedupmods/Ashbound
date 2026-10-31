@@ -130,8 +130,18 @@ def main():
         ],
     }
     write(os.path.join(ROOT, "models", "block", "gate_scorch.json"), model)
-    write(os.path.join(ROOT, "blockstates", "gate_scorch.json"),
-          {"variants": {"": [{"model": "ashbound:block/gate_scorch", "y": r} for r in (0, 90, 180, 270)]}})
+    wall = dict(model, elements=[
+        {"from": [0, 0, 0.05], "to": [16, 16, 0.2],
+         "faces": {"south": {"uv": [0, 0, 16, 16], "texture": "#char"}}},
+        {"from": [0, 0, 0.25], "to": [16, 16, 0.25], "shade": False,
+         "faces": {"south": {"uv": [0, 0, 16, 16], "texture": "#cracks", "tintindex": 0,
+                             "neoforge_data": {"block_light": 15, "sky_light": 15}}}},
+    ])
+    write(os.path.join(ROOT, "models", "block", "gate_scorch_wall.json"), wall)
+    parts = [{"when": {"floor": "true"}, "apply": [{"model": "ashbound:block/gate_scorch", "y": r} for r in (0, 90, 180, 270)]}]
+    for side, r in (("north", 0), ("east", 90), ("south", 180), ("west", 270)):
+        parts.append({"when": {side: "true"}, "apply": {"model": "ashbound:block/gate_scorch_wall", "y": r}})
+    write(os.path.join(ROOT, "blockstates", "gate_scorch.json"), {"multipart": parts})
     lang_path = os.path.join(ROOT, "lang", "en_us.json")
     with open(lang_path, encoding="utf-8") as f:
         lang = json.load(f)

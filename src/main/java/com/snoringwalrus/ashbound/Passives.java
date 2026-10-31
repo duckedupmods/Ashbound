@@ -521,7 +521,7 @@ public final class Passives {
 			if (live.contains(n.area())) v += n.stats().getOrDefault(key, 0.0);
 			v += n.always().getOrDefault(key, 0.0);
 		}
-		return v + Curios.stat(p, key);   // worn curios' stats that no attribute holds (bow damage, Ash...)
+		return v + Classes.stat(p, key) + Curios.stat(p, key);   // worn curios' stats that no attribute holds (bow damage, Ash...)
 	}
 
 	/** whether one of your live nodes carries this mechanic */

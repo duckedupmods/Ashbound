@@ -93,16 +93,18 @@ public final class Levels {
 		if (m == null) return;
 		// its own health (a foreman's raised one too), not what it grew for a party
 		AttributeInstance hp = dead.getAttribute(Attributes.MAX_HEALTH);
-		double worth = hp != null ? hp.getBaseValue() : dead.getMaxHealth();
-		double ash = worth * Balance.ash(m.rank());
-		int coins = (int) Math.round(worth * Balance.coins(m.rank()));
+		double worth = (hp != null ? hp.getBaseValue() : dead.getMaxHealth()) * Balance.paysFor(dead);
+		String rank = Balance.paysAs(dead, m.rank());
+		double ash = worth * Balance.ash(rank);
+		int coins = (int) Math.round(worth * Balance.coins(rank));
 		List<ServerPlayer> near = level.getEntitiesOfClass(ServerPlayer.class, dead.getBoundingBox().inflate(Balance.radius()), p -> !p.isSpectator());
 		if (near.isEmpty() && e.getSource().getEntity() instanceof ServerPlayer killer) near = List.of(killer);
 		near = new java.util.ArrayList<>(near);
 		near.addAll(Party.alongside(near, Party.SHARE));
+		double share = Balance.share(near.size());
 		for (ServerPlayer p : near) {
-			give(p, Math.max(1, (int) Math.round(ash * (1 + Passives.stat(p, "ash%") / 100))));
-			if (coins > 0) Coins.give(p, (int) Math.round(coins * (1 + Passives.stat(p, "coins%") / 100)));
+			give(p, Math.max(1, (int) Math.round(ash * share * (1 + Passives.stat(p, "ash%") / 100))));
+			if (coins > 0) Coins.give(p, (int) Math.round(coins * share * (1 + Passives.stat(p, "coins%") / 100)));
 		}
 	}
 
@@ -124,6 +126,7 @@ public final class Levels {
 		p.level().playSound(null, p.blockPosition(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 0.8f, 0.8f);
 		health(p, lv, true);
 		send(p, false, true);
+		Skills.remind(p);
 	}
 
 	/** sets the health that goes with your level and tells the client */

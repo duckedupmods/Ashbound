@@ -15,6 +15,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import net.minecraft.world.InteractionHand;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -44,6 +45,7 @@ import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
+import yesman.epicfight.api.collider.Collider;
 import yesman.epicfight.api.event.EpicFightEventHooks;
 import yesman.epicfight.api.utils.math.OpenMatrix4f;
 import yesman.epicfight.gameasset.Armatures;
@@ -67,7 +69,10 @@ public final class GateMobs {
 
 	/** A kind: its id, the mesh efmob wrote, "biped" or "spider", how much bigger than the mesh it's drawn, its hitbox. */
 	public record Kind(String id, String mesh, boolean spider, float scale, float w, float h, double hp, double speed, double dmg,
-			double armor, double kb, boolean boss, boolean key, boolean fire, int egg, int spots) {}
+			double armor, double kb, boolean boss, boolean key, boolean fire, int egg, int spots, float reach) {}
+
+	/** Built on four legs (efmob.mounted): how much of a clip's hip motion each keeps. A rider's horse none, a beast enough to lunge. */
+	public static final Map<String, Float> ON_ALL_FOURS = Map.of("winter_marshal", 0f, "bone_hound", 0.35f, "grave_rat", 0.35f);
 
 	public static final List<Kind> KINDS = load();
 	static final Map<Kind, DeferredHolder<EntityType<?>, EntityType<Walker>>> WALKER = new LinkedHashMap<>();
@@ -84,7 +89,8 @@ public final class GateMobs {
 						o.get("scale").getAsFloat(), o.get("w").getAsFloat(), o.get("h").getAsFloat(), o.get("hp").getAsDouble(),
 						o.get("speed").getAsDouble(), o.get("dmg").getAsDouble(), o.get("armor").getAsDouble(), o.get("kb").getAsDouble(),
 						o.has("boss") && o.get("boss").getAsBoolean(), o.has("key") && o.get("key").getAsBoolean(),
-						o.has("fire") && o.get("fire").getAsBoolean(), o.get("egg").getAsInt(), o.get("spots").getAsInt()));
+						o.has("fire") && o.get("fire").getAsBoolean(), o.get("egg").getAsInt(), o.get("spots").getAsInt(),
+						o.has("reach") ? o.get("reach").getAsFloat() : 0));
 			}
 		} catch (Exception e) {
 			Ashbound.LOG.error("gate monsters not loaded", e);
@@ -95,6 +101,7 @@ public final class GateMobs {
 	private static AttributeSupplier.Builder stats(Kind k) {
 		Balance.Mult b = Balance.mob(k.id());
 		return Monster.createMonsterAttributes().add(Attributes.FOLLOW_RANGE, k.boss() ? 48 : 32).add(Attributes.MAX_HEALTH, k.hp() * b.hp())
+				.add(Attributes.STEP_HEIGHT, k.boss() ? 1.6 : 0.6)
 				.add(Attributes.MOVEMENT_SPEED, k.speed()).add(Attributes.ATTACK_DAMAGE, k.dmg() * b.dmg()).add(Attributes.ARMOR, k.armor())
 				.add(Attributes.KNOCKBACK_RESISTANCE, k.kb());
 	}
@@ -287,6 +294,7 @@ public final class GateMobs {
 		protected void customServerAiStep() {
 			super.customServerAiStep();
 			MobSkills.tick(this);
+			MobMoves.press(this, kind);
 		}
 	}
 
@@ -312,7 +320,13 @@ public final class GateMobs {
 		public void setAIAsInfantry(boolean holdingRangedWeapon) {
 			Kind k = original.kind;
 			original.goalSelector.addGoal(0, new AnimatedAttackGoal<>(this, MobMoves.<HumanoidMobPatch<?>>behaviours(original, k).build(this)));
-			original.goalSelector.addGoal(1, new TargetChasingGoal(this, original, 1.0D, true, MobMoves.stopAt(k)));
+			original.goalSelector.addGoal(1, new TargetChasingGoal(this, original, MobMoves.chase(k), true, MobMoves.stopAt(k)));
+		}
+
+		@Override
+		public Collider getColliderMatching(InteractionHand hand) {
+			Collider own = MobMoves.collider(original.kind);
+			return own != null ? own : super.getColliderMatching(hand);
 		}
 
 		@Override

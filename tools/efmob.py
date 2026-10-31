@@ -10,6 +10,7 @@ Epic Fight's mesh format and copies the texture.
     python tools/efmob.py cinderhusk
 """
 import json
+import math
 import shutil
 import sys
 
@@ -169,6 +170,39 @@ for _s, _side in (('l', 'L'), ('r', 'R')):
 RIGS['inkbound'] = biped('inkbound', {'lance': ('Hand_R', 'rightArm', 'fore_r')})
 
 
+
+def mounted(name):
+    """A rider on a four-legged mount, or a beast with no rider: the mount stays as modelled, the body on Root, its legs on the biped's legs (hind left
+    with fore right, so a walk is a trot). The rider is the biped from the waist up: the arms are his, not the mount's."""
+    bones = {b['name']: b for b in json.load(open(SRC + 'models/entity/%s/rig.json' % name, encoding='utf-8'))['bones']}
+    k = AT['Root'] / bones['hips']['pivot'][1]
+
+    def asis(b):
+        p = bones[b]['pivot']
+        return (p[0] * k, p[1] * k, p[2] * k)
+
+    rig = {b: ('Root', 'torso', asis(b), 1.0) for b in bones}   # whatever isn't a leg or the rider rides the body
+    for s, side, other in (('l', 'L', 'R'), ('r', 'R', 'L')):
+        hind, fore = ('leftLeg', 'rightLeg') if s == 'l' else ('rightLeg', 'leftLeg')
+        for b, joint, part in (('thigh_', 'Thigh_' + side, hind), ('shin_', 'Leg_' + side, hind), ('foot_', 'Leg_' + side, hind),
+                               ('arm_', 'Thigh_' + other, fore), ('fore_', 'Leg_' + other, fore), ('hand_', 'Leg_' + other, fore)):
+            rig[b + s] = (joint, part, asis(b + s), 1.0)
+    if 'rider' not in bones:   # a beast on all fours: Bone Hound, Grave Rat
+        return rig
+    seat, shoulders = bones['rider']['pivot'][1] * k, bones['rarm_l']['pivot'][1] * k
+    rig['rider'] = (None, 'torso', (0, seat), (AT['Arm'] - seat) / (shoulders - seat))
+    rig['rhead'] = ('Head', 'head', (0, AT['Head']), 1.0)
+    for s, side, sx, arm in (('l', 'L', 1, 'leftArm'), ('r', 'R', -1, 'rightArm')):
+        rig['rarm_' + s] = ('Arm_' + side, arm, (sx * AT['arm_x'], AT['Arm']), 1.0)
+        rig['rfore_' + s] = ('Hand_' + side, arm, (sx * AT['arm_x'], AT['Hand']), 1.0)
+        rig['rhand_' + s] = ('Hand_' + side, arm, 'rfore_' + s, 1.0)
+    return rig
+
+
+for _n in ('winter_marshal', 'bone_hound', 'grave_rat'):
+    RIGS[_n] = mounted(_n)
+
+
 # the parts Epic Fight's humanoid meshes look up; the ones we don't have get an empty stand-in
 PARTS = ['head', 'torso', 'rightArm', 'leftArm', 'rightLeg', 'leftLeg', 'hat', 'jacket', 'rightSleeve', 'leftSleeve',
          'rightPants', 'leftPants']
@@ -191,6 +225,17 @@ def load_obj(path):
             for k in range(1, len(ix) - 1):
                 tris.append((ix[0], ix[k], ix[k + 1]))
     return v, vt, vn, tris
+
+
+# a bone turned before it's fitted: (degrees it tips forward, the bone it turns about), innermost turn first
+BENDS = {'winter_marshal': {'neck': [(32, 'neck')], 'head': [(68, 'head'), (32, 'neck')]}}
+
+
+def forward(yz, deg, pivot):
+    """(y, z) tipped forward about pivot, up going towards +z"""
+    c, s = math.cos(math.radians(deg)), math.sin(math.radians(deg))
+    y, z = yz[0] - pivot[1], yz[1] - pivot[2]
+    return pivot[1] + y * c - z * s, pivot[2] + y * s + z * c
 
 
 def export(name):
@@ -219,10 +264,12 @@ def export(name):
         for tri in tris:
             for (vi, ti, ni) in tri:
                 x, y, z = v[vi]
+                for deg, about in BENDS.get(name, {}).get(bone, ()):
+                    y, z = forward((y, z), deg, bones[about]['pivot'])
                 # into the biped's place: scaled about our pivot, stretched along the bone, the pivot onto the joint
                 mx = land[0] + (x - pv[0]) * k
                 my = land[1] + (y - pv[1]) * k * stretch
-                mz = (z - pv[2]) * k
+                mz = (land[2] if len(land) > 2 else 0) + (z - pv[2]) * k
                 j = joint if joint else ('Torso' if my < AT['Chest'] else 'Chest')
                 # our frame -> Blender's, which Epic Fight's meshes are written in: x right, y forward, z up
                 p = (round(-mx, 5), round(mz, 5), round(my, 5), J[j])
@@ -230,6 +277,8 @@ def export(name):
                 u, w = vt[ti]
                 ui = index(ukey, uvs, (round(u, 6), round(1 - w, 6)))
                 nx, ny, nz = vn[ni]
+                for deg, about in BENDS.get(name, {}).get(bone, ()):
+                    ny, nz = forward((ny, nz), deg, (0, 0, 0))
                 ni2 = index(nkey, nrm, (round(-nx, 4), round(nz, 4), round(ny, 4)))
                 parts[part] += [pi, ui, ni2]
     for p in PARTS:

@@ -165,7 +165,7 @@ public final class Talk {
 			shown.add(0, new Option("Show me your wares.", "", "", "shop"));
 		String text = String.join("\n", n.lines().stream().map(l -> fill(p, k, l)).toList());
 		// now and then they've a favour to ask, and say so before anything else (Errands)
-		if (nodeId.equals(k.start())) {
+		if (nodeId.equals(k.start()) && !k.id().equals(Intro.KIND)) {
 			String hook = Errands.hook(p, npc);
 			if (!hook.isEmpty()) text = hook;
 			shown.addAll(0, Errands.options(p, npc));
@@ -285,6 +285,12 @@ public final class Talk {
 				close(p);
 				npc.stopTalking();
 				GateForge.open(p, npc);
+				return;
+			}
+			case "intro" -> {
+				close(p);
+				npc.stopTalking();
+				Intro.start(p, npc);
 				return;
 			}
 			case "quests" -> {

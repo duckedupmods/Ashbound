@@ -1,0 +1,14 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "group": "planks",
+ "category": "building",
+ "ingredients": [
+  {
+   "item": "ashbound:pine_log"
+  }
+ ],
+ "result": {
+  "id": "ashbound:cedar_planks",
+  "count": 4
+ }
+}

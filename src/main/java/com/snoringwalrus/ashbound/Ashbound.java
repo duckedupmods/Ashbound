@@ -26,10 +26,12 @@ public final class Ashbound {
 		Smithing.init();
 		ColdForge.init();
 		Story.init();
+		Intro.init();
 		BattleMode.init();
 		Incidents.init();
 		Waypoints.init();
 		Party.init();
+		Classes.init();
 		Weapons.ITEMS.register(bus);
 		Armors.all();
 		Armors.MATERIALS.register(bus);
@@ -39,6 +41,10 @@ public final class Ashbound {
 		GateLoot.register();
 		SilkMobs.register(bus);
 		GateMobs.register(bus);
+		Mounts.register(bus);
+		Skills.register();
+		Forms.register();
+		Books.register();
 		Townsfolk.register(bus);
 		Guild.init(bus);
 		Errands.init(bus);

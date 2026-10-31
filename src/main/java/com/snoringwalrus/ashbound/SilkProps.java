@@ -263,8 +263,23 @@ public final class SilkProps {
 		}
 	}
 
+	/** What's at `pos` to stock, a plain chest made a coffer first so that everyone finds their own share in it. */
+	static RandomizableContainerBlockEntity stocked(net.minecraft.server.level.ServerLevel level, BlockPos pos) {
+		if (level.getBlockEntity(pos) instanceof net.minecraft.world.level.block.entity.ChestBlockEntity) {
+			BlockState was = level.getBlockState(pos);
+			Direction facing = was.hasProperty(PropBlock.FACING) ? was.getValue(PropBlock.FACING) : Direction.NORTH;
+			level.setBlock(pos, ARCHIVE_COFFER.get().defaultBlockState().setValue(PropBlock.FACING, facing), Block.UPDATE_ALL);
+		}
+		return level.getBlockEntity(pos) instanceof RandomizableContainerBlockEntity c ? c : null;
+	}
+
+	/**
+	 * A coffer stocked from a loot table holds a share for each player, rolled when they first open it, so a party
+	 * never fights over a chest. Stocking it again starts everyone over. One with no table is a plain shared box.
+	 */
 	public static class CofferEntity extends RandomizableContainerBlockEntity {
 		private NonNullList<ItemStack> items = NonNullList.withSize(27, ItemStack.EMPTY);
+		private final java.util.Map<java.util.UUID, net.minecraft.world.SimpleContainer> shares = new java.util.HashMap<>();
 
 		public CofferEntity(BlockPos pos, BlockState state) {
 			super(COFFER.get(), pos, state);
@@ -287,7 +302,43 @@ public final class SilkProps {
 
 		@Override
 		protected AbstractContainerMenu createMenu(int id, Inventory inv) {
-			return ChestMenu.threeRows(id, inv, this);
+			return ChestMenu.threeRows(id, inv, getLootTable() == null || !(inv.player instanceof net.minecraft.server.level.ServerPlayer p) ? this : share(p));
+		}
+
+		/** The table stays: it's rolled for each player, never into the box itself. */
+		@Override
+		public void unpackLootTable(Player player) {
+		}
+
+		@Override
+		public void setLootTable(net.minecraft.resources.ResourceKey<net.minecraft.world.level.storage.loot.LootTable> table) {
+			super.setLootTable(table);
+			shares.clear();
+		}
+
+		private net.minecraft.world.SimpleContainer box() {
+			var c = new net.minecraft.world.SimpleContainer(getContainerSize()) {
+				@Override
+				public boolean stillValid(Player p) {
+					return net.minecraft.world.Container.stillValidBlockEntity(CofferEntity.this, p);
+				}
+			};
+			c.addListener(x -> setChanged());
+			return c;
+		}
+
+		public net.minecraft.world.SimpleContainer share(net.minecraft.server.level.ServerPlayer p) {
+			return shares.computeIfAbsent(p.getUUID(), u -> {
+				var c = box();
+				var server = (net.minecraft.server.level.ServerLevel) level;
+				var params = new net.minecraft.world.level.storage.loot.LootParams.Builder(server)
+						.withParameter(net.minecraft.world.level.storage.loot.parameters.LootContextParams.ORIGIN, net.minecraft.world.phys.Vec3.atCenterOf(worldPosition))
+						.withLuck(p.getLuck()).withParameter(net.minecraft.world.level.storage.loot.parameters.LootContextParams.THIS_ENTITY, p)
+						.create(net.minecraft.world.level.storage.loot.parameters.LootContextParamSets.CHEST);
+				server.getServer().reloadableRegistries().getLootTable(getLootTable()).fill(c, params, getLootTableSeed() ^ u.getLeastSignificantBits());
+				setChanged();
+				return c;
+			});
 		}
 
 		@Override
@@ -300,12 +351,28 @@ public final class SilkProps {
 			super.loadAdditional(tag, registries);
 			items = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
 			if (!tryLoadLootTable(tag)) ContainerHelper.loadAllItems(tag, items, registries);
+			shares.clear();
+			CompoundTag all = tag.getCompound("shares");
+			for (String u : all.getAllKeys()) {
+				NonNullList<ItemStack> held = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
+				ContainerHelper.loadAllItems(all.getCompound(u), held, registries);
+				var c = box();
+				for (int i = 0; i < held.size(); i++) c.setItem(i, held.get(i));
+				shares.put(java.util.UUID.fromString(u), c);
+			}
 		}
 
 		@Override
 		protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
 			super.saveAdditional(tag, registries);
 			if (!trySaveLootTable(tag)) ContainerHelper.saveAllItems(tag, items, registries);
+			CompoundTag all = new CompoundTag();
+			shares.forEach((u, c) -> {
+				NonNullList<ItemStack> held = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
+				for (int i = 0; i < held.size(); i++) held.set(i, c.getItem(i));
+				all.put(u.toString(), ContainerHelper.saveAllItems(new CompoundTag(), held, registries));
+			});
+			if (!all.isEmpty()) tag.put("shares", all);
 		}
 	}
 }

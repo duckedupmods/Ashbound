@@ -1,5 +1,6 @@
 package com.snoringwalrus.ashbound;
 
+import java.util.List;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -13,6 +14,7 @@ import com.google.gson.JsonParser;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -35,7 +37,10 @@ public final class Balance {
 	private static final Map<String, Double> FOREMAN = new HashMap<>();
 	private static final Map<String, double[]> ARMOUR = new HashMap<>(); // "heavy:C" -> armour, toughness
 	private static final Map<String, Double> ASH = new HashMap<>(), COINS = new HashMap<>(); // per point of health, by rank
-	private static double partyHp = 0.4, partyBossDmg = 0.05, partyRadius = 32;
+	private static final Map<String, double[]> NORMAL = new HashMap<>(); // a rank's plain monster: health, hit
+	private static final Map<String, Integer> BAND_TOP = new HashMap<>();
+	private static final Map<String, Double> CROWD = new HashMap<>();
+	private static double partyHp = 0.15, partyRoadHp = 0.15, partyBossDmg = 0.05, partyRadius = 32, partyShare = 0.25;
 	static double levelA = 80, levelP = 1.55, hpPerLevel = 0.4;
 	static int maxLevel = 100;
 
@@ -55,6 +60,12 @@ public final class Balance {
 				}
 			for (Map.Entry<String, JsonElement> e : o.getAsJsonObject("ash_per_hp").entrySet()) ASH.put(e.getKey(), e.getValue().getAsDouble());
 			for (Map.Entry<String, JsonElement> e : o.getAsJsonObject("coins_per_hp").entrySet()) COINS.put(e.getKey(), e.getValue().getAsDouble());
+			for (Map.Entry<String, JsonElement> e : o.getAsJsonObject("rank_normal").entrySet()) {
+				JsonArray a = e.getValue().getAsJsonArray();
+				NORMAL.put(e.getKey(), new double[] {a.get(0).getAsDouble(), a.get(1).getAsDouble()});
+			}
+			for (Map.Entry<String, JsonElement> e : o.getAsJsonObject("band_top").entrySet()) BAND_TOP.put(e.getKey(), e.getValue().getAsInt());
+			for (Map.Entry<String, JsonElement> e : o.getAsJsonObject("crowd").entrySet()) CROWD.put(e.getKey(), e.getValue().getAsDouble());
 			JsonObject lv = o.getAsJsonObject("levels");
 			levelA = lv.get("a").getAsDouble();
 			levelP = lv.get("p").getAsDouble();
@@ -62,8 +73,10 @@ public final class Balance {
 			hpPerLevel = o.getAsJsonObject("player").get("hp_per_level").getAsDouble();
 			JsonObject p = o.getAsJsonObject("party");
 			partyHp = p.get("hp_per_player").getAsDouble();
+			partyRoadHp = p.get("road_hp_per_player").getAsDouble();
 			partyBossDmg = p.get("boss_dmg_per_player").getAsDouble();
 			partyRadius = p.get("radius").getAsDouble();
+			partyShare = p.get("reward_share").getAsDouble();
 		} catch (Exception e) {
 			Ashbound.LOG.error("balance.json not loaded, monsters keep their own numbers", e);
 		}
@@ -88,6 +101,11 @@ public final class Balance {
 
 	static double radius() {
 		return partyRadius;
+	}
+
+	/** What each of n players near a kill gets of its Ash and coins: a party kills far faster for what a monster grows, so it still comes out ahead (about 1.5x solo) without running away from the game. */
+	static double share(int n) {
+		return 1 / (1 + partyShare * Math.max(0, n - 1));
 	}
 
 	/** a tower foreman's health, or twice its own if the tower isn't solved */
@@ -121,18 +139,104 @@ public final class Balance {
 		raiseHealthCap();
 		NeoForge.EVENT_BUS.addListener((LivingIncomingDamageEvent e) -> {
 			if (e.getSource().getEntity() instanceof Player && e.getEntity() instanceof Mob m) party(m);
+			if (e.getEntity() instanceof Player p && e.getSource().getEntity() instanceof Mob m) e.setAmount(e.getAmount() * crowded(p, m));
 		});
 	}
 
-	private static void party(Mob m) {
+	// --- camps: what keeps a crowd of monsters from taking you apart ---
+
+	private static final String LADDER = "FEDCBAS", SOFT = "ashbound_soft", SOFT_HP = "ashbound_soft_hp";
+	private static final ResourceLocation SOFTENED = ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "softened");
+	private static final long CROWD_TICKS = 20;
+	private static final Map<Player, long[]> LAST_BLOW = new java.util.WeakHashMap<>();
+
+	/** the rank a level plays at */
+	static String rankAt(int level) {
+		for (char r : LADDER.toCharArray())
+			if (level < BAND_TOP.getOrDefault(String.valueOf(r), 0)) return String.valueOf(r);
+		return "S";
+	}
+
+	/** A place outside a gate is never more than a rank above the best player near it: anything else there comes down to that rank, and pays like it. Walk into the void castle at level 5 and it's only a hard fight. */
+	static void soften(Mob m, String kind, int level) {
+		Mult own = solved(kind);
+		if (own == null) return;
+		int top = Math.min(LADDER.indexOf(rankAt(level)) + 1, LADDER.length() - 1);
+		if (LADDER.indexOf(own.rank()) <= top) return;
+		String to = LADDER.substring(top, top + 1);
+		double[] from = NORMAL.get(own.rank()), now = NORMAL.get(to);
+		if (from == null || now == null) return;
+		double hp = now[0] / from[0], hit = now[1] / from[1];
+		shrink(m.getAttribute(Attributes.MAX_HEALTH), hp);
+		shrink(m.getAttribute(Attributes.ATTACK_DAMAGE), hit);
+		shrink(m.getAttribute(Attributes.ARMOR), hit);
+		m.setHealth(m.getMaxHealth());
+		m.getPersistentData().putString(SOFT, to);
+		m.getPersistentData().putDouble(SOFT_HP, hp);
+	}
+
+	private static void shrink(AttributeInstance a, double to) {
+		if (a != null) a.addPermanentModifier(new AttributeModifier(SOFTENED, to - 1, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+	}
+
+	/** the rank a kill pays at */
+	static String paysAs(LivingEntity e, String own) {
+		String r = e.getPersistentData().getString(SOFT);
+		return r.isEmpty() ? own : r;
+	}
+
+	/** how much of its own health a kill is paid for */
+	static double paysFor(LivingEntity e) {
+		return e.getPersistentData().contains(SOFT_HP) ? e.getPersistentData().getDouble(SOFT_HP) : 1;
+	}
+
+	/** One monster hits you in full; the others that land inside the same second do a share of it. Bosses always hit in full. */
+	private static float crowded(Player p, Mob by) {
+		ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(by.getType());
+		Mult m = id.getNamespace().equals(Ashbound.ID) ? solved(id.getPath()) : null;
+		if (id.getNamespace().equals(Ashbound.ID) && m == null || boss(by)) return 1;
+		return crowded(p, by.getId(), p.level().getGameTime(), CROWD.getOrDefault(m == null ? "C" : paysAs(by, m.rank()), 1.0));
+	}
+
+	static float crowded(Player p, int by, long now, double share) {
+		long[] last = LAST_BLOW.get(p);
+		if (last != null && last[0] != by && now - last[1] < CROWD_TICKS) return (float) share;
+		LAST_BLOW.put(p, new long[] {by, now});
+		return 1;
+	}
+
+	/** Out in the world with nobody near who's found the capital yet: a party grows a monster far less, so a new one can take anything on. Gates stay full. */
+	static boolean road(boolean inGate, List<? extends Player> there) {
+		return !inGate && there.stream().noneMatch(p -> Coins.flag(p, "found_capital"));
+	}
+
+	/** Our monsters, and every other mod's: Cataclysm's and the rest grow for a party too. Vanilla's don't. */
+	static boolean scales(Mob m) {
 		ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(m.getType());
-		if (!id.getNamespace().equals(Ashbound.ID) || !MOBS.containsKey(id.getPath()) || m.getTags().contains(Spells.THRALL)) return;
-		int n = m.level().getEntitiesOfClass(Player.class, m.getBoundingBox().inflate(partyRadius), p -> !p.isSpectator()).size();
+		if (m.getTags().contains(Spells.THRALL)) return false;
+		if (id.getNamespace().equals(Ashbound.ID)) return MOBS.containsKey(id.getPath());
+		return !id.getNamespace().equals("minecraft") && m instanceof net.minecraft.world.entity.monster.Enemy;
+	}
+
+	/** Another mod's boss: tagged as one, or simply as big as one. */
+	private static final double BOSS_HEALTH = 150;
+
+	static boolean boss(Mob m) {
+		ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(m.getType());
+		if (id.getNamespace().equals(Ashbound.ID)) return "boss".equals(MOBS.get(id.getPath()).role());
+		return m.getType().is(net.neoforged.neoforge.common.Tags.EntityTypes.BOSSES) || m.getAttributeBaseValue(Attributes.MAX_HEALTH) >= BOSS_HEALTH;
+	}
+
+	private static void party(Mob m) {
+		if (!scales(m)) return;
+		List<Player> there = m.level().getEntitiesOfClass(Player.class, m.getBoundingBox().inflate(partyRadius), p -> !p.isSpectator());
+		int n = there.size();
 		if (n <= m.getPersistentData().getInt(SEEN)) return;
+		boolean road = road(m.level().dimension() == Lairs.GATES, there);
 		m.getPersistentData().putInt(SEEN, n);
 		float share = m.getHealth() / m.getMaxHealth();
-		grow(m.getAttribute(Attributes.MAX_HEALTH), partyHp * (n - 1));
-		if ("boss".equals(MOBS.get(id.getPath()).role())) grow(m.getAttribute(Attributes.ATTACK_DAMAGE), partyBossDmg * (n - 1));
+		grow(m.getAttribute(Attributes.MAX_HEALTH), (road ? partyRoadHp : partyHp) * (n - 1));
+		if (boss(m)) grow(m.getAttribute(Attributes.ATTACK_DAMAGE), road ? 0 : partyBossDmg * (n - 1));
 		m.setHealth(m.getMaxHealth() * share);
 	}
 

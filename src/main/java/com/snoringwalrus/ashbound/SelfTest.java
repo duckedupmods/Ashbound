@@ -18,6 +18,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.util.FakePlayer;
 import net.neoforged.neoforge.common.util.FakePlayerFactory;
 import net.neoforged.neoforge.gametest.GameTestHolder;
@@ -138,6 +139,458 @@ public final class SelfTest {
 		z.setHealth(5000);
 		c.near(z.getMaxHealth(), 5000, 0.1, "max health above vanilla's 1024");
 		c.near(z.getHealth(), 5000, 0.1, "health fills past 1024");
+		c.end(h);
+	}
+
+	// ---------------------------------------------------------------- the classes
+
+	@GameTest(template = "selftest")
+	public static void classes(GameTestHelper h) {
+		Checks c = new Checks("classes");
+		c.check(Classes.ALL.size() == 9, "nine classes");
+		for (Classes.Cls k : Classes.ALL) {
+			c.check(!Classes.icon(k).isEmpty(), k.id() + "'s weapon exists");
+			c.check(Classes.kit(k).stream().noneMatch(s -> s.isEmpty()), k.id() + "'s whole kit exists");
+			c.check(Classes.kit(k).size() <= 14, k.id() + "'s kit fits the chooser");
+			c.check(k.perkKey().endsWith("%") || k.perkValue() <= 2, k.id() + "'s bonus is a small one");
+		}
+		FakePlayer p = player(h, 1);
+		int coins = Coins.of(p);
+		Classes.pick(p, "wizard");
+		c.check(Classes.of(p) == null, "a class that doesn't exist is ignored");
+		Classes.pick(p, "hunter");
+		c.check(Classes.of(p) == Classes.byId("hunter"), "a pick takes");
+		c.check(p.getMainHandItem().getItem() == Classes.icon(Classes.byId("hunter")).getItem(), "the weapon is in hand");
+		c.check(!p.getItemBySlot(net.minecraft.world.entity.EquipmentSlot.CHEST).isEmpty(), "the armour is worn");
+		c.near(Coins.of(p) - coins, Classes.START_COINS, 0, "the coins arrive");
+		c.near(Passives.stat(p, "arrow%"), 8, 0.001, "the class's bonus reaches the tree's stat");
+		int arrows = p.getInventory().countItem(Items.ARROW);
+		c.near(arrows, 320, 0, "a hunter sets out with five stacks of arrows");
+		c.check(p.getInventory().countItem(Items.IRON_PICKAXE) == 1 && p.getInventory().countItem(Items.RED_BED) == 1, "everyone gets tools and a bed");
+		c.check(!p.getItemBySlot(net.minecraft.world.entity.EquipmentSlot.LEGS).isEmpty(), "the legs are worn too");
+		Classes.pick(p, "hunter");
+		Classes.pick(p, "shade");
+		c.check(Classes.of(p) == Classes.byId("hunter"), "a second pick can't change class");
+		c.near(p.getInventory().countItem(Items.ARROW), arrows, 0, "a second pick gives no second kit");
+		c.near(Coins.of(p) - coins, Classes.START_COINS, 0, "a second pick gives no more coins");
+		c.end(h);
+	}
+
+	// ---------------------------------------------------------------- the mounts
+
+	@GameTest(template = "selftest")
+	public static void mounts(GameTestHelper h) {
+		Checks c = new Checks("mounts");
+		c.check(Mounts.ALL.size() == 5, "five mounts");
+		for (Mounts.Kind k : Mounts.ALL) {
+			var m = Mounts.type(k).create(h.getLevel());
+			c.check(m != null && m.kind == k, k.id() + " can be made");
+			c.near(m.getAttributeValue(net.minecraft.world.entity.ai.attributes.Attributes.STEP_HEIGHT), k.step(), 0.001, k.id() + "'s step height");
+			c.check(!m.hurt(h.getLevel().damageSources().generic(), 1000), k.id() + " can't be hurt");
+			m.discard();
+		}
+		FakePlayer p = player(h, 7);
+		Mounts.pick(p, "thornback");
+		c.check(Mounts.of(p) == null, "no mount before a class");
+		Classes.pick(p, "shade");
+		Mounts.pick(p, "griffin");
+		c.check(Mounts.of(p) == null, "a mount that doesn't exist is ignored");
+		Mounts.pick(p, "thornback");
+		c.check(Mounts.of(p) == Mounts.byId("thornback"), "a pick takes");
+		Mounts.pick(p, "ashmane");
+		c.check(Mounts.of(p) == Mounts.byId("thornback"), "a second pick can't change mount");
+		p.setPos(p.getX(), p.getY() + 24, p.getZ());   // the test room is too small for it
+		Mounts.toggle(p);
+		// a FakePlayer refuses to ride anything, so this stops at the mount turning up
+		var called = h.getLevel().getEntitiesOfClass(Mount.class, p.getBoundingBox().inflate(2));
+		c.check(called.size() == 1 && called.get(0).kind == Mounts.of(p), "the key calls your mount");
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void tidy(GameTestHelper h) {
+		Checks c = new Checks("tidy");
+		FakePlayer p = player(h, 8);
+		var inv = p.getInventory();
+		inv.setItem(0, new net.minecraft.world.item.ItemStack(Items.TORCH, 5));
+		inv.setItem(20, new net.minecraft.world.item.ItemStack(Items.STONE, 40));
+		inv.setItem(30, new net.minecraft.world.item.ItemStack(Items.STONE, 40));
+		inv.setItem(12, new net.minecraft.world.item.ItemStack(Items.IRON_SWORD));
+		Tidy.act(p, Tidy.SORT);
+		c.check(inv.getItem(9).is(Items.IRON_SWORD), "gear sorts first");
+		c.check(inv.getItem(10).is(Items.STONE) && inv.getItem(10).getCount() == 64 && inv.getItem(11).getCount() == 16, "part stacks merge");
+		c.check(inv.getItem(0).is(Items.TORCH) && inv.getItem(0).getCount() == 5, "the hotbar stays put");
+		c.check(inv.countItem(Items.STONE) == 80, "nothing lost sorting");
+		var box = new net.minecraft.world.SimpleContainer(27);
+		box.setItem(3, new net.minecraft.world.item.ItemStack(Items.STONE, 1));
+		box.setItem(9, new net.minecraft.world.item.ItemStack(Items.DIAMOND, 4));
+		p.containerMenu = net.minecraft.world.inventory.ChestMenu.threeRows(1, inv, box);
+		Tidy.act(p, Tidy.STASH);
+		c.check(inv.countItem(Items.STONE) == 0 && !box.hasAnyMatching(s -> s.is(Items.IRON_SWORD)), "stash takes only what the box holds");
+		c.check(box.countItem(Items.STONE) == 81, "nothing lost stashing");
+		Tidy.act(p, Tidy.TAKE);
+		c.check(box.isEmpty() && inv.countItem(Items.DIAMOND) == 4 && inv.countItem(Items.STONE) == 81, "take all empties the box");
+		p.containerMenu = p.inventoryMenu;
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void skills(GameTestHelper h) {
+		Checks c = new Checks("skills");
+		c.check(Skills.SPECS.size() == 18 && Skills.ALL.size() == 54, "two paths a class, three skills each");
+		for (Classes.Cls k : Classes.ALL) c.check(Skills.specsOf(k.id()).size() == 2, k.id() + " has two paths");
+		for (Skills.Spec s : Skills.SPECS) c.check(Skills.of(s) != null, s.id() + " teaches a skill");
+		FakePlayer p = player(h, 1);
+		Skills.pick(p, "bastion_slam");
+		c.check(Skills.spec(p) == null, "no skill before a class");
+		Classes.pick(p, "vanguard");
+		Skills.pick(p, "bastion_slam");
+		c.check(Skills.spec(p) == null, "no skill before its level");
+		p.setData(Levels.LEVEL, Skills.SPEC_LEVEL);
+		Skills.pick(p, "cinder_field");
+		c.check(Skills.spec(p) == null, "no skill of another class");
+		Skills.pick(p, "bastion_slam");
+		c.check(Skills.spec(p) == Skills.spec("bulwark"), "a skill takes, and its path with it");
+		Skills.pick(p, "oath_charge");
+		c.check(Skills.rank(p, "oath_charge") == 0, "and the other for that level is gone");
+		c.check(Skills.rank(p, "bastion_slam") == 1 && Skills.slot(p, 1).equals("bastion_slam"), "it goes on the first free key");
+		Skills.teach(p, "bastion_slam", 3);
+		Skills.teach(p, "bastion_slam", 2);
+		c.check(Skills.rank(p, "bastion_slam") == 3, "a lower book doesn't take a rank away");
+		Skills.assign(p, 3, "bastion_slam");
+		c.check(Skills.slot(p, 3).equals("bastion_slam") && Skills.slot(p, 1).isEmpty(), "a skill moves between keys");
+		Skills.assign(p, 2, "deadeye");
+		c.check(Skills.slot(p, 2).isEmpty(), "a skill you don't know can't go on a key");
+		Skills.assign(p, 0, "bastion_slam");
+		c.check(Skills.slot(p, 0).isEmpty(), "the first key stays the held weapon's");
+		var boar = net.minecraft.world.entity.EntityType.ZOMBIE.create(h.getLevel());
+		boar.moveTo(p.getX() + 1, p.getY(), p.getZ());
+		h.getLevel().addFreshEntity(boar);
+		float was = boar.getHealth();
+		var patch = yesman.epicfight.world.capabilities.EpicFightCapabilities.getEntityPatch(p, yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch.class);
+		if (patch != null) patch.setStamina(patch.getMaxStamina());
+		Skills.use(p, 3);
+		c.check(boar.getHealth() < was, "the skill lands");
+		was = boar.getHealth();
+		Skills.use(p, 3);
+		c.check(boar.getHealth() == was, "and waits out its cooldown");
+		boar.discard();
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void forms(GameTestHelper h) {
+		Checks c = new Checks("forms");
+		c.check(Forms.ALL.size() == Classes.ALL.size(), "a Tome for every class");
+		for (Classes.Cls k : Classes.ALL) c.check(Forms.ALL.stream().filter(f -> f.cls().equals(k.id())).count() == 1, k.id() + " has its Tome");
+		c.check(Books.TOMES.size() == Forms.ALL.size() && Books.BOOKS.size() == Skills.MAX_RANK, "the books are all there");
+		FakePlayer p = player(h, 20);
+		Classes.pick(p, "vanguard");
+		Skills.pick(p, "bastion_slam");
+		var drake = Forms.byId("drake");
+		c.check(!Forms.read(p, Forms.byId("crown")), "another class's Tome can't be read");
+		c.check(Skills.slot(p, 1).equals("bastion_slam") && Skills.open(p) == Skills.SLOTS, "four keys before a Tome");
+		Skills.assign(p, 3, "bastion_slam");
+		c.check(Forms.read(p, drake), "your own can");
+		c.check(Skills.open(p) == Skills.SLOTS - 1 && Skills.slot(p, 3).isEmpty(), "and it costs the last key");
+		Skills.assign(p, 3, "bastion_slam");
+		c.check(Skills.slot(p, 3).isEmpty(), "that key stays gone");
+		c.check(!Forms.read(p, drake), "the same Tome twice does nothing");
+		p.setHealth(p.getMaxHealth());
+		Forms.key(p);
+		c.check(!Forms.active(p, "drake"), "no Form before its moment");
+		p.setHealth(p.getMaxHealth() * 0.25f);
+		Forms.key(p);
+		c.check(Forms.active(p, "drake"), "the Form comes under 30% health");
+		c.check(p.getArmorValue() == 0, "and takes your armour");
+		Forms.leave(p);
+		c.check(!Forms.active(p, "drake"), "it ends");
+		Forms.key(p);
+		c.check(!Forms.active(p, "drake"), "and rests before it comes again");
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void books(GameTestHelper h) {
+		Checks c = new Checks("books");
+		var r = net.minecraft.util.RandomSource.create(5);
+		int top = 0;
+		for (int i = 0; i < 2000; i++) top = Math.max(top, Books.rollRank('F', r));
+		c.check(top == 3, "an F dungeon's luck tops out at rank III");
+		for (int i = 0; i < 2000; i++) c.check(Books.rollRank('S', r) <= Skills.MAX_RANK, "never past the top");
+		FakePlayer p = player(h, 20);
+		Classes.pick(p, "ashcaster");
+		Skills.pick(p, "cinder_field");
+		var wrong = Books.book(3, "void_none");
+		p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, wrong);
+		wrong.getItem().use(h.getLevel(), p, net.minecraft.world.InteractionHand.MAIN_HAND);
+		c.check(Skills.rank(p, "cinder_field") == 1, "a blank book teaches nothing");
+		for (int[] step : new int[][] {{3, 3}, {3, 4}, {2, 4}, {5, 5}}) {
+			var b = Books.book(step[0], "cinder_field");
+			p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, b);
+			b.getItem().use(h.getLevel(), p, net.minecraft.world.InteractionHand.MAIN_HAND);
+			c.check(Skills.rank(p, "cinder_field") == step[1], "book " + step[0] + " leaves rank " + step[1]);
+		}
+		var w = Gear.WEAPONS.stream().map(i -> i.get()).filter(i -> i instanceof Spells.Staff s && s.kind().equals("black")).findFirst().orElseThrow();
+		p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, new net.minecraft.world.item.ItemStack(w));
+		double mine = Spells.boost(Spells.held(p), p);
+		c.check(mine > Spells.BOOST_FLOOR, "a black staff boosts an Ashcaster");
+		FakePlayer q = player(h, 20);
+		Classes.pick(q, "vanguard");
+		q.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, new net.minecraft.world.item.ItemStack(w));
+		c.near(Spells.boost(Spells.held(q), q), Spells.BOOST_FLOOR, 0.001, "and nobody else");
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void skillPaths(GameTestHelper h) {
+		Checks c = new Checks("skill paths");
+		c.check(Skills.ALL.size() == Skills.SPECS.size() * Skills.UNLOCK.length, "three skills on every path");
+		for (Skills.Spec s : Skills.SPECS) c.check(Skills.path(s.id()).size() == Skills.UNLOCK.length, s.id() + " has its three");
+		c.check(Skills.ALL.stream().map(Skills.Skill::id).distinct().count() == Skills.ALL.size(), "no two skills share an id");
+		for (Classes.Cls k : Classes.ALL) for (int t = 0; t < Skills.UNLOCK.length; t++) {
+			var two = Skills.choices(k.id(), t);
+			c.check(two.size() == 2 && !two.get(0).spec().equals(two.get(1).spec()), k.id() + " chooses between its two paths at level " + Skills.UNLOCK[t]);
+		}
+		FakePlayer p = player(h, 19);
+		Classes.pick(p, "vanguard");
+		Skills.pick(p, "shield_wall");
+		c.check(Skills.rank(p, "shield_wall") == 0, "not the second before the first");
+		Skills.pick(p, "bastion_slam");
+		Skills.pick(p, "oath_cross");
+		c.check(Skills.rank(p, "bastion_slam") == 1 && Skills.rank(p, "oath_cross") == 0, "at 19 only one skill");
+		c.check(Skills.pending(19, Skills.picks(p)) == -1, "with nothing to choose");
+		p.setData(Levels.LEVEL, 20);
+		c.check(Skills.pending(20, Skills.picks(p)) == 1, "20 is the next choice");
+		Skills.pick(p, "unbroken");
+		c.check(Skills.rank(p, "unbroken") == 0, "the third can't jump the queue");
+		Skills.pick(p, "oath_cross");
+		c.check(Skills.rank(p, "oath_cross") == 1 && Skills.slot(p, 2).equals("oath_cross"), "the second can be the other path's, and goes on the next key");
+		Skills.pick(p, "shield_wall");
+		c.check(Skills.rank(p, "shield_wall") == 0, "one a level");
+		var early = Books.book(2, "unbroken");
+		p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, early);
+		early.getItem().use(h.getLevel(), p, net.minecraft.world.InteractionHand.MAIN_HAND);
+		c.check(Skills.rank(p, "unbroken") == 2, "a book teaches a skill early, if you've not chosen on its level");
+		p.setData(Levels.LEVEL, 40);
+		c.check(Skills.pending(40, Skills.picks(p)) == -1, "and that was the choice");
+		var other = Books.book(3, "oath_charge");
+		p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, other);
+		other.getItem().use(h.getLevel(), p, net.minecraft.world.InteractionHand.MAIN_HAND);
+		c.check(Skills.rank(p, "oath_charge") == 0, "the other one for a level you've chosen on asks first");
+		Books.swap(p, "bastion_slam");
+		c.check(Skills.rank(p, "oath_charge") == 3 && Skills.rank(p, "bastion_slam") == 0, "and takes one of yours for it");
+		c.check(Skills.slot(p, 1).equals("oath_charge"), "on the same key");
+		c.check(p.getMainHandItem().isEmpty(), "the book's gone");
+		c.check(Skills.lost(p, "bastion_slam"), "the skill's lost");
+		Skills.pick(p, "bastion_slam");
+		c.check(Skills.rank(p, "bastion_slam") == 0, "and it can't be chosen back");
+		Books.swap(p, "oath_cross");
+		c.check(Skills.rank(p, "oath_cross") == 1, "no book, no swap");
+		var foreign = Books.book(5, "meteor");
+		p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, foreign);
+		foreign.getItem().use(h.getLevel(), p, net.minecraft.world.InteractionHand.MAIN_HAND);
+		Books.swap(p, "oath_cross");
+		c.check(Skills.rank(p, "meteor") == 0 && Skills.rank(p, "oath_cross") == 1, "another class's book does nothing");
+		FakePlayer old = player(h, 40);
+		Classes.pick(old, "vanguard");
+		old.setData(Skills.STATE, new java.util.HashMap<>(java.util.Map.of("spec", "bulwark", "rank.bastion_slam", "1", "rank.shield_wall", "2")));
+		c.check(Skills.pending(40, Skills.picks(old)) == 0, "a save from before");
+		Skills.settle(old);
+		c.check(Skills.pending(40, Skills.picks(old)) == 2, "keeps what it had and chooses the rest");
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void wagon(GameTestHelper h) {
+		Checks c = new Checks("the wagon at spawn");
+		Talk.Kind k = Talk.kind(Intro.KIND);
+		c.check(k != null, "the wagoner's words load");
+		if (k != null) {
+			boolean starts = false;
+			for (Talk.Option o : k.nodes().get(k.start()).options()) starts |= o.act().equals("intro");
+			c.check(starts, "he can start the telling");
+		}
+		net.minecraft.server.level.ServerLevel level = h.getLevel();
+		BlockPos at = new BlockPos(9000, level.getChunk(562, 562).getMinBuildHeight() + 70, 9000);
+		Intro.place(level, at, new net.minecraft.world.phys.Vec3(0, 0, 1));
+		var box = new net.minecraft.world.phys.AABB(at).inflate(12);
+		var there = level.getEntities((net.minecraft.world.entity.Entity) null, box, e -> true);
+		c.check(there.stream().filter(e -> e instanceof net.minecraft.world.entity.animal.horse.Horse).count() == 2, "two horses");
+		c.check(there.stream().anyMatch(e -> e instanceof Npc n && Intro.KIND.equals(n.kindId())), "and the wagoner");
+		c.check(there.stream().anyMatch(e -> e instanceof net.minecraft.world.entity.Display.BlockDisplay), "and his cart");
+		c.check(level.getBlockState(at).is(net.minecraft.world.level.block.Blocks.GRASS_BLOCK), "on level ground");
+		there.forEach(net.minecraft.world.entity.Entity::discard);
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void camps(GameTestHelper h) {
+		Checks c = new Checks("camps go easy early");
+		FakePlayer p = player(h, 1);
+		c.check(Balance.rankAt(1).equals("F") && Balance.rankAt(19).equals("E") && Balance.rankAt(90).equals("S"), "levels have ranks");
+		var type = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "void_sentinel"));
+		c.check(Balance.solved("void_sentinel") != null && "S".equals(Balance.solved("void_sentinel").rank()), "the void's monsters are rank S");
+		if (type.create(h.getLevel()) instanceof net.minecraft.world.entity.Mob late && type.create(h.getLevel()) instanceof net.minecraft.world.entity.Mob early) {
+			float hp = late.getMaxHealth();
+			double hit = late.getAttributeValue(Attributes.ATTACK_DAMAGE);
+			Balance.soften(late, "void_sentinel", 90);
+			c.near(late.getMaxHealth(), hp, 0.01, "a rank S player meets it as it is");
+			Balance.soften(early, "void_sentinel", 5);
+			c.check(early.getMaxHealth() < hp * 0.6f, "level 5 meets a rank E one: " + early.getMaxHealth() + " of " + hp);
+			c.check(early.getAttributeValue(Attributes.ATTACK_DAMAGE) < hit * 0.5, "and it hits like one: " + early.getAttributeValue(Attributes.ATTACK_DAMAGE) + " of " + hit);
+			c.near(early.getHealth(), early.getMaxHealth(), 0.01, "at full health");
+			c.check(Balance.paysAs(early, "S").equals("E") && Balance.paysFor(early) < 0.6, "and it pays like one");
+			late.discard();
+			early.discard();
+		}
+		c.near(Balance.crowded(p, 1, 100, 0.4), 1, 0.001, "the first blow is in full");
+		c.near(Balance.crowded(p, 2, 105, 0.4), 0.4, 0.001, "a second monster inside the second does a share");
+		c.near(Balance.crowded(p, 1, 110, 0.4), 1, 0.001, "the same monster keeps hitting in full");
+		c.near(Balance.crowded(p, 3, 125, 0.4), 0.4, 0.001, "the crowd stays cut while the first one's on you");
+		c.near(Balance.crowded(p, 3, 140, 0.4), 1, 0.001, "and a lone blow later is in full");
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void hitStop(GameTestHelper h) {
+		Checks c = new Checks("hit stop and party");
+		FakePlayer p = player(h, 20);
+		c.check(!HitStop.held(p) && !HitStop.owes(p), "nothing to start with");
+		HitStop.hold(p, 2);
+		c.check(HitStop.held(p) && !HitStop.owes(p), "held");
+		c.check(java.util.Arrays.stream(yesman.epicfight.api.animation.AnimationPlayer.class.getDeclaredMethods()).anyMatch(m -> m.getName().contains("ashbound$hold")), "the swing really stops: Epic Fight's player is patched");
+		c.check(HitStop.ticks(0) == 1 && HitStop.ticks(1) == 3, "a heavy blow stops longer");
+		c.near(Balance.share(1), 1, 0.001, "alone you keep it all");
+		c.check(Balance.share(4) > 0.5 && Balance.share(4) < 0.6, "four share, and still beat going alone");
+		for (Skills.Skill s : Skills.ALL)
+			if (s.cost() > 25) c.check(s.cost() <= 100, s.id() + " fits on a 100 mana bar");
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void skillStrength(GameTestHelper h) {
+		Checks c = new Checks("what a skill's multiplier is of");
+		FakePlayer p = player(h, 20);
+		Classes.pick(p, "hunter");
+		var bow = Gear.WEAPONS.stream().map(i -> i.get()).filter(i -> i instanceof net.minecraft.world.item.BowItem).findFirst().orElseThrow();
+		p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, new net.minecraft.world.item.ItemStack(bow));
+		c.check(JoinedSkills.strength(p) > 3, "a bow's skills aren't a bare hand's: " + JoinedSkills.strength(p));
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void skillsRun(GameTestHelper h) {
+		Checks c = new Checks("every skill runs");
+		for (Classes.Cls k : Classes.ALL) {
+			FakePlayer p = player(h, 40);
+			Classes.pick(p, k.id());
+			for (Skills.Skill s : Skills.ofClass(k.id()))
+				try {
+					s.act().run(p, 1);
+				} catch (RuntimeException e) {
+					c.check(false, s.id() + " threw " + e);
+				}
+		}
+		c.check(true, "all " + Skills.ALL.size() + " ran");
+		c.end(h);
+	}
+
+	// ---------------------------------------------------------------- what the first play session asked for
+
+	/** A tag naming one block that doesn't exist loses everything in it, vanilla's too, and nothing can be mined. */
+	@GameTest(template = "selftest")
+	public static void toolsWork(GameTestHelper h) {
+		Checks c = new Checks("toolsWork");
+		var pick = new net.minecraft.world.item.ItemStack(Items.IRON_PICKAXE);
+		var axe = new net.minecraft.world.item.ItemStack(Items.IRON_AXE);
+		var shovel = new net.minecraft.world.item.ItemStack(Items.IRON_SHOVEL);
+		var stone = net.minecraft.world.level.block.Blocks.COBBLESTONE.defaultBlockState();
+		c.check(pick.isCorrectToolForDrops(stone) && pick.getDestroySpeed(stone) > 1, "an iron pickaxe mines cobblestone");
+		var iron = net.minecraft.world.level.block.Blocks.IRON_ORE.defaultBlockState();
+		c.check(pick.isCorrectToolForDrops(iron), "and iron ore");
+		c.check(axe.getDestroySpeed(net.minecraft.world.level.block.Blocks.OAK_LOG.defaultBlockState()) > 1, "an axe chops wood");
+		c.check(axe.getDestroySpeed(net.minecraft.world.level.block.Blocks.CRAFTING_TABLE.defaultBlockState()) > 1, "and a crafting table");
+		c.check(shovel.getDestroySpeed(net.minecraft.world.level.block.Blocks.DIRT.defaultBlockState()) > 1, "a shovel digs dirt");
+		var log = new net.minecraft.world.item.ItemStack(WorldBlocks.WILDWOOD_LOG.get());
+		c.check(log.is(net.minecraft.tags.ItemTags.LOGS), "wildwood is a log");
+		c.check(h.getLevel().getRecipeManager().byKey(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "wildwood_log_to_planks")).isPresent(), "and makes planks");
+		c.check(new net.minecraft.world.item.ItemStack(net.minecraft.core.registries.BuiltInRegistries.ITEM.get(
+				net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "cedar_planks"))).is(net.minecraft.tags.ItemTags.PLANKS), "our planks craft like any planks");
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void gateOdds(GameTestHelper h) {
+		Checks c = new Checks("gateOdds");
+		double total = 0;
+		for (int i = 0; i < GateEntity.RANKS.length; i++) if (GateDungeons.has(i)) total += Gates.odds(i, 0, true);
+		c.check(Gates.odds(0, 0, true) / total > 0.7, "most gates on the road to the capital are F");
+		c.check(Gates.odds(0, 0, false) > Gates.odds(1, 0, false) && Gates.odds(1, 0, false) > Gates.odds(2, 0, false), "from F, each rank up is rarer");
+		c.check(Gates.odds(6, 6, false) > Gates.odds(0, 6, false), "a late player sees their own rank");
+		FakePlayer p = player(h, 40);
+		var zombie = EntityType.ZOMBIE.create(h.getLevel());
+		c.check(!Balance.scales(zombie), "vanilla monsters don't grow for a party");
+		if (net.neoforged.fml.ModList.get().isLoaded("cataclysm")) {
+			var type = net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.get(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("cataclysm", "ignis"));
+			if (type.create(h.getLevel()) instanceof net.minecraft.world.entity.Mob ignis) {
+				c.check(Balance.scales(ignis), "another mod's monster grows like ours");
+				c.check(Balance.boss(ignis), "and its boss is known as one");
+			} else c.check(false, "cataclysm:ignis exists");
+		}
+		c.check(Balance.road(false, List.of(p)), "no capital found: a party counts for little out in the world");
+		c.check(!Balance.road(true, List.of(p)), "but gates stay full");
+		c.check(Gates.home(p) == 0, "no capital found: home is F, whatever the level");
+		Coins.setFlag(p, "found_capital");
+		c.check(Gates.home(p) == 3, "level 40 is ready for C");
+		c.check(!Balance.road(false, List.of(p)), "someone who's found it brings the full scaling");
+		for (int i = 0; i < 200; i++) c.check(GateDungeons.has(Gates.roll(h.getLevel().random, p)), "a roll is a built rank");
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void sharedChests(GameTestHelper h) {
+		Checks c = new Checks("sharedChests");
+		BlockPos at = h.absolutePos(new BlockPos(2, 1, 2));
+		h.getLevel().setBlock(at, SilkProps.ARCHIVE_COFFER.get().defaultBlockState(), 3);
+		var box = (SilkProps.CofferEntity) h.getLevel().getBlockEntity(at);
+		var table = net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.LOOT_TABLE,
+				net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "chests/wayside"));
+		box.setLootTable(table, 7L);
+		FakePlayer a = player(h, 5), b = player(h, 5);
+		var mine = box.share(a);
+		c.check(!mine.isEmpty(), "a stocked coffer has something in it");
+		mine.clearContent();
+		c.check(box.share(a).isEmpty(), "your share stays as you left it");
+		c.check(!box.share(b).isEmpty(), "taking yours leaves the other player's");
+		box.setLootTable(table, 8L);
+		c.check(!box.share(a).isEmpty(), "stocked again, everyone starts over");
+		for (String id : List.of("chests/wayside")) c.check(h.getLevel().getServer().reloadableRegistries().getLootTable(table) != null, id + " loads");
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void gateScorch(GameTestHelper h) {
+		Checks c = new Checks("gateScorch");
+		var level = h.getLevel();
+		BlockPos cell = h.absolutePos(new BlockPos(2, 3, 2));
+		level.setBlock(cell.north(), net.minecraft.world.level.block.Blocks.STONE.defaultBlockState(), 3);
+		var wall = Gates.SCORCH.get().defaultBlockState().setValue(GateScorch.FLOOR, false).setValue(GateScorch.NORTH, true);
+		c.check(wall.canSurvive(level, cell), "char lies on a side with stone behind it");
+		level.setBlock(cell, wall, 3);
+		level.setBlock(cell.north(), net.minecraft.world.level.block.Blocks.AIR.defaultBlockState(), 3);
+		c.check(level.getBlockState(cell).isAir(), "and goes when the stone does");
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void healOne(GameTestHelper h) {
+		Checks c = new Checks("healOne");
+		FakePlayer p = player(h, 20);
+		c.check(Spells.healTarget(p) == null, "alone, a white staff has no one to aim at");
+		Spells.pickHealTarget(p, "nobody");
+		c.check(Spells.healTarget(p) == null, "a name that isn't in your party heals no one");
+		Spells.pickHealTarget(p, "");
 		c.end(h);
 	}
 

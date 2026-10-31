@@ -102,6 +102,10 @@ public final class Net {
 	/** the curio key: 0 the worn relic's power, 1 a Gryphon Plume double jump, 2 (sneaking) the Rift Key */
 	/** CurioKey's value for the R key's Joined skill. */
 	public static final int JOINED_SKILL = 9;
+	/** CurioKey's value for the mount key. */
+	public static final int MOUNT = 10;
+	/** CurioKey's value for the Form key. */
+	public static final int FORM = 11;
 
 	public record CurioKey(int what) implements CustomPacketPayload {
 		public static final Type<CurioKey> TYPE = id("curio_key");
@@ -168,6 +172,135 @@ public final class Net {
 		@Override public Type<JournalPick> type() { return TYPE; }
 	}
 
+	/** Your class; empty means the server wants you to choose one. */
+	public record ClassState(String key) implements CustomPacketPayload {
+		public static final Type<ClassState> TYPE = id("class_state");
+		public static final StreamCodec<ByteBuf, ClassState> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, ClassState::key, ClassState::new);
+		@Override public Type<ClassState> type() { return TYPE; }
+	}
+
+	/** The party member your white staff answers to; empty for none. */
+	public record HealPick(String name) implements CustomPacketPayload {
+		public static final Type<HealPick> TYPE = id("heal_pick");
+		public static final StreamCodec<ByteBuf, HealPick> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, HealPick::name, HealPick::new);
+		@Override public Type<HealPick> type() { return TYPE; }
+	}
+
+	/** Your mount, or empty to ask you for one. */
+	public record MountState(String key) implements CustomPacketPayload {
+		public static final Type<MountState> TYPE = id("mount_state");
+		public static final StreamCodec<ByteBuf, MountState> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, MountState::key, MountState::new);
+		@Override public Type<MountState> type() { return TYPE; }
+	}
+
+	/** Your first path, what you know as skill=rank, your keys, and the levels you've chosen on. */
+	public record SkillState(String spec, java.util.List<String> known, java.util.List<String> bar, int picks) implements CustomPacketPayload {
+		public static final Type<SkillState> TYPE = id("skill_state");
+		public static final StreamCodec<ByteBuf, SkillState> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, SkillState::spec,
+				ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), SkillState::known, ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), SkillState::bar, ByteBufCodecs.VAR_INT, SkillState::picks, SkillState::new);
+		@Override public Type<SkillState> type() { return TYPE; }
+	}
+
+	/** A blow that landed: both of them stop for a moment (HitStop). */
+	public record HitHold(int by, int on, int ticks) implements CustomPacketPayload {
+		public static final Type<HitHold> TYPE = id("hit_hold");
+		public static final StreamCodec<ByteBuf, HitHold> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, HitHold::by, ByteBufCodecs.VAR_INT, HitHold::on, ByteBufCodecs.VAR_INT, HitHold::ticks, HitHold::new);
+		@Override public Type<HitHold> type() { return TYPE; }
+	}
+
+	public record SkillCool(String key, int ticks) implements CustomPacketPayload {
+		public static final Type<SkillCool> TYPE = id("skill_cool");
+		public static final StreamCodec<ByteBuf, SkillCool> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, SkillCool::key, ByteBufCodecs.VAR_INT, SkillCool::ticks, SkillCool::new);
+		@Override public Type<SkillCool> type() { return TYPE; }
+	}
+
+	public record SkillUse(int slot) implements CustomPacketPayload {
+		public static final Type<SkillUse> TYPE = id("skill_use");
+		public static final StreamCodec<ByteBuf, SkillUse> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, SkillUse::slot, SkillUse::new);
+		@Override public Type<SkillUse> type() { return TYPE; }
+	}
+
+	public record SkillPick(String key) implements CustomPacketPayload {
+		public static final Type<SkillPick> TYPE = id("skill_pick");
+		public static final StreamCodec<ByteBuf, SkillPick> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, SkillPick::key, SkillPick::new);
+		@Override public Type<SkillPick> type() { return TYPE; }
+	}
+
+	public record SkillSet(int slot, String key) implements CustomPacketPayload {
+		public static final Type<SkillSet> TYPE = id("skill_set");
+		public static final StreamCodec<ByteBuf, SkillSet> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, SkillSet::slot, ByteBufCodecs.STRING_UTF8, SkillSet::key, SkillSet::new);
+		@Override public Type<SkillSet> type() { return TYPE; }
+	}
+
+	/** Your Form: which, whether its moment has come, ticks left in it, ticks until it can come again. */
+	public record FormState(String form, boolean ready, int left, int rest) implements CustomPacketPayload {
+		public static final Type<FormState> TYPE = id("form_state");
+		public static final StreamCodec<ByteBuf, FormState> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, FormState::form, ByteBufCodecs.BOOL, FormState::ready,
+				ByteBufCodecs.VAR_INT, FormState::left, ByteBufCodecs.VAR_INT, FormState::rest, FormState::new);
+		@Override public Type<FormState> type() { return TYPE; }
+	}
+
+	/** Who's in what Form, for everyone who can see them; empty when it ends. */
+	public record FormAura(int entity, String form) implements CustomPacketPayload {
+		public static final Type<FormAura> TYPE = id("form_aura");
+		public static final StreamCodec<ByteBuf, FormAura> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, FormAura::entity, ByteBufCodecs.STRING_UTF8, FormAura::form, FormAura::new);
+		@Override public Type<FormAura> type() { return TYPE; }
+	}
+
+	/** A skill's look: its name, where, which way, how big, and who it's on. */
+	public record SkillFx(String look, org.joml.Vector3f at, org.joml.Vector3f dir, float r, int on) implements CustomPacketPayload {
+		public static final Type<SkillFx> TYPE = id("skill_fx");
+		public static final StreamCodec<ByteBuf, SkillFx> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, SkillFx::look, ByteBufCodecs.VECTOR3F, SkillFx::at, ByteBufCodecs.VECTOR3F, SkillFx::dir,
+				ByteBufCodecs.FLOAT, SkillFx::r, ByteBufCodecs.VAR_INT, SkillFx::on, SkillFx::new);
+		@Override public Type<SkillFx> type() { return TYPE; }
+	}
+
+	/** Ticks of no more than 0 cuts it. */
+	public record HealBeam(int from, int to, int ticks, String gate) implements CustomPacketPayload {
+		public static final Type<HealBeam> TYPE = id("heal_beam");
+		public static final StreamCodec<ByteBuf, HealBeam> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, HealBeam::from, ByteBufCodecs.VAR_INT, HealBeam::to, ByteBufCodecs.VAR_INT, HealBeam::ticks,
+				ByteBufCodecs.STRING_UTF8, HealBeam::gate, HealBeam::new);
+		@Override public Type<HealBeam> type() { return TYPE; }
+	}
+
+	/** The book in your hand wants one of your skills. */
+	public record BookOffer(String skill, int rank) implements CustomPacketPayload {
+		public static final Type<BookOffer> TYPE = id("book_offer");
+		public static final StreamCodec<ByteBuf, BookOffer> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, BookOffer::skill, ByteBufCodecs.VAR_INT, BookOffer::rank, BookOffer::new);
+		@Override public Type<BookOffer> type() { return TYPE; }
+	}
+
+	public record BookSwap(String give) implements CustomPacketPayload {
+		public static final Type<BookSwap> TYPE = id("book_swap");
+		public static final StreamCodec<ByteBuf, BookSwap> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, BookSwap::give, BookSwap::new);
+		@Override public Type<BookSwap> type() { return TYPE; }
+	}
+
+	public record TomeRead(String form) implements CustomPacketPayload {
+		public static final Type<TomeRead> TYPE = id("tome_read");
+		public static final StreamCodec<ByteBuf, TomeRead> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, TomeRead::form, TomeRead::new);
+		@Override public Type<TomeRead> type() { return TYPE; }
+	}
+
+	/** A Tidy button. */
+	public record InvTidy(int what) implements CustomPacketPayload {
+		public static final Type<InvTidy> TYPE = id("inv_tidy");
+		public static final StreamCodec<ByteBuf, InvTidy> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, InvTidy::what, InvTidy::new);
+		@Override public Type<InvTidy> type() { return TYPE; }
+	}
+
+	public record MountPick(String key) implements CustomPacketPayload {
+		public static final Type<MountPick> TYPE = id("mount_pick");
+		public static final StreamCodec<ByteBuf, MountPick> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, MountPick::key, MountPick::new);
+		@Override public Type<MountPick> type() { return TYPE; }
+	}
+
+	public record ClassPick(String key) implements CustomPacketPayload {
+		public static final Type<ClassPick> TYPE = id("class_pick");
+		public static final StreamCodec<ByteBuf, ClassPick> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, ClassPick::key, ClassPick::new);
+		@Override public Type<ClassPick> type() { return TYPE; }
+	}
+
 	/** What the compass points at. */
 	/** A guild request as the Journal shows it. */
 	public record PartyMember(String name, float health, float max, boolean leader, boolean online, boolean near) {
@@ -204,6 +337,21 @@ public final class Net {
 		public static final StreamCodec<ByteBuf, QuestTrack> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, QuestTrack::title, ByteBufCodecs.VAR_INT, QuestTrack::x,
 				ByteBufCodecs.VAR_INT, QuestTrack::z, ByteBufCodecs.BOOL, QuestTrack::has, QuestTrack::new);
 		@Override public Type<QuestTrack> type() { return TYPE; }
+	}
+
+	/** Hob's telling starts: where the wagon stands and which way it faces, and where Highmourn is if there's one. */
+	public record IntroPlay(BlockPos at, float yaw, boolean known, int x, int z) implements CustomPacketPayload {
+		public static final Type<IntroPlay> TYPE = id("intro_play");
+		public static final StreamCodec<ByteBuf, IntroPlay> CODEC = StreamCodec.composite(BlockPos.STREAM_CODEC, IntroPlay::at, ByteBufCodecs.FLOAT, IntroPlay::yaw,
+				ByteBufCodecs.BOOL, IntroPlay::known, ByteBufCodecs.VAR_INT, IntroPlay::x, ByteBufCodecs.VAR_INT, IntroPlay::z, IntroPlay::new);
+		@Override public Type<IntroPlay> type() { return TYPE; }
+	}
+
+	/** The telling's over on this client, or was skipped. */
+	public record IntroDone() implements CustomPacketPayload {
+		public static final Type<IntroDone> TYPE = id("intro_done");
+		public static final StreamCodec<ByteBuf, IntroDone> CODEC = StreamCodec.unit(new IntroDone());
+		@Override public Type<IntroDone> type() { return TYPE; }
 	}
 
 	public record ColdWake(BlockPos centre, float face, int ends, int swap) implements CustomPacketPayload {
@@ -310,6 +458,7 @@ public final class Net {
 	public static Consumer<ForgeOpen> onForge = m -> {};
 	public static Consumer<ForgeStart> onForgeStart = m -> {};
 	public static Consumer<ColdWake> onColdWake = m -> {};
+	public static Consumer<IntroPlay> onIntro = m -> {};
 	public static Consumer<JournalState> onJournal = m -> {};
 	public static Consumer<QuestTrack> onQuestTrack = m -> {};
 	public static Consumer<GuildJobs> onGuildJobs = m -> {};
@@ -318,6 +467,11 @@ public final class Net {
 	public static Consumer<ForgeEcho> onForgeEcho = m -> {};
 	public static Consumer<QuestBoard> onBoard = m -> {};
 	public static Runnable onCard = () -> {};
+	public static Runnable onClassAsk = () -> {};
+	public static Runnable onMountAsk = () -> {};
+	public static java.util.function.Consumer<FormAura> onFormAura = m -> {};
+	public static java.util.function.Consumer<SkillFx> onSkillFx = m -> {};
+	public static java.util.function.Consumer<HealBeam> onHealBeam = m -> {};
 
 	static void register(IEventBus bus) {
 		bus.addListener((RegisterPayloadHandlersEvent e) -> {
@@ -353,6 +507,8 @@ public final class Net {
 			r.playToServer(ForgeCraft.TYPE, ForgeCraft.CODEC, (m, ctx) -> GateForge.onCraft(m, (ServerPlayer) ctx.player()));
 			r.playToClient(ForgeStart.TYPE, ForgeStart.CODEC, (m, ctx) -> onForgeStart.accept(m));
 			r.playToClient(ColdWake.TYPE, ColdWake.CODEC, (m, ctx) -> onColdWake.accept(m));
+			r.playToClient(IntroPlay.TYPE, IntroPlay.CODEC, (m, ctx) -> onIntro.accept(m));
+			r.playToServer(IntroDone.TYPE, IntroDone.CODEC, (m, ctx) -> Intro.done((ServerPlayer) ctx.player()));
 			r.playToClient(JournalState.TYPE, JournalState.CODEC, (m, ctx) -> onJournal.accept(m));
 			r.playToClient(QuestTrack.TYPE, QuestTrack.CODEC, (m, ctx) -> onQuestTrack.accept(m));
 			r.playToClient(GuildJobs.TYPE, GuildJobs.CODEC, (m, ctx) -> onGuildJobs.accept(m));
@@ -367,9 +523,54 @@ public final class Net {
 				relicCdEnd = System.currentTimeMillis() + relicCdTotal;
 			});
 			r.playToServer(CurioKey.TYPE, CurioKey.CODEC, (m, ctx) -> {
-				if (m.what() == JOINED_SKILL) JoinedSkills.use((ServerPlayer) ctx.player());
+				if (m.what() == JOINED_SKILL) Skills.use((ServerPlayer) ctx.player(), 0);
+				else if (m.what() == MOUNT) Mounts.toggle((ServerPlayer) ctx.player());
+				else if (m.what() == FORM) Forms.key((ServerPlayer) ctx.player());
 				else CurioFx.key((ServerPlayer) ctx.player(), m.what());
 			});
+			r.playToClient(ClassState.TYPE, ClassState.CODEC, (m, ctx) -> {
+				Classes.client = m.key();
+				if (m.key().isEmpty()) onClassAsk.run();
+			});
+			r.playToClient(MountState.TYPE, MountState.CODEC, (m, ctx) -> {
+				Mounts.client = m.key();
+				if (m.key().isEmpty()) onMountAsk.run();
+			});
+			r.playToServer(MountPick.TYPE, MountPick.CODEC, (m, ctx) -> Mounts.pick((ServerPlayer) ctx.player(), m.key()));
+			r.playToServer(InvTidy.TYPE, InvTidy.CODEC, (m, ctx) -> Tidy.act((ServerPlayer) ctx.player(), m.what()));
+			r.playToServer(TomeRead.TYPE, TomeRead.CODEC, (m, ctx) -> Books.confirm((ServerPlayer) ctx.player(), m.form()));
+			r.playToClient(BookOffer.TYPE, BookOffer.CODEC, (m, ctx) -> Books.onOffer.accept(m));
+			r.playToServer(BookSwap.TYPE, BookSwap.CODEC, (m, ctx) -> Books.swap((ServerPlayer) ctx.player(), m.give()));
+			r.playToClient(FormState.TYPE, FormState.CODEC, (m, ctx) -> {
+				Forms.clientForm = m.form();
+				Forms.clientReady = m.ready();
+				Forms.clientUntil = System.currentTimeMillis() + m.left() * 50L;
+				Forms.clientRest = System.currentTimeMillis() + m.rest() * 50L;
+			});
+			r.playToClient(FormAura.TYPE, FormAura.CODEC, (m, ctx) -> onFormAura.accept(m));
+			r.playToClient(SkillFx.TYPE, SkillFx.CODEC, (m, ctx) -> onSkillFx.accept(m));
+			r.playToClient(HealBeam.TYPE, HealBeam.CODEC, (m, ctx) -> onHealBeam.accept(m));
+			r.playToServer(SkillUse.TYPE, SkillUse.CODEC, (m, ctx) -> Skills.use((ServerPlayer) ctx.player(), m.slot()));
+			r.playToServer(SkillPick.TYPE, SkillPick.CODEC, (m, ctx) -> Skills.pick((ServerPlayer) ctx.player(), m.key()));
+			r.playToServer(SkillSet.TYPE, SkillSet.CODEC, (m, ctx) -> Skills.assign((ServerPlayer) ctx.player(), m.slot(), m.key()));
+			r.playToClient(SkillState.TYPE, SkillState.CODEC, (m, ctx) -> {
+				Skills.clientSpec = m.spec();
+				Skills.clientPicks = m.picks();
+				java.util.Map<String, Integer> ranks = new java.util.HashMap<>();
+				for (String k : m.known()) ranks.put(k.substring(0, k.indexOf('=')), Integer.parseInt(k.substring(k.indexOf('=') + 1)));
+				Skills.clientRanks = ranks;
+				Skills.clientBar = m.bar().toArray(new String[0]);
+			});
+			r.playToClient(HitHold.TYPE, HitHold.CODEC, (m, ctx) -> {
+				for (int id : new int[] {m.by(), m.on()}) {
+					var held = ctx.player().level().getEntity(id);
+					if (held != null) HitStop.hold(held, m.ticks());
+				}
+			});
+			r.playToClient(SkillCool.TYPE, SkillCool.CODEC, (m, ctx) ->
+					Skills.clientCooling.put(m.key(), new long[] {System.currentTimeMillis() + m.ticks() * 50L, m.ticks() * 50L}));
+			r.playToServer(HealPick.TYPE, HealPick.CODEC, (m, ctx) -> Spells.pickHealTarget((ServerPlayer) ctx.player(), m.name()));
+			r.playToServer(ClassPick.TYPE, ClassPick.CODEC, (m, ctx) -> Classes.pick((ServerPlayer) ctx.player(), m.key()));
 			r.playToServer(NpcPick.TYPE, NpcPick.CODEC, (m, ctx) -> Talk.onPick(m, (ServerPlayer) ctx.player()));
 			r.playToServer(ShopTrade.TYPE, ShopTrade.CODEC, (m, ctx) -> Shop.onTrade(m, (ServerPlayer) ctx.player()));
 		});

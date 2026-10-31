@@ -15,6 +15,7 @@ ROOT = "E:/EFTest/game/"
 SRC = ROOT + "tools/renders/vfx_flip/"
 OUT = ROOT + "src/main/resources/assets/ashbound/textures/vfx/spell.png"
 CELL = 256
+SMOKE_LEVEL = 0.56
 
 
 def fire_frame(path):
@@ -24,9 +25,10 @@ def fire_frame(path):
 
 
 def smoke_frame(path):
+    """the shader multiplies this by 2.4, so the lit side sits just under that or its shading burns out; a small median takes the renderer's speckle out"""
     im = Image.open(path).convert("RGBA")
-    v = im.convert("L")
-    return Image.merge("RGBA", (v, v, v, im.getchannel("A")))
+    v = im.convert("L").filter(ImageFilter.MedianFilter(3)).point(lambda x: int(x * SMOKE_LEVEL))
+    return Image.merge("RGBA", (v, v, v, im.getchannel("A").filter(ImageFilter.MedianFilter(3))))
 
 
 def edge_mask():

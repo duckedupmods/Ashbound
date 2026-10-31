@@ -21,7 +21,7 @@ import net.neoforged.neoforge.client.event.RegisterShadersEvent;
 public final class GateShaders {
 	private GateShaders() {}
 
-	static ShaderInstance rift, glow, shard, particle, spell;
+	static ShaderInstance rift, glow, shard, particle, spell, post;
 
 	@SubscribeEvent
 	static void register(RegisterShadersEvent e) throws IOException {
@@ -30,6 +30,7 @@ public final class GateShaders {
 		e.registerShader(load(e, "gate_shard"), s -> shard = s);
 		e.registerShader(load(e, "gate_particle"), s -> particle = s);
 		e.registerShader(load(e, "spell_fx"), s -> spell = s);
+		e.registerShader(new ShaderInstance(e.getResourceProvider(), ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "spell_post"), DefaultVertexFormat.POSITION_TEX), s -> post = s);
 	}
 
 	private static ShaderInstance load(RegisterShadersEvent e, String name) throws IOException {

@@ -20,6 +20,8 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import yesman.epicfight.api.collider.MultiOBBCollider;
+import yesman.epicfight.api.collider.Collider;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
 import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.gameasset.Animations;
@@ -139,7 +141,30 @@ public final class MobMoves {
 
 	/** How far its swings reach from its middle: the stance's, grown with its size, plus half its own width. */
 	static double reach(GateMobs.Kind k) {
+		if (k.reach() > 0) return k.reach() * k.scale() * 0.85 + k.w() * 0.5;
 		return stance(k).reach() * Math.max(1.0, k.scale() * 0.85) + k.w() * 0.5;
+	}
+
+	/** A boss's chase, about a walking player's pace. A mob's ground speed goes with the square of its speed stat, so 0.29 is 3.7 blocks a second. */
+	private static final double BOSS_PACE = 0.29;
+
+	static double chase(GateMobs.Kind k) {
+		return k.boss() ? Math.max(1.0, BOSS_PACE / k.speed()) : 1.0;
+	}
+
+	/** The biggest bosses often don't fit the pathfinder's way through trees: with no path, a boss just walks at you. */
+	static void press(Mob m, GateMobs.Kind k) {
+		LivingEntity t = m.getTarget();
+		if (!k.boss() || t == null || !m.getNavigation().isDone() || MobSkills.busy(m) || m.distanceTo(t) <= stopAt(k)) return;
+		m.getMoveControl().setWantedPosition(t.getX(), t.getY(), t.getZ(), chase(k));
+	}
+
+	private static final Map<GateMobs.Kind, Collider> COLLIDERS = new java.util.concurrent.ConcurrentHashMap<>();
+
+	/** Its swing's hit box: as long as the weapon you see (tools/efskin.py), down the grip. Epic Fight scales it with the model. */
+	static Collider collider(GateMobs.Kind k) {
+		if (k.reach() <= 0) return null;
+		return COLLIDERS.computeIfAbsent(k, x -> new MultiOBBCollider(3, 0.35, 0.5, x.reach() / 2, 0, 0, -x.reach() / 2));
 	}
 
 	static AnimationAccessor<? extends StaticAnimation> dash(GateMobs.Kind k) {

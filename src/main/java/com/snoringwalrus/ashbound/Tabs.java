@@ -39,6 +39,8 @@ public final class Tabs {
 			out.add(ColdForge.SHARD.get());
 			out.add(ColdForge.EMBER.get());
 			out.add(ColdForge.BRAND.get());
+			for (int i = 0; i < Books.BOOKS.size(); i++) out.add(Books.book(i + 1, Skills.ALL.get(0).id()).getItem());
+			Books.TOMES.forEach(i -> out.add(i.get()));
 		});
 		tab("monsters", "Ashbound: Monsters", () -> new ItemStack(Monsters.CINDERHUSK_EGG.get()), out -> {
 			GateMobs.EGGS.forEach(i -> out.add(i.get()));

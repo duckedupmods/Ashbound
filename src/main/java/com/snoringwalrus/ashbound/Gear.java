@@ -222,13 +222,17 @@ public final class Gear {
 
 	/** an arrow off one of our bows hits as hard as the bow's rank */
 	private static void bowDamage(AbstractArrow a, Player p) {
+		a.setBaseDamage(a.getBaseDamage() * bowPower(p));
+	}
+
+	/** what the bow in hand does to an arrow's damage */
+	static double bowPower(Player p) {
 		for (ItemStack s : List.of(p.getMainHandItem(), p.getOffhandItem())) {
 			Weapon w = WEAPON.get(BuiltInRegistries.ITEM.getKey(s.getItem()).getPath());
-			if (w != null && w.kind().equals("bow") && BuiltInRegistries.ITEM.getKey(s.getItem()).getNamespace().equals(Ashbound.ID)) {
-				a.setBaseDamage(a.getBaseDamage() * 2.3 * scale(w.rank()) * (w.boss() ? 1.1 : 1) * Smithing.mult(s));
-				return;
-			}
+			if (w != null && w.kind().equals("bow") && BuiltInRegistries.ITEM.getKey(s.getItem()).getNamespace().equals(Ashbound.ID))
+				return 2.3 * scale(w.rank()) * (w.boss() ? 1.1 : 1) * Smithing.mult(s);
 		}
+		return 1;
 	}
 
 	/** the bows and shields, for their drawn and raised looks (client) */

@@ -104,6 +104,10 @@ public final class Capital {
 		final Map<Long, java.util.List<com.google.gson.JsonArray>> props = new HashMap<>();
 	}
 
+	/** What's left in a village's chests and some of its barrels. */
+	private static final net.minecraft.resources.ResourceKey<net.minecraft.world.level.storage.loot.LootTable> WAYSIDE = net.minecraft.resources.ResourceKey.create(
+			net.minecraft.core.registries.Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "chests/wayside"));
+
 	static final class Site {
 		final Data d;
 		/** The city's centre (a chunk corner, so the file's chunks are the world's). */
@@ -351,7 +355,7 @@ public final class Capital {
 		level.addFreshEntity(d);
 	}
 
-	private static net.minecraft.nbt.ListTag floats(float... v) {
+	static net.minecraft.nbt.ListTag floats(float... v) {
 		net.minecraft.nbt.ListTag l = new net.minecraft.nbt.ListTag();
 		for (float f : v) l.add(net.minecraft.nbt.FloatTag.valueOf(f));
 		return l;
@@ -366,6 +370,8 @@ public final class Capital {
 			p.set(cp.getMinBlockX() + (v & 15), s.floor + (v >> 8) - 2048, cp.getMinBlockZ() + ((v >> 4) & 15));
 			BlockState st = s.d.palette[what[i]];
 			level.setBlock(p, st, 2);
+			if (!s.name.equals("highmourn") && (st.is(Blocks.CHEST) || st.is(Blocks.BARREL) && level.getRandom().nextInt(3) == 0))
+				net.minecraft.world.RandomizableContainer.setBlockEntityLootTable(level, level.getRandom(), p, WAYSIDE);
 			if (s.d.flow[what[i]]) {
 				FluidState f = st.getFluidState();
 				if (!f.isEmpty()) level.scheduleTick(p.immutable(), f.getType(), 1);

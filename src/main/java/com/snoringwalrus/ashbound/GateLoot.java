@@ -103,6 +103,7 @@ public final class GateLoot {
 			give(p, mat(d, 2, 1));
 			give(p, mat(d, 1, 1 + r.nextInt(2)));
 			give(p, mat(d, 0, 4 + r.nextInt(4)));
+			Books.drops(p, d.rank(), r).forEach(b -> give(p, b));
 			if (!pool.isEmpty() && r.nextFloat() < 0.20f) {
 				Gear.Weapon w = pool.get(r.nextInt(pool.size()));
 				Item it = Gear.item(w.id());

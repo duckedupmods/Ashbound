@@ -1,0 +1,27 @@
+{
+ "name": "Hob Tarrant",
+ "title": "Wagoner",
+ "tags": [
+  "wagoner",
+  "adult",
+  "m"
+ ],
+ "start": "start",
+ "nodes": {
+  "start": {
+   "text": [
+    "A cinematic will start. If you play in a party, wait for all the players."
+   ],
+   "options": [
+    {
+     "text": "Everyone's here. Start.",
+     "do": "intro"
+    },
+    {
+     "text": "Not yet.",
+     "do": "close"
+    }
+   ]
+  }
+ }
+}

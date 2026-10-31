@@ -12,9 +12,6 @@ import javax.annotation.Nullable;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSetSubtitleTextPacket;
@@ -41,7 +38,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.event.EventHooks;
@@ -197,10 +193,8 @@ public final class MobSkills {
 					anim(m, Animations.BIPED_LANDING);
 					sound(m, SoundEvents.RAVAGER_ROAR, 0.8f, 1.3f);
 				}
-				if (s.t < 10) {
-					ring(level, m.position(), 1.2 * size, Spells.spark(gate), 10);
-					yield false;
-				}
+				if (s.t == 0) fx(level, "gather", gate, m.position().add(0, 1, 0), new Vec3(10, 0, 0), (float) (1.6 * size), null);
+				if (s.t < 10) yield false;
 				if (s.t == 10) {
 					Vec3 to = t != null ? t.position() : m.position().add(m.getLookAngle().scale(6));
 					Vec3 d = to.subtract(m.position());
@@ -208,6 +202,8 @@ public final class MobSkills {
 					m.setDeltaMovement(d.x / flight, 0.75 + Math.min(0.6, d.length() * 0.03), d.z / flight);
 					m.hasImpulse = true;
 					s.at = to;
+					fx(level, "launch", gate, m.position(), Vec3.ZERO, 2, null);
+					fx(level, "tell", gate, to, new Vec3(flight, 0, 0), (float) (2.6 * size), null);
 					yield false;
 				}
 				m.getNavigation().stop();
@@ -221,19 +217,21 @@ public final class MobSkills {
 			}
 			case "slam" -> {
 				Vec3 at = m.position().add(flat(m.getLookAngle()).scale(MobMoves.reach(k) * 0.55));
-				if (s.t == 0) anim(m, k.spider() ? Animations.SPIDER_JUMP_ATTACK : Animations.BIPED_MOB_GREATSWORD);
-				if (s.t < 14) {
-					if (s.t % 3 == 0) ring(level, at, 2.2 * size, Spells.dust(colour(gate), 1.6f), 16);
-					yield false;
+				if (s.t == 0) {
+					anim(m, k.spider() ? Animations.SPIDER_JUMP_ATTACK : Animations.BIPED_MOB_GREATSWORD);
+					fx(level, "tell", gate, at, new Vec3(14, 0, 0), (float) (2.4 * size), null);
 				}
+				if (s.t < 14) yield false;
 				if (s.t == 14) slam(m, level, s, at, 2.4 * size, atk * 1.6f, 1.0, gate);
 				yield s.t > 26;
 			}
 			case "charge" -> {
-				if (s.t == 0) sound(m, SoundEvents.RAVAGER_ROAR, 1f, 0.9f);
+				if (s.t == 0) {
+					sound(m, SoundEvents.RAVAGER_ROAR, 1f, 0.9f);
+					fx(level, "gather", gate, m.position().add(0, 1, 0), new Vec3(14, 0, 0), (float) (1.6 * size), null);
+				}
 				if (s.t < 14) {
 					if (t != null) m.getLookControl().setLookAt(t, 90, 90);
-					level.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, m.getX(), m.getY() + 0.2, m.getZ(), 2, 0.4, 0.1, 0.4, 0.01);
 					yield false;
 				}
 				if (s.t == 14) s.dir = flat(t != null ? t.position().subtract(m.position()) : m.getLookAngle()).normalize();
@@ -241,12 +239,12 @@ public final class MobSkills {
 				m.setDeltaMovement(s.dir.x * speed, m.getDeltaMovement().y, s.dir.z * speed);
 				m.setYRot((float) (Mth.atan2(s.dir.z, s.dir.x) * Mth.RAD_TO_DEG) - 90f);
 				m.yBodyRot = m.getYRot();
-				level.sendParticles(Spells.dust(colour(gate), 1.4f), m.getX(), m.getY() + 0.3, m.getZ(), 4, 0.4, 0.2, 0.4, 0);
+				if (s.t % 3 == 0) fx(level, "dash", gate, m.position(), s.dir, 0, null);
 				for (LivingEntity v : victims(m, m.getBoundingBox().inflate(0.6), s))
 					hit(m, v, atk * 1.4f, 1.6, gate, s);
 				if (m.horizontalCollision && s.t > 16) {
 					sound(m, SoundEvents.ANVIL_LAND, 0.8f, 0.6f);
-					level.sendParticles(ParticleTypes.EXPLOSION, m.getX(), m.getY() + 1, m.getZ(), 2, 0.3, 0.3, 0.3, 0);
+					fx(level, "crash", gate, m.position().add(0, 1, 0), Vec3.ZERO, 0, null);
 					yield true;
 				}
 				yield s.t > 14 + 22;
@@ -257,7 +255,7 @@ public final class MobSkills {
 				if (s.t % 6 == 3) {
 					double r = MobMoves.reach(k) * 1.15;
 					sound(m, SoundEvents.PLAYER_ATTACK_SWEEP, 1f, 0.7f);
-					ring(level, m.position().add(0, 1, 0), r, ParticleTypes.SWEEP_ATTACK, 8);
+					fx(level, "spin", gate, m.position(), new Vec3(Math.cos(s.t), 0, Math.sin(s.t)), (float) r, null);
 					s.struck.clear();
 					for (LivingEntity v : victims(m, m.getBoundingBox().inflate(r, 0.5, r), s))
 						if (v.distanceToSqr(m) < r * r) hit(m, v, atk * 0.75f, 0.6, gate, s);
@@ -270,9 +268,7 @@ public final class MobSkills {
 				if (s.t >= 10 && (s.t - 10) % 3 == 0) {
 					int n = (s.t - 10) / 3;
 					Vec3 p = m.position().add(s.dir.scale(1.5 + n * 1.7));
-					BlockState ground = level.getBlockState(BlockPos.containing(p).below());
-					level.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, ground), p.x, p.y + 0.3, p.z, 30, 0.5, 0.3, 0.5, 0.2);
-					level.sendParticles(Spells.spark(gate), p.x, p.y + 0.5, p.z, 12, 0.4, 0.6, 0.4, 0.05);
+					fx(level, "quake", gate, p, Vec3.ZERO, 0, null);
 					sound(level, p, SoundEvents.GENERIC_EXPLODE.value(), 0.5f, 0.7f);
 					s.struck.clear();
 					for (LivingEntity v : victims(m, new AABB(p, p).inflate(1.6, 1.5, 1.6), s)) {
@@ -285,8 +281,7 @@ public final class MobSkills {
 			case "roar" -> {
 				if (s.t == 0) sound(m, k.boss() ? SoundEvents.WARDEN_ROAR : SoundEvents.RAVAGER_ROAR, 1.2f, 0.8f);
 				if (s.t == 10) {
-					level.sendParticles(ParticleTypes.SONIC_BOOM, m.getX(), m.getEyeY(), m.getZ(), 1, 0, 0, 0, 0);
-					ring(level, m.position().add(0, 0.5, 0), 4, Spells.spark(gate), 30);
+					fx(level, "roar", gate, m.getEyePosition(), Vec3.ZERO, 0, null);
 					for (Player p : level.getEntitiesOfClass(Player.class, m.getBoundingBox().inflate(9), p -> p.isAlive() && !p.isSpectator())) {
 						p.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1));
 						p.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 80, 0));
@@ -299,8 +294,7 @@ public final class MobSkills {
 				if (s.t == 0) anim(m, Animations.BIPED_MOB_THROW);
 				if (s.t == 8 && t != null) {
 					Vec3 from = m.position().add(0, m.getBbHeight() * 0.6, 0), to = t.position().add(0, t.getBbHeight() * 0.5, 0);
-					line(level, from, to, ParticleTypes.CRIT, 3);
-					line(level, from, to, Spells.dust(colour(gate), 1.0f), 4);
+					fx(level, "pull", gate, from, to.subtract(from).normalize(), (float) from.distanceTo(to), null);
 					Vec3 d = from.subtract(to);
 					t.setDeltaMovement(d.x * 0.22, 0.35 + d.y * 0.1, d.z * 0.22);
 					t.hurtMarked = true;
@@ -311,8 +305,7 @@ public final class MobSkills {
 			}
 			case "blink" -> {
 				if (s.t == 0) {
-					level.sendParticles(ParticleTypes.LARGE_SMOKE, m.getX(), m.getY() + 1, m.getZ(), 30, 0.4, 0.8, 0.4, 0.02);
-					level.sendParticles(Spells.spark(gate), m.getX(), m.getY() + 1, m.getZ(), 20, 0.4, 0.8, 0.4, 0.05);
+					fx(level, "blink", gate, m.position().add(0, 1, 0), Vec3.ZERO, 0, null);
 					sound(m, SoundEvents.ENDERMAN_TELEPORT, 1f, 0.8f);
 				}
 				if (s.t == 6 && t != null) {
@@ -320,7 +313,7 @@ public final class MobSkills {
 					Vec3 to = t.position().add(back);
 					if (level.noCollision(m, m.getBoundingBox().move(to.subtract(m.position())))) m.teleportTo(to.x, to.y, to.z);
 					m.lookAt(t, 180, 180);
-					level.sendParticles(Spells.spark(gate), m.getX(), m.getY() + 1, m.getZ(), 30, 0.4, 0.8, 0.4, 0.05);
+					fx(level, "blink", gate, m.position().add(0, 1, 0), Vec3.ZERO, 0, null);
 				}
 				if (s.t == 8) anim(m, MobMoves.opener(k));
 				yield s.t > 9;
@@ -339,6 +332,7 @@ public final class MobSkills {
 					Vec3 d = to.subtract(m.position());
 					m.setDeltaMovement(d.x / 9, 0.42 + Math.min(0.3, d.y * 0.1), d.z / 9);
 					m.hasImpulse = true;
+					fx(level, "launch", gate, m.position(), Vec3.ZERO, 1.4f, null);
 				}
 				if (s.t > 4) {
 					for (LivingEntity v : victims(m, m.getBoundingBox().inflate(0.5), s)) hit(m, v, atk * 1.2f, 0.7, gate, s);
@@ -348,8 +342,7 @@ public final class MobSkills {
 			}
 			case "burrow" -> {
 				if (s.t < 16) {
-					BlockState ground = level.getBlockState(m.blockPosition().below());
-					level.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, ground), m.getX(), m.getY() + 0.2, m.getZ(), 12, 0.5, 0.1, 0.5, 0.1);
+					if (s.t % 4 == 0) fx(level, "quake", gate, m.position(), Vec3.ZERO, 0, null);
 					if (s.t == 0) sound(m, SoundEvents.ROOTED_DIRT_BREAK, 1.2f, 0.6f);
 					if (s.t == 12) {
 						m.setInvisible(true);
@@ -360,9 +353,7 @@ public final class MobSkills {
 				if (s.t < 34) {
 					if (t != null) {
 						s.at = t.position();
-						BlockState g = level.getBlockState(BlockPos.containing(s.at).below());
-						if (s.t % 2 == 0)
-							level.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, g), s.at.x, s.at.y + 0.1, s.at.z, 6, 0.6, 0.05, 0.6, 0.05);
+						if (s.t % 6 == 4) fx(level, "tell", gate, s.at, new Vec3(6, 0, 0), (float) (2.0 * size), null);
 					}
 					yield false;
 				}
@@ -393,15 +384,12 @@ public final class MobSkills {
 					for (int i = 0; i < n; i++) {
 						double a = m.getRandom().nextDouble() * Math.PI * 2, r = i == 0 ? 0 : 1.5 + m.getRandom().nextDouble() * (k.boss() ? 5 : 3);
 						s.marks.add(c.add(Math.cos(a) * r, 0, Math.sin(a) * r));
+						fx(level, "mark", gate, s.marks.get(i), new Vec3(24 + i * 2, 0, 0), 1.6f, null);
 					}
 				}
-				if (s.t > 6 && s.t < 30 && s.t % 3 == 0)
-					for (Vec3 p : s.marks) ring(level, p, 1.4, Spells.dust(colour(gate), 1.2f), 10);
 				if (s.t >= 30 && s.t < 30 + s.marks.size() * 2 && (s.t - 30) % 2 == 0) {
 					Vec3 p = s.marks.get((s.t - 30) / 2);
-					for (int y = 0; y < 8; y++)
-						level.sendParticles(Spells.spark(gate), p.x, p.y + 8 - y, p.z, 2, 0.1, 0.1, 0.1, 0.02);
-					level.sendParticles(ParticleTypes.EXPLOSION, p.x, p.y + 0.3, p.z, 1, 0, 0, 0, 0);
+					fx(level, "strike", gate, p, Vec3.ZERO, 0, null);
 					sound(level, p, SoundEvents.GENERIC_EXPLODE.value(), 0.5f, 1.2f);
 					s.struck.clear();
 					for (LivingEntity v : victims(m, new AABB(p, p).inflate(1.6, 2, 1.6), s)) hit(m, v, atk * 0.9f, 0.3, gate, s);
@@ -410,8 +398,10 @@ public final class MobSkills {
 			}
 			case "lightning" -> {
 				if (s.t == 0) anim(m, k.spider() ? Animations.SPIDER_ATTACK : Animations.BIPED_MOB_THROW);
-				if (s.t == 4) s.at = t != null ? t.position() : m.position();
-				if (s.t > 4 && s.t < 24 && s.t % 2 == 0) ring(level, s.at, 2.4, ParticleTypes.ELECTRIC_SPARK, 14);
+				if (s.t == 4) {
+					s.at = t != null ? t.position() : m.position();
+					fx(level, "tell", gate, s.at, new Vec3(20, 0, 0), 2.5f, null);
+				}
 				if (s.t == 24) {
 					LightningBolt bolt = EntityType.LIGHTNING_BOLT.create(level);
 					if (bolt != null) {
@@ -419,6 +409,7 @@ public final class MobSkills {
 						bolt.setVisualOnly(true);
 						level.addFreshEntity(bolt);
 					}
+					fx(level, "thunder", gate, s.at, Vec3.ZERO, 0, null);
 					for (LivingEntity v : victims(m, new AABB(s.at, s.at).inflate(2.5, 3, 2.5), s)) {
 						hit(m, v, atk * 1.8f, 0.4, gate, s);
 						v.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, 2));
@@ -431,6 +422,7 @@ public final class MobSkills {
 				if (s.t == 8) {
 					Vec3 c = t != null ? t.position() : m.position();
 					s.hazards.add(new Hazard(c, k.boss() ? 4.5 : 3.0, level.getGameTime() + (k.boss() ? 160 : 120), atk * 0.3f));
+					fx(level, "cloud", gate, c, new Vec3(k.boss() ? 160 : 120, 0, 0), k.boss() ? 4.5f : 3f, null);
 					sound(level, c, SoundEvents.BREWING_STAND_BREW, 1f, 0.6f);
 				}
 				yield s.t > 12;
@@ -446,12 +438,7 @@ public final class MobSkills {
 				if (s.t >= 6) {
 					Vec3 eye = m.getEyePosition().add(flat(s.dir).normalize().scale(k.w() * 0.5));
 					double len = 6 + 2 * size;
-					for (int i = 0; i < 6; i++) {
-						double f = m.getRandom().nextDouble() * len;
-						Vec3 p = eye.add(s.dir.scale(f)).add(jitter(m, f * 0.18));
-						level.sendParticles(Spells.spark(gate), p.x, p.y, p.z, 1, 0, 0, 0, 0.01);
-						level.sendParticles(Spells.dust(colour(gate), 1.8f), p.x, p.y, p.z, 1, 0.1, 0.1, 0.1, 0);
-					}
+					if (s.t % 3 == 0) fx(level, "breath", gate, eye, s.dir, (float) len, null);
 					if (s.t % 6 == 0) {
 						s.struck.clear();
 						for (Player p : level.getEntitiesOfClass(Player.class, m.getBoundingBox().inflate(len), p -> p.isAlive() && !p.isSpectator())) {
@@ -467,18 +454,14 @@ public final class MobSkills {
 					anim(m, k.spider() ? Animations.SPIDER_ATTACK : Animations.BIPED_MOB_THROW);
 					sound(m, SoundEvents.BEACON_ACTIVATE, 1.5f, 0.6f);
 					s.at = t != null ? t.position().add(0, 1, 0) : m.position().add(m.getLookAngle().scale(8));
+					fx(level, "gather", gate, m.getEyePosition(), new Vec3(20, 0, 0), 3, null);
 				}
 				Vec3 eye = m.getEyePosition();
-				if (s.t < 20) {
-					level.sendParticles(ParticleTypes.END_ROD, eye.x, eye.y, eye.z, 3, 0.6, 0.6, 0.6, 0.06);
-					level.sendParticles(Spells.dust(colour(gate), 2f), eye.x, eye.y, eye.z, 4, 0.5, 0.5, 0.5, 0);
-					yield false;
-				}
+				if (s.t < 20) yield false;
 				if (t != null) s.at = s.at.lerp(t.position().add(0, 1, 0), 0.07);
 				Vec3 d = s.at.subtract(eye).normalize();
 				double len = 26;
-				line(level, eye, eye.add(d.scale(len)), Spells.dust(colour(gate), 2.2f), 2);
-				if (s.t % 2 == 0) line(level, eye, eye.add(d.scale(len)), Spells.spark(gate), 4);
+				if (s.t % 3 == 2) fx(level, "beam", gate, eye, d, (float) len, null);
 				if (s.t % 5 == 0) {
 					s.struck.clear();
 					for (Player p : level.getEntitiesOfClass(Player.class, m.getBoundingBox().inflate(len), p -> p.isAlive() && !p.isSpectator())) {
@@ -502,16 +485,14 @@ public final class MobSkills {
 					anim(m, k.spider() ? Animations.SPIDER_ATTACK : Animations.BIPED_MOB_THROW);
 					sound(m, SoundEvents.EVOKER_PREPARE_WOLOLO, 1f, 0.8f);
 				}
-				if (s.t < 12) {
-					ring(level, m.position().add(0, 0.2, 0), 1.5, ParticleTypes.HAPPY_VILLAGER, 8);
-					yield false;
-				}
+				if (s.t == 0) fx(level, "gather", gate, m.position().add(0, 1, 0), new Vec3(12, 0, 0), 2, null);
+				if (s.t < 12) yield false;
 				if (s.t == 12) {
 					m.heal(m.getMaxHealth() * (k.boss() ? 0.07f : 0.15f));
-					level.sendParticles(ParticleTypes.HEART, m.getX(), m.getY() + m.getBbHeight(), m.getZ(), 5, 0.4, 0.3, 0.4, 0);
+					fx(level, "heal", gate, m.position(), Vec3.ZERO, 0, m);
 					for (Mob ally : level.getEntitiesOfClass(Mob.class, m.getBoundingBox().inflate(10), a -> a != m && a instanceof User && a.isAlive())) {
 						ally.heal(ally.getMaxHealth() * 0.2f);
-						level.sendParticles(Spells.spark(gate), ally.getX(), ally.getY() + 1, ally.getZ(), 8, 0.3, 0.6, 0.3, 0.02);
+						fx(level, "healed", gate, ally.position(), Vec3.ZERO, 0, ally);
 					}
 				}
 				yield s.t > 16;
@@ -535,8 +516,7 @@ public final class MobSkills {
 		anim(m, k.spider() ? Animations.SPIDER_ATTACK : Animations.BIPED_MOB_THROW);
 		sound(m, SoundEvents.WITHER_SPAWN, 1.0f, want == 3 ? 0.6f : 0.8f);
 		String gate = MobMoves.gate(k);
-		level.sendParticles(ParticleTypes.EXPLOSION_EMITTER, m.getX(), m.getY() + m.getBbHeight() * 0.5, m.getZ(), 1, 0, 0, 0, 0);
-		for (int r = 2; r <= 8; r += 2) ring(level, m.position().add(0, 0.3, 0), r, Spells.spark(gate), 24);
+		fx(level, "phase", gate, m.position(), Vec3.ZERO, 0, m);
 		for (Player p : level.getEntitiesOfClass(Player.class, m.getBoundingBox().inflate(10), Player::isAlive)) knock(m, p, 1.6);
 		var speed = m.getAttribute(Attributes.MOVEMENT_SPEED);
 		var dmg = m.getAttribute(Attributes.ATTACK_DAMAGE);
@@ -574,7 +554,7 @@ public final class MobSkills {
 		if (s.warded) {
 			if (by instanceof ServerPlayer p && m.level() instanceof ServerLevel level) {
 				p.displayClientMessage(Component.literal(m.getDisplayName().getString() + " is warded - slay the dungeon's elite first").withStyle(ChatFormatting.GOLD), true);
-				level.sendParticles(ParticleTypes.ENCHANTED_HIT, m.getX(), m.getY() + m.getBbHeight() * 0.5, m.getZ(), 20, m.getBbWidth() * 0.4, m.getBbHeight() * 0.3, m.getBbWidth() * 0.4, 0.2);
+				fx(level, "ward", MobMoves.gate(u.kind()), m.position(), Vec3.ZERO, Math.max(1.6f, m.getBbHeight() * 0.8f), null);
 				sound(m, SoundEvents.SHIELD_BLOCK, 1f, 0.5f);
 			}
 			return true;
@@ -619,13 +599,9 @@ public final class MobSkills {
 	private static void hazards(Mob m, ServerLevel level, State s) {
 		if (s.hazards.isEmpty()) return;
 		long now = level.getGameTime();
-		String gate = MobMoves.gate(((User) m).kind());
 		s.hazards.removeIf(h -> now > h.until());
+		String gate = MobMoves.gate(((User) m).kind());
 		for (Hazard h : s.hazards) {
-			if (now % 3 == 0) {
-				level.sendParticles(Spells.dust(colour(gate), 2.2f), h.at().x, h.at().y + 0.4, h.at().z, 6, h.radius() * 0.5, 0.3, h.radius() * 0.5, 0);
-				level.sendParticles(Spells.spark(gate), h.at().x, h.at().y + 0.3, h.at().z, 2, h.radius() * 0.5, 0.2, h.radius() * 0.5, 0.01);
-			}
 			if (now % 15 == 0)
 				for (Player p : level.getEntitiesOfClass(Player.class, new AABB(h.at(), h.at()).inflate(h.radius(), 2, h.radius()), Player::isAlive)) {
 					p.hurt(m.damageSources().indirectMagic(m, m), h.damage());
@@ -650,8 +626,7 @@ public final class MobSkills {
 			e.setTarget(m.getTarget());
 			level.addFreshEntity(e);
 			s.minions.add(e.getUUID());
-			level.sendParticles(ParticleTypes.SOUL, p.x, p.y + 0.2, p.z, 14, 0.4, 0.2, 0.4, 0.03);
-			level.sendParticles(Spells.spark(gate), p.x, p.y + 0.5, p.z, 14, 0.4, 0.6, 0.4, 0.03);
+			fx(level, "summon", gate, p, Vec3.ZERO, 0, null);
 		}
 	}
 
@@ -671,10 +646,7 @@ public final class MobSkills {
 
 	/** A blow on the ground at `at`: everyone near it hurt and thrown, dust and sparks. */
 	private static void slam(Mob m, ServerLevel level, State s, Vec3 at, double r, float damage, double knock, String gate) {
-		BlockState ground = level.getBlockState(BlockPos.containing(at).below());
-		level.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, ground), at.x, at.y + 0.2, at.z, 60, r * 0.4, 0.2, r * 0.4, 0.25);
-		level.sendParticles(ParticleTypes.EXPLOSION, at.x, at.y + 0.4, at.z, 3, r * 0.3, 0.1, r * 0.3, 0);
-		ring(level, at.add(0, 0.2, 0), r, Spells.spark(gate), 32);
+		fx(level, "slam", gate, at, Vec3.ZERO, (float) r, null);
 		sound(level, at, SoundEvents.GENERIC_EXPLODE.value(), 0.8f, 0.6f);
 		sound(level, at, SoundEvents.ANVIL_LAND, 0.6f, 0.5f);
 		s.struck.clear();
@@ -709,31 +681,16 @@ public final class MobSkills {
 	}
 
 	private static void trail(ServerLevel level, Mob m, String gate) {
-		level.sendParticles(Spells.dust(colour(gate), 1.5f), m.getX(), m.getY() + m.getBbHeight() * 0.4, m.getZ(), 3, 0.3, 0.3, 0.3, 0);
+		if (m.tickCount % 2 == 0) fx(level, "trail", gate, m.position().add(0, m.getBbHeight() * 0.4, 0), Vec3.ZERO, 0, null);
 	}
 
-	private static void ring(ServerLevel level, Vec3 c, double r, ParticleOptions p, int n) {
-		for (int i = 0; i < n; i++) {
-			double a = i * Math.PI * 2 / n;
-			level.sendParticles(p, c.x + Math.cos(a) * r, c.y + 0.1, c.z + Math.sin(a) * r, 1, 0, 0, 0, 0);
-		}
-	}
-
-	private static void line(ServerLevel level, Vec3 a, Vec3 b, ParticleOptions p, int perBlock) {
-		Vec3 d = b.subtract(a);
-		int n = Math.max(2, (int) (d.length() * perBlock));
-		for (int i = 0; i <= n; i++) {
-			Vec3 q = a.add(d.scale(i / (double) n));
-			level.sendParticles(p, q.x, q.y, q.z, 1, 0.02, 0.02, 0.02, 0);
-		}
+	/** What it looks like is on the client: SkillFx.monster, in the dungeon's colour. dir carries a tell's length in its x. */
+	private static void fx(ServerLevel level, String what, String gate, Vec3 at, Vec3 dir, float r, @Nullable Entity on) {
+		Spells.skillFx(level, "mob_" + what + ":" + gate, at, dir, r, on);
 	}
 
 	private static Vec3 flat(Vec3 v) {
 		return new Vec3(v.x, 0, v.z);
-	}
-
-	private static Vec3 jitter(Mob m, double r) {
-		return new Vec3((m.getRandom().nextDouble() - 0.5) * r, (m.getRandom().nextDouble() - 0.5) * r, (m.getRandom().nextDouble() - 0.5) * r);
 	}
 
 	private static void sound(Mob m, SoundEvent e, float vol, float pitch) {
@@ -742,12 +699,6 @@ public final class MobSkills {
 
 	private static void sound(ServerLevel level, Vec3 at, SoundEvent e, float vol, float pitch) {
 		level.playSound(null, at.x, at.y, at.z, e, SoundSource.HOSTILE, vol, pitch);
-	}
-
-	private static int colour(String gate) {
-		if (gate.equals("clockwork_spire")) return 0xffb53a;          // the tower's boiler amber (docs/TOWERS.md)
-		Gear.Dungeon d = Gear.of(gate);
-		return d == null ? 0xc8c0b0 : d.colour();
 	}
 
 	/** how much bigger than a player it's drawn */

@@ -1,0 +1,14 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "group": "planks",
+ "category": "building",
+ "ingredients": [
+  {
+   "item": "ashbound:stockade_log"
+  }
+ ],
+ "result": {
+  "id": "ashbound:stockade_planks",
+  "count": 4
+ }
+}

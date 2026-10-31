@@ -247,7 +247,7 @@ public final class TowerSites {
 				nests++;
 			}
 		for (Mark c : mk.chests())
-			if (level.getBlockEntity(s.at(c.x(), c.y(), c.z())) instanceof RandomizableContainerBlockEntity box2 && box2.isEmpty())
+			if (SilkProps.stocked(level, s.at(c.x(), c.y(), c.z())) instanceof RandomizableContainerBlockEntity box2 && box2.isEmpty())
 				box2.setLootTable(ResourceKey.create(Registries.LOOT_TABLE,
 						ResourceLocation.fromNamespaceAndPath(Ashbound.ID, mk.coffers())), level.getRandom().nextLong());
 		Ashbound.LOG.info("tower {} stocked: {} spawners for {} monster spots, {} foremen", s.key(), nests, mk.mobs().size(), mk.foremen().size());

@@ -1,0 +1,14 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "group": "planks",
+ "category": "building",
+ "ingredients": [
+  {
+   "item": "ashbound:root_wood"
+  }
+ ],
+ "result": {
+  "id": "ashbound:rotten_planks",
+  "count": 4
+ }
+}

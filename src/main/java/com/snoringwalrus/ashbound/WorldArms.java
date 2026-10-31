@@ -362,7 +362,7 @@ public final class WorldArms {
 		// Castle, Dungeons and Taverns...); vanilla's too, since several of those mods fill their chests from vanilla tables.
 		// Not our own: the towers' hoards roll these weapons themselves (tools/towers/towerloot.py)
 		boolean stash = path.contains("chest") || ns.equals("kaisyn") && (path.startsWith("village/") || path.startsWith("outpost/"));
-		if (ns.equals(Ashbound.ID) || !stash || path.contains("entities/") || path.contains("archeology") || path.contains("archaeology")) return;
+		if ((ns.equals(Ashbound.ID) && !path.equals("chests/wayside")) || !stash || path.contains("entities/") || path.contains("archeology") || path.contains("archaeology")) return;
 		float chance = BIG_DUNGEONS.contains(ns) || path.contains("end_city") || path.contains("ancient_city") || path.contains("bastion")
 				|| path.contains("boss") || path.contains("treasure") ? 0.15f
 				: path.contains("village") || path.contains("house") || path.contains("tavern") ? 0.04f : 0.07f;
@@ -372,6 +372,15 @@ public final class WorldArms {
 			pool.add(LootItem.lootTableItem(it).setWeight(a.tier().weight));
 		}
 		e.getTable().addPool(pool.name("ashbound_world_arms").build());
+		// the first gates' drops, so a chest on the road is worth a look to a new player too
+		if (!ns.equals(Ashbound.ID)) {
+			LootPool.Builder road = LootPool.lootPool().setRolls(ConstantValue.exactly(1)).when(LootItemRandomChanceCondition.randomChance(0.35f));
+			for (Gear.Dungeon d : Gear.DUNGEONS)
+				if (d.rank() == 'F') road.add(LootItem.lootTableItem(Gear.item(d.mats()[0])).setWeight(4)
+						.apply(net.minecraft.world.level.storage.loot.functions.SetItemCountFunction.setCount(
+								net.minecraft.world.level.storage.loot.providers.number.UniformGenerator.between(1, 4))));
+			e.getTable().addPool(road.name("ashbound_road").build());
+		}
 		if (GARB_ITEMS.isEmpty()) return;
 		// and a found armour piece, half as often
 		LootPool.Builder garb = LootPool.lootPool().setRolls(ConstantValue.exactly(1)).when(LootItemRandomChanceCondition.randomChance(chance * 0.5f));

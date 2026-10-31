@@ -12,13 +12,14 @@ import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 
 /**
- * Level and Ash, left of the hotbar: an ember bar for the way to the next level, shown for a few seconds after Ash
+ * Level and Ash, right of the hotbar past the relic: an ember bar for the way to the next level, shown for a few seconds after Ash
  * comes in, while the player list key (TAB) is held, or while a level is ready to buy in the tree (K). A level up
  * gets a big moment in the middle.
  */
 public final class LevelHud {
 	private LevelHud() {}
 
+	private static final int RIGHT_OF_RELIC = 34;
 	private static float shown;
 
 	public static void hooks(IEventBus bus) {
@@ -36,7 +37,7 @@ public final class LevelHud {
 		shown += (f - shown) * 0.2f;
 		if (show) {
 			int w = 70, h = 4;
-			int x = g.guiWidth() / 2 - 91 - 8 - w, y = g.guiHeight() - 10;
+			int x = g.guiWidth() / 2 + 91 + RIGHT_OF_RELIC, y = g.guiHeight() - 10;
 			g.fill(x - 1, y - 1, x + w + 1, y + h + 1, 0xC0050404);
 			g.fill(x, y, x + w, y + h, 0xFF2A1A12);
 			int fw = Math.round(w * shown);

@@ -23,6 +23,12 @@ public abstract class ForgeCameraMixin {
 
 	@Inject(method = "setup", at = @At("RETURN"))
 	private void ashbound$forge(BlockGetter level, Entity entity, boolean detached, boolean mirror, float partialTick, CallbackInfo ci) {
+		if (com.snoringwalrus.ashbound.client.IntroScene.on()) {
+			com.snoringwalrus.ashbound.client.IntroScene.frame(partialTick);
+			setPosition(com.snoringwalrus.ashbound.client.IntroScene.eye());
+			setRotation(com.snoringwalrus.ashbound.client.IntroScene.yaw(), com.snoringwalrus.ashbound.client.IntroScene.pitch());
+			return;
+		}
 		if (com.snoringwalrus.ashbound.client.ColdScene.on()) {
 			setPosition(com.snoringwalrus.ashbound.client.ColdScene.eye());
 			setRotation(com.snoringwalrus.ashbound.client.ColdScene.yaw(), com.snoringwalrus.ashbound.client.ColdScene.pitch());

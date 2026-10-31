@@ -958,12 +958,15 @@ def material(name, path):
         'newmtl blade\nKa 0 0 0\nmap_Kd %s\n\nnewmtl glow\nKa 1 1 1\nmap_Kd %s\n' % (tex, tex))
 
 
-def export(s, mesh, to_item=TO_ITEM, preview=True):
+def export(s, mesh, to_item=TO_ITEM, preview=True, join=True):
     img, tris = s.build()
     img.save(ASSETS + 'textures/item/%s_3d.png' % mesh)
     V.to_item = to_item
     path = ASSETS + 'models/mesh/%s.obj' % mesh
     V.write_obj(V.Path(path), tris)
+    if join:   # nothing of a weapon hangs in the air (curios' chains and charms may)
+        import weapon_joins
+        weapon_joins.weld(path)
     material(mesh, path)
     if preview:   # the copy the icon renders read (preview_vox's folder)
         img.save(VOX + '%s_f0.png' % mesh)

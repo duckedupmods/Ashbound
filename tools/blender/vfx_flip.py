@@ -77,15 +77,21 @@ def flame(t):
 
 
 def smoke(t):
-    """a roll of smoke opening and thinning"""
-    sun = bpy.data.objects.new("sun", bpy.data.lights.new("sun", "SUN"))
-    sun.data.energy = 3
-    sun.rotation_euler = (math.radians(40), math.radians(25), 0)
-    bpy.context.scene.collection.objects.link(sun)
+    """a heap of billows, lit from one side so it has a top and an underside: opens fast, then rolls and thins"""
+    sc = bpy.context.scene
+    for energy, rot in ((7, (math.radians(55), 0, math.radians(-35))), (0.7, (math.radians(120), 0, math.radians(150)))):
+        sun = bpy.data.objects.new("sun", bpy.data.lights.new("sun", "SUN"))
+        sun.data.energy = energy
+        sun.rotation_euler = rot
+        sc.collection.objects.link(sun)
     R = M.rnd(13)
-    for i in range(6):
+    grow = 1 - (1 - t) ** 1.8
+    fade = (1 - t) ** 1.3
+    V.puff(Vector((0, 0, 0)), 0.34 + 0.26 * grow, (0.62, 0.62, 0.62), density=32 * fade + 1.5, seed=t * 0.8, scale=2.2)
+    for i in range(14):
         d = V.rdir(R)
-        V.puff(d * (0.15 + 0.4 * t), 0.42 + 0.32 * t, (0.5, 0.5, 0.5), density=12 * (1 - t) ** 0.8 + 1, seed=i + t * 1.2, scale=2.6)
+        size, out = R.uniform(0.15, 0.32), R.uniform(0.7, 1.1)
+        V.puff(d * (0.2 + 0.42 * grow * out), size * (1 + 0.5 * grow), (0.62, 0.62, 0.62), density=36 * fade + 1.2, seed=i * 3 + t * 1.2, scale=3.4)
 
 
 SHEETS = {"blast": (blast, False), "flame": (flame, False), "smoke": (smoke, True)}

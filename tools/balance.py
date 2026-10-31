@@ -25,7 +25,7 @@ SHARE = (0.15, 0.40, 0.30, 0.15)
 PLAYER_HP = 20.0  # at level 1
 HP_PER_LEVEL = 0.4  # health grows with level (decided 10/29; the level system isn't built yet)
 MID_LEVEL = {"F": 5, "E": 15, "D": 25, "C": 37, "B": 52, "A": 67, "S": 82}
-PARTY = {"hp_per_player": 0.6, "boss_dmg_per_player": 0.05, "radius": 32}  # Elden Ring co-op: +60% for one helper
+PARTY = {"hp_per_player": 0.15, "road_hp_per_player": 0.15, "boss_dmg_per_player": 0.05, "radius": 32, "reward_share": 0.25}  # 10/31: was 0.6, too much for friends
 # outside monsters get their rank from where they live (decided 10/29)
 HAUNT_RANK = {"black_banner": "E", "deep_delvers": "E", "barrow_host": "D", "drowned_corsairs": "D", "sporefolk": "D",
               "salt_cursed": "C", "thornborn": "C", "rimebound": "C", "blightkin": "C", "broodmothers": "C",
@@ -67,8 +67,32 @@ JAVA_MOBS = {"cinderhusk": (40, 6, 4), "bound_scholar": (55, 8, 4), "lector": (7
 
 # Targets (research pass 10/29, docs/BALANCE.md "By the book"): seconds are REAL fight time, with the share of it you
 # actually hit (UPTIME: dodging, moving, waiting out a boss's openings); hits survived lean to the hard end.
-SOLVE = {"normal_hits": 4, "elite_s": 15, "boss_solo_s": 210, "hits_normal": 8, "hits_elite": 5.5, "hits_big": 3}
-TARGET = {"normal_hits": (3, 5), "elite_s": (12, 18), "boss_solo_s": (150, 270), "hits_normal": (7, 9), "hits_big": (2.5, 3.5)}
+# 10/31: not one flat target any more. The first ranks are a little easy, the late ones are the epic fights.
+CURVE = {"F": {"normal_hits": 3, "elite_s": 9, "boss_solo_s": 110, "hits_normal": 13, "hits_elite": 8.5, "hits_big": 5},
+         "E": {"normal_hits": 3, "elite_s": 10, "boss_solo_s": 135, "hits_normal": 12, "hits_elite": 8, "hits_big": 4.5},
+         "D": {"normal_hits": 3.5, "elite_s": 12, "boss_solo_s": 160, "hits_normal": 10.5, "hits_elite": 7, "hits_big": 4},
+         "C": {"normal_hits": 4, "elite_s": 14, "boss_solo_s": 190, "hits_normal": 9, "hits_elite": 6, "hits_big": 3.5},
+         "B": {"normal_hits": 4, "elite_s": 16, "boss_solo_s": 230, "hits_normal": 8, "hits_elite": 5.5, "hits_big": 3},
+         "A": {"normal_hits": 4.5, "elite_s": 18, "boss_solo_s": 270, "hits_normal": 7, "hits_elite": 4.5, "hits_big": 2.7},
+         "S": {"normal_hits": 5, "elite_s": 20, "boss_solo_s": 330, "hits_normal": 6, "hits_elite": 4, "hits_big": 2.4}}
+SOLVE = CURVE["C"]
+# A blow from a second monster within a second of the last one does this much (Balance.crowded): a crowd can't melt you
+# early on. From S a crowd is a crowd.
+CROWD = {"F": 0.4, "E": 0.45, "D": 0.55, "C": 0.65, "B": 0.75, "A": 0.85, "S": 1.0}
+
+
+def goal(rank, key):
+    """the band around a rank's target"""
+    v = CURVE[rank][key]
+    return v * 0.8, v * 1.2
+
+
+def class_hits(rank, cls):
+    """normal hits a class survives at a rank: CLASS_HITS is for a rank that takes 8"""
+    k = CURVE[rank]["hits_normal"] / 8
+    return CLASS_HITS[cls][0] * k, CLASS_HITS[cls][1] * k
+
+
 UPTIME = {"normal": 1.0, "elite": 0.7, "boss": 0.6}
 
 # The expected build of a player at a rank's middle level: monsters are solved against a typical player of the rank, not
@@ -268,8 +292,8 @@ def print_breath():
         extra, more = BUILD_BREATH[r]
         rate = hits_per_s("sword", 1.6)
         row = [swing_duty(SWING["sword"], rate, 1 + WEIGHT[c] * ARMOUR_SCALE[r] / 40, STAMINA + extra, STAMINA_REGEN + more) for c in ("light", "medium", "heavy")]
-        boss = SOLVE["boss_solo_s"] * UPTIME["boss"] / min(UPTIME["boss"], row[1])
-        print(f"  {r:4} " + " ".join(f"{d:6.0%}" for d in row) + f"   {fmt(boss, *TARGET['boss_solo_s'])}")
+        boss = CURVE[r]["boss_solo_s"] * UPTIME["boss"] / min(UPTIME["boss"], row[1])
+        print(f"  {r:4} " + " ".join(f"{d:6.0%}" for d in row) + f"   {fmt(boss, *goal(r, 'boss_solo_s'))}")
     print("  mana: nonstop, and casting 6 s in 10")
     for kind, (hit, cost, cd) in SPELL.items():
         burst = MANA / max(0.01, cost * 20 / cd - MANA * MANA_REGEN)
@@ -321,8 +345,8 @@ def report():
             d, hit = d * off, hit * off
             nh = armour_cut(hit, narm)
             hits = nhp / nh
-            el = ehp / (d * armour_cut(hit, earm) / hit) / UPTIME["elite"]
-            bo = bhp / (d * armour_cut(hit, barm) / hit) / UPTIME["boss"]
+            el = ehp / (d * armour_cut(hit, earm) / hit) / UPTIME["elite"] / (1 + skill_share(r))
+            bo = bhp / (d * armour_cut(hit, barm) / hit) / UPTIME["boss"] / (1 + skill_share(r))
             line["kinds"][kind] = (d, hits, el, bo)
         rows1.append(line)
 
@@ -632,14 +656,84 @@ def print_speed():
         print("    " + o)
 
 
+# --- pass 8: the 54 skills (Skills.java, SkillArts.java), rank I. On one target and on three, in the class's own unit
+# (w a weapon blow, b a bolt, a an arrow), as a share of the damage the class does anyway.
+# name: (level tier, unit, one target, three targets, cooldown s, mana)
+SKILLS = {
+    "vanguard": {"Bastion Slam": (1, "w", 1.4, 4.2, 14, 0), "Oath Charge": (1, "w", 1.8, 5.4, 12, 0), "Shield Wall": (2, "u", 0, 0, 24, 0), "Crossing Oath": (2, "w", 2.2, 4.4, 10, 0),
+                 "Unbroken": (3, "w", 5, 15, 60, 0), "Last Oath": (3, "w", 6, 12, 30, 0)},
+    "breaker": {"Rift Slam": (1, "w", 2.6, 7.8, 16, 0), "Headsman's Drop": (1, "w", 5, 5, 20, 0), "Fault Line": (2, "w", 2.2, 6.6, 14, 0), "Reaper's Mark": (2, "w", 5.3, 5.3, 18, 0),
+                "Worldbreaker": (3, "w", 7.8, 23.4, 36, 0), "Beheading": (3, "w", 7.5, 7.5, 30, 0)},
+    "reaver": {"Blood Price": (1, "w", 3, 9, 12, 0), "Steel Tempest": (1, "w", 3.9, 11.7, 15, 0), "Red Thirst": (2, "u", 0, 0, 22, 0), "Razor Gale": (2, "w", 2, 6, 13, 0),
+               "Crimson Rite": (3, "w", 9, 27, 40, 0), "Eye of the Storm": (3, "w", 9, 27, 36, 0)},
+    "lancer": {"Skyfall": (1, "w", 2.5, 7.5, 14, 0), "Spear Wall": (1, "w", 2.6, 5.2, 12, 0), "Dragon Lunge": (2, "w", 2, 4, 10, 0), "Spear Hedge": (2, "w", 2.2, 6, 14, 0),
+               "Dragon's Descent": (3, "w", 7, 21, 32, 0), "Thousand Thrusts": (3, "w", 6, 12, 28, 0)},
+    "shade": {"Vanish": (1, "w", 3.2, 3.2, 16, 0), "Viper Bite": (1, "w", 2.4, 7.2, 10, 0), "Smoke Step": (2, "u", 0, 0, 10, 0), "Toxic Cloud": (2, "w", 2.1, 6.3, 16, 0),
+              "Death Blossom": (3, "w", 6.5, 6.5, 30, 0), "Plague Bloom": (3, "w", 6, 18, 30, 0)},
+    "hunter": {"Deadeye": (1, "a", 3, 3, 16, 0), "Snare Field": (1, "w", 1.2, 3.6, 14, 0), "Arrow Rain": (2, "a", 1.7, 5, 18, 0), "Spike Pit": (2, "w", 3, 9, 14, 0),
+               "Piercing Star": (3, "a", 6.75, 13.5, 32, 0), "Killing Ground": (3, "u", 0, 0, 34, 0)},
+    "ashcaster": {"Cinder Field": (1, "b", 3.15, 9.45, 14, 30), "Black Hole": (1, "b", 3, 9, 18, 34), "Flame Lance": (2, "b", 1.6, 3.2, 10, 16), "Void Lances": (2, "b", 1.6, 4.8, 12, 16),
+                  "Meteor": (3, "b", 6, 18, 30, 60), "Event Horizon": (3, "b", 7.4, 22, 32, 70)},
+    "mender": {"Mass Renewal": (1, "u", 0, 0, 30, 60), "Judgement": (1, "b", 2.5, 2.5, 16, 0), "Sanctify": (2, "u", 0, 0, 24, 40), "Holy Lance": (2, "b", 1.8, 3.6, 10, 0),
+               "Second Dawn": (3, "u", 0, 0, 90, 90), "Heaven's Wrath": (3, "b", 5.6, 12, 36, 0)},
+    "caller": {"Bone Horde": (1, "u", 0, 0, 60, 90), "Bound Champion": (1, "u", 0, 0, 60, 90), "Marrow Burst": (2, "u", 0, 0, 16, 30), "Soul Mend": (2, "u", 0, 0, 20, 40),
+               "Legion": (3, "u", 0, 0, 90, 95), "Ascended": (3, "u", 0, 0, 60, 80)},
+}
+BASE_RATE = {"w": 1.29, "b": 0.44, "a": 0.54}   # of each unit a second a class does anyway (solved uptime)
+BOLT_MANA = SPELL["black"][1]
+SKILL_BUDGET = {1: (0.10, 0.36), 2: (0.10, 0.36), 3: (0.14, 0.40)}   # share of a class's own damage, one target
+SKILL_USE = 0.7     # how much of the time a skill really goes off on cooldown
+BOOK_RANK = {"F": 1, "E": 1, "D": 2, "C": 2, "B": 3, "A": 3, "S": 4}   # the rank a player's skills have reached
+PER_RANK = 0.2
+
+
+def skill_value(s):
+    tier, unit, one, three, cd, mana = s
+    net = mana / BOLT_MANA if unit == "b" and mana else 0   # the bolts that mana would have been
+    return (one - net) / cd / BASE_RATE[unit], (three - net) / cd / BASE_RATE[unit]
+
+
+def skill_share(rank):
+    """what a rank's typical player adds to a long fight with their skills: one chosen for each level reached"""
+    tiers = [t for t, lv in zip((1, 2, 3), (5, 20, 35)) if MID_LEVEL[rank] >= lv]
+    x = 0
+    for t in tiers:
+        vals = [skill_value(s)[0] for c in SKILLS.values() for s in c.values() if s[0] == t and s[1] != "u"]
+        x += st.median(vals)
+    return x * SKILL_USE * (1 + PER_RANK * (BOOK_RANK[rank] - 1))
+
+
+def print_skills():
+    print("PASS 8 - skills, rank I: share of the class's own damage, one target / three (mana skills net of the bolts it would have bought)")
+    for cls, ss in SKILLS.items():
+        print(f"  {cls}")
+        for name, s in ss.items():
+            if s[1] == "u":
+                print(f"    L{(5, 20, 35)[s[0] - 1]:<3} {name:18} utility, {s[4]} s" + (f", {s[5]} mana" + (" OVER THE BAR" if s[5] > MANA else "") if s[5] else ""))
+                continue
+            one, three = skill_value(s)
+            print(f"    L{(5, 20, 35)[s[0] - 1]:<3} {name:18} {fmt(one * 100, SKILL_BUDGET[s[0]][0] * 100, SKILL_BUDGET[s[0]][1] * 100, '{:.0f}%'):>6} / {three * 100:3.0f}%   {s[4]} s")
+    print("  a rank's typical player, all skills going: " + "  ".join(f"{r} +{skill_share(r) * 100:.0f}%" for r in RANKS))
+
+
+def print_party():
+    print("PARTY - health +%d%% a player, boss damage +%d%%; Ash and coins a head 1 / (1 + %.2f (n - 1))" % (PARTY["hp_per_player"] * 100, PARTY["boss_dmg_per_player"] * 100, PARTY["reward_share"]))
+    print(f"  {'players':8} {'boss hp':>8} {'boss s':>7} {'elite s':>8} {'boss hits':>10} {'reward':>7} {'levels x solo':>14}")
+    for n in (1, 2, 3, 4, 6, 8):
+        hp = 1 + PARTY["hp_per_player"] * (n - 1)
+        pace = hp / n
+        share = 1 / (1 + PARTY["reward_share"] * (n - 1))
+        print(f"  {n:<8} {hp:>7.2f}x {SOLVE['boss_solo_s'] * pace:>7.0f} {SOLVE['elite_s'] * pace:>8.1f} {1 + PARTY['boss_dmg_per_player'] * (n - 1):>9.2f}x {share:>6.0%} {share / pace:>13.2f}x")
+
+
 def solve():
     """per-monster health and damage multipliers that put every rank's median on the targets; keeps each monster's
     hand-set strength next to its neighbours"""
     mobs = monsters(raw=True)
     ws = weapons()
-    S = SOLVE
-    mult, foreman, ranks, armour = {}, {}, {}, {}
+    mult, foreman, ranks, armour, plain = {}, {}, {}, {}, {}
     for r in RANKS:
+        S = CURVE[r]
         here = [m for m in mobs if m[0] == r]
         if not here:
             continue
@@ -655,8 +749,9 @@ def solve():
             g = [m for m in here if m[1] == role and m[4] == 1]
             arm = st.median(m[3]["armor"] for m in g)
             cut = armour_cut(hit, arm)
-            hp_t = {"normal": S["normal_hits"] * cut, "elite": S["elite_s"] * UPTIME["elite"] * spd * cut,
-                    "boss": S["boss_solo_s"] * UPTIME["boss"] * spd * cut}[role]
+            more = 1 + skill_share(r)   # skills shorten long fights; a normal monster is dead before they matter
+            hp_t = {"normal": S["normal_hits"] * cut, "elite": S["elite_s"] * UPTIME["elite"] * spd * cut * more,
+                    "boss": S["boss_solo_s"] * UPTIME["boss"] * spd * cut * more}[role]
             dmg_t = {"normal": raw_for(hp, a, t, S["hits_normal"]), "elite": raw_for(hp, a, t, S["hits_elite"]),
                      "boss": raw_for(hp, a, t, S["hits_big"]) / BIG_HIT}[role]
             hm = hp_t / st.median(m[3]["hp"] for m in g)
@@ -668,23 +763,28 @@ def solve():
         for tw in {m[2] for m in here if m[2].startswith("tower ") and m[1] == "normal"}:
             g = [m for m in here if m[2] == tw and m[1] == "normal"]
             arm = st.median(m[3]["armor"] for m in g)
-            foreman[tw.split()[1]] = round(S["elite_s"] * UPTIME["elite"] * spd * armour_cut(hit, arm))  # a foreman's health
+            foreman[tw.split()[1]] = round(S["elite_s"] * UPTIME["elite"] * spd * armour_cut(hit, arm) * (1 + skill_share(r)))  # a foreman's health
         for m in here:
             if m[1] == "elite" and m[4] != 1:
                 mult.setdefault(m[3]["id"], (1.0, round(want["elite"][1], 3), "elite", r))
         ranks[r] = {k: [round(x, 3) for x in v] for k, v in want.items()}
         # each other class's armour so it survives its target number of this rank's normal hits
         ndmg = st.median(m[3]["dmg"] * mult[m[3]["id"]][1] for m in here if m[1] == "normal")
-        for cls, (lo_h, hi_h) in CLASS_HITS.items():
+        plain[r] = [round(st.median(m[3]["hp"] * mult[m[3]["id"]][0] for m in here if m[1] == "normal"), 1), round(ndmg, 2)]
+        for cls in CLASS_HITS:
+            lo_h, hi_h = class_hits(r, cls)
             if cls == "medium":
                 continue
             t = TOUGH[cls] * ARMOUR_SCALE[r]
             want_h, arm = (lo_h + hi_h) / 2, 0.0
             while arm < 30 and hp / armour_cut(ndmg, sum(pieces(arm)), t) < want_h:   # hp: the build's
                 arm += 0.25
+            prev = list(armour.get(cls, {}).values())
+            arm = max(arm, prev[-1][0] if prev else 0)   # never less than the rank below
             armour.setdefault(cls, {})[r] = [arm, round(t, 2)]
     out = {"_about": "written by tools/balance.py --solve; mobs: [health x, damage x, role, rank] on top of each monster's own numbers; foreman_hp: a tower foreman's health",
            "player": {"hp": PLAYER_HP, "hp_per_level": HP_PER_LEVEL}, "party": PARTY, "haunt_rank": HAUNT_RANK,
+           "rank_normal": plain, "band_top": {r: hi for r, (lo, hi) in BAND.items()}, "crowd": CROWD,
            "foreman_hp": foreman, "ranks": ranks, **progress(mult),
            "armour": dict(armour, medium={r: [a, round(t, 2)] for r, (a, t) in MEDIUM.items()}), "mobs": dict(sorted(mult.items()))}
     BAL.write_text(json.dumps(out, indent=1), encoding="utf-8")
@@ -699,23 +799,23 @@ def solve():
 
 def print_report():
     rows1, rows2, mobs = report()
-    T = TARGET
     print("PASS 1 - weapons vs monster health (median weapon of the rank, median monster; ↑/↓ = outside target)")
-    print(f"  targets: normal {T['normal_hits'][0]}-{T['normal_hits'][1]} hits, elite {T['elite_s'][0]}-{T['elite_s'][1]} s, "
-          f"boss solo {T['boss_solo_s'][0]}-{T['boss_solo_s'][1]} s")
+    print("  targets by rank (CURVE): " + "  ".join(f"{r} {CURVE[r]['normal_hits']} hits/{CURVE[r]['elite_s']}s/{CURVE[r]['boss_solo_s']}s" for r in RANKS))
     for l in rows1:
         print(f"\n  {l['rank']}: normal {l['normal_hp']:.0f} hp, elite {l['elite_hp']:.0f}, boss {l['boss_hp']:.0f}")
         print(f"    {'weapon':10} {'dps':>5} {'hits/normal':>12} {'elite s':>9} {'boss s':>9}")
         o, dd = build(l["rank"])
         print(f"    (the rank's typical build: +{(o - 1) * 100:.0f}% damage, +{(dd - 1) * 100:.0f}% survival)")
         for k, (d, h, e, b) in l["kinds"].items():
-            print(f"    {k:10} {d:5.1f} {fmt(h, *T['normal_hits'], '{:.1f}'):>12} {fmt(e, *T['elite_s']):>9} {fmt(b, *T['boss_solo_s']):>9}")
+            r = l["rank"]
+            print(f"    {k:10} {d:5.1f} {fmt(h, *goal(r, 'normal_hits'), '{:.1f}'):>12} {fmt(e, *goal(r, 'elite_s')):>9} {fmt(b, *goal(r, 'boss_solo_s')):>9}")
     print("\nPASS 2 - monster damage vs armour (full set of the rank; player health at the rank's middle level)")
-    print("  targets per class (normal hits): " + ", ".join(f"{c} {a}-{b}" for c, (a, b) in CLASS_HITS.items()) + "; big attack about a third")
+    print("  targets per class at a rank of 8 hits (CURVE moves them): " + ", ".join(f"{c} {a}-{b}" for c, (a, b) in CLASS_HITS.items()) + "; big attack about a third")
     for l in rows2:
         print(f"\n  {l['rank']}: player {player_hp(l['rank']):.0f} hp, normal hit {l['normal_dmg']:.1f}, boss big attack {l['boss_big']:.1f}")
         for c, (a, t, hn, hb) in l["cls"].items():
-            print(f"    {c:7} armour {a:2} tough {t:3.1f}   normal {fmt(hn, *CLASS_HITS[c], '{:.1f}'):>6}   big {fmt(hb, CLASS_HITS[c][0] * 0.3, CLASS_HITS[c][1] * 0.42, '{:.1f}'):>6}")
+            lo, hi = class_hits(l["rank"], c)
+            print(f"    {c:7} armour {a:2} tough {t:3.1f}   normal {fmt(hn, lo, hi, '{:.1f}'):>6}   big {fmt(hb, lo * 0.3, hi * 0.42, '{:.1f}'):>6}")
     unranked = {m[2] for m in mobs if m[0] == "?"}
     if unranked:
         print("UNRANKED: " + ", ".join(sorted(unranked)))
@@ -750,3 +850,7 @@ if __name__ == "__main__":
         print_curios()
         print()
         print_rank_up()
+        print()
+        print_skills()
+        print()
+        print_party()
