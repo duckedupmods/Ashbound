@@ -25,7 +25,8 @@ SHARE = (0.15, 0.40, 0.30, 0.15)
 PLAYER_HP = 20.0  # at level 1
 HP_PER_LEVEL = 0.4  # health grows with level (decided 10/29; the level system isn't built yet)
 MID_LEVEL = {"F": 5, "E": 15, "D": 25, "C": 37, "B": 52, "A": 67, "S": 82}
-PARTY = {"hp_per_player": 0.15, "road_hp_per_player": 0.15, "boss_dmg_per_player": 0.05, "radius": 32, "reward_share": 0.25}  # 10/31: was 0.6, too much for friends
+# 10/31: 0.6 was too much for friends, 0.15 left a four-player dungeon far too easy. Gates 0.3; outside them it stays 0.15.
+PARTY = {"hp_per_player": 0.3, "road_hp_per_player": 0.15, "boss_dmg_per_player": 0.08, "gate_dmg_per_player": 0.04, "radius": 32, "reward_share": 0.25}
 # outside monsters get their rank from where they live (decided 10/29)
 HAUNT_RANK = {"black_banner": "E", "deep_delvers": "E", "barrow_host": "D", "drowned_corsairs": "D", "sporefolk": "D",
               "salt_cursed": "C", "thornborn": "C", "rimebound": "C", "blightkin": "C", "broodmothers": "C",

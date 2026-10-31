@@ -205,7 +205,7 @@ public final class JoinedSkills {
 		ring(p, p.position(), 5, 0.8, 0.3);
 		p.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 1));
 		for (Mob m : l.getEntitiesOfClass(Mob.class, p.getBoundingBox().inflate(9), x -> x instanceof Enemy && x.isAlive())) {
-			m.setTarget(p);
+			Threat.taunt(m, p);
 			Vec3 away = m.position().subtract(p.position()).multiply(1, 0, 1).normalize().scale(0.8);
 			m.push(away.x, 0.2, away.z);
 		}

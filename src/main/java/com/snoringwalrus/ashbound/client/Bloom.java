@@ -34,6 +34,8 @@ final class Bloom {
 	private static ByteBufferBuilder bytes;
 	private static BufferBuilder glow;
 	private static RenderTarget half, quarterA, quarterB, eighthA, eighthB;
+	/** How much of what's drawn right now goes into the glow: a heal beam is on screen for seconds at a time, and has to be easy on the eyes. */
+	static float gain = 1;
 
 	/** A frame's particles are starting. */
 	static void begin() {
@@ -46,7 +48,7 @@ final class Bloom {
 	/** Smoke doesn't shine; everything else that's black adds nothing and hides the glow behind it, as it should. */
 	static void vertex(Vector3f p, float u, float v, float r, float g, float b, float a, int light) {
 		if (glow == null || (light & 0xFFFF) == SpellParticles.SMOKE) return;
-		glow.addVertex(p.x, p.y, p.z).setUv(u, v).setColor(r, g, b, a).setLight(light);
+		glow.addVertex(p.x, p.y, p.z).setUv(u, v).setColor(r * gain, g * gain, b * gain, a * gain).setLight(light);
 	}
 
 	private static RenderTarget target(RenderTarget old, int w, int h, boolean depth) {

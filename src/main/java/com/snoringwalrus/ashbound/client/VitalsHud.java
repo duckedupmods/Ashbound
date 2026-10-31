@@ -94,6 +94,8 @@ public final class VitalsHud {
 		Net.onForgeEcho = ForgeScene::echo;
 		Net.onColdWake = ColdScene::play;
 		Net.onIntro = IntroScene::play;
+		Net.onPing = Pings::got;
+		Pings.hooks(bus);
 		Net.onJournal = QuestScreen::state;
 		Net.onGuildJobs = QuestScreen::jobs;
 		QuestHud.hooks(bus);

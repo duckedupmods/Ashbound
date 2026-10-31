@@ -161,6 +161,11 @@ public final class GateMobs {
 
 	/** The ones that walk on two legs. */
 	public static class Walker extends Monster implements MobSkills.User {
+		@Override
+		public boolean isPushable() {
+			return !kind.boss() && super.isPushable();
+		}
+
 		public final Kind kind;
 		private final MobSkills.State skills = new MobSkills.State();
 
@@ -226,6 +231,11 @@ public final class GateMobs {
 
 	/** The many-legged ones, on the spider: they climb. */
 	public static class Crawler extends Spider implements MobSkills.User {
+		@Override
+		public boolean isPushable() {
+			return !kind.boss() && super.isPushable();
+		}
+
 		public final Kind kind;
 		private final MobSkills.State skills = new MobSkills.State();
 

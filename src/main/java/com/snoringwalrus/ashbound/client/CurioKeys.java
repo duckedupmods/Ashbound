@@ -45,6 +45,7 @@ public final class CurioKeys {
 	/** The skill keys past the first, which is R above. */
 	private static final KeyMapping[] SLOTS = {SKILL, slot(1, GLFW.GLFW_KEY_Z), slot(2, GLFW.GLFW_KEY_X), slot(3, GLFW.GLFW_KEY_C)};
 	public static final KeyMapping SKILLS = new KeyMapping("key.ashbound.skills", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_N, "key.categories.ashbound");
+	public static final KeyMapping PING = new KeyMapping("key.ashbound.ping", InputConstants.Type.MOUSE, GLFW.GLFW_MOUSE_BUTTON_MIDDLE, "key.categories.ashbound");
 	public static final KeyMapping FORM = new KeyMapping("key.ashbound.form", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_B, "key.categories.ashbound");
 
 	private static KeyMapping slot(int i, int key) {
@@ -70,6 +71,7 @@ public final class CurioKeys {
 		e.register(MOUNT);
 		e.register(SKILLS);
 		e.register(FORM);
+		e.register(PING);
 		for (int i = 1; i < SLOTS.length; i++) e.register(SLOTS[i]);
 	}
 
@@ -154,6 +156,8 @@ public final class CurioKeys {
 		Minecraft mc = Minecraft.getInstance();
 		LocalPlayer p = mc.player;
 		if (p == null) return;
+		PartyMap.tick();
+		while (PING.consumeClick()) Pings.send();
 		while (HEAL_TARGET.consumeClick()) stepHealTarget(p);
 		// they've gone
 		if (!healTarget.isEmpty() && !stillHere(p)) setHealTarget("");

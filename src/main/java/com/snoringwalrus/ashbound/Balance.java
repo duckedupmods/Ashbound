@@ -40,7 +40,7 @@ public final class Balance {
 	private static final Map<String, double[]> NORMAL = new HashMap<>(); // a rank's plain monster: health, hit
 	private static final Map<String, Integer> BAND_TOP = new HashMap<>();
 	private static final Map<String, Double> CROWD = new HashMap<>();
-	private static double partyHp = 0.15, partyRoadHp = 0.15, partyBossDmg = 0.05, partyRadius = 32, partyShare = 0.25;
+	private static double partyHp = 0.15, partyRoadHp = 0.15, partyBossDmg = 0.08, partyGateDmg = 0.04, partyRadius = 32, partyShare = 0.25;
 	static double levelA = 80, levelP = 1.55, hpPerLevel = 0.4;
 	static int maxLevel = 100;
 
@@ -75,6 +75,7 @@ public final class Balance {
 			partyHp = p.get("hp_per_player").getAsDouble();
 			partyRoadHp = p.get("road_hp_per_player").getAsDouble();
 			partyBossDmg = p.get("boss_dmg_per_player").getAsDouble();
+			partyGateDmg = p.get("gate_dmg_per_player").getAsDouble();
 			partyRadius = p.get("radius").getAsDouble();
 			partyShare = p.get("reward_share").getAsDouble();
 		} catch (Exception e) {
@@ -205,11 +206,6 @@ public final class Balance {
 		return 1;
 	}
 
-	/** Out in the world with nobody near who's found the capital yet: a party grows a monster far less, so a new one can take anything on. Gates stay full. */
-	static boolean road(boolean inGate, List<? extends Player> there) {
-		return !inGate && there.stream().noneMatch(p -> Coins.flag(p, "found_capital"));
-	}
-
 	/** Our monsters, and every other mod's: Cataclysm's and the rest grow for a party too. Vanilla's don't. */
 	static boolean scales(Mob m) {
 		ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(m.getType());
@@ -232,11 +228,11 @@ public final class Balance {
 		List<Player> there = m.level().getEntitiesOfClass(Player.class, m.getBoundingBox().inflate(partyRadius), p -> !p.isSpectator());
 		int n = there.size();
 		if (n <= m.getPersistentData().getInt(SEEN)) return;
-		boolean road = road(m.level().dimension() == Lairs.GATES, there);
+		boolean road = m.level().dimension() != Lairs.GATES;
 		m.getPersistentData().putInt(SEEN, n);
 		float share = m.getHealth() / m.getMaxHealth();
 		grow(m.getAttribute(Attributes.MAX_HEALTH), (road ? partyRoadHp : partyHp) * (n - 1));
-		if (boss(m)) grow(m.getAttribute(Attributes.ATTACK_DAMAGE), road ? 0 : partyBossDmg * (n - 1));
+		grow(m.getAttribute(Attributes.ATTACK_DAMAGE), road ? 0 : (boss(m) ? partyBossDmg : partyGateDmg) * (n - 1));
 		m.setHealth(m.getMaxHealth() * share);
 	}
 

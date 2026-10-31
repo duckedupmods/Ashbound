@@ -389,7 +389,7 @@ final class FxKit {
 	/** The healer's line to one ally: it leaves the staff, bends with the way they're looking, and pours into the other's chest. */
 	static final class HealBeam extends Fx {
 		private static final int POINTS = 22, SPARKS = 3;
-		private static final float BEND = 0.28f, DRIFT = 0.16f, WIDE = 0.34f, BODY = 0.13f, THREAD = 0.03f, TWIST = 11;
+		private static final float BEND = 0.28f, DRIFT = 0.16f, WIDE = 0.34f, BODY = 0.13f, THREAD = 0.03f, TWIST = 11, GENTLE = 0.5f, BLOOM = 0.25f;
 		private static final List<HealBeam> LIVE = new ArrayList<>();
 		final Entity from, to;
 		final int rgb;
@@ -420,12 +420,12 @@ final class FxKit {
 			}
 			setPos(to.getX(), to.getY(), to.getZ());
 			RandomSource r = level.getRandom();
-			int c = mix(rgb, WHITE, 0.5f);
+			int c = mix(rgb, WHITE, 0.15f);
 			if (age % 2 == 0) {
 				double a = r.nextDouble() * Mth.TWO_PI;
 				level.addParticle(com.snoringwalrus.ashbound.Vfx.mote(c, 0.03f, 20, -0.04f), true, x + Math.cos(a) * 0.5, y + r.nextDouble() * 1.4, z + Math.sin(a) * 0.5, 0, 0.05, 0);
 			}
-			if (age % 6 == 0) add(new Decal(level, floor(level, to.position()), c, RING, 1.5f, 14, 0.7f));
+			if (age % 6 == 0) add(new Decal(level, floor(level, to.position()), c, RING, 1.5f, 14, 0.35f));
 			if (age % 8 == 0) halo(level, to.position(), c, to.getBbWidth() + 0.7f, to.getBbHeight() * 1.1f, 3);
 			if (age % 3 == 0) rising(level, to.position(), c, 0.7f, 2, 14);
 		}
@@ -438,7 +438,8 @@ final class FxKit {
 		@Override
 		public void render(VertexConsumer b, Camera cam, float partial) {
 			Vec3 at = cam.getPosition(), a = SpellFx.tip(from, partial).subtract(at), e = to.getPosition(partial).add(0, to.getBbHeight() * 0.55, 0).subtract(at);
-			float t = age + partial, dist = (float) a.distanceTo(e), fade = Math.min(1, t / 3) * Math.min(1, (lifetime - t) / 6);
+			float t = age + partial, dist = (float) a.distanceTo(e), fade = Math.min(1, t / 3) * Math.min(1, (lifetime - t) / 6) * GENTLE;
+			Bloom.gain = BLOOM;
 			Vec3 m = a.add(e).scale(0.5).add(from.getViewVector(partial).scale(dist * BEND)).add(0, Mth.sin(t * 0.13f) * DRIFT, 0);
 			Vector3f[] line = new Vector3f[POINTS + 1], one = new Vector3f[POINTS + 1], two = new Vector3f[POINTS + 1];
 			for (int i = 0; i <= POINTS; i++) {
@@ -463,13 +464,14 @@ final class FxKit {
 			Vector3f r = SpellParticles.right(cam), u = SpellParticles.up(cam);
 			float pulse = 1 + 0.15f * Mth.sin(t * 0.6f);
 			param = param(0.5f);
-			quad(b, line[POINTS], new Vector3f(r).mul(1.1f * pulse), new Vector3f(u).mul(1.1f * pulse), -1, 1, 1, -1, fade, FLARE);
-			quad(b, line[0], new Vector3f(r).mul(0.55f), new Vector3f(u).mul(0.55f), -1, 1, 1, -1, fade * 0.8f, FLARE);
+			quad(b, line[POINTS], new Vector3f(r).mul(0.6f * pulse), new Vector3f(u).mul(0.6f * pulse), -1, 1, 1, -1, fade, FLARE);
+			quad(b, line[0], new Vector3f(r).mul(0.3f), new Vector3f(u).mul(0.3f), -1, 1, 1, -1, fade * 0.8f, FLARE);
 			for (int i = 0; i < SPARKS; i++) {   // needles of it running down the line
 				int at1 = Math.round(((t * 0.055f + i / (float) SPARKS) % 1) * (POINTS - 3));
 				Vector3f[] run = {line[at1], line[at1 + 1], line[at1 + 2], line[at1 + 3]};
 				strip(b, run, 0.06f, 0, fade);
 			}
+			Bloom.gain = 1;
 		}
 	}
 

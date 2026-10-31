@@ -66,6 +66,8 @@ final class Party {
 	private record Invite(UUID from, long until) {}
 
 	private static final Map<UUID, Invite> INVITES = new HashMap<>();
+	private static final Map<UUID, Long> PINGED = new HashMap<>();
+	private static final int PING_GAP = 10;
 
 	private static final class State extends SavedData {
 		final Map<UUID, Group> of = new HashMap<>();
@@ -221,6 +223,7 @@ final class Party {
 			if (e.getServer().getTickCount() % EVERY != 0) return;
 			for (Group g : new HashSet<>(state(e.getServer()).of.values())) sync(e.getServer(), g);
 		});
+		NeoForge.EVENT_BUS.addListener((PlayerEvent.PlayerLoggedOutEvent e) -> PINGED.remove(e.getEntity().getUUID()));
 	}
 
 	private static ServerPlayer me(CommandSourceStack src) {
@@ -366,6 +369,11 @@ final class Party {
 	// ---------------------------------------------------------------- the HUD
 
 	private static void sync(MinecraftServer server, Group g) {
+		List<Net.PartySpot> spots = new ArrayList<>();
+		for (UUID u : g.names.keySet()) {
+			ServerPlayer o = server.getPlayerList().getPlayer(u);
+			if (o != null) spots.add(new Net.PartySpot(u, o.getX(), o.getY(), o.getZ(), o.level().dimension().location().toString()));
+		}
 		for (UUID to : g.names.keySet()) {
 			ServerPlayer tp = server.getPlayerList().getPlayer(to);
 			if (tp == null) continue;
@@ -377,6 +385,25 @@ final class Party {
 						o != null && o.level() == tp.level() && o.distanceTo(tp) < NEAR));
 			});
 			PacketDistributor.sendToPlayer(tp, new Net.PartySync(out));
+			PacketDistributor.sendToPlayer(tp, new Net.PartySpots(spots));
+		}
+	}
+
+	/** The scroll wheel's mark: to everyone in the party in this world, or only you if you're alone. */
+	static void ping(ServerPlayer p, Net.Ping m) {
+		long now = p.server.getTickCount();
+		Long last = PINGED.get(p.getUUID());
+		if (last != null && now - last < PING_GAP) return;
+		PINGED.put(p.getUUID(), now);
+		Net.PingAt out = new Net.PingAt(name(p), m.x(), m.y(), m.z());
+		Group g = group(p);
+		if (g == null) {
+			PacketDistributor.sendToPlayer(p, out);
+			return;
+		}
+		for (UUID u : g.names.keySet()) {
+			ServerPlayer o = p.server.getPlayerList().getPlayer(u);
+			if (o != null && o.level() == p.level()) PacketDistributor.sendToPlayer(o, out);
 		}
 	}
 

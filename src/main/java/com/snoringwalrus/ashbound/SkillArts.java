@@ -117,7 +117,7 @@ final class SkillArts {
 		look(p, "unbroken", p.position());
 		thud(p);
 		debuff(p, MobEffects.DAMAGE_RESISTANCE, 7 * SECOND, 2);
-		for (Mob e : p.serverLevel().getEntitiesOfClass(Mob.class, p.getBoundingBox().inflate(14), x -> x instanceof Enemy && x.isAlive())) e.setTarget(p);
+		for (Mob e : p.serverLevel().getEntitiesOfClass(Mob.class, p.getBoundingBox().inflate(14), x -> x instanceof Enemy && x.isAlive())) Threat.taunt(e, p);
 		later(p, 7 * SECOND, () -> {
 			look(p, "unbroken_end", p.position());
 			ringHit(p, p.position(), 7, 5 * m, 0.5);

@@ -402,6 +402,79 @@ public final class SelfTest {
 	}
 
 	@GameTest(template = "selftest")
+	public static void nothingShovesBosses(GameTestHelper h) {
+		Checks c = new Checks("a boss can't be shoved");
+		Thrall t = Mounts.REVENANT.get().create(h.getLevel());
+		c.check(t != null && !t.isPushable(), "a thrall's not pushed");
+		GateMobs.Kind boss = GateMobs.KINDS.stream().filter(GateMobs.Kind::boss).findFirst().orElseThrow();
+		var type = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.fromNamespaceAndPath(Ashbound.ID, boss.id()));
+		c.check(type.create(h.getLevel()) instanceof net.minecraft.world.entity.LivingEntity e && !e.isPushable(), boss.id() + " stands its ground");
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void threat(GameTestHelper h) {
+		Checks c = new Checks("who a monster turns on");
+		FakePlayer p = player(h, 20);
+		Classes.pick(p, "vanguard");
+		c.check(Threat.tank(p), "a Vanguard's a tank");
+		Cinderhusk m = Monsters.CINDERHUSK.get().create(h.getLevel());
+		Thrall t = Mounts.REVENANT.get().create(h.getLevel());
+		if (m != null && t != null) {
+			var at = h.absoluteVec(new net.minecraft.world.phys.Vec3(2, 1, 2));
+			m.setPos(at.x, at.y, at.z);
+			t.setPos(at.x, at.y, at.z + 1);
+			t.addTag(Spells.THRALL);
+			h.getLevel().addFreshEntity(m);
+			h.getLevel().addFreshEntity(t);
+			Threat.hit(m, t, 10);
+			c.check(Threat.choice(m) == t, "a thrall alone holds it");
+			m.setTarget(p);
+			c.check(m.getTarget() == t, "and nothing turns it from the one who's earned it");
+			Threat.hit(m, p, 2);
+			c.check(Threat.choice(m) == p, "a tank's small blow outweighs a thrall's: tank 6 to 2.5");
+			m.setTarget(p);
+			Threat.hit(m, t, 12);
+			c.check(Threat.choice(m) == p, "a thrall's blows don't take it back");
+			Threat.taunt(m, t);
+			c.check(m.getTarget() == t, "a taunt jumps the queue");
+			Threat.forget(m, t);
+			Threat.taunt(m, p);
+			c.check(m.getTarget() == p, "and a tank's taunts stand");
+			m.discard();
+			t.discard();
+		}
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void bowsNeedNoArrows(GameTestHelper h) {
+		Checks c = new Checks("a bow always shoots");
+		FakePlayer p = player(h, 20);
+		var bow = new ItemStack(Gear.item("deep_seam_bow"));
+		c.check(p.getInventory().countItem(Items.ARROW) == 0, "no arrows on them");
+		c.check(!p.getProjectile(bow).isEmpty(), "our bow still has something to loose");
+		c.check(p.getProjectile(new ItemStack(Items.BOW)).isEmpty(), "a vanilla one doesn't");
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
+	public static void thrallsSwing(GameTestHelper h) {
+		Checks c = new Checks("summons swing");
+		Thrall t = Mounts.REVENANT.get().create(h.getLevel());
+		c.check(t != null, "a revenant");
+		if (t != null) {
+			t.swing(net.minecraft.world.InteractionHand.MAIN_HAND);
+			for (int i = 0; i < 4; i++) t.aiStep();
+			c.check(t.getAttackAnim(1) > 0, "its arm moves: " + t.getAttackAnim(1));
+			for (int i = 0; i < t.getCurrentSwingDuration(); i++) t.aiStep();
+			c.check(t.getAttackAnim(1) == 0, "and comes back: " + t.getAttackAnim(1));
+			t.discard();
+		}
+		c.end(h);
+	}
+
+	@GameTest(template = "selftest")
 	public static void wagon(GameTestHelper h) {
 		Checks c = new Checks("the wagon at spawn");
 		Talk.Kind k = Talk.kind(Intro.KIND);
@@ -538,12 +611,9 @@ public final class SelfTest {
 				c.check(Balance.boss(ignis), "and its boss is known as one");
 			} else c.check(false, "cataclysm:ignis exists");
 		}
-		c.check(Balance.road(false, List.of(p)), "no capital found: a party counts for little out in the world");
-		c.check(!Balance.road(true, List.of(p)), "but gates stay full");
 		c.check(Gates.home(p) == 0, "no capital found: home is F, whatever the level");
 		Coins.setFlag(p, "found_capital");
 		c.check(Gates.home(p) == 3, "level 40 is ready for C");
-		c.check(!Balance.road(false, List.of(p)), "someone who's found it brings the full scaling");
 		for (int i = 0; i < 200; i++) c.check(GateDungeons.has(Gates.roll(h.getLevel().random, p)), "a roll is a built rank");
 		c.end(h);
 	}

@@ -178,6 +178,7 @@ public final class Gear {
 		NeoForge.EVENT_BUS.addListener((EntityJoinLevelEvent e) -> {
 			if (!e.getLevel().isClientSide && e.getEntity() instanceof AbstractArrow a && a.getOwner() instanceof Player p) bowDamage(a, p);
 		});
+		NeoForge.EVENT_BUS.addListener(Gear::quiver);
 	}
 
 	static Item weapon(Weapon w, Item.Properties p) {
@@ -218,6 +219,13 @@ public final class Gear {
 						.withStyle(w.boss() ? net.minecraft.ChatFormatting.GOLD : net.minecraft.ChatFormatting.GRAY));
 				return;
 			}
+	}
+
+	/** Our bows never leave you with nothing to shoot: no arrows on you, and they loose a plain one all the same. */
+	private static void quiver(net.neoforged.neoforge.event.entity.living.LivingGetProjectileEvent e) {
+		ItemStack bow = e.getProjectileWeaponItemStack();
+		if (e.getProjectileItemStack().isEmpty() && bow.getItem() instanceof BowItem && BuiltInRegistries.ITEM.getKey(bow.getItem()).getNamespace().equals(Ashbound.ID))
+			e.setProjectileItemStack(new ItemStack(net.minecraft.world.item.Items.ARROW));
 	}
 
 	/** an arrow off one of our bows hits as hard as the bow's rank */

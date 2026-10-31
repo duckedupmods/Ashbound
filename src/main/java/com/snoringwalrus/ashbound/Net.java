@@ -308,6 +308,31 @@ public final class Net {
 				ByteBufCodecs.BOOL, PartyMember::leader, ByteBufCodecs.BOOL, PartyMember::online, ByteBufCodecs.BOOL, PartyMember::near, PartyMember::new);
 	}
 
+	/** Where a party member is, for the maps. */
+	public record PartySpot(java.util.UUID id, double x, double y, double z, String dim) {
+		static final StreamCodec<ByteBuf, PartySpot> STREAM = StreamCodec.composite(net.minecraft.core.UUIDUtil.STREAM_CODEC, PartySpot::id, ByteBufCodecs.DOUBLE, PartySpot::x, ByteBufCodecs.DOUBLE, PartySpot::y,
+				ByteBufCodecs.DOUBLE, PartySpot::z, ByteBufCodecs.STRING_UTF8, PartySpot::dim, PartySpot::new);
+	}
+
+	public record PartySpots(List<PartySpot> spots) implements CustomPacketPayload {
+		public static final Type<PartySpots> TYPE = id("party_spots");
+		public static final StreamCodec<ByteBuf, PartySpots> CODEC = StreamCodec.composite(PartySpot.STREAM.apply(ByteBufCodecs.list()), PartySpots::spots, PartySpots::new);
+		@Override public Type<PartySpots> type() { return TYPE; }
+	}
+
+	/** The scroll wheel: look there. */
+	public record Ping(double x, double y, double z) implements CustomPacketPayload {
+		public static final Type<Ping> TYPE = id("ping");
+		public static final StreamCodec<ByteBuf, Ping> CODEC = StreamCodec.composite(ByteBufCodecs.DOUBLE, Ping::x, ByteBufCodecs.DOUBLE, Ping::y, ByteBufCodecs.DOUBLE, Ping::z, Ping::new);
+		@Override public Type<Ping> type() { return TYPE; }
+	}
+
+	public record PingAt(String who, double x, double y, double z) implements CustomPacketPayload {
+		public static final Type<PingAt> TYPE = id("ping_at");
+		public static final StreamCodec<ByteBuf, PingAt> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, PingAt::who, ByteBufCodecs.DOUBLE, PingAt::x, ByteBufCodecs.DOUBLE, PingAt::y, ByteBufCodecs.DOUBLE, PingAt::z, PingAt::new);
+		@Override public Type<PingAt> type() { return TYPE; }
+	}
+
 	public record PartySync(List<PartyMember> members) implements CustomPacketPayload {
 		public static final Type<PartySync> TYPE = id("party_sync");
 		public static final StreamCodec<ByteBuf, PartySync> CODEC = StreamCodec.composite(PartyMember.STREAM.apply(ByteBufCodecs.list()), PartySync::members, PartySync::new);
@@ -464,6 +489,8 @@ public final class Net {
 	public static Consumer<GuildJobs> onGuildJobs = m -> {};
 	public static Consumer<SpellFx> onSpellFx = m -> {};
 	public static List<PartyMember> clientParty = List.of();
+	public static volatile List<PartySpot> clientSpots = List.of();
+	public static Consumer<PingAt> onPing = m -> {};
 	public static Consumer<ForgeEcho> onForgeEcho = m -> {};
 	public static Consumer<QuestBoard> onBoard = m -> {};
 	public static Runnable onCard = () -> {};
@@ -514,6 +541,9 @@ public final class Net {
 			r.playToClient(GuildJobs.TYPE, GuildJobs.CODEC, (m, ctx) -> onGuildJobs.accept(m));
 			r.playToClient(SpellFx.TYPE, SpellFx.CODEC, (m, ctx) -> onSpellFx.accept(m));
 			r.playToClient(PartySync.TYPE, PartySync.CODEC, (m, ctx) -> clientParty = m.members());
+			r.playToClient(PartySpots.TYPE, PartySpots.CODEC, (m, ctx) -> clientSpots = m.spots());
+			r.playToClient(PingAt.TYPE, PingAt.CODEC, (m, ctx) -> onPing.accept(m));
+			r.playToServer(Ping.TYPE, Ping.CODEC, (m, ctx) -> Party.ping((ServerPlayer) ctx.player(), m));
 			r.playToServer(JournalPick.TYPE, JournalPick.CODEC, (m, ctx) -> Story.pick((ServerPlayer) ctx.player(), m.key()));
 			r.playToServer(ForgeRelay.TYPE, ForgeRelay.CODEC, (m, ctx) -> Smithing.onRelay(m, (ServerPlayer) ctx.player()));
 			r.playToClient(ForgeEcho.TYPE, ForgeEcho.CODEC, (m, ctx) -> onForgeEcho.accept(m));

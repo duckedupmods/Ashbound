@@ -242,7 +242,7 @@ public final class CurioFx {
 			Entity by = e.getDamageSource().getEntity();
 			if (w(p, "wardens_oathring") > 0 && now >= s.oath) {
 				s.oath = now + 160;
-				for (Mob m : p.level().getEntitiesOfClass(Mob.class, p.getBoundingBox().inflate(8), m -> foe(m, p))) m.setTarget(p);
+				for (Mob m : p.level().getEntitiesOfClass(Mob.class, p.getBoundingBox().inflate(8), m -> foe(m, p))) Threat.taunt(m, p);
 				p.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 0));
 				p.level().playSound(null, p.blockPosition(), SoundEvents.RAVAGER_ROAR, SoundSource.PLAYERS, 0.5f, 1.6f);
 			}

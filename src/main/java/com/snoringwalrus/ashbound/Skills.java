@@ -559,7 +559,7 @@ public final class Skills {
 		JoinedSkills.ringHit(p, p.position(), 5, 1.4 * m, 0.3);
 		thud(p);
 		p.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 5 * SECOND, 1));
-		for (Mob e : p.serverLevel().getEntitiesOfClass(Mob.class, p.getBoundingBox().inflate(10), x -> x instanceof Enemy && x.isAlive())) e.setTarget(p);
+		for (Mob e : p.serverLevel().getEntitiesOfClass(Mob.class, p.getBoundingBox().inflate(10), x -> x instanceof Enemy && x.isAlive())) Threat.taunt(e, p);
 	}
 
 	private static void charge(ServerPlayer p, double m) {

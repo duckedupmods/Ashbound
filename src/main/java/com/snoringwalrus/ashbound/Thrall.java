@@ -4,9 +4,11 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -23,9 +25,14 @@ public class Thrall extends PathfinderMob {
 	private static final EntityDataAccessor<Integer> TINT = SynchedEntityData.defineId(Thrall.class, EntityDataSerializers.INT);
 	private static final double CHASE = 1.25;
 	private static final float HIT_LOOK = 0.4f;
-	private static final double CLEAVE = 2.5;
+	private static final double CLEAVE = 2.5, REACH = 3;
+	/** A blow's length in ticks, and how far through it the blade comes down (ThrallRender.blow). */
+	private static final int SWING = 12, GREAT_SWING = 18;
+	private static final float IMPACT = 0.55f;
 	public final boolean champion;
 	private boolean cleaving;
+	private LivingEntity striking;
+	private int landsIn;
 
 	public Thrall(EntityType<? extends Thrall> type, Level level, boolean champion) {
 		super(type, level);
@@ -54,7 +61,32 @@ public class Thrall extends PathfinderMob {
 	@Override
 	protected void registerGoals() {
 		goalSelector.addGoal(0, new FloatGoal(this));
-		goalSelector.addGoal(2, new MeleeAttackGoal(this, CHASE, true));
+		goalSelector.addGoal(2, new MeleeAttackGoal(this, CHASE, true) {
+			@Override
+			protected void checkAndPerformAttack(LivingEntity target) {
+				if (!canPerformAttack(target)) return;
+				resetAttackCooldown();
+				swing(InteractionHand.MAIN_HAND);
+				striking = target;
+				landsIn = Math.round(getCurrentSwingDuration() * IMPACT);
+			}
+		});
+	}
+
+	@Override
+	public int getCurrentSwingDuration() {
+		return champion ? GREAT_SWING : SWING;
+	}
+
+	/** The swing's timer is only run for a Monster or a Player, and the arm's drawn from it. */
+	@Override
+	public void aiStep() {
+		updateSwingTime();
+		super.aiStep();
+		if (landsIn > 0 && --landsIn == 0) {
+			if (striking != null && striking.isAlive() && distanceTo(striking) < getBbWidth() + REACH) doHurtTarget(striking);
+			striking = null;
+		}
 	}
 
 	@Override
@@ -78,6 +110,15 @@ public class Thrall extends PathfinderMob {
 		if (level().isClientSide && tickCount % 3 == 0)
 			level().addParticle(Vfx.wisp(tint(), champion ? 0.5f : 0.3f, 16, -0.02f, true), getX() + (random.nextDouble() - 0.5) * getBbWidth(), getY() + 0.2, getZ() + (random.nextDouble() - 0.5) * getBbWidth(), 0, 0.02, 0);
 	}
+
+	/** Thralls pass through what they fight: a pack of them leaning on a boss would walk it into a wall. */
+	@Override
+	public boolean isPushable() {
+		return false;
+	}
+
+	@Override
+	protected void doPush(Entity e) {}
 
 	@Override
 	public boolean causeFallDamage(float distance, float mult, DamageSource source) {

@@ -5,9 +5,10 @@
   "hp_per_level": 0.4
  },
  "party": {
-  "hp_per_player": 0.15,
+  "hp_per_player": 0.3,
   "road_hp_per_player": 0.15,
-  "boss_dmg_per_player": 0.05,
+  "boss_dmg_per_player": 0.08,
+  "gate_dmg_per_player": 0.04,
   "radius": 32,
   "reward_share": 0.25
  },
@@ -76,11 +77,11 @@
   "S": 1.0
  },
  "foreman_hp": {
-  "warlords_fang": 292,
   "serpent_ziggurat": 292,
   "clockwork_spire": 281,
-  "rimeholt": 404,
-  "glass_minaret": 369
+  "warlords_fang": 292,
+  "glass_minaret": 369,
+  "rimeholt": 404
  },
  "ranks": {
   "F": {

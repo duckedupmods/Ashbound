@@ -27,6 +27,7 @@ public final class Ashbound {
 		ColdForge.init();
 		Story.init();
 		Intro.init();
+		Threat.init();
 		BattleMode.init();
 		Incidents.init();
 		Waypoints.init();

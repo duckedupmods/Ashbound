@@ -5,6 +5,9 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.Registries;
@@ -77,9 +80,9 @@ public final class Gates {
 	/** The level each rank from E up starts at (tools/balance.py MID_LEVEL, halfway between ranks). */
 	private static final int[] FROM_LEVEL = {10, 20, 31, 45, 60, 75};
 	/** Every 20 s, for each player: this chance of a try, higher on the road to the capital. At most this many open round anyone. */
-	private static final float CHANCE = 0.08f, ROAD_CHANCE = 0.2f;
+	private static final float CHANCE = 0.03f, ROAD_CHANCE = 0.06f;
 	private static final int TRIES = 20;
-	private static final int NEAR_MAX = 2;
+	private static final int NEAR_MAX = 1, CLEAR_ROUND = 300, GROUP = 128, OPENS_FROM = 80, OPENS_SPREAD = 100;
 
 	static void register(IEventBus bus) {
 		ENTITIES.register(bus);
@@ -169,9 +172,12 @@ public final class Gates {
 		if (e.getServer().getTickCount() % 400 != 0) return;
 		ServerLevel level = e.getServer().getLevel(Level.OVERWORLD);
 		if (level == null) return;
+		List<ServerPlayer> rolled = new ArrayList<>();   // friends together get the one roll between them, not one each
 		for (ServerPlayer p : level.players()) {
-			if (p.isSpectator() || level.random.nextFloat() > (Coins.flag(p, "found_capital") ? CHANCE : ROAD_CHANCE)) continue;
-			int near = level.getEntitiesOfClass(GateEntity.class, p.getBoundingBox().inflate(256, 400, 256), g -> !g.closing()).size();
+			if (p.isSpectator() || rolled.stream().anyMatch(o -> o.distanceTo(p) < GROUP)) continue;
+			rolled.add(p);
+			if (level.random.nextFloat() > (Coins.flag(p, "found_capital") ? CHANCE : ROAD_CHANCE)) continue;
+			int near = level.getEntitiesOfClass(GateEntity.class, p.getBoundingBox().inflate(CLEAR_ROUND, 400, CLEAR_ROUND), g -> !g.closing()).size();
 			if (near < NEAR_MAX) tryOpen(level, p);
 		}
 	}
@@ -180,7 +186,7 @@ public final class Gates {
 	private static void tryOpen(ServerLevel level, ServerPlayer p) {
 		RandomSource r = level.random;
 		for (int tries = 0; tries < TRIES; tries++) {
-			double a = r.nextDouble() * Math.PI * 2, d = 48 + r.nextDouble() * 96;
+			double a = r.nextDouble() * Math.PI * 2, d = OPENS_FROM + r.nextDouble() * OPENS_SPREAD;
 			int x = Mth.floor(p.getX() + Math.cos(a) * d), z = Mth.floor(p.getZ() + Math.sin(a) * d);
 			if (!level.hasChunkAt(new BlockPos(x, 0, z)) || Capital.blocksStructures(new ChunkPos(x >> 4, z >> 4))) continue;
 			int y = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, x, z);

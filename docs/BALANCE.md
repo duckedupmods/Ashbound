@@ -354,3 +354,13 @@ never touched normal monsters' damage. The causes were in the camps, and every r
   40% at F, 45, 55, 65, 75, 85, 100% at S. Bosses always hit in full. A boss's hit doesn't start the window.
 - balance.json gains rank_normal, band_top and crowd. Dungeons are the same length in Ash: progress() re-solves Ash per
   health.
+
+## Pass 10: a four-player dungeon was far too easy (10/31, unplayed)
+
+Playtest: tank, healer, summoner and black mage walked through dungeons. In gates a monster now grows +30% health per
+extra player (was 15), bosses +8% damage (was 5), others +4% (was none). Outside gates it stays +15% health and no
+damage, found capital or not (the "road" rule is gone), so camps don't get harder. At rank C a four-player boss takes
+90 s (was 69), and levels come 1.2x as fast as solo.
+
+Fewer gates: 3% a roll, 6% before the capital (were 8, 20), one open within 300 blocks (were 2 within 256), one roll per
+group of friends rather than one each, and they open 80-180 blocks off (were 48-144).

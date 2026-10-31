@@ -348,25 +348,25 @@ public final class SpellFx {
 
 	private static void healCircle(ClientLevel l, Vec3 at, int c, float reach, int life) {
 		Vec3 f = floor(l, at);
-		int pale = mix(c, 0xFFFFFF, 0.6f);
-		add(new Flat(l, f, c, CIRCLE, reach, life, 0.012f, 1));
-		add(new Flat(l, f, c, GLOW, reach * 1.2f, life, 0, 0.32f));
-		add(new FxKit.Tube(l, f, new Vec3(0, 1, 0), c, 2.2f, reach, reach, 0.6f, Math.min(life, 40), 0.22f));
+		int pale = mix(c, 0xFFFFFF, 0.25f);
+		add(new Flat(l, f, c, CIRCLE, reach, life, 0.012f, 0.6f));
+		add(new Flat(l, f, c, GLOW, reach * 1.2f, life, 0, 0.12f));
+		add(new FxKit.Tube(l, f, new Vec3(0, 1, 0), c, 2.2f, reach, reach, 0.6f, Math.min(life, 40), 0.09f));
 		for (int i = 0; i * 12 < life; i++)   // it breathes out in rings for as long as it stands
-			FxKit.later(l, i * 12, () -> add(new FxKit.Decal(l, f.add(0, 0.03, 0), pale, FxKit.RING, reach, 18, 0.8f)));
-		FxKit.flare(l, f.add(0, 0.6, 0), c, reach * 0.7f, 8);
+			FxKit.later(l, i * 12, () -> add(new FxKit.Decal(l, f.add(0, 0.03, 0), pale, FxKit.RING, reach, 18, 0.4f)));
+		FxKit.flare(l, f.add(0, 0.6, 0), c, reach * 0.25f, 8);
 		FxKit.rising(l, at, pale, reach, 18 + (int) reach * 4, 18);
 		sparks(l, f.add(0, 0.3, 0), pale, 16, 0.12, -0.02f);
 	}
 
 	private static void shaftOn(ClientLevel l, Entity on, int c) {
 		Vec3 at = on.position();
-		FxKit.column(l, at, mix(c, HOLY, 0.3f), 6, 0.8f, 24, on);
+		FxKit.column(l, at, c, 6, 0.4f, 24, on);
 		Vec3 f = floor(l, at);
-		add(new Flat(l, f, c, GLOW, 1.5f, 22, 0, 0.8f));
-		add(new FxKit.Pop(l, at.add(0, on.getBbHeight() * 0.55, 0), mix(c, 0xFFFFFF, 0.3f), SpellParticles.STAR, 1.6f, 0.8f, 3, l.getRandom().nextFloat() * Mth.TWO_PI, 0));
-		FxKit.halo(l, at, mix(c, 0xFFFFFF, 0.6f), on.getBbWidth() + 0.8f, on.getBbHeight() * 1.2f, 4);
-		FxKit.rising(l, at, mix(c, 0xFFFFFF, 0.6f), 0.8f, 14, 16);
+		add(new Flat(l, f, c, GLOW, 1.5f, 22, 0, 0.3f));
+		add(new FxKit.Pop(l, at.add(0, on.getBbHeight() * 0.55, 0), c, SpellParticles.STAR, 0.9f, 0.35f, 3, l.getRandom().nextFloat() * Mth.TWO_PI, 0));
+		FxKit.halo(l, at, mix(c, 0xFFFFFF, 0.2f), on.getBbWidth() + 0.8f, on.getBbHeight() * 1.2f, 3);
+		FxKit.rising(l, at, mix(c, 0xFFFFFF, 0.2f), 0.8f, 8, 16);
 	}
 
 	private static void lance(ClientLevel l, Entity on, int c) {
@@ -453,7 +453,7 @@ public final class SpellFx {
 			case Spells.FX_GREAT_HEAL -> {
 				healCircle(l, at, c, m.r(), 70);
 				add(new Dome(l, floor(l, at), c, m.r(), 70));
-				FxKit.column(l, at, mix(c, HOLY, 0.4f), 16, 2, 26, null);
+				FxKit.column(l, at, c, 16, 1, 26, null);
 			}
 			default -> {}
 		}

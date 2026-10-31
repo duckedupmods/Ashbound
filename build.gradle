@@ -126,6 +126,7 @@ dependencies {
     runtimeOnly "maven.modrinth:l_enders-cataclysm:PsPYpoCC"
     runtimeOnly "maven.modrinth:lionfish-api:fTRMVgyZ"
     compileOnly files('run/mods/waystones-neoforge-1.21.1-21.1.46.jar')   // the towns' stones (Waypoints), a jar like the other pack mods in run/mods
+    compileOnly files('run/mods/xaerominimap-neoforge-1.21.1-26.6.0.jar', 'run/mods/xaeroworldmap-neoforge-1.21.1-1.47.0.jar')   // the party on their maps (client/PartyMap), only if they're there
     implementation "maven.modrinth:curios:yohfFbgD"   // curios and relics compile against its API
     runtimeOnly "maven.modrinth:towns-and-towers:DZxwgj6V"
     runtimeOnly "maven.modrinth:cristel-lib:Sduz0AWP"

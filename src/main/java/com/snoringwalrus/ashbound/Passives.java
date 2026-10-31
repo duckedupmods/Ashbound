@@ -734,7 +734,7 @@ public final class Passives {
 		if (has(p, "taunt") && now >= s.taunt) {
 			s.taunt = now + 100;
 			for (Mob m : p.level().getEntitiesOfClass(Mob.class, p.getBoundingBox().inflate(8), m -> m instanceof Enemy && !Spells.isThrall(m)))
-				m.setTarget(p);
+				Threat.taunt(m, p);
 			p.level().playSound(null, p.blockPosition(), SoundEvents.RAVAGER_ROAR, SoundSource.PLAYERS, 0.5f, 1.6f);
 		}
 	}
@@ -906,7 +906,7 @@ public final class Passives {
 		}
 		if (has(p, "vanish")) {
 			p.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 60, 0));
-			for (Mob m : p.level().getEntitiesOfClass(Mob.class, p.getBoundingBox().inflate(16), m -> m.getTarget() == p)) m.setTarget(null);
+			for (Mob m : p.level().getEntitiesOfClass(Mob.class, p.getBoundingBox().inflate(16), m -> m.getTarget() == p)) Threat.forget(m, p);
 		}
 		if (has(p, "siphon")) {
 			float mana = Math.min(Spells.max(p), p.getData(Spells.MANA) + 6);
