@@ -77,13 +77,27 @@ public final class Gates {
 	public static final DeferredHolder<EntityType<?>, EntityType<GateEntity>> GATE = ENTITIES.register("gate",
 			() -> EntityType.Builder.<GateEntity>of(GateEntity::new, MobCategory.MISC).sized(1f, 1f).fireImmune()
 					.clientTrackingRange(24).updateInterval(40).build(Ashbound.ID + ":gate"));
+	/** The gate storms (SkyCracks): the gate torn open as a storm's eye, its spires, its lightning. */
+	public static final DeferredHolder<EntityType<?>, EntityType<SkyCrack>> SKY_CRACK = ENTITIES.register("sky_crack",
+			() -> EntityType.Builder.<SkyCrack>of(SkyCrack::new, MobCategory.MISC).sized(1f, 1f).fireImmune()
+					.clientTrackingRange(32).updateInterval(40).build(Ashbound.ID + ":sky_crack"));
+	public static final DeferredHolder<EntityType<?>, EntityType<StormSpire>> STORM_SPIRE = ENTITIES.register("storm_spire",
+			() -> EntityType.Builder.<StormSpire>of(StormSpire::new, MobCategory.MISC).sized(3.2f, 6f).fireImmune()
+					.clientTrackingRange(24).updateInterval(20).build(Ashbound.ID + ":storm_spire"));
+	public static final DeferredHolder<EntityType<?>, EntityType<StormStrike>> STORM_STRIKE = ENTITIES.register("storm_strike",
+			() -> EntityType.Builder.<StormStrike>of(StormStrike::new, MobCategory.MISC).sized(1f, 1f).fireImmune()
+					.clientTrackingRange(24).updateInterval(40).build(Ashbound.ID + ":storm_strike"));
+
+	/** A falling gate-shard (Meteors): drawn across the sky while it falls, then standing in its crater. */
+	public static final DeferredHolder<EntityType<?>, EntityType<MeteorShard>> METEOR = ENTITIES.register("meteor_shard",
+			() -> EntityType.Builder.<MeteorShard>of(MeteorShard::new, MobCategory.MISC).sized(2.6f, 5.5f).fireImmune()
+					.clientTrackingRange(32).updateInterval(10).build(Ashbound.ID + ":meteor_shard"));
 
 	public static final DeferredBlock<GateScorch> SCORCH = BLOCKS.registerBlock("gate_scorch", GateScorch::new, BlockBehaviour.Properties.of()
 			.mapColor(MapColor.COLOR_BLACK).noCollission().instabreak().noLootTable().replaceable().randomTicks().noOcclusion()
 			.sound(SoundType.SAND).pushReaction(PushReaction.DESTROY).lightLevel(s -> s.getValue(GateScorch.FADING) ? 1 : 5));
 
 	/** The level each rank from E up starts at (tools/balance.py MID_LEVEL, halfway between ranks). */
-	private static final int[] FROM_LEVEL = {10, 20, 31, 45, 60, 75};
 	/**
 	 * A party, or a player on their own, gets one roll every 2-5 minutes (ticks), at this chance. A roll that lands is owed
 	 * until there's somewhere for it to open. At most this many open round anyone.
@@ -101,6 +115,7 @@ public final class Gates {
 		BLOCKS.register(bus);
 		PARTICLES.register(bus);
 		NeoForge.EVENT_BUS.addListener(Gates::tick);
+		SkyCracks.init();
 		NeoForge.EVENT_BUS.addListener((RegisterCommandsEvent e) -> e.getDispatcher().register(Commands.literal("ashbound")
 				.requires(c -> c.hasPermission(2))
 				.then(Commands.literal("gate")
@@ -119,28 +134,31 @@ public final class Gates {
 		return -1;
 	}
 
-	/** The rank a player's ready for: F until they've found the capital, then their guild rank or level, whichever's higher. */
+	/** The rank a player's gates centre on: their party's. */
 	static int home(ServerPlayer p) {
-		if (!Coins.flag(p, "found_capital")) return 0;
-		int rank = p.getData(Guild.CARD).rank();
-		for (int i = 0; i < FROM_LEVEL.length; i++) if (Levels.level(p) >= FROM_LEVEL[i]) rank = Math.max(rank, i + 1);
-		return rank;
+		return Ranks.party(p);
 	}
 
-	/** How often this rank opens round a player of that rank: most at their own, falling away both ways, up slower than it pays to risk. */
-	static double odds(int rank, int home, boolean road) {
+	/** Weights by ranks above home, and below it. Two up is as far as a gate reaches: past that there's nothing you could fight. */
+	private static final double[] UP = {100, 30, 6}, DOWN = {40, 12, 3};
+	private static final double OUTGROWN = 100;
+
+	/** How often this rank opens round a party of that rank: mostly their own, and if they've outlevelled their gear the next, to go and get it. */
+	static double odds(int rank, int home, boolean road, boolean outgrown) {
 		int d = rank - home;
-		double w = d >= 0 ? 60 * Math.pow(0.5, d) : 24 * Math.pow(0.4, -d - 1);
+		if (d >= UP.length || -d >= DOWN.length + 1) return 0;
+		double w = d >= 0 ? UP[d] : DOWN[-d - 1];
+		if (d == 1 && outgrown) w = OUTGROWN;
 		return road && rank == 0 ? w * 2 : w;
 	}
 
 	static int roll(RandomSource r, ServerPlayer p) {
 		int home = home(p);
-		boolean road = !Coins.flag(p, "found_capital");
+		boolean road = !Coins.flag(p, "found_capital"), outgrown = Ranks.outgrown(p);
 		double total = 0;
-		for (int i = 0; i < GateEntity.RANKS.length; i++) if (GateDungeons.has(i)) total += odds(i, home, road);
+		for (int i = 0; i < GateEntity.RANKS.length; i++) if (GateDungeons.has(i)) total += odds(i, home, road, outgrown);
 		double x = r.nextDouble() * total;
-		for (int i = 0; i < GateEntity.RANKS.length; i++) if (GateDungeons.has(i) && (x -= odds(i, home, road)) < 0) return i;
+		for (int i = 0; i < GateEntity.RANKS.length; i++) if (GateDungeons.has(i) && (x -= odds(i, home, road, outgrown)) < 0) return i;
 		return 0;
 	}
 

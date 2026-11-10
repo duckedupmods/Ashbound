@@ -31,6 +31,9 @@ NEW = P.GAME + 'tools/armor_src/'          # the sets tools/armorforge.py makes
 
 def src(name):
     """where a set's per-bone meshes and atlas are: old Ashbound's, or armorforge's"""
+    done = NEW + 'designed.json'
+    if P.os.path.exists(done) and name in json.load(open(done)):      # designed anew in tools/armorsets.py
+        return NEW
     rig = SRC + 'models/entity/%s/rig.json' % name
     if P.os.path.exists(rig) and 'helm_head' in open(rig, encoding='utf-8').read():
         return SRC
@@ -47,7 +50,7 @@ SPINE = (0.75, 1.5)                # the body is all Torso below, all Chest abov
 SPINE_STEPS = [(0.712, 0.0), (0.849, 0.25), (0.987, 0.25), (1.125, 0.5), (1.263, 0.74), (1.401, 0.77), (1.538, 1.0)]
 # the arms swing through the space beside the body from x 0.25 out: a body piece wider than SIDE, or an arm piece
 # reaching in past SLEEVE, cuts through the other when the arms swing, so the extra bulk there is squeezed in
-SIDE, SLEEVE = 0.272, 0.255
+SIDE, SLEEVE = 0.272, 0.28
 HIP, TAILS = 0.72, 0.8             # where coat tails start, and how much of a thigh's swing they take at the hem
 
 # set, dungeon, rank, class, its four pieces (helm, chest, legs, boots)
@@ -69,7 +72,7 @@ RANK = {'F': 0.80, 'E': 0.87, 'D': 0.93, 'C': 1.00, 'B': 1.08, 'A': 1.16, 'S': 1
 SHARE = (0.15, 0.40, 0.30, 0.15)   # helm, chest, legs, boots
 
 
-def weights(piece, bone, x, y):
+def weights(piece, bone, x, y, z=0.0):
     """the joints (and how much of each) a vertex at height y on this bone follows"""
     side = 'L' if bone.endswith('_l') else 'R'
     if piece == 'helm':
@@ -84,10 +87,18 @@ def weights(piece, bone, x, y):
     if bone == 'body':
         t = spine(y)
         return [(j, w) for j, w in (('Torso', round(1 - t, 2)), ('Chest', round(t, 2))) if w > 0]
+    if bone.startswith('shoulder'):
+        return [('Shoulder_' + side, 1.0)]      # stays on the shoulder when the arm swings, so it can't cut through the chest
+    # the middle ring of a joint hinges as on Epic Fight's own armour: an elbow's front stays with the upper arm and its
+    # back goes with the joint, a knee the other way round
     if bone.startswith('arm'):
-        return [(('Arm_' if y >= ELBOW else 'Hand_') + side, 1.0)]
+        if abs(y - ELBOW) < 1e-4:
+            return [(('Arm_' if z > 0 else 'Elbow_') + side, 1.0)]
+        return [(('Arm_' if y > ELBOW else 'Hand_') + side, 1.0)]
     if bone.startswith('leg'):
-        return [(('Thigh_' if y >= KNEE else 'Leg_') + side, 1.0)]
+        if abs(y - KNEE) < 1e-4:
+            return [(('Knee_' if z > 0 else 'Thigh_') + side, 1.0)]
+        return [(('Thigh_' if y > KNEE else 'Leg_') + side, 1.0)]
     return [('Chest', 1.0)]        # extras riding on the body (the Bonewright's cog)
 
 
@@ -99,6 +110,50 @@ def spine(y):
         if y <= y1:
             return w0 + (w1 - w0) * (y - y0) / (y1 - y0)
     return 1.0
+
+
+def cut_at(y0, v, vt, tris):
+    """every triangle crossing height y0 split there, so a long piece bends where the body does, not just at its ends"""
+    v, vt, out = list(v), list(vt), []
+
+    def between(a, b):
+        t = (y0 - v[a[0]][1]) / (v[b[0]][1] - v[a[0]][1])
+        v.append(tuple(p + (q - p) * t for p, q in zip(v[a[0]], v[b[0]])))
+        vt.append(tuple(p + (q - p) * t for p, q in zip(vt[a[1]], vt[b[1]])))
+        return (len(v) - 1, len(vt) - 1, a[2])
+
+    for tri in tris:
+        up = [v[c[0]][1] > y0 + 1e-6 for c in tri]
+        down = [v[c[0]][1] < y0 - 1e-6 for c in tri]
+        if not any(up) or not any(down):
+            out.append(tri)
+            continue
+        lone = next((k for k in range(3) if (up[k] and not any(up[j] for j in range(3) if j != k)) or (down[k] and not any(down[j] for j in range(3) if j != k))), None)
+        if lone is None:
+            out.append(tri)
+            continue
+        a, b, c = tri[lone], tri[(lone + 1) % 3], tri[(lone + 2) % 3]
+        if abs(v[b[0]][1] - y0) < 1e-6:          # the plane runs through b: one cut, two triangles
+            q = between(a, c)
+            out += [(a, b, q), (q, b, c)]
+        elif abs(v[c[0]][1] - y0) < 1e-6:
+            p = between(a, b)
+            out += [(a, p, c), (p, b, c)]
+        else:
+            p, q = between(a, b), between(a, c)
+            out += [(a, p, q), (p, b, q), (q, b, c)]
+    return v, vt, out
+
+
+def bends(bone):
+    """the heights a piece on this bone has to give at"""
+    if bone == 'body':
+        return [y for y, _ in SPINE_STEPS]
+    if bone.startswith('arm'):
+        return [ELBOW - 0.001, ELBOW, ELBOW + 0.001]
+    if bone.startswith('leg'):
+        return [KNEE - 0.001, KNEE, KNEE + 0.001]
+    return []
 
 
 def squeeze(v, lo, hi, edge):
@@ -130,7 +185,8 @@ def fit(bone, v):
 # Under each set's chunky pieces sits a lining shaped and weighted like Epic Fight's own armour (and its player
 # skin): a closed sleeve round every covered body part, just outside the skin's outer layer, with the extra ring
 # at the elbow and knee that their Elbow / Knee joints bend. The chunky pieces leave gaps (a bare upper arm,
-# a hard split at the elbow); the lining makes sure no pose shows skin through them.
+# a hard split at the elbow); the lining makes sure no pose shows skin through them. Under a designed set the body itself is
+# left out (AshboundClient), so there the lining IS the arm and the leg, and stays closed at both ends.
 SWATCHES = P.GAME + 'tools/renders/icons/linings.json'   # where each set's lining cloth sits on its sheet (the icons leave it out)
 SW = 16                            # a cloth swatch's size in texels; the sets are painted 16 texels to the block
 
@@ -141,8 +197,10 @@ def ring(z, ws):
 
 def limb(upper, lower, joint, z0, z1):
     """a limb's rings, bending at Epic Fight's elbow / knee (JOINT at height z) like its own armour does"""
-    z = KNEE_EF if upper.startswith('Thigh') else ELBOW
-    return [ring(z0, ((lower, 1.0),)), ring(z - 0.001, ((lower, 1.0),)), ring(z, ((joint, 1.0),)),
+    knee = upper.startswith('Thigh')
+    z = KNEE_EF if knee else ELBOW
+    hinge = (z, lambda x, y: ((joint, 1.0),) if (y > 0) == knee else ((upper, 1.0),))     # as on Epic Fight's own armour
+    return [ring(z0, ((lower, 1.0),)), ring(z - 0.001, ((lower, 1.0),)), hinge,
             ring(z + 0.001, ((upper, 1.0),)), ring(z1, ((upper, 1.0),))]
 
 
@@ -160,8 +218,8 @@ def lining(piece):
         out = [('torso', rect(-0.268, 0.268, -0.138, 0.138), torso, 'tb')]
         for s, part in ((1, 'rightArm'), (-1, 'leftArm')):
             S = 'R' if s > 0 else 'L'
-            xs = sorted((0.239 * s, 0.512 * s))
-            out.append((part, rect(xs[0], xs[1], -0.137, 0.137), limb('Arm_' + S, 'Hand_' + S, 'Elbow_' + S, 0.722, 1.528), 'tb'))
+            xs = sorted((0.242 * s, 0.53 * s))
+            out.append((part, rect(xs[0], xs[1], -0.152, 0.152), limb('Arm_' + S, 'Hand_' + S, 'Elbow_' + S, 0.67, 1.58), 'tb'))
         return out
     if piece == 'legs':
         waist = [ring(z, tuple((j, w) for j, w in (('Torso', round(1 - spine(z), 2)), ('Chest', round(spine(z), 2))) if w > 0)) for z in (0.70, 0.86)]
@@ -169,7 +227,7 @@ def lining(piece):
         for s in (1, -1):
             S = 'R' if s > 0 else 'L'
             xs = sorted((-0.004 * s, 0.258 * s))
-            out.append(('noGroups', rect(xs[0], xs[1], -0.134, 0.134), limb('Thigh_' + S, 'Leg_' + S, 'Knee_' + S, 0.0, 0.772), 'b'))
+            out.append(('noGroups', rect(xs[0], xs[1], -0.134, 0.134), limb('Thigh_' + S, 'Leg_' + S, 'Knee_' + S, 0.0, 0.772), 'tb'))
         return out
     if piece == 'boots':
         out = []
@@ -201,10 +259,11 @@ def skirt():
     return rings
 
 
-def tube(part, outline, rings, caps, swatch):
+def tube(part, outline, rings, caps, swatch, top=None):
     """triangles [(part, ((pos, uv, normal, weights) x3))] of a closed sleeve through RINGS, OUTLINE going round
     anticlockwise seen from above; each face takes the swatch at 16 texels to the block, its bottom on the
-    swatch's bottom row (a robe's hem)"""
+    swatch's bottom row (a robe's hem). TOP: another swatch for its top cap (what shows from above between the
+    head and the shoulder pieces when there's no helmet: the armour's own colour, not the dark cloth)"""
     sx, sy = swatch
     if outline is not None:
         rings = [(z, outline, (lambda f: lambda x, y, z: f(x, y))(f)) for z, f in rings]
@@ -228,6 +287,8 @@ def tube(part, outline, rings, caps, swatch):
         if c in caps:
             x0, y0 = min(p[0] for p in pts), min(p[1] for p in pts)
             n = (0.0, 0.0, 1.0 if c == 't' else -1.0)
+            if c == 't' and top is not None:
+                sx, sy = top
             vs = [vert(p, z, (p[0] - x0) * SW, (p[1] - y0) * SW, n, f) for p in pts]
             tris += [(part, (vs[0], vs[k], vs[k + 1])) for k in range(1, len(vs) - 1)]
     return tris
@@ -377,12 +438,16 @@ def mesh(name, piece, files, extra=()):
     for f in files:
         bone = f[len(piece) + 1:]
         part = PART[piece](bone)
+        if not P.os.path.exists(src(name) + 'models/entity/%s/%s.obj' % (name, f)):      # a design with nothing on that shoulder
+            continue
         v, vt, vn, tris = load_obj(src(name) + 'models/entity/%s/%s.obj' % (name, f))
         v = fit(bone, v)
+        for y0 in bends(bone):
+            v, vt, tris = cut_at(y0, v, vt, tris)
         for tri in tris:
             for (a, t, n) in tri:
                 x, y, z = v[a]
-                ws = tuple(weights(piece, bone, x, y))
+                ws = tuple(weights(piece, bone, x, y, z))
                 # our frame (x to the wearer's left, y up, z forward) -> Epic Fight's (x right, y forward, z up)
                 key = (round(-x, 5), round(z, 5), round(y, 5), ws)
                 k = len(pos)
@@ -444,20 +509,29 @@ def port(name, rank, cls, items, lang, names):
     if src(name) == SRC:    # old Ashbound's soft renders left pale flecks; armorforge's sheets are clean
         print('  %d white flecks cleaned' % despeckle(sheet))
     base, accent = colours(sheet)
+    plate = base
+    sys.path.insert(0, 'E:/Ashbound/tools')
+    import armorsets as AS
+    gown = AS.robe(name) if name in AS.PAINT else None
+    if name in AS.PAINT:
+        base = AS.lining(name)
     rng = random.Random(name)
-    cloth, robe = free_spots(sheet, 2)
+    cloth, robe, top = free_spots(sheet, 3)
     swatch = json.load(open(SWATCHES)) if P.os.path.exists(SWATCHES) else {}
     swatch[name] = cloth
     P.dump(SWATCHES, swatch)
     paint(sheet, cloth, tuple(int(v * 0.72) for v in base), rng)
-    if cls == 'ROBE':
-        paint(sheet, robe, tuple(min(255, int(v * 1.1)) for v in base), rng, robe=accent)
+    paint(sheet, top, tuple(int(v * 0.92) for v in plate), rng)
+    skirted = cls == 'ROBE' and (name not in AS.PAINT or gown is not None)
+    if skirted:
+        paint(sheet, robe, gown[0] if gown else tuple(min(255, int(v * 1.1)) for v in base), rng, robe=gown[1] if gown else accent)
     meshes = []
     for piece, item, share in zip(('helm', 'chest', 'legs', 'boots'), items, SHARE):
         item = name + '_' + item
         files = [b for b in bones if b.startswith(piece + '_')]
-        extra = [t for part, outline, rings, caps in lining(piece) for t in tube(part, outline, rings, caps, cloth)]
-        if piece == 'chest' and cls == 'ROBE':
+        extra = [t for part, outline, rings, caps in lining(piece)
+                 for t in tube(part, outline, rings, caps, cloth, top if piece == 'chest' else None)]
+        if piece == 'chest' and skirted:
             extra += tube('torso', None, skirt(), '', robe)
         out = mesh(name, piece, files, extra)
         meshes.append(out)
@@ -472,6 +546,30 @@ def port(name, rank, cls, items, lang, names):
     P.os.makedirs(P.ASSETS + 'textures/models/armor', exist_ok=True)
     for layer in (1, 2):
         sheet.save(P.ASSETS + 'textures/models/armor/%s_layer_%d.png' % (name, layer))
+    flicker(name, sheet)
+
+
+def flicker(name, sheet):
+    """a designed set's fire as a run of sheets, its colours rolling upward: ArmorFx.java shows one after another"""
+    sys.path.insert(0, 'E:/Ashbound/tools')
+    import math
+    import armorsets as AS
+    if name not in AS.PAINT:
+        return
+    fire = [tuple(c[:3]) for c in AS.fire(name)]
+    index = {c: i for i, c in enumerate(fire)}
+    w, h = sheet.size
+    src_px = sheet.load()
+    for k in range(AS.FRAMES):
+        fr = sheet.copy()
+        px = fr.load()
+        for y in range(h):
+            for x in range(w):
+                i = index.get(src_px[x, y][:3])
+                if i is not None and src_px[x, y][3] > 0:
+                    d = round(1.7 * math.sin(2 * math.pi * (k / AS.FRAMES + y / 11 + x / 23)))
+                    px[x, y] = fire[max(0, min(len(fire) - 1, i + d))] + (src_px[x, y][3],)
+        fr.save(P.ASSETS + 'textures/models/armor/%s_fr%d.png' % (name, k))
 
 
 def icons(only):

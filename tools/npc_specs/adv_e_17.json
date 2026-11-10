@@ -1,0 +1,63 @@
+{
+ "id": "adv_e_17",
+ "seed": 4113017,
+ "recipe": "adventurer",
+ "role": "white_mage",
+ "rank": "E",
+ "name": "Miriel Lilacshade",
+ "title": "E-rank White Mage",
+ "age": "adult",
+ "sex": "f",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "rose",
+ "hair": {
+  "style": "long",
+  "color": "copper"
+ },
+ "headwear": "circlet",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "gold",
+  "brows": "thin",
+  "mouth": "flat",
+  "blush": true,
+  "freckles": true,
+  "marks": [
+   "scar_cheek"
+  ],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "sash",
+   "vials"
+  ],
+  "colors": {
+   "top": "white",
+   "bottom": "cream",
+   "accent": "forest",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "staff",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "E",
+  "role": "white_mage"
+ },
+ "race": "elf",
+ "recipe_race": "elf",
+ "party": "The Thornbacks"
+}

@@ -41,7 +41,9 @@ public final class Joined {
 	private static final String[] RANK = {"", "C", "B", "A", "S", "S+"};
 	private static final String LADDER = "DCBAS";
 	public static final int TOP = 5;
-	private static final double OVER_BOSS = 1.12, A_RANK = 1.08;
+	private static final double OVER_BOSS = 1.12, A_RANK = 1.4;
+	/** Two rank D boss weapons make a rank C Joined one: it stands over the boss weapons a rank up. Rank S ones come from three gates, and the top of the line stands over the best of them. */
+	private static final int UP = 1, TOP_OVER = 1;
 	private static final float BURST = 0.6f;
 	private static final int EVERY = 5;
 
@@ -99,7 +101,7 @@ public final class Joined {
 	/** How much above its item's own stats a Joined weapon of this stage stands (Smithing.mult). */
 	static double mult(ItemStack s) {
 		int st = stage(s);
-		return st <= 0 ? 1 : OVER_BOSS * Math.pow(A_RANK, st);
+		return st <= 0 ? 1 : OVER_BOSS * Math.pow(A_RANK, st + UP + (st >= TOP ? TOP_OVER : 0));
 	}
 
 	/** What two pieces would make, as a stage: 0 if they can't be joined. Two boss weapons of a kind and rank, or a Joined weapon first and a boss weapon of at least its rank. */

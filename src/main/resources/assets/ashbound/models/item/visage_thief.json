@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/visage_thief.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.271,
-     -1.271,
-     -0.0
+     -1.999,
+     -1.999,
+     0.0
     ],
     "scale": [
-     0.5863,
-     0.5863,
-     0.5863
+     0.6079,
+     0.6079,
+     0.6079
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.271,
-     -1.271,
-     -0.0
+     -1.999,
+     -1.999,
+     0.0
     ],
     "scale": [
-     0.5863,
-     0.5863,
-     0.5863
+     0.6079,
+     0.6079,
+     0.6079
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.699,
-     -0.699,
+     -1.099,
+     -1.099,
      0
     ],
     "scale": [
-     0.3225,
-     0.3225,
-     0.3225
+     0.3343,
+     0.3343,
+     0.3343
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/visage_thief"
+   }
+  }
+ }
 }

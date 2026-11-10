@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/corona_staff.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.143,
-     -0.123,
-     0.006
+     -1.158,
+     -1.158,
+     -0.0
     ],
     "scale": [
-     0.3683,
-     0.3683,
-     0.3683
+     0.2662,
+     0.2662,
+     0.2662
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.143,
-     -0.123,
-     0.006
+     -1.158,
+     -1.158,
+     -0.0
     ],
     "scale": [
-     0.3683,
-     0.3683,
-     0.3683
+     0.2662,
+     0.2662,
+     0.2662
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.079,
-     -0.068,
+     -0.637,
+     -0.637,
      0
     ],
     "scale": [
-     0.2026,
-     0.2026,
-     0.2026
+     0.1464,
+     0.1464,
+     0.1464
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/corona_staff"
+   }
+  }
+ }
 }

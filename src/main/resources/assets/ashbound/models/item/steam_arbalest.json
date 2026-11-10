@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/steam_arbalest.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.038,
-     -0.892,
-     0.183
+     0.285,
+     -0.584,
+     0.05
     ],
     "scale": [
-     1.0402,
-     1.0402,
-     1.0402
+     1.156,
+     1.156,
+     1.156
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.038,
-     -0.892,
-     0.183
+     0.285,
+     -0.584,
+     0.05
     ],
     "scale": [
-     1.0402,
-     1.0402,
-     1.0402
+     1.156,
+     1.156,
+     1.156
     ]
    },
    "ground": {
@@ -115,19 +115,26 @@
      0.0
     ],
     "translation": [
-     0.571,
-     -0.491,
+     0.157,
+     -0.321,
      0
     ],
     "scale": [
-     0.5721,
-     0.5721,
-     0.5721
+     0.6358,
+     0.6358,
+     0.6358
     ]
    }
   }
  },
- "perspectives": {},
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/steam_arbalest"
+   }
+  }
+ },
  "overrides": [
   {
    "predicate": {

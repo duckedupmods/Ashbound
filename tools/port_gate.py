@@ -894,8 +894,8 @@ def auto_biped(mesh):
         on = bones[b]["parent"]
         while on not in rig and on in bones and bones[on]["parent"]:
             on = bones[on]["parent"]
-        if on not in rig:   # a bone with no parent (Ossric's anvil): it goes with the hips
-            on = "hips"
+        if on not in rig:   # a loose prop with no parent (Ossric's anvil): left out, it slid about at his feet (11/7)
+            continue
         rig[b] = (rig[on][0], rig[on][1], on if isinstance(rig[on][2], tuple) else rig[on][2], rig[on][3])
     return rig
 
@@ -961,6 +961,7 @@ def port_mobs(g):
             E.RIGS[mesh] = auto_biped(mesh)
             E.export(mesh)
             scale = rig_bones(mesh)["hips"]["pivot"][1] / E.AT["Root"]
+        scale *= spec.get("grow", 1.0)      # drawn small, made big in the game (the Wreck-Mother)
         boss = spec.get("boss", is_boss)
         egg, spots = egg_colours(mesh)
         E.SRC = OLD_SRC

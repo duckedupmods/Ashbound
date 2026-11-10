@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/last_ember.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.504,
-     -0.504,
-     -0.0
+     -1.108,
+     -1.372,
+     -0.076
     ],
     "scale": [
-     0.3337,
-     0.3337,
-     0.3337
+     0.2831,
+     0.2831,
+     0.2831
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.504,
-     -0.504,
-     -0.0
+     -1.108,
+     -1.372,
+     -0.076
     ],
     "scale": [
-     0.3337,
-     0.3337,
-     0.3337
+     0.2831,
+     0.2831,
+     0.2831
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.277,
-     -0.277,
+     -0.609,
+     -0.755,
      0
     ],
     "scale": [
-     0.1835,
-     0.1835,
-     0.1835
+     0.1557,
+     0.1557,
+     0.1557
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/last_ember"
+   }
+  }
+ }
 }

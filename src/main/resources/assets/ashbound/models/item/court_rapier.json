@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/court_rapier.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.934,
-     -2.934,
+     -3.121,
+     -3.121,
      -0.0
     ],
     "scale": [
-     0.4788,
-     0.4788,
-     0.4788
+     0.3855,
+     0.3855,
+     0.3855
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.934,
-     -2.934,
+     -3.121,
+     -3.121,
      -0.0
     ],
     "scale": [
-     0.4788,
-     0.4788,
-     0.4788
+     0.3855,
+     0.3855,
+     0.3855
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.614,
-     -1.614,
+     -1.717,
+     -1.717,
      0
     ],
     "scale": [
-     0.2633,
-     0.2633,
-     0.2633
+     0.212,
+     0.212,
+     0.212
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/court_rapier"
+   }
+  }
+ }
 }

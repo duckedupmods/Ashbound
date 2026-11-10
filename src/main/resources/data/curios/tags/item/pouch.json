@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "ashbound:guild_card",
+    "ashbound:bottomless_bag",
+    "ashbound:ration_pouch",
+    "waystones:warp_stone"
+  ]
+}

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/suture_bow.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.038,
-     -0.892,
-     0.183
+     0.544,
+     -0.297,
+     0.096
     ],
     "scale": [
-     1.0402,
-     1.0402,
-     1.0402
+     0.8497,
+     0.8497,
+     0.8497
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.038,
-     -0.892,
-     0.183
+     0.544,
+     -0.297,
+     0.096
     ],
     "scale": [
-     1.0402,
-     1.0402,
-     1.0402
+     0.8497,
+     0.8497,
+     0.8497
     ]
    },
    "ground": {
@@ -115,19 +115,26 @@
      0.0
     ],
     "translation": [
-     0.571,
-     -0.491,
+     0.299,
+     -0.163,
      0
     ],
     "scale": [
-     0.5721,
-     0.5721,
-     0.5721
+     0.4673,
+     0.4673,
+     0.4673
     ]
    }
   }
  },
- "perspectives": {},
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/suture_bow"
+   }
+  }
+ },
  "overrides": [
   {
    "predicate": {

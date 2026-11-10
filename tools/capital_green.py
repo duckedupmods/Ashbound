@@ -19,6 +19,7 @@ import sys
 from collections import deque
 
 import capital_land as L
+import city_trees as CT
 import nbtio
 
 GAME = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,11 +32,11 @@ SOFT = ("short_grass", "tall_grass", "fern", "large_fern", "poppy", "dandelion",
         "azure_bluet", "tulip", "lily_of_the_valley", "blue_orchid", "lilac", "rose_bush", "peony", "sweet_berry_bush",
         "air", "cave_air", "snow")
 OUTSIDE = 64                       # how far out past the walls the meadows and groves go
-IN_TREES = {                       # inside the walls: (template kind, sizes) by where it stands
-    "street": (("oak", "pale", "blood", "birch"), ("medium", "small")),
-    "water": (("willow", "birch"), ("medium", "small")),
+IN_TREES = {                       # inside the walls: (kind, sizes) by where it stands; tools/city_trees.py grows them
+    "street": (("linden", "linden", "cherry", "linden", "maple", "birch"), ("medium", "small")),
+    "water": (("willow", "birch", "willow"), ("medium", "small")),
 }
-OUT_TREES = (("oak", "birch", "pale", "pine"), ("large", "medium", "small"))
+OUT_TREES = (("oak", "linden", "birch", "cherry", "pine"), ("large", "medium", "small"))   # pine: the wildwood's
 
 
 def soft(st):
@@ -88,6 +89,14 @@ def template(name):
     r = max(max(abs(x), abs(z)) for x, _, z, _ in out)
     _T[name] = (out, r)
     return _T[name]
+
+
+def grown(kind, size, v):
+    """One of Highmourn's own trees (tools/city_trees.py), cached like the templates."""
+    k = ("grown", kind, size, v)
+    if k not in _T:
+        _T[k] = CT.grow(kind, size, v)
+    return _T[k]
 
 
 def turned(blocks, q):
@@ -225,9 +234,12 @@ class Green:
                 continue
             kind = kinds[int(noise(x, z, 9, salt) * 7919) % len(kinds)]
             name = "%s_%s_%d" % (kind, s, (x * 7 + z * 13) % 3)
-            if name not in OFFSETS:
+            if kind in CT.SPECIES:
+                blocks, r = grown(kind, s, (x * 7 + z * 13) % 3)
+            elif name in OFFSETS:
+                blocks, r = template(name)
+            else:
                 continue
-            blocks, r = template(name)
             if self.crowded(x, z, r):
                 continue
             tb = turned(blocks, (x * 5 + z * 3) % 4)
@@ -415,8 +427,7 @@ def squares(G):
             continue
         if G.crowded(x, z, 3):
             continue
-        name = "%s_small_%d" % (("oak", "pale", "blood", "birch")[int(noise(x, z, 20, 961) * 3.99)], (x + z) % 3)
-        blocks, r = template(name)
+        blocks, r = grown(("linden", "cherry", "linden", "maple")[int(noise(x, z, 20, 961) * 3.99)], "small", (x + z) % 3)
         rel = {(c[0] - x, c[1] - z) for c in bed}
         # stood on the bed's turf, its lowest boughs pruned off over the paving (head height kept)
         tb = [(bx, by + 1, bz, st) for bx, by, bz, st in turned(blocks, (x + 2 * z) % 4)

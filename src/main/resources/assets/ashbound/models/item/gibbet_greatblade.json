@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/gibbet_greatblade.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.194,
-     -2.194,
-     -0.0
+     -2.946,
+     -1.942,
+     0.287
     ],
     "scale": [
-     0.3246,
-     0.3246,
-     0.3246
+     0.3405,
+     0.3405,
+     0.3405
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.194,
-     -2.194,
-     -0.0
+     -2.946,
+     -1.942,
+     0.287
     ],
     "scale": [
-     0.3246,
-     0.3246,
-     0.3246
+     0.3405,
+     0.3405,
+     0.3405
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.207,
-     -1.207,
+     -1.62,
+     -1.068,
      0
     ],
     "scale": [
-     0.1785,
-     0.1785,
-     0.1785
+     0.1873,
+     0.1873,
+     0.1873
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/gibbet_greatblade"
+   }
+  }
+ }
 }

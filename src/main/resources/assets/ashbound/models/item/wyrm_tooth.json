@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/wyrm_tooth.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.296,
-     -1.296,
-     0.0
+     -2.272,
+     -2.272,
+     -0.0
     ],
     "scale": [
-     0.6148,
-     0.6148,
-     0.6148
+     0.5182,
+     0.5182,
+     0.5182
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.296,
-     -1.296,
-     0.0
+     -2.272,
+     -2.272,
+     -0.0
     ],
     "scale": [
-     0.6148,
-     0.6148,
-     0.6148
+     0.5182,
+     0.5182,
+     0.5182
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.713,
-     -0.713,
+     -1.25,
+     -1.25,
      0
     ],
     "scale": [
-     0.3381,
-     0.3381,
-     0.3381
+     0.285,
+     0.285,
+     0.285
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/wyrm_tooth"
+   }
+  }
+ }
 }

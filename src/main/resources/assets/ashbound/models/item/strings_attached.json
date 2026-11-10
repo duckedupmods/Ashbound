@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/strings_attached.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.631,
-     -0.571,
-     -0.629
+     -1.404,
+     -1.404,
+     -0.0
     ],
     "scale": [
-     0.4001,
-     0.4001,
-     0.4001
+     0.2364,
+     0.2364,
+     0.2364
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.631,
-     -0.571,
-     -0.629
+     -1.404,
+     -1.404,
+     -0.0
     ],
     "scale": [
-     0.4001,
-     0.4001,
-     0.4001
+     0.2364,
+     0.2364,
+     0.2364
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.897,
-     -0.314,
+     -0.772,
+     -0.772,
      0
     ],
     "scale": [
-     0.2201,
-     0.2201,
-     0.2201
+     0.13,
+     0.13,
+     0.13
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/strings_attached"
+   }
+  }
+ }
 }

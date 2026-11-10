@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+
+import javax.annotation.Nullable;
 import java.util.Map;
 
 import com.google.gson.JsonArray;
@@ -38,9 +40,11 @@ public final class Balance {
 	private static final Map<String, double[]> ARMOUR = new HashMap<>(); // "heavy:C" -> armour, toughness
 	private static final Map<String, Double> ASH = new HashMap<>(), COINS = new HashMap<>(); // per point of health, by rank
 	private static final Map<String, double[]> NORMAL = new HashMap<>(); // a rank's plain monster: health, hit
+	private static final Map<String, double[]> ROLE_AT = new HashMap<>(); // "role:rank" -> that role's target health, hit (pass 13)
 	private static final Map<String, Integer> BAND_TOP = new HashMap<>();
 	private static final Map<String, Double> CROWD = new HashMap<>();
-	private static double partyHp = 0.15, partyRoadHp = 0.15, partyBossDmg = 0.08, partyGateDmg = 0.04, partyRadius = 32, partyShare = 0.25;
+	private static double partyHp = 0.15, partyRoadHp = 0.15, partyBossDmg = 0.08, partyGateDmg = 0.04, partySoloBoss = 0, partyRadius = 32, partyShare = 0.25;
+	private static double armourK = 40, toughPer = 20;
 	static double levelA = 80, levelP = 1.55, hpPerLevel = 0.4;
 	static int maxLevel = 100;
 
@@ -64,6 +68,12 @@ public final class Balance {
 				JsonArray a = e.getValue().getAsJsonArray();
 				NORMAL.put(e.getKey(), new double[] {a.get(0).getAsDouble(), a.get(1).getAsDouble()});
 			}
+			if (o.has("rank_role"))
+				for (Map.Entry<String, JsonElement> e : o.getAsJsonObject("rank_role").entrySet())
+					for (Map.Entry<String, JsonElement> r : e.getValue().getAsJsonObject().entrySet()) {
+						JsonArray a = r.getValue().getAsJsonArray();
+						ROLE_AT.put(r.getKey() + ":" + e.getKey(), new double[] {a.get(0).getAsDouble(), a.get(1).getAsDouble(), a.size() > 2 ? a.get(2).getAsDouble() : 0});
+					}
 			for (Map.Entry<String, JsonElement> e : o.getAsJsonObject("band_top").entrySet()) BAND_TOP.put(e.getKey(), e.getValue().getAsInt());
 			for (Map.Entry<String, JsonElement> e : o.getAsJsonObject("crowd").entrySet()) CROWD.put(e.getKey(), e.getValue().getAsDouble());
 			JsonObject lv = o.getAsJsonObject("levels");
@@ -71,11 +81,14 @@ public final class Balance {
 			levelP = lv.get("p").getAsDouble();
 			maxLevel = lv.get("max").getAsInt();
 			hpPerLevel = o.getAsJsonObject("player").get("hp_per_level").getAsDouble();
+			armourK = o.getAsJsonObject("player").get("armour_k").getAsDouble();
+			toughPer = o.getAsJsonObject("player").get("tough_per").getAsDouble();
 			JsonObject p = o.getAsJsonObject("party");
 			partyHp = p.get("hp_per_player").getAsDouble();
 			partyRoadHp = p.get("road_hp_per_player").getAsDouble();
 			partyBossDmg = p.get("boss_dmg_per_player").getAsDouble();
 			partyGateDmg = p.get("gate_dmg_per_player").getAsDouble();
+			partySoloBoss = p.has("solo_boss_dmg") ? p.get("solo_boss_dmg").getAsDouble() : 0;
 			partyRadius = p.get("radius").getAsDouble();
 			partyShare = p.get("reward_share").getAsDouble();
 		} catch (Exception e) {
@@ -124,24 +137,44 @@ public final class Balance {
 	private static final ResourceLocation PARTY = ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "party");
 	private static final String SEEN = "ashbound_party";
 
-	/** Minecraft caps max health at 1024; the solved bosses need more (balance.py: F bosses ~2000, more in a party).
-	 * The cap is raised for good, on both sides (the client clamps the same attribute). Found by SelfTest.balance */
-	static void raiseHealthCap() {
+	/** Minecraft caps max health at 1024 and armour at 30; the solved bosses need more health (balance.py: F bosses ~2000, more in a party), a set of
+	 * rank S plate more armour. The caps are raised for good, on both sides (the client clamps the same attributes). Found by SelfTest.balance */
+	static void raiseCaps() {
 		try {
 			java.lang.reflect.Field f = net.neoforged.fml.util.ObfuscationReflectionHelper.findField(
 					net.minecraft.world.entity.ai.attributes.RangedAttribute.class, "maxValue");
-			f.setDouble(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH.value(), 1_000_000);
+			f.setDouble(Attributes.MAX_HEALTH.value(), 1_000_000);
+			f.setDouble(Attributes.ARMOR.value(), 1_000_000);
 		} catch (Exception e) {
-			Ashbound.LOG.error("couldn't raise the max health cap; bosses stop at 1024", e);
+			Ashbound.LOG.error("couldn't raise the health and armour caps; bosses stop at 1024, armour at 30", e);
 		}
 	}
 
 	static void register() {
-		raiseHealthCap();
+		raiseCaps();
 		NeoForge.EVENT_BUS.addListener((LivingIncomingDamageEvent e) -> {
 			if (e.getSource().getEntity() instanceof Player && e.getEntity() instanceof Mob m) party(m);
-			if (e.getEntity() instanceof Player p && e.getSource().getEntity() instanceof Mob m) e.setAmount(e.getAmount() * crowded(p, m));
+			if (e.getEntity() instanceof Player p) {
+				if (e.getSource().getEntity() instanceof Mob m) e.setAmount(e.getAmount() * crowded(p, m));
+				armour(e, p);
+			}
 		});
+	}
+
+	/** What a player's armour lets through: every armourK of it is one more health bar, with nothing that runs out at the top the way vanilla's does at 20. */
+	public static float kept(Player p) {
+		return kept(p.getAttributeValue(Attributes.ARMOR), p.getAttributeValue(Attributes.ARMOR_TOUGHNESS));
+	}
+
+	static float kept(double armour, double toughness) {
+		return (float) (armourK / (armourK + armour * (1 + toughness / toughPer)));
+	}
+
+	/** Takes vanilla's armour off a player's hit and puts ours on. A monster's spell counts as a blow, though vanilla's armour would let it through. */
+	private static void armour(LivingIncomingDamageEvent e, Player p) {
+		boolean counts = !e.getSource().is(net.minecraft.tags.DamageTypeTags.BYPASSES_ARMOR) || e.getSource().getEntity() instanceof Mob;
+		e.getContainer().addModifier(net.neoforged.neoforge.common.damagesource.DamageContainer.Reduction.ARMOR,
+				(c, vanilla) -> counts ? c.getNewDamage() * (1 - kept(p)) : vanilla);
 	}
 
 	// --- camps: what keeps a crowd of monsters from taking you apart ---
@@ -165,15 +198,46 @@ public final class Balance {
 		int top = Math.min(LADDER.indexOf(rankAt(level)) + 1, LADDER.length() - 1);
 		if (LADDER.indexOf(own.rank()) <= top) return;
 		String to = LADDER.substring(top, top + 1);
-		double[] from = NORMAL.get(own.rank()), now = NORMAL.get(to);
-		if (from == null || now == null) return;
-		double hp = now[0] / from[0], hit = now[1] / from[1];
+		double[] step = step(own, to);
+		if (step == null) return;
+		double hp = step[0], hit = step[1];
 		shrink(m.getAttribute(Attributes.MAX_HEALTH), hp);
 		shrink(m.getAttribute(Attributes.ATTACK_DAMAGE), hit);
-		shrink(m.getAttribute(Attributes.ARMOR), hit);
+		shrink(m.getAttribute(Attributes.ARMOR), step[2]);
 		m.setHealth(m.getMaxHealth());
 		m.getPersistentData().putString(SOFT, to);
 		m.getPersistentData().putDouble(SOFT_HP, hp);
+	}
+
+	/** One of our monsters made a monster of another rank (up or down): health, hit and armour as that rank's plain monster
+	 * stands to its own, and paid for like it (Encounters' deserters keep to the party's rank). */
+	static void atRank(Mob m, String kind, String to) {
+		Mult own = solved(kind);
+		if (own == null || own.rank().equals(to)) return;
+		double[] step = step(own, to);
+		if (step == null) return;
+		double hp = step[0], hit = step[1];
+		shrink(m.getAttribute(Attributes.MAX_HEALTH), hp);
+		shrink(m.getAttribute(Attributes.ATTACK_DAMAGE), hit);
+		shrink(m.getAttribute(Attributes.ARMOR), step[2]);
+		m.setHealth(m.getMaxHealth());
+		m.getPersistentData().putString(SOFT, to);
+		m.getPersistentData().putDouble(SOFT_HP, hp);
+	}
+
+	/** health and hit from a monster's own rank to another: as its role's target there stands to its role's target at home (a boss climbs
+	 * the ranks faster than a plain monster does), else as the plain monsters do */
+	@Nullable
+	private static double[] step(Mult own, String to) {
+		double[] from = ROLE_AT.get(own.role() + ":" + own.rank()), now = ROLE_AT.get(own.role() + ":" + to);
+		if (from == null || now == null) {
+			from = NORMAL.get(own.rank());
+			now = NORMAL.get(to);
+		}
+		if (from == null || now == null) return null;
+		// armour follows the role's own armour there (pass 13: it followed the hit, so a boss moved up three ranks wore 3.5x its armour)
+		double arm = from.length > 2 && from[2] > 0 && now[2] > 0 ? now[2] / from[2] : now[1] / from[1];
+		return new double[] {now[0] / from[0], now[1] / from[1], arm};
 	}
 
 	private static void shrink(AttributeInstance a, double to) {
@@ -184,6 +248,24 @@ public final class Balance {
 	static String paysAs(LivingEntity e, String own) {
 		String r = e.getPersistentData().getString(SOFT);
 		return r.isEmpty() ? own : r;
+	}
+
+	/** Past a rank above your party's, a monster pays as one of that rank would: this share of what it's worth. */
+	static double paysUpTo(String rank, int party) {
+		int top = Math.min(party + 1, LADDER.length() - 1), own = LADDER.indexOf(rank);
+		if (own <= top) return 1;
+		String to = LADDER.substring(top, top + 1);
+		double[] from = NORMAL.get(rank), now = NORMAL.get(to);
+		return from == null || now == null ? 1 : now[0] * ash(to) / (from[0] * ash(rank));
+	}
+
+	/** What the Party screen says about a party of n. */
+	public static List<String> scaling(int n) {
+		int hp = (int) Math.round(partyHp * 100 * (n - 1)), hit = (int) Math.round(partyGateDmg * 100 * (n - 1)), boss = (int) Math.round(partyBossDmg * 100 * (n - 1));
+		return List.of("In a gate, " + n + (n == 1 ? " player: " : " players: ") + "monsters +" + hp + "% health, +" + hit + "% damage, bosses +" + boss + "%",
+				"Ash and coins each: " + Math.round(share(n) * 100) + "% of a kill",
+				"Materials, gear and boss weapons: everyone rolls their own",
+				"Your rank sets which gates open and what you find");
 	}
 
 	/** how much of its own health a kill is paid for */
@@ -228,17 +310,20 @@ public final class Balance {
 		List<Player> there = m.level().getEntitiesOfClass(Player.class, m.getBoundingBox().inflate(partyRadius), p -> !p.isSpectator());
 		int n = there.size();
 		if (n <= m.getPersistentData().getInt(SEEN)) return;
-		boolean road = m.level().dimension() != Lairs.GATES;
+		// a gate, a boss arena or a summoned overworld boss is a fight the party came for: a gate's scaling (pass 13); the road's is lighter
+		boolean road = m.level().dimension() != Lairs.GATES && !BossArenas.isArena(m.level().dimension()) && !m.getTags().contains(WorldBosses.TAG);
 		m.getPersistentData().putInt(SEEN, n);
 		float share = m.getHealth() / m.getMaxHealth();
 		grow(m.getAttribute(Attributes.MAX_HEALTH), (road ? partyRoadHp : partyHp) * (n - 1));
-		grow(m.getAttribute(Attributes.ATTACK_DAMAGE), road ? 0 : (boss(m) ? partyBossDmg : partyGateDmg) * (n - 1));
+		// alone, a gate, arena or summoned boss hits softer (pass 15: one player takes every blow; balance_mc.py)
+		double hit = road ? 0 : n == 1 && boss(m) ? partySoloBoss : (boss(m) ? partyBossDmg : partyGateDmg) * (n - 1);
+		grow(m.getAttribute(Attributes.ATTACK_DAMAGE), hit);
 		m.setHealth(m.getMaxHealth() * share);
 	}
 
 	private static void grow(AttributeInstance a, double by) {
 		if (a == null) return;
 		a.removeModifier(PARTY);
-		if (by > 0) a.addPermanentModifier(new AttributeModifier(PARTY, by, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+		if (by != 0) a.addPermanentModifier(new AttributeModifier(PARTY, by, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 	}
 }

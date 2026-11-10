@@ -526,18 +526,49 @@ def preview(T, M, Bi):
         pickle.dump(tops, f)
 
 
+def homestead_ground(T, M, Wt, Bl, Bi):
+    """The homestead's levelled ground into the land grid, so the game shapes the hill to it (no half-cut trees, no
+    grass floating where the shelf was cut) and keeps it the city's own: CLEAR (no trees, no caves), meadow. Round it
+    a margin kept clear too, at the land's own height."""
+    x0, z0, W, D = L.GRID
+    n = m = 0
+    for (x, z), h in HM.GROUND.items():
+        i, j = x - x0, z - z0
+        if 0 <= i < W and 0 <= j < D:
+            k = j * W + i
+            struct.pack_into(">h", T, 2 * k, h)
+            M[k] = L.MODE_CUT_FILL | L.CLEAR
+            Wt[k], Bl[k], Bi[k] = 255, 0, L.B_MEADOW
+            H[(x, z)] = h
+            n += 1
+    for j in range(D):
+        z = z0 + j
+        for i in range(W):
+            x = x0 + i
+            if (x, z) not in HM.GROUND and HM.near(x, z, 24) and Wt[j * W + i]:
+                M[j * W + i] |= L.CLEAR
+                Bi[j * W + i] = L.B_MEADOW
+                m += 1
+    print("  homestead ground: %d columns shaped, %d round it kept clear" % (n, m))
+
+
 if __name__ == "__main__":
     T, M, Wt, Bl, Bi = grid()
     water()
     WL.build(lambda x, z: H.get((x, z), 0))
     PR.build(lambda x, z: H.get((x, z), 0))
+    import capital_home as HM                         # (patches structkit so panes join honeystone, before any are joined)
     import capital_city as CY
     CY.S, CY.put, CY.pick = S, S.put, S.pick
     PR.S, PR.put, PR.pick = S, S.put, S.pick
     CY.build(lambda x, z: H.get((x, z), 0))
+    HM.build(S, lambda x, z: H.get((x, z), 0))       # the player's manor on the north-west hillside (pass 16)
+    homestead_ground(T, M, Wt, Bl, Bi)
     print("built: %d blocks" % len(S.B))
     unfloat()
     import capital_green
+    _bare = capital_green.Green.bare
+    capital_green.Green.bare = lambda G, x, z: not HM.near(x, z) and _bare(G, x, z)   # no trees on the manor's cut
     capital_green.plant(S, H, S.marks)
     import capital_cast
     capital_cast.keep(S, CY.ROADS, H)

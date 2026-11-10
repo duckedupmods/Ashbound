@@ -1,5 +1,7 @@
 package com.snoringwalrus.ashbound.client;
 
+import java.util.List;
+
 import com.snoringwalrus.ashbound.Ashbound;
 import com.snoringwalrus.ashbound.Net;
 
@@ -21,31 +23,34 @@ import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.common.NeoForge;
 
 /**
- * The compass along the top of the screen: the four quarters sliding by as you turn, the quest you're following as a
- * gold mark, its name and how far it is under the bar. Nothing to follow, and it isn't there; boss bars move down to
- * make room. A quest finished comes up under it for a few seconds.
+ * The compass along the top of the screen: the four quarters sliding by as you turn, each quest you're following as a
+ * mark of its own colour, their names and how far they are under the bar. Nothing to follow, and it isn't there; boss
+ * bars move down to make room. A quest finished comes up under it for a few seconds.
  */
 public final class QuestHud {
 	private QuestHud() {}
 
-	private static final int W = 170, H = 11, TOP = 5, ROOM = 20, BANNER_MS = 4000;
+	static final int W = 170;
+	private static final int H = 11, TOP = 5, ROOM = 20, LINE = 10, BANNER_MS = 4000;
+	/** one per quest followed, in the order they were picked */
+	private static final int[] COLOURS = {0xFFFFD24A, 0xFF6CD8FF, 0xFFFF8AC8, 0xFF9BE07A, 0xFFFF9A50};
 	private static final String[] QUARTERS = {"S", "", "W", "", "N", "", "E", ""};
-	private static Net.QuestTrack now;
+	private static List<Net.QuestTrack> now = List.of();
 	private static String finished;
 	private static long finishedAt;
 
 	public static void hooks(IEventBus bus) {
 		bus.addListener((RegisterGuiLayersEvent e) -> e.registerAbove(VanillaGuiLayers.HOTBAR,
 				ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "compass"), QuestHud::draw));
-		Net.onQuestTrack = m -> now = m;
+		Net.onQuestTrack = m -> now = m.all().stream().filter(t -> !t.title().isEmpty()).toList();
 		NeoForge.EVENT_BUS.addListener((ClientPlayerNetworkEvent.LoggingOut e) -> {
-			now = null;
+			now = List.of();
 			QuestScreen.leave();
 		});
 		NeoForge.EVENT_BUS.addListener((RenderGuiLayerEvent.Pre e) -> {
 			if (e.getName().equals(VanillaGuiLayers.BOSS_OVERLAY) && showing()) {
 				e.getGuiGraphics().pose().pushPose();
-				e.getGuiGraphics().pose().translate(0, ROOM, 0);
+				e.getGuiGraphics().pose().translate(0, ROOM + (now.size() - 1) * LINE, 0);
 			}
 		});
 		NeoForge.EVENT_BUS.addListener((RenderGuiLayerEvent.Post e) -> {
@@ -62,7 +67,7 @@ public final class QuestHud {
 	}
 
 	private static boolean showing() {
-		return now != null && !now.title().isEmpty() && !Minecraft.getInstance().options.hideGui;
+		return !now.isEmpty() && !Minecraft.getInstance().options.hideGui;
 	}
 
 	/** Where something at this yaw falls along the bar, the bar spanning a quarter turn each side. */
@@ -95,16 +100,24 @@ public final class QuestHud {
 		}
 		g.disableScissor();
 		g.fill(cx, y - 2, cx + 1, y + 3, 0xFFECE4D6);
-		if (now.has()) {
-			double dx = now.x() + 0.5 - p.getX(), dz = now.z() + 0.5 - p.getZ();
+		for (int i = now.size() - 1; i >= 0; i--) {   // the first picked drawn last, on top
+			Net.QuestTrack q = now.get(i);
+			if (!q.has()) continue;
+			int colour = COLOURS[i % COLOURS.length];
+			double dx = q.x() + 0.5 - p.getX(), dz = q.z() + 0.5 - p.getZ();
 			float a = along((float) (Mth.atan2(-dx, dz) * Mth.RAD_TO_DEG), heading);
 			int mx = cx + Mth.clamp(Math.round(a), -W / 2 + 3, W / 2 - 3);
-			g.fill(mx - 1, y + 1, mx + 2, y + H - 2, 0xFFFFD24A);
-			g.fill(mx - 2, y + 3, mx + 3, y + H - 4, 0xFFFFD24A);
-			g.fill(mx, y + 3, mx + 1, y + H - 4, 0xFF5A1C04);
+			g.fill(mx - 1, y + 1, mx + 2, y + H - 2, colour);
+			g.fill(mx - 2, y + 3, mx + 3, y + H - 4, colour);
+			g.fill(mx, y + 3, mx + 1, y + H - 4, 0xFF1A1208);
 		}
-		String text = now.title() + (now.has() ? "  " + Math.round(Math.hypot(now.x() - p.getX(), now.z() - p.getZ())) + "m" : "");
-		g.drawString(mc.font, text, cx - mc.font.width(text) / 2, y + H + 4, 0xFFFFD24A, true);
+		int ty = y + H + 4;
+		for (int i = 0; i < now.size(); i++) {
+			Net.QuestTrack q = now.get(i);
+			String text = q.title() + (q.has() ? "  " + Math.round(Math.hypot(q.x() - p.getX(), q.z() - p.getZ())) + "m" : "");
+			g.drawString(mc.font, text, cx - mc.font.width(text) / 2, ty, COLOURS[i % COLOURS.length], true);
+			ty += LINE;
+		}
 	}
 
 	private static void banner(GuiGraphics g, Minecraft mc) {

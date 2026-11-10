@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/last_star.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     0.081,
-     0.083,
-     0.001
+     -0.756,
+     -0.756,
+     -0.0
     ],
     "scale": [
-     0.3307,
-     0.3307,
-     0.3307
+     0.293,
+     0.293,
+     0.293
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     0.081,
-     0.083,
-     0.001
+     -0.756,
+     -0.756,
+     -0.0
     ],
     "scale": [
-     0.3307,
-     0.3307,
-     0.3307
+     0.293,
+     0.293,
+     0.293
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.045,
-     0.046,
+     -0.416,
+     -0.416,
      0
     ],
     "scale": [
-     0.1819,
-     0.1819,
-     0.1819
+     0.1612,
+     0.1612,
+     0.1612
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/last_star"
+   }
+  }
+ }
 }

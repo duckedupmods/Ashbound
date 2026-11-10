@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "GSG",
+  "PPP",
+  "L L"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glass_bottle"
+  },
+  "S": {
+   "item": "minecraft:brewing_stand"
+  },
+  "P": {
+   "tag": "minecraft:planks"
+  },
+  "L": {
+   "tag": "minecraft:logs"
+  }
+ },
+ "result": {
+  "id": "ashbound:alchemists_bench",
+  "count": 1
+ }
+}

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/last_candle.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.434,
-     -1.416,
-     0.005
+     -2.62,
+     -2.099,
+     0.149
     ],
     "scale": [
-     0.6563,
-     0.6563,
-     0.6563
+     0.5296,
+     0.5296,
+     0.5296
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.434,
-     -1.416,
-     0.005
+     -2.62,
+     -2.099,
+     0.149
     ],
     "scale": [
-     0.6563,
-     0.6563,
-     0.6563
+     0.5296,
+     0.5296,
+     0.5296
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.789,
-     -0.779,
+     -1.441,
+     -1.154,
      0
     ],
     "scale": [
-     0.361,
-     0.361,
-     0.361
+     0.2913,
+     0.2913,
+     0.2913
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/last_candle"
+   }
+  }
+ }
 }

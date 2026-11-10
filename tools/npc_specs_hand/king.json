@@ -1,0 +1,28 @@
+{
+ "id": "king",
+ "name": "King Aldric",
+ "title": "Lord of Highmourn",
+ "rank": "A",
+ "role": "elder",
+ "age": "adult",
+ "sex": "m",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "fair",
+ "hair": {"style": "short", "color": "grey"},
+ "headwear": null,
+ "beard": "beard",
+ "glasses": false,
+ "face": {"eye": "sleepy", "iris": "steel", "brows": "stern", "mouth": "flat", "blush": false, "freckles": false, "marks": ["wrinkles"], "nose_box": false},
+ "outfit": {
+  "top": "robe", "bottom": "trousers", "sleeves": "long",
+  "overs": ["mantle", "cape", "sash", "belt"],
+  "colors": {"top": "wine", "bottom": "black", "accent": "cream", "leather": "dark"}
+ },
+ "pose": {"r": "clasp", "l": "clasp"},
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": "sword",
+ "prop": null
+}

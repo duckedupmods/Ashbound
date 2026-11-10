@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/headsmans_cleaver.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.103,
-     -2.103,
+     -2.214,
+     -2.214,
      0.0
     ],
     "scale": [
-     0.3583,
-     0.3583,
-     0.3583
+     0.3244,
+     0.3244,
+     0.3244
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.103,
-     -2.103,
+     -2.214,
+     -2.214,
      0.0
     ],
     "scale": [
-     0.3583,
-     0.3583,
-     0.3583
+     0.3244,
+     0.3244,
+     0.3244
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.157,
-     -1.157,
+     -1.218,
+     -1.218,
      0
     ],
     "scale": [
-     0.1971,
-     0.1971,
-     0.1971
+     0.1784,
+     0.1784,
+     0.1784
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/headsmans_cleaver"
+   }
+  }
+ }
 }

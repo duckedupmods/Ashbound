@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/pale_lantern.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.9,
-     -0.566,
-     0.095
+     -1.743,
+     0.311,
+     0.587
     ],
     "scale": [
-     0.2962,
-     0.2962,
-     0.2962
+     0.27,
+     0.27,
+     0.27
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.9,
-     -0.566,
-     0.095
+     -1.743,
+     0.311,
+     0.587
     ],
     "scale": [
-     0.2962,
-     0.2962,
-     0.2962
+     0.27,
+     0.27,
+     0.27
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.495,
-     -0.311,
+     -0.959,
+     0.171,
      0
     ],
     "scale": [
-     0.1629,
-     0.1629,
-     0.1629
+     0.1485,
+     0.1485,
+     0.1485
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/pale_lantern"
+   }
+  }
+ }
 }

@@ -131,7 +131,7 @@ final class SkillArts {
 			later(p, t, () -> {
 				Spells.skillFx(p.serverLevel(), "oath_cross", p.position(), p.getLookAngle(), t, p);
 				lineHit(p, 6, 1.6, 1.1 * m);
-				p.heal(p.getMaxHealth() * 0.03f);
+				Meters.heal(p, p, p.getMaxHealth() * 0.03f);
 			});
 	}
 
@@ -483,7 +483,7 @@ final class SkillArts {
 			int n = t;
 			later(p, t * SECOND, () -> {
 				if (n % 3 == 0) look(p, "sanctify", at);
-				for (Player o : l.getEntitiesOfClass(Player.class, new net.minecraft.world.phys.AABB(at, at).inflate(6, 3, 6))) o.heal(o.getMaxHealth() * (float) (0.03 * m));
+				for (Player o : l.getEntitiesOfClass(Player.class, new net.minecraft.world.phys.AABB(at, at).inflate(6, 3, 6))) Meters.heal(p, o, o.getMaxHealth() * (float) (0.03 * m));
 			});
 		}
 	}
@@ -502,7 +502,7 @@ final class SkillArts {
 	static void holyLance(ServerPlayer p, double m) {
 		look(p, "holy_lance", p.position());
 		JoinedSkills.lineAmount(p, 16, 1.2, magic(p, 1.8 * m));
-		p.heal(p.getMaxHealth() * 0.03f);
+		Meters.heal(p, p, p.getMaxHealth() * 0.03f);
 		p.serverLevel().playSound(null, p.blockPosition(), SoundEvents.BEACON_POWER_SELECT, SoundSource.PLAYERS, 1, 1.8f);
 	}
 
@@ -519,7 +519,7 @@ final class SkillArts {
 				l.playSound(null, pt.x, pt.y, pt.z, SoundEvents.TRIDENT_THUNDER.value(), SoundSource.PLAYERS, 0.4f, 1.6f);
 			});
 		later(p, 50, () -> {
-			for (Player o : allies(p, 10)) o.heal(o.getMaxHealth() * (float) (0.15 * m));
+			for (Player o : allies(p, 10)) Meters.heal(p, o, o.getMaxHealth() * (float) (0.15 * m));
 		});
 	}
 
@@ -544,7 +544,7 @@ final class SkillArts {
 		List<Mob> mine = thralls(p);
 		if (mine.isEmpty()) say(p, "No thralls out");
 		for (Mob t : mine) {
-			t.heal(t.getMaxHealth() * 0.5f);
+			Meters.heal(p, t, t.getMaxHealth() * 0.5f);
 			debuff(t, MobEffects.DAMAGE_BOOST, (int) (8 * SECOND * m), 1);
 			Spells.skillFx(p.serverLevel(), "soul_mend", t.position(), Vec3.ZERO, 0, t);
 		}

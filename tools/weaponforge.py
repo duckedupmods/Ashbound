@@ -958,7 +958,17 @@ def material(name, path):
         'newmtl blade\nKa 0 0 0\nmap_Kd %s\n\nnewmtl glow\nKa 1 1 1\nmap_Kd %s\n' % (tex, tex))
 
 
-def export(s, mesh, to_item=TO_ITEM, preview=True, join=True):
+def hand_made():
+    """the weapons tools/weaponsets.py owns; the templates leave them alone"""
+    import weaponsets as WS
+    if not WS.DESIGNS:
+        WS.load_designs()
+    return WS.DESIGNS
+
+
+def export(s, mesh, to_item=TO_ITEM, preview=True, join=True, force=False):
+    if not force and mesh.split('_pulling_')[0] in hand_made():
+        return 0
     img, tris = s.build()
     img.save(ASSETS + 'textures/item/%s_3d.png' % mesh)
     V.to_item = to_item
@@ -967,6 +977,8 @@ def export(s, mesh, to_item=TO_ITEM, preview=True, join=True):
     if join:   # nothing of a weapon hangs in the air (curios' chains and charms may)
         import weapon_joins
         weapon_joins.weld(path)
+    import weapon_zfight          # overlapping boxes' faces in one plane flicker in game: pulled a hair apart
+    weapon_zfight.fix(path)
     material(mesh, path)
     if preview:   # the copy the icon renders read (preview_vox's folder)
         img.save(VOX + '%s_f0.png' % mesh)
@@ -1155,7 +1167,7 @@ def main():
     icons, done = [], set()
     for g in gear:
         th = THEMES.get(g['gate'])
-        todo = [it for it in g['weapons'] if not args or g['gate'] in args or it['id'] in args]
+        todo = [it for it in g['weapons'] if (not args or g['gate'] in args or it['id'] in args) and it['id'] not in hand_made()]
         if th is None:              # a Roster v2 dungeon whose theme isn't written yet
             continue
         for it in todo:

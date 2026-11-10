@@ -18,6 +18,7 @@ import com.mojang.math.Axis;
 import com.snoringwalrus.ashbound.Ashbound;
 import com.snoringwalrus.ashbound.GateDungeons;
 import com.snoringwalrus.ashbound.GateEntity;
+import com.snoringwalrus.ashbound.SkyCrack;
 
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -39,8 +40,10 @@ import net.minecraft.world.phys.Vec3;
  * How a gate looks (GateEntity has its timeline; tools/blender/gate_rift.py is the look it copies): a crack in the
  * world. In its own frame: x across its face, y up, z through it, its middle at the origin. Drawn in this order:
  *  - torn debris: chunks of the dungeon behind it (GateDungeons), ripped through, hanging and turning round it;
- *  - the tear (gate_rift.fsh): its dark inside (writes depth, so what's behind it stays hidden), then its lips
- *    burning white-hot into the rank colour; the shape is one of GateRift's, read from a distance field;
+ *  - the tear (gate_rift.fsh), GateEntity.WIDE times as wide as its outline: its inside (writes depth, so what's behind
+ *    it stays hidden) showing the far side GateWindow drew for it (the dungeon's first hall, or the world through a way
+ *    out; dark if there's none), then its lips burning white-hot into the rank colour; the shape is one of GateRift's,
+ *    read from a distance field;
  *  - shards of the world knocked loose round it, each showing what's behind it a little out of place
  *    (gate_shard.fsh, from a copy of the frame so far);
  *  - added light: fracture lines running off the lips, lightning, the flash with its lens streak, the shockwave
@@ -52,6 +55,8 @@ public class GateRenderer extends EntityRenderer<GateEntity> {
 	private static final ResourceLocation RIFT = ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "textures/misc/gate_rift.png");
 	/** How far the tear's quad reaches past its lips, so the halo has room to fade to nothing. */
 	private static final float REACH = 1.8f;
+	/** In the tear's flags: there's a far side to show inside it. */
+	private static final int WINDOW_BIT = 16384;
 
 	static final class Types extends RenderType {
 		private Types() {
@@ -68,15 +73,26 @@ public class GateRenderer extends EntityRenderer<GateEntity> {
 			RenderSystem.defaultBlendFunc();
 		});
 
+		/** Under a shader pack they're drawn in a layer of their own (ShaderPacks). */
+		private static final OutputStateShard LAYER = new OutputStateShard(Ashbound.ID + "_layer", ShaderPacks::bind, ShaderPacks::unbind);
+
 		private static RenderType make(String name, ShaderStateShard shader, EmptyTextureStateShard tex, WriteMaskStateShard mask, int size) {
 			return create(Ashbound.ID + "_" + name, DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP, VertexFormat.Mode.QUADS, size, false, false,
 					CompositeState.builder().setShaderState(shader).setTextureState(tex).setTransparencyState(PREMUL).setCullState(NO_CULL)
-							.setWriteMaskState(mask).setDepthTestState(LEQUAL_DEPTH_TEST).createCompositeState(false));
+							.setWriteMaskState(mask).setDepthTestState(LEQUAL_DEPTH_TEST).setOutputState(LAYER).createCompositeState(false));
 		}
 
 		/** The distance fields, read smooth (blurred = linear filtering), never mipmapped. */
 		private static final TextureStateShard FIELD = new TextureStateShard(RIFT, true, false);
 		static final RenderType VOID = make("gate_void", new ShaderStateShard(() -> GateShaders.rift), FIELD, COLOR_DEPTH_WRITE, 256);
+		/** The inside showing the far side drawn into GateWindow's texture `i` (Sampler1). */
+		static final RenderType[] WINDOW = new RenderType[GateWindow.SLOTS];
+
+		static {
+			for (int i = 0; i < WINDOW.length; i++)
+				WINDOW[i] = make("gate_window_" + i, new ShaderStateShard(() -> GateShaders.rift),
+						MultiTextureStateShard.builder().add(RIFT, true, false).add(GateWindow.TEX[i], true, false).build(), COLOR_DEPTH_WRITE, 256);
+		}
 		static final RenderType LIPS = make("gate_lips", new ShaderStateShard(() -> GateShaders.rift), FIELD, COLOR_WRITE, 256);
 		static final RenderType GLOW = make("gate_glow", new ShaderStateShard(() -> GateShaders.glow), NO_TEXTURE, COLOR_WRITE, 1 << 15);
 		static final RenderType SHARD = make("gate_shard", new ShaderStateShard(() -> GateShaders.shard), new TextureStateShard(WARP, false, false),
@@ -86,6 +102,7 @@ public class GateRenderer extends EntityRenderer<GateEntity> {
 	public GateRenderer(EntityRendererProvider.Context ctx) {
 		super(ctx);
 		shadowRadius = 0;
+		GateWindow.register();
 	}
 
 	@Override
@@ -176,6 +193,7 @@ public class GateRenderer extends EntityRenderer<GateEntity> {
 
 	@Override
 	public void render(GateEntity g, float yaw, float partial, PoseStack pose, MultiBufferSource buffers, int light) {
+		if (g instanceof SkyCrack sk) StormSky.clouds(sk, partial, pose, buffers);
 		State s = state(g, partial);
 		int c = GateEntity.COLOUR[g.rank()];
 		float r = (c >> 16 & 255) / 255f, gr = (c >> 8 & 255) / 255f, b = (c & 255) / 255f;
@@ -188,9 +206,18 @@ public class GateRenderer extends EntityRenderer<GateEntity> {
 		Vector3f eye = new Vector3f((float) (camera.getPosition().x - me.x), (float) (camera.getPosition().y - me.y - GateEntity.MID),
 				(float) (camera.getPosition().z - me.z));
 		Quaternionf face = Axis.YP.rotationDegrees(-g.getYRot());
+		// one torn in the sky: the same tear SCALE times over, tipped down toward the ground and laid along it
+		boolean sky = g instanceof SkyCrack;
+		if (g instanceof SkyCrack sk) {
+			eye.div(SkyCrack.SCALE);
+			face.mul(Axis.XP.rotationDegrees(sk.tilt())).mul(Axis.ZP.rotationDegrees(sk.roll()));
+			s.earth = false;
+			s.wave = -1;
+		}
 
 		pose.pushPose();
 		pose.translate(0, GateEntity.MID, 0);
+		if (sky) pose.scale(SkyCrack.SCALE, SkyCrack.SCALE, SkyCrack.SCALE);
 		Matrix4f world = new Matrix4f(pose.last().pose());
 		pose.mulPose(face);
 		Matrix4f local = new Matrix4f(pose.last().pose());
@@ -201,8 +228,8 @@ public class GateRenderer extends EntityRenderer<GateEntity> {
 		float[] lip = GateRift.SHAPES[shape];
 		if (s.open) {
 			int flags = (dark ? 1 : 0) + 2 * Mth.clamp(Math.round(s.hot * 10), 0, 31) + 64 * Mth.clamp(Math.round(s.sx * 255), 1, 255);
-			int code = 8 * (shape + 4 * seedCode);
-			tear(buffers.getBuffer(Types.VOID), local, s, r, gr, b, code, flags);
+			int code = 8 * (shape + 4 * seedCode), win = GateWindow.slot(g);
+			tear(buffers.getBuffer(win >= 0 ? Types.WINDOW[win] : Types.VOID), local, s, r, gr, b, code, flags + (win >= 0 ? WINDOW_BIT : 0));
 			tear(buffers.getBuffer(Types.LIPS), local, s, r, gr, b, code + 1, flags);
 			if (s.crack < 0 && s.sx > 0.2f) shards(buffers.getBuffer(Types.SHARD), local, s, lip, seed, r, gr, b);
 		}
@@ -233,7 +260,7 @@ public class GateRenderer extends EntityRenderer<GateEntity> {
 	/** The tear's quad in the face's plane: as wide as the squeezed tear plus room for its halo, its UVs in blocks
 	 *  (x as drawn, y unsqueezed so the field is read at its full height). */
 	private static void tear(VertexConsumer v, Matrix4f m, State s, float r, float g, float b, int code, int flags) {
-		float hx = GateRift.EX * s.sx + REACH, ky = GateRift.H + REACH + 0.2f, hy = ky * s.sy;
+		float hx = GateRift.EX * s.sx * GateEntity.WIDE + REACH, ky = GateRift.H + REACH + 0.2f, hy = ky * s.sy;
 		v.addVertex(m, -hx, -hy, 0).setColor(r, g, b, s.live).setUv(-hx, -ky).setUv2(code, flags);
 		v.addVertex(m, hx, -hy, 0).setColor(r, g, b, s.live).setUv(hx, -ky).setUv2(code, flags);
 		v.addVertex(m, hx, hy, 0).setColor(r, g, b, s.live).setUv(hx, ky).setUv2(code, flags);
@@ -243,7 +270,8 @@ public class GateRenderer extends EntityRenderer<GateEntity> {
 	/** A point on the lip (squeezed with the tear), and in `out` the way out from it there. */
 	private static Vector3f lipPoint(float[] lip, int i, State s, Vector3f out) {
 		int n = lip.length / 2, a = Math.floorMod(i, n), c = (a + 1) % n;
-		float x = lip[a * 2] * s.sx, y = lip[a * 2 + 1] * s.sy, tx = lip[c * 2] * s.sx - x, ty = lip[c * 2 + 1] * s.sy - y;
+		float w = s.sx * GateEntity.WIDE;
+		float x = lip[a * 2] * w, y = lip[a * 2 + 1] * s.sy, tx = lip[c * 2] * w - x, ty = lip[c * 2 + 1] * s.sy - y;
 		float len = Mth.sqrt(tx * tx + ty * ty) + 1e-5f;
 		out.set(ty / len, -tx / len, 0); // outward, the outline running counter-clockwise
 		return new Vector3f(x, y, 0);
@@ -405,7 +433,7 @@ public class GateRenderer extends EntityRenderer<GateEntity> {
 		int lit = LightTexture.pack(Math.max(LightTexture.block(light), 12), LightTexture.sky(light));
 		float spin = 1 + (s.hot - 1) * 3;
 		for (int i = 0; i < 18; i++) {
-			float a0 = hash(seed, i * 7) * Mth.TWO_PI, rad = 3.4f + hash(seed, i * 7 + 1) * 3.2f, h = (hash(seed, i * 7 + 2) - 0.35f) * 9f;
+			float a0 = hash(seed, i * 7) * Mth.TWO_PI, rad = 4.8f + hash(seed, i * 7 + 1) * 3.4f, h = (hash(seed, i * 7 + 2) - 0.35f) * 9f;
 			float size = 0.35f + hash(seed, i * 7 + 3) * 0.6f, v = 0.4f + hash(seed, i * 7 + 4) * 0.6f;
 			float ang = a0 + s.t * 0.006f * v * spin;
 			float y = Mth.lerp(s.lift, -GateEntity.MID + 0.5f, h * Math.min(1.2f, s.push)) + Mth.sin(s.t * 0.04f + a0) * 0.2f;
@@ -427,6 +455,7 @@ public class GateRenderer extends EntityRenderer<GateEntity> {
 	static final class GateWarp {
 		private static TextureTarget target;
 		private static int frame = -1;
+		private static boolean wanted;
 		static int frameNow;
 
 		static final class Tex extends AbstractTexture {
@@ -445,6 +474,17 @@ public class GateRenderer extends EntityRenderer<GateEntity> {
 		static void grab() {
 			if (frame == frameNow) return;
 			frame = frameNow;
+			if (target != null && ShaderPacks.on()) wanted = true;   // nothing to see on the main target until the pack is done: last frame's will do
+			else copy();
+		}
+
+		static void late() {
+			if (!wanted) return;
+			wanted = false;
+			copy();
+		}
+
+		private static void copy() {
 			Minecraft mc = Minecraft.getInstance();
 			RenderTarget main = mc.getMainRenderTarget();
 			int draw = GL11.glGetInteger(GL30.GL_DRAW_FRAMEBUFFER_BINDING), read = GL11.glGetInteger(GL30.GL_READ_FRAMEBUFFER_BINDING);

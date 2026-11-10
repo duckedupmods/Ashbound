@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/thornheart.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.224,
-     -2.224,
+     -2.486,
+     -2.486,
      -0.0
     ],
     "scale": [
-     0.4213,
-     0.4213,
-     0.4213
+     0.3534,
+     0.3534,
+     0.3534
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.224,
-     -2.224,
+     -2.486,
+     -2.486,
      -0.0
     ],
     "scale": [
-     0.4213,
-     0.4213,
-     0.4213
+     0.3534,
+     0.3534,
+     0.3534
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.223,
-     -1.223,
+     -1.367,
+     -1.367,
      0
     ],
     "scale": [
-     0.2317,
-     0.2317,
-     0.2317
+     0.1944,
+     0.1944,
+     0.1944
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/thornheart"
+   }
+  }
+ }
 }

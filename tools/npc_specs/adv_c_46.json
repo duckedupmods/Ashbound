@@ -1,0 +1,62 @@
+{
+ "id": "adv_c_46",
+ "seed": 4113046,
+ "recipe": "adventurer",
+ "role": "black_mage",
+ "rank": "C",
+ "name": "Vesper Stepdown",
+ "title": "C-rank Black Mage",
+ "age": "adult",
+ "sex": "f",
+ "build": "average",
+ "hunch": 0,
+ "skin": "dusk",
+ "hair": {
+  "style": "long",
+  "color": "auburn"
+ },
+ "headwear": "hood",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "gold",
+  "brows": "stern",
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "bracers",
+   "mantle",
+   "sash"
+  ],
+  "colors": {
+   "top": "black",
+   "bottom": "charcoal",
+   "accent": "oxblood",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "staff",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "C",
+  "role": "black_mage"
+ },
+ "race": "demon",
+ "recipe_race": "demon",
+ "party": "Ember Wake"
+}

@@ -1,0 +1,63 @@
+{
+ "id": "adv_c_43",
+ "seed": 4113043,
+ "recipe": "adventurer",
+ "role": "striker",
+ "rank": "C",
+ "name": "Patience of the Drains",
+ "title": "C-rank Blade",
+ "age": "adult",
+ "sex": "m",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "dusk",
+ "hair": {
+  "style": "short",
+  "color": "black"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "round",
+  "iris": "gold",
+  "brows": "stern",
+  "mouth": "smirk",
+  "blush": true,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "mail",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "bracers",
+   "pauldron_l",
+   "strap",
+   "tassets"
+  ],
+  "colors": {
+   "top": "brown",
+   "bottom": "charcoal",
+   "accent": "oxblood",
+   "leather": "black"
+  }
+ },
+ "pose": {
+  "r": "fold",
+  "l": "fold"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": "greatsword",
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "C",
+  "role": "striker"
+ },
+ "race": "demon",
+ "recipe_race": "demon",
+ "party": "Ember Wake"
+}

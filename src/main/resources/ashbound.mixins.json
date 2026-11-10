@@ -15,6 +15,7 @@
     "MountSneakMixin",
     "AnimationPlayerMixin",
     "ColliderMixin",
+    "TechnicianMixin",
     "NoWearMixin",
     "VehicleFloatAccessor",
     "SlotAccessor",
@@ -28,6 +29,12 @@
     "WorldOpenFlowsMixin",
     "ForgeCameraMixin",
     "ThirdPersonCameraMixin",
-    "MountPoseMixin"
+    "LockOnMixin",
+    "TossedGlowMixin",
+    "AllyGlowMixin",
+    "GuiFitMixin",
+    "DollFadeMixin",
+    "MountPoseMixin",
+    "ShaderPackFxMixin"
   ]
 }

@@ -41,6 +41,8 @@ def mobs(gate):
         B = MF.export(mid, s)
         w, h = s.get("ent", (1.0, 2.8))
         e = dict(entity=(mid, w, h, s.get("fire", False)), stats=s.get("stats", {}))
+        if s.get("grow"):
+            e["grow"] = s["grow"]
         if mid == d.get("elite") or s.get("key"):
             e["key"] = True
         if mid == d.get("boss") or s.get("boss"):

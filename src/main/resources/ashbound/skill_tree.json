@@ -5053,7 +5053,7 @@
    "area": "core",
    "about": "+0.4 armour per point",
    "stats": {
-    "armour": 0.4
+    "armour%": 3
    },
    "always": {},
    "fx": null,
@@ -6317,7 +6317,7 @@
    "area": "twohander",
    "about": "+0.4 armour per point",
    "stats": {
-    "armour": 0.4
+    "armour%": 3
    },
    "always": {},
    "fx": null,
@@ -6404,7 +6404,7 @@
    "area": "shield",
    "about": "+0.4 armour per point",
    "stats": {
-    "armour": 0.4
+    "armour%": 3
    },
    "always": {},
    "fx": null,
@@ -6976,7 +6976,7 @@
    "area": "black",
    "about": "+0.3 armour per point",
    "stats": {
-    "armour": 0.3
+    "armour%": 2
    },
    "always": {},
    "fx": null,
@@ -7180,7 +7180,7 @@
    "area": "white",
    "about": "+0.3 armour per point",
    "stats": {
-    "armour": 0.3
+    "armour%": 2
    },
    "always": {},
    "fx": null,

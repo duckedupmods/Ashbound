@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/crawler_lamp.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.577,
-     0.051,
-     -0.436
+     -1.175,
+     -1.175,
+     -0.0
     ],
     "scale": [
-     0.4263,
-     0.4263,
-     0.4263
+     0.2701,
+     0.2701,
+     0.2701
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.577,
-     0.051,
-     -0.436
+     -1.175,
+     -1.175,
+     -0.0
     ],
     "scale": [
-     0.4263,
-     0.4263,
-     0.4263
+     0.2701,
+     0.2701,
+     0.2701
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.867,
-     0.028,
+     -0.646,
+     -0.646,
      0
     ],
     "scale": [
-     0.2345,
-     0.2345,
-     0.2345
+     0.1486,
+     0.1486,
+     0.1486
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/crawler_lamp"
+   }
+  }
+ }
 }

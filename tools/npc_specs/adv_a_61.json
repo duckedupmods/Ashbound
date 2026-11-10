@@ -1,0 +1,62 @@
+{
+ "id": "adv_a_61",
+ "seed": 4136818,
+ "recipe": "adventurer",
+ "role": "breaker",
+ "rank": "A",
+ "name": "Aelar Mistwhisper",
+ "title": "A-rank Breaker",
+ "age": "adult",
+ "sex": "m",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "fair",
+ "hair": {
+  "style": "short",
+  "color": "rose"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "sharp",
+  "iris": "ice",
+  "brows": "stern",
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "cuirass",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "gauntlets",
+   "greaves",
+   "pauldrons"
+  ],
+  "colors": {
+   "top": "grey",
+   "bottom": "black",
+   "accent": "wine",
+   "leather": "black"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "hammer",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "A",
+  "role": "breaker"
+ },
+ "race": "elf",
+ "recipe_race": "elf",
+ "party": "The Last Lanterns"
+}

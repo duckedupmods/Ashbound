@@ -172,6 +172,34 @@ public final class SculptBlocks {
 			BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).strength(-1f, 3600000f).sound(SoundType.AZALEA).noOcclusion());
 	static final DeferredBlock<Block> HYDRANGEA = block("hydrangea", 1, 0, Use.NONE, Fx.NONE, new int[] {}, new int[] {},
 			BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).strength(-1f, 3600000f).sound(SoundType.AZALEA).noOcclusion());
+	static final DeferredBlock<Block> NIGHTSTAND = block("nightstand", 1, 8, Use.NONE, Fx.NONE, new int[] {0}, new int[] {},
+			BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(-1f, 3600000f).sound(SoundType.WOOD).noOcclusion());
+	static final DeferredBlock<Block> WARDROBE = block("wardrobe", 4, 0, Use.NONE, Fx.NONE, new int[] {}, new int[] {},
+			BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(-1f, 3600000f).sound(SoundType.WOOD).noOcclusion());
+	static final DeferredBlock<Block> WASHSTAND = block("washstand", 2, 0, Use.NONE, Fx.NONE, new int[] {}, new int[] {},
+			BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(-1f, 3600000f).sound(SoundType.WOOD).noOcclusion());
+	static final DeferredBlock<Block> WELSH_DRESSER = block("welsh_dresser", 4, 0, Use.NONE, Fx.NONE, new int[] {}, new int[] {},
+			BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(-1f, 3600000f).sound(SoundType.WOOD).noOcclusion());
+	static final DeferredBlock<Block> KITCHEN_WORKTABLE = block("kitchen_worktable", 2, 0, Use.NONE, Fx.NONE, new int[] {}, new int[] {},
+			BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(-1f, 3600000f).sound(SoundType.WOOD).noOcclusion());
+	static final DeferredBlock<Block> POT_RACK = block("pot_rack", 2, 0, Use.NONE, Fx.NONE, new int[] {}, new int[] {},
+			BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(-1f, 3600000f).sound(SoundType.WOOD).noOcclusion());
+	static final DeferredBlock<Block> HEARTH_ARMCHAIR = block("hearth_armchair", 2, 0, Use.NONE, Fx.NONE, new int[] {}, new int[] {},
+			BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(-1f, 3600000f).sound(SoundType.WOOD).noOcclusion());
+	static final DeferredBlock<Block> MANOR_COOKHEARTH = block("manor_cookhearth", 18, 14, Use.MEAL, Fx.EMBERS, new int[] {0, 1, 2, 3, 4, 5, 14}, new int[] {0, 1, 2, 3, 4, 5, 14},
+			BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(-1f, 3600000f).sound(SoundType.STONE).noOcclusion());
+	static final DeferredBlock<Block> MANOR_BREWERY = block("manor_brewery", 18, 8, Use.BREW, Fx.STEAM, new int[] {0, 1}, new int[] {12, 15},
+			BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(-1f, 3600000f).sound(SoundType.METAL).noOcclusion());
+	static final DeferredBlock<Block> MANOR_ALEMBIC = block("manor_alembic", 17, 14, Use.ELIXIR, Fx.MAGIC, new int[] {1, 2, 5, 6, 7, 8, 9, 10, 11, 14, 15, 16}, new int[] {1, 2, 5, 6, 7, 8, 9, 10, 11, 14, 15, 16},
+			BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(-1f, 3600000f).sound(SoundType.WOOD).noOcclusion());
+	static final DeferredBlock<Block> CELLAR_BARREL = block("cellar_barrel", 1, 0, Use.NONE, Fx.NONE, new int[] {}, new int[] {},
+			BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(-1f, 3600000f).sound(SoundType.WOOD).noOcclusion());
+	static final DeferredBlock<Block> WINE_RACK = block("wine_rack", 1, 0, Use.NONE, Fx.NONE, new int[] {}, new int[] {},
+			BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(-1f, 3600000f).sound(SoundType.WOOD).noOcclusion());
+	static final DeferredBlock<Block> FIELD_SCARECROW = block("field_scarecrow", 2, 0, Use.NONE, Fx.NONE, new int[] {}, new int[] {},
+			BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(-1f, 3600000f).sound(SoundType.WOOD).noOcclusion());
+	static final DeferredBlock<Block> FARM_HANDCART = block("farm_handcart", 2, 0, Use.NONE, Fx.NONE, new int[] {}, new int[] {},
+			BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(-1f, 3600000f).sound(SoundType.WOOD).noOcclusion());
 	static final DeferredBlock<Block> COLD_FORGE = block("cold_forge", 205, 0, Use.NONE, Fx.NONE, new int[] {}, new int[] {},
 			BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(-1f, 3600000f).sound(SoundType.STONE).noOcclusion());
 	static final DeferredBlock<Block> COLD_FORGE_LIT = block("cold_forge_lit", 209, 15, Use.NONE, Fx.EMBERS, new int[] {1, 2, 3, 4, 5, 6, 7, 9, 10, 16, 17, 18, 19, 25, 26, 36, 44, 45, 46, 52, 53, 55, 56, 60, 61, 64, 65, 66, 67, 68, 76, 81, 83, 84, 85, 87, 92, 93, 94, 101, 102, 103, 121, 122, 129, 130, 131, 138, 139, 153, 154, 163, 166, 169, 170, 177, 178, 181, 182, 183, 184, 187, 188, 190, 193, 195, 198, 200, 203}, new int[] {1, 2, 3, 4, 5, 6, 7, 9, 10, 16, 17, 18, 19, 25, 26, 36, 44, 45, 46, 52, 53, 55, 56, 60, 61, 64, 65, 66, 67, 68, 76, 81, 83, 84, 85, 87, 92, 93, 94, 101, 102, 103, 121, 122, 129, 130, 131, 138, 139, 153, 154, 163, 166, 169, 170, 177, 178, 181, 182, 183, 184, 187, 188, 190, 193, 195, 198, 200, 203},

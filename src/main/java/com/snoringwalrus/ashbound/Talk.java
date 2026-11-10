@@ -61,6 +61,11 @@ public final class Talk {
 		return KINDS.get(id);
 	}
 
+	/** Anyone at all wears this tag (the quest chains' self-test). */
+	static boolean anyTagged(String tag) {
+		return KINDS.values().stream().anyMatch(k -> k.tags().contains(tag));
+	}
+
 	/** A kind for "@tag/tag..." (one of those carrying every tag, at random), or the id itself; null if none. */
 	public static String resolve(String sel, RandomSource rnd) {
 		if (!sel.startsWith("@")) return KINDS.containsKey(sel) ? sel : null;
@@ -169,6 +174,11 @@ public final class Talk {
 			String hook = Errands.hook(p, npc);
 			if (!hook.isEmpty()) text = hook;
 			shown.addAll(0, Errands.options(p, npc));
+			String ch = Chains.hook(p, npc);
+			if (!ch.isEmpty() && hook.isEmpty()) text = ch;
+			shown.addAll(0, Chains.options(p, npc));
+			Option rec = Recipes.option(p, npc);                         // some know a recipe or two (Recipes)
+			if (rec != null) shown.add(Math.max(0, shown.size() - 1), rec);
 		}
 		say(p, npc, k, text, shown);
 	}
@@ -241,6 +251,8 @@ public final class Talk {
 	}
 
 	public static void onPick(Net.NpcPick msg, ServerPlayer p) {
+		if (AdventurerTalk.pick(msg, p)) return;
+		if (Encounters.pick(msg, p)) return;
 		Session s = SESSIONS.get(p.getUUID());
 		if (s == null || s.entity() != msg.entity()) return;
 		if (!(p.level().getEntity(msg.entity()) instanceof Npc npc) || npc.distanceTo(p) > 7) {
@@ -261,8 +273,8 @@ public final class Talk {
 			act(p, act.substring(0, semi));
 			act = act.substring(semi + 1).trim();
 		}
-		if (act.startsWith("errand:")) {
-			Errands.Reply r = k == null ? null : Errands.pick(p, npc, act);
+		if (act.startsWith("errand:") || act.startsWith("chain:") || act.startsWith("recipe:")) {
+			Errands.Reply r = k == null ? null : act.startsWith("chain:") ? Chains.pick(p, npc, act) : act.startsWith("recipe:") ? Recipes.pick(p, npc, act) : Errands.pick(p, npc, act);
 			if (r != null) say(p, npc, k, r.text(), r.options());
 			else {
 				close(p);
@@ -322,6 +334,8 @@ public final class Talk {
 			}
 			else if (a.equals("rank_up")) Guild.rankUp(p);
 			else if (a.equals("heal")) p.setHealth(p.getMaxHealth());
+			else if (a.startsWith("arena:")) Arena.act(p, a.substring(6));
+			else if (a.startsWith("bossarena:")) BossArenas.act(p, a.substring(10));
 			else if (a.startsWith("pay:")) Coins.pay(p, Integer.parseInt(a.substring(4)));
 			else if (a.startsWith("coins:")) Coins.give(p, Integer.parseInt(a.substring(6)));
 			else if (a.startsWith("give:") || a.startsWith("take:")) {

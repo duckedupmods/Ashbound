@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/mercy.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.016,
-     -2.231,
-     -0.061
+     -1.851,
+     -1.851,
+     -0.0
     ],
     "scale": [
-     0.3925,
-     0.3925,
-     0.3925
+     0.3766,
+     0.3766,
+     0.3766
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.016,
-     -2.231,
-     -0.061
+     -1.851,
+     -1.851,
+     -0.0
     ],
     "scale": [
-     0.3925,
-     0.3925,
-     0.3925
+     0.3766,
+     0.3766,
+     0.3766
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.109,
-     -1.227,
+     -1.018,
+     -1.018,
      0
     ],
     "scale": [
-     0.2159,
-     0.2159,
-     0.2159
+     0.2071,
+     0.2071,
+     0.2071
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/mercy"
+   }
+  }
+ }
 }

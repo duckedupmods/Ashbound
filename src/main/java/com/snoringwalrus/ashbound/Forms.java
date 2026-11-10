@@ -62,8 +62,8 @@ public final class Forms {
 			new Form("offering", "ashcaster", "Burnt Offering", "Mana almost gone", "Spells cost health instead, and hit twice as hard",
 					"Healing is halved, and you take more damage", 15, 90, 2, 1.3),
 			new Form("martyr", "mender", "Martyr's Vow", "An ally near death", "Your ally is pulled back from the edge", "You fall to 1 health and can't heal for 15 seconds", 15, 120, 1, 1),
-			new Form("crown", "caller", "Crown of the Hollow King", "All your thralls out", "Consume them and become the champion yourself",
-					"No thralls until it ends", 20, 120, 1, 0.7));
+			new Form("crown", "caller", "Crown of the Hollow King", "All your thralls out", "They fuse into the Ossuary Colossus, which fights for you (more thralls, a bigger beast)",
+					"Costs all your mana and 30% of your health; no other thralls until it ends", 20, 120, 1, 0.7));
 
 	private static final class Active {
 		final Form form;
@@ -80,13 +80,19 @@ public final class Forms {
 	private static final Map<UUID, Integer> STILL = new HashMap<>();
 	private static final Map<UUID, int[]> HITS = new HashMap<>();
 	private static final Map<UUID, Boolean> SENT = new HashMap<>();
+	private static final Map<UUID, Integer> SENT_HAVE = new HashMap<>();
 	private static final Set<UUID> DRINKING = new HashSet<>(), SHAKING = new HashSet<>();
+	/** the Crown: at most this many thralls go into the Colossus, and it takes this much of your health */
+	private static final int CROWN_MOST = 5;
+	private static final float CROWN_BLOOD = 0.3f;
 	private static final ResourceLocation STAT = ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "form");
 
 	// your own, on your own screen
 	public static String clientForm = "";
 	public static boolean clientReady;
 	public static long clientUntil, clientRest;
+	/** how many of what the moment needs you have (the Crown's thralls out), -1 where it isn't a count */
+	public static int clientHave = -1;
 
 	public static void register() {
 		NeoForge.EVENT_BUS.addListener((PlayerTickEvent.Post e) -> {
@@ -106,6 +112,7 @@ public final class Forms {
 			STILL.remove(id);
 			HITS.remove(id);
 			SENT.remove(id);
+			SENT_HAVE.remove(id);
 		});
 	}
 
@@ -152,6 +159,9 @@ public final class Forms {
 		Skills.setForm(p, f.id());
 		Spells.skillFx(p.serverLevel(), "tome", p.position(), Vec3.ZERO, 0, p);
 		sync(p);
+		p.sendSystemMessage(Component.literal("You've awakened: " + f.tome() + ". It isn't a skill: it's a Form that waits for its moment ("
+				+ f.trigger().toLowerCase() + "). When the moment comes the crest above your hotbar burns red; press the Form key (B unless you changed it) to take it.")
+				.withStyle(ChatFormatting.GOLD));
 		return true;
 	}
 
@@ -160,7 +170,18 @@ public final class Forms {
 		Form f = of(p);
 		long now = p.level().getGameTime();
 		PacketDistributor.sendToPlayer(p, new Net.FormState(f == null ? "" : f.id(), ready(p), a == null ? 0 : (int) (a.until - now),
-				(int) Math.max(0, REST.getOrDefault(p.getUUID(), 0L) - now)));
+				(int) Math.max(0, REST.getOrDefault(p.getUUID(), 0L) - now), have(p)));
+	}
+
+	/** How many of what the moment needs you've got, where it's a count: the Crown's thralls. */
+	private static int have(ServerPlayer p) {
+		Form f = of(p);
+		return f != null && f.id().equals("crown") ? Spells.thralls(p) : -1;
+	}
+
+	/** How many the moment needs, for the count on your screen. */
+	public static int needs(String form) {
+		return form.equals("crown") ? CROWN_THRALLS : 0;
 	}
 
 	private static boolean ready(ServerPlayer p) {
@@ -204,8 +225,10 @@ public final class Forms {
 			else during(p, a);
 		}
 		boolean ready = ready(p);
-		if (!Boolean.valueOf(ready).equals(SENT.get(id))) {
+		int have = have(p);
+		if (!Boolean.valueOf(ready).equals(SENT.get(id)) || have != SENT_HAVE.getOrDefault(id, -2)) {
 			SENT.put(id, ready);
+			SENT_HAVE.put(id, have);
 			sync(p);
 		}
 	}
@@ -247,8 +270,11 @@ public final class Forms {
 		switch (f.id()) {
 			case "drake" -> stat(p, Attributes.ARMOR, -1, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
 			case "crown" -> {
+				int eaten = Math.min(CROWN_MOST, Spells.thralls(p));
 				Spells.dismiss(p);
-				stat(p, Attributes.SCALE, 0.7, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+				p.setData(Spells.MANA, 0f);
+				p.setHealth(Math.max(1, p.getHealth() - p.getMaxHealth() * CROWN_BLOOD));
+				Spells.colossus(p, eaten, f.seconds() * SECOND);
 			}
 			case "martyr" -> {
 				ServerPlayer o = dying(p);
@@ -276,6 +302,7 @@ public final class Forms {
 			if (i != null) i.removeModifier(STAT);
 		}
 		REST.put(p.getUUID(), p.level().getGameTime() + a.form.rest() * (long) SECOND);
+		if (a.form.id().equals("crown")) Spells.dismiss(p);   // the Colossus falls apart with it
 		PacketDistributor.sendToPlayersTrackingEntityAndSelf(p, new Net.FormAura(p.getId(), ""));
 		sync(p);
 	}
@@ -311,7 +338,6 @@ public final class Forms {
 				Gear.Weapon w = Spells.held(p);
 				if (w != null) Spells.heldSkill(p, w);
 			}
-			case "crown" -> JoinedSkills.ringHit(p, p.position(), 5, 4, 0.3);
 			default -> {}
 		}
 	}
@@ -350,12 +376,12 @@ public final class Forms {
 		e.setAmount((float) (e.getAmount() * dealt(p, a)));
 		if (a.form.id().equals("communion")) {
 			DRINKING.add(id);
-			p.heal(e.getAmount() * (float) RED_DRINK);
+			Meters.heal(p, p, e.getAmount() * (float) RED_DRINK * Gear.drink(p));
 			DRINKING.remove(id);
 		}
 		if (a.form.id().equals("hammerfall") && SHAKING.add(id)) {
 			JoinedSkills.ringHit(p, e.getEntity().position(), 3, 0.5, 0.2);
-			Spells.skillFx(p.serverLevel(), "hammer_wave", e.getEntity().position(), Vec3.ZERO, 3, null);
+			Spells.skillFx(p.serverLevel(), "hammer_wave", e.getEntity().position(), Vec3.ZERO, 3, null, p);
 			SHAKING.remove(id);
 		}
 	}

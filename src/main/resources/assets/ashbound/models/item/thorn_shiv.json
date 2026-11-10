@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/thorn_shiv.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.457,
-     -1.457,
-     0.0
+     -1.141,
+     -2.324,
+     -0.338
     ],
     "scale": [
-     0.6563,
-     0.6563,
-     0.6563
+     0.6448,
+     0.6448,
+     0.6448
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.457,
-     -1.457,
-     0.0
+     -1.141,
+     -2.324,
+     -0.338
     ],
     "scale": [
-     0.6563,
-     0.6563,
-     0.6563
+     0.6448,
+     0.6448,
+     0.6448
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.801,
-     -0.801,
+     -0.628,
+     -1.278,
      0
     ],
     "scale": [
-     0.3609,
-     0.3609,
-     0.3609
+     0.3546,
+     0.3546,
+     0.3546
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/thorn_shiv"
+   }
+  }
+ }
 }

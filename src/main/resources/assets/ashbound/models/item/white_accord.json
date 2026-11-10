@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/white_accord.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.088,
-     -0.009,
-     -0.138
+     -0.689,
+     -0.689,
+     0.0
     ],
     "scale": [
-     0.3676,
-     0.3676,
-     0.3676
+     0.2866,
+     0.2866,
+     0.2866
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.088,
-     -0.009,
-     -0.138
+     -0.689,
+     -0.689,
+     0.0
     ],
     "scale": [
-     0.3676,
-     0.3676,
-     0.3676
+     0.2866,
+     0.2866,
+     0.2866
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.048,
-     -0.005,
+     -0.379,
+     -0.379,
      0
     ],
     "scale": [
-     0.2022,
-     0.2022,
-     0.2022
+     0.1576,
+     0.1576,
+     0.1576
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/white_accord"
+   }
+  }
+ }
 }

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/gibbet_door.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.451,
-     2.624,
-     6.749
+     1.425,
+     2.819,
+     7.061
     ],
     "scale": [
-     0.5155,
-     0.5155,
-     0.5155
+     0.5282,
+     0.5282,
+     0.5282
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.451,
-     2.624,
-     6.749
+     1.425,
+     2.819,
+     7.061
     ],
     "scale": [
-     0.5155,
-     0.5155,
-     0.5155
+     0.5282,
+     0.5282,
+     0.5282
     ]
    },
    "ground": {
@@ -115,15 +115,23 @@
      0.0
     ],
     "translation": [
-     0.798,
-     1.443,
+     0.784,
+     1.55,
      0
     ],
     "scale": [
-     0.2836,
-     0.2836,
-     0.2836
+     0.2905,
+     0.2905,
+     0.2905
     ]
+   }
+  }
+ },
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/gibbet_door"
    }
   }
  },
@@ -134,6 +142,5 @@
    },
    "model": "ashbound:item/gibbet_door_blocking"
   }
- ],
- "perspectives": {}
+ ]
 }

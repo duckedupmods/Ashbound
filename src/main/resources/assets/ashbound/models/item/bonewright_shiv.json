@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/bonewright_shiv.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.531,
-     -1.531,
-     0.0
+     -1.631,
+     -1.631,
+     -0.0
     ],
     "scale": [
-     0.8296,
-     0.8296,
-     0.8296
+     0.6886,
+     0.6886,
+     0.6886
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.531,
-     -1.531,
-     0.0
+     -1.631,
+     -1.631,
+     -0.0
     ],
     "scale": [
-     0.8296,
-     0.8296,
-     0.8296
+     0.6886,
+     0.6886,
+     0.6886
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.842,
-     -0.842,
+     -0.897,
+     -0.897,
      0
     ],
     "scale": [
-     0.4563,
-     0.4563,
-     0.4563
+     0.3787,
+     0.3787,
+     0.3787
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/bonewright_shiv"
+   }
+  }
+ }
 }

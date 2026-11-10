@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/hoard_hammer.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     0.059,
-     -0.028,
-     -0.025
+     -0.706,
+     -0.599,
+     0.03
     ],
     "scale": [
-     0.4394,
-     0.4394,
-     0.4394
+     0.3238,
+     0.3238,
+     0.3238
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     0.059,
-     -0.028,
-     -0.025
+     -0.706,
+     -0.599,
+     0.03
     ],
     "scale": [
-     0.4394,
-     0.4394,
-     0.4394
+     0.3238,
+     0.3238,
+     0.3238
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.032,
-     -0.015,
+     -0.388,
+     -0.329,
      0
     ],
     "scale": [
-     0.2417,
-     0.2417,
-     0.2417
+     0.1781,
+     0.1781,
+     0.1781
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/hoard_hammer"
+   }
+  }
+ }
 }

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/angler_spear.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.447,
-     0.424,
-     0.249
+     -0.927,
+     -1.098,
+     -0.049
     ],
     "scale": [
-     0.327,
-     0.327,
-     0.327
+     0.2603,
+     0.2603,
+     0.2603
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.447,
-     0.424,
-     0.249
+     -0.927,
+     -1.098,
+     -0.049
     ],
     "scale": [
-     0.327,
-     0.327,
-     0.327
+     0.2603,
+     0.2603,
+     0.2603
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.246,
-     0.233,
+     -0.51,
+     -0.604,
      0
     ],
     "scale": [
-     0.1799,
-     0.1799,
-     0.1799
+     0.1432,
+     0.1432,
+     0.1432
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/angler_spear"
+   }
+  }
+ }
 }

@@ -27,10 +27,16 @@ final class MenuTabs {
 	/** A screen with the tabs on it: where its panel starts. */
 	interface Panel {
 		int panelTop();
+
+		/** Where the panel's middle is across, when it isn't the screen's. */
+		default int panelMiddle() {
+			return -1;
+		}
 	}
 
-	private static final String[] NAMES = {"Character", "Bag", "Pets", "Mount", "Skills", "Journal"};
-	private static final int H = 15, GAP = 2, PAD = 10, MIN_Y = 2, CHARACTER = 0, BAG = 1, PETS = 2, MOUNT = 3, SKILLS = 4, JOURNAL = 5;
+	private static final String[] NAMES = {"Character", "Bag", "Pets", "Mount", "Skills", "Trades", "Journal", "Party"};
+	/** A tab is its icon, the open one its icon and name; hovering one names it. */
+	private static final int H = 20, ICON_W = 22, GAP = 2, PAD = 10, MIN_Y = 2, CHARACTER = 0, BAG = 1, PETS = 2, MOUNT = 3, SKILLS = 4, TRADES = 5, JOURNAL = 6, PARTY = 7;
 
 	static void hooks() {
 		NeoForge.EVENT_BUS.addListener((ScreenEvent.Opening e) -> {
@@ -44,11 +50,13 @@ final class MenuTabs {
 			int on = active(e.getScreen());
 			if (on < 0) return;
 			var font = Minecraft.getInstance().font;
-			int all = -GAP, y = Math.max(MIN_Y, ((Panel) e.getScreen()).panelTop() - H - 1);
-			for (String name : NAMES) all += font.width(name) + PAD + GAP;
-			int x = (e.getScreen().width - all) / 2;
+			Screen sc = e.getScreen();
+			int mid = ((Panel) sc).panelMiddle() >= 0 ? ((Panel) sc).panelMiddle() : sc.width / 2;
+			int all = -GAP, y = Math.max(MIN_Y, ((Panel) sc).panelTop() - H - 1);
+			for (int i = 0; i < NAMES.length; i++) all += width(font, i, on == i) + GAP;
+			int x = Math.max(2, Math.min(sc.width - all - 2, mid - all / 2));
 			for (int i = 0; i < NAMES.length; i++) {
-				int w = font.width(NAMES[i]) + PAD;
+				int w = width(font, i, on == i);
 				e.addListener(new Tab(x, y, w, i, on == i));
 				x += w + GAP;
 			}
@@ -66,13 +74,30 @@ final class MenuTabs {
 		p.containerMenu = p.inventoryMenu;
 	}
 
+	private static int width(net.minecraft.client.gui.Font font, int i, boolean on) {
+		return on ? ICON_W + font.width(NAMES[i]) + PAD - 2 : ICON_W;
+	}
+
+	private static ItemStack icon(int i) {
+		return switch (i) {
+			case CHARACTER -> new ItemStack(net.minecraft.world.item.Items.IRON_CHESTPLATE);
+			case BAG -> new ItemStack(Bag.POUCH.get());
+			case PETS -> new ItemStack(net.minecraft.world.item.Items.BONE);
+			case MOUNT -> new ItemStack(net.minecraft.world.item.Items.SADDLE);
+			case SKILLS -> new ItemStack(net.minecraft.world.item.Items.ENCHANTED_BOOK);
+			case TRADES -> new ItemStack(net.minecraft.world.item.Items.CRAFTING_TABLE);
+			case JOURNAL -> new ItemStack(net.minecraft.world.item.Items.WRITABLE_BOOK);
+			default -> new ItemStack(net.minecraft.world.item.Items.SHIELD);
+		};
+	}
+
 	private static void openCharacter() {
 		PacketDistributor.sendToServer(new CPacketOpenCurios(ItemStack.EMPTY));
 	}
 
 	private static int active(Screen s) {
 		return s instanceof CharacterScreen ? CHARACTER : s instanceof BagScreen ? BAG : s instanceof PetScreen ? PETS : s instanceof MountUpScreen ? MOUNT
-				: s instanceof SkillScreen ? SKILLS : s instanceof QuestScreen ? JOURNAL : -1;
+				: s instanceof SkillScreen ? SKILLS : s instanceof TradesScreen ? TRADES : s instanceof QuestScreen ? JOURNAL : s instanceof PartyScreen ? PARTY : -1;
 	}
 
 	private static final class Tab extends AbstractButton {
@@ -83,6 +108,7 @@ final class MenuTabs {
 			super(x, y, w, H, Component.literal(NAMES[which]));
 			this.which = which;
 			this.on = on;
+			if (!on) setTooltip(net.minecraft.client.gui.components.Tooltip.create(getMessage()));
 		}
 
 		@Override
@@ -98,6 +124,8 @@ final class MenuTabs {
 					if (!Mounts.client.isEmpty()) mc.setScreen(new MountUpScreen());
 				}
 				case SKILLS -> mc.setScreen(new SkillScreen());
+				case TRADES -> mc.setScreen(new TradesScreen());
+				case PARTY -> PartyScreen.open();
 				default -> QuestScreen.open();
 			}
 		}
@@ -106,7 +134,8 @@ final class MenuTabs {
 		protected void renderWidget(GuiGraphics g, int mx, int my, float pt) {
 			var font = Minecraft.getInstance().font;
 			AshUi.row(g, getX(), getY(), width, H, on, isHovered());
-			g.drawString(font, getMessage(), getX() + (width - font.width(getMessage())) / 2, getY() + 4, on || isHovered() ? AshUi.TEXT : AshUi.BODY, true);
+			g.renderItem(icon(which), getX() + 3, getY() + 2);
+			if (on) g.drawString(font, getMessage(), getX() + ICON_W, getY() + 6, AshUi.TEXT, true);
 		}
 
 		@Override

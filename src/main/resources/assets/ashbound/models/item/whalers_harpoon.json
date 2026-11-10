@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/whalers_harpoon.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.45,
-     0.427,
-     0.251
+     -1.287,
+     -0.367,
+     0.263
     ],
     "scale": [
-     0.3275,
-     0.3275,
-     0.3275
+     0.2923,
+     0.2923,
+     0.2923
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.45,
-     0.427,
-     0.251
+     -1.287,
+     -0.367,
+     0.263
     ],
     "scale": [
-     0.3275,
-     0.3275,
-     0.3275
+     0.2923,
+     0.2923,
+     0.2923
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.248,
-     0.235,
+     -0.708,
+     -0.202,
      0
     ],
     "scale": [
-     0.1801,
-     0.1801,
-     0.1801
+     0.1607,
+     0.1607,
+     0.1607
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/whalers_harpoon"
+   }
+  }
+ }
 }

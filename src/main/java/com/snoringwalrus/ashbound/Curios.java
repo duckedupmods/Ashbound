@@ -310,12 +310,14 @@ public final class Curios {
 				}
 			ItemStack old = stacks.getStackInSlot(at);
 			if (!old.isEmpty() && ItemStack.isSameItemSameComponents(old, held)) return InteractionResultHolder.fail(held);
-			if (!level.isClientSide) {
-				stacks.setStackInSlot(at, held.copy());
-				level.playSound(null, p.blockPosition(), spec.slot().equals("relic") ? SoundEvents.ARMOR_EQUIP_NETHERITE.value()
-						: SoundEvents.ARMOR_EQUIP_CHAIN.value(), SoundSource.PLAYERS, 0.8f, 1.1f);
-			}
-			return InteractionResultHolder.sidedSuccess(old.copy(), level.isClientSide);
+			// the server does the swap and tells the client: the client guessing at it is one way to lose what was worn
+			if (level.isClientSide) return InteractionResultHolder.sidedSuccess(held, true);
+			ItemStack off = old.copy();
+			stacks.setStackInSlot(at, held.copy());
+			p.setItemInHand(hand, off);
+			level.playSound(null, p.blockPosition(), spec.slot().equals("relic") ? SoundEvents.ARMOR_EQUIP_NETHERITE.value()
+					: SoundEvents.ARMOR_EQUIP_CHAIN.value(), SoundSource.PLAYERS, 0.8f, 1.1f);
+			return InteractionResultHolder.consume(off);
 		}
 
 		@Override

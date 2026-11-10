@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/abyss_staff.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     0.407,
-     0.407,
-     -0.0
+     -0.993,
+     -1.009,
+     0.085
     ],
     "scale": [
-     0.4265,
-     0.4265,
-     0.4265
+     0.2892,
+     0.2892,
+     0.2892
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     0.407,
-     0.407,
-     -0.0
+     -0.993,
+     -1.009,
+     0.085
     ],
     "scale": [
-     0.4265,
-     0.4265,
-     0.4265
+     0.2892,
+     0.2892,
+     0.2892
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.224,
-     0.224,
+     -0.546,
+     -0.555,
      0
     ],
     "scale": [
-     0.2346,
-     0.2346,
-     0.2346
+     0.1591,
+     0.1591,
+     0.1591
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/abyss_staff"
+   }
+  }
+ }
 }

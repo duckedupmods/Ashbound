@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/shadowfang.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.911,
-     -0.911,
-     -0.0
+     -2.98,
+     -1.76,
+     0.349
     ],
     "scale": [
-     0.5477,
-     0.5477,
-     0.5477
+     0.6207,
+     0.6207,
+     0.6207
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.911,
-     -0.911,
-     -0.0
+     -2.98,
+     -1.76,
+     0.349
     ],
     "scale": [
-     0.5477,
-     0.5477,
-     0.5477
+     0.6207,
+     0.6207,
+     0.6207
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.501,
-     -0.501,
+     -1.639,
+     -0.968,
      0
     ],
     "scale": [
-     0.3012,
-     0.3012,
-     0.3012
+     0.3414,
+     0.3414,
+     0.3414
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/shadowfang"
+   }
+  }
+ }
 }

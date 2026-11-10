@@ -295,7 +295,7 @@ public final class CurioFx {
 				brandLook(victim);
 			}
 			int rose = w(p, "thornborn_rose");
-			if (rose > 0) p.heal(amount * (0.02f + 0.01f * rose));
+			if (rose > 0) Meters.heal(p, p, amount * (0.02f + 0.01f * rose) * Gear.drink(p));
 			int stone = w(p, "stormspire_lodestone");
 			if (stone > 0 && now - s.lodestone >= 240 - 40L * stone) {
 				s.lodestone = now;
@@ -543,7 +543,7 @@ public final class CurioFx {
 		if (!(e.getSource().getEntity() instanceof ServerPlayer p) || !(dead instanceof Enemy)) return;
 		S s = state(p);
 		if (w(p, "salt_khans_seal") > 0) p.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 60, 0));
-		if (w(p, "briar_heart") > 0) p.heal(p.getMaxHealth() * 0.04f);
+		if (w(p, "briar_heart") > 0) Meters.heal(p, p, p.getMaxHealth() * 0.04f);
 		int gland = w(p, "chimera_gland");
 		if (gland > 0) {
 			List<Holder<MobEffect>> pool = new ArrayList<>(List.of(MobEffects.DAMAGE_BOOST, MobEffects.MOVEMENT_SPEED, MobEffects.REGENERATION));
@@ -776,7 +776,7 @@ public final class CurioFx {
 			if (it != null) kinds.add(it);
 		}
 		int have = 0;
-		for (net.minecraft.world.item.Item it : kinds) have += GateForge.count(p, it);
+		for (net.minecraft.world.item.Item it : kinds) have += GateForge.carried(p, it);
 		if (!p.isCreative() && (have < trophies || p.getData(Levels.ASH) < ash)) {
 			say(p, "Power " + roman(t + 1) + " takes " + trophies + " boss troph" + (trophies == 1 ? "y" : "ies") + " and " + ash + " Ash", ChatFormatting.RED);
 			return;

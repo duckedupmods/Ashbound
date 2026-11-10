@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/rib.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.561,
-     -2.561,
-     -0.0
+     -2.32,
+     -2.455,
+     -0.039
     ],
     "scale": [
-     0.4809,
-     0.4809,
-     0.4809
+     0.4117,
+     0.4117,
+     0.4117
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.561,
-     -2.561,
-     -0.0
+     -2.32,
+     -2.455,
+     -0.039
     ],
     "scale": [
-     0.4809,
-     0.4809,
-     0.4809
+     0.4117,
+     0.4117,
+     0.4117
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.409,
-     -1.409,
+     -1.276,
+     -1.35,
      0
     ],
     "scale": [
-     0.2645,
-     0.2645,
-     0.2645
+     0.2265,
+     0.2265,
+     0.2265
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/rib"
+   }
+  }
+ }
 }

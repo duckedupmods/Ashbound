@@ -678,10 +678,12 @@ public final class Capital {
 	}
 
 	/** No monster comes of itself into the city or the land round it (its shaped ground and the margin past it):
-	 *  not by night, not from a spawner or a patrol. One summoned by a player (egg, command) still comes. */
+	 *  not by night, not from a spawner or a patrol. One summoned by a player (egg, command) still comes, and so does a raid: being
+	 *  at the walls is the point of it. */
 	private static void noMonsters(FinalizeSpawnEvent e) {
 		if (sites.length == 0 || e.getLevel().getLevel().dimension() != Level.OVERWORLD) return;
 		if (!(e.getEntity() instanceof Enemy) && e.getEntity().getType().getCategory() != MobCategory.MONSTER) return;
+		if (e.getEntity().getTags().contains(Incidents.TAG)) return;
 		MobSpawnType t = e.getSpawnType();
 		if (t == MobSpawnType.SPAWN_EGG || t == MobSpawnType.COMMAND || t == MobSpawnType.BUCKET || t == MobSpawnType.DISPENSER) return;
 		if ((flags(new ChunkPos(net.minecraft.util.Mth.floor(e.getX()) >> 4, net.minecraft.util.Mth.floor(e.getZ()) >> 4)) & 8) != 0) e.setSpawnCancelled(true);

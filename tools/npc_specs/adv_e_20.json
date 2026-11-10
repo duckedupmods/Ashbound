@@ -1,0 +1,59 @@
+{
+ "id": "adv_e_20",
+ "seed": 4120939,
+ "recipe": "adventurer",
+ "role": "tank",
+ "rank": "E",
+ "name": "Fenn Brack",
+ "title": "E-rank Shieldbearer",
+ "age": "adult",
+ "sex": "m",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "porcelain",
+ "hair": {
+  "style": "buzz",
+  "color": "black"
+ },
+ "headwear": "bandana",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "green",
+  "brows": "stern",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "gambeson",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "belt",
+   "pauldron_l"
+  ],
+  "colors": {
+   "top": "brown",
+   "bottom": "brown",
+   "accent": "brown",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "sword",
+ "offhand": "shield",
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "E",
+  "role": "tank"
+ },
+ "party": "Low Road Five"
+}

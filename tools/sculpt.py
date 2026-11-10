@@ -69,6 +69,9 @@ MATS = {
     "chalk": ((232, 230, 220), "paper", 0, False), "terracotta": ((176, 94, 62), "stone", 0, False),
     "petal_red": ((196, 36, 44), "cloth", 0, False), "petal_pink": ((232, 128, 160), "cloth", 0, False),
     "petal_white": ((240, 236, 226), "cloth", 0, False), "petal_yellow": ((238, 196, 60), "cloth", 0, False),
+    "stew": ((128, 74, 36), "liquid", 0, False), "meat": ((172, 88, 62), "cloth", 0, False),
+    "bread": ((200, 142, 70), "wood", 0, False), "hops": ((132, 176, 74), "cloth", 0, False),
+    "bottle_green": ((44, 84, 56), "glaze", 0, False),
     "petal_blue": ((96, 132, 220), "cloth", 0, False), "petal_violet": ((150, 100, 210), "cloth", 0, False),
 }
 
@@ -108,7 +111,14 @@ CONFIG = {
     "school_desk": ("wood", "NONE", "NONE"), "school_chair": ("wood", "NONE", "NONE"), "master_desk": ("wood", "NONE", "NONE"),
     "rune_board": ("wood", "NONE", "NONE"), "topiary_pot": ("stone", "NONE", "NONE"), "flower_tub": ("wood", "NONE", "NONE"),
     "rose_bush": ("grass", "NONE", "NONE"), "hydrangea": ("grass", "NONE", "NONE"),
+    # the player's manor (tools/blender/manor_sculpt.py, tools/capital_home.py)
+    **{n: ("wood", "NONE", "NONE") for n in ("nightstand", "wardrobe", "washstand", "welsh_dresser", "kitchen_worktable", "pot_rack",
+                                            "hearth_armchair")},
     # the Cold Forge in the vault under the Ashforge (ColdForge.java)
+    # the homestead's stations and its blocky props (tools/blender/homestead_sculpt.py)
+    "manor_cookhearth": ("stone", "MEAL", "EMBERS"), "manor_brewery": ("metal", "BREW", "STEAM"),
+    "manor_alembic": ("wood", "ELIXIR", "MAGIC"), "cellar_barrel": ("wood", "NONE", "NONE"), "wine_rack": ("wood", "NONE", "NONE"),
+    "field_scarecrow": ("wood", "NONE", "NONE"), "farm_handcart": ("wood", "NONE", "NONE"),
     "cold_forge": ("stone", "NONE", "NONE"), "cold_forge_lit": ("stone", "NONE", "EMBERS"),
 }
 MODEL_ONLY = {"clock_hand_minute", "clock_hand_hour"}     # models for a renderer (ClockHands), no block of their own

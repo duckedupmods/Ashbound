@@ -80,19 +80,7 @@
   "gui": {
    "parent": "minecraft:item/generated",
    "textures": {
-    "layer0": "ashbound:item/bloodmoon_bow_pulling_0"
-   }
-  },
-  "ground": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/bloodmoon_bow_pulling_0"
-   }
-  },
-  "fixed": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/bloodmoon_bow_pulling_0"
+    "layer0": "ashbound:item/bloodmoon_bow"
    }
   }
  }

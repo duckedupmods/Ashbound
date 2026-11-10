@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/tidecallers_trident.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.375,
-     -0.414,
-     -0.072
+     -0.845,
+     -0.792,
+     -0.058
     ],
     "scale": [
-     0.2595,
-     0.2595,
-     0.2595
+     0.2437,
+     0.2437,
+     0.2437
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.375,
-     -0.414,
-     -0.072
+     -0.845,
+     -0.792,
+     -0.058
     ],
     "scale": [
-     0.2595,
-     0.2595,
-     0.2595
+     0.2437,
+     0.2437,
+     0.2437
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.206,
-     -0.228,
+     -0.465,
+     -0.436,
      0
     ],
     "scale": [
-     0.1427,
-     0.1427,
-     0.1427
+     0.134,
+     0.134,
+     0.134
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/tidecallers_trident"
+   }
+  }
+ }
 }

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/veilhealer.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.32,
-     -0.3,
-     0.006
+     -1.016,
+     -1.117,
+     -0.029
     ],
     "scale": [
-     0.3595,
-     0.3595,
-     0.3595
+     0.3079,
+     0.3079,
+     0.3079
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.32,
-     -0.3,
-     0.006
+     -1.016,
+     -1.117,
+     -0.029
     ],
     "scale": [
-     0.3595,
-     0.3595,
-     0.3595
+     0.3079,
+     0.3079,
+     0.3079
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.176,
-     -0.165,
+     -0.559,
+     -0.614,
      0
     ],
     "scale": [
-     0.1977,
-     0.1977,
-     0.1977
+     0.1693,
+     0.1693,
+     0.1693
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/veilhealer"
+   }
+  }
+ }
 }

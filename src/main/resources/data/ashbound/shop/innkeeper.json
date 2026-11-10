@@ -2,6 +2,13 @@
  "buy": [
   {
    "item": {
+    "id": "ashbound:ration_pouch",
+    "count": 1
+   },
+   "price": 60
+  },
+  {
+   "item": {
     "id": "minecraft:bread",
     "count": 3
    },
@@ -60,6 +67,20 @@
     "count": 16
    },
    "price": 20
+  },
+  {
+   "item": {
+    "id": "ashbound:cooks_fire",
+    "count": 1
+   },
+   "price": 250
+  },
+  {
+   "item": {
+    "id": "ashbound:brewers_cask",
+    "count": 1
+   },
+   "price": 300
   }
  ],
  "sell": [

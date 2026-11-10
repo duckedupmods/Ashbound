@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/queens_needle.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.683,
-     -2.683,
+     -2.702,
+     -2.702,
      -0.0
     ],
     "scale": [
-     0.4085,
-     0.4085,
-     0.4085
+     0.3411,
+     0.3411,
+     0.3411
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.683,
-     -2.683,
+     -2.702,
+     -2.702,
      -0.0
     ],
     "scale": [
-     0.4085,
-     0.4085,
-     0.4085
+     0.3411,
+     0.3411,
+     0.3411
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.476,
-     -1.476,
+     -1.486,
+     -1.486,
      0
     ],
     "scale": [
-     0.2247,
-     0.2247,
-     0.2247
+     0.1876,
+     0.1876,
+     0.1876
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/queens_needle"
+   }
+  }
+ }
 }

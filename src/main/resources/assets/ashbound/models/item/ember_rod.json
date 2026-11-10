@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/ember_rod.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     0.407,
-     0.407,
-     -0.0
+     -0.683,
+     -0.496,
+     0.053
     ],
     "scale": [
-     0.4265,
-     0.4265,
-     0.4265
+     0.3652,
+     0.3652,
+     0.3652
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     0.407,
-     0.407,
-     -0.0
+     -0.683,
+     -0.496,
+     0.053
     ],
     "scale": [
-     0.4265,
-     0.4265,
-     0.4265
+     0.3652,
+     0.3652,
+     0.3652
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.224,
-     0.224,
+     -0.376,
+     -0.273,
      0
     ],
     "scale": [
-     0.2346,
-     0.2346,
-     0.2346
+     0.2009,
+     0.2009,
+     0.2009
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/ember_rod"
+   }
+  }
+ }
 }

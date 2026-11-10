@@ -3825,6 +3825,595 @@
   ],
   "shield": false
  },
+ "cairn_giant": {
+  "gate": "world_bosses",
+  "stance": "maul",
+  "skills": [
+   {
+    "name": "slam",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "quake",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "charge",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "roar",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "rain",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "leap",
+    "arg": "",
+    "phase": 3
+   }
+  ],
+  "shield": false
+ },
+ "hart_lord": {
+  "gate": "world_bosses",
+  "stance": "axe",
+  "skills": [
+   {
+    "name": "charge",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "leap",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "spin",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "roar",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "summon",
+    "arg": "thorn_beetle",
+    "phase": 2
+   },
+   {
+    "name": "dash",
+    "arg": "",
+    "phase": 3
+   }
+  ],
+  "shield": false
+ },
+ "saltglass_hydra": {
+  "gate": "world_bosses",
+  "stance": "crawler",
+  "skills": [
+   {
+    "name": "pounce",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "breath",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "bolt",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "volley",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "roar",
+    "arg": "",
+    "phase": 3
+   }
+  ],
+  "shield": false
+ },
+ "ironback_scorpion": {
+  "gate": "world_bosses",
+  "stance": "crawler",
+  "skills": [
+   {
+    "name": "pounce",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "charge",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "pull",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "cloud",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "burrow",
+    "arg": "",
+    "phase": 3
+   }
+  ],
+  "shield": false
+ },
+ "rime_lich": {
+  "gate": "world_bosses",
+  "stance": "caster",
+  "skills": [
+   {
+    "name": "bolt",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "cloud",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "blink",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "summon",
+    "arg": "crawling_convict",
+    "phase": 2
+   },
+   {
+    "name": "rain",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "beam",
+    "arg": "",
+    "phase": 3
+   }
+  ],
+  "shield": false
+ },
+ "founder_king": {
+  "gate": "crown_gate",
+  "stance": "maul",
+  "skills": [
+   {
+    "name": "slam",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "quake",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "charge",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "leap",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "breath",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "summon",
+    "arg": "slagling",
+    "phase": 2
+   },
+   {
+    "name": "rain",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "roar",
+    "arg": "",
+    "phase": 3
+   },
+   {
+    "name": "lightning",
+    "arg": "",
+    "phase": 3
+   },
+   {
+    "name": "beam",
+    "arg": "",
+    "phase": 3
+   }
+  ],
+  "shield": false
+ },
+ "nebula_moth": {
+  "gate": "astral",
+  "stance": "crawler",
+  "skills": [
+   {
+    "name": "pounce",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "cloud",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "blink",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "bolt",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "rain",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "roar",
+    "arg": "",
+    "phase": 3
+   },
+   {
+    "name": "lightning",
+    "arg": "",
+    "phase": 3
+   }
+  ],
+  "shield": false
+ },
+ "constellation_knight": {
+  "gate": "astral",
+  "stance": "spear",
+  "skills": [
+   {
+    "name": "charge",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "leap",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "spin",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "slam",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "lightning",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "roar",
+    "arg": "",
+    "phase": 3
+   },
+   {
+    "name": "beam",
+    "arg": "",
+    "phase": 3
+   }
+  ],
+  "shield": false
+ },
+ "orrery_magus": {
+  "gate": "astral",
+  "stance": "caster",
+  "skills": [
+   {
+    "name": "bolt",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "beam",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "blink",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "rain",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "summon",
+    "arg": "void_mite",
+    "phase": 2
+   },
+   {
+    "name": "lightning",
+    "arg": "",
+    "phase": 3
+   },
+   {
+    "name": "roar",
+    "arg": "",
+    "phase": 3
+   }
+  ],
+  "shield": false
+ },
+ "ash_shepherd": {
+  "gate": "grey_fold",
+  "stance": "spear",
+  "skills": [
+   {
+    "name": "pull",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "leap",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "slam",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "summon",
+    "arg": "ashwalker",
+    "phase": 1
+   },
+   {
+    "name": "blink",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "cloud",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "roar",
+    "arg": "",
+    "phase": 3
+   },
+   {
+    "name": "summon",
+    "arg": "ash_herald",
+    "phase": 3
+   }
+  ],
+  "shield": false
+ },
+ "wreck_mother": {
+  "gate": "sunken_fire",
+  "stance": "crab",
+  "skills": [
+   {
+    "name": "slam",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "charge",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "pull",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "quake",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "summon",
+    "arg": "lamprey_hound",
+    "phase": 2
+   },
+   {
+    "name": "rain",
+    "arg": "",
+    "phase": 2
+   },
+   {
+    "name": "roar",
+    "arg": "",
+    "phase": 3
+   },
+   {
+    "name": "summon",
+    "arg": "merrow",
+    "phase": 3
+   }
+  ],
+  "shield": false
+ },
+ "lamprey_hound": {
+  "gate": "tidewrack",
+  "stance": "crawler",
+  "skills": [
+   {
+    "name": "pounce",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "pull",
+    "arg": "",
+    "phase": 1
+   }
+  ],
+  "shield": false
+ },
+ "merrow": {
+  "gate": "tidewrack",
+  "stance": "spear",
+  "skills": [
+   {
+    "name": "dash",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "pull",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "charge",
+    "arg": "",
+    "phase": 1
+   }
+  ],
+  "shield": false
+ },
+ "reef_knight": {
+  "gate": "tidewrack",
+  "stance": "sword",
+  "skills": [
+   {
+    "name": "charge",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "slam",
+    "arg": "",
+    "phase": 1
+   }
+  ],
+  "shield": true
+ },
+ "net_hag": {
+  "gate": "tidewrack",
+  "stance": "caster",
+  "skills": [
+   {
+    "name": "pull",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "bolt",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "cloud",
+    "arg": "",
+    "phase": 1
+   }
+  ],
+  "shield": false
+ },
+ "hullback": {
+  "gate": "tidewrack",
+  "stance": "maul",
+  "skills": [
+   {
+    "name": "slam",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "quake",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "charge",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "roar",
+    "arg": "",
+    "phase": 1
+   }
+  ],
+  "shield": false
+ },
+ "abyss_angler": {
+  "gate": "tidewrack",
+  "stance": "spear",
+  "skills": [
+   {
+    "name": "leap",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "spin",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "pull",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "roar",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "summon",
+    "arg": "merrow",
+    "phase": 1
+   }
+  ],
+  "shield": false
+ },
  "kraken_spawn": {
   "gate": "drowned_corsairs",
   "stance": "crawler",
@@ -5572,6 +6161,67 @@
     "name": "volley",
     "arg": "",
     "phase": 3
+   }
+  ],
+  "shield": false
+ },
+ "ashwalker": {
+  "gate": "ashwalkers",
+  "stance": "claw",
+  "skills": [
+   {
+    "name": "pounce",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "dash",
+    "arg": "",
+    "phase": 1
+   }
+  ],
+  "shield": false
+ },
+ "cinder_hulk": {
+  "gate": "ashwalkers",
+  "stance": "fist",
+  "skills": [
+   {
+    "name": "slam",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "charge",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "quake",
+    "arg": "",
+    "phase": 1
+   }
+  ],
+  "shield": false
+ },
+ "ash_herald": {
+  "gate": "ashwalkers",
+  "stance": "caster",
+  "skills": [
+   {
+    "name": "bolt",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "rain",
+    "arg": "",
+    "phase": 1
+   },
+   {
+    "name": "cloud",
+    "arg": "",
+    "phase": 1
    }
   ],
   "shield": false

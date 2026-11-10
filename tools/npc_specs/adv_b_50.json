@@ -1,0 +1,64 @@
+{
+ "id": "adv_b_50",
+ "seed": 4113050,
+ "recipe": "adventurer",
+ "role": "white_mage",
+ "rank": "B",
+ "name": "Greta Kettle",
+ "title": "B-rank White Mage",
+ "age": "teen",
+ "sex": "f",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "brown",
+ "hair": {
+  "style": "bob",
+  "color": "dark_brown"
+ },
+ "headwear": "hood",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "gold",
+  "brows": "stern",
+  "mouth": "smile",
+  "blush": true,
+  "freckles": false,
+  "marks": [
+   "scar",
+   "scar_cheek"
+  ],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "bracers",
+   "mantle",
+   "sash",
+   "vials"
+  ],
+  "colors": {
+   "top": "cream",
+   "bottom": "cream",
+   "accent": "teal",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "staff",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "B",
+  "role": "white_mage"
+ },
+ "party": "Silver Thistle"
+}

@@ -29,7 +29,7 @@ public final class Slumber {
 
 	static void register() {
 		NeoForge.EVENT_BUS.addListener((EntityJoinLevelEvent e) -> {
-			if (e.getLevel().isClientSide() || !(e.getEntity() instanceof Mob m) || !boss(m)) return;
+			if (e.getLevel().isClientSide() || !(e.getEntity() instanceof Mob m) || !boss(m) || Spells.isThrall(m)) return;
 			if (m.getTags().contains(AWAKE) || m.getTags().contains(ASLEEP)) return;
 			m.addTag(ASLEEP);
 			m.setNoAi(true);

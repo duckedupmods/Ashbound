@@ -15,7 +15,7 @@ import net.minecraft.world.item.Rarity;
  * falling ash and a faint ember glow from below, a blackened iron frame with cut corners, bone-white text, ember
  * orange only for what matters (what's picked, the main button, coins).
  */
-final class AshUi {
+public final class AshUi {
 	private AshUi() {}
 
 	static final ResourceLocation GROUND = id("ground"), CHAR = id("char"), EMBER = id("ember"), FRAME = id("frame"), COIN = id("coin"),
@@ -117,6 +117,12 @@ final class AshUi {
 		int r = s.getRarity() == Rarity.EPIC ? 3 : s.getRarity() == Rarity.RARE ? 2 : s.getRarity() == Rarity.UNCOMMON ? 1 : 0;
 		int byPrice = price >= 190 ? 3 : price >= 110 ? 2 : price >= 50 ? 1 : 0;
 		return Math.max(r, byPrice);
+	}
+
+	/** The colour of an item's rarity, the same one its name and its border in a slot come up in. */
+	public static int edge(ItemStack s) {
+		Integer rgb = s.getRarity().color().getColor();
+		return 0xFF000000 | (rgb == null ? 0xFFFFFF : rgb);
 	}
 
 	/** An item's tile: dark, tinted and rimmed by its rarity. */

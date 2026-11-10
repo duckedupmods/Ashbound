@@ -82,18 +82,6 @@
    "textures": {
     "layer0": "ashbound:item/grand_ring"
    }
-  },
-  "ground": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/grand_ring"
-   }
-  },
-  "fixed": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/grand_ring"
-   }
   }
  }
 }

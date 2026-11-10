@@ -29,10 +29,11 @@ STATS = {
     'bow': ('bow', 0, 0, 0, 0, 0),
 }
 LADDER = 'F E D C B A S'.split()
-# weapon damage: 1.08x a rank (one rank up ~1.55x harder with the build and the monsters solved to it, tools/balance.py)
-SCALE = {'F': 0.8, 'E': 0.864, 'D': 0.933, 'C': 1.008, 'B': 1.088, 'A': 1.175, 'S': 1.269}
+# weapon damage: 1.4x a rank, gear carries the climb (docs/BALANCE.md pass 11). A boss weapon is a rank above what its dungeon forges.
+STEP = 1.4
+SCALE = {r: round(0.8 * STEP ** i, 3) for i, r in enumerate('FEDCBAS')}
 IMPACT_SCALE = {'F': 0.80, 'E': 0.87, 'D': 0.93, 'C': 1.0, 'B': 1.08, 'A': 1.16, 'S': 1.25}  # stagger keeps the old gentle ladder
-COST_X = {'F': 1.0, 'E': 1.25, 'D': 1.4, 'C': 1.5, 'B': 1.75, 'A': 2.0, 'S': 2.4}
+COST_X = {'F': 1.0, 'E': 1.0, 'D': 1.0, 'C': 1.1, 'B': 1.2, 'A': 1.1, 'S': 1.1}   # about two clears a set at every rank (balance.py PASS 3): what a clear drops doesn't grow
 # common, elite, trophy at rank F
 COST = {'helm': (10, 1, 1), 'chest': (16, 2, 0), 'legs': (12, 1, 0), 'boots': (8, 1, 0),
         'dagger': (8, 1, 0), 'sword': (12, 1, 0), 'spear': (12, 1, 0), 'bow': (12, 1, 0), 'hammer': (14, 1, 0),
@@ -450,8 +451,11 @@ def build():
 def stats(item):
     """damage, speed, impact, negation, strikes for a melee weapon"""
     ef, dmg, spd, imp, neg, strikes = STATS[item['kind']]
-    x = SCALE[item['rank']]
-    return ef, round(dmg * x * (1.08 if item['boss'] else 1.0), 1), spd, round(imp * IMPACT_SCALE[item['rank']], 2), neg, strikes
+    if item['boss'] and 'gate' in item:
+        x = SCALE[item['gate']] * STEP
+    else:
+        x = SCALE[item['rank']] * (1.08 if item['boss'] else 1.0)
+    return ef, round(dmg * x, 1), spd, round(imp * IMPACT_SCALE[item['rank']], 2), neg, strikes
 
 
 def dump(path, obj):
@@ -504,7 +508,7 @@ def main():
     for g in gear:
         for it in g['weapons']:
             if it['kind'] in STATS:
-                ef, dmg, spd, imp, neg, strikes = stats(it)
+                ef, dmg, spd, imp, neg, strikes = stats(dict(it, gate=g['rank']))
                 it['ef'], it['damage'], it['speed'] = ef, dmg, spd
                 # our greatsword: Epic Fight's, held up in front between swings (Movesets.java)
                 cap = {'type': ('ashbound:' if ef == 'greatsword' else 'epicfight:') + ef}

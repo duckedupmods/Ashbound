@@ -47,6 +47,14 @@ public final class Pings {
 	private static final Matrix4f VIEW = new Matrix4f(), LENS = new Matrix4f();
 	private static Vec3 from = Vec3.ZERO;
 
+	/** Where a spot in the world falls on the HUD, or null if it's behind you. */
+	static net.minecraft.world.phys.Vec2 screen(Vec3 at, int w, int h) {
+		Vector4f v = new Vector4f((float) (at.x - from.x), (float) (at.y - from.y), (float) (at.z - from.z), 1);
+		VIEW.transform(v);
+		LENS.transform(v);
+		return v.w <= 0 ? null : new net.minecraft.world.phys.Vec2((v.x / v.w * 0.5f + 0.5f) * w, (-v.y / v.w * 0.5f + 0.5f) * h);
+	}
+
 	public static void hooks(IEventBus bus) {
 		bus.addListener((RegisterGuiLayersEvent e) -> e.registerAbove(VanillaGuiLayers.HOTBAR,
 				ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "pings"), Pings::draw));

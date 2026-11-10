@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/glacier_maul.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.39,
-     -0.39,
-     0.0
+     -1.134,
+     -1.232,
+     -0.028
     ],
     "scale": [
-     0.3803,
-     0.3803,
-     0.3803
+     0.2988,
+     0.2988,
+     0.2988
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.39,
-     -0.39,
-     0.0
+     -1.134,
+     -1.232,
+     -0.028
     ],
     "scale": [
-     0.3803,
-     0.3803,
-     0.3803
+     0.2988,
+     0.2988,
+     0.2988
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.215,
-     -0.215,
+     -0.624,
+     -0.678,
      0
     ],
     "scale": [
-     0.2092,
-     0.2092,
-     0.2092
+     0.1643,
+     0.1643,
+     0.1643
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/glacier_maul"
+   }
+  }
+ }
 }

@@ -31,6 +31,7 @@
   {
    "id": "ashbound:root_wood",
    "required": false
-  }
+  },
+  "ashbound:charred_log"
  ]
 }

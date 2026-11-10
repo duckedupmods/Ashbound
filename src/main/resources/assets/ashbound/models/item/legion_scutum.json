@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/legion_scutum.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.451,
-     2.624,
-     6.749
+     1.494,
+     2.724,
+     6.027
     ],
     "scale": [
-     0.5155,
-     0.5155,
-     0.5155
+     0.4837,
+     0.4837,
+     0.4837
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.451,
-     2.624,
-     6.749
+     1.494,
+     2.724,
+     6.027
     ],
     "scale": [
-     0.5155,
-     0.5155,
-     0.5155
+     0.4837,
+     0.4837,
+     0.4837
     ]
    },
    "ground": {
@@ -115,19 +115,26 @@
      0.0
     ],
     "translation": [
-     0.798,
-     1.443,
+     0.822,
+     1.498,
      0
     ],
     "scale": [
-     0.2836,
-     0.2836,
-     0.2836
+     0.266,
+     0.266,
+     0.266
     ]
    }
   }
  },
- "perspectives": {},
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/legion_scutum"
+   }
+  }
+ },
  "overrides": [
   {
    "predicate": {

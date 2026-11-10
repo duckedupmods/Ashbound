@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/piston_shiv.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.959,
-     -1.959,
-     -0.0
+     -1.391,
+     -2.401,
+     -0.289
     ],
     "scale": [
-     0.6248,
-     0.6248,
-     0.6248
+     0.6165,
+     0.6165,
+     0.6165
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.959,
-     -1.959,
-     -0.0
+     -1.391,
+     -2.401,
+     -0.289
     ],
     "scale": [
-     0.6248,
-     0.6248,
-     0.6248
+     0.6165,
+     0.6165,
+     0.6165
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.077,
-     -1.077,
+     -0.765,
+     -1.321,
      0
     ],
     "scale": [
-     0.3437,
-     0.3437,
-     0.3437
+     0.3391,
+     0.3391,
+     0.3391
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/piston_shiv"
+   }
+  }
+ }
 }

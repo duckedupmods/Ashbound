@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
  * file makes it happen once, so whatever a player changes afterwards stays theirs.
  */
 public class EarlyConfig implements IMixinConfigPlugin {
-	private static final String MARK = "ashbound-layout-2.done", FREE_WARPS = "ashbound-warps-free.done";
+	private static final String MARK = "ashbound-layout-2.done", FREE_WARPS = "ashbound-warps-free.done", STILL_VIEW = "ashbound-still-view.done";
 	private static final String MAP = "module;id=xaerominimap:minimap;x=0;y=0;centered=false;fromRight=true;fromBottom=false;flippedVer=false;flippedHor=false;";
 	/** the box's top right corner: across the screen, and up from the bottom of it */
 	private static final String LOOK_X = "0.995", LOOK_Y = "0.56";
@@ -29,6 +29,7 @@ public class EarlyConfig implements IMixinConfigPlugin {
 		waystones(FMLPaths.CONFIGDIR.get().resolve("waystones-common.toml"));
 		if (!FMLLoader.getDist().isClient()) return;
 		Path dir = FMLPaths.CONFIGDIR.get();
+		stillView(dir.resolve("epicfight-client.toml"));
 		try {
 			if (Files.exists(dir.resolve(MARK))) return;
 			map(dir.resolve("xaerohud.txt"));
@@ -47,6 +48,19 @@ public class EarlyConfig implements IMixinConfigPlugin {
 			if (Files.exists(done)) return;
 			if (Files.exists(f)) Files.writeString(f, Files.readString(f).replace("enableCosts = true", "enableCosts = false"));
 			else write(f, "[teleports]\n\tenableCosts = false\n");
+			Files.writeString(done, "");
+		} catch (IOException | RuntimeException e) {
+			// tried again next time
+		}
+	}
+
+	/** In first person the view stays on your shoulders: Epic Fight's "POV action" rolls it with the body, and that makes people sick. */
+	private static void stillView(Path f) {
+		try {
+			Path done = f.resolveSibling(STILL_VIEW);
+			if (Files.exists(done)) return;
+			if (Files.exists(f)) Files.writeString(f, Files.readString(f).replace("enable_pov_action = true", "enable_pov_action = false"));
+			else write(f, "[ingame]\n\tenable_pov_action = false\n");
 			Files.writeString(done, "");
 		} catch (IOException | RuntimeException e) {
 			// tried again next time

@@ -1,0 +1,68 @@
+{
+ "name": "King Aldric",
+ "title": "of Highmourn",
+ "start": "start",
+ "nodes": {
+  "start": {
+   "go_if": [
+    [
+     "flag:ch:act5_crown_gate",
+     "after"
+    ]
+   ],
+   "text": [
+    "You're the one the Guild talks about. The one who goes into the cracks and comes back.",
+    "Sit, if you like. Not many people sit in this room any more."
+   ],
+   "options": [
+    {
+     "text": "Open the Crown Gate.",
+     "if": "has:ashbound:crown_key:1",
+     "do": "bossarena:enter:crown"
+    },
+    {
+     "text": "Tell me about the keep.",
+     "go": "keep"
+    },
+    {
+     "text": "Your Majesty.",
+     "do": "close"
+    }
+   ]
+  },
+  "keep": {
+   "text": [
+    "My family built it over the oldest crack in the world, and told everybody it was to guard the city.",
+    "It was. Just not from what they thought."
+   ],
+   "options": [
+    {
+     "text": "Your Majesty.",
+     "do": "close"
+    }
+   ]
+  },
+  "after": {
+   "text": [
+    "The Founder's gone, and the gates are only gates now. Cracks, not a prison door.",
+    "Highmourn owes you more than I can pay. Come and sit in this room whenever you like."
+   ],
+   "options": [
+    {
+     "text": "Open the Crown Gate.",
+     "if": "has:ashbound:crown_key:1",
+     "do": "bossarena:enter:crown"
+    },
+    {
+     "text": "Your Majesty.",
+     "do": "close"
+    }
+   ]
+  }
+ },
+ "tags": [
+  "lead",
+  "elder",
+  "m"
+ ]
+}

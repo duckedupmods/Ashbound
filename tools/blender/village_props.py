@@ -1153,6 +1153,143 @@ def stone_brazier():
              lambda u: 0.07 * (1 - u), 3, sides=5)
     return new_obj("stone_brazier", bm, [DSTONE, DGOLD, COAL, EMBER])
 
+
+# ================================================================ Hob Tarrant's wagon (Intro.java)
+
+PAINT = mottled("hob_paint", stops("#3a1a12", "#5e2a1a", "#7a3a22"), 9.0, 0.75)      # oxblood boards, faded
+TRIM = mottled("hob_trim", stops("#6a4a14", "#a07a2a", "#c89c44"), 9.0, 0.6)        # ochre trim, chipped
+PATCH = mottled("hob_patch", stops("#5a4a30", "#7a6a48", "#948460"), 14.0, 0.9)     # a darker patch sewn on the tilt
+
+
+def hob_wagon():
+    """Hob's trader wagon: four wheels under an oxblood box bed, a patched canvas tilt on six hoops rolled up at the back
+    over his goods, a driver's bench with a lantern on a crook, pots and a water cask hung on the sides, and shafts
+    out front for one draught horse (it stands between them, its collar at the shafts' ends)"""
+    bm = bmesh.new()
+    L, Wd, BED = 3.4, 1.6, 1.0
+    hw, hl = Wd / 2, L / 2
+    # 0 WOOD 1 IRON 2 GREY 3 CLOTH 4 PAINT 5 TRIM 6 PATCH 7 ROPE 8 SACK 9 LAMP 10 DARK 11 TIN 12 APPLE 13 HAY
+    box(bm, V(-hw, -hl, BED - 0.1), V(hw, hl, BED), 0, bevel=0.02)                     # the floor
+    for x in (-0.45, 0.45):                                                          # sills under it
+        box(bm, V(x - 0.06, -hl - 0.05, BED - 0.24), V(x + 0.06, hl + 0.05, BED - 0.1), 10, bevel=0.015)
+    for sx in (-1, 1):                                                               # sideboards: painted planks, trim rail, iron straps
+        x = sx * hw
+        for k in range(3):
+            z0 = BED + k * 0.17
+            box(bm, V(x - 0.035, -hl, z0), V(x + 0.035, hl, z0 + 0.155), 4, bevel=0.012)
+        box(bm, V(x - 0.05, -hl - 0.02, BED + 0.5), V(x + 0.05, hl + 0.02, BED + 0.56), 5, bevel=0.012)
+        for y in (-hl + 0.06, -0.55, 0.55, hl - 0.06):
+            box(bm, V(x + sx * 0.03 - 0.012, y - 0.04, BED - 0.06), V(x + sx * 0.03 + 0.012, y + 0.04, BED + 0.52), 1, bevel=0.005)
+        for y in (-1.1, 0.0, 1.1):                                                   # side stakes
+            box(bm, V(x - 0.045, y - 0.045, BED - 0.2), V(x + 0.045, y + 0.045, BED + 0.58), 0, bevel=0.01)
+    for sy in (-1, 1):                                                               # front and tail boards
+        y = sy * hl
+        for k in range(3):
+            z0 = BED + k * 0.17
+            box(bm, V(-hw, y - 0.035, z0), V(hw, y + 0.035, z0 + 0.155), 4, bevel=0.012)
+        box(bm, V(-hw - 0.02, y - 0.05, BED + 0.5), V(hw + 0.02, y + 0.05, BED + 0.56), 5, bevel=0.012)
+    # the running gear: big wheels behind, small in front, axles, a perch pole between
+    for y, r, sp in ((-1.05, 0.78, 14), (1.1, 0.6, 12)):
+        for sx in (-1, 1):
+            wheel(bm, V(sx * (hw + 0.14), y, r), r, 0.085, spokes=sp)
+        cyl(bm, V(-hw - 0.2, y, r), 0.07, Wd + 0.4, 10, seg=8, axis="X")
+        box(bm, V(-hw + 0.1, y - 0.09, min(r, BED - 0.24) - 0.02), V(hw - 0.1, y + 0.09, BED - 0.24), 10, bevel=0.015)   # bolster
+    tube(bm, [V(0, -1.05, 0.62), V(0, 1.1, 0.56)], 0.06, 10, sides=6)
+    # the hoops and the tilt, sagging a little between hoops; rolled back off the last bay
+    HOOP = 6
+    Ybk, Yfr = -hl + 0.5, hl - 0.12
+
+    def arch(y, r, rise):
+        return [V(math.cos(t) * r, y, BED + 0.55 + math.sin(t) * rise) for t in (j * math.pi / 16 for j in range(17))]
+    for k in range(HOOP):
+        tube(bm, arch(Ybk + k * (Yfr - Ybk) / (HOOP - 1), hw + 0.02, 1.0), 0.03, 0, sides=5)
+    tube(bm, arch(Ybk - 0.42, hw + 0.02, 1.0), 0.03, 0, sides=5)                  # the bare back hoop, over the goods
+
+    def tilt(a, b):
+        sag = 0.045 * abs(math.sin(a * math.pi * (HOOP - 1)))
+        t = math.pi * b
+        return V(math.cos(t) * (hw + 0.06 - sag * 0.6), 0, BED + 0.55 + math.sin(t) * (1.06 - sag))
+    rows = sheet(bm, V(0, Ybk, 0), V(0, Yfr - Ybk + 0.06, 0), V(0, 0, 0), 20, 24, 3, tilt)
+    thick(bm, rows, 0.02, 3)
+    for sx in (-1, 1):                                                               # the tilt laced down to the rail
+        for k in range(9):
+            y = Ybk + 0.1 + k * (Yfr - Ybk - 0.2) / 8
+            tube(bm, [V(sx * (hw + 0.07), y, BED + 0.6), V(sx * (hw + 0.06), y + 0.02, BED + 0.5)], 0.012, 7, sides=4)
+    # a patch sewn on the left side, and the rolled-up end of the tilt at the back
+    pr = sheet(bm, V(0, -0.5, 0), V(0, 0.55, 0), V(0, 0, 0), 4, 4, 6,
+               lambda a, b: V(math.cos(math.pi * (0.62 + 0.14 * b)) * (hw + 0.075), 0, BED + 0.55 + math.sin(math.pi * (0.62 + 0.14 * b)) * 1.075))
+    thick(bm, pr, 0.01, 6)
+    tube(bm, arch(Ybk - 0.05, hw + 0.1, 1.1), 0.085, 3, sides=8)
+    for t in (0.35, math.pi - 0.35):                                                 # ties holding the roll
+        c = V(math.cos(t) * (hw + 0.1), Ybk - 0.05, BED + 0.55 + math.sin(t) * 1.1)
+        tube(bm, ring(c, 0.1, "Y", 8), 0.014, 7, sides=4, closed=True)
+    # his goods, seen under the rolled tilt: crates, sacks, a keg, apples in a basket
+    for (x, y, sz) in ((-0.42, -1.35, 0.42), (0.38, -1.4, 0.38), (-0.38, -1.0, 0.36), (0.0, -0.5, 0.5)):
+        c = V(x, y, BED + sz / 2)
+        box(bm, c - V(sz / 2, sz / 2, sz / 2), c + V(sz / 2, sz / 2, sz / 2), 2, bevel=0.015)
+        for dz in (-sz * 0.3, sz * 0.3):
+            box(bm, c + V(-sz / 2 - 0.01, -sz / 2 - 0.01, dz - 0.03), c + V(sz / 2 + 0.01, sz / 2 + 0.01, dz + 0.03), 0, bevel=0.008)
+    box(bm, V(-0.21, -1.56, BED + 0.42), V(0.17, -1.2, BED + 0.8), 2, bevel=0.015)
+    sack(bm, V(0.42, -1.0, BED), 0.55, 0.2, 8, 7, 3, tilt=0.2)
+    sack(bm, V(0.2, -0.95, BED + 0.02), 0.5, 0.19, 8, 7, 6, tilt=-0.35, turn=0.8)
+    sack(bm, V(-0.05, -1.45, BED + 0.8), 0.45, 0.17, 8, 7, 9, tilt=1.3, turn=0.4)
+    lathe(bm, [(0.0, 0.0), (0.16, 0.0), (0.19, 0.12), (0.2, 0.22), (0.19, 0.32), (0.16, 0.44), (0.0, 0.44)], V(0.42, -1.48, BED + 0.38), 0, seg=14)
+    for z in (0.08, 0.36):
+        tube(bm, ring(V(0.42, -1.48, BED + 0.38 + z), 0.19, "Z", 14), 0.012, 1, sides=4, closed=True)
+    lathe(bm, [(0.0, 0.0), (0.15, 0.0), (0.2, 0.18), (0.0, 0.18)], V(-0.42, -1.2, BED + 0.42), 7, seg=12)   # a basket
+    for k in range(9):
+        a = k * 2.4
+        ellipsoid(bm, V(-0.42 + 0.1 * math.cos(a) * (k > 0), -1.2 + 0.1 * math.sin(a) * (k > 0), BED + 0.61 + 0.02 * (k % 2)), (0.05, 0.05, 0.05), 12, seg=6)
+    # the driver's seat: a box bench with a backrest, a footboard, a whip in its socket
+    fy = hl + 0.05
+    box(bm, V(-0.72, fy - 0.45, BED + 0.56), V(0.72, fy - 0.05, BED + 0.66), 0, bevel=0.02)
+    box(bm, V(-0.72, fy - 0.5, BED + 0.66), V(0.72, fy - 0.44, BED + 0.98), 4, bevel=0.015)
+    box(bm, V(-0.72, fy - 0.52, BED + 0.96), V(0.72, fy - 0.42, BED + 1.0), 5, bevel=0.01)
+    box(bm, V(-0.75, fy + 0.15, BED + 0.08), V(0.75, fy + 0.6, BED + 0.13), 0, bevel=0.015)
+    for sx in (-1, 1):
+        tube(bm, [V(sx * 0.7, fy + 0.58, BED + 0.1), V(sx * 0.72, fy + 0.62, BED + 0.4), V(sx * 0.7, fy, BED + 0.58)], 0.025, 1, sides=5)
+    cyl(bm, V(0.68, fy - 0.1, BED + 0.6), 0.03, 0.3, 10, seg=8)
+    tube(bm, [V(0.68, fy - 0.1, BED + 0.9), V(0.72, fy + 0.1, BED + 1.6), V(0.8, fy + 0.5, BED + 2.05), V(0.95, fy + 0.95, BED + 2.1)],
+         lambda u: 0.022 - 0.016 * u, 10, sides=5)
+    # the lantern on an iron crook at the front left corner
+    tube(bm, [V(-hw - 0.05, fy - 0.1, BED + 0.4), V(-hw - 0.05, fy - 0.1, BED + 1.75), V(-hw - 0.05, fy + 0.15, BED + 1.95), V(-hw - 0.05, fy + 0.35, BED + 1.85)], 0.025, 1, sides=6)
+    lc = V(-hw - 0.05, fy + 0.35, BED + 1.55)
+    tube(bm, [lc + V(0, 0, 0.3), lc + V(0, 0, 0.21)], 0.008, 1, sides=4)
+    box(bm, lc + V(-0.09, -0.09, -0.12), lc + V(0.09, 0.09, 0.12), 9, bevel=0.01)
+    for dx, dy in ((-1, -1), (-1, 1), (1, -1), (1, 1)):
+        box(bm, lc + V(dx * 0.09 - 0.012, dy * 0.09 - 0.012, -0.14), lc + V(dx * 0.09 + 0.012, dy * 0.09 + 0.012, 0.14), 1)
+    box(bm, lc + V(-0.11, -0.11, -0.17), lc + V(0.11, 0.11, -0.12), 1, bevel=0.01)
+    lathe(bm, [(0.0, 0.0), (0.12, 0.0), (0.04, 0.09), (0.0, 0.1)], lc + V(0, 0, 0.12), 1, seg=10)
+    # hung on the right side: pots and a pan on a rail, a coiled rope
+    x = hw + 0.1
+    tube(bm, [V(x, -0.3, BED + 0.45), V(x, 0.5, BED + 0.45)], 0.018, 1, sides=5)
+    for y, r, h in ((-0.12, 0.12, 0.17), (0.16, 0.1, 0.14), (0.4, 0.08, 0.12)):
+        lathe(bm, [(0.0, 0.0), (r * 0.85, 0.0), (r, h * 0.2), (r, h), (r * 1.06, h), (0.0, h)], V(x + 0.03 + r, y, BED + 0.42 - h - 0.06), 11, seg=12)
+        tube(bm, [V(x, y, BED + 0.45), V(x + 0.03 + r, y, BED + 0.38)], 0.008, 1, sides=4)
+    for k in range(5):
+        tube(bm, ring(V(x - 0.02 + 0.02 * k, 0.1, BED + 0.1), 0.15 - 0.012 * k, "X", 14), 0.022, 7, sides=5, closed=True)
+    # on the left: the water cask in a cradle, a spade
+    x = -hw - 0.2
+    for yy in (-0.2, 0.36):
+        box(bm, V(x - 0.05, yy - 0.04, BED - 0.16), V(x + 0.15, yy + 0.04, BED + 0.05), 1)
+    lathe(bm, [(0.0, 0.0), (0.13, 0.0), (0.16, 0.1), (0.17, 0.3), (0.16, 0.5), (0.13, 0.6), (0.0, 0.6)], V(x, -0.22, BED + 0.0), 0, seg=16, axis="Y")
+    for yy in (-0.15, 0.17):
+        tube(bm, ring(V(x, yy + 0.06, BED + 0.0), 0.165, "Y", 16), 0.012, 1, sides=4, closed=True)
+    tube(bm, [V(-hw - 0.06, 0.55, BED + 0.55), V(-hw - 0.06, 1.45, BED + 0.2)], 0.022, 0, sides=5)
+    box(bm, V(-hw - 0.08, 1.4, BED + 0.0), V(-hw - 0.04, 1.62, BED + 0.24), 1, bevel=0.01)
+    # a feed bag tied to the tail, and a toolbox slung under the bed
+    sack(bm, V(0.55, -hl - 0.18, BED - 0.42), 0.42, 0.16, 8, 7, 12)
+    heap(bm, V(0.55, -hl - 0.18, BED + 0.04), (0.14, 0.14, 0.07), 13, 4, 0.03, 9.0)
+    box(bm, V(-0.35, 0.2, BED - 0.48), V(0.35, 0.75, BED - 0.24), 10, bevel=0.02)
+    # the shafts: from the front axle out past where the horse's collar is, a crossbar and the swingletree
+    for sx in (-1, 1):
+        tube(bm, [V(sx * 0.42, 1.0, 0.62), V(sx * 0.5, 1.9, 0.88), V(sx * 0.52, 3.2, 1.02), V(sx * 0.5, 4.3, 1.08), V(sx * 0.47, 4.6, 1.16)],
+             lambda u: 0.055 - 0.015 * u, 0, sides=7)
+        tube(bm, ring(V(sx * 0.51, 3.9, 1.06), 0.07, "Y", 8), 0.014, 1, sides=4, closed=True)
+    tube(bm, [V(-0.5, 1.9, 0.88), V(0.5, 1.9, 0.88)], 0.045, 0, sides=6)
+    tube(bm, [V(-0.32, 2.0, 0.9), V(0.32, 2.0, 0.9)], 0.035, 0, sides=6)
+    return new_obj("hob_wagon", bm, [WOOD, IRON, GREY, CLOTH, PAINT, TRIM, PATCH, ROPE, SACK, LAMP, DARK, TIN, APPLE, HAY])
+
 SETS = {
     "lake": [(net_rack, (512, 512)), (fish_rack, (256, 256)), (eel_traps, (256, 256)), (reed_sheaves, (256, 256)),
              (lake_lantern, (128, 128)), (dugout, (256, 256)), (mooring_post, (128, 128)), (catch_basket, (256, 256))],
@@ -1161,6 +1298,7 @@ SETS = {
     "dwarf": [(rune_door, (512, 512)), (forge_anvil, (512, 512)), (lift_cage, (256, 256)), (ale_cask, (256, 256)),
               (mine_cart, (256, 256)), (rails, (256, 256)), (ore_pile, (256, 256)), (tool_rack, (256, 256)), (stone_brazier, (256, 256))],
     "cliff": [(hoist_crane, (512, 512)), (rope_ladder, (256, 256)), (lift_basket, (512, 512)), (toll_barrier, (256, 256))],
+    "hob": [(hob_wagon, (1024, 1024))],
 }
 
 MAKE = [(hay_cart, (512, 512)), (covered_wagon, (512, 512)), (handcart, (256, 256)), (wheelbarrow, (256, 256)),

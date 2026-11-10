@@ -70,15 +70,53 @@ public final class Gear {
 			"crypt", 0xffd27a, "plague", 0xe8f4c8, "temple", 0x7ad0ff, "ossuary", 0x4ae68a, "foundry", 0xff6a1a,
 			"frost", 0xbfe8ff, "silk", 0xc79aff);
 
+	/** a boss weapon's dungeon's rank (filled by load) */
+	private static final Map<String, Character> BOSS_GATE = new HashMap<>();
 	public static final List<Dungeon> DUNGEONS = load();
 	/** a plain arrow at full draw: 2 damage at speed 3 */
 	private static final double FULL_DRAW = 6;
+	private static final double BOSS_STEP = 1.4, FOUND_BOSS = 1.08, MEND_CLIMB = 0.44, HEAL_CLIMB = 0.66;
 	static final Map<String, DeferredItem<Item>> ITEMS = new LinkedHashMap<>();
 	static final List<DeferredItem<Item>> MATS = new ArrayList<>(), WEAPONS = new ArrayList<>();
-	static final Map<String, Weapon> WEAPON = new HashMap<>();
+	public static final Map<String, Weapon> WEAPON = new HashMap<>();
 
+	/** A weapon's rank on the ladder: 1.4x a rank, because gear carries the climb (docs/BALANCE.md pass 11). */
 	public static double scale(char rank) {
+		return switch (rank) { case 'F' -> 0.8; case 'E' -> 1.12; case 'D' -> 1.568; case 'B' -> 3.073; case 'A' -> 4.302; case 'S' -> 6.023; default -> 2.195; };
+	}
+
+	/** How long a rank's gear lasts: wear doesn't climb with the damage. */
+	private static double hardiness(char rank) {
 		return switch (rank) { case 'F' -> 0.8; case 'E' -> 0.864; case 'D' -> 0.933; case 'B' -> 1.088; case 'A' -> 1.175; case 'S' -> 1.269; default -> 1.008; };
+	}
+
+	/** Where a weapon stands on the ladder: a boss's a rank above what its dungeon forges, a Joined one's from the bottom, Joined.mult taking it up. */
+	static double ladder(Weapon w) {
+		Character gate = BOSS_GATE.get(w.id());
+		if (gate != null) return scale(gate) * BOSS_STEP;
+		return Joined.ALL.contains(w) ? scale('F') : scale(w.rank()) * (w.boss() ? FOUND_BOSS : 1);
+	}
+
+	/**
+	 * Health grows far slower than blows, so what heals or drinks does too: this much of a thing at ladder step `x` (Gear.scale). It keeps a heal's share of a
+	 * health bar the same at every rank; {@link #MEND_CLIMB} is how health at the rank's middle level climbs against the weapon ladder.
+	 */
+	static double mends(double x) {
+		return Math.pow(x / scale('F'), MEND_CLIMB - 1);
+	}
+
+	/**
+	 * A white staff's heal at ladder step `x`: health at a rank's middle climbs faster than {@link #MEND_CLIMB} once the
+	 * tree, curios and armour are counted (5x from F to S), so the staff's heal climbs at {@link #HEAL_CLIMB}: a circle pulse
+	 * is about 15% of a bar at F and 11% at S (pass 15; at MEND_CLIMB it fell to 7% and a Mender was worth half a Vanguard).
+	 */
+	static double heals(double x) {
+		return Math.pow(x / scale('F'), HEAL_CLIMB - 1);
+	}
+
+	/** {@link #mends} for what a player's blows give back, by the rank they play at. */
+	static float drink(net.minecraft.server.level.ServerPlayer p) {
+		return (float) mends(CurioFx.power(p) * scale('C'));
 	}
 
 	private static Cost cost(JsonObject o) {
@@ -109,6 +147,7 @@ public final class Gear {
 							w.get("rank").getAsString().charAt(0), w.get("boss").getAsBoolean(), cost(w.getAsJsonObject("cost")),
 							w.has("damage") ? w.get("damage").getAsDouble() : 0, w.has("speed") ? w.get("speed").getAsDouble() : 0);
 					weapons.add(wp);
+					if (wp.boss()) BOSS_GATE.put(wp.id(), g.get("rank").getAsString().charAt(0));
 					if (!wp.boss()) recipes.add(new Recipe(wp.id(), wp.cost(), "weapon"));
 				}
 				List<Set> sets = new ArrayList<>();
@@ -185,7 +224,7 @@ public final class Gear {
 
 	static Item weapon(Weapon w, Item.Properties p) {
 		p = p.rarity(rarity(w.boss())).fireResistant();
-		int wear = (int) (1500 * scale(w.rank()) * (w.boss() ? 1.4 : 1));
+		int wear = (int) (1500 * hardiness(w.rank()) * (w.boss() ? 1.4 : 1));
 		switch (w.kind()) {
 			case "shield" -> {
 				return new ShieldItem(p.durability(wear));
@@ -252,7 +291,7 @@ public final class Gear {
 	}
 
 	private static double power(Weapon w, ItemStack s) {
-		return 2.3 * scale(w.rank()) * (w.boss() ? 1.1 : 1) * Smithing.mult(s);
+		return 2.6 * ladder(w) * Smithing.mult(s);   // pass 13: was 2.3, the bow fell 19-28% behind the band (tools/balance.py)
 	}
 
 	/** the bows and shields, for their drawn and raised looks (client) */

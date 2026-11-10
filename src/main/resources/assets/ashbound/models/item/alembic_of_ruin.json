@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/alembic_of_ruin.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.515,
-     -0.248,
-     0.076
+     -1.495,
+     -0.486,
+     0.288
     ],
     "scale": [
-     0.3175,
-     0.3175,
-     0.3175
+     0.2859,
+     0.2859,
+     0.2859
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.515,
-     -0.248,
-     0.076
+     -1.495,
+     -0.486,
+     0.288
     ],
     "scale": [
-     0.3175,
-     0.3175,
-     0.3175
+     0.2859,
+     0.2859,
+     0.2859
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.283,
-     -0.136,
+     -0.822,
+     -0.267,
      0
     ],
     "scale": [
-     0.1746,
-     0.1746,
-     0.1746
+     0.1573,
+     0.1573,
+     0.1573
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/alembic_of_ruin"
+   }
+  }
+ }
 }

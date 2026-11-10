@@ -58,11 +58,44 @@ public class MountRender extends EntityRenderer<Mount> {
 
 	record Model(List<Bone> bones, int frames) {}
 
+	/**
+	 * How a flying pet's wings sit in its model, so each opens its own way: a bird's hang folded at its sides, a moth's lie flat, a
+	 * drake's stand up. open is the turn out to the middle of the beat, reach how far either side of that it goes, tilt how far it
+	 * leans nose down in the air, and lean how much more at a full pace.
+	 */
+	private enum Wings {
+		NONE(0, 0, 0, 0), BIRD(1.45f, 0.5f, 0.35f, 0.5f), MOTH(0.25f, 0.6f, 0, 0.2f), DRAKE(-0.6f, 0.45f, 0.2f, 0.35f);
+
+		final float open, reach, tilt, lean;
+
+		Wings(float open, float reach, float tilt, float lean) {
+			this.open = open;
+			this.reach = reach;
+			this.tilt = tilt;
+			this.lean = lean;
+		}
+
+		static Wings of(Model m) {
+			boolean bird = false, moth = false, any = false;
+			for (Bone b : m.bones) {
+				bird |= b.name.equals("fore_l");
+				moth |= b.name.equals("arm_low_l");
+				any |= b.name.equals("arm_l");
+			}
+			return bird ? BIRD : moth ? MOTH : any ? DRAKE : NONE;
+		}
+	}
+
+	/** a pet's wingbeat, turns a tick */
+	private static final float BEAT = 0.85f;
+
 	/** This frame's gait, worked out once and read by every bone. */
 	private static final class Now {
-		float t, p, move, walk, trot, run, air, turn, look, duty, pitch, neck, low, spine, rear;
+		float t, p, move, walk, trot, run, air, turn, look, duty, pitch, neck, low, spine, rear, flap;
 		boolean twoLegs, glide;
 		float[] run4;
+		/** a flying pet's wings, none on a mount */
+		Wings wings = Wings.NONE;
 	}
 
 	public MountRender(EntityRendererProvider.Context ctx) {
@@ -119,6 +152,7 @@ public class MountRender extends EntityRenderer<Mount> {
 	public void render(Mount e, float yaw, float pt, PoseStack ps, MultiBufferSource buf, int light) {
 		if (ready(e.kind.id())) {
 			ps.pushPose();
+			ps.translate(0, Mth.lerp(pt, e.sagO, e.sag), 0);
 			ps.mulPose(Axis.YP.rotationDegrees(-Mth.rotLerp(pt, e.yBodyRotO, e.yBodyRot)));
 			float k = e.kind.scale() * e.size(pt);
 			ps.scale(k, k, k);
@@ -185,11 +219,14 @@ public class MountRender extends EntityRenderer<Mount> {
 		n.turn = Mth.lerp(pt, e.turnO, e.turn);
 		n.look = Mth.lerp(pt, e.lookO, e.look);
 		n.twoLegs = e.kind.glides();
-		n.glide = e.gliding;
-		n.move = Math.min(1, g * 5);
-		n.run = Mth.clamp((g - 0.6f) / 0.25f, 0, 1);
-		n.walk = 1 - Mth.clamp((g - 0.22f) / 0.2f, 0, 1);
-		n.trot = 1 - n.walk - n.run;
+		n.glide = e.soaring();
+		n.flap = Mth.lerp(pt, e.flapO, e.flap);
+		// the gaits are what its legs are doing on the ground: in the air none of that bounces the body
+		float ground = 1 - n.air;
+		n.move = Math.min(1, g * 5) * ground;
+		n.run = Mth.clamp((g - 0.6f) / 0.25f, 0, 1) * ground;
+		n.trot = (Mth.clamp((g - 0.22f) / 0.2f, 0, 1) - Mth.clamp((g - 0.6f) / 0.25f, 0, 1)) * ground;
+		n.walk = 1 - n.run - n.trot;
 		n.duty = blend(n, DUTY_WALK, DUTY_TROT, DUTY_RUN);
 		n.run4 = id.equals("gravefang") ? ROTARY : GALLOP;
 		n.low = switch (id) {
@@ -201,7 +238,8 @@ public class MountRender extends EntityRenderer<Mount> {
 		n.spine = id.equals("gravefang") ? 0.2f : id.equals("rimehorn") ? 0.08f : 0.05f;
 		n.rear = e.rear(pt) * (id.equals("thornback") ? 0.14f : id.equals("stormdrake") ? 0.2f : 0.36f);
 		// a gallop rocks the whole body, nose down as the forelegs land and up as the hind legs come through
-		n.pitch = n.run * Mth.sin(TAU * (n.p - 0.15f)) * 0.075f + n.walk * n.move * Mth.sin(TAU * 2 * n.p) * 0.012f - 0.07f * n.air;
+		// and it leans into a flight of steps, nose up climbing them
+		n.pitch = n.run * Mth.sin(TAU * (n.p - 0.15f)) * 0.075f + n.walk * n.move * Mth.sin(TAU * 2 * n.p) * 0.012f - 0.07f * n.air + (float) Mth.lerp(pt, e.sagO, e.sag) * 0.3f;
 		// the walk nods twice a stride, the trot holds the head still, the gallop pumps once
 		n.neck = n.move * (n.walk * Mth.sin(TAU * 2 * (n.p - 0.05f)) * 0.045f + n.run * Mth.sin(TAU * (n.p - 0.35f)) * 0.07f);
 		return n;
@@ -247,11 +285,18 @@ public class MountRender extends EntityRenderer<Mount> {
 				float side = left ? 1 : -1;
 				boolean up = name.startsWith("thigh_") || name.startsWith("arm_"), low = name.startsWith("shin_") || name.startsWith("fore_"), foot = name.startsWith("foot_") || name.startsWith("hand_");
 				boolean hind = name.startsWith("thigh_") || name.startsWith("shin_") || name.startsWith("foot_");
+				if (n.wings != Wings.NONE && !hind) {
+					// a lower wing and a wingtip each come a little after the wing in front of them
+					float beat = Mth.sin(n.t * BEAT - (name.startsWith("arm_low") ? 0.6f : 0));
+					if (up) q.rotationZ(side * (n.wings.open + beat * n.wings.reach * (0.8f + 0.2f * n.move)));
+					else if (low) q.rotationZ(side * Mth.sin(n.t * BEAT - 1.1f) * 0.5f);
+					return;
+				}
 				if (n.twoLegs && !hind) {
-					// the wings: folded up walking, flat to glide, beating when it jumps
-					float beat = n.glide ? Mth.sin(n.t * 0.1f) * 0.05f : Mth.sin(n.t * 0.6f) * 0.5f, open = Math.min(1, Math.max(n.air, n.rear * 5));
+					// the wings: folded up walking, flat to glide, beating when it jumps or holds itself up
+					float strong = n.glide ? n.flap : 1, beat = Mth.lerp(strong, Mth.sin(n.t * 0.1f) * 0.05f, Mth.sin(n.t * 0.6f) * 0.5f), open = Math.min(1, Math.max(n.air, n.rear * 5));
 					if (up) q.rotationZ(side * ((1 - open) * (0.62f + Mth.sin(n.t * 0.05f) * 0.025f + 0.07f * n.move * Mth.sin(TAU * n.p)) + open * (beat - 0.32f)));
-					else if (foot) q.rotationZ(side * -((1 - open) * 2.05f + open * (n.glide ? 0.04f : 0.4f) * Mth.sin(n.t * 0.6f + 1.1f)));
+					else if (foot) q.rotationZ(side * -((1 - open) * 2.05f + open * Mth.lerp(strong, 0.04f, 0.4f) * Mth.sin(n.t * 0.6f + 1.1f)));
 					return;
 				}
 				if (!up && !low && !foot) return;
@@ -334,6 +379,10 @@ public class MountRender extends EntityRenderer<Mount> {
 		n.look = look;
 		n.twoLegs = flap;
 		n.air = flap ? 1 : 0;
+		if (flap) {
+			n.wings = Wings.of(m);
+			n.pitch = n.wings.tilt + n.wings.lean * pace;
+		}
 		bones(m, pose(m, n), ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "textures/entity/mount_pet_" + id + ".png"), (float) ((int) (t / 20 * FPS) % m.frames) / m.frames, t, ps, buf, light);
 	}
 

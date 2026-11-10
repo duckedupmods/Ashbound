@@ -1,0 +1,74 @@
+[
+  {
+    "id": "field_glass",
+    "title": "Glass in the Barley",
+    "type": "side",
+    "giver": "kind:townsfolk_3001",
+    "rank": "E",
+    "hook": "Have you seen the sky lately? The falling things?",
+    "ask": "One of those gate-shards will come down near a farm sooner or later, they always do. When it bursts there's glass in it, sky-glass. The Guild claims it all, but a farmer could buy a new plough with one piece. Bring me a piece from a fallen shard, before the Guild's clerks get there.",
+    "coins": 90,
+    "points": 10,
+    "steps": [
+      {"do": "event", "in": "meteor", "item": "ashbound:shardglass", "name": "Shard of Sky-Glass", "lore": "Warm. Humming. Not the Guild's.",
+       "text": "Be there when a falling gate-shard bursts, and take a piece of its glass."},
+      {"do": "deliver", "to": "@giver", "where": "@giver", "item": "ashbound:shardglass", "name": "Shard of Sky-Glass",
+       "text": "Bring the sky-glass to Sorcha, quietly.", "reply": "Sky-glass. Nobody saw me.",
+       "say": "(She wraps it in a sack, then another sack.) A new plough. Maybe two. You never saw me either."}
+    ]
+  },
+  {
+    "id": "ash_wicks",
+    "title": "Wicks for the Ash",
+    "type": "side",
+    "giver": "kind:priestess",
+    "rank": "E",
+    "repeat": true,
+    "hook": "Child. When the ash comes down at night, do you go out in it?",
+    "ask": "The things that walk in the ash leave their wicks behind, the black cords that burn inside them. Made into candles they keep the ash off a sickbed. Bring me five, gathered on an ashfall night.",
+    "coins": 70,
+    "points": 10,
+    "steps": [
+      {"do": "event", "in": "ashfall", "chance": 0.3, "n": 5, "item": "minecraft:string", "name": "Ash-Black Wick", "lore": "Still smouldering at one end.",
+       "text": "On an ashfall night, slay what walks in the ash and gather its wicks."},
+      {"do": "deliver", "to": "kind:priestess", "where": "capital", "n": 5, "item": "minecraft:string", "name": "Ash-Black Wick",
+       "text": "Bring the five wicks to Mother Ysolde.", "reply": "Five wicks, from the ash.",
+       "say": "Five. Good. The ward will burn through the winter. Bless you for walking in the dark, child."}
+    ]
+  },
+  {
+    "id": "storm_glass",
+    "title": "Storm-Glass for the Arcanum",
+    "type": "side",
+    "giver": "kind:archmage",
+    "rank": "D",
+    "repeat": true,
+    "hook": "Ah. You're the one who walks into storms, yes? Splendid.",
+    "ask": "When a gate storm breaks, its eye leaves glass behind: lightning, frozen mid-thought. The Arcanum pays double for it, and I pay double the Arcanum. Bring me a piece.",
+    "coins": 140,
+    "points": 20,
+    "steps": [
+      {"do": "event", "in": "storm", "item": "minecraft:glass_pane", "name": "Storm-Glass", "lore": "There's a tiny lightning bolt inside. It moves.",
+       "text": "Survive a gate storm to its end and take a piece of storm-glass from its eye."},
+      {"do": "deliver", "to": "kind:archmage", "where": "capital", "item": "minecraft:glass_pane", "name": "Storm-Glass",
+       "text": "Bring the storm-glass to the Archmage at the Arcanum.", "reply": "Storm-glass, from the eye.",
+       "say": "Oh, look at it think. Marvellous. Here, here, take your coin, I'm going to be up all night."}
+    ]
+  },
+  {
+    "id": "red_plough",
+    "title": "Before the Harvest",
+    "type": "side",
+    "giver": "kind:townsfolk_3011",
+    "rank": "D",
+    "hook": "You're Guild. You hunt the Legends. Don't you?",
+    "ask": "The Red Plough's come back to the fields. Every harvest it walks the furrows and nobody brings the crop in after. Kill it before the harvest, and I'll pay what the whole valley put together.",
+    "coins": 220,
+    "points": 30,
+    "steps": [
+      {"do": "boss", "what": "ashbound:red_plough", "text": "Hunt down the Red Plough, the Legend of the farmlands, and kill it."},
+      {"do": "talk", "to": "@giver", "where": "@giver", "text": "Tell Abel the Red Plough is dead.", "reply": "The Red Plough won't walk the furrows again.",
+       "say": "Dead? Truly? (He shouts something out of the window. Somewhere a bell starts ringing.) The whole valley thanks you."}
+    ]
+  }
+]

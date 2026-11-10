@@ -1,0 +1,180 @@
+[
+ {
+  "name": "The Mudlarks",
+  "rank": "F",
+  "colour": "mustard",
+  "members": [
+   "adv_f_01",
+   "adv_f_02",
+   "adv_f_03",
+   "adv_f_04"
+  ]
+ },
+ {
+  "name": "Lantern Hounds",
+  "rank": "F",
+  "colour": "rust",
+  "members": [
+   "adv_f_05",
+   "adv_f_06",
+   "adv_f_07",
+   "adv_f_08"
+  ]
+ },
+ {
+  "name": "The Greenhorns",
+  "rank": "F",
+  "colour": "moss",
+  "members": [
+   "adv_f_09",
+   "adv_f_10",
+   "adv_f_11"
+  ]
+ },
+ {
+  "name": "Copper Bell Company",
+  "rank": "E",
+  "colour": "ochre",
+  "members": [
+   "adv_e_12",
+   "adv_e_13",
+   "adv_e_14",
+   "adv_e_15"
+  ]
+ },
+ {
+  "name": "The Thornbacks",
+  "rank": "E",
+  "colour": "forest",
+  "members": [
+   "adv_e_16",
+   "adv_e_17",
+   "adv_e_18",
+   "adv_e_19"
+  ]
+ },
+ {
+  "name": "Low Road Five",
+  "rank": "E",
+  "colour": "brown",
+  "members": [
+   "adv_e_20",
+   "adv_e_21",
+   "adv_e_22",
+   "adv_e_23"
+  ]
+ },
+ {
+  "name": "Ninth Lantern",
+  "rank": "D",
+  "colour": "navy",
+  "members": [
+   "adv_d_24",
+   "adv_d_25",
+   "adv_d_26",
+   "adv_d_27",
+   "adv_d_28"
+  ]
+ },
+ {
+  "name": "The Stonejaws",
+  "rank": "D",
+  "colour": "rust",
+  "members": [
+   "adv_d_29",
+   "adv_d_30",
+   "adv_d_31",
+   "adv_d_32",
+   "adv_d_33"
+  ]
+ },
+ {
+  "name": "Gallows Crows",
+  "rank": "D",
+  "colour": "charcoal",
+  "members": [
+   "adv_d_34",
+   "adv_d_35",
+   "adv_d_36",
+   "adv_d_37"
+  ]
+ },
+ {
+  "name": "The Red Hounds",
+  "rank": "C",
+  "colour": "red",
+  "members": [
+   "adv_c_38",
+   "adv_c_39",
+   "adv_c_40",
+   "adv_c_41"
+  ]
+ },
+ {
+  "name": "Ember Wake",
+  "rank": "C",
+  "colour": "oxblood",
+  "members": [
+   "adv_c_42",
+   "adv_c_43",
+   "adv_c_44",
+   "adv_c_45",
+   "adv_c_46"
+  ]
+ },
+ {
+  "name": "Silver Thistle",
+  "rank": "B",
+  "colour": "teal",
+  "members": [
+   "adv_b_47",
+   "adv_b_48",
+   "adv_b_49",
+   "adv_b_50",
+   "adv_b_51"
+  ]
+ },
+ {
+  "name": "The Ashen Vow",
+  "rank": "B",
+  "colour": "plum",
+  "members": [
+   "adv_b_52",
+   "adv_b_53",
+   "adv_b_54",
+   "adv_b_55"
+  ]
+ },
+ {
+  "name": "Ironwake",
+  "rank": "A",
+  "colour": "black",
+  "members": [
+   "adv_a_56",
+   "adv_a_57",
+   "adv_a_58",
+   "adv_a_59"
+  ]
+ },
+ {
+  "name": "The Last Lanterns",
+  "rank": "A",
+  "colour": "wine",
+  "members": [
+   "adv_a_60",
+   "adv_a_61",
+   "adv_a_62"
+  ]
+ },
+ {
+  "name": "Crownless",
+  "rank": "S",
+  "colour": "white",
+  "members": [
+   "adv_s_63",
+   "adv_s_64",
+   "adv_s_65",
+   "adv_s_66"
+  ]
+ }
+]

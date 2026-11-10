@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/emberwake.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.302,
-     -2.302,
+     -2.578,
+     -2.578,
      -0.0
     ],
     "scale": [
-     0.3684,
-     0.3684,
-     0.3684
+     0.392,
+     0.392,
+     0.392
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.302,
-     -2.302,
+     -2.578,
+     -2.578,
      -0.0
     ],
     "scale": [
-     0.3684,
-     0.3684,
-     0.3684
+     0.392,
+     0.392,
+     0.392
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.266,
-     -1.266,
+     -1.418,
+     -1.418,
      0
     ],
     "scale": [
-     0.2026,
-     0.2026,
-     0.2026
+     0.2156,
+     0.2156,
+     0.2156
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/emberwake"
+   }
+  }
+ }
 }

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/aorta.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.616,
-     -2.616,
-     -0.0
+     -3.305,
+     -1.815,
+     0.426
     ],
     "scale": [
-     0.4066,
-     0.4066,
-     0.4066
+     0.3029,
+     0.3029,
+     0.3029
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.616,
-     -2.616,
-     -0.0
+     -3.305,
+     -1.815,
+     0.426
     ],
     "scale": [
-     0.4066,
-     0.4066,
-     0.4066
+     0.3029,
+     0.3029,
+     0.3029
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.439,
-     -1.439,
+     -1.818,
+     -0.998,
      0
     ],
     "scale": [
-     0.2236,
-     0.2236,
-     0.2236
+     0.1666,
+     0.1666,
+     0.1666
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/aorta"
+   }
+  }
+ }
 }

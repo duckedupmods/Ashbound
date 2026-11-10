@@ -11,6 +11,7 @@ import com.snoringwalrus.ashbound.GateScorch;
 import com.snoringwalrus.ashbound.Gates;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -29,7 +30,8 @@ import net.neoforged.neoforge.client.event.ViewportEvent;
 /**
  * What a gate does round it, past its own drawing: sparks whipping round its rim and into it, smoke rolling off
  * it lit by it, embers off the scorched ground; bursts of sparks, smoke and a ring of dust as it bursts open and
- * as it bangs shut, a white flash and the view shaking with them (the nearer, the harder); the sky round the
+ * as it bangs shut, a tint of its colour and the view shaking with them (the nearer, the harder), the ground
+ * splitting as it opens and everything dragged in as it shuts; the sky round the
  * deadliest (SSS) bleeding red. Its scorched ground glows in its colour.
  */
 @EventBusSubscriber(modid = Ashbound.ID, value = Dist.CLIENT)
@@ -38,7 +40,10 @@ public final class GateFx {
 
 	private static final List<GateEntity> LIVE = new ArrayList<>();
 	private static final Map<Integer, Integer> SEEN = new HashMap<>();
+	private static final float MOST_FLASH = 0.16f;
+	private static final int ARC_EVERY = 16;
 	private static float flash, shake;
+	private static int flashRgb;
 
 	static {
 		GateEntity.clientTick = GateFx::tick;
@@ -47,6 +52,17 @@ public final class GateFx {
 	@SubscribeEvent
 	static void renderers(EntityRenderersEvent.RegisterRenderers e) {
 		e.registerEntityRenderer(Gates.GATE.get(), GateRenderer::new);
+		e.registerEntityRenderer(Gates.SKY_CRACK.get(), GateRenderer::new);
+		e.registerEntityRenderer(Gates.STORM_SPIRE.get(), StormSpireRenderer::new);
+		e.registerEntityRenderer(Gates.STORM_STRIKE.get(), StormStrikeRenderer::new);
+		e.registerEntityRenderer(Gates.METEOR.get(), MeteorRenderer::new);
+	}
+
+	/** A flash over the screen, k of the way to the most a gate gives, in rgb. */
+	static void flash(float k, int rgb) {
+		if (k <= flash) return;
+		flash = k;
+		flashRgb = rgb & 0xFFFFFF;
 	}
 
 	/** The scorch's cracks in its gate's colour, dim once the gate's gone. */
@@ -63,8 +79,7 @@ public final class GateFx {
 	static void layers(RegisterGuiLayersEvent e) {
 		e.registerAboveAll(ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "gate_flash"), (gfx, delta) -> {
 			if (flash < 0.01f) return;
-			int a = (int) (Math.min(1, flash) * 220);
-			gfx.fill(0, 0, gfx.guiWidth(), gfx.guiHeight(), a << 24 | 0xFFFFFF);
+			gfx.fill(0, 0, gfx.guiWidth(), gfx.guiHeight(), (int) (Math.min(MOST_FLASH, flash) * 255) << 24 | flashRgb);
 		});
 	}
 
@@ -90,11 +105,14 @@ public final class GateFx {
 		boolean burst = before != null && before != stage && stage == 1, bang = before != null && before != stage && stage == 3;
 		if ((burst || bang) && mc.player != null) {
 			double d = mc.player.position().distanceTo(g.middle());
-			float k = (float) Math.max(0, 1 - d / 64);
-			flash = Math.max(flash, k * (bang ? 0.7f : 0.5f));
+			float k = (float) Math.max(0, 1 - d / (g.sky() ? 260 : 64));
+			flash = Math.max(flash, k * MOST_FLASH);
+			flashRgb = GateEntity.COLOUR[g.rank()] & 0xFFFFFF;
 			shake = Math.max(shake, k * (bang ? 1.6f : 1.1f));
 		}
 
+		// one in the sky is all light and glass: no sparks or smoke drifting off a gate-sized tear
+		if (g.sky()) return;
 		RandomSource r = g.level().random;
 		int c = GateEntity.COLOUR[g.rank()];
 		boolean dark = GateEntity.dark(g.rank());
@@ -118,6 +136,7 @@ public final class GateFx {
 				g.level().addParticle(i % 3 == 0 ? glowSmoke : soot, p.x, p.y, p.z, v.x, v.y, v.z);
 			}
 			dust(g, r, soot, 3.0, 0.35);
+			if (g.level() instanceof ClientLevel l) Motifs.shatter(l, g.position(), c, 6, 5);
 		}
 		if (bang) {
 			for (int i = 0; i < 110; i++) {
@@ -129,6 +148,7 @@ public final class GateFx {
 				g.level().addParticle(glowSmoke, m.x, m.y, m.z, v.x, v.y, v.z);
 			}
 			dust(g, r, soot, 1.5, 0.5);
+			if (g.level() instanceof ClientLevel l) Motifs.drawIn(l, m, c, 5, 12);
 		}
 
 		if (s.crack >= 0) {
@@ -152,6 +172,13 @@ public final class GateFx {
 			Vec3 p = m.add(radial.scale(k)).add(f.scale(r.nextGaussian() * 0.4));
 			Vec3 v = tang.scale(0.25 * s.hot).add(radial.normalize().scale(closing ? -0.4 : -0.12));
 			g.level().addParticle(spark, p.x, p.y, p.z, v.x, v.y, v.z);
+		}
+		if (g.level() instanceof ClientLevel l && now % ARC_EVERY == g.getId() % ARC_EVERY) {
+			// a crawl of its colour across the broken air beside it
+			float a = r.nextFloat() * Mth.TWO_PI;
+			Vec3 from = m.add(side.scale(Mth.cos(a) * rx * 0.9)).add(0, Mth.sin(a) * ry * 0.9, 0);
+			Vec3 out = side.scale(Mth.cos(a) * (1.5 + r.nextFloat() * 2)).add(0, Mth.sin(a) * (1 + r.nextFloat()), 0);
+			SpellFx.add(new SpellParticles.Beam(l, from, out, c, 0.1f, 7, 0.8f, null, 0.8f).lightning());
 		}
 		if (r.nextInt(3) == 0) {
 			// smoke rolling off the rim behind it, lit by it
@@ -187,11 +214,12 @@ public final class GateFx {
 
 	@SubscribeEvent
 	static void angles(ViewportEvent.ComputeCameraAngles e) {
-		if (shake < 0.02f) return;
+		float k = shake * HudPrefs.fxShake();
+		if (k < 0.02f) return;
 		double t = e.getPartialTick() + (Minecraft.getInstance().level == null ? 0 : Minecraft.getInstance().level.getGameTime());
-		e.setYaw(e.getYaw() + (float) Math.sin(t * 2.9) * shake * 1.2f);
-		e.setPitch(e.getPitch() + (float) Math.sin(t * 3.7 + 1) * shake * 0.9f);
-		e.setRoll(e.getRoll() + (float) Math.sin(t * 2.3 + 2) * shake * 1.5f);
+		e.setYaw(e.getYaw() + (float) Math.sin(t * 2.9) * k * 1.2f);
+		e.setPitch(e.getPitch() + (float) Math.sin(t * 3.7 + 1) * k * 0.9f);
+		e.setRoll(e.getRoll() + (float) Math.sin(t * 2.3 + 2) * k * 1.5f);
 	}
 
 	/** Near an SSS gate the air goes the colour of old blood. */

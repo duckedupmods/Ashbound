@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/sovereigns_edge.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.741,
-     -2.741,
-     0.0
+     -2.284,
+     -2.284,
+     -0.0
     ],
     "scale": [
-     0.4009,
-     0.4009,
-     0.4009
+     0.3511,
+     0.3511,
+     0.3511
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.741,
-     -2.741,
-     0.0
+     -2.284,
+     -2.284,
+     -0.0
     ],
     "scale": [
-     0.4009,
-     0.4009,
-     0.4009
+     0.3511,
+     0.3511,
+     0.3511
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.508,
-     -1.508,
+     -1.256,
+     -1.256,
      0
     ],
     "scale": [
-     0.2205,
-     0.2205,
-     0.2205
+     0.1931,
+     0.1931,
+     0.1931
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/sovereigns_edge"
+   }
+  }
+ }
 }

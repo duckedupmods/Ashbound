@@ -1,0 +1,610 @@
+{
+ "jerky": {
+  "shape": "JERKY",
+  "food": "a8583a",
+  "shade": "683724",
+  "shine": "d8b4a6",
+  "chunk": "8a4028",
+  "drink": false
+ },
+ "hearthbread": {
+  "shape": "LOAF",
+  "food": "d9a45a",
+  "shade": "876638",
+  "shine": "eed6b5",
+  "chunk": "c08844",
+  "drink": false
+ },
+ "trail_mix": {
+  "shape": "CAKES",
+  "food": "b08a5a",
+  "shade": "6d5638",
+  "shine": "dbcab5",
+  "chunk": "8a2a3a",
+  "drink": false
+ },
+ "hunters_stew": {
+  "shape": "BOWL",
+  "food": "9a5a2a",
+  "shade": "5f381a",
+  "shine": "d2b59f",
+  "chunk": "e08a3a",
+  "drink": false
+ },
+ "fish_cakes": {
+  "shape": "CAKES",
+  "food": "d8b070",
+  "shade": "866d45",
+  "shine": "eddbbf",
+  "chunk": "c09050",
+  "drink": false
+ },
+ "nutbread": {
+  "shape": "LOAF",
+  "food": "a8703a",
+  "shade": "684524",
+  "shine": "d8bfa6",
+  "chunk": "6a4020",
+  "drink": false
+ },
+ "sunrise_breakfast": {
+  "shape": "PLATE",
+  "food": "f0c040",
+  "shade": "957728",
+  "shine": "f8e3a9",
+  "chunk": "c8603a",
+  "drink": false
+ },
+ "foragers_salad": {
+  "shape": "BOWL",
+  "food": "6aae3a",
+  "shade": "426c24",
+  "shine": "bcdba6",
+  "chunk": "e04a4a",
+  "drink": false
+ },
+ "mushroom_broth": {
+  "shape": "BOWL",
+  "food": "9a7a5a",
+  "shade": "5f4c38",
+  "shine": "d2c3b5",
+  "chunk": "d8c8b0",
+  "drink": false
+ },
+ "spiced_porridge": {
+  "shape": "BOWL",
+  "food": "e0c08a",
+  "shade": "8b7756",
+  "shine": "f1e3ca",
+  "chunk": "a0502a",
+  "drink": false
+ },
+ "roasted_roots": {
+  "shape": "PLATE",
+  "food": "c87a3a",
+  "shade": "7c4c24",
+  "shine": "e6c3a6",
+  "chunk": "e8b040",
+  "drink": false
+ },
+ "fishermans_chowder": {
+  "shape": "BOWL",
+  "food": "e8dcc0",
+  "shade": "908877",
+  "shine": "f5efe3",
+  "chunk": "e09a6a",
+  "drink": false
+ },
+ "elven_fruit_bowl": {
+  "shape": "BOWL",
+  "food": "e05a7a",
+  "shade": "8b384c",
+  "shine": "f1b5c3",
+  "chunk": "f0c040",
+  "drink": false
+ },
+ "pilgrims_flatbread": {
+  "shape": "LOAF",
+  "food": "e8c890",
+  "shade": "907c59",
+  "shine": "f5e6cd",
+  "chunk": "6aae3a",
+  "drink": false
+ },
+ "honey_cakes": {
+  "shape": "CAKES",
+  "food": "e8a830",
+  "shade": "90681e",
+  "shine": "f5d8a2",
+  "chunk": "c87a18",
+  "drink": false
+ },
+ "smoked_eel": {
+  "shape": "JERKY",
+  "food": "6a5a4a",
+  "shade": "42382e",
+  "shine": "bcb5ae",
+  "chunk": "c8a060",
+  "drink": false
+ },
+ "berry_tart": {
+  "shape": "PIE",
+  "food": "8a2a5a",
+  "shade": "561a38",
+  "shine": "ca9fb5",
+  "chunk": "f0e0d0",
+  "drink": false
+ },
+ "ember_skewers": {
+  "shape": "SKEWER",
+  "food": "d04a1a",
+  "shade": "812e10",
+  "shine": "eaae98",
+  "chunk": "f0c040",
+  "drink": false
+ },
+ "miners_pie": {
+  "shape": "PIE",
+  "food": "c88a3a",
+  "shade": "7c5624",
+  "shine": "e6caa6",
+  "chunk": "7a3a1a",
+  "drink": false
+ },
+ "glowcap_risotto": {
+  "shape": "BOWL",
+  "food": "e8e0b0",
+  "shade": "908b6d",
+  "shine": "f5f1db",
+  "chunk": "7ae0f0",
+  "drink": false
+ },
+ "frostfish_platter": {
+  "shape": "PLATE",
+  "food": "8ad0f0",
+  "shade": "568195",
+  "shine": "caeaf8",
+  "chunk": "f0a080",
+  "drink": false
+ },
+ "herders_casserole": {
+  "shape": "PIE",
+  "food": "b0703a",
+  "shade": "6d4524",
+  "shine": "dbbfa6",
+  "chunk": "e8d8b0",
+  "drink": false
+ },
+ "peppered_steak": {
+  "shape": "PLATE",
+  "food": "8a2a1a",
+  "shade": "561a10",
+  "shine": "ca9f98",
+  "chunk": "2a1a10",
+  "drink": false
+ },
+ "sweetroot_dumplings": {
+  "shape": "BOWL",
+  "food": "f0d8a8",
+  "shade": "958668",
+  "shine": "f8edd8",
+  "chunk": "e08a3a",
+  "drink": false
+ },
+ "dwarven_fryup": {
+  "shape": "PLATE",
+  "food": "c06a2a",
+  "shade": "77421a",
+  "shine": "e3bc9f",
+  "chunk": "f0d050",
+  "drink": false
+ },
+ "deepwater_chowder": {
+  "shape": "BOWL",
+  "food": "4a7a9a",
+  "shade": "2e4c5f",
+  "shine": "aec3d2",
+  "chunk": "e8dcc0",
+  "drink": false
+ },
+ "nut_roast": {
+  "shape": "PLATE",
+  "food": "8a5a2a",
+  "shade": "56381a",
+  "shine": "cab59f",
+  "chunk": "6aae3a",
+  "drink": false
+ },
+ "gatewardens_roast": {
+  "shape": "PLATE",
+  "food": "a03a1a",
+  "shade": "632410",
+  "shine": "d4a698",
+  "chunk": "6aae3a",
+  "drink": false
+ },
+ "saltglass_platter": {
+  "shape": "PLATE",
+  "food": "c8e8f0",
+  "shade": "7c9095",
+  "shine": "e6f5f8",
+  "chunk": "f08a6a",
+  "drink": false
+ },
+ "emberheart_pie": {
+  "shape": "PIE",
+  "food": "c0401a",
+  "shade": "772810",
+  "shine": "e3a998",
+  "chunk": "f8b040",
+  "drink": false
+ },
+ "moonpetal_salad": {
+  "shape": "BOWL",
+  "food": "a8c0f0",
+  "shade": "687795",
+  "shine": "d8e3f8",
+  "chunk": "f0f0ff",
+  "drink": false
+ },
+ "founders_feast": {
+  "shape": "PLATE",
+  "food": "b06a2a",
+  "shade": "6d421a",
+  "shine": "dbbc9f",
+  "chunk": "f0c040",
+  "drink": false
+ },
+ "rangers_banquet": {
+  "shape": "PLATE",
+  "food": "7a4a2a",
+  "shade": "4c2e1a",
+  "shine": "c3ae9f",
+  "chunk": "e8b040",
+  "drink": false
+ },
+ "highmourn_ale": {
+  "shape": "TANKARD",
+  "food": "d09a3a",
+  "shade": "815f24",
+  "shine": "ead2a6",
+  "chunk": "fffaf0",
+  "drink": true
+ },
+ "herbal_tea": {
+  "shape": "CUP",
+  "food": "7aa04a",
+  "shade": "4c632e",
+  "shine": "c3d4ae",
+  "chunk": "e8f0e8",
+  "drink": true
+ },
+ "spiced_cider": {
+  "shape": "BOTTLE",
+  "food": "d8902a",
+  "shade": "86591a",
+  "shine": "edcd9f",
+  "chunk": "fff0c0",
+  "drink": true
+ },
+ "honey_mead": {
+  "shape": "TANKARD",
+  "food": "e8b040",
+  "shade": "906d28",
+  "shine": "f5dba9",
+  "chunk": "fff4d0",
+  "drink": true
+ },
+ "nutbrown_ale": {
+  "shape": "TANKARD",
+  "food": "8a5a2a",
+  "shade": "56381a",
+  "shine": "cab59f",
+  "chunk": "f0e0c0",
+  "drink": true
+ },
+ "miners_coffee": {
+  "shape": "CUP",
+  "food": "4a2a1a",
+  "shade": "2e1a10",
+  "shine": "ae9f98",
+  "chunk": "e8d8c0",
+  "drink": true
+ },
+ "vintners_red": {
+  "shape": "BOTTLE",
+  "food": "8a1a3a",
+  "shade": "561024",
+  "shine": "ca98a6",
+  "chunk": "d06080",
+  "drink": true
+ },
+ "ginger_beer": {
+  "shape": "BOTTLE",
+  "food": "e8c060",
+  "shade": "90773c",
+  "shine": "f5e3b7",
+  "chunk": "fff8d0",
+  "drink": true
+ },
+ "barrow_rum": {
+  "shape": "BOTTLE",
+  "food": "8a4a1a",
+  "shade": "562e10",
+  "shine": "caae98",
+  "chunk": "e8a050",
+  "drink": true
+ },
+ "dwarven_stout": {
+  "shape": "TANKARD",
+  "food": "4a2a1a",
+  "shade": "2e1a10",
+  "shine": "ae9f98",
+  "chunk": "e8dcc8",
+  "drink": true
+ },
+ "sailors_grog": {
+  "shape": "TANKARD",
+  "food": "b0602a",
+  "shade": "6d3c1a",
+  "shine": "dbb79f",
+  "chunk": "f0d8a0",
+  "drink": true
+ },
+ "frostberry_wine": {
+  "shape": "BOTTLE",
+  "food": "9ac8ff",
+  "shade": "5f7c9e",
+  "shine": "d2e6ff",
+  "chunk": "e8f4ff",
+  "drink": true
+ },
+ "blackroot_porter": {
+  "shape": "TANKARD",
+  "food": "2a1a10",
+  "shade": "1a100a",
+  "shine": "9f9893",
+  "chunk": "c8b8a0",
+  "drink": true
+ },
+ "thornwine": {
+  "shape": "BOTTLE",
+  "food": "5a1a4a",
+  "shade": "38102e",
+  "shine": "b598ae",
+  "chunk": "a0e060",
+  "drink": true
+ },
+ "emberbrand": {
+  "shape": "BOTTLE",
+  "food": "e0701a",
+  "shade": "8b4510",
+  "shine": "f1bf98",
+  "chunk": "ffc070",
+  "drink": true
+ },
+ "moonmead": {
+  "shape": "BOTTLE",
+  "food": "c0c8ff",
+  "shade": "777c9e",
+  "shine": "e3e6ff",
+  "chunk": "ffffff",
+  "drink": true
+ },
+ "elfroot_cordial": {
+  "shape": "BOTTLE",
+  "food": "c0f0a0",
+  "shade": "779563",
+  "shine": "e3f8d4",
+  "chunk": "f4fff0",
+  "drink": true
+ },
+ "giants_stout": {
+  "shape": "TANKARD",
+  "food": "3a2a1a",
+  "shade": "241a10",
+  "shine": "a69f98",
+  "chunk": "f0e8d8",
+  "drink": true
+ },
+ "cinderspice_wine": {
+  "shape": "BOTTLE",
+  "food": "a02a1a",
+  "shade": "631a10",
+  "shine": "d49f98",
+  "chunk": "ffb050",
+  "drink": true
+ },
+ "second_wind": {
+  "shape": "CUP",
+  "food": "a8e0c0",
+  "shade": "688b77",
+  "shine": "d8f1e3",
+  "chunk": "ffffff",
+  "drink": true
+ },
+ "night_eye": {
+  "shape": "VIAL",
+  "food": "6a7aff",
+  "shade": "424c9e",
+  "shine": "bcc3ff",
+  "chunk": "c0c8ff",
+  "drink": true
+ },
+ "mending_draught": {
+  "shape": "FLASK",
+  "food": "e04a5a",
+  "shade": "8b2e38",
+  "shine": "f1aeb5",
+  "chunk": "ffa0a8",
+  "drink": true
+ },
+ "wind_tonic": {
+  "shape": "FLASK",
+  "food": "a0e0f0",
+  "shade": "638b95",
+  "shine": "d4f1f8",
+  "chunk": "ffffff",
+  "drink": true
+ },
+ "antidote": {
+  "shape": "VIAL",
+  "food": "9ae07a",
+  "shade": "5f8b4c",
+  "shine": "d2f1c3",
+  "chunk": "e0ffd0",
+  "drink": true
+ },
+ "mana_draught": {
+  "shape": "FLASK",
+  "food": "4a8aff",
+  "shade": "2e569e",
+  "shine": "aecaff",
+  "chunk": "a8d0ff",
+  "drink": true
+ },
+ "hawkeye_tincture": {
+  "shape": "VIAL",
+  "food": "e0c040",
+  "shade": "8b7728",
+  "shine": "f1e3a9",
+  "chunk": "fff8c0",
+  "drink": true
+ },
+ "flamewalk": {
+  "shape": "FLASK",
+  "food": "ff7a2a",
+  "shade": "9e4c1a",
+  "shine": "ffc39f",
+  "chunk": "ffd090",
+  "drink": true
+ },
+ "deepbreath": {
+  "shape": "FLASK",
+  "food": "3ac0c0",
+  "shade": "247777",
+  "shine": "a6e3e3",
+  "chunk": "a8f0f0",
+  "drink": true
+ },
+ "marrow_draught": {
+  "shape": "FLASK",
+  "food": "e8e0c8",
+  "shade": "908b7c",
+  "shine": "f5f1e6",
+  "chunk": "a09080",
+  "drink": true
+ },
+ "swiftfoot": {
+  "shape": "CONE",
+  "food": "f0e05a",
+  "shade": "958b38",
+  "shine": "f8f1b5",
+  "chunk": "fffac0",
+  "drink": true
+ },
+ "viper_oil": {
+  "shape": "VIAL",
+  "food": "4a8a2a",
+  "shade": "2e561a",
+  "shine": "aeca9f",
+  "chunk": "c0f080",
+  "drink": true
+ },
+ "ironskin": {
+  "shape": "CONE",
+  "food": "9a9aa8",
+  "shade": "5f5f68",
+  "shine": "d2d2d8",
+  "chunk": "e0e0ec",
+  "drink": true
+ },
+ "clarity_draught": {
+  "shape": "CONE",
+  "food": "d0b0ff",
+  "shade": "816d9e",
+  "shine": "eadbff",
+  "chunk": "ffffff",
+  "drink": true
+ },
+ "rallying_draught": {
+  "shape": "FLASK",
+  "food": "f0a040",
+  "shade": "956328",
+  "shine": "f8d4a9",
+  "chunk": "fff0c0",
+  "drink": true
+ },
+ "arcane_philtre": {
+  "shape": "CONE",
+  "food": "b05aff",
+  "shade": "6d389e",
+  "shine": "dbb5ff",
+  "chunk": "e0b8ff",
+  "drink": true
+ },
+ "greater_mending": {
+  "shape": "FLASK",
+  "food": "ff3a5a",
+  "shade": "9e2438",
+  "shine": "ffa6b5",
+  "chunk": "ffc0c8",
+  "drink": true
+ },
+ "frostblood": {
+  "shape": "CONE",
+  "food": "6ab0f0",
+  "shade": "426d95",
+  "shine": "bcdbf8",
+  "chunk": "e8f8ff",
+  "drink": true
+ },
+ "berserkers_draught": {
+  "shape": "FLASK",
+  "food": "c01a1a",
+  "shade": "771010",
+  "shine": "e39898",
+  "chunk": "ff7a6a",
+  "drink": true
+ },
+ "stormstep": {
+  "shape": "CONE",
+  "food": "8ab0ff",
+  "shade": "566d9e",
+  "shine": "cadbff",
+  "chunk": "ffffa0",
+  "drink": true
+ },
+ "fortune_elixir": {
+  "shape": "CONE",
+  "food": "ffd040",
+  "shade": "9e8128",
+  "shine": "ffeaa9",
+  "chunk": "fff4b0",
+  "drink": true
+ },
+ "titans_draught": {
+  "shape": "FLASK",
+  "food": "a07a4a",
+  "shade": "634c2e",
+  "shine": "d4c3ae",
+  "chunk": "f0d8a0",
+  "drink": true
+ },
+ "starfire_philtre": {
+  "shape": "CONE",
+  "food": "f0f0ff",
+  "shade": "95959e",
+  "shine": "f8f8ff",
+  "chunk": "a0c0ff",
+  "drink": true
+ },
+ "phoenix_tears": {
+  "shape": "VIAL",
+  "food": "ff8a2a",
+  "shade": "9e561a",
+  "shine": "ffca9f",
+  "chunk": "fff0a0",
+  "drink": true
+ }
+}

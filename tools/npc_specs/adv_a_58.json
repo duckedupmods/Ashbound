@@ -1,0 +1,63 @@
+{
+ "id": "adv_a_58",
+ "seed": 4113058,
+ "recipe": "adventurer",
+ "role": "striker",
+ "rank": "A",
+ "name": "Dagni Brightvein",
+ "title": "A-rank Blade",
+ "age": "teen",
+ "sex": "m",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "rose",
+ "hair": {
+  "style": "bald",
+  "color": "ash_blonde"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "hazel",
+  "brows": "bushy",
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "cuirass",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "cape",
+   "gauntlets",
+   "greaves",
+   "pauldrons"
+  ],
+  "colors": {
+   "top": "grey",
+   "bottom": "black",
+   "accent": "black",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "fold",
+  "l": "fold"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": "greatsword",
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "A",
+  "role": "striker"
+ },
+ "race": "dwarf",
+ "recipe_race": "dwarf",
+ "party": "Ironwake"
+}

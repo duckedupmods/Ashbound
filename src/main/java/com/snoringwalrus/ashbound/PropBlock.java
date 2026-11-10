@@ -429,7 +429,7 @@ public final class PropBlock {
 	 * enchants, the alchemy bench crafts).
 	 */
 	public static class Sculpt extends Block {
-		public enum Use { NONE, SMITHING, ANVIL, GRINDSTONE, ENCHANTING, CRAFTING }
+		public enum Use { NONE, SMITHING, ANVIL, GRINDSTONE, ENCHANTING, CRAFTING, MEAL, BREW, ELIXIR }
 
 		public enum Fx { NONE, EMBERS, STEAM, MAGIC, DRIP, MOLTEN }
 
@@ -438,6 +438,10 @@ public final class PropBlock {
 		private final int light;
 		private final Use use;
 		private final Fx fx;
+
+		public Use use() {
+			return use;
+		}
 		private final BitSet glow = new BitSet(), smoke = new BitSet();
 
 		public static Sculpt make(Properties props, int pieces, int light, Use use, Fx fx, int[] glow, int[] smoke) {
@@ -477,6 +481,13 @@ public final class PropBlock {
 		protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
 			if (use == Use.NONE) return InteractionResult.PASS;
 			if (level.isClientSide) return InteractionResult.SUCCESS;
+			if (use == Use.MEAL || use == Use.BREW || use == Use.ELIXIR) {       // the homestead's big stations (any piece opens it)
+				if (player instanceof net.minecraft.server.level.ServerPlayer sp) {
+					if (!Stations.ownsManor(sp)) Stations.locked(sp);
+					else Trades.open(sp, use == Use.MEAL ? Trades.Kind.MEAL : use == Use.BREW ? Trades.Kind.BREW : Trades.Kind.ELIXIR, 2, pos);
+				}
+				return InteractionResult.CONSUME;
+			}
 			ContainerLevelAccess at = ContainerLevelAccess.create(level, pos);
 			player.openMenu(switch (use) {
 				case SMITHING -> new SimpleMenuProvider((id, inv, p) -> new SmithingMenu(id, inv, at) {

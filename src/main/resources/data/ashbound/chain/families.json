@@ -1,0 +1,56 @@
+[
+  {
+    "id": "fathers_knife",
+    "title": "Grandad's Knife",
+    "type": "side",
+    "giver": "tag:guard",
+    "rank": "E",
+    "hook": "You walk the roads, don't you? The long ones?",
+    "ask": "My boy's apprenticed at the dwarf hold. Proud as a cockerel, writes once a season. My father carried this knife thirty years on the wall, and he'd want the boy to have it now he's earned his first mark. Take it to the hold. Any dwarf there will know him: Brekk.",
+    "coins": 80,
+    "points": 15,
+    "steps": [
+      {"do": "deliver", "to": "tag:dwarf", "where": "village:hold", "item": "minecraft:iron_sword", "name": "An Old Wall-Guard's Knife", "lore": "Notched, oiled, loved.", "give": true,
+       "text": "Bring the old knife to the guard's son at the nearest dwarf hold.", "reply": "This is from home, from the wall. It was your grandad's knife.",
+       "say": "The wall-guard's boy? That's young Brekk. BREKK! (A lad in a leather apron runs up, sees the knife, and goes very quiet.) ...Grandad's knife. Tell them I'll wear it at my marking. Tell them I'm eating. Tell them... just thank you."},
+      {"do": "talk", "to": "@giver", "where": "@giver", "text": "Tell the guard their son has the knife.", "reply": "He has it. He'll wear it at his marking. He says he's eating.",
+       "say": "He's eating. Ha. (The guard wipes their eyes on a sleeve.) That's all I wanted to know."}
+    ]
+  },
+  {
+    "id": "heartthorn",
+    "title": "So They Can Sleep",
+    "type": "side",
+    "giver": "kind:hunter",
+    "rank": "D",
+    "hook": "Got a minute for an old hunter? It's about Old Blackbriar.",
+    "ask": "That thing in the deep wood killed my brother's girl two winters back, and her family still sets a place at supper. They farm out in the hill villages. Kill it, cut the heartthorn out of it, and take it to them. Not to me. To them. They need to see it's dead.",
+    "coins": 160,
+    "points": 30,
+    "steps": [
+      {"do": "find", "in": "legend:old_blackbriar", "item": "minecraft:pointed_dripstone", "name": "Blackbriar's Heartthorn", "lore": "Still sticky. Still warm.",
+       "text": "Hunt Old Blackbriar, the Legend of the deep woods, and take its heartthorn."},
+      {"do": "deliver", "to": "tag:farmer", "where": "village:hill", "item": "minecraft:pointed_dripstone", "name": "Blackbriar's Heartthorn",
+       "text": "Bring the heartthorn to the girl's family: a farmer in the nearest hill village.", "reply": "Garrick the hunter sent me. Old Blackbriar is dead. This was its heart.",
+       "say": "(The farmer holds it a long time.) Two winters. Two winters I've listened for it in the trees. (It goes on the table, by the empty chair.) Thank you. I'll sleep tonight."}
+    ]
+  },
+  {
+    "id": "wedding_ring",
+    "title": "What the Cask Mother Took",
+    "type": "side",
+    "giver": "kind:townsfolk_3008",
+    "rank": "F",
+    "hook": "Please, Guild? You go into the cracks, don't you? The cellar ones?",
+    "ask": "My Tam went down after the barrels when the cellar gate opened under the brewery. He came back. His ring didn't. He swears the Cask Mother swallowed it, and he's a fool, but he's my fool. If you go down there and kill her... look inside?",
+    "coins": 60,
+    "points": 10,
+    "steps": [
+      {"do": "find", "in": "dungeon:cellar", "item": "minecraft:gold_nugget", "name": "Tam's Wedding Ring", "lore": "Engraved: G & T. Smells of ale.",
+       "where": "gate:F", "text": "Kill the Cask Mother in a Drowned Cellar gate and find Tam's ring."},
+      {"do": "deliver", "to": "@giver", "where": "@giver", "item": "minecraft:gold_nugget", "name": "Tam's Wedding Ring",
+       "text": "Bring the ring back to Greta.", "reply": "Tam was right. It was inside her.",
+       "say": "He was RIGHT? He'll never let me hear the end of it. (She's laughing and crying.) Thank you. Truly."}
+    ]
+  }
+]

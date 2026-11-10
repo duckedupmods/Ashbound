@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/mirror_of_ash.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.202,
-     3.079,
-     5.974
+     1.329,
+     3.034,
+     6.823
     ],
     "scale": [
-     0.438,
-     0.438,
-     0.438
+     0.5013,
+     0.5013,
+     0.5013
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.202,
-     3.079,
-     5.974
+     1.329,
+     3.034,
+     6.823
     ],
     "scale": [
-     0.438,
-     0.438,
-     0.438
+     0.5013,
+     0.5013,
+     0.5013
     ]
    },
    "ground": {
@@ -115,19 +115,26 @@
      0.0
     ],
     "translation": [
-     0.661,
-     1.693,
+     0.731,
+     1.669,
      0
     ],
     "scale": [
-     0.2409,
-     0.2409,
-     0.2409
+     0.2757,
+     0.2757,
+     0.2757
     ]
    }
   }
  },
- "perspectives": {},
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/mirror_of_ash"
+   }
+  }
+ },
  "overrides": [
   {
    "predicate": {

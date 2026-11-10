@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/swamp_lantern.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.127,
-     -0.107,
-     0.006
+     -2.009,
+     0.717,
+     0.779
     ],
     "scale": [
-     0.3691,
-     0.3691,
-     0.3691
+     0.315,
+     0.315,
+     0.315
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.127,
-     -0.107,
-     0.006
+     -2.009,
+     0.717,
+     0.779
     ],
     "scale": [
-     0.3691,
-     0.3691,
-     0.3691
+     0.315,
+     0.315,
+     0.315
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.07,
-     -0.059,
+     -1.105,
+     0.394,
      0
     ],
     "scale": [
-     0.203,
-     0.203,
-     0.203
+     0.1733,
+     0.1733,
+     0.1733
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/swamp_lantern"
+   }
+  }
+ }
 }

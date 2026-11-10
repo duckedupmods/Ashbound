@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/folio_cleaver.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.155,
-     -2.155,
-     -0.0
+     -2.88,
+     -2.251,
+     0.18
     ],
     "scale": [
-     0.3503,
-     0.3503,
-     0.3503
+     0.3197,
+     0.3197,
+     0.3197
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.155,
-     -2.155,
-     -0.0
+     -2.88,
+     -2.251,
+     0.18
     ],
     "scale": [
-     0.3503,
-     0.3503,
-     0.3503
+     0.3197,
+     0.3197,
+     0.3197
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.185,
-     -1.185,
+     -1.584,
+     -1.238,
      0
     ],
     "scale": [
-     0.1927,
-     0.1927,
-     0.1927
+     0.1758,
+     0.1758,
+     0.1758
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/folio_cleaver"
+   }
+  }
+ }
 }

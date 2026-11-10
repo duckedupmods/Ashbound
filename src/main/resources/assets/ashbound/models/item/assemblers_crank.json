@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/assemblers_crank.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.808,
-     -0.198,
-     -0.573
+     -1.064,
+     -0.793,
+     -0.035
     ],
     "scale": [
-     0.4215,
-     0.4215,
-     0.4215
+     0.2984,
+     0.2984,
+     0.2984
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.808,
-     -0.198,
-     -0.573
+     -1.064,
+     -0.793,
+     -0.035
     ],
     "scale": [
-     0.4215,
-     0.4215,
-     0.4215
+     0.2984,
+     0.2984,
+     0.2984
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.994,
-     -0.109,
+     -0.585,
+     -0.436,
      0
     ],
     "scale": [
-     0.2318,
-     0.2318,
-     0.2318
+     0.1641,
+     0.1641,
+     0.1641
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/assemblers_crank"
+   }
+  }
+ }
 }

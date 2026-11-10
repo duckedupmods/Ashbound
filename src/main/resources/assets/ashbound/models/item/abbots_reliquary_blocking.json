@@ -82,18 +82,6 @@
    "textures": {
     "layer0": "ashbound:item/abbots_reliquary"
    }
-  },
-  "ground": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/abbots_reliquary"
-   }
-  },
-  "fixed": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/abbots_reliquary"
-   }
   }
  }
 }

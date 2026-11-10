@@ -1,0 +1,18 @@
+{
+ "type": "ashbound:ship_graveyard",
+ "generator": {
+  "type": "minecraft:flat",
+  "settings": {
+   "biome": "ashbound:ship_graveyard",
+   "features": false,
+   "lakes": false,
+   "layers": [
+    {
+     "block": "minecraft:air",
+     "height": 1
+    }
+   ],
+   "structure_overrides": []
+  }
+ }
+}

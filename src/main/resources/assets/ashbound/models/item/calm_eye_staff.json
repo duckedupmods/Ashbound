@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/calm_eye_staff.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.15,
-     -0.13,
-     0.006
+     -1.095,
+     -1.181,
+     -0.025
     ],
     "scale": [
-     0.368,
-     0.368,
-     0.368
+     0.2617,
+     0.2617,
+     0.2617
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.15,
-     -0.13,
-     0.006
+     -1.095,
+     -1.181,
+     -0.025
     ],
     "scale": [
-     0.368,
-     0.368,
-     0.368
+     0.2617,
+     0.2617,
+     0.2617
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.083,
-     -0.072,
+     -0.602,
+     -0.65,
      0
     ],
     "scale": [
-     0.2024,
-     0.2024,
-     0.2024
+     0.1439,
+     0.1439,
+     0.1439
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/calm_eye_staff"
+   }
+  }
+ }
 }

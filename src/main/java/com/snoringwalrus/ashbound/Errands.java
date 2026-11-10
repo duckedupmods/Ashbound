@@ -50,6 +50,13 @@ public final class Errands {
 
 	public static final int MAX = 3, KILL = 0, COLLECT = 1, DELIVER = 2;
 	private static final int CYCLE = 2, EXPIRE = 7;
+	/** A request from a party of adventurers (AdventurerTalk): who asked is "adv:" and the party; a report or a fetch is left at the
+	 * Guild desk, a camp is paid for when its last falls. Their templates start "adv_". */
+	/** a fallen party's stash (Treasure): the map's X on the compass till it's dug up */
+	static final String TREASURE = "@treasure:";
+	static final String ADV = "adv:", ADV_T = "adv_", GUILD = "@guild", CAMP = "@camp:", DESK = "receptionist";
+	/** how often a party's pay comes with something they found */
+	private static final float ADV_FIND = 0.5f;
 
 	public record Errand(String template, int type, String target, int count, int progress, int coins, int points, String giver, String giverName,
 						 int x, int z, long day, String title, String objective) {
@@ -85,10 +92,10 @@ public final class Errands {
 	}
 
 	/** One favour as your guild card lists it. */
-	public record View(String title, String objective, String where, boolean ready) {
+	public record View(String title, String objective, String where, boolean ready, String key) {
 		public static final StreamCodec<ByteBuf, View> STREAM = StreamCodec.composite(
 				ByteBufCodecs.STRING_UTF8, View::title, ByteBufCodecs.STRING_UTF8, View::objective,
-				ByteBufCodecs.STRING_UTF8, View::where, ByteBufCodecs.BOOL, View::ready, View::new);
+				ByteBufCodecs.STRING_UTF8, View::where, ByteBufCodecs.BOOL, View::ready, ByteBufCodecs.STRING_UTF8, View::key, View::new);
 	}
 
 	static final DeferredRegister<AttachmentType<?>> ATTACHMENTS = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, Ashbound.ID);
@@ -204,7 +211,60 @@ public final class Errands {
 		return b.toString();
 	}
 
-	private static long day(ServerPlayer p) {
+	/** Coins and Guild Points for a job at this rank (0 = F). */
+	static int[] pay(int rank) {
+		return PAY[Math.max(0, Math.min(rank, PAY.length - 1))];
+	}
+
+	static boolean full(ServerPlayer p) {
+		return p.getData(STATE).errands().size() >= MAX;
+	}
+
+	/** Taken on from someone who isn't one of the townsfolk (a party of adventurers): false if your hands are full, or you've one of theirs already. */
+	static boolean add(ServerPlayer p, Errand e) {
+		State s = p.getData(STATE);
+		if (full(p) || find(p, key(e)) != null) return false;
+		List<Errand> list = new ArrayList<>(s.errands());
+		list.add(e);
+		set(p, list, s.asked());
+		p.level().playSound(null, p.blockPosition(), SoundEvents.BOOK_PAGE_TURN, SoundSource.PLAYERS, 1f, 1.2f);
+		p.sendSystemMessage(Component.literal("Request: ").withStyle(ChatFormatting.GRAY).append(Component.literal(e.title()).withStyle(ChatFormatting.GOLD))
+				.append(Component.literal(" - " + e.objective()).withStyle(ChatFormatting.GRAY)));
+		return true;
+	}
+
+	/** Left with the Guild for whoever asked: a report, or what they asked you to fetch, once you've got it. */
+	private static boolean atDesk(ServerPlayer p, Errand e) {
+		return e.giver().startsWith(ADV) && (e.type() == DELIVER || e.type() == COLLECT && ready(p, e));
+	}
+
+	/** One of a camp a party asked you to clear has fallen (whoever killed it): a step on for each of `who` that took it on, and
+	 * paid when it's the last. True if that was the last for anyone. */
+	static boolean campFell(String id, Iterable<ServerPlayer> who) {
+		boolean last = false;
+		for (ServerPlayer p : who) {
+			State s = p.getData(STATE);
+			List<Errand> list = new ArrayList<>();
+			Errand done = null;
+			for (Errand e : s.errands()) {
+				if (e.type() == KILL && e.target().equals(CAMP + id) && e.progress() < e.count()) {
+					e = e.advanced();
+					if (e.progress() >= e.count()) done = e;
+					else p.displayClientMessage(Component.literal(e.title() + "  " + e.progress() + " / " + e.count()).withStyle(ChatFormatting.GOLD), true);
+				}
+				list.add(e);
+			}
+			if (list.equals(s.errands())) continue;
+			set(p, list, s.asked());
+			if (done != null) {
+				pay(p, done);
+				last = true;
+			}
+		}
+		return last;
+	}
+
+	static long day(ServerPlayer p) {
 		return p.level().getDayTime() / 24000L;
 	}
 
@@ -242,6 +302,7 @@ public final class Errands {
 	private static void set(ServerPlayer p, List<Errand> errands, List<String> asked) {
 		p.setData(STATE, new State(List.copyOf(errands), List.copyOf(asked)));
 		sync(p);
+		Story.state(p);
 	}
 
 	/** Favours left over a week drop off your list; the reminders of who asked this cycle go with the cycle. */
@@ -251,7 +312,7 @@ public final class Errands {
 		String cycle = ":" + today / CYCLE;
 		List<Errand> keep = new ArrayList<>();
 		for (Errand e : s.errands()) {
-			if (today - e.day() <= EXPIRE) keep.add(e);
+			if (today - e.day() <= EXPIRE || e.giver().startsWith(TREASURE) || e.giver().startsWith(Bounties.GIVER)) keep.add(e);
 			else p.sendSystemMessage(Component.literal(e.giverName() + " has given up on you: ").withStyle(ChatFormatting.GRAY).append(Component.literal(e.title()).withStyle(ChatFormatting.GOLD)));
 		}
 		List<String> asked = s.asked().stream().filter(a -> a.endsWith(cycle)).toList();
@@ -275,13 +336,72 @@ public final class Errands {
 		};
 	}
 
+	/** What the Journal calls it: nobody asks you twice at once. */
+	private static String key(Errand e) {
+		return "fav:" + e.giver();
+	}
+
+	/** Given up from the Journal: as if you'd told them, and they won't ask again this cycle. */
+	static void abandon(ServerPlayer p, String key) {
+		State s = p.getData(STATE);
+		Errand gone = find(p, key);
+		if (gone == null) return;
+		List<Errand> list = new ArrayList<>(s.errands());
+		list.remove(gone);
+		List<String> asked = new ArrayList<>(s.asked());
+		asked.add(gone.giver() + ":" + day(p) / CYCLE);
+		set(p, list, asked);
+		p.sendSystemMessage(Component.literal("Favour given up: ").withStyle(ChatFormatting.GRAY).append(Component.literal(gone.title()).withStyle(ChatFormatting.GOLD)));
+	}
+
+	/** Off your list without a word (a stash dug up, by you or anyone). */
+	static void drop(ServerPlayer p, String giver) {
+		State s = p.getData(STATE);
+		List<Errand> list = new ArrayList<>(s.errands());
+		if (list.removeIf(e -> e.giver().equals(giver))) set(p, list, s.asked());
+	}
+
+	/** A hunt's quarry is dead (Bounties): this favour's done, waiting to be paid. False if you hadn't it or it was done already. */
+	static boolean done(ServerPlayer p, String giver) {
+		State s = p.getData(STATE);
+		List<Errand> list = new ArrayList<>();
+		boolean changed = false;
+		for (Errand e : s.errands()) {
+			if (e.giver().equals(giver) && e.type() == KILL && e.progress() < e.count()) {
+				e = new Errand(e.template(), e.type(), e.target(), e.count(), e.count(), e.coins(), e.points(), e.giver(), e.giverName(), e.x(), e.z(), e.day(), e.title(), e.objective());
+				changed = true;
+			}
+			list.add(e);
+		}
+		if (changed) set(p, list, s.asked());
+		return changed;
+	}
+
+	/** Paid for this favour now, wherever you are (a hunt's bounty, at any wanted poster). */
+	static void settle(ServerPlayer p, String giver) {
+		for (Errand e : p.getData(STATE).errands())
+			if (e.giver().equals(giver) && ready(p, e)) {
+				pay(p, e);
+				return;
+			}
+	}
+
+	/** The favour with this Journal key, if you've still got it. */
+	static Errand find(ServerPlayer p, String key) {
+		for (Errand e : p.getData(STATE).errands()) if (key(e).equals(key)) return e;
+		return null;
+	}
+
 	static void sync(ServerPlayer p) {
 		List<View> views = new ArrayList<>();
 		for (Errand e : p.getData(STATE).errands()) {
 			String left = e.type() == KILL ? "  " + Math.min(e.progress(), e.count()) + "/" + e.count() : "";
-			String where = e.type() == DELIVER ? "From " + e.giverName() : "Back to " + e.giverName() + ", near " + e.x() + ", " + e.z();
-			views.add(new View(e.title(), e.objective() + left, where, ready(p, e)));
+			String where = e.giver().startsWith(Bounties.GIVER) ? (ready(p, e) ? "Slain! Bring word to any wanted poster" : "Last seen near " + e.x() + ", " + e.z())
+					: e.giver().startsWith(TREASURE) ? "Under the X on the map, near " + e.x() + ", " + e.z() : e.giver().startsWith(ADV) ? e.type() == KILL ? "Their camp, near " + e.x() + ", " + e.z() : "At the Guild desk, for " + AdventurerTalk.the(e.giverName(), false)
+					: e.type() == DELIVER ? "From " + e.giverName() : "Back to " + e.giverName() + ", near " + e.x() + ", " + e.z();
+			views.add(new View(e.title(), e.objective() + left, where, ready(p, e), key(e)));
 		}
+		views.addAll(Chains.views(p));
 		PacketDistributor.sendToPlayer(p, new Net.ErrandSync(views));
 	}
 
@@ -293,7 +413,8 @@ public final class Errands {
 	/** They're waiting for what you've come to hand over. */
 	static boolean owed(ServerPlayer p, Npc npc) {
 		for (Errand e : p.getData(STATE).errands())
-			if (e.type() == DELIVER ? !e.giver().equals(npc.getStringUUID()) && npc.is(e.target()) : e.giver().equals(npc.getStringUUID()) && ready(p, e)) return true;
+			if (e.giver().startsWith(ADV) ? npc.kindId().equals(DESK) && atDesk(p, e)
+					: e.type() == DELIVER ? !e.giver().equals(npc.getStringUUID()) && npc.is(e.target()) : e.giver().equals(npc.getStringUUID()) && ready(p, e)) return true;
 		return false;
 	}
 
@@ -315,6 +436,11 @@ public final class Errands {
 	static List<Talk.Option> options(ServerPlayer p, Npc npc) {
 		List<Talk.Option> out = new ArrayList<>();
 		for (Errand e : p.getData(STATE).errands()) {
+			if (e.giver().startsWith(ADV)) {
+				if (npc.kindId().equals(DESK) && atDesk(p, e))
+					out.add(new Talk.Option(e.type() == DELIVER ? "I've a sealed report from " + AdventurerTalk.the(e.giverName(), false) + "." : AdventurerTalk.the(e.giverName(), true) + " asked me to leave these with you.", "", "", "errand:adv"));
+				continue;
+			}
 			if (e.type() == DELIVER) {
 				if (!e.giver().equals(npc.getStringUUID()) && npc.is(e.target())) out.add(new Talk.Option("I've a letter for you.", "", "", "errand:letter"));
 			} else if (e.giver().equals(npc.getStringUUID())) {
@@ -376,6 +502,15 @@ public final class Errands {
 				}
 				return null;
 			}
+			case "errand:adv" -> {
+				if (!npc.kindId().equals(DESK)) return null;
+				for (Errand e : s.errands()) {
+					if (!atDesk(p, e)) continue;
+					if (e.type() == COLLECT) take(p, e.target(), e.count());
+					return pay(p, e);
+				}
+				return null;
+			}
 			case "errand:letter" -> {
 				for (Errand e : s.errands()) if (e.type() == DELIVER && !e.giver().equals(npc.getStringUUID()) && npc.is(e.target())) return pay(p, e);
 				return null;
@@ -404,14 +539,17 @@ public final class Errands {
 		list.remove(e);
 		set(p, list, s.asked());
 		Template t = template(e.template());
-		List<ItemStack> gift = t == null ? List.of() : e.template().startsWith(WAYFARER) ? List.of(Wayfarers.find(p)) : t.gift();
+		boolean adv = e.template().startsWith(ADV_T);
+		// a party pays out of their own pack: coin, and as often as not something they found
+		List<ItemStack> gift = adv ? p.getRandom().nextFloat() < ADV_FIND ? List.of(new ItemStack(Ranks.find(p, p.getRandom()))) : List.of()
+				: t == null ? List.of() : e.template().startsWith(WAYFARER) ? List.of(Wayfarers.find(p)) : t.gift();
 		Coins.give(p, e.coins());
 		if (e.points() > 0) Guild.points(p, e.points());
 		for (ItemStack i : gift) p.getInventory().placeItemBackInInventory(i.copy());
 		p.level().playSound(null, p.blockPosition(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 0.7f, 1.3f);
-		p.sendSystemMessage(Component.literal("Favour done: ").withStyle(ChatFormatting.GRAY).append(Component.literal(e.title()).withStyle(ChatFormatting.GOLD))
+		p.sendSystemMessage(Component.literal(adv ? "Request done: " : "Favour done: ").withStyle(ChatFormatting.GRAY).append(Component.literal(e.title()).withStyle(ChatFormatting.GOLD))
 				.append(Component.literal("  " + reward(e.coins(), e.points(), gift)).withStyle(ChatFormatting.YELLOW)));
-		return new Reply(t == null ? "Thank you." : t.thanks(), BYE);
+		return new Reply(adv ? AdventurerTalk.deskThanks(e.giverName(), p) : t == null ? "Thank you." : t.thanks(), BYE);
 	}
 
 	// ---------------------------------------------------------------- out in the world
@@ -436,9 +574,17 @@ public final class Errands {
 		if (changed) set(p, list, s.asked());
 	}
 
+	private static void campDied(LivingDeathEvent ev) {
+		if (!(ev.getEntity().level() instanceof net.minecraft.server.level.ServerLevel l) || !ev.getEntity().getPersistentData().contains(Adventurers.CAMP_TAG)) return;
+		String id = ev.getEntity().getPersistentData().getString(Adventurers.CAMP_TAG);
+		campFell(id, l.getServer().getPlayerList().getPlayers());
+		Adventurers.campLost(l, id, ev.getEntity());
+	}
+
 	static void init(IEventBus bus) {
 		ATTACHMENTS.register(bus);
 		NeoForge.EVENT_BUS.addListener(Errands::killed);
+		NeoForge.EVENT_BUS.addListener(Errands::campDied);
 		NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent e) -> e.addListener(new SimpleJsonResourceReloadListener(new Gson(), "errand") {
 			@Override
 			protected void apply(Map<ResourceLocation, JsonElement> files, ResourceManager rm, ProfilerFiller pf) {

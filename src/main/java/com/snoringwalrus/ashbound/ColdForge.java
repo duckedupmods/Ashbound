@@ -49,17 +49,15 @@ public final class ColdForge {
 
 	public static final DeferredItem<Item> SHARD = Weapons.ITEMS.registerItem("ember_shard", p -> new Item(p.rarity(Rarity.RARE).stacksTo(3).fireResistant()));
 	public static final DeferredItem<Item> EMBER = Weapons.ITEMS.registerItem("first_ember", p -> new Item(p.rarity(Rarity.EPIC).stacksTo(1).fireResistant()));
-	/** The ritual's spawn item, Wendel's once the forge is awake: pressed to the altar it calls the trial. */
+	/** Ossric's sigil, Wendel's once the forge is awake: Veyra sends you with it to the Kiln-Father's Hearth (BossArenas). */
 	public static final DeferredItem<Item> BRAND = Weapons.ITEMS.registerItem("founders_brand", p -> new Item(p.rarity(Rarity.EPIC).stacksTo(1).fireResistant()));
 
 	private static final String SHARD_RANKS = "EDC";
-	private static final int SWAP_AT = 80, WAKE_ENDS = 220, RITE = 110;
-	private static final String TRIAL = "ash_cold_trial", TRIAL_BOSS = "ossric";
+	private static final int SWAP_AT = 80, WAKE_ENDS = 220;
 
 	static void init() {
 		NeoForge.EVENT_BUS.addListener(ColdForge::onClick);
 		NeoForge.EVENT_BUS.addListener(ColdForge::tick);
-		NeoForge.EVENT_BUS.addListener(ColdForge::onDeath);
 	}
 
 	// ---------------------------------------------------------------- where its pieces lie
@@ -157,9 +155,12 @@ public final class ColdForge {
 			}
 			BlockPos work = altar(p.level(), e.getPos());
 			if (Coins.flag(p, "cold_proved")) {
-				if (!Smithing.join(p, work)) PacketDistributor.sendToPlayer(p, new Net.ForgeOpen(e.getPos()));
-			} else if (p.getMainHandItem().is(BRAND.get())) rite(p, s, e.getPos());
-			else say(p, Coins.flag(p, "cold_brand") ? "The hands wait for the Brand." : "The fire burns, the hands don't move. It wants something of you first. Ask Wendel.");
+				if (!Smithing.join(p, work)) {
+					Bag.show(p);
+					PacketDistributor.sendToPlayer(p, new Net.ForgeOpen(e.getPos()));
+				}
+			} else say(p, Coins.flag(p, "cold_brand") ? "The hands wait. The Kiln-Father won't fit down here: take the Brand to Veyra in the guild hall."
+					: "The fire burns, the hands don't move. It wants something of you first. Ask Wendel.");
 			return;
 		}
 		if (p.getMainHandItem().is(EMBER.get())) {
@@ -199,7 +200,7 @@ public final class ColdForge {
 	}
 
 	static boolean shardsReady(ServerPlayer p) {
-		return GateForge.count(p, SHARD.get()) >= SHARD_RANKS.length();
+		return GateForge.carried(p, SHARD.get()) >= SHARD_RANKS.length();
 	}
 
 	/** Wendel binds the three shards. */
@@ -225,71 +226,6 @@ public final class ColdForge {
 		if (!p.getInventory().add(b)) p.drop(b, false);
 		Coins.setFlag(p, "cold_brand");
 		Story.mark(p, "cold/brand");
-	}
-
-	// ---------------------------------------------------------------- the rite
-
-	private static final class Rite {
-		final ServerLevel level;
-		final BlockPos altar;
-		final Direction facing;
-		final ServerPlayer by;
-		int t;
-
-		Rite(ServerLevel level, BlockPos altar, Direction facing, ServerPlayer by) {
-			this.level = level;
-			this.altar = altar;
-			this.facing = facing;
-			this.by = by;
-		}
-	}
-
-	private static final List<Rite> RITES = new ArrayList<>();
-
-	private static net.minecraft.world.phys.AABB round(BlockPos at) {
-		return new net.minecraft.world.phys.AABB(at).inflate(40);
-	}
-
-	private static void rite(ServerPlayer p, BlockState s, BlockPos pos) {
-		ServerLevel level = p.serverLevel();
-		BlockPos at = altar(level, pos);
-		for (Rite r : RITES) if (r.altar.equals(at)) return;
-		if (!level.getEntitiesOfClass(Mob.class, round(at), m -> m.getTags().contains(TRIAL)).isEmpty()) {
-			say(p, "It's already here.");
-			return;
-		}
-		p.getMainHandItem().shrink(1);
-		RITES.add(new Rite(level, at, s.getValue(PropBlock.FACING), p));
-		level.playSound(null, at, SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.2f, 0.5f);
-		p.sendSystemMessage(Component.literal("The Brand sinks into the stone. Something a long way down picks up its hammer.").withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC));
-	}
-
-	private static void riteTick(Rite r) {
-		BlockPos spot = r.altar.relative(r.facing, 7);
-		double a = r.t * 0.35, k = 3.5 - r.t * 0.025;
-		r.level.sendParticles(ParticleTypes.FLAME, spot.getX() + 0.5 + Math.cos(a) * k, spot.getY() + 0.2, spot.getZ() + 0.5 + Math.sin(a) * k, 3, 0.05, 0.05, 0.05, 0.02);
-		r.level.sendParticles(ParticleTypes.LAVA, spot.getX() + 0.5 - Math.cos(a) * k, spot.getY() + 0.2, spot.getZ() + 0.5 - Math.sin(a) * k, 1, 0, 0, 0, 0);
-		if (r.t % 20 == 0) r.level.playSound(null, spot, SoundEvents.WARDEN_HEARTBEAT, SoundSource.HOSTILE, 2f, 0.6f + r.t * 0.006f);
-		if (r.t < RITE) return;
-		var type = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.fromNamespaceAndPath(Ashbound.ID, TRIAL_BOSS));
-		if (!(type.create(r.level) instanceof Mob m)) return;
-		m.moveTo(spot.getX() + 0.5, spot.getY(), spot.getZ() + 0.5, r.facing.getOpposite().toYRot(), 0);
-		m.addTag(TRIAL);
-		m.setPersistenceRequired();
-		r.level.addFreshEntity(m);
-		Slumber.wake(r.level, m, r.by);
-		r.level.sendParticles(ParticleTypes.EXPLOSION_EMITTER, spot.getX() + 0.5, spot.getY() + 1, spot.getZ() + 0.5, 1, 0, 0, 0, 0);
-	}
-
-	/** The trial falls: everyone in the vault has proved themselves. */
-	private static void onDeath(LivingDeathEvent e) {
-		if (!e.getEntity().getTags().contains(TRIAL) || !(e.getEntity().level() instanceof ServerLevel level)) return;
-		for (ServerPlayer p : level.getEntitiesOfClass(ServerPlayer.class, round(e.getEntity().blockPosition()), o -> !o.isSpectator())) {
-			Coins.setFlag(p, "cold_proved");
-			Story.mark(p, "cold/proved");
-			p.sendSystemMessage(Component.literal("The great hands open. The Cold Forge will work for you now.").withStyle(ChatFormatting.GOLD));
-		}
-		level.playSound(null, e.getEntity().blockPosition(), SoundEvents.BELL_RESONATE, SoundSource.BLOCKS, 2f, 0.6f);
 	}
 
 	// ---------------------------------------------------------------- waking
@@ -338,12 +274,6 @@ public final class ColdForge {
 	}
 
 	private static void tick(ServerTickEvent.Post e) {
-		for (var it = RITES.iterator(); it.hasNext();) {
-			Rite r = it.next();
-			r.t++;
-			riteTick(r);
-			if (r.t >= RITE) it.remove();
-		}
 		if (WAKING.isEmpty()) return;
 		for (var it = WAKING.iterator(); it.hasNext();) {
 			Waking w = it.next();

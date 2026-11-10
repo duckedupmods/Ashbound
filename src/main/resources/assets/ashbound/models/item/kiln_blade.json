@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/kiln_blade.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.292,
-     -2.292,
-     -0.0
+     -2.861,
+     -2.575,
+     0.082
     ],
     "scale": [
-     0.4528,
-     0.4528,
-     0.4528
+     0.4368,
+     0.4368,
+     0.4368
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.292,
-     -2.292,
-     -0.0
+     -2.861,
+     -2.575,
+     0.082
     ],
     "scale": [
-     0.4528,
-     0.4528,
-     0.4528
+     0.4368,
+     0.4368,
+     0.4368
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.261,
-     -1.261,
+     -1.574,
+     -1.416,
      0
     ],
     "scale": [
-     0.249,
-     0.249,
-     0.249
+     0.2402,
+     0.2402,
+     0.2402
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/kiln_blade"
+   }
+  }
+ }
 }

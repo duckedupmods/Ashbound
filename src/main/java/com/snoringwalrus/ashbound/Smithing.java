@@ -59,8 +59,8 @@ public final class Smithing {
 	}
 
 	public enum Quality {
-		CRUDE("Crude", -0.05, ChatFormatting.GRAY), FINE("Fine", 0, ChatFormatting.WHITE),
-		MASTERWORK("Masterwork", 0.05, ChatFormatting.AQUA), PERFECT("Perfect", 0.10, ChatFormatting.GOLD);
+		CRUDE("Crude", -0.10, ChatFormatting.GRAY), FINE("Fine", 0, ChatFormatting.WHITE),
+		MASTERWORK("Masterwork", 0.20, ChatFormatting.AQUA), PERFECT("Perfect", 0.35, ChatFormatting.GOLD);
 
 		public final String title;
 		public final double bonus;
@@ -301,7 +301,7 @@ public final class Smithing {
 	static void request(ServerPlayer p, BlockPos at, Net.Job j, int wanted) {
 		Order o = order(p, j);
 		if (o == null || (j.type() == FUSE) != (ColdForge.altar(p.level(), at) != null) || (j.type() == FUSE && !Coins.flag(p, "cold_proved"))) return;   // the Joining is the Cold Forge's alone
-		if (!GateForge.affords(p, o.d, o.cost)) {
+		if (!GateForge.affords(p, o.d, j.type() == FUSE ? o.cost : Trades.forgeCost(p, o.out, o.cost))) {
 			p.displayClientMessage(Component.literal("You're short of what that takes").withStyle(ChatFormatting.RED), true);
 			return;
 		}
@@ -310,14 +310,18 @@ public final class Smithing {
 			return;
 		}
 		int embers = Math.max(0, Math.min(Math.min(wanted, MOST_EMBERS), GateForge.count(p, TEMPER.get())));
-		float roll = p.getRandom().nextFloat() + embers * EMBER;
-		GateForge.pay(p, o.d, o.cost);
-		GateForge.take(p, TEMPER.get(), embers);
+		// Smithing or Tailoring: its level and perks better the roll and spare materials
+		float roll = p.getRandom().nextFloat() + embers * EMBER + Trades.forgeRoll(p, o.out, j.type() == UPGRADE);
+		GateForge.pay(p, o.d, Trades.forgeCost(p, o.out, o.cost));
+		if (!Trades.embersKept(p, o.out)) GateForge.take(p, TEMPER.get(), embers);
+		Trades.forged(p, o.out, j.type() == UPGRADE, o.d == null ? 'F' : o.d.rank());
 		p.level().playSound(null, at, SoundEvents.ANVIL_USE, SoundSource.BLOCKS, 0.8f, 0.9f);
 		if (p.level() instanceof ServerLevel sl) sl.sendParticles(ParticleTypes.LAVA, at.getX() + 0.5, at.getY() + 1.1, at.getZ() + 0.5, 6 + embers * 2, 0.25, 0.1, 0.25, 0);
 		if (j.type() == MAKE) {
 			Quality q = rolled(roll);
-			Component made = give(p, o.out, q, "", 0, 0);
+			// a staff's spell, picked on the forge's screen (the job's slot is free for a MAKE)
+			Component made = give(p, o.out, q, "", 0, 0, j.slot());
+			if (Trades.forgeTwice(p, o.out)) give(p, o.out, rolled(roll), "", 0, 0, j.slot());
 			p.displayClientMessage(Component.literal(q.title + ": ").withStyle(q.colour).append(made), true);
 			return;
 		}
@@ -510,7 +514,16 @@ public final class Smithing {
 	}
 
 	private static Component give(ServerPlayer p, Item out, Quality q, String name, int plus, int joined) {
+		return give(p, out, q, name, plus, joined, -1);
+	}
+
+	private static Component give(ServerPlayer p, Item out, Quality q, String name, int plus, int joined, int spell) {
 		ItemStack made = make(out, q, name, p);
+		if (out instanceof Spells.Staff st) {
+			var can = StaffSpells.Style.choices(st.weapon());
+			if (spell >= 0 && spell < StaffSpells.Style.values().length && can.contains(StaffSpells.Style.values()[spell]))
+				StaffSpells.Style.set(made, StaffSpells.Style.values()[spell]);
+		}
 		if (joined > 0) {
 			Joined.setStage(made, joined);
 			dress(made);
@@ -532,6 +545,7 @@ public final class Smithing {
 		ItemStack s = new ItemStack(out);
 		CompoundTag t = new CompoundTag();
 		t.putInt("ash_quality", q.ordinal() + 1);
+		t.putInt("ash_dressed", DRESSED);
 		if (q.ordinal() >= Quality.MASTERWORK.ordinal()) t.putString("ash_smith", p.getGameProfile().getName());
 		String clean = net.minecraft.util.StringUtil.filterText(name == null ? "" : name).trim();
 		if (q == Quality.PERFECT && !clean.isEmpty()) t.putString("ash_name", clean.substring(0, Math.min(32, clean.length())));
@@ -545,6 +559,46 @@ public final class Smithing {
 		return q >= 1 && q <= Quality.values().length ? Quality.values()[q - 1] : null;
 	}
 
+	/** Pieces made when quality was worth less catch up the first time they're worn or picked up in hand. */
+	private static final int DRESSED = 2;
+
+	private static void redress(ItemStack s) {
+		if (quality(s) == null || tag(s).getInt("ash_dressed") >= DRESSED) return;
+		CompoundTag t = tag(s);
+		t.putInt("ash_dressed", DRESSED);
+		s.set(DataComponents.CUSTOM_DATA, CustomData.of(t));
+		dress(s);
+	}
+
+	private static AttributeModifier improved(ItemAttributeModifiers.Entry e, double k) {
+		AttributeModifier m = e.modifier();
+		double a = m.amount();
+		if (e.attribute().is(Attributes.ATTACK_DAMAGE)) a = (a + 1) * k - 1;
+		else if (e.attribute().is(Attributes.ARMOR) || e.attribute().is(Attributes.ARMOR_TOUGHNESS) || e.attribute().is(Spells.SPELL_POWER) || e.attribute().is(Spells.MAX_MANA)) a *= k;
+		return new AttributeModifier(m.id(), a, m.operation());
+	}
+
+	private static final String LADDER = "ash_ladder";
+	private static final int LADDER_NOW = 2;
+
+	/** A forged or rolled stack carries its numbers: one made before the gear ladder moved catches up the first time it's in a pack, and what was rolled on it stays. */
+	static void relevel(ItemStack s) {
+		if (s.isEmpty() || !net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(s.getItem()).getNamespace().equals(Ashbound.ID)) return;
+		ItemAttributeModifiers had = s.getComponentsPatch().get(DataComponents.ATTRIBUTE_MODIFIERS) == null ? null : s.get(DataComponents.ATTRIBUTE_MODIFIERS);
+		if (had == null || had.modifiers().isEmpty() || tag(s).getInt(LADDER) >= LADDER_NOW) return;
+		ItemStack plain = new ItemStack(s.getItem());
+		ItemAttributeModifiers base = s.getItem().getDefaultAttributeModifiers(plain);
+		if (base.modifiers().isEmpty()) base = plain.getOrDefault(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY);
+		double k = mult(s);
+		ItemAttributeModifiers.Builder b = ItemAttributeModifiers.builder();
+		for (ItemAttributeModifiers.Entry e : had.modifiers()) {
+			var own = base.modifiers().stream().filter(o -> o.attribute().equals(e.attribute()) && o.modifier().id().equals(e.modifier().id())).findFirst();
+			b.add(e.attribute(), own.map(o -> improved(o, k)).orElse(e.modifier()), e.slot());
+		}
+		s.set(DataComponents.ATTRIBUTE_MODIFIERS, b.build());
+		CustomData.update(DataComponents.CUSTOM_DATA, s, c -> c.putInt(LADDER, LADDER_NOW));
+	}
+
 	/** Sets a piece's stats, name and lines from its quality and +. */
 	private static void dress(ItemStack s) {
 		CompoundTag t = tag(s);
@@ -554,21 +608,16 @@ public final class Smithing {
 		if (base.modifiers().isEmpty()) base = plain.getOrDefault(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY);
 		if (!base.modifiers().isEmpty()) {
 			ItemAttributeModifiers.Builder b = ItemAttributeModifiers.builder();
-			for (ItemAttributeModifiers.Entry e : base.modifiers()) {
-				AttributeModifier m = e.modifier();
-				double a = m.amount();
-				if (e.attribute().is(Attributes.ATTACK_DAMAGE)) a = (a + 1) * k - 1;
-				else if (e.attribute().is(Attributes.ARMOR) || e.attribute().is(Attributes.ARMOR_TOUGHNESS)) a *= k;
-				b.add(e.attribute(), new AttributeModifier(m.id(), a, m.operation()), e.slot());
-			}
+			for (ItemAttributeModifiers.Entry e : base.modifiers()) b.add(e.attribute(), improved(e, k), e.slot());
 			s.set(DataComponents.ATTRIBUTE_MODIFIERS, b.build());
+			CustomData.update(DataComponents.CUSTOM_DATA, s, c -> c.putInt(LADDER, LADDER_NOW));
 		}
 		if (s.getItem() instanceof ShieldItem) s.set(DataComponents.MAX_DAMAGE, (int) (plain.getMaxDamage() * k));
 		Quality q = quality(s);
 		int plus = t.getInt("ash_plus");
 		List<Component> lore = new ArrayList<>();
 		if (Joined.stage(s) > 0) lore.add(Component.literal("Joined, Rank " + Joined.rank(Joined.stage(s))).withStyle(st -> st.withColor(ChatFormatting.GOLD).withItalic(false)));
-		if (q != null) lore.add(Component.literal(q.title).withStyle(st -> st.withColor(q.colour).withItalic(false)));
+		if (q != null) lore.add(Component.literal(q.title + (q.bonus == 0 ? "" : String.format("  %+d%% power", Math.round(q.bonus * 100)))).withStyle(st -> st.withColor(q.colour).withItalic(false)));
 		if (t.contains("ash_smith")) lore.add(Component.literal("Forged by " + t.getString("ash_smith")).withStyle(st -> st.withColor(ChatFormatting.DARK_GRAY).withItalic(true)));
 		if (!lore.isEmpty()) s.set(DataComponents.LORE, new ItemLore(lore));
 		String named = t.getString("ash_name");
@@ -587,6 +636,9 @@ public final class Smithing {
 
 	/** A session that outlived its player's connection lets the smith go. */
 	static void init() {
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent e) -> {
+			if (!e.getEntity().level().isClientSide) redress(e.getTo());
+		});
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerLoggedOutEvent e) -> {
 			Session s = SESSIONS.remove(e.getEntity().getUUID());
 			if (s != null) {

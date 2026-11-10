@@ -1,0 +1,60 @@
+{
+ "id": "adv_f_11",
+ "seed": 4113011,
+ "recipe": "adventurer",
+ "role": "white_mage",
+ "rank": "F",
+ "name": "Valandil Dawnpetal",
+ "title": "F-rank White Mage",
+ "age": "adult",
+ "sex": "m",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "olive",
+ "hair": {
+  "style": "ponytail",
+  "color": "rose"
+ },
+ "headwear": "circlet",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "ice",
+  "brows": "soft",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "sash"
+  ],
+  "colors": {
+   "top": "white",
+   "bottom": "cream",
+   "accent": "moss",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "book",
+ "offhand": null,
+ "back": null,
+ "hip": "tome",
+ "prop": null,
+ "_filters": {
+  "rank": "F",
+  "role": "white_mage"
+ },
+ "race": "elf",
+ "recipe_race": "elf",
+ "party": "The Greenhorns"
+}

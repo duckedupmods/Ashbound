@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/big_top_cleaver.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.06,
-     -2.06,
-     0.0
+     -2.631,
+     -2.631,
+     -0.0
     ],
     "scale": [
-     0.3541,
-     0.3541,
-     0.3541
+     0.2965,
+     0.2965,
+     0.2965
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.06,
-     -2.06,
-     0.0
+     -2.631,
+     -2.631,
+     -0.0
     ],
     "scale": [
-     0.3541,
-     0.3541,
-     0.3541
+     0.2965,
+     0.2965,
+     0.2965
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.133,
-     -1.133,
+     -1.447,
+     -1.447,
      0
     ],
     "scale": [
-     0.1947,
-     0.1947,
-     0.1947
+     0.1631,
+     0.1631,
+     0.1631
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/big_top_cleaver"
+   }
+  }
+ }
 }

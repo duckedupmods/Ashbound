@@ -531,7 +531,7 @@ public class TreeScreen extends Screen {
 
 	static {
 		String[][] s = {{"health%", "% health"}, {"stamina", " max stamina"}, {"stamina_regen%", "% stamina regen"}, {"move%", "% move speed"},
-				{"armour", " armour"}, {"stun_armour", " stun armour"}, {"weight%", "% armour weight"}, {"mana", " max mana"},
+				{"armour%", "% armour"}, {"stun_armour", " stun armour"}, {"weight%", "% armour weight"}, {"mana", " max mana"},
 				{"mana_regen%", "% mana regen"}, {"dmg%", "% damage"}, {"speed%", "% attack speed"}, {"negation%", "% armour negation"},
 				{"impact", " impact"}, {"reach", " reach"}, {"strikes", " enemies per swing"}, {"knockback", " knockback"},
 				{"guard%", "% stamina back on a block"}, {"arrow%", "% arrow damage"}, {"velocity%", "% arrow speed"},

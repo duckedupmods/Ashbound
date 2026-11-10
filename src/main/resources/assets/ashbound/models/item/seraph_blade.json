@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/seraph_blade.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.557,
-     -2.557,
+     -2.741,
+     -2.741,
      -0.0
     ],
     "scale": [
-     0.443,
-     0.443,
-     0.443
+     0.3461,
+     0.3461,
+     0.3461
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.557,
-     -2.557,
+     -2.741,
+     -2.741,
      -0.0
     ],
     "scale": [
-     0.443,
-     0.443,
-     0.443
+     0.3461,
+     0.3461,
+     0.3461
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.406,
-     -1.406,
+     -1.508,
+     -1.508,
      0
     ],
     "scale": [
-     0.2436,
-     0.2436,
-     0.2436
+     0.1903,
+     0.1903,
+     0.1903
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/seraph_blade"
+   }
+  }
+ }
 }

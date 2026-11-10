@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/gorge_club.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.39,
-     -0.39,
-     0.0
+     -0.982,
+     -1.083,
+     -0.029
     ],
     "scale": [
-     0.3803,
-     0.3803,
-     0.3803
+     0.3416,
+     0.3416,
+     0.3416
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.39,
-     -0.39,
-     0.0
+     -0.982,
+     -1.083,
+     -0.029
     ],
     "scale": [
-     0.3803,
-     0.3803,
-     0.3803
+     0.3416,
+     0.3416,
+     0.3416
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.215,
-     -0.215,
+     -0.54,
+     -0.596,
      0
     ],
     "scale": [
-     0.2092,
-     0.2092,
-     0.2092
+     0.1879,
+     0.1879,
+     0.1879
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/gorge_club"
+   }
+  }
+ }
 }

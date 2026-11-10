@@ -9,6 +9,7 @@ import com.snoringwalrus.ashbound.Smithing;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -45,6 +46,21 @@ public class ForgeScreen extends Screen {
 	private int resultY = -100;
 	/** At the Cold Forge: the Joining and nothing else. At a Gate Forge everything else, and no Joining. */
 	private final boolean cold;
+	/**
+	 * Finding gear (11/7, the user: "a tab with all the staffs, and more filters"): a search box (names, kinds, and for a staff every
+	 * spell it can be made with), the weapon's kind, the rank, and every gate at once instead of the one picked.
+	 */
+	private EditBox search;
+	private AshUi.AshButton kindBtn, rankBtn, allBtn;
+	private int kindPick, rankPick;
+	private boolean allGates;
+	private static final List<String> KINDS = new java.util.ArrayList<>();
+	/** The list for the recipe tabs, built again only when what it's built from changes. */
+	private List<Entry> cached;
+	private String cachedFor = "";
+	/** The spell a staff will be made with (StaffSpells.Style's ordinal; -1 until a staff is picked), and where its row is. */
+	private int spell = -1;
+	private int spellY = -100;
 
 	public ForgeScreen(BlockPos pos) {
 		super(Component.literal("Gate Forge"));
@@ -55,6 +71,39 @@ public class ForgeScreen extends Screen {
 
 	private Gear.Dungeon dungeon() {
 		return gates.get(gate);
+	}
+
+	private static List<String> kinds() {
+		if (KINDS.isEmpty()) {
+			KINDS.add("");
+			Gear.WEAPON.values().stream().map(Gear.Weapon::kind).distinct().sorted().forEach(KINDS::add);
+		}
+		return KINDS;
+	}
+
+	static String kindName(String k) {
+		return switch (k) {
+			case "" -> "Any type";
+			case "white" -> "Healing staff";
+			case "black" -> "Black staff";
+			case "summon" -> "Summon staff";
+			default -> Character.toUpperCase(k.charAt(0)) + k.substring(1).replace('_', ' ');
+		};
+	}
+
+	private boolean matches(Gear.Recipe r, ItemStack s, String q) {
+		StringBuilder b = new StringBuilder(s.getHoverName().getString()).append(' ');
+		Gear.Weapon w = Gear.WEAPON.get(r.id());
+		if (w != null) {
+			b.append(w.kind()).append(' ').append(kindName(w.kind())).append(' ');
+			if (s.getItem() instanceof com.snoringwalrus.ashbound.Spells.Staff)
+				for (var st : com.snoringwalrus.ashbound.StaffSpells.Style.choices(w)) b.append(st.title).append(' ');
+		}
+		for (var line : s.getTooltipLines(Item.TooltipContext.of(minecraft.level), minecraft.player, net.minecraft.world.item.TooltipFlag.NORMAL))
+			b.append(line.getString()).append(' ');
+		String all = b.toString().toLowerCase(java.util.Locale.ROOT);
+		for (String word : q.split("\\s+")) if (!all.contains(word)) return false;
+		return true;
 	}
 
 	private List<Entry> list() {
@@ -77,8 +126,31 @@ public class ForgeScreen extends Screen {
 			}
 			return out;
 		}
-		for (Gear.Recipe r : dungeon().recipes()) if (r.tab().equals(TABS[tab])) out.add(new Entry(stack(r), dungeon(), r.cost(), r, -1));
+		String q = search == null ? "" : search.getValue().toLowerCase(java.util.Locale.ROOT).trim();
+		String key = tab + "|" + gate + "|" + allGates + "|" + kindPick + "|" + rankPick + "|" + q;
+		if (cached != null && key.equals(cachedFor)) return cached;
+		for (Gear.Dungeon d : allGates ? gates : List.of(dungeon())) {
+			if (rankPick > 0 && d.rank() != "FEDCBAS".charAt(rankPick - 1)) continue;
+			for (Gear.Recipe r : d.recipes()) {
+				if (!r.tab().equals(TABS[tab])) continue;
+				if (tab == 0 && kindPick > 0) {
+					Gear.Weapon w = Gear.WEAPON.get(r.id());
+					if (w == null || !w.kind().equals(kinds().get(kindPick))) continue;
+				}
+				ItemStack s = stack(r);
+				if (s.isEmpty() || !q.isEmpty() && !matches(r, s, q)) continue;
+				out.add(new Entry(s, d, r.cost(), r, -1));
+			}
+		}
+		cached = out;
+		cachedFor = key;
 		return out;
+	}
+
+	private void refilter() {
+		selected = 0;
+		scroll = 0;
+		spell = -1;
 	}
 
 	/** The piece going in with this one (the one picked of those that can), or -1. */
@@ -165,6 +237,40 @@ public class ForgeScreen extends Screen {
 		forge = addRenderableWidget(new AshUi.AshButton(dx() + 10, py() + ph() - 34, DETAIL - 20, 22, Component.literal("FORGE"), b -> craft(), true));
 		less = addRenderableWidget(new AshUi.AshButton(dx() + DETAIL - 56, py() + ph() - 64, 20, 14, Component.literal("-"), b -> embers = Math.max(0, embers - 1), false));
 		more = addRenderableWidget(new AshUi.AshButton(dx() + DETAIL - 32, py() + ph() - 64, 20, 14, Component.literal("+"), b -> embers = Math.min(Math.min(Smithing.MOST_EMBERS, embersHeld()), embers + 1), false));
+		// the finding row, over the tabs: search | kind | rank | all gates (shift-click a button to go back one)
+		int fy = py() + 25, fw = gridW(), sw = Math.round(fw * 0.38f), kw = Math.round(fw * 0.26f), rw = Math.round(fw * 0.14f), aw = fw - sw - kw - rw - 9;
+		String had = search == null ? "" : search.getValue();
+		search = new EditBox(font, gridX() + 4, fy + 3, sw - 6, 10, Component.literal("Search"));
+		search.setBordered(false);
+		search.setMaxLength(40);
+		search.setTextColor(0xFFFFFFFF);
+		search.setHint(Component.literal("Search: mend, bow, frost...").withStyle(s -> s.withColor(AshUi.DIM & 0xFFFFFF)));
+		search.setValue(had);
+		search.setResponder(s -> refilter());
+		search.visible = !cold;
+		addRenderableWidget(search);
+		int x = gridX() + sw + 3;
+		kindBtn = addRenderableWidget(new AshUi.AshButton(x, fy, kw, 14, Component.literal(kindName(kinds().get(kindPick))), b -> {
+			kindPick = (kindPick + (hasShiftDown() ? kinds().size() - 1 : 1)) % kinds().size();
+			b.setMessage(Component.literal(kindName(kinds().get(kindPick))));
+			refilter();
+		}, false));
+		x += kw + 3;
+		rankBtn = addRenderableWidget(new AshUi.AshButton(x, fy, rw, 14, Component.literal(rankName()), b -> {
+			rankPick = (rankPick + (hasShiftDown() ? 7 : 1)) % 8;
+			b.setMessage(Component.literal(rankName()));
+			refilter();
+		}, false));
+		x += rw + 3;
+		allBtn = addRenderableWidget(new AshUi.AshButton(x, fy, aw, 14, Component.literal(allGates ? "All gates" : "This gate"), b -> {
+			allGates = !allGates;
+			b.setMessage(Component.literal(allGates ? "All gates" : "This gate"));
+			refilter();
+		}, false));
+	}
+
+	private String rankName() {
+		return rankPick == 0 ? "Any rank" : "Rank " + "FEDCBAS".charAt(rankPick - 1);
 	}
 
 	private void craft() {
@@ -174,7 +280,8 @@ public class ForgeScreen extends Screen {
 		if (tab == UPGRADE) job = new Net.Job(Smithing.UPGRADE, -1, -1, e.slot());
 		else if (tab == FUSION) {
 			job = new Net.Job(Smithing.FUSE, second(e), 0, e.slot());
-		} else job = new Net.Job(Smithing.MAKE, Gear.DUNGEONS.indexOf(e.gate()), e.gate().recipes().indexOf(e.recipe()), -1);
+		} else job = new Net.Job(Smithing.MAKE, Gear.DUNGEONS.indexOf(e.gate()), e.gate().recipes().indexOf(e.recipe()),
+				e.stack().getItem() instanceof com.snoringwalrus.ashbound.Spells.Staff ? spell : -1);
 		PacketDistributor.sendToServer(new Net.ForgeCraft(pos, job, embers));
 		if (tab == FUSION) onClose();   // that one's done by hand, at the anvil
 		embers = 0;
@@ -219,21 +326,31 @@ public class ForgeScreen extends Screen {
 		int g = gateAt(mx, my);
 		if (g >= 0) {
 			gate = g;
-			selected = 0;
-			scroll = 0;
+			if (allGates) {
+				allGates = false;
+				allBtn.setMessage(Component.literal("This gate"));
+			}
+			refilter();
 			return true;
 		}
 		int t = tabAt(mx, my);
 		if (t >= 0) {
 			tab = t;
-			selected = 0;
-			scroll = 0;
+			refilter();
 			return true;
 		}
 		int i = itemAt(mx, my);
 		if (i >= 0) {
+			if (i != selected) spell = -1;
 			selected = i;
 			result = 0;
+			return true;
+		}
+		if (spellY > 0 && mx >= dx() + 10 && mx < dx() + DETAIL - 10 && my >= spellY && my < spellY + 14 && selected >= 0 && selected < list().size()
+				&& list().get(selected).stack().getItem() instanceof com.snoringwalrus.ashbound.Spells.Staff st) {
+			var ch = com.snoringwalrus.ashbound.StaffSpells.Style.choices(st.weapon());
+			int at = Math.max(0, ch.indexOf(com.snoringwalrus.ashbound.StaffSpells.Style.values()[Math.max(0, spell)]));
+			spell = ch.get(Math.floorMod(at + (button == 1 ? -1 : 1), ch.size())).ordinal();
 			return true;
 		}
 		if (tab == FUSION && mx >= dx() + 10 && mx < dx() + DETAIL - 10 && my >= resultY && my < resultY + 18) {
@@ -264,12 +381,17 @@ public class ForgeScreen extends Screen {
 		int x = mainX(), y = py(), w = mainW(), h = ph();
 		Gear.Dungeon d = dungeon();
 		AshUi.panel(g, x, y, w, h);
-		AshUi.header(g, x, y, w, 20, tab == UPGRADE ? "UPGRADE" : tab == FUSION ? "THE COLD FORGE" : d.title().toUpperCase());
+		boolean finding = tab < UPGRADE;
+		AshUi.header(g, x, y, w, 20, tab == UPGRADE ? "UPGRADE" : tab == FUSION ? "THE COLD FORGE" : allGates ? "ALL GATES" : d.title().toUpperCase() + "  -  RANK " + d.rank());
 		int ty = y + 27;
-		g.drawString(font, Component.literal(tab == UPGRADE ? "RAISE WHAT YOU CARRY" : tab == FUSION ? "TWO BECOME ONE" : d.element().toUpperCase()).withStyle(ChatFormatting.BOLD), gridX(), ty, 0xFFF2EADC, true);
-		String sub = tab >= UPGRADE ? "" : "Rank " + d.rank();
-		g.drawString(font, sub, x + w - 10 - font.width(sub), ty, AshUi.EMBER_LT, true);
-		AshUi.divider(g, gridX(), ty + 11, gridW());
+		search.visible = finding;
+		kindBtn.visible = finding && tab == 0;
+		rankBtn.visible = allBtn.visible = finding;
+		if (finding) {
+			int sw = Math.round(gridW() * 0.38f);
+			g.fill(gridX(), y + 25, gridX() + sw, y + 39, 0xFF0E0B09);
+			g.renderOutline(gridX(), y + 25, sw, 14, search.isFocused() ? AshUi.EMBER_LT : 0xFF3D3833);
+		} else g.drawString(font, Component.literal(tab == UPGRADE ? "RAISE WHAT YOU CARRY" : "TWO BECOME ONE").withStyle(ChatFormatting.BOLD), gridX(), ty, 0xFFF2EADC, true);
 		int hovTab = tabAt(mx, my), tw0 = gridW() / FUSION;
 		for (int t = 0; t < (cold ? 0 : FUSION); t++) {
 			int tx = gridX() + t * tw0;
@@ -295,6 +417,11 @@ public class ForgeScreen extends Screen {
 				g.drawString(font, font.plainSubstrByWidth(s.getHoverName().getString(), tw), rx + 26, ry + 4, can ? AshUi.RARITY_TEXT[2] : AshUi.BODY, true);
 				g.drawString(font, font.plainSubstrByWidth(costLine(rc.cost()), tw), rx + 26, ry + 14, can ? 0xFFFFD2A8 : AshUi.DIM, false);
 			}
+		}
+		if (l.isEmpty() && finding) {
+			// the towers make armour only: their weapons are the world's, in its chests and the tower hoards
+			String none = tab == 0 && !allGates && dungeon().weapons().isEmpty() ? "A tower forges armour only: its weapons are found" : "Nothing here by those filters";
+			g.drawString(font, none, gridX() + (gridW() - font.width(none)) / 2, gridY() + 40, AshUi.MUTED, false);
 		}
 		if (l.isEmpty() && tab >= UPGRADE) {
 			String none = tab == UPGRADE ? "Carry gate gear to raise it" : "Bring it two boss weapons of a kind and rank";
@@ -322,7 +449,7 @@ public class ForgeScreen extends Screen {
 		for (int i = gateScroll; i < Math.min(gates.size(), gateScroll + gatesShown()); i++) {
 			Gear.Dungeon d = gates.get(i);
 			int ry = y + 26 + (i - gateScroll) * 22;
-			AshUi.row(g, x + 6, ry, SIDE - 12, 20, i == gate, i == hov);
+			AshUi.row(g, x + 6, ry, SIDE - 12, 20, i == gate && !allGates, i == hov);
 			String rank = String.valueOf(d.rank());
 			g.drawString(font, Component.literal(rank).withStyle(ChatFormatting.BOLD), x + 11, ry + 6, 0xFF000000 | d.colour(), true);
 			String name = d.title().replaceFirst("^The ", "");
@@ -346,6 +473,15 @@ public class ForgeScreen extends Screen {
 		Entry rc = l.get(selected);
 		Gear.Dungeon d = rc.gate();
 		ItemStack s = rc.stack();
+		List<com.snoringwalrus.ashbound.StaffSpells.Style> spells = rc.recipe() != null && s.getItem() instanceof com.snoringwalrus.ashbound.Spells.Staff st
+				? com.snoringwalrus.ashbound.StaffSpells.Style.choices(st.weapon()) : List.of();
+		spellY = -100;
+		if (spells.size() > 1) {
+			if (spell < 0 || !spells.contains(com.snoringwalrus.ashbound.StaffSpells.Style.values()[spell]))
+				spell = com.snoringwalrus.ashbound.StaffSpells.Style.of(s).ordinal();
+			s = s.copy();
+			com.snoringwalrus.ashbound.StaffSpells.Style.set(s, com.snoringwalrus.ashbound.StaffSpells.Style.values()[spell]);
+		}
 		g.fillGradient(x + 4, y + 4, x + w - 4, y + 54, 0x50000000 | (d.colour() & 0xFFFFFF), d.colour() & 0xFFFFFF);
 		AshUi.divider(g, x + 4, y + 54, w - 8);
 		AshUi.tile(g, x + w - 46, y + 12, 36, 2);
@@ -397,6 +533,17 @@ public class ForgeScreen extends Screen {
 				sy += 19;
 			}
 		} else {
+			if (spells.size() > 1) {
+				// the spell it'll be made with: click for the next, right-click for the one before
+				g.drawString(font, "SPELL  (click to change)", x + 10, sy, AshUi.LABEL, false);
+				sy += 11;
+				spellY = sy;
+				boolean hot = mx >= x + 10 && mx < x + w - 10 && my >= sy && my < sy + 14;
+				AshUi.row(g, x + 10, sy, w - 20, 14, true, hot);
+				String name = "<  " + com.snoringwalrus.ashbound.StaffSpells.Style.values()[spell].title + "  >";
+				g.drawString(font, name, x + (w - font.width(name)) / 2, sy + 3, AshUi.TEXT, true);
+				sy += 18;
+			}
 			// what it does, as its own tooltip says it, past its name
 			var tip = s.getTooltipLines(net.minecraft.world.item.Item.TooltipContext.of(minecraft.level), minecraft.player, net.minecraft.world.item.TooltipFlag.NORMAL);
 			for (int k = 1, n = 0; k < tip.size() && n < 6; k++) {
@@ -416,7 +563,7 @@ public class ForgeScreen extends Screen {
 			Item it = Gear.item(d.mats()[k]);
 			if (it == null) continue;
 			ItemStack ms = new ItemStack(it);
-			int have = GateForge.count(minecraft.player, it);
+			int have = GateForge.countKin(minecraft.player, d, k);   // any dungeon of this rank's will do
 			g.renderItem(ms, x + 10, ly);
 			if (mx >= x + 10 && mx < x + 26 && my >= ly && my < ly + 16) hoverStack = ms;
 			g.drawString(font, font.plainSubstrByWidth(ms.getHoverName().getString(), w - 74), x + 30, ly + 4, AshUi.BODY, false);

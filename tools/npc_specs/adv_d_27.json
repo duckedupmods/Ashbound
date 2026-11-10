@@ -1,0 +1,59 @@
+{
+ "id": "adv_d_27",
+ "seed": 4113027,
+ "recipe": "adventurer",
+ "role": "white_mage",
+ "rank": "D",
+ "name": "Hild Two-Blades",
+ "title": "D-rank White Mage",
+ "age": "adult",
+ "sex": "f",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "tan",
+ "hair": {
+  "style": "long",
+  "color": "ash_blonde"
+ },
+ "headwear": "circlet",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "ice",
+  "brows": null,
+  "mouth": "flat",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "mantle",
+   "sash"
+  ],
+  "colors": {
+   "top": "cream",
+   "bottom": "cream",
+   "accent": "navy",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "staff",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "D",
+  "role": "white_mage"
+ },
+ "party": "Ninth Lantern"
+}

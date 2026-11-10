@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 /**
@@ -23,15 +24,22 @@ public final class Tabs {
 
 	static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Ashbound.ID);
 	private static final String RANKS = "FEDCBAS";
+	/** Each tab's own emblem (tools/itemicons_d.py), items only so the tab has something to show; in no tab themselves. */
+	private static final DeferredItem<Item> GEAR = emblem("tab_gear"), MONSTERS = emblem("tab_monsters"), BLOCKS = emblem("tab_blocks");
+
+	private static DeferredItem<Item> emblem(String id) {
+		return Weapons.ITEMS.registerItem(id, Item::new, new Item.Properties().stacksTo(1));
+	}
 
 	static void register(IEventBus bus) {
-		tab("gear", "Ashbound: Gear", () -> new ItemStack(GateForge.ITEM.get()), out -> {
+		tab("gear", "Ashbound: Gear", () -> new ItemStack(GEAR.get()), out -> {
 			for (Gear.Dungeon d : Gear.DUNGEONS.stream().sorted(Comparator.comparingInt(d -> RANKS.indexOf(d.rank()))).toList()) {
 				for (Gear.Weapon w : d.weapons()) out.add(Gear.item(w.id()));
 				for (Gear.Set s : d.sets()) for (Gear.Piece p : s.pieces()) out.add(Gear.item(p.id()));
 				for (String m : d.mats()) out.add(Gear.item(m));
 			}
 			out.add(GateForge.ITEM.get());
+			Stations.ITEMS.forEach(i -> out.add(i.get()));
 			Gear.WEAPONS.forEach(i -> out.add(i.get()));
 			Weapons.ALL.forEach(i -> out.add(i.get()));
 			Armors.ALL.forEach(i -> out.add(i.get()));
@@ -41,13 +49,15 @@ public final class Tabs {
 			out.add(ColdForge.BRAND.get());
 			for (int i = 0; i < Books.BOOKS.size(); i++) out.add(Books.book(i + 1, Skills.ALL.get(0).id()).getItem());
 			Books.TOMES.forEach(i -> out.add(i.get()));
+			Trades.ITEMS.values().forEach(i -> out.add(i.get()));
 		});
-		tab("monsters", "Ashbound: Monsters", () -> new ItemStack(Monsters.CINDERHUSK_EGG.get()), out -> {
+		tab("monsters", "Ashbound: Monsters", () -> new ItemStack(MONSTERS.get()), out -> {
 			GateMobs.EGGS.forEach(i -> out.add(i.get()));
 			SilkMobs.EGGS.forEach(i -> out.add(i.get()));
 			out.add(Monsters.CINDERHUSK_EGG.get());
+			Beast.EGGS.forEach(i -> out.add(i.get()));
 		});
-		tab("blocks", "Ashbound: Blocks", () -> new ItemStack(WorldBlocks.ITEMS.get(0).get()), out ->
+		tab("blocks", "Ashbound: Blocks", () -> new ItemStack(BLOCKS.get()), out ->
 				WorldBlocks.ITEMS.forEach(i -> out.add(i.get())));
 		TABS.register(bus);
 	}

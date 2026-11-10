@@ -1,0 +1,60 @@
+{
+ "id": "adv_d_35",
+ "seed": 4113035,
+ "recipe": "adventurer",
+ "role": "white_mage",
+ "rank": "D",
+ "name": "Caspar Rook",
+ "title": "D-rank White Mage",
+ "age": "adult",
+ "sex": "m",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "tan",
+ "hair": {
+  "style": "buzz",
+  "color": "auburn"
+ },
+ "headwear": "circlet",
+ "beard": null,
+ "face": {
+  "eye": "round",
+  "iris": "brown",
+  "brows": "stern",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "mantle",
+   "sash",
+   "vials"
+  ],
+  "colors": {
+   "top": "white",
+   "bottom": "cream",
+   "accent": "charcoal",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "book",
+ "offhand": null,
+ "back": null,
+ "hip": "tome",
+ "prop": null,
+ "_filters": {
+  "rank": "D",
+  "role": "white_mage"
+ },
+ "party": "Gallows Crows"
+}

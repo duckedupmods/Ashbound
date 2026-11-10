@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/matrons_sickle.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.771,
-     -2.771,
-     -0.0
+     -3.04,
+     -1.672,
+     0.391
     ],
     "scale": [
-     0.3945,
-     0.3945,
-     0.3945
+     0.4014,
+     0.4014,
+     0.4014
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.771,
-     -2.771,
-     -0.0
+     -3.04,
+     -1.672,
+     0.391
     ],
     "scale": [
-     0.3945,
-     0.3945,
-     0.3945
+     0.4014,
+     0.4014,
+     0.4014
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.524,
-     -1.524,
+     -1.672,
+     -0.92,
      0
     ],
     "scale": [
-     0.217,
-     0.217,
-     0.217
+     0.2208,
+     0.2208,
+     0.2208
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/matrons_sickle"
+   }
+  }
+ }
 }

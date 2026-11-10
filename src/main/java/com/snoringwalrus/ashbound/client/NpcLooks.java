@@ -36,6 +36,32 @@ import yesman.epicfight.client.renderer.patched.entity.PHumanoidRenderer;
  * looked up by the kind the server syncs; and their talk and shop screens opened as the server sends them.
  */
 public final class NpcLooks {
+	/** When the server first asked for a class (0: not asking); the screen opens the first tick nothing's in its way. */
+	private static long classAsked;
+	private static String classBlocker = "";
+	private static long joined;
+
+	private static void openClass() {
+		Minecraft mc = Minecraft.getInstance();
+		if (mc.player == null) return;
+		if (mc.screen instanceof ClassScreen || mc.screen instanceof MountScreen) {
+			classAsked = 0;
+			return;
+		}
+		if (mc.screen == null) {
+			Ashbound.LOG.info("[Ashbound] class screen opened {} ms after the first ask", System.currentTimeMillis() - classAsked);
+			classAsked = 0;
+			classBlocker = "";
+			mc.setScreen(new ClassScreen());
+			return;
+		}
+		String b = mc.screen.getClass().getName();
+		if (!b.equals(classBlocker)) {
+			classBlocker = b;
+			Ashbound.LOG.info("[Ashbound] class screen waiting: {} is open ({} ms after the ask)", b, System.currentTimeMillis() - classAsked);
+		}
+	}
+
 	private NpcLooks() {}
 
 	/** Someone not known yet (still "@townsfolk...", or a kind with no mesh) is drawn as this one meanwhile. */
@@ -121,6 +147,35 @@ public final class NpcLooks {
 		return 1;
 	}
 
+	/** An adventurer (Adventurers): the same cube meshes and sizes as the townsfolk, in the real armour and weapons they wear. */
+	public static class AdventurerRenderer extends PHumanoidRenderer<com.snoringwalrus.ashbound.Adventurer, com.snoringwalrus.ashbound.AdventurerPatch,
+			HumanoidModel<com.snoringwalrus.ashbound.Adventurer>, HumanoidMobRenderer<com.snoringwalrus.ashbound.Adventurer, HumanoidModel<com.snoringwalrus.ashbound.Adventurer>>, HumanoidMesh> {
+		public AdventurerRenderer(EntityRendererProvider.Context ctx, EntityType<?> type) {
+			super(Meshes.BIPED, ctx, type);
+		}
+
+		@Override
+		public AssetAccessor<HumanoidMesh> getMeshProvider(com.snoringwalrus.ashbound.AdventurerPatch patch) {
+			return mesh(patch.getOriginal().kindId());
+		}
+	}
+
+	/** Their vanilla renderer, with an armour layer: Epic Fight builds its own layers from this one's, and without it their armour
+	 * wouldn't be drawn at all (while the body under it is left out, as for players). */
+	public static HumanoidMobRenderer<com.snoringwalrus.ashbound.Adventurer, HumanoidModel<com.snoringwalrus.ashbound.Adventurer>> vanillaAdventurer(EntityRendererProvider.Context ctx) {
+		var r = new HumanoidMobRenderer<com.snoringwalrus.ashbound.Adventurer, HumanoidModel<com.snoringwalrus.ashbound.Adventurer>>(ctx,
+				new HumanoidModel<>(ctx.bakeLayer(net.minecraft.client.model.geom.ModelLayers.ZOMBIE)), 0.5f) {
+			@Override
+			public ResourceLocation getTextureLocation(com.snoringwalrus.ashbound.Adventurer e) {
+				return texture(e.kindId());
+			}
+		};
+		r.addLayer(new net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer<>(r,
+				new net.minecraft.client.model.HumanoidArmorModel<>(ctx.bakeLayer(net.minecraft.client.model.geom.ModelLayers.PLAYER_INNER_ARMOR)),
+				new net.minecraft.client.model.HumanoidArmorModel<>(ctx.bakeLayer(net.minecraft.client.model.geom.ModelLayers.PLAYER_OUTER_ARMOR)), ctx.getModelManager()));
+		return r;
+	}
+
 	/** Without Epic Fight's it would fall back to vanilla's humanoid, wearing their texture. */
 	public static HumanoidMobRenderer<Npc, HumanoidModel<Npc>> vanilla(EntityRendererProvider.Context ctx) {
 		return new HumanoidMobRenderer<>(ctx, new HumanoidModel<>(ctx.bakeLayer(net.minecraft.client.model.geom.ModelLayers.ZOMBIE)), 0.5f) {
@@ -148,10 +203,20 @@ public final class NpcLooks {
 		};
 		Net.onShop = m -> Minecraft.getInstance().setScreen(new ShopScreen(m));
 		Net.onCard = () -> Minecraft.getInstance().setScreen(new GuildCardScreen());
+		Net.onPhotos = () -> Minecraft.getInstance().setScreen(new Photos.Table());
 		Net.onClassAsk = () -> {
-			if (Minecraft.getInstance().screen == null) Minecraft.getInstance().setScreen(new ClassScreen());
+			if (classAsked == 0) {
+				classAsked = System.currentTimeMillis();
+				Ashbound.LOG.info("[Ashbound] class asked {} ms after joining", classAsked - joined);
+			}
+			openClass();
 		};
+		NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent.LoggingIn e) -> joined = System.currentTimeMillis());
+		NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.client.event.ClientTickEvent.Post e) -> {
+			if (classAsked != 0) openClass();
+		});
 		com.snoringwalrus.ashbound.Books.onTome = f -> Minecraft.getInstance().setScreen(new TomeScreen(f));
+		Net.onPoster = m -> Minecraft.getInstance().setScreen(new WantedScreen(m));
 		com.snoringwalrus.ashbound.Books.onOffer = m -> Minecraft.getInstance().setScreen(new ReplaceScreen(m.skill(), m.rank()));
 		Net.onMountAsk = () -> {
 			if (Minecraft.getInstance().screen == null) Minecraft.getInstance().setScreen(new MountScreen());

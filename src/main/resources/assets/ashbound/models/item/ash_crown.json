@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/ash_crown.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     0.021,
-     0.021,
-     0.0
+     -0.704,
+     -0.793,
+     -0.025
     ],
     "scale": [
-     0.396,
-     0.396,
-     0.396
+     0.2713,
+     0.2713,
+     0.2713
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     0.021,
-     0.021,
-     0.0
+     -0.704,
+     -0.793,
+     -0.025
     ],
     "scale": [
-     0.396,
-     0.396,
-     0.396
+     0.2713,
+     0.2713,
+     0.2713
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.012,
-     0.012,
+     -0.387,
+     -0.436,
      0
     ],
     "scale": [
-     0.2178,
-     0.2178,
-     0.2178
+     0.1492,
+     0.1492,
+     0.1492
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/ash_crown"
+   }
+  }
+ }
 }

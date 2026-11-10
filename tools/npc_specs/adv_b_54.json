@@ -1,0 +1,61 @@
+{
+ "id": "adv_b_54",
+ "seed": 4152649,
+ "recipe": "adventurer",
+ "role": "striker",
+ "rank": "B",
+ "name": "Wren the Lucky",
+ "title": "B-rank Blade",
+ "age": "adult",
+ "sex": "f",
+ "build": "average",
+ "hunch": 0,
+ "skin": "olive",
+ "hair": {
+  "style": "bob",
+  "color": "copper"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "brown",
+  "brows": "thin",
+  "mouth": "flat",
+  "blush": true,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "mail",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "gloves",
+   "greaves",
+   "pauldrons",
+   "tabard"
+  ],
+  "colors": {
+   "top": "brown",
+   "bottom": "olive",
+   "accent": "plum",
+   "leather": "red"
+  }
+ },
+ "pose": {
+  "r": "fold",
+  "l": "fold"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": "greatsword",
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "B",
+  "role": "striker"
+ },
+ "party": "The Ashen Vow"
+}

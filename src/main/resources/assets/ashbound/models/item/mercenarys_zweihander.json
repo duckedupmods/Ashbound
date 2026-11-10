@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/mercenarys_zweihander.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.34,
-     -2.34,
-     0.0
+     -2.28,
+     -2.28,
+     -0.0
     ],
     "scale": [
-     0.3429,
-     0.3429,
-     0.3429
+     0.2816,
+     0.2816,
+     0.2816
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.34,
-     -2.34,
-     0.0
+     -2.28,
+     -2.28,
+     -0.0
     ],
     "scale": [
-     0.3429,
-     0.3429,
-     0.3429
+     0.2816,
+     0.2816,
+     0.2816
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.287,
-     -1.287,
+     -1.254,
+     -1.254,
      0
     ],
     "scale": [
-     0.1886,
-     0.1886,
-     0.1886
+     0.1549,
+     0.1549,
+     0.1549
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/mercenarys_zweihander"
+   }
+  }
+ }
 }

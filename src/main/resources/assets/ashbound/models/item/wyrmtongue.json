@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/wyrmtongue.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.241,
-     -1.241,
-     -0.0
+     -0.996,
+     -0.699,
+     0.085
     ],
     "scale": [
-     0.2802,
-     0.2802,
-     0.2802
+     0.2663,
+     0.2663,
+     0.2663
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.241,
-     -1.241,
-     -0.0
+     -0.996,
+     -0.699,
+     0.085
     ],
     "scale": [
-     0.2802,
-     0.2802,
-     0.2802
+     0.2663,
+     0.2663,
+     0.2663
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.683,
-     -0.683,
+     -0.548,
+     -0.384,
      0
     ],
     "scale": [
-     0.1541,
-     0.1541,
-     0.1541
+     0.1465,
+     0.1465,
+     0.1465
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/wyrmtongue"
+   }
+  }
+ }
 }

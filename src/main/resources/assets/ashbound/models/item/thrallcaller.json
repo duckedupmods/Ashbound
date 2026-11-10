@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/thrallcaller.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.832,
-     -0.23,
-     -0.589
+     -1.494,
+     -1.494,
+     0.0
     ],
     "scale": [
-     0.4197,
-     0.4197,
-     0.4197
+     0.2674,
+     0.2674,
+     0.2674
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.832,
-     -0.23,
-     -0.589
+     -1.494,
+     -1.494,
+     0.0
     ],
     "scale": [
-     0.4197,
-     0.4197,
-     0.4197
+     0.2674,
+     0.2674,
+     0.2674
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     1.008,
-     -0.127,
+     -0.822,
+     -0.822,
      0
     ],
     "scale": [
-     0.2309,
-     0.2309,
-     0.2309
+     0.1471,
+     0.1471,
+     0.1471
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/thrallcaller"
+   }
+  }
+ }
 }

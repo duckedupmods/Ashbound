@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/everbloom.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     0.756,
-     0.866,
-     -0.225
+     -1.024,
+     -0.865,
+     -0.28
     ],
     "scale": [
-     0.3514,
-     0.3514,
-     0.3514
+     0.2872,
+     0.2872,
+     0.2872
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     0.756,
-     0.866,
-     -0.225
+     -1.024,
+     -0.865,
+     -0.28
     ],
     "scale": [
-     0.3514,
-     0.3514,
-     0.3514
+     0.2872,
+     0.2872,
+     0.2872
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.416,
-     0.476,
+     -0.563,
+     -0.476,
      0
     ],
     "scale": [
-     0.1933,
-     0.1933,
-     0.1933
+     0.158,
+     0.158,
+     0.158
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/everbloom"
+   }
+  }
+ }
 }

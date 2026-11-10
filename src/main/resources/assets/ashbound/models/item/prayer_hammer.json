@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/prayer_hammer.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.387,
-     -0.387,
-     -0.0
+     -1.422,
+     -0.985,
+     0.125
     ],
     "scale": [
-     0.4377,
-     0.4377,
-     0.4377
+     0.3337,
+     0.3337,
+     0.3337
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.387,
-     -0.387,
-     -0.0
+     -1.422,
+     -0.985,
+     0.125
     ],
     "scale": [
-     0.4377,
-     0.4377,
-     0.4377
+     0.3337,
+     0.3337,
+     0.3337
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.213,
-     -0.213,
+     -0.782,
+     -0.542,
      0
     ],
     "scale": [
-     0.2407,
-     0.2407,
-     0.2407
+     0.1836,
+     0.1836,
+     0.1836
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/prayer_hammer"
+   }
+  }
+ }
 }

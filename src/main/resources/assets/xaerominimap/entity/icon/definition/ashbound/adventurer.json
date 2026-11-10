@@ -1,0 +1,9 @@
+{
+	"_comment" : "Ashbound adventurers on Xaero's radar: the guild's badge, not a model (their meshes are Epic Fight's, which the model icon can't draw).",
+	"variants" : {
+		"default" : "outlined_sprite:ashbound_adventurer.png"
+	},
+	"modelConfigs" : [
+	],
+	"variantMethod" : "xaero.hud.minimap.radar.icon.definition.BuiltInRadarIconDefinitions.getVariant"
+}

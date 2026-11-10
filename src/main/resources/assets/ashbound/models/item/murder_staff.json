@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/murder_staff.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.519,
-     0.048,
-     -0.42
+     -1.503,
+     -1.503,
+     -0.0
     ],
     "scale": [
-     0.4107,
-     0.4107,
-     0.4107
+     0.269,
+     0.269,
+     0.269
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.519,
-     0.048,
-     -0.42
+     -1.503,
+     -1.503,
+     -0.0
     ],
     "scale": [
-     0.4107,
-     0.4107,
-     0.4107
+     0.269,
+     0.269,
+     0.269
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.835,
-     0.026,
+     -0.827,
+     -0.827,
      0
     ],
     "scale": [
-     0.2259,
-     0.2259,
-     0.2259
+     0.148,
+     0.148,
+     0.148
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/murder_staff"
+   }
+  }
+ }
 }

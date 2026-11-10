@@ -25,6 +25,8 @@ IRONISH = ramp("#2a2a34", "#3c3c4a", "#555566", "#74748a", "#9c9cb0")
 BLOOD = ramp("#2a0608", "#4a0c10", "#74141a", "#a02026", "#c83a3a")
 LEATHER = ramp("#2c160a", "#46240f", "#643618", "#845024", "#a06a34")
 DUSK = ramp("#160c2c", "#261648", "#3a2268", "#50328c", "#6c48b0")
+CANVAS = ramp("#3a3424", "#544c34", "#726848", "#90865e", "#ada278")
+CRUST = ramp("#6a3a14", "#945420", "#b8742e", "#d49648", "#ecbe74")
 
 
 def shaders(s, coat, under, horn, shine, flames=None):
@@ -115,9 +117,9 @@ def quad(name, coat, under, horn, shine, snout, ears, tailw, flames=None, cracks
     k.add(head, C(0, y + 1.6, z + 2.3 + snout, 1.1, 0.7, 0.4), "dark", tag="nose")
     k.add(head, C(0, y - 0.1, z + 2.2 + snout * 0.45, 1.9, 0.5, snout * 0.8), "dark", tag="mouth")
     for sx in (1, -1):
-        k.add(head, C(sx * 1.5, y + 2.0, z + 2.05, 1.5, 1.4, 0.3), "dark", tag="socket")
-        k.add(head, C(sx * 1.55, y + 2.2, z + 2.2, 0.95, 1.0, 0.3), "eye", tag="eye", group="glow")
-        k.add(head, C(sx * 1.5, y + 3.2, z + 1.9, 1.8, 0.4, 0.6), "dark", tag="brow")
+        k.add(head, C(sx * 1.55, y + 2.0, z + 2.35, 1.9, 1.6, 0.3), "dark", tag="socket")
+        k.add(head, C(sx * 1.55, y + 2.15, z + 2.5, 1.3, 1.3, 0.3), "eye", tag="eye", group="glow")
+        k.add(head, C(sx * 1.55, y + 3.5, z + 2.2, 2.1, 0.4, 0.6), "dark", tag="brow")
         p = Part("ear%d" % (sx > 0), (sx * 1.8, y + 3.9, z - 0.2), (("z", sx * -12), ("x", -6)), head)
         k.add(p, C(sx * 2.0, y + 4.3, z - 0.2, 2.4, ears * 0.42, 1.2), "coat", tag="ear")
         k.add(p, C(sx * 2.0, y + 4.3 + ears * 0.38, z - 0.2, 1.5, ears * 0.36, 1.0), "coat", tag="ear")
@@ -255,6 +257,42 @@ def pouch(name):
     return k
 
 
+def rations(name):
+    """The Ration Pouch: a squat waxed canvas satchel on a leather strap, its flap buckled over too much food, a loaf and a string of sausage getting out."""
+    k = Kit(name)
+    shaders(k.s, CANVAS, CRUST, LEATHER, EMBER)
+    k.s.shaders.update(meat=fur(BLOOD, 0.3, 0.2), crumb=fur(CREAM, 0.2, 0.2))
+    head = k.part("head", (0, 0, 0))
+    k.add(head, C(0, 0, 0, 8.6, 0.6, 5.4), "dark", tag="boot")
+    y = 0.5
+    for w, h in ((9.4, 0.8), (10.4, 1.2), (10.8, 2.0), (10.4, 1.6), (9.6, 1.0)):
+        k.add(head, C(0, y, 0, w, h, w * 0.6), "coat", tag="belly")
+        y += h
+    top = y
+    k.add(head, C(0, top, 0, 9.2, 0.4, 5.2), "dark", tag="mouth")
+    # the flap, folded over the front and buckled
+    k.add(head, C(0, top + 0.2, 0.3, 9.8, 0.6, 5.6), "coat", tag="flap")
+    k.add(head, C(0, top - 2.4, 3.05, 7.6, 3.0, 0.5), "coat", tag="flap")
+    k.add(head, C(0, top - 3.4, 3.2, 5.0, 1.0, 0.4), "horn", tag="flap")
+    k.add(head, C(0, top - 3.0, 3.4, 1.6, 2.6, 0.3), "horn", tag="strap")
+    k.add(head, C(0, top - 2.4, 3.6, 1.9, 1.2, 0.3), "trim", tag="buckle")
+    k.add(head, C(0, top - 2.1, 3.8, 0.8, 0.6, 0.2), "dark", tag="buckle")
+    # the strap up and over
+    for sx in (1, -1):
+        k.add(head, C(sx * 5.3, 1.0, 0, 0.5, top - 0.2, 1.6), "horn", tag="strap")
+        k.add(head, C(sx * 5.3, 2.4, 0, 0.7, 1.0, 1.9), "trim", tag="ring")
+    # a loaf shoved in at an angle
+    loaf = k.part("loaf", (-2.0, top, -0.6), (("z", 22), ("x", -10)), head)
+    k.add(loaf, C(-2.0, top, -0.6, 3.2, 3.0, 2.8), "under", tag="loaf")
+    k.add(loaf, C(-2.0, top + 2.9, -0.6, 2.4, 0.9, 2.2), "under", tag="loaf")
+    k.add(loaf, C(-2.0, top + 3.7, -0.6, 1.5, 0.3, 1.3), "crumb", tag="loaf")
+    # and sausages over the far side
+    for n, (x, yy) in enumerate(((1.6, 0.6), (3.0, 0.2), (4.2, -0.8))):
+        p = Part("link%d" % n, (x, top + yy, -0.2), (("z", -22 * n),), head)
+        k.add(p, C(x, top + yy, -0.2, 1.8, 1.3, 1.5), "meat", tag="sausage")
+    return k
+
+
 def wisp(name, coat, shine, flames):
     """A little flame with a face, burning down to a tail."""
     k = Kit(name)
@@ -382,12 +420,16 @@ if __name__ == '__main__':
     V.T = 4
     if "--bag" in sys.argv:
         print(save(pouch("bottomless_bag"), "bottomless_bag"))
+    elif "--rations" in sys.argv:
+        print(save(rations("ration_pouch"), "ration_pouch"))
     elif "--export" in sys.argv:
         export()
     else:
         names = [a for a in sys.argv[1:] if not a.startswith("--")]
         if "bottomless_bag" in names:
             M.preview(pouch("bottomless_bag").s, "pet_bottomless_bag", ("boot",))
+        if "ration_pouch" in names:
+            M.preview(rations("ration_pouch").s, "pet_ration_pouch", ("boot",))
         for r in ROSTER:
             if not names or r[0] in names:
                 M.preview(r[6](r[0]).s, "pet_" + r[0], ("boot",))

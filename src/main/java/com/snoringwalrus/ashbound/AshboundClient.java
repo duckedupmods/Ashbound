@@ -38,6 +38,10 @@ public final class AshboundClient {
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	static void hooks(net.neoforged.bus.api.IEventBus bus) {
 		com.snoringwalrus.ashbound.client.VitalsHud.hooks(bus);
+		com.snoringwalrus.ashbound.client.HotbarHud.hooks();
+		com.snoringwalrus.ashbound.client.TossedFx.hooks();
+		com.snoringwalrus.ashbound.client.HitNumbers.hooks(bus);
+		com.snoringwalrus.ashbound.client.MeterHud.hooks(bus);
 		com.snoringwalrus.ashbound.client.LevelHud.hooks(bus);
 		com.snoringwalrus.ashbound.client.CurioKeys.hooks();
 		com.snoringwalrus.ashbound.client.RelicHud.hooks(bus);
@@ -53,9 +57,23 @@ public final class AshboundClient {
 				type -> new PHumanoidRenderer(CINDERHUSK, e.getContext(), type).initLayerLast(e.getContext(), type)));
 		EpicFightClientEventHooks.Registry.ADD_PATCHED_ENTITY.registerEvent(e -> e.addPatchedEntityRenderer(Townsfolk.NPC.get(),
 				type -> new NpcLooks.Renderer(e.getContext(), type).initLayerLast(e.getContext(), type)));
+		EpicFightClientEventHooks.Registry.ADD_PATCHED_ENTITY.registerEvent(e -> e.addPatchedEntityRenderer(com.snoringwalrus.ashbound.Adventurers.TYPE.get(),
+				type -> new NpcLooks.AdventurerRenderer(e.getContext(), type).initLayerLast(e.getContext(), type)));
 		NpcLooks.hooks();
+		com.snoringwalrus.ashbound.client.AdventurerBarks.hooks();
 		// players keep Epic Fight's body in mining mode too: the vanilla model would wear our armour sheets as flat boxes
 		EpicFightClientEventHooks.Render.VALIDATE_PLAYER_MODEL_TO_RENDER.registerEvent(e -> e.setShouldRender(true));
+		// Epic Fight draws the skin before the armour, so the body under a designed set is simply left out: nothing can poke through
+		EpicFightClientEventHooks.Render.PREPARE_MODEL_TO_RENDER.registerEvent(e -> {
+			if (e.getMesh() instanceof HumanoidMesh m && e.getEntityPatch().getOriginal() instanceof net.minecraft.world.entity.LivingEntity p
+					&& (p instanceof net.minecraft.world.entity.player.Player || p instanceof com.snoringwalrus.ashbound.Adventurer)) {
+				if (designed(p, net.minecraft.world.entity.EquipmentSlot.HEAD)) m.hat.setHidden(true);
+				if (designed(p, net.minecraft.world.entity.EquipmentSlot.CHEST))
+					java.util.List.of(m.torso, m.jacket, m.leftArm, m.rightArm, m.leftSleeve, m.rightSleeve).forEach(part -> part.setHidden(true));
+				if (designed(p, net.minecraft.world.entity.EquipmentSlot.LEGS))
+					java.util.List.of(m.leftLeg, m.rightLeg, m.leftPants, m.rightPants).forEach(part -> part.setHidden(true));
+			}
+		});
 		SilkMobs.WALKER.forEach((k, t) -> {
 			Meshes.MeshAccessor<HumanoidMesh> mesh = Meshes.MeshAccessor.create(Ashbound.ID, "entity/" + k.mesh(), loader -> loader.loadSkinnedMesh(HumanoidMesh::new));
 			EpicFightClientEventHooks.Registry.ADD_PATCHED_ENTITY.registerEvent(e -> e.addPatchedEntityRenderer(t.get(),
@@ -64,6 +82,10 @@ public final class AshboundClient {
 		SilkMobs.CRAWLER.forEach((k, t) -> {
 			Meshes.MeshAccessor<SpiderMesh> mesh = Meshes.MeshAccessor.create(Ashbound.ID, "entity/" + k.mesh(), loader -> loader.loadSkinnedMesh(SpiderMesh::new));
 			EpicFightClientEventHooks.Registry.ADD_PATCHED_ENTITY.registerEvent(e -> e.addPatchedEntityRenderer(t.get(), type -> new PSpiderRenderer(e.getContext(), type) {
+				{
+					patchedLayers.remove(net.minecraft.client.renderer.entity.layers.SpiderEyesLayer.class);   // the spider's eyes, hung where a spider's face would be
+				}
+
 				@Override
 				public AssetAccessor<SpiderMesh> getDefaultMesh() {
 					return mesh;
@@ -78,6 +100,10 @@ public final class AshboundClient {
 		GateMobs.CRAWLER.forEach((k, t) -> {
 			Meshes.MeshAccessor<SpiderMesh> mesh = Meshes.MeshAccessor.create(Ashbound.ID, "entity/" + k.mesh(), loader -> loader.loadSkinnedMesh(SpiderMesh::new));
 			EpicFightClientEventHooks.Registry.ADD_PATCHED_ENTITY.registerEvent(e -> e.addPatchedEntityRenderer(t.get(), type -> new PSpiderRenderer(e.getContext(), type) {
+				{
+					patchedLayers.remove(net.minecraft.client.renderer.entity.layers.SpiderEyesLayer.class);
+				}
+
 				@Override
 				public AssetAccessor<SpiderMesh> getDefaultMesh() {
 					return mesh;
@@ -97,6 +123,11 @@ public final class AshboundClient {
 			}
 		});
 		event.registerEntityRenderer(Townsfolk.NPC.get(), NpcLooks::vanilla);
+		Beast.TYPES.values().forEach(t -> event.registerEntityRenderer(t.get(), com.snoringwalrus.ashbound.client.BeastRender::new));
+		event.registerEntityRenderer(WantedPoster.TYPE.get(), com.snoringwalrus.ashbound.client.WantedPosterRenderer::new);
+		event.registerEntityRenderer(IceSlab.TYPE.get(), ctx -> new net.minecraft.client.renderer.entity.ThrownItemRenderer<>(ctx, 3.0f, false));
+		event.registerEntityRenderer(com.snoringwalrus.ashbound.Adventurers.TYPE.get(), NpcLooks::vanillaAdventurer);
+		event.registerEntityRenderer(Intro.WAGON.get(), com.snoringwalrus.ashbound.client.WagonRender::new);
 		SilkMobs.WALKER.forEach((k, t) -> event.registerEntityRenderer(t.get(), ctx -> new HumanoidMobRenderer<SilkMobs.Walker, HumanoidModel<SilkMobs.Walker>>(ctx,
 				new HumanoidModel<>(ctx.bakeLayer(ModelLayers.ZOMBIE)), 0.7f) {
 			@Override
@@ -105,6 +136,10 @@ public final class AshboundClient {
 			}
 		}));
 		SilkMobs.CRAWLER.forEach((k, t) -> event.registerEntityRenderer(t.get(), ctx -> new SpiderRenderer<SilkMobs.Crawler>(ctx) {
+			{
+				layers.removeIf(l -> l instanceof net.minecraft.client.renderer.entity.layers.SpiderEyesLayer);
+			}
+
 			@Override
 			public ResourceLocation getTextureLocation(SilkMobs.Crawler entity) {
 				return ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "textures/entity/" + k.mesh() + ".png");
@@ -118,6 +153,10 @@ public final class AshboundClient {
 			}
 		}));
 		GateMobs.CRAWLER.forEach((k, t) -> event.registerEntityRenderer(t.get(), ctx -> new SpiderRenderer<GateMobs.Crawler>(ctx) {
+			{
+				layers.removeIf(l -> l instanceof net.minecraft.client.renderer.entity.layers.SpiderEyesLayer);
+			}
+
 			@Override
 			public ResourceLocation getTextureLocation(GateMobs.Crawler entity) {
 				return ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "textures/entity/" + k.mesh() + ".png");
@@ -130,16 +169,18 @@ public final class AshboundClient {
 		for (Mounts.Kind k : Mounts.ALL) event.registerEntityRenderer(Mounts.type(k), com.snoringwalrus.ashbound.client.MountRender::new);
 		event.registerEntityRenderer(Mounts.REVENANT.get(), com.snoringwalrus.ashbound.client.ThrallRender::new);
 		event.registerEntityRenderer(Mounts.CHAMPION.get(), com.snoringwalrus.ashbound.client.ThrallRender::new);
+		for (var b : Mounts.BOUND) event.registerEntityRenderer(b.get(), com.snoringwalrus.ashbound.client.ThrallRender::new);
 	}
 
 	@SubscribeEvent
 	static void items(net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent event) {
-		event.registerItem(com.snoringwalrus.ashbound.client.PetRender.items(), java.util.stream.Stream.concat(Curios.PET_ITEMS.stream(), java.util.stream.Stream.of(Bag.POUCH)).map(i -> i.get()).toArray(net.minecraft.world.item.Item[]::new));
+		event.registerItem(com.snoringwalrus.ashbound.client.PetRender.items(), java.util.stream.Stream.concat(Curios.PET_ITEMS.stream(), java.util.stream.Stream.of(Bag.POUCH, Rations.POUCH)).map(i -> i.get()).toArray(net.minecraft.world.item.Item[]::new));
 	}
 
 	@SubscribeEvent
 	static void menus(net.neoforged.neoforge.client.event.RegisterMenuScreensEvent event) {
 		event.register(Bag.MENU.get(), com.snoringwalrus.ashbound.client.BagScreen::new);
+		event.register(Trades.BENCH.get(), com.snoringwalrus.ashbound.client.BenchScreen::new);
 	}
 
 	/** the curio key (V) */
@@ -172,5 +213,9 @@ public final class AshboundClient {
 						e == null || e.getUseItem() != stack ? 0 : (stack.getUseDuration(e) - e.getUseItemRemainingTicks()) / 20f);
 			}
 		});
+	}
+
+	private static boolean designed(net.minecraft.world.entity.LivingEntity p, net.minecraft.world.entity.EquipmentSlot slot) {
+		return p.getItemBySlot(slot).getItem() instanceof Armors.Piece a && a.designed();
 	}
 }

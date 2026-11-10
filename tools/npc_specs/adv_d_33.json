@@ -1,0 +1,61 @@
+{
+ "id": "adv_d_33",
+ "seed": 4113033,
+ "recipe": "adventurer",
+ "role": "black_mage",
+ "rank": "D",
+ "name": "Brokk Copperkettle",
+ "title": "D-rank Black Mage",
+ "age": "adult",
+ "sex": "m",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "tan",
+ "hair": {
+  "style": "bald",
+  "color": "auburn"
+ },
+ "headwear": "hood",
+ "beard": null,
+ "face": {
+  "eye": "round",
+  "iris": "ice",
+  "brows": "bushy",
+  "mouth": "flat",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "mantle",
+   "sash"
+  ],
+  "colors": {
+   "top": "navy",
+   "bottom": "charcoal",
+   "accent": "rust",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "staff",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "D",
+  "role": "black_mage"
+ },
+ "race": "dwarf",
+ "recipe_race": "dwarf",
+ "party": "The Stonejaws"
+}

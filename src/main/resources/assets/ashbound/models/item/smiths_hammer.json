@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/smiths_hammer.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     0.059,
-     -0.028,
-     -0.025
+     -0.239,
+     -0.778,
+     -0.154
     ],
     "scale": [
-     0.4413,
-     0.4413,
-     0.4413
+     0.3426,
+     0.3426,
+     0.3426
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     0.059,
-     -0.028,
-     -0.025
+     -0.239,
+     -0.778,
+     -0.154
     ],
     "scale": [
-     0.4413,
-     0.4413,
-     0.4413
+     0.3426,
+     0.3426,
+     0.3426
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.032,
-     -0.015,
+     -0.131,
+     -0.428,
      0
     ],
     "scale": [
-     0.2427,
-     0.2427,
-     0.2427
+     0.1884,
+     0.1884,
+     0.1884
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/smiths_hammer"
+   }
+  }
+ }
 }

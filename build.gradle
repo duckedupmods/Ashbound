@@ -144,7 +144,7 @@ dependencies {
     runtimeOnly "maven.modrinth:geckolib:Grwn5rUB"
     runtimeOnly "maven.modrinth:dungeons-and-taverns:BYUUUeZA"
     // speed: chunks drawn (Sodium), game logic (Lithium), terrain noise (Noisium), memory and loading (FerriteCore, ModernFix)
-    runtimeOnly "maven.modrinth:sodium:uMOpc5uV"
+    // Sodium is a jar in run/mods: on the classpath the real mod nested in its jar never loads, and Iris needs it
     runtimeOnly "maven.modrinth:lithium:DDUrRVCA"
     runtimeOnly "maven.modrinth:noisium:nJBE6tif"
     runtimeOnly "maven.modrinth:ferrite-core:x7kQWVju"

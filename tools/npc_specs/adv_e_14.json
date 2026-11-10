@@ -1,0 +1,59 @@
+{
+ "id": "adv_e_14",
+ "seed": 4120933,
+ "recipe": "adventurer",
+ "role": "black_mage",
+ "rank": "E",
+ "name": "Joss Thorne",
+ "title": "E-rank Black Mage",
+ "age": "adult",
+ "sex": "m",
+ "build": "average",
+ "hunch": 0,
+ "skin": "fair",
+ "hair": {
+  "style": "spiky",
+  "color": "ash_blonde"
+ },
+ "headwear": "hood",
+ "beard": null,
+ "face": {
+  "eye": "sharp",
+  "iris": "violet",
+  "brows": "stern",
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "sash",
+   "satchel"
+  ],
+  "colors": {
+   "top": "charcoal",
+   "bottom": "charcoal",
+   "accent": "ochre",
+   "leather": "black"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "staff",
+ "offhand": null,
+ "back": null,
+ "hip": "tome",
+ "prop": null,
+ "_filters": {
+  "rank": "E",
+  "role": "black_mage"
+ },
+ "party": "Copper Bell Company"
+}

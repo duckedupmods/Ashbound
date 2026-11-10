@@ -1,0 +1,60 @@
+{
+ "id": "adv_d_24",
+ "seed": 4120943,
+ "recipe": "adventurer",
+ "role": "tank",
+ "rank": "D",
+ "name": "Ines Dregg",
+ "title": "D-rank Shieldbearer",
+ "age": "adult",
+ "sex": "f",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "tan",
+ "hair": {
+  "style": "long",
+  "color": "ash_blonde"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "round",
+  "iris": "hazel",
+  "brows": "soft",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "bracers",
+   "pauldron_l",
+   "tassets"
+  ],
+  "colors": {
+   "top": "grey",
+   "bottom": "charcoal",
+   "accent": "navy",
+   "leather": "black"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "mace",
+ "offhand": "shield",
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "D",
+  "role": "tank"
+ },
+ "party": "Ninth Lantern"
+}

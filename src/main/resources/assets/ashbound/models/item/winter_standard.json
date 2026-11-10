@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/winter_standard.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.595,
-     3.358,
-     7.238
+     1.21,
+     2.245,
+     6.286
     ],
     "scale": [
-     0.5505,
-     0.5505,
-     0.5505
+     0.467,
+     0.467,
+     0.467
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.595,
-     3.358,
-     7.238
+     1.21,
+     2.245,
+     6.286
     ],
     "scale": [
-     0.5505,
-     0.5505,
-     0.5505
+     0.467,
+     0.467,
+     0.467
     ]
    },
    "ground": {
@@ -115,15 +115,23 @@
      0.0
     ],
     "translation": [
-     0.877,
-     1.847,
+     0.665,
+     1.235,
      0
     ],
     "scale": [
-     0.3028,
-     0.3028,
-     0.3028
+     0.2569,
+     0.2569,
+     0.2569
     ]
+   }
+  }
+ },
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/winter_standard"
    }
   }
  },
@@ -134,6 +142,5 @@
    },
    "model": "ashbound:item/winter_standard_blocking"
   }
- ],
- "perspectives": {}
+ ]
 }

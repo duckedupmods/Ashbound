@@ -1,0 +1,18 @@
+{
+ "type": "ashbound:astral_magus",
+ "generator": {
+  "type": "minecraft:flat",
+  "settings": {
+   "biome": "ashbound:astral_magus",
+   "features": false,
+   "lakes": false,
+   "layers": [
+    {
+     "block": "minecraft:air",
+     "height": 1
+    }
+   ],
+   "structure_overrides": []
+  }
+ }
+}

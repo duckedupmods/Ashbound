@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/glass_shiv.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.384,
-     -1.384,
+     -1.728,
+     -1.728,
      0.0
     ],
     "scale": [
-     0.7337,
-     0.7337,
-     0.7337
+     0.6185,
+     0.6185,
+     0.6185
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.384,
-     -1.384,
+     -1.728,
+     -1.728,
      0.0
     ],
     "scale": [
-     0.7337,
-     0.7337,
-     0.7337
+     0.6185,
+     0.6185,
+     0.6185
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.761,
-     -0.761,
+     -0.95,
+     -0.95,
      0
     ],
     "scale": [
-     0.4035,
-     0.4035,
-     0.4035
+     0.3402,
+     0.3402,
+     0.3402
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/glass_shiv"
+   }
+  }
+ }
 }

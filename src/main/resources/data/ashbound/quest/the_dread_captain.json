@@ -1,0 +1,10 @@
+{
+ "title": "The Dread Captain",
+ "rank": "C",
+ "text": "The corsairs answer to a captain who went down with the flagship and came back up. Board the wreck and end the Dread Captain's command.",
+ "kill": "ashbound:dread_captain",
+ "count": 1,
+ "points": 170,
+ "coins": 280,
+ "repeat": true
+}

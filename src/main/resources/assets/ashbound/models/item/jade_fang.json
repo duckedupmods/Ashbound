@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/jade_fang.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.557,
-     -1.557,
-     -0.0
+     -1.294,
+     -1.294,
+     0.0
     ],
     "scale": [
-     0.6101,
-     0.6101,
-     0.6101
+     0.5381,
+     0.5381,
+     0.5381
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.557,
-     -1.557,
-     -0.0
+     -1.294,
+     -1.294,
+     0.0
     ],
     "scale": [
-     0.6101,
-     0.6101,
-     0.6101
+     0.5381,
+     0.5381,
+     0.5381
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.856,
-     -0.856,
+     -0.712,
+     -0.712,
      0
     ],
     "scale": [
-     0.3356,
-     0.3356,
-     0.3356
+     0.2959,
+     0.2959,
+     0.2959
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/jade_fang"
+   }
+  }
+ }
 }

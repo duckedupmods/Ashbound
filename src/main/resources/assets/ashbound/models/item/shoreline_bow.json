@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/shoreline_bow.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.038,
-     -0.892,
-     0.183
+     1.672,
+     -1.698,
+     0.295
     ],
     "scale": [
-     1.0402,
-     1.0402,
-     1.0402
+     0.9703,
+     0.9703,
+     0.9703
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.038,
-     -0.892,
-     0.183
+     1.672,
+     -1.698,
+     0.295
     ],
     "scale": [
-     1.0402,
-     1.0402,
-     1.0402
+     0.9703,
+     0.9703,
+     0.9703
     ]
    },
    "ground": {
@@ -115,19 +115,26 @@
      0.0
     ],
     "translation": [
-     0.571,
-     -0.491,
+     0.92,
+     -0.934,
      0
     ],
     "scale": [
-     0.5721,
-     0.5721,
-     0.5721
+     0.5337,
+     0.5337,
+     0.5337
     ]
    }
   }
  },
- "perspectives": {},
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/shoreline_bow"
+   }
+  }
+ },
  "overrides": [
   {
    "predicate": {

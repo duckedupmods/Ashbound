@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/widowmaker.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.86,
-     -2.593,
-     0.076
+     -2.115,
+     -2.115,
+     0.0
     ],
     "scale": [
-     0.3241,
-     0.3241,
-     0.3241
+     0.2795,
+     0.2795,
+     0.2795
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.86,
-     -2.593,
-     0.076
+     -2.115,
+     -2.115,
+     0.0
     ],
     "scale": [
-     0.3241,
-     0.3241,
-     0.3241
+     0.2795,
+     0.2795,
+     0.2795
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.573,
-     -1.426,
+     -1.163,
+     -1.163,
      0
     ],
     "scale": [
-     0.1782,
-     0.1782,
-     0.1782
+     0.1537,
+     0.1537,
+     0.1537
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/widowmaker"
+   }
+  }
+ }
 }

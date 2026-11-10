@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/faceless_blade.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.46,
-     -2.46,
+     -2.919,
+     -2.919,
      -0.0
     ],
     "scale": [
-     0.4317,
-     0.4317,
-     0.4317
+     0.4665,
+     0.4665,
+     0.4665
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.46,
-     -2.46,
+     -2.919,
+     -2.919,
      -0.0
     ],
     "scale": [
-     0.4317,
-     0.4317,
-     0.4317
+     0.4665,
+     0.4665,
+     0.4665
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.353,
-     -1.353,
+     -1.605,
+     -1.605,
      0
     ],
     "scale": [
-     0.2374,
-     0.2374,
-     0.2374
+     0.2566,
+     0.2566,
+     0.2566
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/faceless_blade"
+   }
+  }
+ }
 }

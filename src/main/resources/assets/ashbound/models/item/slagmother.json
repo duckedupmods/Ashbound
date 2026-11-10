@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/slagmother.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.806,
-     -0.196,
-     -0.572
+     -0.892,
+     -1.008,
+     -0.033
     ],
     "scale": [
-     0.4217,
-     0.4217,
-     0.4217
+     0.2953,
+     0.2953,
+     0.2953
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.806,
-     -0.196,
-     -0.572
+     -0.892,
+     -1.008,
+     -0.033
     ],
     "scale": [
-     0.4217,
-     0.4217,
-     0.4217
+     0.2953,
+     0.2953,
+     0.2953
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.993,
-     -0.108,
+     -0.491,
+     -0.554,
      0
     ],
     "scale": [
-     0.2319,
-     0.2319,
-     0.2319
+     0.1624,
+     0.1624,
+     0.1624
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/slagmother"
+   }
+  }
+ }
 }

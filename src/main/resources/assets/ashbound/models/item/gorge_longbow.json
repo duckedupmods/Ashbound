@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/gorge_longbow.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.038,
-     -0.892,
-     0.183
+     0.337,
+     1.025,
+     0.059
     ],
     "scale": [
-     1.0402,
-     1.0402,
-     1.0402
+     0.6836,
+     0.6836,
+     0.6836
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.038,
-     -0.892,
-     0.183
+     0.337,
+     1.025,
+     0.059
     ],
     "scale": [
-     1.0402,
-     1.0402,
-     1.0402
+     0.6836,
+     0.6836,
+     0.6836
     ]
    },
    "ground": {
@@ -115,19 +115,26 @@
      0.0
     ],
     "translation": [
-     0.571,
-     -0.491,
+     0.185,
+     0.564,
      0
     ],
     "scale": [
-     0.5721,
-     0.5721,
-     0.5721
+     0.376,
+     0.376,
+     0.376
     ]
    }
   }
  },
- "perspectives": {},
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/gorge_longbow"
+   }
+  }
+ },
  "overrides": [
   {
    "predicate": {

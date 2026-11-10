@@ -38,7 +38,7 @@ public final class GateParticles {
 			RenderSystem.defaultBlendFunc();
 			RenderSystem.depthMask(false);
 			RenderSystem.setShader(() -> GateShaders.particle);
-			return tesselator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
+			return ShaderPacks.sheet(tesselator);
 		}
 
 		@Override

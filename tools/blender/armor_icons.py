@@ -13,7 +13,7 @@ OUT = os.path.join(GAME, "tools/renders/icons")
 sys.path.insert(0, os.path.join(GAME, "tools"))
 import efarmor  # noqa: E402
 
-SIZE = 64          # tools/pixicons.py brings it down to 32 as pixel art
+SIZE = int(os.environ.get("ICON_SIZE", 64))          # tools/pixicons.py brings it down to 32 as pixel art
 YAW, PITCH = math.radians(28), math.radians(14)    # the piece turned to show its front and one side, seen a little from above
 
 
@@ -31,6 +31,7 @@ def material(set_name):
 
 
 LININGS = json.load(open(os.path.join(OUT, "linings.json")))
+OUT = os.environ.get("ICON_OUT", OUT)
 
 
 def piece(path, mat, lining, spread=0.0):
@@ -104,6 +105,8 @@ for name, _, _, _, items in efarmor.SETS:
         item = "%s_%s" % (name, it)
         legs = slot >= 2
         YAW, PITCH = math.radians(10 if legs else 28), math.radians(8 if legs else 14)
+        if "ICON_OUT" in os.environ:
+            YAW, PITCH = math.radians(16), math.radians(10)     # the reference to draw from: nearly front on
         ob, verts = piece(os.path.join(A, "animmodels/armor/%s.json" % item), mat, LININGS[name], 0.13 if legs else 0.0)
         # Epic Fight's frame faces +y; look back at the front from in front, off to one side and a little above
         d = Vector((math.sin(YAW) * math.cos(PITCH), math.cos(YAW) * math.cos(PITCH), math.sin(PITCH)))

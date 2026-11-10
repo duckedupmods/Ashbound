@@ -20,9 +20,9 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 
 /**
- * What a gate's dwellers leave (docs/GEAR.md, rates in docs/BALANCE.md): half of them a common drop, casters now and then the elite
- * drop, the elite (the key-holder) both, and the boss, for every player who fought it, its trophy, a handful of the
- * rest and a one-in-five chance of one of its six boss weapons, picked at random and rolled for each player.
+ * What a gate's dwellers leave (docs/GEAR.md, rates in docs/BALANCE.md), each player rolling their own so a party of five gets five shares:
+ * half of them a common drop, casters now and then the elite drop, the elite (the key-holder) both, and the boss its trophy, a handful of
+ * the rest and a one-in-five chance of one of its six boss weapons, picked at random, that climbs with every miss.
  */
 public final class GateLoot {
 	private GateLoot() {}
@@ -59,11 +59,20 @@ public final class GateLoot {
 		return it == null ? ItemStack.EMPTY : new ItemStack(it, n);
 	}
 
-	private static void spill(LivingEntity e, ItemStack s) {
+	/** owner: only they can pick it up */
+	private static void spill(LivingEntity e, ItemStack s, @org.jetbrains.annotations.Nullable ServerPlayer owner) {
 		if (s.isEmpty()) return;
 		ItemEntity ie = new ItemEntity(e.level(), e.getX(), e.getY() + 0.5, e.getZ(), s);
 		ie.setDefaultPickUpDelay();
+		if (owner != null) ie.setTarget(owner.getUUID());
 		e.level().addFreshEntity(ie);
+	}
+
+	/** Everyone near the kill, and their party a little further off. */
+	private static List<ServerPlayer> fighters(LivingEntity e) {
+		List<ServerPlayer> near = new java.util.ArrayList<>(e.level().getEntitiesOfClass(ServerPlayer.class, e.getBoundingBox().inflate(Balance.radius()), p -> !p.isSpectator()));
+		near.addAll(Party.alongside(near, Party.SHARE));
+		return near;
 	}
 
 	private static void give(ServerPlayer p, ItemStack s) {
@@ -79,24 +88,38 @@ public final class GateLoot {
 		if (w == null) return;
 		RandomSource r = e.getRandom();
 		Gear.Dungeon d = w.dungeon();
-		switch (w.role()) {
-			// rates from tools/balance.py MATS: a full set takes about two clears, a weapon about half of one
-			case COMMON -> {
-				if (r.nextFloat() < 0.5f) spill(e, mat(d, 0, 1));
-				if (r.nextFloat() < EMBER_COMMON) spill(e, new ItemStack(Smithing.TEMPER.get()));
-			}
-			case CASTER -> {
-				if (r.nextFloat() < 0.5f) spill(e, mat(d, 0, 1));
-				if (r.nextFloat() < 0.05f) spill(e, mat(d, 1, 1));
-				if (r.nextFloat() < EMBER_COMMON) spill(e, new ItemStack(Smithing.TEMPER.get()));
-			}
-			case ELITE -> {
-				spill(e, mat(d, 0, 3));
-				spill(e, mat(d, 1, 1));
-				if (r.nextFloat() < EMBER_ELITE) spill(e, new ItemStack(Smithing.TEMPER.get()));
-			}
-			case BOSS -> boss(e, d, r);
+		if (w.role() == Role.BOSS) {
+			boss(e, d, r);
+			return;
 		}
+		List<ServerPlayer> near = fighters(e);
+		for (ServerPlayer p : near) {
+			ServerPlayer own = near.size() > 1 ? p : null;
+			switch (w.role()) {
+				// rates from tools/balance.py MATS: a full set takes about two clears, a weapon about half of one
+				case COMMON -> {
+					if (r.nextFloat() < 0.5f) spill(e, mat(d, 0, 1), own);
+					if (r.nextFloat() < EMBER_COMMON) spill(e, new ItemStack(Smithing.TEMPER.get()), own);
+				}
+				case CASTER -> {
+					if (r.nextFloat() < 0.5f) spill(e, mat(d, 0, 1), own);
+					if (r.nextFloat() < 0.05f) spill(e, mat(d, 1, 1), own);
+					if (r.nextFloat() < EMBER_COMMON) spill(e, new ItemStack(Smithing.TEMPER.get()), own);
+				}
+				default -> {
+					spill(e, mat(d, 0, 3), own);
+					spill(e, mat(d, 1, 1), own);
+					if (r.nextFloat() < EMBER_ELITE) spill(e, new ItemStack(Smithing.TEMPER.get()), own);
+				}
+			}
+		}
+	}
+
+	/** A boss weapon's chance, and what each boss without one adds: soft bad-luck protection, so ten at the very worst. */
+	static final float WEAPON_ODDS = 0.20f, WEAPON_MISS = 0.09f;
+
+	static float weaponOdds(int misses) {
+		return Math.min(1, WEAPON_ODDS + WEAPON_MISS * misses);
 	}
 
 	private static void boss(LivingEntity e, Gear.Dungeon d, RandomSource r) {
@@ -111,7 +134,10 @@ public final class GateLoot {
 			give(p, mat(d, 1, 1 + r.nextInt(2)));
 			give(p, mat(d, 0, 4 + r.nextInt(4)));
 			Books.drops(p, d.rank(), r).forEach(b -> give(p, b));
-			if (!pool.isEmpty() && r.nextFloat() < 0.20f) {
+			if (pool.isEmpty()) continue;
+			if (r.nextFloat() >= weaponOdds(p.getData(Levels.BOSS_MISSES))) p.setData(Levels.BOSS_MISSES, p.getData(Levels.BOSS_MISSES) + 1);
+			else {
+				p.setData(Levels.BOSS_MISSES, 0);
 				Gear.Weapon w = pool.get(r.nextInt(pool.size()));
 				Item it = Gear.item(w.id());
 				if (it == null) continue;

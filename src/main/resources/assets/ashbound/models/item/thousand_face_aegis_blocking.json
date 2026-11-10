@@ -82,18 +82,6 @@
    "textures": {
     "layer0": "ashbound:item/thousand_face_aegis"
    }
-  },
-  "ground": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/thousand_face_aegis"
-   }
-  },
-  "fixed": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/thousand_face_aegis"
-   }
   }
  }
 }

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/cauldron_lid.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.525,
-     3.38,
-     6.976
+     1.511,
+     2.754,
+     6.48
     ],
     "scale": [
-     0.5283,
-     0.5283,
-     0.5283
+     0.5051,
+     0.5051,
+     0.5051
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.525,
-     3.38,
-     6.976
+     1.511,
+     2.754,
+     6.48
     ],
     "scale": [
-     0.5283,
-     0.5283,
-     0.5283
+     0.5051,
+     0.5051,
+     0.5051
     ]
    },
    "ground": {
@@ -115,15 +115,23 @@
      0.0
     ],
     "translation": [
-     0.839,
-     1.859,
+     0.831,
+     1.515,
      0
     ],
     "scale": [
-     0.2905,
-     0.2905,
-     0.2905
+     0.2778,
+     0.2778,
+     0.2778
     ]
+   }
+  }
+ },
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/cauldron_lid"
    }
   }
  },
@@ -134,6 +142,5 @@
    },
    "model": "ashbound:item/cauldron_lid_blocking"
   }
- ],
- "perspectives": {}
+ ]
 }

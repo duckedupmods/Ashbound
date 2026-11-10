@@ -5,7 +5,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -60,6 +62,7 @@ import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
 /**
@@ -97,6 +100,15 @@ public final class Lairs {
 	private static final int FLAGS = Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE;
 	private static final String DWELLER = "ashbound_dweller", BACK = "ashbound_gate_back";
 	private static final Map<String, Lair> LAIRS = new ConcurrentHashMap<>();
+	/** Dungeons whose boss is down, by name, till the last one's out and the gates into them have closed. */
+	private static final Map<String, Clearing> CLEARED = new HashMap<>();
+	/** How many seconds an emptied dungeon waits for a gate to load, the one you came in by being wherever you've just landed. */
+	private static final int GATE_WAIT = 30;
+
+	private static final class Clearing {
+		final Set<UUID> gates = new HashSet<>();
+		int waited;
+	}
 	private static Job job;
 
 	static final class Lair {
@@ -217,6 +229,14 @@ public final class Lairs {
 		NeoForge.EVENT_BUS.addListener((ServerTickEvent.Post e) -> tick(e.getServer()));
 		NeoForge.EVENT_BUS.addListener((LivingDeathEvent e) -> bossDown(e.getEntity()));
 		NeoForge.EVENT_BUS.addListener(Lairs::joined);
+		// dead inside: back out in front of the gate you came in by. What's kept on you doesn't outlive the body by itself
+		NeoForge.EVENT_BUS.addListener((PlayerEvent.Clone e) -> {
+			CompoundTag back = e.getOriginal().getPersistentData().getCompound(BACK);
+			if (e.isWasDeath() && e.getOriginal().level().dimension() == GATES && !back.isEmpty()) e.getEntity().getPersistentData().put(BACK, back);
+		});
+		NeoForge.EVENT_BUS.addListener((PlayerEvent.PlayerRespawnEvent e) -> {
+			if (e.getEntity() instanceof ServerPlayer p && !e.isEndConquered() && p.getPersistentData().contains(BACK)) leave(p);
+		});
 	}
 
 	// ---------------------------------------------------------------- going in and out
@@ -236,6 +256,12 @@ public final class Lairs {
 	/** Through a gate (or by command): in at once if it's built and stocked, otherwise it's raised while you wait. */
 	public static void enter(ServerPlayer p, String name) {
 		enter(p, name, false);
+	}
+
+	/** By this gate, which closes behind the last one out once the boss is down. */
+	static void enter(ServerPlayer p, String name, GateEntity gate) {
+		enter(p, name, false);
+		if (p.getPersistentData().contains(BACK)) p.getPersistentData().getCompound(BACK).putUUID("gate", gate.getUUID());
 	}
 
 	private static void enter(ServerPlayer p, String name, boolean rebuild) {
@@ -304,8 +330,37 @@ public final class Lairs {
 
 	// ---------------------------------------------------------------- building
 
+	/** Nobody left in a cleared dungeon: what opened onto it goes, as it would if it had run out its time. */
+	private static void closeCleared(MinecraftServer server) {
+		ServerLevel level = server.getLevel(GATES);
+		if (level == null) return;
+		for (Iterator<Map.Entry<String, Clearing>> it = CLEARED.entrySet().iterator(); it.hasNext();) {
+			var e = it.next();
+			Lair l = get(e.getKey());
+			Clearing c = e.getValue();
+			boolean inside = false;
+			for (ServerPlayer p : level.players()) {
+				if (!l.data.contains(l.origin, p.blockPosition())) continue;
+				inside = true;
+				CompoundTag back = p.getPersistentData().getCompound(BACK);
+				if (back.hasUUID("gate")) c.gates.add(back.getUUID("gate"));
+			}
+			if (inside) continue;
+			c.gates.removeIf(id -> {
+				for (ServerLevel w : server.getAllLevels())
+					if (w.getEntity(id) instanceof GateEntity g) {
+						g.close();
+						return true;
+					}
+				return false;
+			});
+			if (c.gates.isEmpty() || ++c.waited > GATE_WAIT) it.remove();
+		}
+	}
+
 	private static void tick(MinecraftServer server) {
 		if (server.getTickCount() % 100 == 0) keepElites(server);
+		if (server.getTickCount() % 20 == 0) closeCleared(server);
 		Job j = job;
 		if (j == null) return;
 		long until = System.nanoTime() + 30_000_000L;
@@ -521,10 +576,37 @@ public final class Lairs {
 			if (l == null || l.data == null || l.boss == null || !l.boss.equals(BuiltInRegistries.ENTITY_TYPE.getKey(dead.getType()))) continue;
 			Vec3 ex = l.data.points.get("exit");
 			if (ex != null) wayOut(level, l, l.world(ex), 0f);
+			CLEARED.computeIfAbsent(n, k -> new Clearing());
 		}
 	}
 
 	// ---------------------------------------------------------------- loading
+
+	/** Where a dungeon's blocks go, one by one (relative to its origin): GateWindow, DungeonRun, the gate's ground. */
+	public interface BlockSink {
+		void put(int x, int y, int z, BlockState s);
+	}
+
+	/** Every block of the dungeon `name` (from its file; it needn't be built). False if there's no such dungeon. */
+	public static boolean blocks(String name, BlockSink sink) {
+		Lair l = get(name);
+		if (l == null || l.data == null) return false;
+		Data d = l.data;
+		for (int i = 0; i < d.xs.length; i++) sink.put(d.xs[i], d.ys[i], d.zs[i], d.palette[d.st[i]]);
+		return true;
+	}
+
+	/** Its named points ("tp", "boss", "mob:TYPE:N", ...), relative to its origin; empty if there's no such dungeon. */
+	public static Map<String, Vec3> points(String name) {
+		Lair l = get(name);
+		return l == null || l.data == null ? Map.of() : java.util.Collections.unmodifiableMap(l.data.points);
+	}
+
+	/** Its boss's entity type, or null. */
+	public static ResourceLocation boss(String name) {
+		Lair l = get(name);
+		return l == null ? null : l.boss;
+	}
 
 	static Lair get(String name) {
 		Lair have = LAIRS.get(name);

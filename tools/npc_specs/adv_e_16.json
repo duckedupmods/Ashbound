@@ -1,0 +1,63 @@
+{
+ "id": "adv_e_16",
+ "seed": 4113016,
+ "recipe": "adventurer",
+ "role": "tank",
+ "rank": "E",
+ "name": "Nimue Moonbough",
+ "title": "E-rank Shieldbearer",
+ "age": "adult",
+ "sex": "f",
+ "build": "average",
+ "hunch": 0,
+ "skin": "porcelain",
+ "hair": {
+  "style": "long",
+  "color": "silver"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "violet",
+  "brows": "bushy",
+  "mouth": "flat",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "patch_r"
+  ],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "belt",
+   "bracers"
+  ],
+  "colors": {
+   "top": "brown",
+   "bottom": "charcoal",
+   "accent": "forest",
+   "leather": "black"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "mace",
+ "offhand": "shield",
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "E",
+  "role": "tank"
+ },
+ "race": "elf",
+ "recipe_race": "elf",
+ "party": "The Thornbacks"
+}

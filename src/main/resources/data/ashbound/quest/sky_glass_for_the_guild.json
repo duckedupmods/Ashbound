@@ -1,0 +1,10 @@
+{
+ "title": "Glass From the Sky",
+ "rank": "D",
+ "text": "The Guild buys every piece of shardglass from the falling gate-shards, and the Arcanum is short. Bring three pieces to the board.",
+ "collect": "ashbound:shardglass",
+ "count": 3,
+ "points": 80,
+ "coins": 140,
+ "repeat": true
+}

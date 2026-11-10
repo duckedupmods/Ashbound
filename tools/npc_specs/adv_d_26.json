@@ -1,0 +1,62 @@
+{
+ "id": "adv_d_26",
+ "seed": 4120945,
+ "recipe": "adventurer",
+ "role": "striker",
+ "rank": "D",
+ "name": "Jory Barrow",
+ "title": "D-rank Blade",
+ "age": "adult",
+ "sex": "m",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "olive",
+ "hair": {
+  "style": "short",
+  "color": "black"
+ },
+ "headwear": null,
+ "beard": "beard",
+ "face": {
+  "eye": "sharp",
+  "iris": "amber",
+  "brows": null,
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "bracers",
+   "pauldron_l",
+   "pouches",
+   "strap",
+   "tassets"
+  ],
+  "colors": {
+   "top": "grey",
+   "bottom": "brown",
+   "accent": "navy",
+   "leather": "black"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": "greatsword",
+ "hip": "knife",
+ "prop": null,
+ "_filters": {
+  "rank": "D",
+  "role": "striker"
+ },
+ "party": "Ninth Lantern"
+}

@@ -197,7 +197,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 7.6,
+    "damage": 8.4,
     "speed": 1.6
    },
    {
@@ -221,7 +221,7 @@
     "slot": "heavy",
     "old": true,
     "ef": "greatsword",
-    "damage": 20.2,
+    "damage": 22.4,
     "speed": 0.85
    },
    {
@@ -233,7 +233,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 4.6,
+    "damage": 5.2,
     "speed": 2.4
    },
    {
@@ -652,7 +652,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 7.6,
+    "damage": 8.4,
     "speed": 1.6
    },
    {
@@ -676,7 +676,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "greatsword",
-    "damage": 20.2,
+    "damage": 22.4,
     "speed": 0.85
    },
    {
@@ -688,7 +688,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 4.6,
+    "damage": 5.2,
     "speed": 2.4
    },
    {
@@ -1107,7 +1107,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 7.6,
+    "damage": 8.4,
     "speed": 1.6
    },
    {
@@ -1131,7 +1131,7 @@
     "slot": "heavy",
     "old": true,
     "ef": "greatsword",
-    "damage": 20.2,
+    "damage": 22.4,
     "speed": 0.85
    },
    {
@@ -1143,7 +1143,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 4.6,
+    "damage": 5.2,
     "speed": 2.4
    },
    {
@@ -1406,13 +1406,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 15,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 6.5,
+    "damage": 8.4,
     "speed": 1.6
    },
    {
@@ -1422,13 +1422,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 10,
+     "common": 8,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 4.0,
+    "damage": 5.2,
     "speed": 2.4
    },
    {
@@ -1438,13 +1438,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 18,
+     "common": 14,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 15.6,
+    "damage": 20.2,
     "speed": 0.85
    },
    {
@@ -1454,13 +1454,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 15,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 7.3,
+    "damage": 9.5,
     "speed": 1.2
    },
    {
@@ -1470,13 +1470,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 22,
+     "common": 18,
      "elite": 2,
      "trophy": 0
     },
     "old": true,
     "ef": "greatsword",
-    "damage": 17.3,
+    "damage": 22.4,
     "speed": 0.85
    },
    {
@@ -1486,7 +1486,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 15,
+     "common": 12,
      "elite": 2,
      "trophy": 0
     },
@@ -1502,7 +1502,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 15,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
@@ -1518,7 +1518,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 12,
+     "common": 10,
      "elite": 2,
      "trophy": 0
     },
@@ -1532,7 +1532,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 12,
+     "common": 10,
      "elite": 2,
      "trophy": 0
     },
@@ -1546,7 +1546,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 12,
+     "common": 10,
      "elite": 2,
      "trophy": 0
     },
@@ -1562,7 +1562,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 8.2,
+    "damage": 11.8,
     "speed": 1.6
    },
    {
@@ -1586,7 +1586,7 @@
     "slot": "heavy",
     "old": true,
     "ef": "greatsword",
-    "damage": 21.8,
+    "damage": 31.4,
     "speed": 0.85
    },
    {
@@ -1598,7 +1598,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 5.0,
+    "damage": 7.2,
     "speed": 2.4
    },
    {
@@ -1636,7 +1636,7 @@
       "name": "Abbot's Hood",
       "slot": "helm",
       "cost": {
-       "common": 12,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -1646,7 +1646,7 @@
       "name": "Abbot's Robe",
       "slot": "chest",
       "cost": {
-       "common": 20,
+       "common": 16,
        "elite": 2,
        "trophy": 0
       }
@@ -1656,7 +1656,7 @@
       "name": "Abbot's Wraps",
       "slot": "legs",
       "cost": {
-       "common": 15,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -1666,7 +1666,7 @@
       "name": "Abbot's Slippers",
       "slot": "boots",
       "cost": {
-       "common": 10,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -1684,7 +1684,7 @@
       "name": "Mourner's Hood",
       "slot": "helm",
       "cost": {
-       "common": 12,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -1694,7 +1694,7 @@
       "name": "Mourner's Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 20,
+       "common": 16,
        "elite": 2,
        "trophy": 0
       }
@@ -1704,7 +1704,7 @@
       "name": "Mourner's Breeches",
       "slot": "legs",
       "cost": {
-       "common": 15,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -1714,7 +1714,7 @@
       "name": "Mourner's Boots",
       "slot": "boots",
       "cost": {
-       "common": 10,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -1732,7 +1732,7 @@
       "name": "Gravewarden Helm",
       "slot": "helm",
       "cost": {
-       "common": 12,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -1742,7 +1742,7 @@
       "name": "Gravewarden Breastplate",
       "slot": "chest",
       "cost": {
-       "common": 20,
+       "common": 16,
        "elite": 2,
        "trophy": 0
       }
@@ -1752,7 +1752,7 @@
       "name": "Gravewarden Tassets",
       "slot": "legs",
       "cost": {
-       "common": 15,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -1762,7 +1762,7 @@
       "name": "Gravewarden Boots",
       "slot": "boots",
       "cost": {
-       "common": 10,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -1780,7 +1780,7 @@
       "name": "Coffinplate Helm",
       "slot": "helm",
       "cost": {
-       "common": 12,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -1790,7 +1790,7 @@
       "name": "Coffinplate Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 20,
+       "common": 16,
        "elite": 2,
        "trophy": 0
       }
@@ -1800,7 +1800,7 @@
       "name": "Coffinplate Greaves",
       "slot": "legs",
       "cost": {
-       "common": 15,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -1810,7 +1810,7 @@
       "name": "Coffinplate Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 10,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -1861,13 +1861,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 17,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
     "old": true,
     "ef": "sword",
-    "damage": 7.0,
+    "damage": 11.8,
     "speed": 1.6
    },
    {
@@ -1877,13 +1877,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 11,
+     "common": 8,
      "elite": 1,
      "trophy": 0
     },
     "old": true,
     "ef": "dagger",
-    "damage": 4.3,
+    "damage": 7.2,
     "speed": 2.4
    },
    {
@@ -1893,13 +1893,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 20,
+     "common": 14,
      "elite": 1,
      "trophy": 0
     },
     "old": true,
     "ef": "greatsword",
-    "damage": 16.8,
+    "damage": 28.2,
     "speed": 0.85
    },
    {
@@ -1909,13 +1909,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 17,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
     "old": true,
     "ef": "spear",
-    "damage": 7.9,
+    "damage": 13.3,
     "speed": 1.2
    },
    {
@@ -1925,13 +1925,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 25,
-     "elite": 3,
+     "common": 18,
+     "elite": 2,
      "trophy": 0
     },
     "old": true,
     "ef": "greatsword",
-    "damage": 18.7,
+    "damage": 31.4,
     "speed": 0.85
    },
    {
@@ -1941,8 +1941,8 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 17,
-     "elite": 3,
+     "common": 12,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -1957,7 +1957,7 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 17,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
@@ -1973,8 +1973,8 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 14,
-     "elite": 3,
+     "common": 10,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -1987,8 +1987,8 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 14,
-     "elite": 3,
+     "common": 10,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -2001,8 +2001,8 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 14,
-     "elite": 3,
+     "common": 10,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -2017,7 +2017,7 @@
     "slot": "sword",
     "old": true,
     "ef": "sword",
-    "damage": 8.8,
+    "damage": 16.5,
     "speed": 1.6
    },
    {
@@ -2041,7 +2041,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "spear",
-    "damage": 10.0,
+    "damage": 18.7,
     "speed": 1.2
    },
    {
@@ -2053,7 +2053,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 5.4,
+    "damage": 10.1,
     "speed": 2.4
    },
    {
@@ -2091,7 +2091,7 @@
       "name": "Beakmask Helm",
       "slot": "helm",
       "cost": {
-       "common": 14,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -2101,8 +2101,8 @@
       "name": "Beakmask Coat",
       "slot": "chest",
       "cost": {
-       "common": 22,
-       "elite": 3,
+       "common": 16,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -2111,7 +2111,7 @@
       "name": "Beakmask Breeches",
       "slot": "legs",
       "cost": {
-       "common": 17,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -2121,7 +2121,7 @@
       "name": "Beakmask Boots",
       "slot": "boots",
       "cost": {
-       "common": 11,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -2139,7 +2139,7 @@
       "name": "Orderly's Hood",
       "slot": "helm",
       "cost": {
-       "common": 14,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -2149,8 +2149,8 @@
       "name": "Orderly's Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 22,
-       "elite": 3,
+       "common": 16,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -2159,7 +2159,7 @@
       "name": "Orderly's Breeches",
       "slot": "legs",
       "cost": {
-       "common": 17,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -2169,7 +2169,7 @@
       "name": "Orderly's Boots",
       "slot": "boots",
       "cost": {
-       "common": 11,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -2187,7 +2187,7 @@
       "name": "Friar's Helm",
       "slot": "helm",
       "cost": {
-       "common": 14,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -2197,8 +2197,8 @@
       "name": "Friar's Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 22,
-       "elite": 3,
+       "common": 16,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -2207,7 +2207,7 @@
       "name": "Friar's Tassets",
       "slot": "legs",
       "cost": {
-       "common": 17,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -2217,7 +2217,7 @@
       "name": "Friar's Boots",
       "slot": "boots",
       "cost": {
-       "common": 11,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -2235,7 +2235,7 @@
       "name": "Quarantine Helm",
       "slot": "helm",
       "cost": {
-       "common": 14,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -2245,8 +2245,8 @@
       "name": "Quarantine Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 22,
-       "elite": 3,
+       "common": 16,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -2255,7 +2255,7 @@
       "name": "Quarantine Greaves",
       "slot": "legs",
       "cost": {
-       "common": 17,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -2265,7 +2265,7 @@
       "name": "Quarantine Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 11,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -2316,13 +2316,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": true,
     "ef": "sword",
-    "damage": 7.6,
+    "damage": 16.5,
     "speed": 1.6
    },
    {
@@ -2332,13 +2332,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 12,
-     "elite": 2,
+     "common": 9,
+     "elite": 1,
      "trophy": 0
     },
     "old": true,
     "ef": "dagger",
-    "damage": 4.6,
+    "damage": 10.1,
     "speed": 2.4
    },
    {
@@ -2348,13 +2348,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 2,
+     "common": 15,
+     "elite": 1,
      "trophy": 0
     },
     "old": true,
     "ef": "greatsword",
-    "damage": 18.1,
+    "damage": 39.5,
     "speed": 0.85
    },
    {
@@ -2364,13 +2364,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": true,
     "ef": "spear",
-    "damage": 8.6,
+    "damage": 18.7,
     "speed": 1.2
    },
    {
@@ -2380,13 +2380,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 27,
-     "elite": 3,
+     "common": 20,
+     "elite": 2,
      "trophy": 0
     },
     "old": true,
     "ef": "greatsword",
-    "damage": 20.2,
+    "damage": 43.9,
     "speed": 0.85
    },
    {
@@ -2396,8 +2396,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 3,
+     "common": 13,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -2412,8 +2412,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
@@ -2428,8 +2428,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 15,
-     "elite": 3,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -2442,8 +2442,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 15,
-     "elite": 3,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -2456,8 +2456,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 15,
-     "elite": 3,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -2472,7 +2472,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 9.5,
+    "damage": 23.0,
     "speed": 1.6
    },
    {
@@ -2496,7 +2496,7 @@
     "slot": "heavy",
     "old": true,
     "ef": "greatsword",
-    "damage": 25.4,
+    "damage": 61.5,
     "speed": 0.85
    },
    {
@@ -2508,7 +2508,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 5.8,
+    "damage": 14.1,
     "speed": 2.4
    },
    {
@@ -2546,8 +2546,8 @@
       "name": "Acolyte's Hood",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -2556,8 +2556,8 @@
       "name": "Acolyte's Robe",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -2566,8 +2566,8 @@
       "name": "Acolyte's Wraps",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -2576,8 +2576,8 @@
       "name": "Acolyte's Slippers",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -2594,8 +2594,8 @@
       "name": "Faceless Mask",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -2604,8 +2604,8 @@
       "name": "Faceless Plate",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -2614,8 +2614,8 @@
       "name": "Faceless Tassets",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -2624,8 +2624,8 @@
       "name": "Faceless Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -2642,8 +2642,8 @@
       "name": "Sentinel's Helm",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -2652,8 +2652,8 @@
       "name": "Sentinel's Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -2662,8 +2662,8 @@
       "name": "Sentinel's Tassets",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -2672,8 +2672,8 @@
       "name": "Sentinel's Boots",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -2690,8 +2690,8 @@
       "name": "Sovereign Helm",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -2700,8 +2700,8 @@
       "name": "Sovereign Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -2710,8 +2710,8 @@
       "name": "Sovereign Greaves",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -2720,8 +2720,8 @@
       "name": "Sovereign Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -2771,13 +2771,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": true,
     "ef": "sword",
-    "damage": 7.6,
+    "damage": 16.5,
     "speed": 1.6
    },
    {
@@ -2787,13 +2787,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 12,
-     "elite": 2,
+     "common": 9,
+     "elite": 1,
      "trophy": 0
     },
     "old": true,
     "ef": "dagger",
-    "damage": 4.6,
+    "damage": 10.1,
     "speed": 2.4
    },
    {
@@ -2803,13 +2803,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 2,
+     "common": 15,
+     "elite": 1,
      "trophy": 0
     },
     "old": true,
     "ef": "greatsword",
-    "damage": 18.1,
+    "damage": 39.5,
     "speed": 0.85
    },
    {
@@ -2819,13 +2819,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": true,
     "ef": "spear",
-    "damage": 8.6,
+    "damage": 18.7,
     "speed": 1.2
    },
    {
@@ -2835,13 +2835,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 27,
-     "elite": 3,
+     "common": 20,
+     "elite": 2,
      "trophy": 0
     },
     "old": true,
     "ef": "greatsword",
-    "damage": 20.2,
+    "damage": 43.9,
     "speed": 0.85
    },
    {
@@ -2851,8 +2851,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 3,
+     "common": 13,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -2867,8 +2867,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
@@ -2883,8 +2883,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 15,
-     "elite": 3,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -2897,8 +2897,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 15,
-     "elite": 3,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -2911,8 +2911,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 15,
-     "elite": 3,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -2927,7 +2927,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 9.5,
+    "damage": 23.0,
     "speed": 1.6
    },
    {
@@ -2951,7 +2951,7 @@
     "slot": "heavy",
     "old": true,
     "ef": "greatsword",
-    "damage": 25.4,
+    "damage": 61.5,
     "speed": 0.85
    },
    {
@@ -2963,7 +2963,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 5.8,
+    "damage": 14.1,
     "speed": 2.4
    },
    {
@@ -3001,8 +3001,8 @@
       "name": "Cantor's Hood",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -3011,8 +3011,8 @@
       "name": "Cantor's Robe",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -3021,8 +3021,8 @@
       "name": "Cantor's Wraps",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -3031,8 +3031,8 @@
       "name": "Cantor's Slippers",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -3049,8 +3049,8 @@
       "name": "Stitchhide Hood",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -3059,8 +3059,8 @@
       "name": "Stitchhide Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -3069,8 +3069,8 @@
       "name": "Stitchhide Breeches",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -3079,8 +3079,8 @@
       "name": "Stitchhide Boots",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -3097,8 +3097,8 @@
       "name": "Bonewright Helm",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -3107,8 +3107,8 @@
       "name": "Bonewright Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -3117,8 +3117,8 @@
       "name": "Bonewright Greaves",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -3127,8 +3127,8 @@
       "name": "Bonewright Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -3145,8 +3145,8 @@
       "name": "Pallbearer Helm",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -3155,8 +3155,8 @@
       "name": "Pallbearer Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -3165,8 +3165,8 @@
       "name": "Pallbearer Greaves",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -3175,8 +3175,8 @@
       "name": "Pallbearer Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -3226,13 +3226,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": true,
     "ef": "sword",
-    "damage": 7.6,
+    "damage": 16.5,
     "speed": 1.6
    },
    {
@@ -3242,13 +3242,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 12,
-     "elite": 2,
+     "common": 9,
+     "elite": 1,
      "trophy": 0
     },
     "old": true,
     "ef": "dagger",
-    "damage": 4.6,
+    "damage": 10.1,
     "speed": 2.4
    },
    {
@@ -3258,13 +3258,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 2,
+     "common": 15,
+     "elite": 1,
      "trophy": 0
     },
     "old": true,
     "ef": "greatsword",
-    "damage": 18.1,
+    "damage": 39.5,
     "speed": 0.85
    },
    {
@@ -3274,13 +3274,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": true,
     "ef": "spear",
-    "damage": 8.6,
+    "damage": 18.7,
     "speed": 1.2
    },
    {
@@ -3290,13 +3290,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 27,
-     "elite": 3,
+     "common": 20,
+     "elite": 2,
      "trophy": 0
     },
     "old": true,
     "ef": "greatsword",
-    "damage": 20.2,
+    "damage": 43.9,
     "speed": 0.85
    },
    {
@@ -3306,8 +3306,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 3,
+     "common": 13,
+     "elite": 2,
      "trophy": 0
     },
     "old": true,
@@ -3322,8 +3322,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": true,
@@ -3338,8 +3338,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 15,
-     "elite": 3,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -3352,8 +3352,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 15,
-     "elite": 3,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -3366,8 +3366,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 15,
-     "elite": 3,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -3382,7 +3382,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 9.5,
+    "damage": 23.0,
     "speed": 1.6
    },
    {
@@ -3406,7 +3406,7 @@
     "slot": "heavy",
     "old": true,
     "ef": "greatsword",
-    "damage": 25.4,
+    "damage": 61.5,
     "speed": 0.85
    },
    {
@@ -3418,7 +3418,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 5.8,
+    "damage": 14.1,
     "speed": 2.4
    },
    {
@@ -3456,8 +3456,8 @@
       "name": "Bellows Hood",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -3466,8 +3466,8 @@
       "name": "Bellows Robe",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -3476,8 +3476,8 @@
       "name": "Bellows Wraps",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -3486,8 +3486,8 @@
       "name": "Bellows Slippers",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -3504,8 +3504,8 @@
       "name": "Slagrunner Hood",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -3514,8 +3514,8 @@
       "name": "Slagrunner Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -3524,8 +3524,8 @@
       "name": "Slagrunner Breeches",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -3534,8 +3534,8 @@
       "name": "Slagrunner Boots",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -3552,8 +3552,8 @@
       "name": "Riveter's Helm",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -3562,8 +3562,8 @@
       "name": "Riveter's Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -3572,8 +3572,8 @@
       "name": "Riveter's Tassets",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -3582,8 +3582,8 @@
       "name": "Riveter's Boots",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -3600,8 +3600,8 @@
       "name": "Kilnplate Helm",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -3610,8 +3610,8 @@
       "name": "Kilnplate Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -3620,8 +3620,8 @@
       "name": "Kilnplate Tassets",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -3630,8 +3630,8 @@
       "name": "Kilnplate Boots",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -3681,13 +3681,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 2,
+     "common": 14,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 8.2,
+    "damage": 23.0,
     "speed": 1.6
    },
    {
@@ -3697,13 +3697,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 14,
-     "elite": 2,
+     "common": 10,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 5.0,
+    "damage": 14.1,
     "speed": 2.4
    },
    {
@@ -3713,13 +3713,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 2,
+     "common": 17,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 19.6,
+    "damage": 55.3,
     "speed": 0.85
    },
    {
@@ -3729,13 +3729,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 2,
+     "common": 14,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 9.2,
+    "damage": 26.1,
     "speed": 1.2
    },
    {
@@ -3745,13 +3745,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 32,
-     "elite": 4,
+     "common": 22,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 21.8,
+    "damage": 61.5,
     "speed": 0.85
    },
    {
@@ -3761,8 +3761,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 4,
+     "common": 14,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -3777,8 +3777,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 2,
+     "common": 14,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
@@ -3793,8 +3793,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 4,
+     "common": 12,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -3807,8 +3807,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 4,
+     "common": 12,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -3821,8 +3821,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 4,
+     "common": 12,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -3837,7 +3837,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 10.3,
+    "damage": 32.3,
     "speed": 1.6
    },
    {
@@ -3861,7 +3861,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "spear",
-    "damage": 11.6,
+    "damage": 36.6,
     "speed": 1.2
    },
    {
@@ -3873,7 +3873,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 6.3,
+    "damage": 19.8,
     "speed": 2.4
    },
    {
@@ -3911,8 +3911,8 @@
       "name": "Snowshroud Hood",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -3921,8 +3921,8 @@
       "name": "Snowshroud Robe",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -3931,8 +3931,8 @@
       "name": "Snowshroud Wraps",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -3941,8 +3941,8 @@
       "name": "Snowshroud Slippers",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -3959,8 +3959,8 @@
       "name": "Hoarstep Hood",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -3969,8 +3969,8 @@
       "name": "Hoarstep Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -3979,8 +3979,8 @@
       "name": "Hoarstep Breeches",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -3989,8 +3989,8 @@
       "name": "Hoarstep Boots",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -4007,8 +4007,8 @@
       "name": "Marcher's Helm",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -4017,8 +4017,8 @@
       "name": "Marcher's Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -4027,8 +4027,8 @@
       "name": "Marcher's Tassets",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -4037,8 +4037,8 @@
       "name": "Marcher's Boots",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -4055,8 +4055,8 @@
       "name": "Rimeguard Helm",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -4065,8 +4065,8 @@
       "name": "Rimeguard Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -4075,8 +4075,8 @@
       "name": "Rimeguard Greaves",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -4085,8 +4085,8 @@
       "name": "Rimeguard Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -4136,13 +4136,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 2,
+     "common": 14,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 8.2,
+    "damage": 23.0,
     "speed": 1.6
    },
    {
@@ -4152,13 +4152,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 14,
-     "elite": 2,
+     "common": 10,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 5.0,
+    "damage": 14.1,
     "speed": 2.4
    },
    {
@@ -4168,13 +4168,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 2,
+     "common": 17,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 19.6,
+    "damage": 55.3,
     "speed": 0.85
    },
    {
@@ -4184,13 +4184,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 2,
+     "common": 14,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 9.2,
+    "damage": 26.1,
     "speed": 1.2
    },
    {
@@ -4200,13 +4200,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 32,
-     "elite": 4,
+     "common": 22,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 21.8,
+    "damage": 61.5,
     "speed": 0.85
    },
    {
@@ -4216,8 +4216,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 4,
+     "common": 14,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -4232,8 +4232,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 2,
+     "common": 14,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
@@ -4248,8 +4248,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 4,
+     "common": 12,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -4262,8 +4262,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 4,
+     "common": 12,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -4276,8 +4276,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 4,
+     "common": 12,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -4292,7 +4292,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 10.3,
+    "damage": 32.3,
     "speed": 1.6
    },
    {
@@ -4316,7 +4316,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "greatsword",
-    "damage": 27.4,
+    "damage": 86.0,
     "speed": 0.85
    },
    {
@@ -4328,7 +4328,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 6.3,
+    "damage": 19.8,
     "speed": 2.4
    },
    {
@@ -4366,8 +4366,8 @@
       "name": "Archivist's Hood",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -4376,8 +4376,8 @@
       "name": "Archivist's Robe",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -4386,8 +4386,8 @@
       "name": "Archivist's Wraps",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -4396,8 +4396,8 @@
       "name": "Archivist's Slippers",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -4414,8 +4414,8 @@
       "name": "Silkrunner Hood",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -4424,8 +4424,8 @@
       "name": "Silkrunner Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -4434,8 +4434,8 @@
       "name": "Silkrunner Breeches",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -4444,8 +4444,8 @@
       "name": "Silkrunner Boots",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -4462,8 +4462,8 @@
       "name": "Lector's Helm",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -4472,8 +4472,8 @@
       "name": "Lector's Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -4482,8 +4482,8 @@
       "name": "Lector's Tassets",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -4492,8 +4492,8 @@
       "name": "Lector's Boots",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -4510,8 +4510,8 @@
       "name": "Bindplate Helm",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -4520,8 +4520,8 @@
       "name": "Bindplate Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -4530,8 +4530,8 @@
       "name": "Bindplate Greaves",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -4540,8 +4540,8 @@
       "name": "Bindplate Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -4600,13 +4600,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 15,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 6.5,
+    "damage": 8.4,
     "speed": 1.6
    },
    {
@@ -4616,13 +4616,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 10,
+     "common": 8,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 4.0,
+    "damage": 5.2,
     "speed": 2.4
    },
    {
@@ -4632,13 +4632,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 18,
+     "common": 14,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 15.6,
+    "damage": 20.2,
     "speed": 0.85
    },
    {
@@ -4648,13 +4648,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 15,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 7.3,
+    "damage": 9.5,
     "speed": 1.2
    },
    {
@@ -4664,13 +4664,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 22,
+     "common": 18,
      "elite": 2,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 17.3,
+    "damage": 22.4,
     "speed": 0.85
    },
    {
@@ -4680,7 +4680,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 15,
+     "common": 12,
      "elite": 2,
      "trophy": 0
     },
@@ -4696,7 +4696,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 15,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
@@ -4712,7 +4712,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 12,
+     "common": 10,
      "elite": 2,
      "trophy": 0
     },
@@ -4726,7 +4726,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 12,
+     "common": 10,
      "elite": 2,
      "trophy": 0
     },
@@ -4740,7 +4740,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 12,
+     "common": 10,
      "elite": 2,
      "trophy": 0
     },
@@ -4756,7 +4756,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 8.2,
+    "damage": 11.8,
     "speed": 1.6
    },
    {
@@ -4780,7 +4780,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "greatsword",
-    "damage": 19.6,
+    "damage": 28.2,
     "speed": 0.85
    },
    {
@@ -4792,7 +4792,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 5.0,
+    "damage": 7.2,
     "speed": 2.4
    },
    {
@@ -4830,7 +4830,7 @@
       "name": "Lampwright's Hood",
       "slot": "helm",
       "cost": {
-       "common": 12,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -4840,7 +4840,7 @@
       "name": "Lampwright's Robe",
       "slot": "chest",
       "cost": {
-       "common": 20,
+       "common": 16,
        "elite": 2,
        "trophy": 0
       }
@@ -4850,7 +4850,7 @@
       "name": "Lampwright's Wraps",
       "slot": "legs",
       "cost": {
-       "common": 15,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -4860,7 +4860,7 @@
       "name": "Lampwright's Slippers",
       "slot": "boots",
       "cost": {
-       "common": 10,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -4878,7 +4878,7 @@
       "name": "Tunnelrat Hood",
       "slot": "helm",
       "cost": {
-       "common": 12,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -4888,7 +4888,7 @@
       "name": "Tunnelrat Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 20,
+       "common": 16,
        "elite": 2,
        "trophy": 0
       }
@@ -4898,7 +4898,7 @@
       "name": "Tunnelrat Breeches",
       "slot": "legs",
       "cost": {
-       "common": 15,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -4908,7 +4908,7 @@
       "name": "Tunnelrat Boots",
       "slot": "boots",
       "cost": {
-       "common": 10,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -4926,7 +4926,7 @@
       "name": "Shaftman's Helm",
       "slot": "helm",
       "cost": {
-       "common": 12,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -4936,7 +4936,7 @@
       "name": "Shaftman's Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 20,
+       "common": 16,
        "elite": 2,
        "trophy": 0
       }
@@ -4946,7 +4946,7 @@
       "name": "Shaftman's Tassets",
       "slot": "legs",
       "cost": {
-       "common": 15,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -4956,7 +4956,7 @@
       "name": "Shaftman's Boots",
       "slot": "boots",
       "cost": {
-       "common": 10,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -4974,7 +4974,7 @@
       "name": "Deepdelver Helm",
       "slot": "helm",
       "cost": {
-       "common": 12,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -4984,7 +4984,7 @@
       "name": "Deepdelver Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 20,
+       "common": 16,
        "elite": 2,
        "trophy": 0
       }
@@ -4994,7 +4994,7 @@
       "name": "Deepdelver Greaves",
       "slot": "legs",
       "cost": {
-       "common": 15,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -5004,7 +5004,7 @@
       "name": "Deepdelver Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 10,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -5064,13 +5064,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 15,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 6.5,
+    "damage": 8.4,
     "speed": 1.6
    },
    {
@@ -5080,13 +5080,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 10,
+     "common": 8,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 4.0,
+    "damage": 5.2,
     "speed": 2.4
    },
    {
@@ -5096,13 +5096,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 18,
+     "common": 14,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 15.6,
+    "damage": 20.2,
     "speed": 0.85
    },
    {
@@ -5112,13 +5112,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 15,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 7.3,
+    "damage": 9.5,
     "speed": 1.2
    },
    {
@@ -5128,13 +5128,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 22,
+     "common": 18,
      "elite": 2,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 17.3,
+    "damage": 22.4,
     "speed": 0.85
    },
    {
@@ -5144,7 +5144,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 15,
+     "common": 12,
      "elite": 2,
      "trophy": 0
     },
@@ -5160,7 +5160,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 15,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
@@ -5176,7 +5176,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 12,
+     "common": 10,
      "elite": 2,
      "trophy": 0
     },
@@ -5190,7 +5190,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 12,
+     "common": 10,
      "elite": 2,
      "trophy": 0
     },
@@ -5204,7 +5204,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 12,
+     "common": 10,
      "elite": 2,
      "trophy": 0
     },
@@ -5220,7 +5220,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 8.2,
+    "damage": 11.8,
     "speed": 1.6
    },
    {
@@ -5244,7 +5244,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "greatsword",
-    "damage": 19.6,
+    "damage": 28.2,
     "speed": 0.85
    },
    {
@@ -5256,7 +5256,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 5.0,
+    "damage": 7.2,
     "speed": 2.4
    },
    {
@@ -5294,7 +5294,7 @@
       "name": "Tidepriest's Hood",
       "slot": "helm",
       "cost": {
-       "common": 12,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -5304,7 +5304,7 @@
       "name": "Tidepriest's Robe",
       "slot": "chest",
       "cost": {
-       "common": 20,
+       "common": 16,
        "elite": 2,
        "trophy": 0
       }
@@ -5314,7 +5314,7 @@
       "name": "Tidepriest's Wraps",
       "slot": "legs",
       "cost": {
-       "common": 15,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -5324,7 +5324,7 @@
       "name": "Tidepriest's Slippers",
       "slot": "boots",
       "cost": {
-       "common": 10,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -5342,7 +5342,7 @@
       "name": "Netrunner Hood",
       "slot": "helm",
       "cost": {
-       "common": 12,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -5352,7 +5352,7 @@
       "name": "Netrunner Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 20,
+       "common": 16,
        "elite": 2,
        "trophy": 0
       }
@@ -5362,7 +5362,7 @@
       "name": "Netrunner Breeches",
       "slot": "legs",
       "cost": {
-       "common": 15,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -5372,7 +5372,7 @@
       "name": "Netrunner Boots",
       "slot": "boots",
       "cost": {
-       "common": 10,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -5390,7 +5390,7 @@
       "name": "Wrackmail Helm",
       "slot": "helm",
       "cost": {
-       "common": 12,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -5400,7 +5400,7 @@
       "name": "Wrackmail Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 20,
+       "common": 16,
        "elite": 2,
        "trophy": 0
       }
@@ -5410,7 +5410,7 @@
       "name": "Wrackmail Tassets",
       "slot": "legs",
       "cost": {
-       "common": 15,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -5420,7 +5420,7 @@
       "name": "Wrackmail Boots",
       "slot": "boots",
       "cost": {
-       "common": 10,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -5438,7 +5438,7 @@
       "name": "Brineclad Helm",
       "slot": "helm",
       "cost": {
-       "common": 12,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -5448,7 +5448,7 @@
       "name": "Brineclad Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 20,
+       "common": 16,
        "elite": 2,
        "trophy": 0
       }
@@ -5458,7 +5458,7 @@
       "name": "Brineclad Greaves",
       "slot": "legs",
       "cost": {
-       "common": 15,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -5468,7 +5468,7 @@
       "name": "Brineclad Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 10,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -5528,13 +5528,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 15,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 6.5,
+    "damage": 8.4,
     "speed": 1.6
    },
    {
@@ -5544,13 +5544,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 10,
+     "common": 8,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 4.0,
+    "damage": 5.2,
     "speed": 2.4
    },
    {
@@ -5560,13 +5560,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 18,
+     "common": 14,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 15.6,
+    "damage": 20.2,
     "speed": 0.85
    },
    {
@@ -5576,13 +5576,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 15,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 7.3,
+    "damage": 9.5,
     "speed": 1.2
    },
    {
@@ -5592,13 +5592,13 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 22,
+     "common": 18,
      "elite": 2,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 17.3,
+    "damage": 22.4,
     "speed": 0.85
    },
    {
@@ -5608,7 +5608,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 15,
+     "common": 12,
      "elite": 2,
      "trophy": 0
     },
@@ -5624,7 +5624,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 15,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
@@ -5640,7 +5640,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 12,
+     "common": 10,
      "elite": 2,
      "trophy": 0
     },
@@ -5654,7 +5654,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 12,
+     "common": 10,
      "elite": 2,
      "trophy": 0
     },
@@ -5668,7 +5668,7 @@
     "rank": "E",
     "boss": false,
     "cost": {
-     "common": 12,
+     "common": 10,
      "elite": 2,
      "trophy": 0
     },
@@ -5684,7 +5684,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 8.2,
+    "damage": 11.8,
     "speed": 1.6
    },
    {
@@ -5708,7 +5708,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "greatsword",
-    "damage": 21.8,
+    "damage": 31.4,
     "speed": 0.85
    },
    {
@@ -5720,7 +5720,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 5.0,
+    "damage": 7.2,
     "speed": 2.4
    },
    {
@@ -5758,7 +5758,7 @@
       "name": "Hexer's Hood",
       "slot": "helm",
       "cost": {
-       "common": 12,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -5768,7 +5768,7 @@
       "name": "Hexer's Robe",
       "slot": "chest",
       "cost": {
-       "common": 20,
+       "common": 16,
        "elite": 2,
        "trophy": 0
       }
@@ -5778,7 +5778,7 @@
       "name": "Hexer's Wraps",
       "slot": "legs",
       "cost": {
-       "common": 15,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -5788,7 +5788,7 @@
       "name": "Hexer's Slippers",
       "slot": "boots",
       "cost": {
-       "common": 10,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -5806,7 +5806,7 @@
       "name": "Outlaw Hood",
       "slot": "helm",
       "cost": {
-       "common": 12,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -5816,7 +5816,7 @@
       "name": "Outlaw Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 20,
+       "common": 16,
        "elite": 2,
        "trophy": 0
       }
@@ -5826,7 +5826,7 @@
       "name": "Outlaw Breeches",
       "slot": "legs",
       "cost": {
-       "common": 15,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -5836,7 +5836,7 @@
       "name": "Outlaw Boots",
       "slot": "boots",
       "cost": {
-       "common": 10,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -5854,7 +5854,7 @@
       "name": "Highwayman's Helm",
       "slot": "helm",
       "cost": {
-       "common": 12,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -5864,7 +5864,7 @@
       "name": "Highwayman's Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 20,
+       "common": 16,
        "elite": 2,
        "trophy": 0
       }
@@ -5874,7 +5874,7 @@
       "name": "Highwayman's Tassets",
       "slot": "legs",
       "cost": {
-       "common": 15,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -5884,7 +5884,7 @@
       "name": "Highwayman's Boots",
       "slot": "boots",
       "cost": {
-       "common": 10,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -5902,7 +5902,7 @@
       "name": "Gorgeguard Helm",
       "slot": "helm",
       "cost": {
-       "common": 12,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -5912,7 +5912,7 @@
       "name": "Gorgeguard Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 20,
+       "common": 16,
        "elite": 2,
        "trophy": 0
       }
@@ -5922,7 +5922,7 @@
       "name": "Gorgeguard Greaves",
       "slot": "legs",
       "cost": {
-       "common": 15,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -5932,7 +5932,7 @@
       "name": "Gorgeguard Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 10,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -5992,13 +5992,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 17,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 7.0,
+    "damage": 11.8,
     "speed": 1.6
    },
    {
@@ -6008,13 +6008,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 11,
+     "common": 8,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 4.3,
+    "damage": 7.2,
     "speed": 2.4
    },
    {
@@ -6024,13 +6024,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 20,
+     "common": 14,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 16.8,
+    "damage": 28.2,
     "speed": 0.85
    },
    {
@@ -6040,13 +6040,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 17,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 7.9,
+    "damage": 13.3,
     "speed": 1.2
    },
    {
@@ -6056,13 +6056,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 25,
-     "elite": 3,
+     "common": 18,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 18.7,
+    "damage": 31.4,
     "speed": 0.85
    },
    {
@@ -6072,8 +6072,8 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 17,
-     "elite": 3,
+     "common": 12,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -6088,7 +6088,7 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 17,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
@@ -6104,8 +6104,8 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 14,
-     "elite": 3,
+     "common": 10,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -6118,8 +6118,8 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 14,
-     "elite": 3,
+     "common": 10,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -6132,8 +6132,8 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 14,
-     "elite": 3,
+     "common": 10,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -6148,7 +6148,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 8.8,
+    "damage": 16.5,
     "speed": 1.6
    },
    {
@@ -6172,7 +6172,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "spear",
-    "damage": 10.0,
+    "damage": 18.7,
     "speed": 1.2
    },
    {
@@ -6184,7 +6184,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 5.4,
+    "damage": 10.1,
     "speed": 2.4
    },
    {
@@ -6222,7 +6222,7 @@
       "name": "Augur's Hood",
       "slot": "helm",
       "cost": {
-       "common": 14,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -6232,8 +6232,8 @@
       "name": "Augur's Robe",
       "slot": "chest",
       "cost": {
-       "common": 22,
-       "elite": 3,
+       "common": 16,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -6242,7 +6242,7 @@
       "name": "Augur's Wraps",
       "slot": "legs",
       "cost": {
-       "common": 17,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -6252,7 +6252,7 @@
       "name": "Augur's Slippers",
       "slot": "boots",
       "cost": {
-       "common": 11,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -6270,7 +6270,7 @@
       "name": "Featherblade Hood",
       "slot": "helm",
       "cost": {
-       "common": 14,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -6280,8 +6280,8 @@
       "name": "Featherblade Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 22,
-       "elite": 3,
+       "common": 16,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -6290,7 +6290,7 @@
       "name": "Featherblade Breeches",
       "slot": "legs",
       "cost": {
-       "common": 17,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -6300,7 +6300,7 @@
       "name": "Featherblade Boots",
       "slot": "boots",
       "cost": {
-       "common": 11,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -6318,7 +6318,7 @@
       "name": "Ravenmantle Helm",
       "slot": "helm",
       "cost": {
-       "common": 14,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -6328,8 +6328,8 @@
       "name": "Ravenmantle Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 22,
-       "elite": 3,
+       "common": 16,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -6338,7 +6338,7 @@
       "name": "Ravenmantle Tassets",
       "slot": "legs",
       "cost": {
-       "common": 17,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -6348,7 +6348,7 @@
       "name": "Ravenmantle Boots",
       "slot": "boots",
       "cost": {
-       "common": 11,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -6366,7 +6366,7 @@
       "name": "Rookplate Helm",
       "slot": "helm",
       "cost": {
-       "common": 14,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -6376,8 +6376,8 @@
       "name": "Rookplate Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 22,
-       "elite": 3,
+       "common": 16,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -6386,7 +6386,7 @@
       "name": "Rookplate Greaves",
       "slot": "legs",
       "cost": {
-       "common": 17,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -6396,7 +6396,7 @@
       "name": "Rookplate Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 11,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -6456,13 +6456,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 17,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 7.0,
+    "damage": 11.8,
     "speed": 1.6
    },
    {
@@ -6472,13 +6472,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 11,
+     "common": 8,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 4.3,
+    "damage": 7.2,
     "speed": 2.4
    },
    {
@@ -6488,13 +6488,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 20,
+     "common": 14,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 16.8,
+    "damage": 28.2,
     "speed": 0.85
    },
    {
@@ -6504,13 +6504,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 17,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 7.9,
+    "damage": 13.3,
     "speed": 1.2
    },
    {
@@ -6520,13 +6520,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 25,
-     "elite": 3,
+     "common": 18,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 18.7,
+    "damage": 31.4,
     "speed": 0.85
    },
    {
@@ -6536,8 +6536,8 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 17,
-     "elite": 3,
+     "common": 12,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -6552,7 +6552,7 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 17,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
@@ -6568,8 +6568,8 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 14,
-     "elite": 3,
+     "common": 10,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -6582,8 +6582,8 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 14,
-     "elite": 3,
+     "common": 10,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -6596,8 +6596,8 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 14,
-     "elite": 3,
+     "common": 10,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -6612,7 +6612,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 8.8,
+    "damage": 16.5,
     "speed": 1.6
    },
    {
@@ -6636,7 +6636,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "greatsword",
-    "damage": 23.5,
+    "damage": 43.9,
     "speed": 0.85
    },
    {
@@ -6648,7 +6648,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 5.4,
+    "damage": 10.1,
     "speed": 2.4
    },
    {
@@ -6686,7 +6686,7 @@
       "name": "Fire-Eater Hood",
       "slot": "helm",
       "cost": {
-       "common": 14,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -6696,8 +6696,8 @@
       "name": "Fire-Eater Robe",
       "slot": "chest",
       "cost": {
-       "common": 22,
-       "elite": 3,
+       "common": 16,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -6706,7 +6706,7 @@
       "name": "Fire-Eater Wraps",
       "slot": "legs",
       "cost": {
-       "common": 17,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -6716,7 +6716,7 @@
       "name": "Fire-Eater Slippers",
       "slot": "boots",
       "cost": {
-       "common": 11,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -6734,7 +6734,7 @@
       "name": "Motley Hood",
       "slot": "helm",
       "cost": {
-       "common": 14,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -6744,8 +6744,8 @@
       "name": "Motley Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 22,
-       "elite": 3,
+       "common": 16,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -6754,7 +6754,7 @@
       "name": "Motley Breeches",
       "slot": "legs",
       "cost": {
-       "common": 17,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -6764,7 +6764,7 @@
       "name": "Motley Boots",
       "slot": "boots",
       "cost": {
-       "common": 11,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -6782,7 +6782,7 @@
       "name": "Ringhand Helm",
       "slot": "helm",
       "cost": {
-       "common": 14,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -6792,8 +6792,8 @@
       "name": "Ringhand Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 22,
-       "elite": 3,
+       "common": 16,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -6802,7 +6802,7 @@
       "name": "Ringhand Tassets",
       "slot": "legs",
       "cost": {
-       "common": 17,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -6812,7 +6812,7 @@
       "name": "Ringhand Boots",
       "slot": "boots",
       "cost": {
-       "common": 11,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -6830,7 +6830,7 @@
       "name": "Ringiron Helm",
       "slot": "helm",
       "cost": {
-       "common": 14,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -6840,8 +6840,8 @@
       "name": "Ringiron Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 22,
-       "elite": 3,
+       "common": 16,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -6850,7 +6850,7 @@
       "name": "Ringiron Greaves",
       "slot": "legs",
       "cost": {
-       "common": 17,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -6860,7 +6860,7 @@
       "name": "Ringiron Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 11,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -6920,13 +6920,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 17,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 7.0,
+    "damage": 11.8,
     "speed": 1.6
    },
    {
@@ -6936,13 +6936,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 11,
+     "common": 8,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 4.3,
+    "damage": 7.2,
     "speed": 2.4
    },
    {
@@ -6952,13 +6952,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 20,
+     "common": 14,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 16.8,
+    "damage": 28.2,
     "speed": 0.85
    },
    {
@@ -6968,13 +6968,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 17,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 7.9,
+    "damage": 13.3,
     "speed": 1.2
    },
    {
@@ -6984,13 +6984,13 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 25,
-     "elite": 3,
+     "common": 18,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 18.7,
+    "damage": 31.4,
     "speed": 0.85
    },
    {
@@ -7000,8 +7000,8 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 17,
-     "elite": 3,
+     "common": 12,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -7016,7 +7016,7 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 17,
+     "common": 12,
      "elite": 1,
      "trophy": 0
     },
@@ -7032,8 +7032,8 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 14,
-     "elite": 3,
+     "common": 10,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -7046,8 +7046,8 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 14,
-     "elite": 3,
+     "common": 10,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -7060,8 +7060,8 @@
     "rank": "D",
     "boss": false,
     "cost": {
-     "common": 14,
-     "elite": 3,
+     "common": 10,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -7076,7 +7076,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 8.8,
+    "damage": 16.5,
     "speed": 1.6
    },
    {
@@ -7100,7 +7100,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "greatsword",
-    "damage": 21.2,
+    "damage": 39.5,
     "speed": 0.85
    },
    {
@@ -7112,7 +7112,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 5.4,
+    "damage": 10.1,
     "speed": 2.4
    },
    {
@@ -7150,7 +7150,7 @@
       "name": "Hexweave Hood",
       "slot": "helm",
       "cost": {
-       "common": 14,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -7160,8 +7160,8 @@
       "name": "Hexweave Robe",
       "slot": "chest",
       "cost": {
-       "common": 22,
-       "elite": 3,
+       "common": 16,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -7170,7 +7170,7 @@
       "name": "Hexweave Wraps",
       "slot": "legs",
       "cost": {
-       "common": 17,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -7180,7 +7180,7 @@
       "name": "Hexweave Slippers",
       "slot": "boots",
       "cost": {
-       "common": 11,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -7198,7 +7198,7 @@
       "name": "Bogrunner Hood",
       "slot": "helm",
       "cost": {
-       "common": 14,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -7208,8 +7208,8 @@
       "name": "Bogrunner Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 22,
-       "elite": 3,
+       "common": 16,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -7218,7 +7218,7 @@
       "name": "Bogrunner Breeches",
       "slot": "legs",
       "cost": {
-       "common": 17,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -7228,7 +7228,7 @@
       "name": "Bogrunner Boots",
       "slot": "boots",
       "cost": {
-       "common": 11,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -7246,7 +7246,7 @@
       "name": "Fenwarden Helm",
       "slot": "helm",
       "cost": {
-       "common": 14,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -7256,8 +7256,8 @@
       "name": "Fenwarden Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 22,
-       "elite": 3,
+       "common": 16,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -7266,7 +7266,7 @@
       "name": "Fenwarden Tassets",
       "slot": "legs",
       "cost": {
-       "common": 17,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -7276,7 +7276,7 @@
       "name": "Fenwarden Boots",
       "slot": "boots",
       "cost": {
-       "common": 11,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -7294,7 +7294,7 @@
       "name": "Trollhide Helm",
       "slot": "helm",
       "cost": {
-       "common": 14,
+       "common": 10,
        "elite": 1,
        "trophy": 1
       }
@@ -7304,8 +7304,8 @@
       "name": "Trollhide Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 22,
-       "elite": 3,
+       "common": 16,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -7314,7 +7314,7 @@
       "name": "Trollhide Greaves",
       "slot": "legs",
       "cost": {
-       "common": 17,
+       "common": 12,
        "elite": 1,
        "trophy": 0
       }
@@ -7324,7 +7324,7 @@
       "name": "Trollhide Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 11,
+       "common": 8,
        "elite": 1,
        "trophy": 0
       }
@@ -7384,13 +7384,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 7.6,
+    "damage": 16.5,
     "speed": 1.6
    },
    {
@@ -7400,13 +7400,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 12,
-     "elite": 2,
+     "common": 9,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 4.6,
+    "damage": 10.1,
     "speed": 2.4
    },
    {
@@ -7416,13 +7416,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 2,
+     "common": 15,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 18.1,
+    "damage": 39.5,
     "speed": 0.85
    },
    {
@@ -7432,13 +7432,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 8.6,
+    "damage": 18.7,
     "speed": 1.2
    },
    {
@@ -7448,13 +7448,13 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 27,
-     "elite": 3,
+     "common": 20,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 20.2,
+    "damage": 43.9,
     "speed": 0.85
    },
    {
@@ -7464,8 +7464,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 3,
+     "common": 13,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -7480,8 +7480,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
@@ -7496,8 +7496,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 15,
-     "elite": 3,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -7510,8 +7510,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 15,
-     "elite": 3,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -7524,8 +7524,8 @@
     "rank": "C",
     "boss": false,
     "cost": {
-     "common": 15,
-     "elite": 3,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -7540,7 +7540,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 9.5,
+    "damage": 23.0,
     "speed": 1.6
    },
    {
@@ -7564,7 +7564,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "greatsword",
-    "damage": 22.8,
+    "damage": 55.3,
     "speed": 0.85
    },
    {
@@ -7576,7 +7576,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 5.8,
+    "damage": 14.1,
     "speed": 2.4
    },
    {
@@ -7614,8 +7614,8 @@
       "name": "Linenwrap Hood",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -7624,8 +7624,8 @@
       "name": "Linenwrap Robe",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -7634,8 +7634,8 @@
       "name": "Linenwrap Wraps",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -7644,8 +7644,8 @@
       "name": "Linenwrap Slippers",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -7662,8 +7662,8 @@
       "name": "Jackalrunner Hood",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -7672,8 +7672,8 @@
       "name": "Jackalrunner Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -7682,8 +7682,8 @@
       "name": "Jackalrunner Breeches",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -7692,8 +7692,8 @@
       "name": "Jackalrunner Boots",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -7710,8 +7710,8 @@
       "name": "Sunscale Helm",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -7720,8 +7720,8 @@
       "name": "Sunscale Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -7730,8 +7730,8 @@
       "name": "Sunscale Tassets",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -7740,8 +7740,8 @@
       "name": "Sunscale Boots",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -7758,8 +7758,8 @@
       "name": "Tombguard Helm",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -7768,8 +7768,8 @@
       "name": "Tombguard Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -7778,8 +7778,8 @@
       "name": "Tombguard Greaves",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -7788,8 +7788,8 @@
       "name": "Tombguard Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -7848,13 +7848,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 2,
+     "common": 14,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 8.2,
+    "damage": 23.0,
     "speed": 1.6
    },
    {
@@ -7864,13 +7864,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 14,
-     "elite": 2,
+     "common": 10,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 5.0,
+    "damage": 14.1,
     "speed": 2.4
    },
    {
@@ -7880,13 +7880,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 2,
+     "common": 17,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 19.6,
+    "damage": 55.3,
     "speed": 0.85
    },
    {
@@ -7896,13 +7896,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 2,
+     "common": 14,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 9.2,
+    "damage": 26.1,
     "speed": 1.2
    },
    {
@@ -7912,13 +7912,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 32,
-     "elite": 4,
+     "common": 22,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 21.8,
+    "damage": 61.5,
     "speed": 0.85
    },
    {
@@ -7928,8 +7928,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 4,
+     "common": 14,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -7944,8 +7944,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 2,
+     "common": 14,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
@@ -7960,8 +7960,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 4,
+     "common": 12,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -7974,8 +7974,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 4,
+     "common": 12,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -7988,8 +7988,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 4,
+     "common": 12,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -8004,7 +8004,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 10.3,
+    "damage": 32.3,
     "speed": 1.6
    },
    {
@@ -8028,7 +8028,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "greatsword",
-    "damage": 24.7,
+    "damage": 77.4,
     "speed": 0.85
    },
    {
@@ -8040,7 +8040,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 6.3,
+    "damage": 19.8,
     "speed": 2.4
    },
    {
@@ -8078,8 +8078,8 @@
       "name": "Bile Priest's Hood",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -8088,8 +8088,8 @@
       "name": "Bile Priest's Robe",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -8098,8 +8098,8 @@
       "name": "Bile Priest's Wraps",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -8108,8 +8108,8 @@
       "name": "Bile Priest's Slippers",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -8126,8 +8126,8 @@
       "name": "Sinewrunner Hood",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -8136,8 +8136,8 @@
       "name": "Sinewrunner Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -8146,8 +8146,8 @@
       "name": "Sinewrunner Breeches",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -8156,8 +8156,8 @@
       "name": "Sinewrunner Boots",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -8174,8 +8174,8 @@
       "name": "Marrowplate Helm",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -8184,8 +8184,8 @@
       "name": "Marrowplate Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -8194,8 +8194,8 @@
       "name": "Marrowplate Tassets",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -8204,8 +8204,8 @@
       "name": "Marrowplate Boots",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -8222,8 +8222,8 @@
       "name": "Titanbone Helm",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -8232,8 +8232,8 @@
       "name": "Titanbone Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -8242,8 +8242,8 @@
       "name": "Titanbone Greaves",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -8252,8 +8252,8 @@
       "name": "Titanbone Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -8312,13 +8312,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 2,
+     "common": 14,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 8.2,
+    "damage": 23.0,
     "speed": 1.6
    },
    {
@@ -8328,13 +8328,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 14,
-     "elite": 2,
+     "common": 10,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 5.0,
+    "damage": 14.1,
     "speed": 2.4
    },
    {
@@ -8344,13 +8344,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 2,
+     "common": 17,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 19.6,
+    "damage": 55.3,
     "speed": 0.85
    },
    {
@@ -8360,13 +8360,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 2,
+     "common": 14,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 9.2,
+    "damage": 26.1,
     "speed": 1.2
    },
    {
@@ -8376,13 +8376,13 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 32,
-     "elite": 4,
+     "common": 22,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 21.8,
+    "damage": 61.5,
     "speed": 0.85
    },
    {
@@ -8392,8 +8392,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 4,
+     "common": 14,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -8408,8 +8408,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 21,
-     "elite": 2,
+     "common": 14,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
@@ -8424,8 +8424,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 4,
+     "common": 12,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -8438,8 +8438,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 4,
+     "common": 12,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -8452,8 +8452,8 @@
     "rank": "B",
     "boss": false,
     "cost": {
-     "common": 18,
-     "elite": 4,
+     "common": 12,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -8468,7 +8468,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 10.3,
+    "damage": 32.3,
     "speed": 1.6
    },
    {
@@ -8492,7 +8492,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "spear",
-    "damage": 11.6,
+    "damage": 36.6,
     "speed": 1.2
    },
    {
@@ -8504,7 +8504,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 6.3,
+    "damage": 19.8,
     "speed": 2.4
    },
    {
@@ -8542,8 +8542,8 @@
       "name": "Incense Hood",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -8552,8 +8552,8 @@
       "name": "Incense Robe",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -8562,8 +8562,8 @@
       "name": "Incense Wraps",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -8572,8 +8572,8 @@
       "name": "Incense Slippers",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -8590,8 +8590,8 @@
       "name": "Jadeguard Hood",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -8600,8 +8600,8 @@
       "name": "Jadeguard Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -8610,8 +8610,8 @@
       "name": "Jadeguard Breeches",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -8620,8 +8620,8 @@
       "name": "Jadeguard Boots",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -8638,8 +8638,8 @@
       "name": "Lionward Helm",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -8648,8 +8648,8 @@
       "name": "Lionward Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -8658,8 +8658,8 @@
       "name": "Lionward Tassets",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -8668,8 +8668,8 @@
       "name": "Lionward Boots",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -8686,8 +8686,8 @@
       "name": "Templeguard Helm",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -8696,8 +8696,8 @@
       "name": "Templeguard Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -8706,8 +8706,8 @@
       "name": "Templeguard Greaves",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -8716,8 +8716,8 @@
       "name": "Templeguard Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -8776,13 +8776,13 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 8.8,
+    "damage": 32.3,
     "speed": 1.6
    },
    {
@@ -8792,13 +8792,13 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 16,
-     "elite": 2,
+     "common": 9,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 5.4,
+    "damage": 19.8,
     "speed": 2.4
    },
    {
@@ -8808,13 +8808,13 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 28,
-     "elite": 2,
+     "common": 15,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 21.2,
+    "damage": 77.5,
     "speed": 0.85
    },
    {
@@ -8824,13 +8824,13 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 10.0,
+    "damage": 36.6,
     "speed": 1.2
    },
    {
@@ -8840,13 +8840,13 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 36,
-     "elite": 4,
+     "common": 20,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 23.5,
+    "damage": 86.1,
     "speed": 0.85
    },
    {
@@ -8856,8 +8856,8 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 4,
+     "common": 13,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -8872,8 +8872,8 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
@@ -8888,8 +8888,8 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 20,
-     "elite": 4,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -8902,8 +8902,8 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 20,
-     "elite": 4,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -8916,8 +8916,8 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 20,
-     "elite": 4,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -8932,7 +8932,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 10.3,
+    "damage": 45.2,
     "speed": 1.6
    },
    {
@@ -8956,7 +8956,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "greatsword",
-    "damage": 24.7,
+    "damage": 108.4,
     "speed": 0.85
    },
    {
@@ -8968,7 +8968,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 6.3,
+    "damage": 27.7,
     "speed": 2.4
    },
    {
@@ -9006,8 +9006,8 @@
       "name": "Stormcaller's Hood",
       "slot": "helm",
       "cost": {
-       "common": 20,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -9016,8 +9016,8 @@
       "name": "Stormcaller's Robe",
       "slot": "chest",
       "cost": {
-       "common": 32,
-       "elite": 4,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -9026,8 +9026,8 @@
       "name": "Stormcaller's Wraps",
       "slot": "legs",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -9036,8 +9036,8 @@
       "name": "Stormcaller's Slippers",
       "slot": "boots",
       "cost": {
-       "common": 16,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -9054,8 +9054,8 @@
       "name": "Galerunner Hood",
       "slot": "helm",
       "cost": {
-       "common": 20,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -9064,8 +9064,8 @@
       "name": "Galerunner Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 32,
-       "elite": 4,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -9074,8 +9074,8 @@
       "name": "Galerunner Breeches",
       "slot": "legs",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -9084,8 +9084,8 @@
       "name": "Galerunner Boots",
       "slot": "boots",
       "cost": {
-       "common": 16,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -9102,8 +9102,8 @@
       "name": "Bastionmail Helm",
       "slot": "helm",
       "cost": {
-       "common": 20,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -9112,8 +9112,8 @@
       "name": "Bastionmail Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 32,
-       "elite": 4,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -9122,8 +9122,8 @@
       "name": "Bastionmail Tassets",
       "slot": "legs",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -9132,8 +9132,8 @@
       "name": "Bastionmail Boots",
       "slot": "boots",
       "cost": {
-       "common": 16,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -9150,8 +9150,8 @@
       "name": "Stormhelm Helm",
       "slot": "helm",
       "cost": {
-       "common": 20,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -9160,8 +9160,8 @@
       "name": "Stormhelm Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 32,
-       "elite": 4,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -9170,8 +9170,8 @@
       "name": "Stormhelm Greaves",
       "slot": "legs",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -9180,8 +9180,8 @@
       "name": "Stormhelm Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 16,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -9240,13 +9240,13 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 8.8,
+    "damage": 32.3,
     "speed": 1.6
    },
    {
@@ -9256,13 +9256,13 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 16,
-     "elite": 2,
+     "common": 9,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 5.4,
+    "damage": 19.8,
     "speed": 2.4
    },
    {
@@ -9272,13 +9272,13 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 28,
-     "elite": 2,
+     "common": 15,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 21.2,
+    "damage": 77.5,
     "speed": 0.85
    },
    {
@@ -9288,13 +9288,13 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 10.0,
+    "damage": 36.6,
     "speed": 1.2
    },
    {
@@ -9304,13 +9304,13 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 36,
-     "elite": 4,
+     "common": 20,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 23.5,
+    "damage": 86.1,
     "speed": 0.85
    },
    {
@@ -9320,8 +9320,8 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 4,
+     "common": 13,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -9336,8 +9336,8 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
@@ -9352,8 +9352,8 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 20,
-     "elite": 4,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -9366,8 +9366,8 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 20,
-     "elite": 4,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -9380,8 +9380,8 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 20,
-     "elite": 4,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -9396,7 +9396,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 10.3,
+    "damage": 45.2,
     "speed": 1.6
    },
    {
@@ -9420,7 +9420,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "greatsword",
-    "damage": 27.4,
+    "damage": 120.5,
     "speed": 0.85
    },
    {
@@ -9432,7 +9432,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 6.3,
+    "damage": 27.7,
     "speed": 2.4
    },
    {
@@ -9470,8 +9470,8 @@
       "name": "Sanguine Hood",
       "slot": "helm",
       "cost": {
-       "common": 20,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -9480,8 +9480,8 @@
       "name": "Sanguine Robe",
       "slot": "chest",
       "cost": {
-       "common": 32,
-       "elite": 4,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -9490,8 +9490,8 @@
       "name": "Sanguine Wraps",
       "slot": "legs",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -9500,8 +9500,8 @@
       "name": "Sanguine Slippers",
       "slot": "boots",
       "cost": {
-       "common": 16,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -9518,8 +9518,8 @@
       "name": "Fencer's Hood",
       "slot": "helm",
       "cost": {
-       "common": 20,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -9528,8 +9528,8 @@
       "name": "Fencer's Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 32,
-       "elite": 4,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -9538,8 +9538,8 @@
       "name": "Fencer's Breeches",
       "slot": "legs",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -9548,8 +9548,8 @@
       "name": "Fencer's Boots",
       "slot": "boots",
       "cost": {
-       "common": 16,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -9566,8 +9566,8 @@
       "name": "Courtier's Helm",
       "slot": "helm",
       "cost": {
-       "common": 20,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -9576,8 +9576,8 @@
       "name": "Courtier's Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 32,
-       "elite": 4,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -9586,8 +9586,8 @@
       "name": "Courtier's Tassets",
       "slot": "legs",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -9596,8 +9596,8 @@
       "name": "Courtier's Boots",
       "slot": "boots",
       "cost": {
-       "common": 16,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -9614,8 +9614,8 @@
       "name": "Nightguard Helm",
       "slot": "helm",
       "cost": {
-       "common": 20,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -9624,8 +9624,8 @@
       "name": "Nightguard Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 32,
-       "elite": 4,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -9634,8 +9634,8 @@
       "name": "Nightguard Greaves",
       "slot": "legs",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -9644,8 +9644,8 @@
       "name": "Nightguard Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 16,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -9704,13 +9704,13 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 8.8,
+    "damage": 32.3,
     "speed": 1.6
    },
    {
@@ -9720,13 +9720,13 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 16,
-     "elite": 2,
+     "common": 9,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 5.4,
+    "damage": 19.8,
     "speed": 2.4
    },
    {
@@ -9736,13 +9736,13 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 28,
-     "elite": 2,
+     "common": 15,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 21.2,
+    "damage": 77.5,
     "speed": 0.85
    },
    {
@@ -9752,13 +9752,13 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 10.0,
+    "damage": 36.6,
     "speed": 1.2
    },
    {
@@ -9768,13 +9768,13 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 36,
-     "elite": 4,
+     "common": 20,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 23.5,
+    "damage": 86.1,
     "speed": 0.85
    },
    {
@@ -9784,8 +9784,8 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 4,
+     "common": 13,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -9800,8 +9800,8 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
@@ -9816,8 +9816,8 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 20,
-     "elite": 4,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -9830,8 +9830,8 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 20,
-     "elite": 4,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -9844,8 +9844,8 @@
     "rank": "A",
     "boss": false,
     "cost": {
-     "common": 20,
-     "elite": 4,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -9860,7 +9860,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 10.3,
+    "damage": 45.2,
     "speed": 1.6
    },
    {
@@ -9884,7 +9884,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "greatsword",
-    "damage": 27.4,
+    "damage": 120.5,
     "speed": 0.85
    },
    {
@@ -9896,7 +9896,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 6.3,
+    "damage": 27.7,
     "speed": 2.4
    },
    {
@@ -9934,8 +9934,8 @@
       "name": "Oracle's Hood",
       "slot": "helm",
       "cost": {
-       "common": 20,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -9944,8 +9944,8 @@
       "name": "Oracle's Robe",
       "slot": "chest",
       "cost": {
-       "common": 32,
-       "elite": 4,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -9954,8 +9954,8 @@
       "name": "Oracle's Wraps",
       "slot": "legs",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -9964,8 +9964,8 @@
       "name": "Oracle's Slippers",
       "slot": "boots",
       "cost": {
-       "common": 16,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -9982,8 +9982,8 @@
       "name": "Hornrunner Hood",
       "slot": "helm",
       "cost": {
-       "common": 20,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -9992,8 +9992,8 @@
       "name": "Hornrunner Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 32,
-       "elite": 4,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -10002,8 +10002,8 @@
       "name": "Hornrunner Breeches",
       "slot": "legs",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -10012,8 +10012,8 @@
       "name": "Hornrunner Boots",
       "slot": "boots",
       "cost": {
-       "common": 16,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -10030,8 +10030,8 @@
       "name": "Hornbreaker Helm",
       "slot": "helm",
       "cost": {
-       "common": 20,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -10040,8 +10040,8 @@
       "name": "Hornbreaker Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 32,
-       "elite": 4,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -10050,8 +10050,8 @@
       "name": "Hornbreaker Tassets",
       "slot": "legs",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -10060,8 +10060,8 @@
       "name": "Hornbreaker Boots",
       "slot": "boots",
       "cost": {
-       "common": 16,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -10078,8 +10078,8 @@
       "name": "Basaltplate Helm",
       "slot": "helm",
       "cost": {
-       "common": 20,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -10088,8 +10088,8 @@
       "name": "Basaltplate Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 32,
-       "elite": 4,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -10098,8 +10098,8 @@
       "name": "Basaltplate Greaves",
       "slot": "legs",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -10108,8 +10108,8 @@
       "name": "Basaltplate Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 16,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -10168,13 +10168,13 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 29,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 9.5,
+    "damage": 45.2,
     "speed": 1.6
    },
    {
@@ -10184,13 +10184,13 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 19,
-     "elite": 2,
+     "common": 9,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 5.8,
+    "damage": 27.7,
     "speed": 2.4
    },
    {
@@ -10200,13 +10200,13 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 34,
-     "elite": 2,
+     "common": 15,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 22.8,
+    "damage": 108.4,
     "speed": 0.85
    },
    {
@@ -10216,13 +10216,13 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 29,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 10.8,
+    "damage": 51.2,
     "speed": 1.2
    },
    {
@@ -10232,13 +10232,13 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 43,
-     "elite": 5,
+     "common": 20,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 25.4,
+    "damage": 120.5,
     "speed": 0.85
    },
    {
@@ -10248,8 +10248,8 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 29,
-     "elite": 5,
+     "common": 13,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -10264,8 +10264,8 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 29,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
@@ -10280,8 +10280,8 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 5,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -10294,8 +10294,8 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 5,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -10308,8 +10308,8 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 5,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -10324,7 +10324,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 10.3,
+    "damage": 63.3,
     "speed": 1.6
    },
    {
@@ -10348,7 +10348,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "spear",
-    "damage": 11.6,
+    "damage": 71.7,
     "speed": 1.2
    },
    {
@@ -10360,7 +10360,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 6.3,
+    "damage": 38.8,
     "speed": 2.4
    },
    {
@@ -10398,8 +10398,8 @@
       "name": "Abysswatch Hood",
       "slot": "helm",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -10408,8 +10408,8 @@
       "name": "Abysswatch Robe",
       "slot": "chest",
       "cost": {
-       "common": 38,
-       "elite": 5,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -10418,8 +10418,8 @@
       "name": "Abysswatch Wraps",
       "slot": "legs",
       "cost": {
-       "common": 29,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -10428,8 +10428,8 @@
       "name": "Abysswatch Slippers",
       "slot": "boots",
       "cost": {
-       "common": 19,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -10446,8 +10446,8 @@
       "name": "Deepsight Hood",
       "slot": "helm",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -10456,8 +10456,8 @@
       "name": "Deepsight Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 38,
-       "elite": 5,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -10466,8 +10466,8 @@
       "name": "Deepsight Breeches",
       "slot": "legs",
       "cost": {
-       "common": 29,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -10476,8 +10476,8 @@
       "name": "Deepsight Boots",
       "slot": "boots",
       "cost": {
-       "common": 19,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -10494,8 +10494,8 @@
       "name": "Lampkeeper's Helm",
       "slot": "helm",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -10504,8 +10504,8 @@
       "name": "Lampkeeper's Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 38,
-       "elite": 5,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -10514,8 +10514,8 @@
       "name": "Lampkeeper's Tassets",
       "slot": "legs",
       "cost": {
-       "common": 29,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -10524,8 +10524,8 @@
       "name": "Lampkeeper's Boots",
       "slot": "boots",
       "cost": {
-       "common": 19,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -10542,8 +10542,8 @@
       "name": "Anglerplate Helm",
       "slot": "helm",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -10552,8 +10552,8 @@
       "name": "Anglerplate Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 38,
-       "elite": 5,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -10562,8 +10562,8 @@
       "name": "Anglerplate Greaves",
       "slot": "legs",
       "cost": {
-       "common": 29,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -10572,8 +10572,8 @@
       "name": "Anglerplate Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 19,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -10632,13 +10632,13 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 29,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 9.5,
+    "damage": 45.2,
     "speed": 1.6
    },
    {
@@ -10648,13 +10648,13 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 19,
-     "elite": 2,
+     "common": 9,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 5.8,
+    "damage": 27.7,
     "speed": 2.4
    },
    {
@@ -10664,13 +10664,13 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 34,
-     "elite": 2,
+     "common": 15,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 22.8,
+    "damage": 108.4,
     "speed": 0.85
    },
    {
@@ -10680,13 +10680,13 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 29,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 10.8,
+    "damage": 51.2,
     "speed": 1.2
    },
    {
@@ -10696,13 +10696,13 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 43,
-     "elite": 5,
+     "common": 20,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 25.4,
+    "damage": 120.5,
     "speed": 0.85
    },
    {
@@ -10712,8 +10712,8 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 29,
-     "elite": 5,
+     "common": 13,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -10728,8 +10728,8 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 29,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
@@ -10744,8 +10744,8 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 5,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -10758,8 +10758,8 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 5,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -10772,8 +10772,8 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 5,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -10788,7 +10788,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 10.3,
+    "damage": 63.3,
     "speed": 1.6
    },
    {
@@ -10812,7 +10812,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "greatsword",
-    "damage": 27.4,
+    "damage": 168.7,
     "speed": 0.85
    },
    {
@@ -10824,7 +10824,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 6.3,
+    "damage": 38.8,
     "speed": 2.4
    },
    {
@@ -10862,8 +10862,8 @@
       "name": "Ash Choir Hood",
       "slot": "helm",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -10872,8 +10872,8 @@
       "name": "Ash Choir Robe",
       "slot": "chest",
       "cost": {
-       "common": 38,
-       "elite": 5,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -10882,8 +10882,8 @@
       "name": "Ash Choir Wraps",
       "slot": "legs",
       "cost": {
-       "common": 29,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -10892,8 +10892,8 @@
       "name": "Ash Choir Slippers",
       "slot": "boots",
       "cost": {
-       "common": 19,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -10910,8 +10910,8 @@
       "name": "Fallenblade Hood",
       "slot": "helm",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -10920,8 +10920,8 @@
       "name": "Fallenblade Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 38,
-       "elite": 5,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -10930,8 +10930,8 @@
       "name": "Fallenblade Breeches",
       "slot": "legs",
       "cost": {
-       "common": 29,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -10940,8 +10940,8 @@
       "name": "Fallenblade Boots",
       "slot": "boots",
       "cost": {
-       "common": 19,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -10958,8 +10958,8 @@
       "name": "Haloguard Helm",
       "slot": "helm",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -10968,8 +10968,8 @@
       "name": "Haloguard Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 38,
-       "elite": 5,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -10978,8 +10978,8 @@
       "name": "Haloguard Tassets",
       "slot": "legs",
       "cost": {
-       "common": 29,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -10988,8 +10988,8 @@
       "name": "Haloguard Boots",
       "slot": "boots",
       "cost": {
-       "common": 19,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -11006,8 +11006,8 @@
       "name": "Eclipse Helm",
       "slot": "helm",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -11016,8 +11016,8 @@
       "name": "Eclipse Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 38,
-       "elite": 5,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -11026,8 +11026,8 @@
       "name": "Eclipse Greaves",
       "slot": "legs",
       "cost": {
-       "common": 29,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -11036,8 +11036,8 @@
       "name": "Eclipse Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 19,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -11096,13 +11096,13 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 29,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "sword",
-    "damage": 9.5,
+    "damage": 45.2,
     "speed": 1.6
    },
    {
@@ -11112,13 +11112,13 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 19,
-     "elite": 2,
+     "common": 9,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "dagger",
-    "damage": 5.8,
+    "damage": 27.7,
     "speed": 2.4
    },
    {
@@ -11128,13 +11128,13 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 34,
-     "elite": 2,
+     "common": 15,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 22.8,
+    "damage": 108.4,
     "speed": 0.85
    },
    {
@@ -11144,13 +11144,13 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 29,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
     "ef": "spear",
-    "damage": 10.8,
+    "damage": 51.2,
     "speed": 1.2
    },
    {
@@ -11160,13 +11160,13 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 43,
-     "elite": 5,
+     "common": 20,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
     "ef": "greatsword",
-    "damage": 25.4,
+    "damage": 120.5,
     "speed": 0.85
    },
    {
@@ -11176,8 +11176,8 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 29,
-     "elite": 5,
+     "common": 13,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -11192,8 +11192,8 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 29,
-     "elite": 2,
+     "common": 13,
+     "elite": 1,
      "trophy": 0
     },
     "old": false,
@@ -11208,8 +11208,8 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 5,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -11222,8 +11222,8 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 5,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -11236,8 +11236,8 @@
     "rank": "S",
     "boss": false,
     "cost": {
-     "common": 24,
-     "elite": 5,
+     "common": 11,
+     "elite": 2,
      "trophy": 0
     },
     "old": false,
@@ -11252,7 +11252,7 @@
     "slot": "sword",
     "old": false,
     "ef": "sword",
-    "damage": 10.3,
+    "damage": 63.3,
     "speed": 1.6
    },
    {
@@ -11276,7 +11276,7 @@
     "slot": "heavy",
     "old": false,
     "ef": "greatsword",
-    "damage": 24.7,
+    "damage": 151.8,
     "speed": 0.85
    },
    {
@@ -11288,7 +11288,7 @@
     "slot": "dagger",
     "old": false,
     "ef": "dagger",
-    "damage": 6.3,
+    "damage": 38.8,
     "speed": 2.4
    },
    {
@@ -11326,8 +11326,8 @@
       "name": "Ash Cultist Hood",
       "slot": "helm",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -11336,8 +11336,8 @@
       "name": "Ash Cultist Robe",
       "slot": "chest",
       "cost": {
-       "common": 38,
-       "elite": 5,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -11346,8 +11346,8 @@
       "name": "Ash Cultist Wraps",
       "slot": "legs",
       "cost": {
-       "common": 29,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -11356,8 +11356,8 @@
       "name": "Ash Cultist Slippers",
       "slot": "boots",
       "cost": {
-       "common": 19,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -11374,8 +11374,8 @@
       "name": "Scalehide Hood",
       "slot": "helm",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -11384,8 +11384,8 @@
       "name": "Scalehide Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 38,
-       "elite": 5,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -11394,8 +11394,8 @@
       "name": "Scalehide Breeches",
       "slot": "legs",
       "cost": {
-       "common": 29,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -11404,8 +11404,8 @@
       "name": "Scalehide Boots",
       "slot": "boots",
       "cost": {
-       "common": 19,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -11422,8 +11422,8 @@
       "name": "Wyrmscale Helm",
       "slot": "helm",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -11432,8 +11432,8 @@
       "name": "Wyrmscale Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 38,
-       "elite": 5,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -11442,8 +11442,8 @@
       "name": "Wyrmscale Tassets",
       "slot": "legs",
       "cost": {
-       "common": 29,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -11452,8 +11452,8 @@
       "name": "Wyrmscale Boots",
       "slot": "boots",
       "cost": {
-       "common": 19,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -11470,8 +11470,8 @@
       "name": "Hoardplate Helm",
       "slot": "helm",
       "cost": {
-       "common": 24,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -11480,8 +11480,8 @@
       "name": "Hoardplate Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 38,
-       "elite": 5,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -11490,8 +11490,8 @@
       "name": "Hoardplate Greaves",
       "slot": "legs",
       "cost": {
-       "common": 29,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -11500,8 +11500,8 @@
       "name": "Hoardplate Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 19,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -11557,8 +11557,8 @@
       "name": "Horologist's Hood",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -11567,8 +11567,8 @@
       "name": "Horologist's Robe",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -11577,8 +11577,8 @@
       "name": "Horologist's Wraps",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -11587,8 +11587,8 @@
       "name": "Horologist's Slippers",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -11605,8 +11605,8 @@
       "name": "Tinker's Hood",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -11615,8 +11615,8 @@
       "name": "Tinker's Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -11625,8 +11625,8 @@
       "name": "Tinker's Breeches",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -11635,8 +11635,8 @@
       "name": "Tinker's Boots",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -11653,8 +11653,8 @@
       "name": "Brasswork Helm",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -11663,8 +11663,8 @@
       "name": "Brasswork Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -11673,8 +11673,8 @@
       "name": "Brasswork Tassets",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -11683,8 +11683,8 @@
       "name": "Brasswork Boots",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -11701,8 +11701,8 @@
       "name": "Gearwright Helm",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -11711,8 +11711,8 @@
       "name": "Gearwright Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -11721,8 +11721,8 @@
       "name": "Gearwright Greaves",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -11731,8 +11731,8 @@
       "name": "Gearwright Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -11788,8 +11788,8 @@
       "name": "Scaleguard Hood",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -11798,8 +11798,8 @@
       "name": "Scaleguard Robe",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -11808,8 +11808,8 @@
       "name": "Scaleguard Wraps",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -11818,8 +11818,8 @@
       "name": "Scaleguard Slippers",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -11836,8 +11836,8 @@
       "name": "Jaguar Hood",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -11846,8 +11846,8 @@
       "name": "Jaguar Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -11856,8 +11856,8 @@
       "name": "Jaguar Breeches",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -11866,8 +11866,8 @@
       "name": "Jaguar Boots",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -11884,8 +11884,8 @@
       "name": "Venomweave Helm",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -11894,8 +11894,8 @@
       "name": "Venomweave Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -11904,8 +11904,8 @@
       "name": "Venomweave Tassets",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -11914,8 +11914,8 @@
       "name": "Venomweave Boots",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -11932,8 +11932,8 @@
       "name": "Plumed Helm",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -11942,8 +11942,8 @@
       "name": "Plumed Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -11952,8 +11952,8 @@
       "name": "Plumed Greaves",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -11962,8 +11962,8 @@
       "name": "Plumed Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -12019,8 +12019,8 @@
       "name": "Runeseer Hood",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -12029,8 +12029,8 @@
       "name": "Runeseer Robe",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -12039,8 +12039,8 @@
       "name": "Runeseer Wraps",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -12049,8 +12049,8 @@
       "name": "Runeseer Slippers",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -12067,8 +12067,8 @@
       "name": "Wolfskin Hood",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -12077,8 +12077,8 @@
       "name": "Wolfskin Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -12087,8 +12087,8 @@
       "name": "Wolfskin Breeches",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -12097,8 +12097,8 @@
       "name": "Wolfskin Boots",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -12115,8 +12115,8 @@
       "name": "Huskarl Helm",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -12125,8 +12125,8 @@
       "name": "Huskarl Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -12135,8 +12135,8 @@
       "name": "Huskarl Tassets",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -12145,8 +12145,8 @@
       "name": "Huskarl Boots",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -12163,8 +12163,8 @@
       "name": "Giantplate Helm",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -12173,8 +12173,8 @@
       "name": "Giantplate Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -12183,8 +12183,8 @@
       "name": "Giantplate Greaves",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -12193,8 +12193,8 @@
       "name": "Giantplate Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -12250,8 +12250,8 @@
       "name": "Sandwraith Hood",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -12260,8 +12260,8 @@
       "name": "Sandwraith Robe",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -12270,8 +12270,8 @@
       "name": "Sandwraith Wraps",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -12280,8 +12280,8 @@
       "name": "Sandwraith Slippers",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -12298,8 +12298,8 @@
       "name": "Dancer's Hood",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -12308,8 +12308,8 @@
       "name": "Dancer's Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -12318,8 +12318,8 @@
       "name": "Dancer's Breeches",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -12328,8 +12328,8 @@
       "name": "Dancer's Boots",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -12346,8 +12346,8 @@
       "name": "Mirrorguard Helm",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -12356,8 +12356,8 @@
       "name": "Mirrorguard Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -12366,8 +12366,8 @@
       "name": "Mirrorguard Tassets",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -12376,8 +12376,8 @@
       "name": "Mirrorguard Boots",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -12394,8 +12394,8 @@
       "name": "Sultan's Helm",
       "slot": "helm",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 12,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -12404,8 +12404,8 @@
       "name": "Sultan's Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 28,
-       "elite": 4,
+       "common": 19,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -12414,8 +12414,8 @@
       "name": "Sultan's Greaves",
       "slot": "legs",
       "cost": {
-       "common": 21,
-       "elite": 2,
+       "common": 14,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -12424,8 +12424,8 @@
       "name": "Sultan's Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 14,
-       "elite": 2,
+       "common": 10,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -12481,8 +12481,8 @@
       "name": "Shaman Hood",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -12491,8 +12491,8 @@
       "name": "Shaman Robe",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -12501,8 +12501,8 @@
       "name": "Shaman Wraps",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -12511,8 +12511,8 @@
       "name": "Shaman Slippers",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -12529,8 +12529,8 @@
       "name": "Cutthroat Hood",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -12539,8 +12539,8 @@
       "name": "Cutthroat Jerkin",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -12549,8 +12549,8 @@
       "name": "Cutthroat Breeches",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -12559,8 +12559,8 @@
       "name": "Cutthroat Boots",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -12577,8 +12577,8 @@
       "name": "Raider Helm",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -12587,8 +12587,8 @@
       "name": "Raider Hauberk",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -12597,8 +12597,8 @@
       "name": "Raider Tassets",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -12607,8 +12607,8 @@
       "name": "Raider Boots",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }
@@ -12625,8 +12625,8 @@
       "name": "Warplate Helm",
       "slot": "helm",
       "cost": {
-       "common": 15,
-       "elite": 2,
+       "common": 11,
+       "elite": 1,
        "trophy": 1
       }
      },
@@ -12635,8 +12635,8 @@
       "name": "Warplate Cuirass",
       "slot": "chest",
       "cost": {
-       "common": 24,
-       "elite": 3,
+       "common": 18,
+       "elite": 2,
        "trophy": 0
       }
      },
@@ -12645,8 +12645,8 @@
       "name": "Warplate Greaves",
       "slot": "legs",
       "cost": {
-       "common": 18,
-       "elite": 2,
+       "common": 13,
+       "elite": 1,
        "trophy": 0
       }
      },
@@ -12655,8 +12655,8 @@
       "name": "Warplate Sabatons",
       "slot": "boots",
       "cost": {
-       "common": 12,
-       "elite": 2,
+       "common": 9,
+       "elite": 1,
        "trophy": 0
       }
      }

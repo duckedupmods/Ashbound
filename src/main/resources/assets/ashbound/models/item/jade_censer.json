@@ -82,18 +82,6 @@
    "textures": {
     "layer0": "ashbound:item/jade_censer"
    }
-  },
-  "ground": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/jade_censer"
-   }
-  },
-  "fixed": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/jade_censer"
-   }
   }
  }
 }

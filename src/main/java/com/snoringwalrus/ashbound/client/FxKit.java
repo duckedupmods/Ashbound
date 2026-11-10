@@ -190,7 +190,7 @@ final class FxKit {
 		public void tick() {
 			if (age++ < lifetime) return;
 			remove();
-			run.run();
+			SpellParticles.as(who, run);   // what comes later is still whoever's it was
 		}
 
 		@Override
@@ -211,7 +211,7 @@ final class FxKit {
 			this.bolt = bolt;
 			this.mode = mode;
 			this.curls = curls;
-			pale = mix(rgb, WHITE, 0.65f);
+			pale = mix(rgb, WHITE, 0.3f);
 		}
 
 		@Override
@@ -530,8 +530,8 @@ final class FxKit {
 	static void impact(ClientLevel l, Vec3 at, int rgb, float reach) {
 		RandomSource r = l.getRandom();
 		float roll = r.nextFloat() * Mth.TWO_PI;
-		add(new Flare(l, at, rgb, reach * 4.2f, 5, 1));
-		add(new Pop(l, at, rgb, STAR, reach * 2.8f, reach * 1.7f, 3, roll, 0));
+		add(new Flare(l, at, rgb, reach * 2.6f, 4, 0.6f));
+		add(new Pop(l, at, rgb, STAR, reach * 2.2f, reach * 1.5f, 3, roll, 0));
 		later(l, 1, () -> {
 			flip(l, BLAST, INK, rgb, at, Vec3.ZERO, reach * 1.3f, reach * 2.7f, 12);
 			add(new Pop(l, at, BLACK, STAR, reach * 1.9f, reach * 2.4f, 4, roll + 0.4f, 0));
@@ -542,8 +542,8 @@ final class FxKit {
 				add(new Pop(l, at, mix(rgb, WHITE, 0.25f), CRESCENT, reach * 1.1f, reach * 2.9f, 8, a, 0.5f));
 			}
 			streaks(l, at, BLACK, 5, 0.9 * reach, 0.09f * reach, 5, 7, 0.3);
-			streaks(l, at, mix(rgb, WHITE, 0.4f), 14, 1.1 * reach, 0.07f * reach, 6, 7, 0.3);
-			add(new Decal(l, at, mix(rgb, WHITE, 0.6f), RING, reach * 3.4f, 10, 1).facing(-1));
+			streaks(l, at, mix(rgb, WHITE, 0.3f), 14, 1.1 * reach, 0.07f * reach, 6, 7, 0.3);
+			add(new Decal(l, at, mix(rgb, WHITE, 0.35f), RING, reach * 3, 10, 0.7f).facing(-1));
 		});
 		later(l, 2, () -> {
 			for (int i = 0; i < 6; i++) {
@@ -557,7 +557,7 @@ final class FxKit {
 	/** The wind-up: needles of light pulled in to a point from all round, a glow swelling on it, a ring closing. */
 	static void gather(ClientLevel l, Vec3 at, int rgb, float reach, int ticks) {
 		RandomSource r = l.getRandom();
-		int pale = mix(rgb, WHITE, 0.5f);
+		int pale = mix(rgb, WHITE, 0.3f);
 		for (int i = 0, n = (int) (14 + reach * 5); i < n; i++) {
 			Vec3 d = rand(r, 0);
 			double from = reach * (0.8 + r.nextDouble() * 0.6);
@@ -573,9 +573,9 @@ final class FxKit {
 	static void slash(ClientLevel l, Vec3 at, Vec3 u, Vec3 v, int rgb, float radius, float width, float from, float to, int life) {
 		add(new SpellParticles.Arc(l, at, u, v, BLACK, radius + width * 0.1f, width * 1.35f, from, to, life + 2));
 		add(new SpellParticles.Arc(l, at, u, v, rgb, radius, width, from, to, life));
-		add(new SpellParticles.Arc(l, at, u, v, WHITE, radius - width * 0.1f, width * 0.24f, from, to, life - 2));
+		add(new SpellParticles.Arc(l, at, u, v, mix(rgb, WHITE, 0.45f), radius - width * 0.1f, width * 0.2f, from, to, life - 2));
 		Vec3 pu = u.normalize(), pv = v.normalize();
-		int pale = mix(rgb, WHITE, 0.5f);
+		int pale = mix(rgb, WHITE, 0.3f);
 		for (int i = 0; i < 4; i++) {
 			float k = 1 - (1 - (i + 1) / 4f) * (1 - (i + 1) / 4f), an = from + (to - from) * k, sign = Math.signum(to - from);
 			Vec3 tip = at.add(pu.scale(Mth.cos(an) * radius)).add(pv.scale(Mth.sin(an) * radius));
@@ -686,15 +686,15 @@ final class FxKit {
 		Vec3 f = floor(l, at);
 		impact(l, f.add(0, 0.6, 0), rgb, 0.5f + radius * 0.25f);
 		cracks(l, at, rgb, radius * 1.2f, 80 + (int) (heavy * 40));
-		ring(l, at, mix(rgb, WHITE, 0.6f), radius * 1.3f, 14);
+		ring(l, at, mix(rgb, WHITE, 0.35f), radius * 1.3f, 14);
 		ring(l, at, rgb, radius, 22);
 		add(new Tube(l, f, new Vec3(0, 1, 0), rgb, 1 + heavy, 0.6f, radius, 0, 14, 1).spreading());
-		flare(l, f.add(0, 0.5, 0), rgb, radius * 0.9f, 9);
-		pool(l, at, rgb, radius * 1.3f, 20, 0.8f);
+		flare(l, f.add(0, 0.5, 0), rgb, radius * 0.6f, 7);
+		pool(l, at, rgb, radius * 1.3f, 20, 0.55f);
 		rocks(l, at, (int) (10 + radius * 5), 0.3 + heavy * 0.18);
 		dust(l, at, radius, 12 + (int) (radius * 2));
 		sparks(l, f.add(0, 0.4, 0), rgb, (int) (24 + radius * 6), 0.5 + heavy * 0.2, 0.05f);
-		streaks(l, f.add(0, 0.3, 0), mix(rgb, WHITE, 0.4f), (int) (10 + radius * 3), 0.7 + heavy * 0.3, 0.07f, 7, 9, 2.6);
+		streaks(l, f.add(0, 0.3, 0), mix(rgb, WHITE, 0.3f), (int) (10 + radius * 3), 0.7 + heavy * 0.3, 0.07f, 7, 9, 2.6);
 		streaks(l, f.add(0, 0.3, 0), BLACK, (int) (4 + radius), 0.6 + heavy * 0.3, 0.1f, 6, 9, 2.6);
 		later(l, 4, () -> ring(l, at, rgb, radius * 0.7f, 18));
 	}
@@ -702,17 +702,17 @@ final class FxKit {
 	/** A column of it going up to the sky. */
 	static void column(ClientLevel l, Vec3 at, int rgb, float tall, float wide, int life, Entity on) {
 		Vec3 up = new Vec3(0, 1, 0);
-		Tube a = new Tube(l, at, up, rgb, tall, wide, wide * 0.7f, 2.5f, life, 1), b = new Tube(l, at, up, mix(rgb, WHITE, 0.4f), tall * 0.85f, wide * 0.5f, wide * 0.3f, -3.5f, life - 4, 1);
+		Tube a = new Tube(l, at, up, rgb, tall, wide, wide * 0.7f, 2.5f, life, 1), b = new Tube(l, at, up, mix(rgb, WHITE, 0.3f), tall * 0.85f, wide * 0.5f, wide * 0.3f, -3.5f, life - 4, 1);
 		if (on != null) {
 			a.follows(on);
 			b.follows(on);
 		}
 		add(a);
 		add(b);
-		add(new SpellParticles.Beam(l, at, up.scale(tall), mix(rgb, WHITE, 0.75f), wide * 0.4f, life, 1, on, 0.3f));
+		add(new SpellParticles.Beam(l, at, up.scale(tall), mix(rgb, WHITE, 0.3f), wide * 0.4f, life, 0.8f, on, 0.3f));
 		flare(l, at.add(0, 0.4, 0), rgb, wide * 2.4f, life / 2);
-		wake(l, at.add(0, tall * 0.1f, 0), up, mix(rgb, WHITE, 0.5f), tall * 0.7f, wide * 1.3f, 4);
-		streaks(l, at.add(0, 0.4, 0), mix(rgb, WHITE, 0.4f), 12, 0.9, 0.06f, 7, 9, 3);
+		wake(l, at.add(0, tall * 0.1f, 0), up, mix(rgb, WHITE, 0.3f), tall * 0.7f, wide * 1.3f, 4);
+		streaks(l, at.add(0, 0.4, 0), mix(rgb, WHITE, 0.3f), 12, 0.9, 0.06f, 7, 9, 3);
 	}
 
 	/** A spear of energy along a line, with a cone of it round the middle. */
@@ -720,13 +720,13 @@ final class FxKit {
 		add(new SpellParticles.Beam(l, from, dir.scale(length), BLACK, wide * 1.3f, life, 0.7f, null, 0.4f));
 		add(new Tube(l, from, dir, rgb, length, wide * 0.7f, wide * 1.2f, 3, life, 0.9f));
 		add(new SpellParticles.Beam(l, from, dir.scale(length), rgb, wide, life, 0.8f, null, 0.5f));
-		add(new SpellParticles.Beam(l, from, dir.scale(length), mix(rgb, WHITE, 0.8f), wide * 0.35f, life - 2, 1, null, 0.6f));
-		flare(l, from, rgb, wide * 3, 8);
-		wake(l, from, dir, mix(rgb, WHITE, 0.5f), length, wide * 1.4f, 4);
+		add(new SpellParticles.Beam(l, from, dir.scale(length), mix(rgb, WHITE, 0.3f), wide * 0.35f, life - 2, 0.85f, null, 0.6f));
+		flare(l, from, rgb, wide * 2, 6);
+		wake(l, from, dir, mix(rgb, WHITE, 0.3f), length, wide * 1.4f, 4);
 		Vec3 end = from.add(dir.normalize().scale(length));
 		later(l, 3, () -> {
 			add(new Pop(l, end, mix(rgb, WHITE, 0.3f), STAR, wide * 2.6f, wide * 1.2f, 3, l.getRandom().nextFloat() * Mth.TWO_PI, 0));
-			streaks(l, end, mix(rgb, WHITE, 0.4f), 8, 0.7, 0.05f, 6, 7, 0);
+			streaks(l, end, mix(rgb, WHITE, 0.3f), 8, 0.7, 0.05f, 6, 7, 0);
 		});
 	}
 }

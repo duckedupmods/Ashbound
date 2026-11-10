@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/starfall.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.617,
-     -2.612,
-     0.001
+     -3.073,
+     -2.774,
+     0.085
     ],
     "scale": [
-     0.3735,
-     0.3735,
-     0.3735
+     0.3412,
+     0.3412,
+     0.3412
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.617,
-     -2.612,
-     0.001
+     -3.073,
+     -2.774,
+     0.085
     ],
     "scale": [
-     0.3735,
-     0.3735,
-     0.3735
+     0.3412,
+     0.3412,
+     0.3412
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.439,
-     -1.437,
+     -1.69,
+     -1.526,
      0
     ],
     "scale": [
-     0.2054,
-     0.2054,
-     0.2054
+     0.1877,
+     0.1877,
+     0.1877
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/starfall"
+   }
+  }
+ }
 }

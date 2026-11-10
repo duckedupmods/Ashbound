@@ -1,0 +1,60 @@
+{
+ "id": "adv_c_39",
+ "seed": 4113039,
+ "recipe": "adventurer",
+ "role": "lancer",
+ "rank": "C",
+ "name": "Petra Lantern",
+ "title": "C-rank Lancer",
+ "age": "teen",
+ "sex": "f",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "porcelain",
+ "hair": {
+  "style": "braid",
+  "color": "auburn"
+ },
+ "headwear": "helm",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "amber",
+  "brows": "soft",
+  "mouth": "smile",
+  "blush": true,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "mail",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "gloves",
+   "pauldrons",
+   "tabard"
+  ],
+  "colors": {
+   "top": "navy",
+   "bottom": "black",
+   "accent": "red",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "spear",
+ "offhand": null,
+ "back": null,
+ "hip": "sword",
+ "prop": null,
+ "_filters": {
+  "rank": "C",
+  "role": "lancer"
+ },
+ "party": "The Red Hounds"
+}

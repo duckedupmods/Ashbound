@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/antler_greatblade.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.46,
-     -2.46,
+     -1.931,
+     -1.931,
      0.0
     ],
     "scale": [
-     0.339,
-     0.339,
-     0.339
+     0.289,
+     0.289,
+     0.289
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.46,
-     -2.46,
+     -1.931,
+     -1.931,
      0.0
     ],
     "scale": [
-     0.339,
-     0.339,
-     0.339
+     0.289,
+     0.289,
+     0.289
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.353,
-     -1.353,
+     -1.062,
+     -1.062,
      0
     ],
     "scale": [
-     0.1864,
-     0.1864,
-     0.1864
+     0.1589,
+     0.1589,
+     0.1589
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/antler_greatblade"
+   }
+  }
+ }
 }

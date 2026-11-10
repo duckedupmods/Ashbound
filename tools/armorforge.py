@@ -32,6 +32,7 @@ from voxboss import Part, PB, C  # noqa: E402
 import voxmob as M  # noqa: E402
 import gear as G  # noqa: E402
 import weaponforge as W  # noqa: E402
+import armorsets as AS  # noqa: E402
 
 OUT = Path(G.GAME) / 'tools' / 'armor_src'
 PLAYER = {"head": (0, 24, 0), "body": (0, 24, 0), "arm_r": (-5, 22, 0), "arm_l": (5, 22, 0),
@@ -133,6 +134,13 @@ def build(gate, cls, name):
 
     def emblem(part, x, y, z, size, depth=1.0, boss=False):
         th.emblem(Mount(s, part, (x, 0, z)), 0, y, size, depth, boss)
+
+    if name in AS.DESIGNS:
+        parts["chest_back"] = Part("chest_back", PLAYER["body"], (), bone["body"])
+        for sd in ("r", "l"):
+            parts["chest_shoulder_" + sd] = Part("chest_shoulder_" + sd, PLAYER["arm_" + sd], (), bone["arm_" + sd])
+        AS.DESIGNS[name](AS.Kit(parts, add))
+        return finish(s, parts, gate, th)
 
     seed = sum(map(ord, name))
     heavy = cls == "heavy"
@@ -303,10 +311,16 @@ def build(gate, cls, name):
     if gate in EXTRAS:      # a set's own hand-built pieces (tools/worldarmour.py: crowns, wings, blades...)
         EXTRAS[gate](s, parts, add, lambda part, off=(0, 0, 0): Mount(s, part, off), th)
 
+    return finish(s, parts, gate, th)
+
+
+def finish(s, parts, gate, th):
     sh = dict(th.shaders)
     sh["cloth"] = cloth_shader(CLOTH[gate])
     sh["leather"] = W.matte_shader(LEATHER)
     sh["mail"] = mail_shader(th.R["blade"])
+    if s.name in AS.PAINT:
+        sh.update(AS.shaders(s))
     s.shaders = sh
     return s, parts
 
@@ -315,8 +329,16 @@ def export(gate, cls, name):
     M.ASSETS = OUT
     V.T = 2
     s, parts = build(gate, cls, name)
-    M.export(s, parts, name, BONES, {}, ground_tags=("boot", "sole"))
+    M.export(s, parts, name, BONES + (["chest_back", "chest_shoulder_r", "chest_shoulder_l"] if name in AS.DESIGNS else []), {}, ground_tags=("boot", "sole"))
     roomy(name)
+    if name in AS.DESIGNS:
+        done = OUT / 'designed.json'
+        names = set(json.loads(done.read_text())) if done.exists() else set()
+        done.write_text(json.dumps(sorted(names | {name})))
+        fx = Path(G.GAME) / 'src/main/resources/ashbound/armor_fx.json'
+        worn = json.loads(fx.read_text()) if fx.exists() else {}
+        worn[name] = AS.FRAMES
+        fx.write_text(json.dumps(worn, indent=0, sort_keys=True))
 
 
 def roomy(name, size=256):
@@ -326,8 +348,8 @@ def roomy(name, size=256):
     tex = OUT / 'textures' / 'entity' / (name + '.png')
     im = Image.open(tex).convert('RGBA')
     H = im.size[1]
-    if H >= size:
-        return
+    if H >= size:        # a busy set fills even that: it gets one more step
+        size *= 2
     big = Image.new('RGBA', (im.size[0], size), (0, 0, 0, 0))
     big.paste(im, (0, 0))
     big.save(tex)
@@ -347,7 +369,7 @@ def main():
     gear = json.load(open(G.OUT, encoding='utf-8'))
     for g in gear:
         for st in g['sets']:
-            if st['old']:
+            if st['old'] and st['id'] not in AS.DESIGNS:
                 continue
             if args and st['id'] not in args and g['gate'] not in args:
                 continue

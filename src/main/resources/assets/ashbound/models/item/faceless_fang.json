@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/faceless_fang.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.476,
-     -1.515,
-     -0.011
+     -0.714,
+     -0.714,
+     -0.0
     ],
     "scale": [
-     0.7662,
-     0.7662,
-     0.7662
+     0.7208,
+     0.7208,
+     0.7208
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.476,
-     -1.515,
-     -0.011
+     -0.714,
+     -0.714,
+     -0.0
     ],
     "scale": [
-     0.7662,
-     0.7662,
-     0.7662
+     0.7208,
+     0.7208,
+     0.7208
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.812,
-     -0.833,
+     -0.393,
+     -0.393,
      0
     ],
     "scale": [
-     0.4214,
-     0.4214,
-     0.4214
+     0.3964,
+     0.3964,
+     0.3964
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/faceless_fang"
+   }
+  }
+ }
 }

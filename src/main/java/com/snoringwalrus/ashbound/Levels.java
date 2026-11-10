@@ -45,6 +45,13 @@ public final class Levels {
 	public static final Supplier<AttachmentType<Integer>> ASH = ATTACHMENTS.register("ash",
 			() -> AttachmentType.builder(() -> 0).serialize(Codec.INT).copyOnDeath().build());
 
+	/** the rank you've reached (Ranks) */
+	public static final Supplier<AttachmentType<Integer>> RANK = ATTACHMENTS.register("rank",
+			() -> AttachmentType.builder(() -> 0).serialize(Codec.INT).copyOnDeath().build());
+	/** bosses down since one last left you a weapon (GateLoot) */
+	public static final Supplier<AttachmentType<Integer>> BOSS_MISSES = ATTACHMENTS.register("boss_misses",
+			() -> AttachmentType.builder(() -> 0).serialize(Codec.INT).copyOnDeath().build());
+
 	private static final ResourceLocation HEALTH = ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "level");
 
 	/** what the server last told this client */
@@ -103,8 +110,9 @@ public final class Levels {
 		near.addAll(Party.alongside(near, Party.SHARE));
 		double share = Balance.share(near.size());
 		for (ServerPlayer p : near) {
-			give(p, Math.max(1, (int) Math.round(ash * share * (1 + Passives.stat(p, "ash%") / 100))));
-			if (coins > 0) Coins.give(p, (int) Math.round(coins * share * (1 + Passives.stat(p, "coins%") / 100)));
+			double most = Balance.paysUpTo(rank, Ranks.party(p));   // a leap up the ranks is dangerous and pays for it, but it can't skip the game
+			give(p, Math.max(1, (int) Math.round(ash * most * share * (1 + Passives.stat(p, "ash%") / 100))));
+			if (coins > 0) Coins.give(p, (int) Math.round(coins * most * share * (1 + Passives.stat(p, "coins%") / 100)));
 		}
 	}
 

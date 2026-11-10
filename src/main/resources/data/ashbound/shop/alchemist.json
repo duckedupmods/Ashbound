@@ -121,6 +121,13 @@
     "id": "minecraft:honey_bottle"
    },
    "price": 15
+  },
+  {
+   "item": {
+    "id": "ashbound:alchemists_bench",
+    "count": 1
+   },
+   "price": 350
   }
  ],
  "sell": [

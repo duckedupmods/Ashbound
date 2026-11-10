@@ -1,0 +1,50 @@
+{
+ "name": "Elowen",
+ "race": "elf",
+ "age": "adult",
+ "sex": "f",
+ "skin": "fair",
+ "build": "slim",
+ "hair": {
+  "style": "long",
+  "color": "golden"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "green",
+  "brows": "soft",
+  "mouth": "smile",
+  "blush": true,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "blouse",
+  "bottom": "skirt",
+  "sleeves": "long",
+  "overs": [
+   "bodice",
+   "belt"
+  ],
+  "colors": {
+   "top": "white",
+   "bottom": "black",
+   "accent": "red",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "clasp",
+  "l": "clasp"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "role": "receptionist",
+ "id": "receptionist"
+}

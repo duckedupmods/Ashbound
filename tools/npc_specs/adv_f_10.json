@@ -1,0 +1,59 @@
+{
+ "id": "adv_f_10",
+ "seed": 4113010,
+ "recipe": "adventurer",
+ "role": "breaker",
+ "rank": "F",
+ "name": "Sorcha Corrin",
+ "title": "F-rank Breaker",
+ "age": "adult",
+ "sex": "f",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "fair",
+ "hair": {
+  "style": "long",
+  "color": "dark_brown"
+ },
+ "headwear": "helm",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "brown",
+  "brows": null,
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "shirt",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "belt",
+   "leather_apron"
+  ],
+  "colors": {
+   "top": "linen",
+   "bottom": "brown",
+   "accent": "moss",
+   "leather": "black"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "axe",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "F",
+  "role": "breaker"
+ },
+ "party": "The Greenhorns"
+}

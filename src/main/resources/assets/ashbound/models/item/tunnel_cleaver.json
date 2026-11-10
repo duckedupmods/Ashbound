@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/tunnel_cleaver.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.025,
-     -2.025,
-     0.0
+     -1.988,
+     -2.327,
+     -0.097
     ],
     "scale": [
-     0.3602,
-     0.3602,
-     0.3602
+     0.3447,
+     0.3447,
+     0.3447
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.025,
-     -2.025,
-     0.0
+     -1.988,
+     -2.327,
+     -0.097
     ],
     "scale": [
-     0.3602,
-     0.3602,
-     0.3602
+     0.3447,
+     0.3447,
+     0.3447
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.114,
-     -1.114,
+     -1.093,
+     -1.28,
      0
     ],
     "scale": [
-     0.1981,
-     0.1981,
-     0.1981
+     0.1896,
+     0.1896,
+     0.1896
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/tunnel_cleaver"
+   }
+  }
+ }
 }

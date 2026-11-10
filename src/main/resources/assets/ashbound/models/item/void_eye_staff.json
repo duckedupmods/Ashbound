@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/void_eye_staff.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     0.422,
-     0.422,
+     -1.09,
+     -1.09,
      -0.0
     ],
     "scale": [
-     0.3614,
-     0.3614,
-     0.3614
+     0.2777,
+     0.2777,
+     0.2777
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     0.422,
-     0.422,
+     -1.09,
+     -1.09,
      -0.0
     ],
     "scale": [
-     0.3614,
-     0.3614,
-     0.3614
+     0.2777,
+     0.2777,
+     0.2777
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.232,
-     0.232,
+     -0.6,
+     -0.6,
      0
     ],
     "scale": [
-     0.1988,
-     0.1988,
-     0.1988
+     0.1527,
+     0.1527,
+     0.1527
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/void_eye_staff"
+   }
+  }
+ }
 }

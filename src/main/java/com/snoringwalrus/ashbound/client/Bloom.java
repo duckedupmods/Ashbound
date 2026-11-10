@@ -47,8 +47,9 @@ final class Bloom {
 
 	/** Smoke doesn't shine; everything else that's black adds nothing and hides the glow behind it, as it should. */
 	static void vertex(Vector3f p, float u, float v, float r, float g, float b, float a, int light) {
-		if (glow == null || (light & 0xFFFF) == SpellParticles.SMOKE) return;
-		glow.addVertex(p.x, p.y, p.z).setUv(u, v).setColor(r * gain, g * gain, b * gain, a * gain).setLight(light);
+		float k = gain * HudPrefs.fxGlow();   // how much they glow is each player's (FxSetup)
+		if (glow == null || k <= 0 || (light & 0xFFFF) == SpellParticles.SMOKE) return;
+		glow.addVertex(p.x, p.y, p.z).setUv(u, v).setColor(r * k, g * k, b * k, a * k).setLight(light);
 	}
 
 	private static RenderTarget target(RenderTarget old, int w, int h, boolean depth) {
@@ -60,7 +61,7 @@ final class Bloom {
 		return t;
 	}
 
-	private static void pass(ShaderInstance s, RenderTarget from, RenderTarget to, float dx, float dy, float gain) {
+	static void pass(ShaderInstance s, RenderTarget from, RenderTarget to, float dx, float dy, float gain) {
 		if (to != null) to.bindWrite(true);
 		RenderSystem.setShader(() -> s);
 		RenderSystem.setShaderTexture(0, from.getColorTextureId());
@@ -122,12 +123,17 @@ final class Bloom {
 		RenderSystem.disableBlend();
 		blur(post, half, quarterA, quarterB);
 		blur(post, quarterB, eighthA, eighthB);
-		main.bindWrite(true);
+		RenderTarget out = ShaderPacks.on() ? ShaderPacks.layer() : main;
+		out.bindWrite(true);
 		RenderSystem.enableBlend();
-		RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
+		RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE);
 		pass(post, half, null, 0, 0, TIGHT);
 		pass(post, quarterB, null, 0, 0, MID);
 		pass(post, eighthB, null, 0, 0, WIDE);
+		if (out != main) {
+			ShaderPacks.drew();
+			main.bindWrite(true);
+		}
 
 		RenderSystem.defaultBlendFunc();
 		RenderSystem.disableBlend();

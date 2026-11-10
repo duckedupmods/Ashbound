@@ -1,0 +1,59 @@
+{
+ "id": "adv_e_12",
+ "seed": 4113012,
+ "recipe": "adventurer",
+ "role": "tank",
+ "rank": "E",
+ "name": "Roderick Grist",
+ "title": "E-rank Shieldbearer",
+ "age": "adult",
+ "sex": "m",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "porcelain",
+ "hair": {
+  "style": "shaggy",
+  "color": "golden"
+ },
+ "headwear": null,
+ "beard": "stubble",
+ "face": {
+  "eye": "mid",
+  "iris": "brown",
+  "brows": "stern",
+  "mouth": "grin",
+  "blush": true,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "gambeson",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "belt",
+   "pauldron_l"
+  ],
+  "colors": {
+   "top": "brown",
+   "bottom": "grey",
+   "accent": "ochre",
+   "leather": "black"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "sword",
+ "offhand": "shield",
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "E",
+  "role": "tank"
+ },
+ "party": "Copper Bell Company"
+}

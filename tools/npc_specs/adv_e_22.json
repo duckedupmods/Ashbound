@@ -1,0 +1,59 @@
+{
+ "id": "adv_e_22",
+ "seed": 4120941,
+ "recipe": "adventurer",
+ "role": "rogue",
+ "rank": "E",
+ "name": "Hanne Crane",
+ "title": "E-rank Cutblade",
+ "age": "adult",
+ "sex": "f",
+ "build": "average",
+ "hunch": 0,
+ "skin": "olive",
+ "hair": {
+  "style": "braid",
+  "color": "dark_brown"
+ },
+ "headwear": "bandana",
+ "beard": null,
+ "face": {
+  "eye": "sharp",
+  "iris": "hazel",
+  "brows": "stern",
+  "mouth": "flat",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "gloves",
+   "pouches"
+  ],
+  "colors": {
+   "top": "grey",
+   "bottom": "black",
+   "accent": "brown",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "fold",
+  "l": "fold"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": "daggers",
+ "prop": null,
+ "_filters": {
+  "rank": "E",
+  "role": "rogue"
+ },
+ "party": "Low Road Five"
+}

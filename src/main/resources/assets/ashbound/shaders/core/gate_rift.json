@@ -4,6 +4,9 @@
     "samplers": [
         {
             "name": "Sampler0"
+        },
+        {
+            "name": "Sampler1"
         }
     ],
     "uniforms": [
@@ -60,6 +63,15 @@
             "values": [
                 1.0,
                 1.0,
+                1.0,
+                1.0
+            ]
+        },
+        {
+            "name": "ScreenSize",
+            "type": "float",
+            "count": 2,
+            "values": [
                 1.0,
                 1.0
             ]

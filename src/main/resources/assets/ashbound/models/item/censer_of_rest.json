@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/censer_of_rest.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.348,
-     -0.329,
-     0.006
+     -2.365,
+     0.202,
+     0.733
     ],
     "scale": [
-     0.3581,
-     0.3581,
-     0.3581
+     0.2858,
+     0.2858,
+     0.2858
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.348,
-     -0.329,
-     0.006
+     -2.365,
+     0.202,
+     0.733
     ],
     "scale": [
-     0.3581,
-     0.3581,
-     0.3581
+     0.2858,
+     0.2858,
+     0.2858
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.191,
-     -0.181,
+     -1.301,
+     0.111,
      0
     ],
     "scale": [
-     0.1969,
-     0.1969,
-     0.1969
+     0.1572,
+     0.1572,
+     0.1572
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/censer_of_rest"
+   }
+  }
+ }
 }

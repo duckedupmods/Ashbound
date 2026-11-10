@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/toad_knife.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.887,
-     -0.887,
-     0.0
+     -1.238,
+     -1.238,
+     -0.0
     ],
     "scale": [
-     0.6835,
-     0.6835,
-     0.6835
+     0.5934,
+     0.5934,
+     0.5934
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.887,
-     -0.887,
-     0.0
+     -1.238,
+     -1.238,
+     -0.0
     ],
     "scale": [
-     0.6835,
-     0.6835,
-     0.6835
+     0.5934,
+     0.5934,
+     0.5934
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.488,
-     -0.488,
+     -0.681,
+     -0.681,
      0
     ],
     "scale": [
-     0.3759,
-     0.3759,
-     0.3759
+     0.3264,
+     0.3264,
+     0.3264
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/toad_knife"
+   }
+  }
+ }
 }

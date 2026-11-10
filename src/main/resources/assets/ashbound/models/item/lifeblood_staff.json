@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/lifeblood_staff.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.13,
-     -0.11,
-     0.006
+     -1.011,
+     -1.011,
+     -0.0
     ],
     "scale": [
-     0.369,
-     0.369,
-     0.369
+     0.2919,
+     0.2919,
+     0.2919
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.13,
-     -0.11,
-     0.006
+     -1.011,
+     -1.011,
+     -0.0
     ],
     "scale": [
-     0.369,
-     0.369,
-     0.369
+     0.2919,
+     0.2919,
+     0.2919
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.072,
-     -0.061,
+     -0.556,
+     -0.556,
      0
     ],
     "scale": [
-     0.2029,
-     0.2029,
-     0.2029
+     0.1605,
+     0.1605,
+     0.1605
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/lifeblood_staff"
+   }
+  }
+ }
 }

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/abbots_crozier.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.555,
-     -0.505,
-     -0.588
+     -2.317,
+     -0.015,
+     0.658
     ],
     "scale": [
-     0.3964,
-     0.3964,
-     0.3964
+     0.3053,
+     0.3053,
+     0.3053
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.555,
-     -0.505,
-     -0.588
+     -2.317,
+     -0.015,
+     0.658
     ],
     "scale": [
-     0.3964,
-     0.3964,
-     0.3964
+     0.3053,
+     0.3053,
+     0.3053
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.855,
-     -0.278,
+     -1.274,
+     -0.008,
      0
     ],
     "scale": [
-     0.218,
-     0.218,
-     0.218
+     0.1679,
+     0.1679,
+     0.1679
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/abbots_crozier"
+   }
+  }
+ }
 }

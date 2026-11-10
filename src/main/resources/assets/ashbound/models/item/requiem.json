@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/requiem.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.038,
-     -0.892,
-     0.183
+     0.741,
+     -2.256,
+     0.131
     ],
     "scale": [
-     1.0402,
-     1.0402,
-     1.0402
+     0.752,
+     0.752,
+     0.752
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.038,
-     -0.892,
-     0.183
+     0.741,
+     -2.256,
+     0.131
     ],
     "scale": [
-     1.0402,
-     1.0402,
-     1.0402
+     0.752,
+     0.752,
+     0.752
     ]
    },
    "ground": {
@@ -115,19 +115,26 @@
      0.0
     ],
     "translation": [
-     0.571,
-     -0.491,
+     0.408,
+     -1.241,
      0
     ],
     "scale": [
-     0.5721,
-     0.5721,
-     0.5721
+     0.4136,
+     0.4136,
+     0.4136
     ]
    }
   }
  },
- "perspectives": {},
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/requiem"
+   }
+  }
+ },
  "overrides": [
   {
    "predicate": {

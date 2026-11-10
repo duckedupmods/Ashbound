@@ -1,0 +1,65 @@
+{
+ "id": "adv_c_42",
+ "seed": 4113042,
+ "recipe": "adventurer",
+ "role": "tank",
+ "rank": "C",
+ "name": "Amends Lastgate",
+ "title": "C-rank Shieldbearer",
+ "age": "adult",
+ "sex": "f",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "dusk",
+ "hair": {
+  "style": "ponytail",
+  "color": "silver"
+ },
+ "headwear": "helm",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "gold",
+  "brows": "stern",
+  "mouth": "flat",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "scar"
+  ],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "mail",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "gloves",
+   "greaves",
+   "pauldrons",
+   "tabard"
+  ],
+  "colors": {
+   "top": "navy",
+   "bottom": "charcoal",
+   "accent": "oxblood",
+   "leather": "black"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "axe",
+ "offhand": "shield",
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "C",
+  "role": "tank"
+ },
+ "race": "demon",
+ "recipe_race": "demon",
+ "party": "Ember Wake"
+}

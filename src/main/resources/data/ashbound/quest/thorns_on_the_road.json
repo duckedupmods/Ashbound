@@ -1,0 +1,10 @@
+{
+ "title": "Briars on the Wagon Road",
+ "rank": "F",
+ "text": "Something in the thornborn groves is growing across the roads at night. The wagoners want the briar wardens cut back before the carts stop running.",
+ "kill": "ashbound:briar_warden",
+ "count": 5,
+ "points": 30,
+ "coins": 50,
+ "repeat": true
+}

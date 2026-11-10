@@ -1,0 +1,18 @@
+{
+ "type": "ashbound:astral_knight",
+ "generator": {
+  "type": "minecraft:flat",
+  "settings": {
+   "biome": "ashbound:astral_knight",
+   "features": false,
+   "lakes": false,
+   "layers": [
+    {
+     "block": "minecraft:air",
+     "height": 1
+    }
+   ],
+   "structure_overrides": []
+  }
+ }
+}

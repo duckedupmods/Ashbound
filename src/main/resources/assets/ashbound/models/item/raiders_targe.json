@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/raiders_targe.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.618,
-     3.676,
-     7.712
+     2.778,
+     3.88,
+     6.849
     ],
     "scale": [
-     0.5774,
-     0.5774,
-     0.5774
+     0.6524,
+     0.6524,
+     0.6524
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.618,
-     3.676,
-     7.712
+     2.778,
+     3.88,
+     6.849
     ],
     "scale": [
-     0.5774,
-     0.5774,
-     0.5774
+     0.6524,
+     0.6524,
+     0.6524
     ]
    },
    "ground": {
@@ -115,19 +115,26 @@
      0.0
     ],
     "translation": [
-     0.89,
-     2.022,
+     1.528,
+     2.134,
      0
     ],
     "scale": [
-     0.3176,
-     0.3176,
-     0.3176
+     0.3588,
+     0.3588,
+     0.3588
     ]
    }
   }
  },
- "perspectives": {},
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/raiders_targe"
+   }
+  }
+ },
  "overrides": [
   {
    "predicate": {

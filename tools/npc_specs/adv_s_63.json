@@ -1,0 +1,64 @@
+{
+ "id": "adv_s_63",
+ "seed": 4113063,
+ "recipe": "adventurer",
+ "role": "tank",
+ "rank": "S",
+ "name": "Sabeth Underhill",
+ "title": "S-rank Shieldbearer",
+ "age": "teen",
+ "sex": "f",
+ "build": "average",
+ "hunch": 0,
+ "skin": "fair",
+ "hair": {
+  "style": "ponytail",
+  "color": "silver"
+ },
+ "headwear": "helm",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "gold",
+  "brows": "thin",
+  "mouth": "flat",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "scar_cheek"
+  ],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "cuirass",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "cape",
+   "gauntlets",
+   "greaves",
+   "pauldrons",
+   "tassets"
+  ],
+  "colors": {
+   "top": "grey",
+   "bottom": "charcoal",
+   "accent": "white",
+   "leather": "black"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "sword",
+ "offhand": "shield",
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "S",
+  "role": "tank"
+ },
+ "party": "Crownless"
+}

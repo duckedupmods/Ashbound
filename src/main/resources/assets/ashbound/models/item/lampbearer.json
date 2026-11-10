@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/lampbearer.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.59,
-     -0.59,
-     -0.0
+     -1.505,
+     -0.504,
+     0.286
     ],
     "scale": [
-     0.3296,
-     0.3296,
-     0.3296
+     0.3055,
+     0.3055,
+     0.3055
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.59,
-     -0.59,
-     -0.0
+     -1.505,
+     -0.504,
+     0.286
     ],
     "scale": [
-     0.3296,
-     0.3296,
-     0.3296
+     0.3055,
+     0.3055,
+     0.3055
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.325,
-     -0.325,
+     -0.828,
+     -0.277,
      0
     ],
     "scale": [
-     0.1813,
-     0.1813,
-     0.1813
+     0.168,
+     0.168,
+     0.168
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/lampbearer"
+   }
+  }
+ }
 }

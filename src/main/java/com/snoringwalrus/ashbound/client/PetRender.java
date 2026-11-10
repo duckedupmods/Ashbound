@@ -9,6 +9,7 @@ import com.mojang.math.Axis;
 import com.snoringwalrus.ashbound.Bag;
 import com.snoringwalrus.ashbound.Curios;
 import com.snoringwalrus.ashbound.Pets;
+import com.snoringwalrus.ashbound.Rations;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.LevelRenderer;
@@ -26,26 +27,29 @@ import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.common.NeoForge;
 
 /**
- * Pets, drawn on each client with no entity behind them (Pets). Each keeps its own place here, chasing a spot beside its owner a
- * frame at a time, so it trails behind when you run and catches up when you stop; it just reappears if you've got too far ahead.
- * Heel pets wait out a ride.
+ * Pets, drawn on each client with no entity behind them (Pets). Each keeps its own place here: it's carried along with its owner
+ * and chases a spot beside them a frame at a time, so it swings out on a turn but stays with you at a sprint; it just reappears if
+ * you've got too far ahead. Heel pets wait out a ride.
  */
 public final class PetRender {
 	private PetRender() {}
 
 	/** where a heel pet walks and a hover pet floats, from the owner: to the left, up, behind */
 	private static final double HEEL_SIDE = 0.75, HEEL_BACK = 0.65, HOVER_SIDE = 0.8, HOVER_UP = 1.8, HOVER_BACK = 0.15;
-	/** how quickly it closes on that spot (a share of the gap a second), how far before it gives up and reappears, how far it looks for ground */
-	private static final double CHASE = 4.5, TOO_FAR = 20;
+	/** how quickly it closes on that spot (a share of the gap a second), how much of the owner's own move it shares, how far before it gives up and reappears */
+	private static final double CHASE = 6, CARRY = 0.85, TOO_FAR = 20;
 	private static final int GROUND_UP = 2, GROUND_DOWN = 5;
 	private static final float STRIDE = 0.8f;
 	private static final Map<UUID, Follow> AT = new HashMap<>();
 	/** the Bag's pouch, built with the pets (tools/voxpets.py --bag) */
 	private static final String BAG = "bottomless_bag";
 	private static final float[] BAG_BOX = {0.0f, 0.359f, 0.003f, 0.719f};
+	/** the Ration Pouch's, the same way (--rations) */
+	private static final String RATIONS = "ration_pouch";
+	private static final float[] RATIONS_BOX = {0.003f, 0.35f, 0.02f, 0.712f};
 
 	private static final class Follow {
-		double x, y, z;
+		double x, y, z, ownerX, ownerZ;
 		float yaw, stride, pace;
 		long last = System.nanoTime();
 	}
@@ -110,13 +114,18 @@ public final class PetRender {
 			f.z = spot.z;
 			f.yaw = body;
 			f.last = now;
+			f.ownerX = at.x;
+			f.ownerZ = at.z;
 			AT.put(p.getUUID(), f);
 			return f;
 		}
 		float dt = Math.min(0.1f, (now - f.last) / 1.0E9f);
 		f.last = now;
 		float k = 1 - (float) Math.exp(-CHASE * dt);
-		double dx = (spot.x - f.x) * k, dz = (spot.z - f.z) * k, moved = Math.hypot(dx, dz);
+		double carryX = (at.x - f.ownerX) * CARRY, carryZ = (at.z - f.ownerZ) * CARRY;
+		f.ownerX = at.x;
+		f.ownerZ = at.z;
+		double dx = carryX + (spot.x - f.x - carryX) * k, dz = carryZ + (spot.z - f.z - carryZ) * k, moved = Math.hypot(dx, dz);
 		f.x += dx;
 		f.z += dz;
 		f.y += (spot.y - f.y) * Math.min(1, k * 2);
@@ -139,15 +148,16 @@ public final class PetRender {
 					@Override
 					public void renderByItem(ItemStack stack, ItemDisplayContext ctx, PoseStack ps, MultiBufferSource buf, int light, int overlay) {
 						Pets.Pet pet = stack.getItem() instanceof Curios.Curio c ? Pets.ALL.get(c.spec().id()) : null;
-						if (pet == null && !stack.is(Bag.POUCH.get())) return;
-						float[] b = pet == null ? BAG_BOX : pet.box();
+						boolean rations = stack.is(Rations.POUCH.get());
+						if (pet == null && !rations && !stack.is(Bag.POUCH.get())) return;
+						float[] b = rations ? RATIONS_BOX : pet == null ? BAG_BOX : pet.box();
 						float k = 0.92f / b[3];
 						ps.pushPose();
 						ps.translate(0.5, 0.5, 0.5);
 						ps.scale(k, k, k);
 						ps.translate(-b[0], -b[1], -b[2]);
 						float t = Minecraft.getInstance().level == null ? 0 : Minecraft.getInstance().level.getGameTime();
-						MountRender.pet(pet == null ? BAG : pet.id(), t, 0, 0, false, 0, ps, buf, light);
+						MountRender.pet(rations ? RATIONS : pet == null ? BAG : pet.id(), t, 0, 0, false, 0, ps, buf, light);
 						ps.popPose();
 					}
 				};

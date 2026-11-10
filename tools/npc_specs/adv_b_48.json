@@ -1,0 +1,61 @@
+{
+ "id": "adv_b_48",
+ "seed": 4120967,
+ "recipe": "adventurer",
+ "role": "striker",
+ "rank": "B",
+ "name": "Abel Redcap",
+ "title": "B-rank Blade",
+ "age": "adult",
+ "sex": "m",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "fair",
+ "hair": {
+  "style": "short",
+  "color": "auburn"
+ },
+ "headwear": "bandana",
+ "beard": "beard",
+ "face": {
+  "eye": "sharp",
+  "iris": "hazel",
+  "brows": "soft",
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "mail",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "gloves",
+   "greaves",
+   "pauldrons",
+   "tabard"
+  ],
+  "colors": {
+   "top": "brown",
+   "bottom": "charcoal",
+   "accent": "teal",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "fold",
+  "l": "fold"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": "greatsword",
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "B",
+  "role": "striker"
+ },
+ "party": "Silver Thistle"
+}

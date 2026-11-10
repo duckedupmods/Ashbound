@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/horizon_bow.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.038,
-     -0.892,
-     0.183
+     0.886,
+     -0.775,
+     0.156
     ],
     "scale": [
-     1.0402,
-     1.0402,
-     1.0402
+     0.8994,
+     0.8994,
+     0.8994
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.038,
-     -0.892,
-     0.183
+     0.886,
+     -0.775,
+     0.156
     ],
     "scale": [
-     1.0402,
-     1.0402,
-     1.0402
+     0.8994,
+     0.8994,
+     0.8994
     ]
    },
    "ground": {
@@ -115,19 +115,26 @@
      0.0
     ],
     "translation": [
-     0.571,
-     -0.491,
+     0.487,
+     -0.426,
      0
     ],
     "scale": [
-     0.5721,
-     0.5721,
-     0.5721
+     0.4947,
+     0.4947,
+     0.4947
     ]
    }
   }
  },
- "perspectives": {},
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/horizon_bow"
+   }
+  }
+ },
  "overrides": [
   {
    "predicate": {

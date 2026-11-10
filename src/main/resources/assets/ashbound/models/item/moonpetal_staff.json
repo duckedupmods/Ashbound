@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/moonpetal_staff.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     0.048,
-     0.069,
-     0.006
+     -0.659,
+     -0.659,
+     -0.0
     ],
     "scale": [
-     0.3779,
-     0.3779,
-     0.3779
+     0.2739,
+     0.2739,
+     0.2739
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     0.048,
-     0.069,
-     0.006
+     -0.659,
+     -0.659,
+     -0.0
     ],
     "scale": [
-     0.3779,
-     0.3779,
-     0.3779
+     0.2739,
+     0.2739,
+     0.2739
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.026,
-     0.038,
+     -0.362,
+     -0.362,
      0
     ],
     "scale": [
-     0.2078,
-     0.2078,
-     0.2078
+     0.1507,
+     0.1507,
+     0.1507
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/moonpetal_staff"
+   }
+  }
+ }
 }

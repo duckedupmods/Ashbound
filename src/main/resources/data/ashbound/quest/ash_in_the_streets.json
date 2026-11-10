@@ -1,0 +1,16 @@
+{
+ "title": "Ash in the Streets",
+ "rank": "E",
+ "text": "On ashfall nights the Ashwalkers come down out of the grey and try the doors. The watch can't hold them all. Next time the ash falls, be out there.",
+ "kill": "ashbound:ashwalker",
+ "count": 8,
+ "points": 55,
+ "coins": 90,
+ "items": [
+  [
+   "minecraft:torch",
+   16
+  ]
+ ],
+ "repeat": true
+}

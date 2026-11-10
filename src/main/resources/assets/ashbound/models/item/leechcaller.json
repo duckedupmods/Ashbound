@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/leechcaller.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.641,
-     -0.032,
-     -0.478
+     -0.873,
+     -0.873,
+     0.0
     ],
     "scale": [
-     0.4216,
-     0.4216,
-     0.4216
+     0.2974,
+     0.2974,
+     0.2974
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.641,
-     -0.032,
-     -0.478
+     -0.873,
+     -0.873,
+     0.0
     ],
     "scale": [
-     0.4216,
-     0.4216,
-     0.4216
+     0.2974,
+     0.2974,
+     0.2974
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.903,
-     -0.018,
+     -0.48,
+     -0.48,
      0
     ],
     "scale": [
-     0.2319,
-     0.2319,
-     0.2319
+     0.1636,
+     0.1636,
+     0.1636
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/leechcaller"
+   }
+  }
+ }
 }

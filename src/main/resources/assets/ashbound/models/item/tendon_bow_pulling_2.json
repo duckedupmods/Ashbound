@@ -80,19 +80,7 @@
   "gui": {
    "parent": "minecraft:item/generated",
    "textures": {
-    "layer0": "ashbound:item/tendon_bow_pulling_2"
-   }
-  },
-  "ground": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/tendon_bow_pulling_2"
-   }
-  },
-  "fixed": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/tendon_bow_pulling_2"
+    "layer0": "ashbound:item/tendon_bow"
    }
   }
  }

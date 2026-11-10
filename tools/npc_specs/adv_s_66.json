@@ -1,0 +1,60 @@
+{
+ "id": "adv_s_66",
+ "seed": 4120985,
+ "recipe": "adventurer",
+ "role": "black_mage",
+ "rank": "S",
+ "name": "Corvin Half-Ear",
+ "title": "S-rank Black Mage",
+ "age": "adult",
+ "sex": "m",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "weathered",
+ "hair": {
+  "style": "long",
+  "color": "dark_brown"
+ },
+ "headwear": "witch_hat",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "gold",
+  "brows": null,
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "bracers",
+   "cape",
+   "mantle"
+  ],
+  "colors": {
+   "top": "plum",
+   "bottom": "black",
+   "accent": "white",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "staff",
+ "offhand": null,
+ "back": null,
+ "hip": "tome",
+ "prop": null,
+ "_filters": {
+  "rank": "S",
+  "role": "black_mage"
+ },
+ "party": "Crownless"
+}

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/aegis_of_dawn.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.137,
-     1.009,
-     5.009
+     1.207,
+     2.31,
+     6.102
     ],
     "scale": [
-     0.4007,
-     0.4007,
-     0.4007
+     0.4553,
+     0.4553,
+     0.4553
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.137,
-     1.009,
-     5.009
+     1.207,
+     2.31,
+     6.102
     ],
     "scale": [
-     0.4007,
-     0.4007,
-     0.4007
+     0.4553,
+     0.4553,
+     0.4553
     ]
    },
    "ground": {
@@ -115,19 +115,26 @@
      0.0
     ],
     "translation": [
-     0.625,
-     0.555,
+     0.664,
+     1.271,
      0
     ],
     "scale": [
-     0.2204,
-     0.2204,
-     0.2204
+     0.2504,
+     0.2504,
+     0.2504
     ]
    }
   }
  },
- "perspectives": {},
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/aegis_of_dawn"
+   }
+  }
+ },
  "overrides": [
   {
    "predicate": {

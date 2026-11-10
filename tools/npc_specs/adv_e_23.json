@@ -1,0 +1,59 @@
+{
+ "id": "adv_e_23",
+ "seed": 4113023,
+ "recipe": "adventurer",
+ "role": "black_mage",
+ "rank": "E",
+ "name": "Silas Wexley",
+ "title": "E-rank Black Mage",
+ "age": "adult",
+ "sex": "m",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "fair",
+ "hair": {
+  "style": "short",
+  "color": "auburn"
+ },
+ "headwear": "hood",
+ "beard": null,
+ "face": {
+  "eye": "sharp",
+  "iris": "hazel",
+  "brows": "thin",
+  "mouth": "flat",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "sash",
+   "satchel"
+  ],
+  "colors": {
+   "top": "charcoal",
+   "bottom": "charcoal",
+   "accent": "brown",
+   "leather": "black"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "staff",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "E",
+  "role": "black_mage"
+ },
+ "party": "Low Road Five"
+}

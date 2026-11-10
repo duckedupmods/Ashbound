@@ -3,6 +3,7 @@ package com.snoringwalrus.ashbound.client;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.snoringwalrus.ashbound.Books;
 import com.snoringwalrus.ashbound.Classes;
 import com.snoringwalrus.ashbound.Forms;
 import com.snoringwalrus.ashbound.Joined;
@@ -26,7 +27,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
  * is under your skills, with its level.
  */
 public class SkillScreen extends Screen implements MenuTabs.Panel {
-	private static final int W = 420, H = 240, PAD = 12, TOP = 30, CARD_W = 150, CARD_H = 36, GAP = 3, SLOT = 26, SLOT_GAP = 8, ROW = (H - TOP - PAD) / 3, ROWS = 5;
+	private static final int W = 420, H = 240, PAD = 12, TOP = 30, CARD_W = 150, CARD_H = 36, GAP = 3, SLOT = 26, SLOT_GAP = 8, ROW = (H - TOP - PAD) / 3, ROWS = 5, EFFECTS_W = 52;
 	private int picked;
 
 	public SkillScreen() {
@@ -36,7 +37,7 @@ public class SkillScreen extends Screen implements MenuTabs.Panel {
 	/** What the first key does with this in hand, or null. */
 	static String heldName(ItemStack held) {
 		if (Joined.stage(held) > 0) return "Joined skill";
-		return held.getItem() instanceof Spells.Staff s ? Skills.heldName(s.kind()) : null;
+		return held.getItem() instanceof Spells.Staff ? Skills.heldName(held) : null;
 	}
 
 	private int left() {
@@ -96,6 +97,11 @@ public class SkillScreen extends Screen implements MenuTabs.Panel {
 
 	private int choiceY(int tier) {
 		return top() + TOP + tier * ROW;
+	}
+
+	@Override
+	protected void init() {
+		addRenderableWidget(new AshUi.AshButton(left() + W - PAD - EFFECTS_W, top() + 5, EFFECTS_W, 14, Component.literal("Effects"), b -> minecraft.setScreen(new FxSetup(this)), false));
 	}
 
 	@Override
@@ -214,11 +220,12 @@ public class SkillScreen extends Screen implements MenuTabs.Panel {
 			Skills.Skill s = id == null ? null : Skills.byId(id);
 			boolean taken = i == Skills.SLOTS - 1 && !Forms.clientForm.isEmpty();
 			if (s != null && !taken && i > 0) SkillHud.icon(g, s, sx + 5, sy + 5);
+			else if (taken) g.renderItem(new ItemStack(Books.TOMES.get(Forms.ALL.indexOf(Forms.byId(Forms.clientForm))).get()), sx + 5, sy + 5);
 			else {
-				String t = taken ? "X" : i == 0 ? held == null ? "-" : "held" : "";
+				String t = i == 0 ? held == null ? "-" : "held" : "";
 				g.drawString(font, t, sx + (SLOT - font.width(t)) / 2, sy + 9, AshUi.MUTED, true);
 			}
-			String key = CurioKeys.slotKey(i).getTranslatedKeyMessage().getString();
+			String key = (taken ? CurioKeys.FORM : CurioKeys.slotKey(i)).getTranslatedKeyMessage().getString();
 			g.drawString(font, key, sx + (SLOT - font.width(key)) / 2, sy + SLOT + 3, AshUi.MUTED, false);
 		}
 	}

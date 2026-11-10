@@ -1,0 +1,732 @@
+{
+ "legend.rime_penitent.idle": {
+  "subtitle": "subtitles.ashbound.legend.rime_penitent.idle",
+  "sounds": [
+   {
+    "name": "ashbound:legend/rime_penitent_idle_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/rime_penitent_idle_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.rime_penitent.roar": {
+  "subtitle": "subtitles.ashbound.legend.rime_penitent.roar",
+  "sounds": [
+   {
+    "name": "ashbound:legend/rime_penitent_roar",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.rime_penitent.hurt": {
+  "subtitle": "subtitles.ashbound.legend.rime_penitent.hurt",
+  "sounds": [
+   {
+    "name": "ashbound:legend/rime_penitent_hurt_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/rime_penitent_hurt_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.rime_penitent.death": {
+  "subtitle": "subtitles.ashbound.legend.rime_penitent.death",
+  "sounds": [
+   {
+    "name": "ashbound:legend/rime_penitent_death",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.rime_penitent.step": {
+  "subtitle": "subtitles.ashbound.legend.rime_penitent.step",
+  "sounds": [
+   {
+    "name": "ashbound:legend/rime_penitent_step_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/rime_penitent_step_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.rime_penitent.sig": {
+  "subtitle": "subtitles.ashbound.legend.rime_penitent.sig",
+  "sounds": [
+   {
+    "name": "ashbound:legend/rime_penitent_toll",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.old_blackbriar.idle": {
+  "subtitle": "subtitles.ashbound.legend.old_blackbriar.idle",
+  "sounds": [
+   {
+    "name": "ashbound:legend/old_blackbriar_idle_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/old_blackbriar_idle_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.old_blackbriar.roar": {
+  "subtitle": "subtitles.ashbound.legend.old_blackbriar.roar",
+  "sounds": [
+   {
+    "name": "ashbound:legend/old_blackbriar_roar",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.old_blackbriar.hurt": {
+  "subtitle": "subtitles.ashbound.legend.old_blackbriar.hurt",
+  "sounds": [
+   {
+    "name": "ashbound:legend/old_blackbriar_hurt_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/old_blackbriar_hurt_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.old_blackbriar.death": {
+  "subtitle": "subtitles.ashbound.legend.old_blackbriar.death",
+  "sounds": [
+   {
+    "name": "ashbound:legend/old_blackbriar_death",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.old_blackbriar.step": {
+  "subtitle": "subtitles.ashbound.legend.old_blackbriar.step",
+  "sounds": [
+   {
+    "name": "ashbound:legend/old_blackbriar_step_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/old_blackbriar_step_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.old_blackbriar.sig": {
+  "subtitle": "subtitles.ashbound.legend.old_blackbriar.sig",
+  "sounds": [
+   {
+    "name": "ashbound:legend/old_blackbriar_crows",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.red_plough.idle": {
+  "subtitle": "subtitles.ashbound.legend.red_plough.idle",
+  "sounds": [
+   {
+    "name": "ashbound:legend/red_plough_idle_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/red_plough_idle_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.red_plough.roar": {
+  "subtitle": "subtitles.ashbound.legend.red_plough.roar",
+  "sounds": [
+   {
+    "name": "ashbound:legend/red_plough_roar",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.red_plough.hurt": {
+  "subtitle": "subtitles.ashbound.legend.red_plough.hurt",
+  "sounds": [
+   {
+    "name": "ashbound:legend/red_plough_hurt_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/red_plough_hurt_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.red_plough.death": {
+  "subtitle": "subtitles.ashbound.legend.red_plough.death",
+  "sounds": [
+   {
+    "name": "ashbound:legend/red_plough_death",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.red_plough.step": {
+  "subtitle": "subtitles.ashbound.legend.red_plough.step",
+  "sounds": [
+   {
+    "name": "ashbound:legend/red_plough_step_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/red_plough_step_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.red_plough.sig": {
+  "subtitle": "subtitles.ashbound.legend.red_plough.sig",
+  "sounds": [
+   {
+    "name": "ashbound:legend/red_plough_scrape",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.sunbreaker.idle": {
+  "subtitle": "subtitles.ashbound.legend.sunbreaker.idle",
+  "sounds": [
+   {
+    "name": "ashbound:legend/sunbreaker_idle_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/sunbreaker_idle_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.sunbreaker.roar": {
+  "subtitle": "subtitles.ashbound.legend.sunbreaker.roar",
+  "sounds": [
+   {
+    "name": "ashbound:legend/sunbreaker_roar",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.sunbreaker.hurt": {
+  "subtitle": "subtitles.ashbound.legend.sunbreaker.hurt",
+  "sounds": [
+   {
+    "name": "ashbound:legend/sunbreaker_hurt_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/sunbreaker_hurt_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.sunbreaker.death": {
+  "subtitle": "subtitles.ashbound.legend.sunbreaker.death",
+  "sounds": [
+   {
+    "name": "ashbound:legend/sunbreaker_death",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.sunbreaker.step": {
+  "subtitle": "subtitles.ashbound.legend.sunbreaker.step",
+  "sounds": [
+   {
+    "name": "ashbound:legend/sunbreaker_step_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/sunbreaker_step_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.sunbreaker.sig": {
+  "subtitle": "subtitles.ashbound.legend.sunbreaker.sig",
+  "sounds": [
+   {
+    "name": "ashbound:legend/sunbreaker_beam",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.grandmother_mire.idle": {
+  "subtitle": "subtitles.ashbound.legend.grandmother_mire.idle",
+  "sounds": [
+   {
+    "name": "ashbound:legend/grandmother_mire_idle_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/grandmother_mire_idle_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.grandmother_mire.roar": {
+  "subtitle": "subtitles.ashbound.legend.grandmother_mire.roar",
+  "sounds": [
+   {
+    "name": "ashbound:legend/grandmother_mire_roar",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.grandmother_mire.hurt": {
+  "subtitle": "subtitles.ashbound.legend.grandmother_mire.hurt",
+  "sounds": [
+   {
+    "name": "ashbound:legend/grandmother_mire_hurt_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/grandmother_mire_hurt_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.grandmother_mire.death": {
+  "subtitle": "subtitles.ashbound.legend.grandmother_mire.death",
+  "sounds": [
+   {
+    "name": "ashbound:legend/grandmother_mire_death",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.grandmother_mire.step": {
+  "subtitle": "subtitles.ashbound.legend.grandmother_mire.step",
+  "sounds": [
+   {
+    "name": "ashbound:legend/grandmother_mire_step_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/grandmother_mire_step_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.grandmother_mire.sig": {
+  "subtitle": "subtitles.ashbound.legend.grandmother_mire.sig",
+  "sounds": [
+   {
+    "name": "ashbound:legend/grandmother_mire_cackle",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.hollow_smile.idle": {
+  "subtitle": "subtitles.ashbound.legend.hollow_smile.idle",
+  "sounds": [
+   {
+    "name": "ashbound:legend/hollow_smile_idle_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/hollow_smile_idle_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.hollow_smile.roar": {
+  "subtitle": "subtitles.ashbound.legend.hollow_smile.roar",
+  "sounds": [
+   {
+    "name": "ashbound:legend/hollow_smile_roar",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.hollow_smile.hurt": {
+  "subtitle": "subtitles.ashbound.legend.hollow_smile.hurt",
+  "sounds": [
+   {
+    "name": "ashbound:legend/hollow_smile_hurt_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/hollow_smile_hurt_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.hollow_smile.death": {
+  "subtitle": "subtitles.ashbound.legend.hollow_smile.death",
+  "sounds": [
+   {
+    "name": "ashbound:legend/hollow_smile_death",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.hollow_smile.step": {
+  "subtitle": "subtitles.ashbound.legend.hollow_smile.step",
+  "sounds": [
+   {
+    "name": "ashbound:legend/hollow_smile_step_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/hollow_smile_step_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.hollow_smile.sig": {
+  "subtitle": "subtitles.ashbound.legend.hollow_smile.sig",
+  "sounds": [
+   {
+    "name": "ashbound:legend/hollow_smile_giggle",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.old_harpoon.idle": {
+  "subtitle": "subtitles.ashbound.legend.old_harpoon.idle",
+  "sounds": [
+   {
+    "name": "ashbound:legend/old_harpoon_idle_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/old_harpoon_idle_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.old_harpoon.roar": {
+  "subtitle": "subtitles.ashbound.legend.old_harpoon.roar",
+  "sounds": [
+   {
+    "name": "ashbound:legend/old_harpoon_roar",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.old_harpoon.hurt": {
+  "subtitle": "subtitles.ashbound.legend.old_harpoon.hurt",
+  "sounds": [
+   {
+    "name": "ashbound:legend/old_harpoon_hurt_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/old_harpoon_hurt_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.old_harpoon.death": {
+  "subtitle": "subtitles.ashbound.legend.old_harpoon.death",
+  "sounds": [
+   {
+    "name": "ashbound:legend/old_harpoon_death",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.old_harpoon.step": {
+  "subtitle": "subtitles.ashbound.legend.old_harpoon.step",
+  "sounds": [
+   {
+    "name": "ashbound:legend/old_harpoon_step_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/old_harpoon_step_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.old_harpoon.sig": {
+  "subtitle": "subtitles.ashbound.legend.old_harpoon.sig",
+  "sounds": [
+   {
+    "name": "ashbound:legend/old_harpoon_chain",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.walking_mountain.idle": {
+  "subtitle": "subtitles.ashbound.legend.walking_mountain.idle",
+  "sounds": [
+   {
+    "name": "ashbound:legend/walking_mountain_idle_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/walking_mountain_idle_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.walking_mountain.roar": {
+  "subtitle": "subtitles.ashbound.legend.walking_mountain.roar",
+  "sounds": [
+   {
+    "name": "ashbound:legend/walking_mountain_roar",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.walking_mountain.hurt": {
+  "subtitle": "subtitles.ashbound.legend.walking_mountain.hurt",
+  "sounds": [
+   {
+    "name": "ashbound:legend/walking_mountain_hurt_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/walking_mountain_hurt_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.walking_mountain.death": {
+  "subtitle": "subtitles.ashbound.legend.walking_mountain.death",
+  "sounds": [
+   {
+    "name": "ashbound:legend/walking_mountain_death",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.walking_mountain.step": {
+  "subtitle": "subtitles.ashbound.legend.walking_mountain.step",
+  "sounds": [
+   {
+    "name": "ashbound:legend/walking_mountain_step_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/walking_mountain_step_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.walking_mountain.sig": {
+  "subtitle": "subtitles.ashbound.legend.walking_mountain.sig",
+  "sounds": [
+   {
+    "name": "ashbound:legend/walking_mountain_quake",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.ashwalker.idle": {
+  "subtitle": "subtitles.ashbound.legend.ashwalker.idle",
+  "sounds": [
+   {
+    "name": "ashbound:legend/ashwalker_idle_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/ashwalker_idle_2",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/ashwalker_idle_3",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.ashwalker.roar": {
+  "subtitle": "subtitles.ashbound.legend.ashwalker.roar",
+  "sounds": [
+   {
+    "name": "ashbound:legend/ashwalker_roar",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.ashwalker.hurt": {
+  "subtitle": "subtitles.ashbound.legend.ashwalker.hurt",
+  "sounds": [
+   {
+    "name": "ashbound:legend/ashwalker_hurt_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/ashwalker_hurt_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.ashwalker.death": {
+  "subtitle": "subtitles.ashbound.legend.ashwalker.death",
+  "sounds": [
+   {
+    "name": "ashbound:legend/ashwalker_death",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.ashwalker.step": {
+  "subtitle": "subtitles.ashbound.legend.ashwalker.step",
+  "sounds": [
+   {
+    "name": "ashbound:legend/ashwalker_step_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/ashwalker_step_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.ashwalker.sig": {
+  "subtitle": "subtitles.ashbound.legend.ashwalker.sig",
+  "sounds": [
+   {
+    "name": "ashbound:legend/ashwalker_rise",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.cinder_hulk.idle": {
+  "subtitle": "subtitles.ashbound.legend.cinder_hulk.idle",
+  "sounds": [
+   {
+    "name": "ashbound:legend/cinder_hulk_idle_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/cinder_hulk_idle_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.cinder_hulk.roar": {
+  "subtitle": "subtitles.ashbound.legend.cinder_hulk.roar",
+  "sounds": [
+   {
+    "name": "ashbound:legend/cinder_hulk_roar",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.cinder_hulk.hurt": {
+  "subtitle": "subtitles.ashbound.legend.cinder_hulk.hurt",
+  "sounds": [
+   {
+    "name": "ashbound:legend/cinder_hulk_hurt_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/cinder_hulk_hurt_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.cinder_hulk.death": {
+  "subtitle": "subtitles.ashbound.legend.cinder_hulk.death",
+  "sounds": [
+   {
+    "name": "ashbound:legend/cinder_hulk_death",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.cinder_hulk.step": {
+  "subtitle": "subtitles.ashbound.legend.cinder_hulk.step",
+  "sounds": [
+   {
+    "name": "ashbound:legend/cinder_hulk_step_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/cinder_hulk_step_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.cinder_hulk.sig": {
+  "subtitle": "subtitles.ashbound.legend.cinder_hulk.sig",
+  "sounds": [
+   {
+    "name": "ashbound:legend/cinder_hulk_erupt",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.ash_herald.idle": {
+  "subtitle": "subtitles.ashbound.legend.ash_herald.idle",
+  "sounds": [
+   {
+    "name": "ashbound:legend/ash_herald_idle_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/ash_herald_idle_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.ash_herald.roar": {
+  "subtitle": "subtitles.ashbound.legend.ash_herald.roar",
+  "sounds": [
+   {
+    "name": "ashbound:legend/ash_herald_roar",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.ash_herald.hurt": {
+  "subtitle": "subtitles.ashbound.legend.ash_herald.hurt",
+  "sounds": [
+   {
+    "name": "ashbound:legend/ash_herald_hurt_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/ash_herald_hurt_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.ash_herald.death": {
+  "subtitle": "subtitles.ashbound.legend.ash_herald.death",
+  "sounds": [
+   {
+    "name": "ashbound:legend/ash_herald_death",
+    "attenuation_distance": 48
+   }
+  ]
+ },
+ "legend.ash_herald.step": {
+  "subtitle": "subtitles.ashbound.legend.ash_herald.step",
+  "sounds": [
+   {
+    "name": "ashbound:legend/ash_herald_step_1",
+    "attenuation_distance": 24
+   },
+   {
+    "name": "ashbound:legend/ash_herald_step_2",
+    "attenuation_distance": 24
+   }
+  ]
+ },
+ "legend.ash_herald.sig": {
+  "subtitle": "subtitles.ashbound.legend.ash_herald.sig",
+  "sounds": [
+   {
+    "name": "ashbound:legend/ash_herald_toll",
+    "attenuation_distance": 48
+   }
+  ]
+ }
+}

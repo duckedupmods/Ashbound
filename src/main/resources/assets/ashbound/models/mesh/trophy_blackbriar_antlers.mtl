@@ -1,0 +1,7 @@
+newmtl prop
+Ka 0 0 0
+map_Kd ashbound:block/trophy_blackbriar_antlers
+
+newmtl glow
+Ka 1 1 1
+map_Kd ashbound:block/trophy_blackbriar_antlers

@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "PIP",
+  "PBP",
+  "LTL"
+ ],
+ "key": {
+  "P": {
+   "tag": "minecraft:planks"
+  },
+  "I": {
+   "item": "minecraft:iron_ingot"
+  },
+  "B": {
+   "item": "minecraft:barrel"
+  },
+  "L": {
+   "tag": "minecraft:logs"
+  },
+  "T": {
+   "item": "minecraft:copper_ingot"
+  }
+ },
+ "result": {
+  "id": "ashbound:brewers_cask",
+  "count": 1
+ }
+}

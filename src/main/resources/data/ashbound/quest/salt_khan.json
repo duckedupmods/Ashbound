@@ -1,0 +1,10 @@
+{
+ "title": "The Salt Khan",
+ "rank": "C",
+ "text": "The salt-cursed raiders ride for a khan whose skin is crusted white. The desert caravans won't move until the Khan falls.",
+ "kill": "ashbound:salt_khan",
+ "count": 1,
+ "points": 170,
+ "coins": 280,
+ "repeat": true
+}

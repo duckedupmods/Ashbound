@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/bellringer.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.611,
-     -0.611,
-     -0.0
+     -0.151,
+     0.029,
+     0.052
     ],
     "scale": [
-     0.3286,
-     0.3286,
-     0.3286
+     0.3448,
+     0.3448,
+     0.3448
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.611,
-     -0.611,
-     -0.0
+     -0.151,
+     0.029,
+     0.052
     ],
     "scale": [
-     0.3286,
-     0.3286,
-     0.3286
+     0.3448,
+     0.3448,
+     0.3448
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.336,
-     -0.336,
+     -0.083,
+     0.016,
      0
     ],
     "scale": [
-     0.1807,
-     0.1807,
-     0.1807
+     0.1897,
+     0.1897,
+     0.1897
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/bellringer"
+   }
+  }
+ }
 }

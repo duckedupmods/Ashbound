@@ -3,35 +3,35 @@
   "id": "oathbinder",
   "name": "Oathbinder",
   "kind": "sword",
-  "damage": 7.6,
+  "damage": 6.0,
   "speed": 1.6
  },
  {
   "id": "twinfang",
   "name": "Twinfang",
   "kind": "dagger",
-  "damage": 4.6,
+  "damage": 3.7,
   "speed": 2.4
  },
  {
   "id": "concord",
   "name": "Concord",
   "kind": "hammer",
-  "damage": 18.15,
+  "damage": 14.4,
   "speed": 0.85
  },
  {
   "id": "unison",
   "name": "Unison",
   "kind": "spear",
-  "damage": 8.57,
+  "damage": 6.8,
   "speed": 1.2
  },
  {
   "id": "two_hearted",
   "name": "Two-Hearted",
   "kind": "twohander",
-  "damage": 20.2,
+  "damage": 16.0,
   "speed": 0.85
  },
  {

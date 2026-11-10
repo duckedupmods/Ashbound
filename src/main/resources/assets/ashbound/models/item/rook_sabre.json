@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/rook_sabre.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.398,
-     -2.332,
-     0.019
+     -2.733,
+     -2.733,
+     -0.0
     ],
     "scale": [
-     0.4626,
-     0.4626,
-     0.4626
+     0.4319,
+     0.4319,
+     0.4319
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.398,
-     -2.332,
-     0.019
+     -2.733,
+     -2.733,
+     -0.0
     ],
     "scale": [
-     0.4626,
-     0.4626,
-     0.4626
+     0.4319,
+     0.4319,
+     0.4319
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.319,
-     -1.283,
+     -1.503,
+     -1.503,
      0
     ],
     "scale": [
-     0.2544,
-     0.2544,
-     0.2544
+     0.2375,
+     0.2375,
+     0.2375
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/rook_sabre"
+   }
+  }
+ }
 }

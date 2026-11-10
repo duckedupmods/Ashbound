@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/lion_crest.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.556,
-     2.812,
-     7.234
+     1.429,
+     3.165,
+     7.443
     ],
     "scale": [
-     0.5526,
-     0.5526,
-     0.5526
+     0.5463,
+     0.5463,
+     0.5463
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.556,
-     2.812,
-     7.234
+     1.429,
+     3.165,
+     7.443
     ],
     "scale": [
-     0.5526,
-     0.5526,
-     0.5526
+     0.5463,
+     0.5463,
+     0.5463
     ]
    },
    "ground": {
@@ -115,19 +115,26 @@
      0.0
     ],
     "translation": [
-     0.856,
-     1.547,
+     0.786,
+     1.741,
      0
     ],
     "scale": [
-     0.3039,
-     0.3039,
-     0.3039
+     0.3005,
+     0.3005,
+     0.3005
     ]
    }
   }
  },
- "perspectives": {},
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/lion_crest"
+   }
+  }
+ },
  "overrides": [
   {
    "predicate": {

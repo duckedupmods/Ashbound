@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/mantis_talon.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.732,
-     -0.073,
-     0.76
+     -1.349,
+     -2.335,
+     -0.282
     ],
     "scale": [
-     0.5761,
-     0.5761,
-     0.5761
+     0.501,
+     0.501,
+     0.501
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.732,
-     -0.073,
-     0.76
+     -1.349,
+     -2.335,
+     -0.282
     ],
     "scale": [
-     0.5761,
-     0.5761,
-     0.5761
+     0.501,
+     0.501,
+     0.501
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.503,
-     -0.04,
+     -0.742,
+     -1.284,
      0
     ],
     "scale": [
-     0.3168,
-     0.3168,
-     0.3168
+     0.2756,
+     0.2756,
+     0.2756
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/mantis_talon"
+   }
+  }
+ }
 }

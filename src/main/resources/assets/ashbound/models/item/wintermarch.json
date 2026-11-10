@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/wintermarch.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.605,
-     -0.298,
-     0.088
+     -0.668,
+     -0.158,
+     0.146
     ],
     "scale": [
-     0.2841,
-     0.2841,
-     0.2841
+     0.2594,
+     0.2594,
+     0.2594
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.605,
-     -0.298,
-     0.088
+     -0.668,
+     -0.158,
+     0.146
     ],
     "scale": [
-     0.2841,
-     0.2841,
-     0.2841
+     0.2594,
+     0.2594,
+     0.2594
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.333,
-     -0.164,
+     -0.367,
+     -0.087,
      0
     ],
     "scale": [
-     0.1562,
-     0.1562,
-     0.1562
+     0.1427,
+     0.1427,
+     0.1427
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/wintermarch"
+   }
+  }
+ }
 }

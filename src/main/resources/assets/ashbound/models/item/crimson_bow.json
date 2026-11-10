@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/crimson_bow.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.063,
-     -0.915,
-     0.187
+     1.851,
+     -1.41,
+     0.326
     ],
     "scale": [
-     1.0492,
-     1.0492,
-     1.0492
+     0.94,
+     0.94,
+     0.94
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.063,
-     -0.915,
-     0.187
+     1.851,
+     -1.41,
+     0.326
     ],
     "scale": [
-     1.0492,
-     1.0492,
-     1.0492
+     0.94,
+     0.94,
+     0.94
     ]
    },
    "ground": {
@@ -115,19 +115,26 @@
      0.0
     ],
     "translation": [
-     0.585,
-     -0.503,
+     1.018,
+     -0.775,
      0
     ],
     "scale": [
-     0.577,
-     0.577,
-     0.577
+     0.517,
+     0.517,
+     0.517
     ]
    }
   }
  },
- "perspectives": {},
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/crimson_bow"
+   }
+  }
+ },
  "overrides": [
   {
    "predicate": {

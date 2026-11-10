@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/legions_pillar.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.318,
-     -1.193,
-     0.036
+     -1.445,
+     -1.445,
+     -0.0
     ],
     "scale": [
-     0.317,
-     0.317,
-     0.317
+     0.3219,
+     0.3219,
+     0.3219
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.318,
-     -1.193,
-     0.036
+     -1.445,
+     -1.445,
+     -0.0
     ],
     "scale": [
-     0.317,
-     0.317,
-     0.317
+     0.3219,
+     0.3219,
+     0.3219
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.725,
-     -0.656,
+     -0.795,
+     -0.795,
      0
     ],
     "scale": [
-     0.1743,
-     0.1743,
-     0.1743
+     0.177,
+     0.177,
+     0.177
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/legions_pillar"
+   }
+  }
+ }
 }

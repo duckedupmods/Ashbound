@@ -23,7 +23,7 @@ CORE = {
     "start": {"name": "Ashborn", "about": "where every path starts: Roll and Guard", "ef": "roll", "stats": {}},
     "smalls": [
         ("Vigour", {"health%": 1.5}), ("Deep Lungs", {"stamina": 0.5}), ("Second Breath", {"stamina_regen%": 4}),
-        ("Light Step", {"move%": 1.5}), ("Hardened", {"armour": 0.4}), ("Footing", {"stun_armour": 1}),
+        ("Light Step", {"move%": 1.5}), ("Hardened", {"armour%": 3}), ("Footing", {"stun_armour": 1}),
         ("Focus", {"mana": 4}), ("Calm Mind", {"mana_regen%": 1.5}),
     ],
     "notables": [
@@ -91,7 +91,7 @@ AREAS = [
                   "but they come much faster (about +25% damage a second); every swing costs 0.5 more stamina, and no "
                   "other weapon works for you while you have it", "fx": "titans_grip"}},
     {"id": "shield", "name": "The Wall", "colour": "#6a8ab8", "smalls": [
-        ("Bulwark", {"armour": 0.4}), ("Stand Firm", {"stun_armour": 1}), ("Guard", {"guard%": 3})],
+        ("Bulwark", {"armour%": 3}), ("Stand Firm", {"stun_armour": 1}), ("Guard", {"guard%": 3})],
      "notables": [
         {"name": "Parrying", "about": "unlocks Parrying: a timed guard costs nothing and stops arrows", "ef": "parrying"},
         {"name": "Impact Guard", "about": "unlocks Impact Guard: guard fire, magic and explosions", "ef": "impact_guard"},
@@ -119,7 +119,7 @@ AREAS = [
      "keystone": {"name": "Glass Cannon", "about": "+40% spell power; -30% max health", "fx": "glass_cannon",
                   "stats": {"spell%": 40}, "always": {"health%": -30}}},
     {"id": "white", "name": "The Light", "colour": "#f0e0a0", "smalls": [
-        ("Grace", {"heal%": 1.5}), ("Font", {"mana_regen%": 1.5}), ("Ward", {"armour": 0.3})],
+        ("Grace", {"heal%": 1.5}), ("Font", {"mana_regen%": 1.5}), ("Ward", {"armour%": 2})],
      "notables": [
         {"name": "Mending Aura", "about": "your heals reach 12 blocks instead of 8 and are 15% stronger", "fx": "heal_chain"},
         {"name": "Blessing", "about": "whoever you heal deals +10% damage for 5 s", "fx": "blessing"},
@@ -161,7 +161,7 @@ EXTRA = {
         {"name": "Pin", "about": "hitting an enemy 3 or more blocks away pins it: slowed hard for 2 s", "fx": "pin"},
         {"name": "Whirl", "about": "every 5th hit sweeps everything within 3 blocks for 50%", "fx": "whirl", "gold": True},
         {"name": "Charge", "about": "+40% damage on hits while sprinting", "fx": "charge"}]},
-    "twohander": {"stats": [("Iron Hide", {"armour": 0.4}), ("Swing Through", {"speed%": 1.5})], "verbs": [
+    "twohander": {"stats": [("Iron Hide", {"armour%": 3}), ("Swing Through", {"speed%": 1.5})], "verbs": [
         {"name": "Rage", "about": "each hit you take gives +5% damage for 6 s, up to +20%", "fx": "rage"},
         {"name": "Sunder", "about": "every 3rd hit deals +40%", "fx": "sunder"},
         {"name": "Last Stand", "about": "below 30% health you take 25% less damage", "fx": "last_stand"}]},
@@ -173,7 +173,7 @@ EXTRA = {
         {"name": "Piercing Shot", "about": "fully drawn arrows tear through: enemies beside the target take 60%", "fx": "pierce", "gold": True},
         {"name": "Fire Arrow", "about": "every 4th arrow sets its target on fire", "fx": "fire_arrow"},
         {"name": "Point Blank", "about": "+25% arrow damage to enemies within 6 blocks", "fx": "point_blank"}]},
-    "black": {"stats": [("Ward", {"armour": 0.3}), ("Attunement", {"spell%": 1.5})], "verbs": [
+    "black": {"stats": [("Ward", {"armour%": 2}), ("Attunement", {"spell%": 1.5})], "verbs": [
         {"name": "Static", "about": "monsters that hit you in melee take 3 lightning damage", "fx": "static"},
         {"name": "Siphon", "about": "a kill gives back 6 mana", "fx": "siphon"},
         {"name": "Arcane Surge", "about": "+30% spell power while your mana is full", "fx": "surge"}]},

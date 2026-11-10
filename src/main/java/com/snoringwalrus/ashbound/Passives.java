@@ -521,7 +521,7 @@ public final class Passives {
 			if (live.contains(n.area())) v += n.stats().getOrDefault(key, 0.0);
 			v += n.always().getOrDefault(key, 0.0);
 		}
-		return v + Classes.stat(p, key) + Curios.stat(p, key);   // worn curios' stats that no attribute holds (bow damage, Ash...)
+		return v + Classes.stat(p, key) + Curios.stat(p, key) + Trades.stat(p, key);   // worn curios' stats that no attribute holds (bow damage, Ash...)
 	}
 
 	/** whether one of your live nodes carries this mechanic */
@@ -547,8 +547,10 @@ public final class Passives {
 			STATS.put("health%", new Stat(Attributes.MAX_HEALTH, total, 0.01));
 			STATS.put("stamina", new Stat(EpicFightAttributes.MAX_STAMINA, add, 1));
 			STATS.put("stamina_regen%", new Stat(EpicFightAttributes.STAMINA_REGEN, base, 0.01));
+			STATS.put("stamina%", new Stat(EpicFightAttributes.MAX_STAMINA, total, 0.01));
+			STATS.put("mana%", new Stat(Spells.MAX_MANA, total, 0.01));
 			STATS.put("move%", new Stat(Attributes.MOVEMENT_SPEED, base, 0.01));
-			STATS.put("armour", new Stat(Attributes.ARMOR, add, 1));
+			STATS.put("armour%", new Stat(Attributes.ARMOR, total, 0.01));
 			STATS.put("stun_armour", new Stat(EpicFightAttributes.STUN_ARMOR, add, 1));
 			STATS.put("weight%", new Stat(EpicFightAttributes.WEIGHT, total, 0.01));
 			STATS.put("mana", new Stat(Spells.MAX_MANA, add, 1));
@@ -562,11 +564,15 @@ public final class Passives {
 			STATS.put("knockback", new Stat(Attributes.ATTACK_KNOCKBACK, add, 1));
 			STATS.put("spell%", new Stat(Spells.SPELL_POWER, base, 0.01));
 			STATS.put("heal%", new Stat(Spells.SPELL_POWER, base, 0.01));
+			STATS.put("dig%", new Stat(Attributes.BLOCK_BREAK_SPEED, base, 0.01));
+			STATS.put("fall%", new Stat(Attributes.FALL_DAMAGE_MULTIPLIER, base, 0.01));
 		}
 		return STATS;
 	}
 
 	private static final Map<UUID, Map<String, Double>> APPLIED = new HashMap<>();
+
+	private static final double BONE_ARMOUR = 5;
 
 	/** puts your live nodes' stats on you as attribute modifiers (only what changed) */
 	static void apply(ServerPlayer p) {
@@ -575,7 +581,7 @@ public final class Passives {
 			if (!key.equals("spell%") && !key.equals("heal%")) want.put(key, stat(p, key));
 		// spell power and healing are the same attribute: one modifier
 		want.put("spell%", stat(p, "spell%") + stat(p, "heal%"));
-		if (has(p, "bone_armour")) want.merge("armour", (double) Spells.thralls(p), Double::sum);
+		if (has(p, "bone_armour")) want.merge("armour%", BONE_ARMOUR * Spells.thralls(p), Double::sum);
 		if (has(p, "impaler") && p.getOffhandItem().isEmpty()) {
 			want.merge("reach", 1.0, Double::sum);
 			want.merge("strikes", 3.0, Double::sum);
@@ -739,6 +745,8 @@ public final class Passives {
 		}
 	}
 
+	static final Map<String, Float> KIND_EDGE = Map.of("spear", 1.15f, "hammer", 1.08f);
+
 	private static void hurt(LivingIncomingDamageEvent e) {
 		LivingEntity victim = e.getEntity();
 		long now = victim.level().getGameTime();
@@ -759,6 +767,8 @@ public final class Passives {
 			}
 			s.hits++;
 			s.frenzy = now + 100;
+			// pass 13b: the spear's and the hammer's tree areas give less damage than the others (tools/tree_build.py); their weapons make it up
+			amount *= KIND_EDGE.getOrDefault(kindOf(p.getMainHandItem()), 1f);
 			if (has(p, "execute") && victim.getHealth() < victim.getMaxHealth() * 0.3f) amount *= 1.5f;
 			// Titan's Grip: the pair comes fast (the dual swords' moves), each blade hits for less (balance.py PASS 6)
 			if (has(p, "titans_grip") && kindOf(p.getOffhandItem()).equals("twohander")) amount *= 0.75f;
@@ -853,7 +863,7 @@ public final class Passives {
 					s.rage = s.rageUntil > now ? Math.min(4, s.rage + 1) : 1;
 					s.rageUntil = now + 120;
 				}
-				if (has(p, "static") && direct == att && p.distanceTo(att) < 5) att.hurt(p.damageSources().indirectMagic(p, p), 3);
+				if (has(p, "static") && direct == att && p.distanceTo(att) < 5) att.hurt(p.damageSources().indirectMagic(p, p), 3 * CurioFx.power(p));
 			}
 			if (amount >= p.getHealth() && has(p, "second_wind") && now >= s.secondWind) {
 				amount = Math.max(0, p.getHealth() - 1);
@@ -895,11 +905,11 @@ public final class Passives {
 		if (Spells.isThrall(dead)) {
 			UUID owner = Spells.ownerOf(dead);
 			Player p = owner == null ? null : dead.level().getPlayerByUUID(owner);
-			if (p != null && has(p, "death_pact")) p.heal(3);
+			if (p != null && has(p, "death_pact")) Meters.heal(p, p, 3);
 			return;
 		}
 		if (!(e.getSource().getEntity() instanceof ServerPlayer p)) return;
-		if (has(p, "kill_heal")) p.heal(1);
+		if (has(p, "kill_heal")) Meters.heal(p, p, 1);
 		if (has(p, "flourish")) {
 			ServerPlayerPatch pp = patch(p);
 			if (pp != null) pp.setStamina(Math.min(pp.getMaxStamina(), pp.getStamina() + 3));
@@ -915,7 +925,7 @@ public final class Passives {
 		}
 		if (has(p, "harvest"))
 			for (LivingEntity t : p.level().getEntitiesOfClass(LivingEntity.class, p.getBoundingBox().inflate(32),
-					t -> Spells.isThrall(t) && p.getUUID().equals(Spells.ownerOf(t)))) t.heal(4);
+					t -> Spells.isThrall(t) && p.getUUID().equals(Spells.ownerOf(t)))) Meters.heal(p, t, 4);
 		if (has(p, "aftershock") && e.getSource().getDirectEntity() == p)
 			splash(p, dead, (float) (p.getAttributeValue(Attributes.ATTACK_DAMAGE) * 0.4), 3);
 	}

@@ -24,6 +24,8 @@ public class NpcPatch extends HumanoidMobPatch<Npc> {
 	static void build(AnimationManager.AnimationBuilder b) {
 		SIT = b.nextAccessor("biped/npc_sit", a -> new StaticAnimation(true, a, Armatures.BIPED));
 		Smithing.build(b);
+		CrabClips.build(b);
+		AdventurerPatch.build(b);
 	}
 
 	public NpcPatch(Npc original) {

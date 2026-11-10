@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/barrowsteel_greatsword.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.496,
-     -2.496,
-     0.0
+     -2.139,
+     -2.139,
+     -0.0
     ],
     "scale": [
-     0.3691,
-     0.3691,
-     0.3691
+     0.3289,
+     0.3289,
+     0.3289
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.496,
-     -2.496,
-     0.0
+     -2.139,
+     -2.139,
+     -0.0
     ],
     "scale": [
-     0.3691,
-     0.3691,
-     0.3691
+     0.3289,
+     0.3289,
+     0.3289
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.373,
-     -1.373,
+     -1.176,
+     -1.176,
      0
     ],
     "scale": [
-     0.203,
-     0.203,
-     0.203
+     0.1809,
+     0.1809,
+     0.1809
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/barrowsteel_greatsword"
+   }
+  }
+ }
 }

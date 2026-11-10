@@ -17,6 +17,7 @@ import random
 
 
 HORN = (-208, 18, -126, 62)     # capital_city.HORNSEND
+HOMESTEAD = (-305, -135, -200, -75)      # x0, z0, x1, z1 (Stations.HOMESTEAD)
 OUT = os.path.join(os.path.dirname(__file__), "..", "src", "main", "resources", "data", "ashbound", "capital", "cast.json")
 KEPT = os.path.join(os.path.dirname(__file__), "renders", "cast_in.pkl")
 
@@ -152,6 +153,10 @@ def cast(S, roads, ground):
                     kind = "alchemist"
         elif role == "guild_clerk" and not any(e[0] == "receptionist" for e in out):
             kind, shop, mode = "receptionist", "", "stand"        # Elowen at the first desk
+        elif role == "guild_clerk" and not any(e[0] == "veyra" for e in out):
+            kind, shop, mode = "veyra", "", "stand"               # Veyra the Ringkeeper at the second (Arena.java)
+        elif role == "lord" and not any(e[0] == "king" for e in out):
+            kind, shop, mode = "king", "", "stand"                # the King in his keep (Act V, Chains)
         elif role in ROLES:
             kind, shop, mode = ROLES[role]
             if role == "mage_trainer":
@@ -205,6 +210,8 @@ def cast(S, roads, ground):
             for k in range(n):                          # a group stands close, so they fall to talking
                 if add(pick(rnd, CROWD), "", mode, x + k * 2 - (n - 1), ground(x, z) + 1, z + rnd.randint(-1, 1), reach=2):
                     streets += 1
+    # nobody lives at the player's homestead (tools/capital_home.py: the house, its terraces, the fields)
+    out[:] = [c for c in out if not (HOMESTEAD[0] <= c[3] <= HOMESTEAD[2] and HOMESTEAD[1] <= c[5] <= HOMESTEAD[3])]
     # Hornsend's streets are Hornsend's folk; the watch still walks through
     horn = 0
     for c in out:

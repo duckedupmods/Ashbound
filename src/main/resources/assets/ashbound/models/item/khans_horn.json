@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/khans_horn.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     2.366,
-     -2.054,
-     0.417
+     1.445,
+     -1.284,
+     0.255
     ],
     "scale": [
-     0.8081,
-     0.8081,
-     0.8081
+     0.7337,
+     0.7337,
+     0.7337
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     2.366,
-     -2.054,
-     0.417
+     1.445,
+     -1.284,
+     0.255
     ],
     "scale": [
-     0.8081,
-     0.8081,
-     0.8081
+     0.7337,
+     0.7337,
+     0.7337
     ]
    },
    "ground": {
@@ -115,19 +115,26 @@
      0.0
     ],
     "translation": [
-     1.301,
-     -1.13,
+     0.795,
+     -0.706,
      0
     ],
     "scale": [
-     0.4444,
-     0.4444,
-     0.4444
+     0.4035,
+     0.4035,
+     0.4035
     ]
    }
   }
  },
- "perspectives": {},
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/khans_horn"
+   }
+  }
+ },
  "overrides": [
   {
    "predicate": {

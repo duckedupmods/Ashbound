@@ -1,0 +1,10 @@
+{
+ "title": "The Banner Captain",
+ "rank": "D",
+ "text": "The Black Banner's captain holds the old fort, and while that one lives the deserters keep coming back. Kill the captain and the Banner breaks.",
+ "kill": "ashbound:banner_captain",
+ "count": 1,
+ "points": 100,
+ "coins": 160,
+ "repeat": true
+}

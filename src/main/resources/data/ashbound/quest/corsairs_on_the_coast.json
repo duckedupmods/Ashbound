@@ -1,0 +1,16 @@
+{
+ "title": "Drowned Corsairs",
+ "rank": "D",
+ "text": "The corsairs that drowned with their ships still raid the coast at low tide. The fishing villages are paying the Guild in salt cod to deal with them.",
+ "kill": "ashbound:drowned_corsair",
+ "count": 8,
+ "points": 70,
+ "coins": 110,
+ "items": [
+  [
+   "minecraft:cooked_cod",
+   8
+  ]
+ ],
+ "repeat": true
+}

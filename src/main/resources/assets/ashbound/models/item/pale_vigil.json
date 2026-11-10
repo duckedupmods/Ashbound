@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/pale_vigil.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.691,
-     -2.691,
-     0.0
+     -2.496,
+     -2.496,
+     -0.0
     ],
     "scale": [
-     0.4017,
-     0.4017,
-     0.4017
+     0.3547,
+     0.3547,
+     0.3547
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.691,
-     -2.691,
-     0.0
+     -2.496,
+     -2.496,
+     -0.0
     ],
     "scale": [
-     0.4017,
-     0.4017,
-     0.4017
+     0.3547,
+     0.3547,
+     0.3547
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.48,
-     -1.48,
+     -1.373,
+     -1.373,
      0
     ],
     "scale": [
-     0.221,
-     0.221,
-     0.221
+     0.1951,
+     0.1951,
+     0.1951
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/pale_vigil"
+   }
+  }
+ }
 }

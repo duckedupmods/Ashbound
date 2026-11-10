@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/poultice_staff.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.14,
-     -0.12,
-     0.006
+     -1.402,
+     -1.402,
+     -0.0
     ],
     "scale": [
-     0.3684,
-     0.3684,
-     0.3684
+     0.2981,
+     0.2981,
+     0.2981
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.14,
-     -0.12,
-     0.006
+     -1.402,
+     -1.402,
+     -0.0
     ],
     "scale": [
-     0.3684,
-     0.3684,
-     0.3684
+     0.2981,
+     0.2981,
+     0.2981
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.077,
-     -0.066,
+     -0.771,
+     -0.771,
      0
     ],
     "scale": [
-     0.2026,
-     0.2026,
-     0.2026
+     0.164,
+     0.164,
+     0.164
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/poultice_staff"
+   }
+  }
+ }
 }

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/bonewright_pike.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.48,
-     -1.008,
-     -0.151
+     -0.568,
+     -0.568,
+     -0.0
     ],
     "scale": [
-     0.2725,
-     0.2725,
-     0.2725
+     0.2922,
+     0.2922,
+     0.2922
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.48,
-     -1.008,
-     -0.151
+     -0.568,
+     -0.568,
+     -0.0
     ],
     "scale": [
-     0.2725,
-     0.2725,
-     0.2725
+     0.2922,
+     0.2922,
+     0.2922
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.264,
-     -0.554,
+     -0.312,
+     -0.312,
      0
     ],
     "scale": [
-     0.1499,
-     0.1499,
-     0.1499
+     0.1607,
+     0.1607,
+     0.1607
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/bonewright_pike"
+   }
+  }
+ }
 }

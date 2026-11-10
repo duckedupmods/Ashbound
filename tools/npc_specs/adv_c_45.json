@@ -1,0 +1,63 @@
+{
+ "id": "adv_c_45",
+ "seed": 4120964,
+ "recipe": "adventurer",
+ "role": "white_mage",
+ "rank": "C",
+ "name": "Mercy Coldhearth",
+ "title": "C-rank White Mage",
+ "age": "adult",
+ "sex": "m",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "ember",
+ "hair": {
+  "style": "shaggy",
+  "color": "silver"
+ },
+ "headwear": "circlet",
+ "beard": null,
+ "face": {
+  "eye": "sleepy",
+  "iris": "gold",
+  "brows": "stern",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "warpaint"
+  ],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "mantle",
+   "sash"
+  ],
+  "colors": {
+   "top": "white",
+   "bottom": "cream",
+   "accent": "oxblood",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "staff",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "C",
+  "role": "white_mage"
+ },
+ "race": "demon",
+ "recipe_race": "demon",
+ "party": "Ember Wake"
+}

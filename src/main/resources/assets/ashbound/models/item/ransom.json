@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/ransom.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.405,
-     0.166,
-     0.449
+     -3.005,
+     -1.926,
+     0.308
     ],
     "scale": [
-     0.3795,
-     0.3795,
-     0.3795
+     0.329,
+     0.329,
+     0.329
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.405,
-     0.166,
-     0.449
+     -3.005,
+     -1.926,
+     0.308
     ],
     "scale": [
-     0.3795,
-     0.3795,
-     0.3795
+     0.329,
+     0.329,
+     0.329
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.773,
-     0.091,
+     -1.653,
+     -1.059,
      0
     ],
     "scale": [
-     0.2087,
-     0.2087,
-     0.2087
+     0.1809,
+     0.1809,
+     0.1809
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/ransom"
+   }
+  }
+ }
 }

@@ -10,7 +10,8 @@ import sys
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "run")
 MODS, HOLD = os.path.join(ROOT, "mods"), os.path.join(ROOT, "mods-client-only")
 CLIENT_ONLY = ("MouseTweaks", "mousetweaks", "TravelersTitles", "sodiumdynamiclights", "sodium-options", "sodiumoptions", "reeses-sodium", "entityculling", "EntityCulling",
-               "YouDied", "youdied", "LegendaryTooltips", "ItemBorders", "Prism-", "FancyToasts", "fancytoasts", "fancy_toasts", "drippy")
+               "iris-neoforge", "sodium-neoforge", "YouDied", "youdied", "LegendaryTooltips", "ItemBorders", "Prism-", "FancyToasts", "fancytoasts", "fancy_toasts", "drippy",
+               "SubtleEffects", "particlerain", "AmbientSounds", "ImmediatelyFast", "Controlling", "Searchables")
 
 
 def main():

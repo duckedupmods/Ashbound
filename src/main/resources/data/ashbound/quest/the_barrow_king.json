@@ -1,0 +1,10 @@
+{
+ "title": "The Barrow King",
+ "rank": "C",
+ "text": "Under the largest barrow sits a king who never stopped ruling. As long as the Barrow King holds court, the dead will keep walking the hills.",
+ "kill": "ashbound:barrow_king",
+ "count": 1,
+ "points": 160,
+ "coins": 260,
+ "repeat": true
+}

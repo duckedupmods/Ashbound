@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/candlewake.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.342,
-     -2.342,
+     -2.115,
+     -2.115,
      -0.0
     ],
     "scale": [
-     0.3326,
-     0.3326,
-     0.3326
+     0.3166,
+     0.3166,
+     0.3166
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.342,
-     -2.342,
+     -2.115,
+     -2.115,
      -0.0
     ],
     "scale": [
-     0.3326,
-     0.3326,
-     0.3326
+     0.3166,
+     0.3166,
+     0.3166
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.288,
-     -1.288,
+     -1.163,
+     -1.163,
      0
     ],
     "scale": [
-     0.1829,
-     0.1829,
-     0.1829
+     0.1741,
+     0.1741,
+     0.1741
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/candlewake"
+   }
+  }
+ }
 }

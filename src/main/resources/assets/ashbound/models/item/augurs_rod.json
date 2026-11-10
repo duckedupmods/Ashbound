@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/augurs_rod.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     0.406,
-     0.406,
+     -1.039,
+     -1.039,
      -0.0
     ],
     "scale": [
-     0.4258,
-     0.4258,
-     0.4258
+     0.3127,
+     0.3127,
+     0.3127
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     0.406,
-     0.406,
+     -1.039,
+     -1.039,
      -0.0
     ],
     "scale": [
-     0.4258,
-     0.4258,
-     0.4258
+     0.3127,
+     0.3127,
+     0.3127
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.223,
-     0.223,
+     -0.571,
+     -0.571,
      0
     ],
     "scale": [
-     0.2342,
-     0.2342,
-     0.2342
+     0.172,
+     0.172,
+     0.172
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/augurs_rod"
+   }
+  }
+ }
 }

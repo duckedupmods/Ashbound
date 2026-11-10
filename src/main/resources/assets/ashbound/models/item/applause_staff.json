@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/applause_staff.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.163,
-     -0.143,
-     0.006
+     -1.245,
+     -1.284,
+     -0.011
     ],
     "scale": [
-     0.3673,
-     0.3673,
-     0.3673
+     0.298,
+     0.298,
+     0.298
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.163,
-     -0.143,
-     0.006
+     -1.245,
+     -1.284,
+     -0.011
     ],
     "scale": [
-     0.3673,
-     0.3673,
-     0.3673
+     0.298,
+     0.298,
+     0.298
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.09,
-     -0.079,
+     -0.685,
+     -0.706,
      0
     ],
     "scale": [
-     0.202,
-     0.202,
-     0.202
+     0.1639,
+     0.1639,
+     0.1639
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/applause_staff"
+   }
+  }
+ }
 }

@@ -15,13 +15,21 @@ import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.network.PacketDistributor;
 
-/** Small iron buttons along the top right of a chest: the server does the work, see Tidy. */
+/** Our own screen in place of a chest's, and small iron buttons along the top right of any other box: the server does the work, see Tidy. */
 final class InvButtons {
 	private InvButtons() {}
 
 	private static final int W = 42, H = 13, GAP = 2, ABOVE = 15;
 
 	static void hooks() {
+		NeoForge.EVENT_BUS.addListener((ScreenEvent.Opening e) -> {
+			// the plain vanilla two only: another mod's box may be doing more than holding things
+			Class<?> was = e.getNewScreen() == null ? null : e.getNewScreen().getClass();
+			if (was == ContainerScreen.class || was == ShulkerBoxScreen.class) {
+				AbstractContainerScreen<?> s = (AbstractContainerScreen<?>) e.getNewScreen();
+				e.setNewScreen(new ChestScreen(s.getMenu(), Minecraft.getInstance().player.getInventory(), s.getTitle()));
+			}
+		});
 		NeoForge.EVENT_BUS.addListener((ScreenEvent.Init.Post e) -> {
 			if (e.getScreen() instanceof ContainerScreen || e.getScreen() instanceof ShulkerBoxScreen) {
 				AbstractContainerScreen<?> s = (AbstractContainerScreen<?>) e.getScreen();

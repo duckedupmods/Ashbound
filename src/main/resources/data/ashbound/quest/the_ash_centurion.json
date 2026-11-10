@@ -1,0 +1,10 @@
+{
+ "title": "The Ash Centurion",
+ "rank": "B",
+ "text": "The Ash Legion marches in step behind one officer, and every one of them will die before it breaks rank. Kill the Centurion and they'll scatter.",
+ "kill": "ashbound:ash_centurion",
+ "count": 1,
+ "points": 330,
+ "coins": 540,
+ "repeat": true
+}

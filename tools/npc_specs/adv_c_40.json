@@ -1,0 +1,63 @@
+{
+ "id": "adv_c_40",
+ "seed": 4113040,
+ "recipe": "adventurer",
+ "role": "ranger",
+ "rank": "C",
+ "name": "Sylvar Lilacshade",
+ "title": "C-rank Ranger",
+ "age": "teen",
+ "sex": "m",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "porcelain",
+ "hair": {
+  "style": "short",
+  "color": "golden"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "sharp",
+  "iris": "violet",
+  "brows": null,
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "bracers",
+   "gloves",
+   "mantle",
+   "tassets"
+  ],
+  "colors": {
+   "top": "grey",
+   "bottom": "black",
+   "accent": "red",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "fold",
+  "l": "fold"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": "bow_quiver",
+ "hip": "knife",
+ "prop": null,
+ "_filters": {
+  "rank": "C",
+  "role": "ranger"
+ },
+ "race": "elf",
+ "recipe_race": "elf",
+ "party": "The Red Hounds"
+}

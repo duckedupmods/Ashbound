@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/manacrown.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     0.021,
-     0.021,
-     -0.0
+     -1.921,
+     -1.921,
+     0.0
     ],
     "scale": [
-     0.3868,
-     0.3868,
-     0.3868
+     0.2724,
+     0.2724,
+     0.2724
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     0.021,
-     0.021,
-     -0.0
+     -1.921,
+     -1.921,
+     0.0
     ],
     "scale": [
-     0.3868,
-     0.3868,
-     0.3868
+     0.2724,
+     0.2724,
+     0.2724
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.012,
-     0.012,
+     -1.057,
+     -1.057,
      0
     ],
     "scale": [
-     0.2128,
-     0.2128,
-     0.2128
+     0.1498,
+     0.1498,
+     0.1498
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/manacrown"
+   }
+  }
+ }
 }

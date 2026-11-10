@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/transfusion_staff.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.113,
-     -0.093,
-     0.006
+     -1.64,
+     -1.64,
+     -0.0
     ],
     "scale": [
-     0.3698,
-     0.3698,
-     0.3698
+     0.2973,
+     0.2973,
+     0.2973
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.113,
-     -0.093,
-     0.006
+     -1.64,
+     -1.64,
+     -0.0
     ],
     "scale": [
-     0.3698,
-     0.3698,
-     0.3698
+     0.2973,
+     0.2973,
+     0.2973
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.062,
-     -0.051,
+     -0.902,
+     -0.902,
      0
     ],
     "scale": [
-     0.2034,
-     0.2034,
-     0.2034
+     0.1635,
+     0.1635,
+     0.1635
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/transfusion_staff"
+   }
+  }
+ }
 }

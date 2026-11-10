@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "CBC",
+  "BDB",
+  "CBC"
+ ],
+ "key": {
+  "C": {
+   "item": "minecraft:blue_ice"
+  },
+  "B": {
+   "item": "minecraft:bone_block"
+  },
+  "D": {
+   "item": "minecraft:diamond"
+  }
+ },
+ "result": {
+  "id": "ashbound:frozen_phylactery",
+  "count": 1
+ }
+}

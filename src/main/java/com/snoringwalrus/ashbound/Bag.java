@@ -169,6 +169,18 @@ public final class Bag {
 		return n;
 	}
 
+	/** What the client last heard of this kind. A forge reads it to show what you've got. */
+	public static long clientCount(Item it) {
+		long n = 0;
+		for (Net.BagLine l : Net.clientBag.lines()) if (l.stack().is(it) && kind(l.stack()).equals(kind(new ItemStack(it)))) n += l.count();
+		return n;
+	}
+
+	/** So p's screen knows what's in it, with the bag itself shut. */
+	static void show(ServerPlayer p) {
+		PacketDistributor.sendToPlayer(p, lines(p));
+	}
+
 	/** What p sees: each kind once with its total, and whose it is when that's more than p. */
 	private static Net.BagLines lines(ServerPlayer p) {
 		State st = state(p.server);
@@ -323,6 +335,11 @@ public final class Bag {
 
 	public static final DeferredItem<Item> POUCH = Weapons.ITEMS.registerItem("bottomless_bag", Pouch::new, new Item.Properties().stacksTo(1));
 
+	/** Opened from the belt pouch, with nothing in your hand. */
+	static void open(ServerPlayer p) {
+		act(p, new Net.BagAct(OPEN, ItemStack.EMPTY));
+	}
+
 	private static void sound(ServerPlayer p, boolean in) {
 		p.playNotifySound(in ? SoundEvents.BUNDLE_INSERT : SoundEvents.BUNDLE_REMOVE_ONE, SoundSource.PLAYERS, 0.7f, 0.9f + p.getRandom().nextFloat() * 0.2f);
 	}
@@ -332,7 +349,7 @@ public final class Bag {
 		State st = state(server);
 		if (st.changed.isEmpty()) return;
 		for (ServerPlayer p : server.getPlayerList().getPlayers())
-			if (p.containerMenu instanceof Menu && Party.circle(p).keySet().stream().anyMatch(st.changed::contains)) PacketDistributor.sendToPlayer(p, lines(p));
+			if (Party.circle(p).keySet().stream().anyMatch(st.changed::contains)) show(p);
 		st.changed.clear();
 	}
 

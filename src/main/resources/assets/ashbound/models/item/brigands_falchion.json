@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/brigands_falchion.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.802,
-     -2.802,
+     -2.698,
+     -2.698,
      -0.0
     ],
     "scale": [
-     0.4605,
-     0.4605,
-     0.4605
+     0.4516,
+     0.4516,
+     0.4516
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.802,
-     -2.802,
+     -2.698,
+     -2.698,
      -0.0
     ],
     "scale": [
-     0.4605,
-     0.4605,
-     0.4605
+     0.4516,
+     0.4516,
+     0.4516
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.541,
-     -1.541,
+     -1.484,
+     -1.484,
      0
     ],
     "scale": [
-     0.2533,
-     0.2533,
-     0.2533
+     0.2484,
+     0.2484,
+     0.2484
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/brigands_falchion"
+   }
+  }
+ }
 }

@@ -1,0 +1,60 @@
+{
+ "id": "adv_f_08",
+ "seed": 4113008,
+ "recipe": "adventurer",
+ "role": "white_mage",
+ "rank": "F",
+ "name": "Talia Morrow",
+ "title": "F-rank White Mage",
+ "age": "adult",
+ "sex": "f",
+ "build": "average",
+ "hunch": 0,
+ "skin": "deep",
+ "hair": {
+  "style": "braid",
+  "color": "dark_brown"
+ },
+ "headwear": "circlet",
+ "beard": null,
+ "face": {
+  "eye": "sleepy",
+  "iris": "gold",
+  "brows": "thin",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": true,
+  "marks": [
+   "patch_r"
+  ],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "sash"
+  ],
+  "colors": {
+   "top": "white",
+   "bottom": "cream",
+   "accent": "rust",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "staff",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "F",
+  "role": "white_mage"
+ },
+ "party": "Lantern Hounds"
+}

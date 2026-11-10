@@ -1,0 +1,10 @@
+{
+ "title": "Lights on the Barrows",
+ "rank": "E",
+ "text": "Every night this week there have been lights moving on the barrow-hills. The wights are walking. Send them back under.",
+ "kill": "ashbound:barrow_wight",
+ "count": 6,
+ "points": 45,
+ "coins": 75,
+ "repeat": true
+}

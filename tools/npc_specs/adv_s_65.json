@@ -1,0 +1,63 @@
+{
+ "id": "adv_s_65",
+ "seed": 4113065,
+ "recipe": "adventurer",
+ "role": "rogue",
+ "rank": "S",
+ "name": "Quiet Hornsend",
+ "title": "S-rank Cutblade",
+ "age": "adult",
+ "sex": "f",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "char",
+ "hair": {
+  "style": "bun",
+  "color": "black"
+ },
+ "headwear": "hood",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "gold",
+  "brows": "soft",
+  "mouth": "flat",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "coat",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "bracers",
+   "gloves",
+   "mantle",
+   "pouches"
+  ],
+  "colors": {
+   "top": "brown",
+   "bottom": "brown",
+   "accent": "white",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": "daggers",
+ "prop": null,
+ "_filters": {
+  "rank": "S",
+  "role": "rogue"
+ },
+ "race": "demon",
+ "recipe_race": "demon",
+ "party": "Crownless"
+}

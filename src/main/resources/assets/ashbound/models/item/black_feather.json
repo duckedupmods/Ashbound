@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/black_feather.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.462,
-     -1.237,
-     0.064
+     -2.759,
+     -2.552,
+     0.059
     ],
     "scale": [
-     0.6954,
-     0.6954,
-     0.6954
+     0.6311,
+     0.6311,
+     0.6311
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.462,
-     -1.237,
-     0.064
+     -2.759,
+     -2.552,
+     0.059
     ],
     "scale": [
-     0.6954,
-     0.6954,
-     0.6954
+     0.6311,
+     0.6311,
+     0.6311
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.804,
-     -0.68,
+     -1.517,
+     -1.404,
      0
     ],
     "scale": [
-     0.3825,
-     0.3825,
-     0.3825
+     0.3471,
+     0.3471,
+     0.3471
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/black_feather"
+   }
+  }
+ }
 }

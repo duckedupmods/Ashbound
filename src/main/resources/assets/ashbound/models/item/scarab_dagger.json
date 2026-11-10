@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/scarab_dagger.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.847,
-     -0.847,
+     -1.287,
+     -1.287,
      -0.0
     ],
     "scale": [
-     0.7191,
-     0.7191,
-     0.7191
+     0.569,
+     0.569,
+     0.569
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.847,
-     -0.847,
+     -1.287,
+     -1.287,
      -0.0
     ],
     "scale": [
-     0.7191,
-     0.7191,
-     0.7191
+     0.569,
+     0.569,
+     0.569
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.466,
-     -0.466,
+     -0.708,
+     -0.708,
      0
     ],
     "scale": [
-     0.3955,
-     0.3955,
-     0.3955
+     0.3129,
+     0.3129,
+     0.3129
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/scarab_dagger"
+   }
+  }
+ }
 }

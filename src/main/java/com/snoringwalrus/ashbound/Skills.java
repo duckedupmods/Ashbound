@@ -180,9 +180,9 @@ public final class Skills {
 		NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.event.entity.living.LivingDamageEvent.Post e) -> {
 			if (e.getSource().getDirectEntity() instanceof ServerPlayer p && e.getNewDamage() > 0) {
 				float heavy = Math.min(1, e.getNewDamage() / Math.max(1, JoinedSkills.strength(p) * 2));
-					Spells.skillFx(p.serverLevel(), "hit", e.getEntity().getBoundingBox().getCenter(), Vec3.ZERO, heavy, null);
+					Spells.skillFx(p.serverLevel(), "hit", e.getEntity().getBoundingBox().getCenter(), Vec3.ZERO, heavy, null, p);
 					HitStop.strike(p.serverLevel(), p, e.getEntity(), heavy);
-				if (left(p, BUFF + "thirst") > 0) p.heal(e.getNewDamage() * THIRST);
+				if (left(p, BUFF + "thirst") > 0) Meters.heal(p, p, e.getNewDamage() * THIRST * Gear.drink(p));
 			}
 		});
 	}
@@ -507,17 +507,34 @@ public final class Skills {
 			return;
 		}
 		cool(p, HELD, Spells.heldCooldown(w.kind()) * SECOND);
-		p.displayClientMessage(Component.literal(heldName(w.kind())).withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD), true);
+		p.displayClientMessage(Component.literal(heldName(w, StaffSpells.Style.of(w, p))).withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD), true);
 		Spells.heldSkill(p, w);
 	}
 
 	private static final int HELD_COST = 2;
 
-	public static String heldName(String kind) {
-		return switch (kind) {
-			case "white" -> "Great Heal";
-			case "summon" -> "Greater Host";
-			default -> "Braided Bolts";
+	/** A staff's first key is the great form of its own spell (StaffSpells.great), so it's named after it. */
+	public static String heldName(Gear.Weapon w) {
+		return heldName(w, StaffSpells.Style.of(w));
+	}
+
+	public static String heldName(ItemStack s) {
+		return s.getItem() instanceof Spells.Staff st ? heldName(st.weapon(), StaffSpells.Style.of(s)) : null;
+	}
+
+	public static String heldName(Gear.Weapon w, StaffSpells.Style style) {
+		if (w.kind().equals("summon")) return "Greater Host";
+		return switch (style) {
+			case ORB -> "Orb Storm";
+			case RUNE -> "Rune Ring";
+			case LANCE -> "Three Lances";
+			case FAN -> "Wide Fan";
+			case FALL -> "Great Fall";
+			case RAIN -> "Deluge";
+			case MEND -> "Great Mend";
+			case SPRING -> "Great Spring";
+			case FLASK -> "Flask Volley";
+			default -> w.kind().equals("white") ? "Great Heal" : "Braided Bolts";
 		};
 	}
 
@@ -570,7 +587,7 @@ public final class Skills {
 		JoinedSkills.later(p, 6, () -> {
 			look(p, "oath_charge", p.position().subtract(p.getLookAngle().scale(3)));
 			JoinedSkills.lineHit(p, 6, 1.5, 1.8 * m);
-			p.heal(p.getMaxHealth() * 0.08f);
+			Meters.heal(p, p, p.getMaxHealth() * 0.08f);
 		});
 	}
 
@@ -728,7 +745,7 @@ public final class Skills {
 		float hit = magic(p, 2.5 * m);
 		look(p, "judgement", at);
 		each(p, at, 3, e -> JoinedSkills.strike(p, e, hit));
-		for (Player o : l.getEntitiesOfClass(Player.class, p.getBoundingBox().inflate(10))) o.heal(o.getMaxHealth() * (float) (0.1 * m));
+		for (Player o : l.getEntitiesOfClass(Player.class, p.getBoundingBox().inflate(10))) Meters.heal(p, o, o.getMaxHealth() * (float) (0.1 * m));
 		l.playSound(null, at.x, at.y, at.z, SoundEvents.TRIDENT_THUNDER.value(), SoundSource.PLAYERS, 0.7f, 1.4f);
 	}
 

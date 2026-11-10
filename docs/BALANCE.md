@@ -364,3 +364,213 @@ damage, found capital or not (the "road" rule is gone), so camps don't get harde
 
 Fewer gates: 3% a roll, 6% before the capital (were 8, 20), one open within 300 blocks (were 2 within 256), one roll per
 group of friends rather than one each, and they open 80-180 blocks off (were 48-144).
+
+
+## Pass 11: gear carries the climb (11/1, 40/40 headless, unplayed)
+
+The user: armour from F to S gives almost nothing, weapons +1 damage. They were right, and it was by design: the 10/29 research pass cut the weapon ladder to 1.08x a rank so levels and the tree carried the climb, and vanilla's armour stops at 20 effective points. F to S a sword went 6 to 9.5 (1.6x), medium armour 12 to 18 (1.5x), while a normal monster's health went 4.2x and its hit 6.9x. Vanilla's wooden to netherite sword is 2x.
+
+### What other games do
+
+| Game | Start | End | What it means for us |
+|---|---|---|---|
+| Terraria | Copper Broadsword 9, copper armour 6 | Zenith 190, Solar Flare 78 defence | A block game where gear IS the progression: 21x, 13x. Bosses 2,000 (King Slime) to 25,000+ (Moon Lord) |
+| Elden Ring | Longsword 110 | 269 at +25, before stat scaling | About 2.4x on the weapon alone, upgrades raise scaling as well |
+| Diablo 3 | | | One Torment step is health ~1.6x, damage ~1.45x: ~2.3x harder a step, and players chase gear to climb it |
+| WoW | | | Item level is a budget: about 1% stats an item level, 13 between difficulties. Slots get fixed shares of it |
+| Monster Hunter | | | Damage x 80 / (80 + defence): no cap, diminishing % but steady effective health |
+| League of Legends | | | Damage x 100 / (100 + armour): every 100 armour is one more health bar, so each point is worth the same |
+| Path of Exile | | | "Increased" adds inside a pool, "more" multiplies: the reason our tree stays additive and keystones multiply |
+| Schreiber & Romero, Game Balance | | | Costs grow faster than power; progression shouldn't ramp smoothly: spike, then payoff |
+| Abratabia, KingsIsle (GDC Online 2011) | | | One sheet with every number, time to kill and time to die as the pace, change one thing at a time. That's balance.py |
+
+Not found: Monster Hunter's rank-by-rank weapon and armour numbers, Wynncraft's level 1 vs 100 gear, a developer's own statement of how much of player power should come from gear. "Gear is about two thirds of the climb" below is my choice, not a published rule.
+
+### What changed
+
+- **Weapons 1.4x a rank** (Gear.scale, gear.py, balance.py): sword F 6, E 8.4, D 11.8, C 16.5, B 23, A 32.3, S 45.2. F is unchanged, so early damage plays the same. Staffs and bows ride the same ladder.
+- **Boss weapons**: a rank above what their dungeon forges (1.4x), for every gate (Gear.ladder, BOSS_GATE); their stored rank is untouched because the Joining reads it. Two ranks would have been 2x. Found epics keep their 1.08x.
+- **Joined**: 1.12 x 1.4^(stage + 1), one more at the top, so each stands over the next boss weapon and the top one over rank S's.
+- **Armour is ours now** (Balance.kept, players only): damage x 40 / (40 + armour x (1 + toughness / 20)). Vanilla's reduction is replaced through DamageContainer, and the cap of 30 is raised with health's. Every 40 armour is one more health bar. A monster's spell counts as a blow (vanilla let magic through armour); falls, fire and the like don't.
+- **Armour 1.5x a rank**: medium F 20, E 30, D 45, C 68, B 101, A 152, S 228. Robe .6, light .8, heavy 1.4 of that. Medium takes 66% of a hit at F, 14% at S. The Character screen shows the armour and the cut.
+- **Monsters re-solved** to the same CURVE: normal 19 health at F to 375 at S, hits 2.6 to 92; bosses 869 to ~45,000, big attacks 7 to 231. Ash and coins per health re-solved, so level pace doesn't move.
+- **Things that would have broken**: heals scale with health, not blows (Gear.mends, x^-.56, about a third at rank S); drinking your own damage the same (Red Thirst, Communion, Thornborn Rose, Gear.drink); wear keeps the old ladder; Static's flat 3 follows the ladder; tree armour nodes are % now (+.4 became +3%, Bone Armour +5% a thrall); Warded is +2-4% armour; Brutal .35-.65 flat, it was worth half its budget at the new damage.
+- **Stacks made before this** carry old numbers: Smithing.relevel updates a stack the first time it's in a pack, rolls stay. Items left in chests update when picked up. Old flat Warded rolls stay tiny.
+
+### Results and what to watch
+
+One rank up: **2.45-3.3x harder in your old gear**, 1.5-1.8x once you've forged that rank's (it was 1.55 flat). So a new gate is a real spike and the forge is the payoff. In old gear a player still survives about 7 normal hits instead of 12 and kills take 1.5-1.8x as long, but a boss's big attack leaves 2-3 hits. That's the number to watch in play: if it's too harsh, lower the armour and weapon steps in balance.py and gear.py together and re-solve.
+
+Vanilla and other mods' gear isn't on the ladder: a diamond sword (7) sits at rank F-E, and iron armour (15) lets 73% through where vanilla let through about half, so vanilla monsters hit harder in early iron. Cataclysm's and other mods' bosses aren't solved: dangerous around rank C, easy at S. Monsters already spawned keep their old numbers until they respawn. Classes spread out late: at S a robe survives 3.7 normal hits, plate 8.8.
+
+Sources: terraria.wiki.gg (Copper Broadsword, Zenith, Armor, King Slime, Moon Lord, Guide:Armor progression), eldenring.wiki.gg and fextralife (Longsword), wowutils.com (slot budget), bfa.bloodmallet.com/wowtc (stat scaling), monsterhunterworld.wiki.fextralife.com (Defense), gameboost and loltheory (League armour), maxroll.gg (PoE damage scaling), minecraft.wiki (Armor), abratabia.com (game balance), Engadget on Sara Jensen Schubert's GDC Online 2011 talk, Schreiber & Romero's Game Balance (CRC 2021), and the Diablo 3 and Elden Ring sources in "By the book" above.
+
+
+## Pass 12: ranks, drops and parties (11/1, 40/40 headless, unplayed)
+
+Five players reached a rank A gate in about two hours with two rank D items at most, and could only craft two things there. Reading the code, there were five separate causes:
+
+1. **Gates leapt.** Each rank up was only half as likely as the one below, with no limit, so a rank F player could get a rank A gate.
+2. **Ash ran away.** A kill paid by the monster's rank: a rank A clear is ~58,000 Ash when a level 10 player needs ~2,800 a level. One lucky gate was a dozen levels, and level raised the gates, which raised the Ash.
+3. **Materials were shared.** They fell on the floor as one drop, so five players split one player's share.
+4. **Materials were per dungeon** while gates pick a dungeon at random from 3-5 of the rank, so a set needed the same dungeon twice or more by luck.
+5. **Costs grew and drops didn't.** A rank A set cost twice a rank F one, and PASS 3 hid it: it divided every rank's drops by rank F's prices (a real rank A set was about 5 clears, not 2.5).
+
+### What other games do
+
+- Diablo 3 and Diablo 4 roll loot per player, so a party has no sharing problem; Tiny Tina's Wonderlands offers it as a mode. Path of Exile 2 raises drops with party size (roughly +28% a member, unconfirmed).
+- Guild Wars scaled loot non-linearly with party size.
+- Diablo 3 added 75% monster health per extra player; Realm of the Mad God 20% in dungeons. We keep our 30%, because the friends set that by playing.
+- Monster Hunter gates rank behind Urgent Quests: you prove yourself before the next rank opens. The Ranks kit check does the same job from what you wear.
+- Old School RuneScape's bad luck mitigation: independent rolls make no progress, so raise the chance with each miss or guarantee a kill count.
+
+Not found: any published figure for hours per rank, or a source on class-appropriate drops. Those numbers are mine.
+
+### What changed
+
+- **Ranks.java.** Your rank is the lower of your level band and your kit (the middle of armour plus weapon, so three of five pieces count; a pickaxe in hand doesn't). It never falls. A party's rank is its members' average, shown as a seal on the Party screen with each member's beside their name, and hovering it says what a party of this size does to a fight.
+- **Gates** centre on the party's rank: own rank 100, +1 30, +2 6, none past that; -1 40, -2 12, -3 3. A party that's outlevelled its gear sees the next rank as often as its own, so there's a way up.
+- **Ash and coins** past one rank above the party pay as that rank would (Balance.paysUpTo).
+- **Everyone rolls their own materials**, owner-locked on the floor, as bosses already did.
+- **A rank's materials are one currency at the forge** (GateForge.kin): any rank C dungeon's pays for any rank C recipe. A dungeon's own go first.
+- **Costs**: about 2-3 clears a set at every rank (COST_X 1, 1, 1, 1.1, 1.2, 1.1, 1.1).
+- **Boss weapons**: 20%, +9% each boss without one, ten at the worst (GateLoot.weaponOdds, Levels.BOSS_MISSES). Still any of the six at random.
+- **Finds follow the party's rank** (Ranks.find): monsters and structure chests give a forged weapon, forged armour or world piece mostly of the party's rank, 25% a rank below, 15% one above, 2% two above, 60% of them for your class. Chests roll when opened, so they're for whoever opens them, likelier with more of the party near (+50% a player). Boss .35, foreman .09, elite .07, our monsters .006, others' .002: about .6 of a piece a clear a head. Before, a level 1 player could open a rank A legendary, and the ladder made that 6x a starter sword.
+- **Menders can win alone**: a white staff's cast burns the three nearest monsters within 8 blocks for 16 x power, .3 of that with a friend near (Spells.sear). They had no damage at all before level 5.
+- **Reward share .25 to .2**: parties level about as fast as solo.
+
+### Results (modelled, nothing played)
+
+| Players | Monster health | Boss, usual party | Levels an hour | Materials an hour, each |
+|---|---|---|---|---|
+| 1 | 1.0x | 194 s | 1.0x | 1.0x |
+| 2 | 1.3x | 147 s | 1.1x | 1.3x |
+| 3 | 1.6x | 154 s | 0.9x | 1.3x |
+| 4 | 1.9x | 124 s | 1.0x | 1.6x |
+| 5 | 2.2x | 108 s | 1.0x | 1.8x |
+| 6 | 2.5x | 101 s | 1.0x | 1.9x |
+
+Usual party: Vanguard, Reaver, then Mender, Ashcaster, Caller, Hunter. Rank C. An all-damage party is about 25% faster.
+
+Solo boss at rank C: Reaver 194 s, Shade 198, Caller 200, Ashcaster 204, Breaker and Lancer 207, Vanguard 224, Hunter 232, Mender 306. The class damage shares in CLASS_DPS are estimates from the passes above; only a playtest measures them.
+
+Rank A now takes about 40 clears' worth of levels (F 4, E 6, D 8, C 10, B 12) where the friends did it in a handful. How long a clear really takes isn't measured.
+
+Watch: a party with one low-rank member drags the average down, on purpose. Rank is fixed once earned, so old saves start at rank 0 and earn it on the next check, in the kit they wear, and only after they've found the capital.
+
+Sources: poe2wiki.net/wiki/Party, gamebanshee Diablo III interview, guildorder.com Diablo 4 group play, playwonderlands.2k.com co-op guide, wiki.guildwars.com Loot scaling, ubergizmo Diablo 3 patch 1.0.4 preview, realmeye.com HP scaling, game.capcom.com MH4U manual, gamerguides.com Monster Hunter Rise hunter rank, oldschool.runescape.wiki Bad luck mitigation.
+
+## Pass 13 (11/7): every fight, every party
+
+User: "rebalance everything ... every monster per party, every party with healers and without, with skills and without,
+weapon damage, boss hp and damage, armour, every stat from weapons, curios, rarities." New tool `tools/balance_sim.py`
+plays every rank (F-S) x every fight (pack of 4 normals, elite + 2, gate boss, story arena boss, overworld summon,
+Legend) x every party (each class solo; duos, trios, fours, fives, sixes and eights with and without a tank or a
+healer; with and without skills). Per cell: kill seconds, and **forgiveness**: landed blows a minute the party can take
+for the whole fight with nobody dying (health, food/potions/lifesteal, a Mender's heals and Accord, the tank taking 75%
+and blocking half). Forgiveness doesn't depend on how often monsters really land hits (that's player skill), so it
+compares parties fairly. Targets: pack 12/min, elite 7, gate boss 3, arena 3, overworld 2.5, Legend 4.
+
+    python tools/balance_sim.py            summary      --all   every party, -sk rows      --bosses   every boss vs its rank
+
+Research used (rules of thumb, no official numbers found): kill-time per enemy tier sets the pecking order; party boss
+health in co-op games +60%/player (Elden Ring), Monster Hunter 1.6x/2.0x/2.3x for 2/3/4; MMO trinity (tank holds the
+blows, healer keeps them up, dps kills); armour as effective health (LoL 100/(100+armour)); rarity = more affixes and a
+curated effect (WoW quality, Disgaea +25%/+50%); damage bonuses in separate multiplicative buckets get out of hand
+(Diablo 4) - ours stay additive inside each source.
+
+What it found and what changed:
+1. **Healing was far too strong**: a Mender healed ~a third of everyone's health every 3.6 s; a party with one took
+   3.5x more blows than without, a Mender alone was near unkillable. `Spells.HEAL_BASE` 9 -> **4**: a healer now about
+   doubles what a party can take (1.7-2.1x), a lone Mender is the toughest and slowest solo class.
+2. **Arena bosses double-counted the party**: Balance.party (road, +15%/player) and BossArenas' own +50%/player: four
+   players took longer than one. The extra is gone; arenas and summoned overworld bosses now scale like a gate
+   (+30%/player health, boss +8%/player damage).
+3. **Story arena bosses** were weaker than their rank's gate bosses (the Founder-King shorter than an S gate boss).
+   Now solved on the rank's boss target: act bosses 1.3x health / 1.1x damage, the Founder-King 1.6x / 1.2x
+   (`balance.py STORY_BOSSES`).
+4. **Overworld bosses** came a rank above the party and were hand-set (8-10 min solo). Now solved at 1.8x / 1.15x a B
+   boss and moved to the **party's own rank** (`WORLD_BOSSES`, WorldBosses.call): ~1.7-2.5x a gate boss solo, about a
+   gate boss's length for four.
+5. **Moving a monster between ranks** (Balance.atRank/soften: Legends, overworld bosses, ashfall, camps) used the plain
+   monsters' ratios for everyone, and its armour climbed with its hit (a Legend at S wore 61 armour, a gate boss 14).
+   Now by its own role's targets (`rank_role` in balance.json: health, hit, armour per role and rank).
+6. **Boss spread inside a rank** was 0.58x-1.72x. Banded: gate bosses 0.85-1.2x of the rank's target, tower bosses
+   1.15-1.35x (the climb's top), damage 0.85-1.15x; gate elites 0.75-1.3x health, 0.8-1.25x damage. Normals keep
+   their spread on purpose (mites 0.3x to brutes 5x: the pecking order).
+7. **The solve dropped hand rows**: the Tidewrack and every new boss were outside `--solve` and would have been wiped.
+   Now in it (`OWN_SPAWNERS`, `STORY_BOSSES`, `WORLD_BOSSES`).
+8. **Bow** fell 19-28% behind the boss band; `Gear.power` 2.3 -> **2.6** (now +5% to +13%: a little slower, being safe).
+9. **Affixes**: the game's Keen/Swift/Arcane had drifted to 4-8% (6% mid, over the 2-4 budget); back to the budget.
+   Warded, Fleet, Steadfast, Tempered and Lucky were ~1% (dead rolls); raised to 2.4-3.4. A legendary weapon is still
+   about +22% over an uncommon one of its rank.
+
+Checked and kept: solo boss times on CURVE at every rank (110 s F ... 337 s S); a party's kill 0.4-0.65x solo;
+with skills fights are 12% (F) to 54% (S) shorter; one rank up is 2.5-3.3x harder in old gear, 1.5-1.8x in that rank's
+gear; curios on budget (a full kit +12/18/24/24% by rarity: a legendary's worth is its effect, not more stats); tree
+nodes ~1.2 each; utility skills (Bastion Slam, Snare Field, Unbroken) low on damage by design.
+
+Still flagged (accepted): an S-rank Shade (light armour, daggers) alone against an S boss or the S arenas can take
+2.3-2.9 blows a minute against the 3 target - the hardest solo fights in the game, light armour trading defence for
+movement. The model's knobs (MOB_SWING, LAND, THREAT, SUSTAIN, POTION) are guesses: set them from the in-game Meter
+after a playtest and rerun.
+
+### Pass 13b (11/7): the tree, really spent
+
+User: "did you take in account the skills, the tree and the new skills?" The 54 class skills were in (the tool's copy
+matches Skills.java, cooldowns and all). The tree wasn't: build() guessed a flat +0.65% damage / +0.45% survival a point
+and only the 58 small nodes were ever valued; the 80 notables and 10 keystones weren't. New `tools/tree_build.py` walks
+the tree per class from its start along its links (core + the class's own weapon areas, keystones after key_need
+points), each point to the best node in reach, with every mechanic notable valued by hand (MECHANIC: Backstab 15,
+Momentum 15, Hunter's Mark 15, Sunder 13, Shatter 12 ...) and keystones net of their drawbacks (KEYSTONE).
+
+At S the real tree gives +45% (Lancer) to +99% (Hunter) offence and +79-120% defence; the guess was +53% / +36%.
+balance.build() now uses the median class's real tree; monsters re-solved on it (they're tougher late: players are).
+balance_sim gives each class its own tree. That showed three classes 20-29% slow on solo bosses from C up, their
+areas being light on damage: **spear +15% and hammer +8% weapon damage** (Passives.KIND_EDGE, on every melee hit) and
+**thralls 4.3 -> 4.8** (Spells.THRALL_DMG). Now every damage class's solo boss is inside target +-20% at every rank
+(S: 342-371 s on 330); Vanguard and Mender slower, being the tough ones.
+
+Over budget, noted not changed: the docs say a notable is ~4-5%; a dozen are worth 10-15% (the ones above). The solve
+now accounts for them, so fights stay on target; trimming them would make gear matter more - a design call for later.
+Not modelled at all: boss-weapon R skills, Awakening Tome Forms, curio and relic effects (stats only).
+
+## Pass 14 (11/7): the shape of the climb
+
+User: easy start, harder mid game, endgame where you have the damage to have fun but still things to do. Pass 9's CURVE
+got harder every rank up to S. Now the road peaks at B and the power comes back after it; bosses keep growing.
+
+| rank | pack kill (solo) | blows/min a pack lets you take | gate boss solo | world boss solo |
+|---|---|---|---|---|
+| F | 6 s | 354 | 110 s | 195 s |
+| D | 7 s | 194 | 163 s | 292 s |
+| B (hardest road) | 9 s | 86 | 248 s | 432 s |
+| A | 8 s | 94 | 263 s | 470 s |
+| S | 6 s | 124 | 284 s | 507 s |
+
+The endgame's challenge is the optional big fights: S gates, the three Astral arenas, the Founder-King (x1.6), the five summon bosses (x1.8, repeatable), legends.
+Sim flags: one left (S solo Shade with no skills in an arena). 64/64 headless.
+
+## Pass 15 (11/7): who can beat what (tools/balance_mc.py)
+
+A Monte Carlo sim: every fight played 150 times with dice, at three player skills (new / ok / good = about 11 / 5.5 /
+2.5 landed blows a minute on whoever the boss chases), a rule-driven Mender (circle on a timer, Accord when someone's
+under half). Each cell is a win chance. Method from simulation balancing (set a measurable target, sim, change one knob,
+re-sim) and the healer sims (healing as rules reacting to health bars, counting ally deaths).
+
+Found: the staff heal climbed at Gear.MEND_CLIMB (0.44) while health climbs 5x F to S, so a circle pulse fell from 15%
+of a bar to 7% and a Mender was worth about half a Vanguard late. Now Gear.heals at HEAL_CLIMB 0.66: 15% at F, 11% at S.
+Lifesteal keeps MEND_CLIMB.
+
+Win chance at an ok skill, rank S: tank+ranger gate boss 96, heal+ranger 89, 2 dps 25; tank+2dps 99, heal+2dps 99,
+4 dps 84; Founder-King: 4 classic 99, tank+2dps 83, heal+2dps 83, 4 dps 10 (97 at good).
+Open: a shield blocks a boss's big attacks too (nothing breaks a guard), so a solo Vanguard beats the S Founder-King 41% at ok.
+
+### Pass 15b: no party left out
+Two ok damage players won an S gate boss 25% of the time, solo 0%. Boss blows were too deadly for 3-5 minute fights.
+- CURVE hits_big B 3->4, A 3->4.1, S 3->4.4 (found by search in balance_mc so 2 ok damage players win a gate boss ~80%).
+- Alone, a gate/arena/summoned boss hits 30% softer (party.solo_boss_dmg -0.3, Balance.party).
+- balance_mc now has the Mender's mana (100 bar, 6.6/s, 38 a heal), 300 fights a cell (100 was +-15 points of noise).
+S, ok player: 2 dps gate boss 82, 4 dps 99, solo dps 55; Founder-King: 4 classic 99, heal+3dps 86, tank+3dps 65, 4 dps 75
+(new players: 0 without a healer). Still open: a solo Vanguard wins nearly everything (shield blocks half of all blows
+incl. big attacks: an assumption, check in game).

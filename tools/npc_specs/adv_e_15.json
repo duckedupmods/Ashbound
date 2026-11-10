@@ -1,0 +1,60 @@
+{
+ "id": "adv_e_15",
+ "seed": 4113015,
+ "recipe": "adventurer",
+ "role": "white_mage",
+ "rank": "E",
+ "name": "Promise of the Drains",
+ "title": "E-rank White Mage",
+ "age": "adult",
+ "sex": "f",
+ "build": "average",
+ "hunch": 0,
+ "skin": "ember",
+ "hair": {
+  "style": "ponytail",
+  "color": "blue_black"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "gold",
+  "brows": "soft",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "sash"
+  ],
+  "colors": {
+   "top": "white",
+   "bottom": "cream",
+   "accent": "ochre",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "staff",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "E",
+  "role": "white_mage"
+ },
+ "race": "demon",
+ "recipe_race": "demon",
+ "party": "Copper Bell Company"
+}

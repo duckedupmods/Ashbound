@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/kiln_longbow.obj",
@@ -149,5 +149,12 @@
    "model": "ashbound:item/kiln_longbow_pulling_2"
   }
  ],
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/kiln_longbow"
+   }
+  }
+ }
 }

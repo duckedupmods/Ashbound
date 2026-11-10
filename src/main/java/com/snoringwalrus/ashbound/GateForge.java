@@ -53,19 +53,30 @@ public final class GateForge {
 
 		@Override
 		protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
-			if (player instanceof ServerPlayer p && !Smithing.join(p, pos)) PacketDistributor.sendToPlayer(p, new Net.ForgeOpen(pos));
+			if (player instanceof ServerPlayer p && !Smithing.join(p, pos)) {
+				Bag.show(p);
+				PacketDistributor.sendToPlayer(p, new Net.ForgeOpen(pos));
+			}
 			return InteractionResult.sidedSuccess(level.isClientSide);
 		}
 	}
 
-	/** how many of an item the player carries */
-	public static int count(Player p, Item it) {
+	/** how many of an item the player has in their pack */
+	public static int carried(Player p, Item it) {
 		if (it == null) return 0;
 		int n = 0;
 		for (ItemStack s : p.getInventory().items) if (s.is(it)) n += s.getCount();
 		return n;
 	}
 
+	/** how many of an item the player can forge with: their pack and the Bottomless Bag, which the party shares */
+	public static int count(Player p, Item it) {
+		if (it == null) return 0;
+		long bag = p instanceof ServerPlayer sp ? Bag.count(sp, new ItemStack(it)) : Bag.clientCount(it);
+		return (int) Math.min(Integer.MAX_VALUE, carried(p, it) + bag);
+	}
+
+	/** Out of the pack first, then the bag. */
 	static void take(Player p, Item it, int n) {
 		for (ItemStack s : p.getInventory().items) {
 			if (n <= 0) return;
@@ -75,19 +86,45 @@ public final class GateForge {
 				n -= k;
 			}
 		}
+		while (n > 0 && p instanceof ServerPlayer sp) {
+			ItemStack got = Bag.take(sp, new ItemStack(it), n);
+			if (got.isEmpty()) return;
+			n -= got.getCount();
+		}
+	}
+
+	/** A rank's drops are one currency here: nobody chooses which dungeon a gate opens on, so a set can't hang on it. A dungeon's own come first. */
+	private static java.util.List<Item> kin(Gear.Dungeon d, int which) {
+		java.util.List<Item> out = new java.util.ArrayList<>(java.util.List.of(Gear.item(d.mats()[which])));
+		for (Gear.Dungeon o : Gear.DUNGEONS) if (o != d && o.rank() == d.rank()) out.add(Gear.item(o.mats()[which]));
+		return out;
+	}
+
+	/** How many of this kind of drop (0 common, 1 elite, 2 trophy) of a dungeon's rank the player can forge with. */
+	public static int countKin(Player p, Gear.Dungeon d, int which) {
+		int n = 0;
+		for (Item it : kin(d, which)) n += count(p, it);
+		return n;
+	}
+
+	private static void takeKin(Player p, Gear.Dungeon d, int which, int n) {
+		for (Item it : kin(d, which)) {
+			int k = Math.min(n, count(p, it));
+			take(p, it, k);
+			n -= k;
+		}
 	}
 
 	static void pay(Player p, Gear.Dungeon d, Gear.Cost c) {
 		if (p.isCreative()) return;
-		take(p, Gear.item(d.mats()[0]), c.common());
-		take(p, Gear.item(d.mats()[1]), c.elite());
-		take(p, Gear.item(d.mats()[2]), c.trophy());
+		takeKin(p, d, 0, c.common());
+		takeKin(p, d, 1, c.elite());
+		takeKin(p, d, 2, c.trophy());
 	}
 
 	public static boolean affords(Player p, Gear.Dungeon d, Gear.Cost c) {
 		if (p.isCreative()) return true;
-		return count(p, Gear.item(d.mats()[0])) >= c.common() && count(p, Gear.item(d.mats()[1])) >= c.elite()
-				&& count(p, Gear.item(d.mats()[2])) >= c.trophy();
+		return countKin(p, d, 0) >= c.common() && countKin(p, d, 1) >= c.elite() && countKin(p, d, 2) >= c.trophy();
 	}
 
 	/** A forge at pos, or a smith there who'll work one for you. */
@@ -102,6 +139,7 @@ public final class GateForge {
 
 	/** Opens the forge for you at a smith's side (Talk). */
 	static void open(ServerPlayer p, Npc smith) {
+		Bag.show(p);
 		PacketDistributor.sendToPlayer(p, new Net.ForgeOpen(smith.blockPosition()));
 	}
 

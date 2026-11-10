@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/diastole.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.505,
-     -0.505,
-     -0.0
+     -1.448,
+     -0.998,
+     0.114
     ],
     "scale": [
-     0.3336,
-     0.3336,
-     0.3336
+     0.2703,
+     0.2703,
+     0.2703
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.505,
-     -0.505,
-     -0.0
+     -1.448,
+     -0.998,
+     0.114
     ],
     "scale": [
-     0.3336,
-     0.3336,
-     0.3336
+     0.2703,
+     0.2703,
+     0.2703
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.278,
-     -0.278,
+     -0.796,
+     -0.549,
      0
     ],
     "scale": [
-     0.1835,
-     0.1835,
-     0.1835
+     0.1487,
+     0.1487,
+     0.1487
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/diastole"
+   }
+  }
+ }
 }

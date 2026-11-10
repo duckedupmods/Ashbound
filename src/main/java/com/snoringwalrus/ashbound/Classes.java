@@ -44,8 +44,8 @@ public final class Classes {
 	private static final String APPLES = "minecraft:golden_apple*3", FEW_APPLES = "minecraft:golden_apple*2";
 	/** What everyone sets out with: tools, a bed, and food and light for the road. */
 	private static final List<String> ROAD_PACK = List.of("minecraft:iron_pickaxe", "minecraft:iron_axe", "minecraft:iron_shovel",
-			"minecraft:cooked_beef*32", "minecraft:torch*32", "minecraft:red_bed");
-	private static final int HEALING_POTIONS = 3;
+			"minecraft:torch*32", "minecraft:red_bed");
+	private static final int HEALING_POTIONS = 3, ROAD_FOOD = 32;
 
 	public static final List<Cls> ALL = List.of(
 			new Cls("vanguard", "Vanguard", "Tank", "Sword and shield at the front, so the monsters look at you and not your party.",
@@ -121,6 +121,7 @@ public final class Classes {
 		List<ItemStack> l = new ArrayList<>();
 		c.pack().forEach(e -> add(l, e));
 		ROAD_PACK.forEach(e -> add(l, e));
+		l.add(Rations.stocked(new ItemStack(Items.COOKED_BEEF, ROAD_FOOD)));
 		for (int i = 0; i < HEALING_POTIONS; i++) l.add(PotionContents.createItemStack(Items.POTION, Potions.HEALING));
 		return l;
 	}

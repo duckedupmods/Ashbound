@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/bloodmoon_kris.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.374,
-     -1.463,
-     0.157
+     -2.498,
+     -2.573,
+     0.132
     ],
     "scale": [
-     0.5651,
-     0.5651,
-     0.5651
+     0.5159,
+     0.5159,
+     0.5159
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.374,
-     -1.463,
-     0.157
+     -2.498,
+     -2.573,
+     0.132
     ],
     "scale": [
-     0.5651,
-     0.5651,
-     0.5651
+     0.5159,
+     0.5159,
+     0.5159
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.756,
-     -0.805,
+     -1.374,
+     -1.415,
      0
     ],
     "scale": [
-     0.3108,
-     0.3108,
-     0.3108
+     0.2837,
+     0.2837,
+     0.2837
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/bloodmoon_kris"
+   }
+  }
+ }
 }

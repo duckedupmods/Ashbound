@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/sunspear.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.496,
-     -0.496,
+     -0.636,
+     -0.636,
      -0.0
     ],
     "scale": [
-     0.3189,
-     0.3189,
-     0.3189
+     0.2767,
+     0.2767,
+     0.2767
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.496,
-     -0.496,
+     -0.636,
+     -0.636,
      -0.0
     ],
     "scale": [
-     0.3189,
-     0.3189,
-     0.3189
+     0.2767,
+     0.2767,
+     0.2767
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.273,
-     -0.273,
+     -0.35,
+     -0.35,
      0
     ],
     "scale": [
-     0.1754,
-     0.1754,
-     0.1754
+     0.1522,
+     0.1522,
+     0.1522
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/sunspear"
+   }
+  }
+ }
 }

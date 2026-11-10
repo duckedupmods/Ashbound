@@ -1,0 +1,61 @@
+{
+ "id": "adv_b_52",
+ "seed": 4120971,
+ "recipe": "adventurer",
+ "role": "tank",
+ "rank": "B",
+ "name": "Senna Morrow",
+ "title": "B-rank Shieldbearer",
+ "age": "adult",
+ "sex": "f",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "tan",
+ "hair": {
+  "style": "bob",
+  "color": "copper"
+ },
+ "headwear": "helm",
+ "beard": null,
+ "face": {
+  "eye": "sharp",
+  "iris": "brown",
+  "brows": null,
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "cuirass",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "gauntlets",
+   "greaves",
+   "pauldrons",
+   "tassets"
+  ],
+  "colors": {
+   "top": "cream",
+   "bottom": "black",
+   "accent": "plum",
+   "leather": "black"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "axe",
+ "offhand": "shield",
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "B",
+  "role": "tank"
+ },
+ "party": "The Ashen Vow"
+}

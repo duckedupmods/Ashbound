@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/thousand_hand_jian.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.629,
-     -2.629,
-     -0.0
+     -0.941,
+     -1.044,
+     -0.03
     ],
     "scale": [
-     0.4075,
-     0.4075,
-     0.4075
+     0.3155,
+     0.3155,
+     0.3155
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.629,
-     -2.629,
-     -0.0
+     -0.941,
+     -1.044,
+     -0.03
     ],
     "scale": [
-     0.4075,
-     0.4075,
-     0.4075
+     0.3155,
+     0.3155,
+     0.3155
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.446,
-     -1.446,
+     -0.518,
+     -0.574,
      0
     ],
     "scale": [
-     0.2242,
-     0.2242,
-     0.2242
+     0.1735,
+     0.1735,
+     0.1735
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/thousand_hand_jian"
+   }
+  }
+ }
 }

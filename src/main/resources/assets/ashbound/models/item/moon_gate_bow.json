@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/moon_gate_bow.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.038,
-     -0.892,
-     0.183
+     -2.98,
+     2.623,
+     -0.526
     ],
     "scale": [
-     1.0402,
-     1.0402,
-     1.0402
+     0.8071,
+     0.8071,
+     0.8071
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.038,
-     -0.892,
-     0.183
+     -2.98,
+     2.623,
+     -0.526
     ],
     "scale": [
-     1.0402,
-     1.0402,
-     1.0402
+     0.8071,
+     0.8071,
+     0.8071
     ]
    },
    "ground": {
@@ -115,19 +115,26 @@
      0.0
     ],
     "translation": [
-     0.571,
-     -0.491,
+     -1.639,
+     1.443,
      0
     ],
     "scale": [
-     0.5721,
-     0.5721,
-     0.5721
+     0.4439,
+     0.4439,
+     0.4439
     ]
    }
   }
  },
- "perspectives": {},
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/moon_gate_bow"
+   }
+  }
+ },
  "overrides": [
   {
    "predicate": {

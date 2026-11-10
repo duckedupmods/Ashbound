@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/obelisk_maul.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     0.059,
-     -0.028,
-     -0.025
+     -1.44,
+     -1.44,
+     0.0
     ],
     "scale": [
-     0.4413,
-     0.4413,
-     0.4413
+     0.3807,
+     0.3807,
+     0.3807
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     0.059,
-     -0.028,
-     -0.025
+     -1.44,
+     -1.44,
+     0.0
     ],
     "scale": [
-     0.4413,
-     0.4413,
-     0.4413
+     0.3807,
+     0.3807,
+     0.3807
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.032,
-     -0.015,
+     -0.792,
+     -0.792,
      0
     ],
     "scale": [
-     0.2427,
-     0.2427,
-     0.2427
+     0.2094,
+     0.2094,
+     0.2094
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/obelisk_maul"
+   }
+  }
+ }
 }

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/boar_spear.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.497,
-     -0.497,
-     -0.0
+     -0.344,
+     -0.443,
+     -0.028
     ],
     "scale": [
-     0.3193,
-     0.3193,
-     0.3193
+     0.3009,
+     0.3009,
+     0.3009
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.497,
-     -0.497,
-     -0.0
+     -0.344,
+     -0.443,
+     -0.028
     ],
     "scale": [
-     0.3193,
-     0.3193,
-     0.3193
+     0.3009,
+     0.3009,
+     0.3009
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.273,
-     -0.273,
+     -0.189,
+     -0.244,
      0
     ],
     "scale": [
-     0.1756,
-     0.1756,
-     0.1756
+     0.1655,
+     0.1655,
+     0.1655
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/boar_spear"
+   }
+  }
+ }
 }

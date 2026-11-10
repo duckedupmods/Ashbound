@@ -1,0 +1,66 @@
+{
+ "id": "adv_a_56",
+ "seed": 4113056,
+ "recipe": "adventurer",
+ "role": "tank",
+ "rank": "A",
+ "name": "Grenda Deepdelve",
+ "title": "A-rank Shieldbearer",
+ "age": "adult",
+ "sex": "f",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "olive",
+ "hair": {
+  "style": "bun",
+  "color": "dark_brown"
+ },
+ "headwear": "helm",
+ "beard": null,
+ "face": {
+  "eye": "sharp",
+  "iris": "brown",
+  "brows": "soft",
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "scar_eye"
+  ],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "cuirass",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "cape",
+   "gauntlets",
+   "greaves",
+   "pauldrons",
+   "tassets"
+  ],
+  "colors": {
+   "top": "linen",
+   "bottom": "grey",
+   "accent": "black",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "axe",
+ "offhand": "shield",
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "A",
+  "role": "tank"
+ },
+ "race": "dwarf",
+ "recipe_race": "dwarf",
+ "party": "Ironwake"
+}

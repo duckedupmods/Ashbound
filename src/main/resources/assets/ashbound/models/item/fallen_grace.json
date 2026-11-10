@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/fallen_grace.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.772,
-     -2.772,
-     0.0
+     -2.355,
+     -2.355,
+     -0.0
     ],
     "scale": [
-     0.4263,
-     0.4263,
-     0.4263
+     0.3187,
+     0.3187,
+     0.3187
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.772,
-     -2.772,
-     0.0
+     -2.355,
+     -2.355,
+     -0.0
     ],
     "scale": [
-     0.4263,
-     0.4263,
-     0.4263
+     0.3187,
+     0.3187,
+     0.3187
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.525,
-     -1.525,
+     -1.295,
+     -1.295,
      0
     ],
     "scale": [
-     0.2345,
-     0.2345,
-     0.2345
+     0.1753,
+     0.1753,
+     0.1753
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/fallen_grace"
+   }
+  }
+ }
 }

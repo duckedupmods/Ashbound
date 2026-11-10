@@ -1,0 +1,62 @@
+{
+ "id": "adv_d_36",
+ "seed": 4120955,
+ "recipe": "adventurer",
+ "role": "striker",
+ "rank": "D",
+ "name": "Elske Fenwick",
+ "title": "D-rank Blade",
+ "age": "adult",
+ "sex": "f",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "fair",
+ "hair": {
+  "style": "short",
+  "color": "dark_brown"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "round",
+  "iris": "ice",
+  "brows": "stern",
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "bracers",
+   "pauldron_l",
+   "pouches",
+   "strap",
+   "tassets"
+  ],
+  "colors": {
+   "top": "charcoal",
+   "bottom": "grey",
+   "accent": "charcoal",
+   "leather": "black"
+  }
+ },
+ "pose": {
+  "r": "fold",
+  "l": "fold"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": "greatsword",
+ "hip": "knife",
+ "prop": null,
+ "_filters": {
+  "rank": "D",
+  "role": "striker"
+ },
+ "party": "Gallows Crows"
+}

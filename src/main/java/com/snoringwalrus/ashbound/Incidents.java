@@ -243,7 +243,8 @@ public final class Incidents {
 			if (!close.isEmpty()) {
 				Capital.Site v = close.get(r.nextInt(close.size()));
 				for (Incident i : live()) if (i.raid && !i.over && i.place.equals(v.title)) return null;
-				return post(level, true, d, v.title, v.x, v.z);
+				int[] centre = Waypoints.anchor(v);
+				return post(level, true, d, v.title, centre[0], centre[2]);
 			}
 		}
 		int[] at = wilds(level, p, r);
@@ -259,8 +260,13 @@ public final class Incidents {
 		m.addTag(TAG + ":" + i.id);
 		m.setPersistenceRequired();
 		EventHooks.finalizeMobSpawn(m, level, level.getCurrentDifficultyAt(top), MobSpawnType.EVENT, null);
-		level.addFreshEntity(m);
-		return m;
+		return level.addFreshEntity(m) ? m : null;
+	}
+
+	/** Not one of them is anywhere about. */
+	private static boolean nobody(ServerLevel level, Incident i) {
+		for (UUID u : i.left) if (level.getEntity(u) != null) return false;
+		return true;
 	}
 
 	/** Somebody's close: they're there now. */
@@ -324,6 +330,15 @@ public final class Incidents {
 			if (!i.raised) {
 				for (ServerPlayer p : level.players())
 					if (!p.isSpectator() && p.distanceToSqr(i.x, p.getY(), i.z) < WAKE * WAKE) {
+						raise(level, i, p);
+						changed = true;
+						break;
+					}
+			} else if (nobody(level, i)) {
+				// someone's standing there and there's nothing to fight, so it never really came: it comes now
+				for (ServerPlayer p : level.players())
+					if (!p.isSpectator() && p.distanceToSqr(i.x, p.getY(), i.z) < WAKE * WAKE) {
+						i.left.clear();
 						raise(level, i, p);
 						changed = true;
 						break;

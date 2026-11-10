@@ -54,7 +54,7 @@ public final class Mounts {
 					"Jumps six blocks high", 0.245, 1.08, 1.1, false, false, 0.67f, 2.677f, -0.114f, 1.2f, 1.7f, 2.0f, 4.6f, false),
 			new Kind("gravefang", "Gravefang", "The soulfire wolf", "Wears its own bones. Goes up rock faces as if they were stairs.",
 					"Climbs ledges three blocks high", 0.255, 0.72, 3.1, false, false, 0.8f, 2.211f, -0.311f, 1.3f, 1.5f, 1.6f, 3.7f, false),
-			new Kind("thornback", "Thornback", "The old boar of the wood", "A hillside that decided to walk. It does not go around things.",
+			new Kind("thornback", "Thornback", "The ancient boar", "A hillside that decided to walk. It does not go around things.",
 					"Charges through monsters at full speed", 0.225, 0.6, 1.1, false, true, 0.72f, 2.454f, -0.122f, 1.5f, 1.6f, 1.2f, 2.6f, true),
 			new Kind("stormdrake", "Stormdrake", "The lightning wyvern", "The others borrow the sky for a while. This one was born to it.",
 					"Glides from the first day", 0.24, 0.72, 1.1, true, false, 0.78f, 2.267f, 0.118f, 1.4f, 1.6f, 1.5f, 3.2f, false));
@@ -160,6 +160,17 @@ public final class Mounts {
 	public static final java.util.function.Supplier<EntityType<Thrall>> CHAMPION = Monsters.ENTITIES.register("thrall_champion",
 			() -> EntityType.Builder.<Thrall>of((t, l) -> new Thrall(t, l, true), MobCategory.MISC).sized(1.3f, 3.6f).noSave().build("thrall_champion"));
 
+	private static java.util.function.Supplier<EntityType<Thrall>> bound(String model, float wide, float tall) {
+		return Monsters.ENTITIES.register("thrall_" + model, () -> EntityType.Builder.<Thrall>of((t, l) -> new Thrall(t, l, model), MobCategory.MISC).sized(wide, tall).noSave().build("thrall_" + model));
+	}
+
+	/** What the summon staffs call, one kind to a style. */
+	public static final java.util.function.Supplier<EntityType<Thrall>> RIFTBLADE = bound("riftblade", 0.8f, 2.6f), CANTOR = bound("cantor", 0.9f, 2.7f),
+			GATEBREAKER = bound("gatebreaker", 1.6f, 3.1f), RIFTLING = bound("riftling", 0.9f, 0.9f), OATHWARDEN = bound("oathwarden", 1.1f, 2.7f);
+	/** what the Crown of the Hollow King makes of the thralls it eats (Forms, Spells.colossus) */
+	public static final java.util.function.Supplier<EntityType<Thrall>> COLOSSUS = bound("colossus", 2.0f, 3.6f);
+	public static final List<java.util.function.Supplier<EntityType<Thrall>>> BOUND = List.of(RIFTBLADE, CANTOR, GATEBREAKER, RIFTLING, OATHWARDEN, COLOSSUS);
+
 	static void ask(ServerPlayer p) {
 		Classes.asking(p, true);
 		PacketDistributor.sendToPlayer(p, new Net.MountState(""));
@@ -243,6 +254,7 @@ public final class Mounts {
 		bus.addListener((EntityAttributeCreationEvent e) -> {
 			e.put(REVENANT.get(), Thrall.attributes(false).build());
 			e.put(CHAMPION.get(), Thrall.attributes(true).build());
+			for (var b : BOUND) e.put(b.get(), Thrall.attributes(false).build());
 			for (Kind k : ALL) e.put(type(k), Mount.attributes(k).build());
 		});
 		NeoForge.EVENT_BUS.addListener((PlayerEvent.PlayerLoggedInEvent e) -> {

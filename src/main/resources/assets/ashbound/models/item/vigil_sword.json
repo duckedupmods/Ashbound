@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/vigil_sword.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.682,
-     -2.682,
-     -0.0
+     -2.445,
+     -2.515,
+     -0.02
     ],
     "scale": [
-     0.484,
-     0.484,
-     0.484
+     0.4251,
+     0.4251,
+     0.4251
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.682,
-     -2.682,
-     -0.0
+     -2.445,
+     -2.515,
+     -0.02
     ],
     "scale": [
-     0.484,
-     0.484,
-     0.484
+     0.4251,
+     0.4251,
+     0.4251
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.475,
-     -1.475,
+     -1.345,
+     -1.383,
      0
     ],
     "scale": [
-     0.2662,
-     0.2662,
-     0.2662
+     0.2338,
+     0.2338,
+     0.2338
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/vigil_sword"
+   }
+  }
+ }
 }

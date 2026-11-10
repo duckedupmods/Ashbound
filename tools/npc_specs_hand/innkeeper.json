@@ -1,0 +1,50 @@
+{
+ "name": "Dunstan Pell",
+ "age": "adult",
+ "sex": "m",
+ "skin": "rose",
+ "build": "stout",
+ "hair": {
+  "style": "bald",
+  "color": "grey"
+ },
+ "headwear": null,
+ "beard": "beard",
+ "nose": true,
+ "face": {
+  "eye": "mid",
+  "iris": "brown",
+  "brows": "thick",
+  "mouth": "smile",
+  "blush": true,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "shirt",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "apron",
+   "belt"
+  ],
+  "colors": {
+   "top": "linen",
+   "bottom": "brown",
+   "accent": "wine",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "mug",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "role": "innkeeper",
+ "id": "innkeeper"
+}

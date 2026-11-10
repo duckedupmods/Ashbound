@@ -1,0 +1,85 @@
+[
+  {
+    "id": "honey_cake",
+    "title": "A Cake for the Gate",
+    "type": "courier",
+    "giver": "kind:townsfolk_3003",
+    "rank": "F",
+    "repeat": true,
+    "hook": "You've got legs, haven't you? Good legs. Quick ones?",
+    "ask": "The guards on the gate haven't eaten since dawn and I've a honey cake going cold. Take it to any guard in the city before it does. Quick, mind: there's a tip if it's still warm.",
+    "coins": 25,
+    "steps": [
+      {"do": "deliver", "to": "tag:guard", "where": "capital", "item": "minecraft:cake", "name": "Joss's Honey Cake", "lore": "Still warm. For now.", "give": true, "minutes": 6,
+       "text": "Bring Joss's honey cake to a guard in Highmourn.", "reply": "Honey cake from Joss the baker. Still warm!",
+       "say": "From Joss? Gods bless that man. Tell him the east gate owes him one."}
+    ]
+  },
+  {
+    "id": "barmaids_letter",
+    "title": "Ink and Nerve",
+    "type": "courier",
+    "giver": "kind:townsfolk_3000",
+    "rank": "F",
+    "hook": "Can you keep a secret? And a letter? Dry, I mean. Keep it dry.",
+    "ask": "There's a smith in this city with arms like anvils and a laugh you can hear over the hammers. I wrote to them. Three times. This is the one I'm sending. Find a smith and give it to them, then come and tell me what they said. Don't read it.",
+    "coins": 30,
+    "steps": [
+      {"do": "deliver", "to": "tag:smith", "where": "capital", "item": "minecraft:paper", "name": "A Letter, Folded Very Small", "lore": "Smells of lavender and ale.", "give": true, "minutes": 10,
+       "text": "Take Mabry's letter to a smith in Highmourn.", "reply": "A letter for you. From Mabry, at the tavern.",
+       "say": "From Mabry? (The smith reads it twice. Then a third time, very red.) Tell her... tell her yes. Tell her Thursday."},
+      {"do": "talk", "to": "@giver", "where": "@giver", "text": "Tell Mabry what the smith said.", "reply": "Yes. They said yes. Thursday.",
+       "say": "THURSDAY? Oh, gods. Oh, I need a dress. Here, take this, take all of it, go away, I need to panic."}
+    ]
+  },
+  {
+    "id": "sealed_order",
+    "title": "The Sealed Order",
+    "type": "courier",
+    "giver": "tag:smith",
+    "rank": "F",
+    "repeat": true,
+    "hook": "You there. Guild? Doesn't matter. You'll do.",
+    "ask": "An order for the quartermaster, sealed with my mark. Brann Holt waits on nobody, and if this is late he'll buy his blades from the elves out of spite. Run.",
+    "coins": 30,
+    "points": 5,
+    "steps": [
+      {"do": "deliver", "to": "kind:quartermaster", "where": "capital", "item": "minecraft:paper", "name": "Sealed Smith's Order", "lore": "Wax seal: a hammer and a crack.", "give": true, "minutes": 5,
+       "text": "Run the smith's sealed order to Brann Holt, the quartermaster.", "reply": "A sealed order, from the smiths.",
+       "say": "Hm. On time, for once. Tell them the price stands."}
+    ]
+  },
+  {
+    "id": "cross_cat",
+    "title": "A Very Cross Cat",
+    "type": "courier",
+    "giver": "kind:townsfolk_9001",
+    "rank": "F",
+    "hook": "Are you a hero? Grandie says heroes help.",
+    "ask": "Whiskers got out and I found her but she bit me and Mum says she has to go back to Grandie's. Grandie's old and lives in the city. Can you carry her? Don't open the basket. DON'T open the basket.",
+    "coins": 20,
+    "items": ["minecraft:cookie 4"],
+    "steps": [
+      {"do": "deliver", "to": "tag:elder", "where": "capital", "item": "minecraft:bundle", "name": "Basket with a Very Cross Cat", "lore": "It hisses when you look at it.", "give": true, "minutes": 8,
+       "text": "Carry the basket (and the cat) to an elder in Highmourn: Poppy's Grandie.", "reply": "Your grandchild sent your cat home. The cat bites.",
+       "say": "Whiskers! Oh, you wicked thing. (The basket growls.) Thank you, dear. Here, for Poppy, and something for your trouble."}
+    ]
+  },
+  {
+    "id": "herbs_for_lumen",
+    "title": "Herbs Down the Road",
+    "type": "courier",
+    "giver": "kind:townsfolk_3009",
+    "rank": "F",
+    "repeat": true,
+    "hook": "Are you heading out of the city? Any direction with trees in it?",
+    "ask": "The elves in the tree villages trade me moonleaf for city herbs, and they're short this season. This bundle needs to reach one of their herbalists while it's still green. It's a long walk. I'll pay for the walk.",
+    "coins": 70,
+    "points": 10,
+    "steps": [
+      {"do": "deliver", "to": "tag:herbalist", "where": "village:tree", "item": "minecraft:bundle", "name": "Bundle of City Herbs", "lore": "Sage, feverfew, and something that sneezes.", "give": true, "minutes": 30,
+       "text": "Carry Petra's herbs to an elf herbalist in the nearest tree village.", "reply": "Herbs from Petra Flint in Highmourn.",
+       "say": "Petra remembered! The feverfew's still green. Tell her the moonleaf goes north with the next wagon."}
+    ]
+  }
+]

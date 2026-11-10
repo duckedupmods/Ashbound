@@ -1,0 +1,61 @@
+{
+ "id": "adv_b_47",
+ "seed": 4120966,
+ "recipe": "adventurer",
+ "role": "tank",
+ "rank": "B",
+ "name": "Piet Ember",
+ "title": "B-rank Shieldbearer",
+ "age": "adult",
+ "sex": "m",
+ "build": "average",
+ "hunch": 0,
+ "skin": "deep",
+ "hair": {
+  "style": "long",
+  "color": "golden"
+ },
+ "headwear": "helm",
+ "beard": "stubble",
+ "face": {
+  "eye": "mid",
+  "iris": "steel",
+  "brows": "stern",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": true,
+  "marks": [],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "cuirass",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "gauntlets",
+   "greaves",
+   "pauldrons",
+   "tassets"
+  ],
+  "colors": {
+   "top": "grey",
+   "bottom": "olive",
+   "accent": "teal",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "sword",
+ "offhand": "shield",
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "B",
+  "role": "tank"
+ },
+ "party": "Silver Thistle"
+}

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/last_drop.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.744,
-     -2.744,
-     0.0
+     -2.809,
+     -0.919,
+     0.54
     ],
     "scale": [
-     0.3323,
-     0.3323,
-     0.3323
+     0.2746,
+     0.2746,
+     0.2746
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.744,
-     -2.744,
-     0.0
+     -2.809,
+     -0.919,
+     0.54
     ],
     "scale": [
-     0.3323,
-     0.3323,
-     0.3323
+     0.2746,
+     0.2746,
+     0.2746
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.509,
-     -1.509,
+     -1.545,
+     -0.505,
      0
     ],
     "scale": [
-     0.1828,
-     0.1828,
-     0.1828
+     0.151,
+     0.151,
+     0.151
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/last_drop"
+   }
+  }
+ }
 }

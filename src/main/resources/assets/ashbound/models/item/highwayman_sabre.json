@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/highwayman_sabre.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.796,
-     -2.299,
-     0.142
+     -2.302,
+     -2.441,
+     -0.04
     ],
     "scale": [
-     0.4764,
-     0.4764,
-     0.4764
+     0.4219,
+     0.4219,
+     0.4219
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.796,
-     -2.299,
-     0.142
+     -2.302,
+     -2.441,
+     -0.04
     ],
     "scale": [
-     0.4764,
-     0.4764,
-     0.4764
+     0.4219,
+     0.4219,
+     0.4219
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.538,
-     -1.264,
+     -1.266,
+     -1.343,
      0
     ],
     "scale": [
-     0.262,
-     0.262,
-     0.262
+     0.232,
+     0.232,
+     0.232
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/highwayman_sabre"
+   }
+  }
+ }
 }

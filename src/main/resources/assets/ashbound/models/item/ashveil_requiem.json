@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/ashveil_requiem.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.515,
-     -2.515,
-     0.0
+     -2.293,
+     -2.293,
+     -0.0
     ],
     "scale": [
-     0.3089,
-     0.3089,
-     0.3089
+     0.3031,
+     0.3031,
+     0.3031
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.515,
-     -2.515,
-     0.0
+     -2.293,
+     -2.293,
+     -0.0
     ],
     "scale": [
-     0.3089,
-     0.3089,
-     0.3089
+     0.3031,
+     0.3031,
+     0.3031
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.383,
-     -1.383,
+     -1.261,
+     -1.261,
      0
     ],
     "scale": [
-     0.1699,
-     0.1699,
-     0.1699
+     0.1667,
+     0.1667,
+     0.1667
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/ashveil_requiem"
+   }
+  }
+ }
 }

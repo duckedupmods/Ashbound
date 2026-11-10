@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/cutpurse_knife.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.558,
-     -1.558,
-     0.0
+     -1.274,
+     -1.274,
+     -0.0
     ],
     "scale": [
-     0.7434,
-     0.7434,
-     0.7434
+     0.7505,
+     0.7505,
+     0.7505
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.558,
-     -1.558,
-     0.0
+     -1.274,
+     -1.274,
+     -0.0
     ],
     "scale": [
-     0.7434,
-     0.7434,
-     0.7434
+     0.7505,
+     0.7505,
+     0.7505
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.857,
-     -0.857,
+     -0.701,
+     -0.701,
      0
     ],
     "scale": [
-     0.4088,
-     0.4088,
-     0.4088
+     0.4128,
+     0.4128,
+     0.4128
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/cutpurse_knife"
+   }
+  }
+ }
 }

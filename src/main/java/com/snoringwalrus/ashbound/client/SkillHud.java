@@ -1,6 +1,7 @@
 package com.snoringwalrus.ashbound.client;
 
 import com.snoringwalrus.ashbound.Ashbound;
+import com.snoringwalrus.ashbound.Books;
 import com.snoringwalrus.ashbound.Classes;
 import com.snoringwalrus.ashbound.Forms;
 import com.snoringwalrus.ashbound.Levels;
@@ -8,8 +9,10 @@ import com.snoringwalrus.ashbound.Skills;
 
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
@@ -39,6 +42,40 @@ final class SkillHud {
 		return SkillScreen.heldName(mc.player.getMainHandItem());
 	}
 
+	/** The Tome itself, with the Form key under it: dim until its moment comes, burning red when it has, its seconds while
+	 * you're in it, then its rest. */
+	private static void form(GuiGraphics g, Font font, int x, int y, long now) {
+		int at = Forms.ALL.indexOf(Forms.byId(Forms.clientForm));
+		if (at < 0) return;
+		boolean in = Forms.clientUntil > now;
+		if (Forms.clientReady || in) {
+			int rim = (int) (0x90 + 0x60 * (0.5 + 0.5 * Math.sin(now / 90.0))) << 24 | 0xF03018;
+			g.fill(x - 1, y - 1, x + SIZE + 1, y + 1, rim);
+			g.fill(x - 1, y + SIZE - 1, x + SIZE + 1, y + SIZE + 1, rim);
+			g.fill(x - 1, y + 1, x + 1, y + SIZE - 1, rim);
+			g.fill(x + SIZE - 1, y + 1, x + SIZE + 1, y + SIZE - 1, rim);
+		}
+		g.renderItem(new ItemStack(Books.TOMES.get(at).get()), x + 3, y + 3);
+		g.pose().pushPose();
+		g.pose().translate(0, 0, 200);
+		if (!Forms.clientReady && !in) {
+			g.fill(x + 1, y + 1, x + SIZE - 1, y + SIZE - 1, 0x99050404);
+			if (Forms.clientHave >= 0 && Forms.clientRest <= now) {   // how close the moment is: the Crown's thralls out
+				String n = Forms.clientHave + "/" + Forms.needs(Forms.clientForm);
+				g.drawString(font, n, x + SIZE / 2 - font.width(n) / 2, y + 4, 0xFFC8A0FF, true);
+			}
+		}
+		long until = in ? Forms.clientUntil : Forms.clientRest > now ? Forms.clientRest : 0;
+		if (until > 0) {
+			String secs = String.valueOf((int) Math.ceil((until - now) / 1000.0));
+			g.drawString(font, secs, x + SIZE / 2 - font.width(secs) / 2, y + 7, in ? 0xFFFF8050 : AshUi.TEXT, true);
+		}
+		String key = CurioKeys.FORM.getTranslatedKeyMessage().getString();
+		g.pose().scale(0.75f, 0.75f, 1);
+		g.drawString(font, key, Math.round((x + SIZE - 1) / 0.75f) - font.width(key), Math.round((y + SIZE - 7) / 0.75f), Forms.clientReady ? 0xFFFFA050 : AshUi.MUTED, true);
+		g.pose().popPose();
+	}
+
 	private static void draw(GuiGraphics g, DeltaTracker dt) {
 		Minecraft mc = Minecraft.getInstance();
 		if (mc.player == null || mc.options.hideGui || mc.player.isSpectator()) return;
@@ -50,8 +87,8 @@ final class SkillHud {
 			g.fill(x - 1, y - 1, x + SIZE + 1, y + SIZE + 1, 0xFF050404);
 			g.fill(x, y, x + SIZE, y + SIZE, 0xFF3D3833);
 			g.fill(x + 1, y + 1, x + SIZE - 1, y + SIZE - 1, 0xFF16120F);
-			if (i == Skills.SLOTS - 1 && !Forms.clientForm.isEmpty()) {   // what the Tome took
-				g.fill(x + 4, y + 10, x + SIZE - 4, y + 12, 0xFF6A2018);
+			if (i == Skills.SLOTS - 1 && !Forms.clientForm.isEmpty()) {   // the key the Tome took holds its Form
+				form(g, font, x, y, now);
 				continue;
 			}
 			String cool = null;

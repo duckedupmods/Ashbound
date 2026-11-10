@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/kiln_maul.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.507,
-     -0.595,
-     -0.025
+     -0.112,
+     -0.704,
+     -0.169
     ],
     "scale": [
-     0.4452,
-     0.4452,
-     0.4452
+     0.3608,
+     0.3608,
+     0.3608
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.507,
-     -0.595,
-     -0.025
+     -0.112,
+     -0.704,
+     -0.169
     ],
     "scale": [
-     0.4452,
-     0.4452,
-     0.4452
+     0.3608,
+     0.3608,
+     0.3608
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.279,
-     -0.327,
+     -0.062,
+     -0.387,
      0
     ],
     "scale": [
-     0.2449,
-     0.2449,
-     0.2449
+     0.1984,
+     0.1984,
+     0.1984
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/kiln_maul"
+   }
+  }
+ }
 }

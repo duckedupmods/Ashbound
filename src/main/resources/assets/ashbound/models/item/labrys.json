@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/labrys.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.392,
-     0.182,
-     0.45
+     -1.664,
+     -1.664,
+     -0.0
     ],
     "scale": [
-     0.3803,
-     0.3803,
-     0.3803
+     0.2353,
+     0.2353,
+     0.2353
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.392,
-     0.182,
-     0.45
+     -1.664,
+     -1.664,
+     -0.0
     ],
     "scale": [
-     0.3803,
-     0.3803,
-     0.3803
+     0.2353,
+     0.2353,
+     0.2353
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.766,
-     0.1,
+     -0.915,
+     -0.915,
      0
     ],
     "scale": [
-     0.2092,
-     0.2092,
-     0.2092
+     0.1294,
+     0.1294,
+     0.1294
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/labrys"
+   }
+  }
+ }
 }

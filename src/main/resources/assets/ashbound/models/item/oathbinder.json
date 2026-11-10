@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/oathbinder.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -3.291,
-     -3.291,
-     -0.0
+     -2.5,
+     -2.5,
+     0.0
     ],
     "scale": [
-     0.4231,
-     0.4231,
-     0.4231
+     0.3554,
+     0.3554,
+     0.3554
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -3.291,
-     -3.291,
-     -0.0
+     -2.5,
+     -2.5,
+     0.0
     ],
     "scale": [
-     0.4231,
-     0.4231,
-     0.4231
+     0.3554,
+     0.3554,
+     0.3554
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.81,
-     -1.81,
+     -1.375,
+     -1.375,
      0
     ],
     "scale": [
-     0.2327,
-     0.2327,
-     0.2327
+     0.1955,
+     0.1955,
+     0.1955
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/oathbinder"
+   }
+  }
+ }
 }

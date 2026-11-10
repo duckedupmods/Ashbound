@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/jawbone.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.077,
-     -2.077,
+     -1.962,
+     -1.962,
      -0.0
     ],
     "scale": [
-     0.3537,
-     0.3537,
-     0.3537
+     0.3015,
+     0.3015,
+     0.3015
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.077,
-     -2.077,
+     -1.962,
+     -1.962,
      -0.0
     ],
     "scale": [
-     0.3537,
-     0.3537,
-     0.3537
+     0.3015,
+     0.3015,
+     0.3015
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.142,
-     -1.142,
+     -1.079,
+     -1.079,
      0
     ],
     "scale": [
-     0.1946,
-     0.1946,
-     0.1946
+     0.1658,
+     0.1658,
+     0.1658
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/jawbone"
+   }
+  }
+ }
 }

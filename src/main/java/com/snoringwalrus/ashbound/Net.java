@@ -107,6 +107,13 @@ public final class Net {
 	/** CurioKey's value for the Form key. */
 	public static final int FORM = 11;
 
+	/** Right-clicking something in the belt pouch. */
+	public record PouchUse(int slot) implements CustomPacketPayload {
+		public static final Type<PouchUse> TYPE = id("pouch_use");
+		public static final StreamCodec<ByteBuf, PouchUse> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, PouchUse::slot, PouchUse::new);
+		@Override public Type<PouchUse> type() { return TYPE; }
+	}
+
 	public record CurioKey(int what) implements CustomPacketPayload {
 		public static final Type<CurioKey> TYPE = id("curio_key");
 		public static final StreamCodec<ByteBuf, CurioKey> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, CurioKey::what, CurioKey::new);
@@ -122,6 +129,33 @@ public final class Net {
 
 	/** when (System ms) the relic's cooldown ends and how long it was */
 	public static volatile long relicCdEnd, relicCdTotal;
+
+	/** A hit or a heal you just did, for the number over it. */
+	public record HitNumber(double x, double y, double z, float amount, int kind) implements CustomPacketPayload {
+		public static final int HIT = 0, THRALL = 1, HEAL = 2;
+		public static final Type<HitNumber> TYPE = id("hit_number");
+		public static final StreamCodec<ByteBuf, HitNumber> CODEC = StreamCodec.composite(ByteBufCodecs.DOUBLE, HitNumber::x, ByteBufCodecs.DOUBLE, HitNumber::y, ByteBufCodecs.DOUBLE, HitNumber::z,
+				ByteBufCodecs.FLOAT, HitNumber::amount, ByteBufCodecs.VAR_INT, HitNumber::kind, HitNumber::new);
+		@Override public Type<HitNumber> type() { return TYPE; }
+	}
+
+	public static java.util.function.Consumer<HitNumber> onHitNumber = m -> {};
+
+	/** @param over healing sent that found nobody hurt (the health bar was already full) */
+	public record MeterLine(String name, float damage, float heal, float over) {
+		static final StreamCodec<ByteBuf, MeterLine> STREAM = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, MeterLine::name, ByteBufCodecs.FLOAT, MeterLine::damage, ByteBufCodecs.FLOAT, MeterLine::heal,
+				ByteBufCodecs.FLOAT, MeterLine::over, MeterLine::new);
+	}
+
+	/** Everyone's totals in this fight and how long it's gone on. */
+	public record Meter(List<MeterLine> lines, float seconds) implements CustomPacketPayload {
+		public static final Type<Meter> TYPE = id("meter");
+		public static final StreamCodec<ByteBuf, Meter> CODEC = StreamCodec.composite(MeterLine.STREAM.apply(ByteBufCodecs.list()), Meter::lines, ByteBufCodecs.FLOAT, Meter::seconds, Meter::new);
+		@Override public Type<Meter> type() { return TYPE; }
+	}
+
+	public static volatile Meter clientMeter;
+	public static volatile long clientMeterAt;
 
 	public record Mana(float mana, float max) implements CustomPacketPayload {
 		public static final Type<Mana> TYPE = id("mana");
@@ -158,14 +192,14 @@ public final class Net {
 	/** The anvil's ready: where, the work, who the smith is (-1, nobody), which way you face, and, for a friend at the
 	 * master's side, whose work it is (-1, your own). */
 	/** The Cold Forge waking: its centre, the way it faces, how long the scene runs, when the blocks turn (ColdForge). */
-	/** What the Journal shows: the quests done, the one being followed. */
+	/** What the Journal shows: the quests done, those being followed (both comma-separated). */
 	public record JournalState(String done, String tracked) implements CustomPacketPayload {
 		public static final Type<JournalState> TYPE = id("journal_state");
 		public static final StreamCodec<ByteBuf, JournalState> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, JournalState::done, ByteBufCodecs.STRING_UTF8, JournalState::tracked, JournalState::new);
 		@Override public Type<JournalState> type() { return TYPE; }
 	}
 
-	/** A quest to follow; empty just asks for the Journal's state. */
+	/** A quest to follow too, "unfollow:" or "abandon:" one; empty just asks for the Journal's state. */
 	public record JournalPick(String key) implements CustomPacketPayload {
 		public static final Type<JournalPick> TYPE = id("journal_pick");
 		public static final StreamCodec<ByteBuf, JournalPick> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, JournalPick::key, JournalPick::new);
@@ -233,10 +267,11 @@ public final class Net {
 	}
 
 	/** Your Form: which, whether its moment has come, ticks left in it, ticks until it can come again. */
-	public record FormState(String form, boolean ready, int left, int rest) implements CustomPacketPayload {
+	/** have: how far you are toward the Form's moment where it can be counted (the Crown's thralls out), else -1 */
+	public record FormState(String form, boolean ready, int left, int rest, int have) implements CustomPacketPayload {
 		public static final Type<FormState> TYPE = id("form_state");
 		public static final StreamCodec<ByteBuf, FormState> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, FormState::form, ByteBufCodecs.BOOL, FormState::ready,
-				ByteBufCodecs.VAR_INT, FormState::left, ByteBufCodecs.VAR_INT, FormState::rest, FormState::new);
+				ByteBufCodecs.VAR_INT, FormState::left, ByteBufCodecs.VAR_INT, FormState::rest, ByteBufCodecs.VAR_INT, FormState::have, FormState::new);
 		@Override public Type<FormState> type() { return TYPE; }
 	}
 
@@ -248,10 +283,11 @@ public final class Net {
 	}
 
 	/** A skill's look: its name, where, which way, how big, and who it's on. */
-	public record SkillFx(String look, org.joml.Vector3f at, org.joml.Vector3f dir, float r, int on) implements CustomPacketPayload {
+	/** @param by the player whose it is (-1: a monster's, the world's), for each client's allies' effects setting */
+	public record SkillFx(String look, org.joml.Vector3f at, org.joml.Vector3f dir, float r, int on, int by) implements CustomPacketPayload {
 		public static final Type<SkillFx> TYPE = id("skill_fx");
 		public static final StreamCodec<ByteBuf, SkillFx> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, SkillFx::look, ByteBufCodecs.VECTOR3F, SkillFx::at, ByteBufCodecs.VECTOR3F, SkillFx::dir,
-				ByteBufCodecs.FLOAT, SkillFx::r, ByteBufCodecs.VAR_INT, SkillFx::on, SkillFx::new);
+				ByteBufCodecs.FLOAT, SkillFx::r, ByteBufCodecs.VAR_INT, SkillFx::on, ByteBufCodecs.VAR_INT, SkillFx::by, SkillFx::new);
 		@Override public Type<SkillFx> type() { return TYPE; }
 	}
 
@@ -274,6 +310,38 @@ public final class Net {
 		public static final Type<BookSwap> TYPE = id("book_swap");
 		public static final StreamCodec<ByteBuf, BookSwap> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, BookSwap::give, BookSwap::new);
 		@Override public Type<BookSwap> type() { return TYPE; }
+	}
+
+	/** A wanted poster, read (Bounties.read): what it says, and what you can do. state: 0 take it, 1 you're hunting it, 2 claim your bounty,
+	 * 3 slain by someone else, 4 your hands are full. nums: rank, coins, points, bounty id; texts: legend, name, land, way, slain by. */
+	public record PosterView(int entity, int state, List<Integer> nums, List<String> texts) implements CustomPacketPayload {
+		public static final Type<PosterView> TYPE = id("poster_view");
+		public static final StreamCodec<ByteBuf, PosterView> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, PosterView::entity, ByteBufCodecs.VAR_INT, PosterView::state,
+				ByteBufCodecs.VAR_INT.apply(ByteBufCodecs.list()), PosterView::nums, ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), PosterView::texts, PosterView::new);
+		@Override public Type<PosterView> type() { return TYPE; }
+	}
+
+	/** Ashfall night on or off (Ashfall), and since when (game time). */
+	/** The Ring's crowd reacting (Arena.cheer): which Ring, and how (0 a kill, 1 a wave, 2 a win, 3 a ruler / fight on, 4 one falls). */
+	public record ArenaCheer(int slot, int kind) implements CustomPacketPayload {
+		public static final Type<ArenaCheer> TYPE = id("arena_cheer");
+		public static final StreamCodec<ByteBuf, ArenaCheer> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, ArenaCheer::slot, ByteBufCodecs.VAR_INT, ArenaCheer::kind, ArenaCheer::new);
+		@Override public Type<ArenaCheer> type() { return TYPE; }
+	}
+
+	public static Consumer<ArenaCheer> onCheer = m -> {};
+
+	public record AshfallSync(boolean on, long since) implements CustomPacketPayload {
+		public static final Type<AshfallSync> TYPE = id("ashfall_sync");
+		public static final StreamCodec<ByteBuf, AshfallSync> CODEC = StreamCodec.composite(ByteBufCodecs.BOOL, AshfallSync::on, ByteBufCodecs.VAR_LONG, AshfallSync::since, AshfallSync::new);
+		@Override public Type<AshfallSync> type() { return TYPE; }
+	}
+
+	/** "Take it" (or "Claim the bounty") on a poster's screen. */
+	public record PosterAct(int entity) implements CustomPacketPayload {
+		public static final Type<PosterAct> TYPE = id("poster_act");
+		public static final StreamCodec<ByteBuf, PosterAct> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, PosterAct::entity, PosterAct::new);
+		@Override public Type<PosterAct> type() { return TYPE; }
 	}
 
 	public record TomeRead(String form) implements CustomPacketPayload {
@@ -311,6 +379,34 @@ public final class Net {
 	}
 
 	/** What's done with the bag (Bag.OPEN and so on), and to what. */
+	/** Your trades as the server keeps them (Trades.STATE): levels, perks, known recipes, running buffs. */
+	public record TradeState(java.util.Map<String, String> state) implements CustomPacketPayload {
+		public static final Type<TradeState> TYPE = id("trade_state");
+		public static final StreamCodec<ByteBuf, TradeState> CODEC = StreamCodec.composite(
+				ByteBufCodecs.map(java.util.HashMap::new, ByteBufCodecs.STRING_UTF8, ByteBufCodecs.STRING_UTF8), TradeState::state, TradeState::new);
+		@Override public Type<TradeState> type() { return TYPE; }
+	}
+
+	/** A bench's Craft, a perk taken, perks forgotten, the book's make-again (Trades.CRAFT and the rest). */
+	/** A bench's station: what's on its fire and tray (Kitchen), each thing's done tick, and the server's tick now. */
+	public record KitchenState(List<net.minecraft.world.item.ItemStack> items, List<Long> start, List<Long> done, long now) implements CustomPacketPayload {
+		public static final Type<KitchenState> TYPE = id("kitchen_state");
+		public static final StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, KitchenState> CODEC = StreamCodec.composite(
+				net.minecraft.world.item.ItemStack.OPTIONAL_STREAM_CODEC.apply(ByteBufCodecs.list()), KitchenState::items,
+				ByteBufCodecs.VAR_LONG.apply(ByteBufCodecs.list()), KitchenState::start,
+				ByteBufCodecs.VAR_LONG.apply(ByteBufCodecs.list()), KitchenState::done, ByteBufCodecs.VAR_LONG, KitchenState::now, KitchenState::new);
+		@Override public Type<KitchenState> type() { return TYPE; }
+	}
+
+	public static KitchenState clientKitchen = new KitchenState(List.of(), List.of(), List.of(), 0);
+	public static long clientKitchenAt;
+
+	public record TradeAct(int what, String arg) implements CustomPacketPayload {
+		public static final Type<TradeAct> TYPE = id("trade_act");
+		public static final StreamCodec<ByteBuf, TradeAct> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, TradeAct::what, ByteBufCodecs.STRING_UTF8, TradeAct::arg, TradeAct::new);
+		@Override public Type<TradeAct> type() { return TYPE; }
+	}
+
 	public record PetAct(String pet) implements CustomPacketPayload {
 		public static final Type<PetAct> TYPE = id("pet_act");
 		public static final StreamCodec<ByteBuf, PetAct> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, PetAct::pet, PetAct::new);
@@ -390,16 +486,38 @@ public final class Net {
 		@Override public Type<PingAt> type() { return TYPE; }
 	}
 
+	/** Someone on the Party screen. */
+	public record PartyCard(String name, int role, int rank, boolean online) {
+		public static final int MEMBER = 0, COMMANDER = 1, LEADER = 2;
+		static final StreamCodec<ByteBuf, PartyCard> STREAM = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, PartyCard::name, ByteBufCodecs.VAR_INT, PartyCard::role, ByteBufCodecs.VAR_INT, PartyCard::rank, ByteBufCodecs.BOOL, PartyCard::online, PartyCard::new);
+	}
+
+	/** What the Party screen shows: everyone including you, the party's rank (yours alone), the bank and its last lines, and who's invited you. */
+	public record PartyBoard(List<PartyCard> cards, int rank, int bank, List<String> ledger, String invitedBy) implements CustomPacketPayload {
+		public static final Type<PartyBoard> TYPE = id("party_board");
+		public static final StreamCodec<ByteBuf, PartyBoard> CODEC = StreamCodec.composite(PartyCard.STREAM.apply(ByteBufCodecs.list()), PartyBoard::cards, ByteBufCodecs.VAR_INT, PartyBoard::rank, ByteBufCodecs.VAR_INT, PartyBoard::bank,
+				ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), PartyBoard::ledger, ByteBufCodecs.STRING_UTF8, PartyBoard::invitedBy, PartyBoard::new);
+		@Override public Type<PartyBoard> type() { return TYPE; }
+	}
+
+	/** A press on the Party screen. The server checks every one against who you are. */
+	public record PartyAct(int what, String who, int coins) implements CustomPacketPayload {
+		public static final int SHOW = 0, INVITE = 1, ACCEPT = 2, DECLINE = 3, LEAVE = 4, KICK = 5, COMMANDER = 6, LEAD = 7, PUT_IN = 8, TAKE_OUT = 9;
+		public static final Type<PartyAct> TYPE = id("party_act");
+		public static final StreamCodec<ByteBuf, PartyAct> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, PartyAct::what, ByteBufCodecs.STRING_UTF8, PartyAct::who, ByteBufCodecs.VAR_INT, PartyAct::coins, PartyAct::new);
+		@Override public Type<PartyAct> type() { return TYPE; }
+	}
+
 	public record PartySync(List<PartyMember> members) implements CustomPacketPayload {
 		public static final Type<PartySync> TYPE = id("party_sync");
 		public static final StreamCodec<ByteBuf, PartySync> CODEC = StreamCodec.composite(PartyMember.STREAM.apply(ByteBufCodecs.list()), PartySync::members, PartySync::new);
 		@Override public Type<PartySync> type() { return TYPE; }
 	}
 
-	public record SpellFx(int kind, String gate, org.joml.Vector3f at, float r, int on) implements CustomPacketPayload {
+	public record SpellFx(int kind, String gate, org.joml.Vector3f at, float r, int on, int by) implements CustomPacketPayload {
 		public static final Type<SpellFx> TYPE = id("spell_fx");
 		public static final StreamCodec<ByteBuf, SpellFx> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, SpellFx::kind, ByteBufCodecs.STRING_UTF8, SpellFx::gate, ByteBufCodecs.VECTOR3F, SpellFx::at,
-				ByteBufCodecs.FLOAT, SpellFx::r, ByteBufCodecs.VAR_INT, SpellFx::on, SpellFx::new);
+				ByteBufCodecs.FLOAT, SpellFx::r, ByteBufCodecs.VAR_INT, SpellFx::on, ByteBufCodecs.VAR_INT, SpellFx::by, SpellFx::new);
 		@Override public Type<SpellFx> type() { return TYPE; }
 	}
 
@@ -408,17 +526,24 @@ public final class Net {
 				ByteBufCodecs.VAR_INT, GuildJob::x, ByteBufCodecs.VAR_INT, GuildJob::z, ByteBufCodecs.BOOL, GuildJob::has, GuildJob::new);
 	}
 
-	public record GuildJobs(List<GuildJob> jobs) implements CustomPacketPayload {
+	/** @param taken the ids on your card: the rest are only on the board */
+	public record GuildJobs(List<GuildJob> jobs, List<String> taken) implements CustomPacketPayload {
 		public static final Type<GuildJobs> TYPE = id("guild_jobs");
-		public static final StreamCodec<ByteBuf, GuildJobs> CODEC = StreamCodec.composite(GuildJob.STREAM.apply(ByteBufCodecs.list()), GuildJobs::jobs, GuildJobs::new);
+		public static final StreamCodec<ByteBuf, GuildJobs> CODEC = StreamCodec.composite(GuildJob.STREAM.apply(ByteBufCodecs.list()), GuildJobs::jobs,
+				ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), GuildJobs::taken, GuildJobs::new);
 		@Override public Type<GuildJobs> type() { return TYPE; }
 	}
 
-	public record QuestTrack(String title, int x, int z, boolean has) implements CustomPacketPayload {
-		public static final Type<QuestTrack> TYPE = id("quest_track");
-		public static final StreamCodec<ByteBuf, QuestTrack> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, QuestTrack::title, ByteBufCodecs.VAR_INT, QuestTrack::x,
+	public record QuestTrack(String title, int x, int z, boolean has) {
+		static final StreamCodec<ByteBuf, QuestTrack> STREAM = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, QuestTrack::title, ByteBufCodecs.VAR_INT, QuestTrack::x,
 				ByteBufCodecs.VAR_INT, QuestTrack::z, ByteBufCodecs.BOOL, QuestTrack::has, QuestTrack::new);
-		@Override public Type<QuestTrack> type() { return TYPE; }
+	}
+
+	/** Every quest being followed, for the compass. */
+	public record QuestTracks(List<QuestTrack> all) implements CustomPacketPayload {
+		public static final Type<QuestTracks> TYPE = id("quest_tracks");
+		public static final StreamCodec<ByteBuf, QuestTracks> CODEC = StreamCodec.composite(QuestTrack.STREAM.apply(ByteBufCodecs.list()), QuestTracks::all, QuestTracks::new);
+		@Override public Type<QuestTracks> type() { return TYPE; }
 	}
 
 	/** Hob's telling starts: where the wagon stands and which way it faces, and where Highmourn is if there's one. */
@@ -542,10 +667,11 @@ public final class Net {
 	public static Consumer<ColdWake> onColdWake = m -> {};
 	public static Consumer<IntroPlay> onIntro = m -> {};
 	public static Consumer<JournalState> onJournal = m -> {};
-	public static Consumer<QuestTrack> onQuestTrack = m -> {};
+	public static Consumer<QuestTracks> onQuestTrack = m -> {};
 	public static Consumer<GuildJobs> onGuildJobs = m -> {};
 	public static Consumer<SpellFx> onSpellFx = m -> {};
 	public static List<PartyMember> clientParty = List.of();
+	public static PartyBoard clientBoard = new PartyBoard(List.of(), 0, 0, List.of(), "");
 	public static BagLines clientBag = new BagLines(List.of(), 1);
 	public static PetList clientPets = new PetList(List.of(), "");
 	public static volatile List<PartySpot> clientSpots = List.of();
@@ -553,7 +679,9 @@ public final class Net {
 	public static Consumer<NpcMarks> onNpcMarks = m -> {};
 	public static Consumer<ForgeEcho> onForgeEcho = m -> {};
 	public static Consumer<QuestBoard> onBoard = m -> {};
+	public static Consumer<PosterView> onPoster = m -> {};
 	public static Runnable onCard = () -> {};
+	public static Runnable onPhotos = () -> {};
 	public static Runnable onClassAsk = () -> {};
 	public static Runnable onMountAsk = () -> {};
 	public static java.util.function.Consumer<FormAura> onFormAura = m -> {};
@@ -570,6 +698,11 @@ public final class Net {
 			r.playToClient(ErrandSync.TYPE, ErrandSync.CODEC, (m, ctx) -> Errands.client = m.views());
 			r.playToClient(QuestBoard.TYPE, QuestBoard.CODEC, (m, ctx) -> onBoard.accept(m));
 			r.playToServer(QuestAct.TYPE, QuestAct.CODEC, (m, ctx) -> Guild.onAct(m, (ServerPlayer) ctx.player()));
+			r.playToClient(HitNumber.TYPE, HitNumber.CODEC, (m, ctx) -> onHitNumber.accept(m));
+			r.playToClient(Meter.TYPE, Meter.CODEC, (m, ctx) -> {
+				clientMeter = m;
+				clientMeterAt = System.currentTimeMillis();
+			});
 			r.playToClient(Mana.TYPE, Mana.CODEC, (m, ctx) -> {
 				Spells.clientMana = m.mana();
 				Spells.clientMax = m.max();
@@ -597,10 +730,11 @@ public final class Net {
 			r.playToClient(IntroPlay.TYPE, IntroPlay.CODEC, (m, ctx) -> onIntro.accept(m));
 			r.playToServer(IntroDone.TYPE, IntroDone.CODEC, (m, ctx) -> Intro.done((ServerPlayer) ctx.player()));
 			r.playToClient(JournalState.TYPE, JournalState.CODEC, (m, ctx) -> onJournal.accept(m));
-			r.playToClient(QuestTrack.TYPE, QuestTrack.CODEC, (m, ctx) -> onQuestTrack.accept(m));
+			r.playToClient(QuestTracks.TYPE, QuestTracks.CODEC, (m, ctx) -> onQuestTrack.accept(m));
 			r.playToClient(GuildJobs.TYPE, GuildJobs.CODEC, (m, ctx) -> onGuildJobs.accept(m));
 			r.playToClient(SpellFx.TYPE, SpellFx.CODEC, (m, ctx) -> onSpellFx.accept(m));
 			r.playToClient(PartySync.TYPE, PartySync.CODEC, (m, ctx) -> clientParty = m.members());
+			r.playToClient(PartyBoard.TYPE, PartyBoard.CODEC, (m, ctx) -> clientBoard = m);
 			r.playToClient(PartySpots.TYPE, PartySpots.CODEC, (m, ctx) -> clientSpots = m.spots());
 			r.playToClient(PingAt.TYPE, PingAt.CODEC, (m, ctx) -> onPing.accept(m));
 			r.playToClient(NpcMarks.TYPE, NpcMarks.CODEC, (m, ctx) -> onNpcMarks.accept(m));
@@ -613,12 +747,13 @@ public final class Net {
 				relicCdTotal = m.ticks() * 50L;
 				relicCdEnd = System.currentTimeMillis() + relicCdTotal;
 			});
-			r.playToServer(CurioKey.TYPE, CurioKey.CODEC, (m, ctx) -> {
+			r.playToServer(CurioKey.TYPE, CurioKey.CODEC, (m, ctx) -> Spells.as(ctx.player(), () -> {
 				if (m.what() == JOINED_SKILL) Skills.use((ServerPlayer) ctx.player(), 0);
 				else if (m.what() == MOUNT) Mounts.toggle((ServerPlayer) ctx.player());
 				else if (m.what() == FORM) Forms.key((ServerPlayer) ctx.player());
 				else CurioFx.key((ServerPlayer) ctx.player(), m.what());
-			});
+			}));
+			r.playToServer(PouchUse.TYPE, PouchUse.CODEC, (m, ctx) -> BeltPouch.use((ServerPlayer) ctx.player(), m.slot()));
 			r.playToClient(ClassState.TYPE, ClassState.CODEC, (m, ctx) -> {
 				Classes.client = m.key();
 				if (m.key().isEmpty()) onClassAsk.run();
@@ -633,10 +768,24 @@ public final class Net {
 				for (int i = 0; i < Mounts.clientRanks.length && i < m.ranks().size(); i++) Mounts.clientRanks[i] = m.ranks().get(i);
 			});
 			r.playToServer(InvTidy.TYPE, InvTidy.CODEC, (m, ctx) -> Tidy.act((ServerPlayer) ctx.player(), m.what()));
+			r.playToServer(PartyAct.TYPE, PartyAct.CODEC, (m, ctx) -> Party.act((ServerPlayer) ctx.player(), m));
 			r.playToServer(BagAct.TYPE, BagAct.CODEC, (m, ctx) -> Bag.act((ServerPlayer) ctx.player(), m));
 			r.playToClient(BagLines.TYPE, BagLines.CODEC, (m, ctx) -> clientBag = m);
 			r.playToServer(PetAct.TYPE, PetAct.CODEC, (m, ctx) -> Pets.act((ServerPlayer) ctx.player(), m.pet()));
+			r.playToClient(TradeState.TYPE, TradeState.CODEC, (m, ctx) -> Trades.client = m.state());
+			r.playToServer(TradeAct.TYPE, TradeAct.CODEC, (m, ctx) -> Trades.act((ServerPlayer) ctx.player(), m));
+			r.playToClient(KitchenState.TYPE, KitchenState.CODEC, (m, ctx) -> {
+				clientKitchen = m;
+				clientKitchenAt = ctx.player().level().getGameTime();
+			});
 			r.playToClient(PetList.TYPE, PetList.CODEC, (m, ctx) -> clientPets = m);
+			r.playToClient(PosterView.TYPE, PosterView.CODEC, (m, ctx) -> onPoster.accept(m));
+			r.playToClient(ArenaCheer.TYPE, ArenaCheer.CODEC, (m, ctx) -> onCheer.accept(m));
+			r.playToClient(AshfallSync.TYPE, AshfallSync.CODEC, (m, ctx) -> {
+				Ashfall.client = m.on();
+				Ashfall.clientSince = m.since();
+			});
+			r.playToServer(PosterAct.TYPE, PosterAct.CODEC, (m, ctx) -> Bounties.act((ServerPlayer) ctx.player(), m.entity()));
 			r.playToServer(TomeRead.TYPE, TomeRead.CODEC, (m, ctx) -> Books.confirm((ServerPlayer) ctx.player(), m.form()));
 			r.playToClient(BookOffer.TYPE, BookOffer.CODEC, (m, ctx) -> Books.onOffer.accept(m));
 			r.playToServer(BookSwap.TYPE, BookSwap.CODEC, (m, ctx) -> Books.swap((ServerPlayer) ctx.player(), m.give()));
@@ -645,11 +794,12 @@ public final class Net {
 				Forms.clientReady = m.ready();
 				Forms.clientUntil = System.currentTimeMillis() + m.left() * 50L;
 				Forms.clientRest = System.currentTimeMillis() + m.rest() * 50L;
+				Forms.clientHave = m.have();
 			});
 			r.playToClient(FormAura.TYPE, FormAura.CODEC, (m, ctx) -> onFormAura.accept(m));
 			r.playToClient(SkillFx.TYPE, SkillFx.CODEC, (m, ctx) -> onSkillFx.accept(m));
 			r.playToClient(HealBeam.TYPE, HealBeam.CODEC, (m, ctx) -> onHealBeam.accept(m));
-			r.playToServer(SkillUse.TYPE, SkillUse.CODEC, (m, ctx) -> Skills.use((ServerPlayer) ctx.player(), m.slot()));
+			r.playToServer(SkillUse.TYPE, SkillUse.CODEC, (m, ctx) -> Spells.as(ctx.player(), () -> Skills.use((ServerPlayer) ctx.player(), m.slot())));
 			r.playToServer(SkillPick.TYPE, SkillPick.CODEC, (m, ctx) -> Skills.pick((ServerPlayer) ctx.player(), m.key()));
 			r.playToServer(SkillSet.TYPE, SkillSet.CODEC, (m, ctx) -> Skills.assign((ServerPlayer) ctx.player(), m.slot(), m.key()));
 			r.playToClient(SkillState.TYPE, SkillState.CODEC, (m, ctx) -> {

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/bonewright_blade.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.179,
-     -2.179,
+     -2.874,
+     -2.874,
      -0.0
     ],
     "scale": [
-     0.4245,
-     0.4245,
-     0.4245
+     0.4233,
+     0.4233,
+     0.4233
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.179,
-     -2.179,
+     -2.874,
+     -2.874,
      -0.0
     ],
     "scale": [
-     0.4245,
-     0.4245,
-     0.4245
+     0.4233,
+     0.4233,
+     0.4233
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.198,
-     -1.198,
+     -1.581,
+     -1.581,
      0
     ],
     "scale": [
-     0.2335,
-     0.2335,
-     0.2335
+     0.2328,
+     0.2328,
+     0.2328
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/bonewright_blade"
+   }
+  }
+ }
 }

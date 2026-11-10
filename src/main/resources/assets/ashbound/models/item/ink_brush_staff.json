@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/ink_brush_staff.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     0.407,
-     0.407,
-     -0.0
+     -1.812,
+     -0.719,
+     0.313
     ],
     "scale": [
-     0.4265,
-     0.4265,
-     0.4265
+     0.3034,
+     0.3034,
+     0.3034
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     0.407,
-     0.407,
-     -0.0
+     -1.812,
+     -0.719,
+     0.313
     ],
     "scale": [
-     0.4265,
-     0.4265,
-     0.4265
+     0.3034,
+     0.3034,
+     0.3034
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.224,
-     0.224,
+     -0.997,
+     -0.395,
      0
     ],
     "scale": [
-     0.2346,
-     0.2346,
-     0.2346
+     0.1668,
+     0.1668,
+     0.1668
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/ink_brush_staff"
+   }
+  }
+ }
 }

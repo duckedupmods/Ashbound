@@ -5,7 +5,8 @@
     python tools/mob_moves.py
 
 Stances: sword, dual (two blades), greatsword, longsword, rapier, sabre, spear, dagger, twin_daggers, axe,
-twin_axes, maul (two-handed blunt), fist, claw (feral, bare hands), caster (keeps its distance), tool, crawler.
+twin_axes, maul (two-handed blunt), fist, claw (feral, bare hands), caster (keeps its distance), tool, crawler,
+crab (a crawler that swings its claws low, CrabClips, never rears like a spider).
 Skills: leap, slam, charge, spin, quake, roar, pull, blink, dash, pounce, burrow, bolt, volley, rain, lightning,
 cloud, breath, beam, summon:<kind>, heal. A monster's bolts, clouds and breath are its dungeon's element.
 """
@@ -247,6 +248,35 @@ MOVES = {
         "barrow_reaper": "dual dash leap spin",
         "barrow_king": "greatsword leap slam spin roar summon:barrow_wight",
     },
+    "world_bosses": {
+        "cairn_giant": "maul slam quake charge roar@2 rain@2 leap@3",
+        "hart_lord": "axe charge leap spin roar@2 summon:thorn_beetle@2 dash@3",
+        "saltglass_hydra": "crawler pounce breath bolt@2 volley@2 roar@3",
+        "ironback_scorpion": "crawler pounce charge pull@2 cloud@2 burrow@3",
+        "rime_lich": "caster bolt cloud blink summon:crawling_convict@2 rain@2 beam@3",
+    },
+    "crown_gate": {
+        "founder_king": "maul slam quake charge leap breath@2 summon:slagling@2 rain@2 roar@3 lightning@3 beam@3",
+    },
+    "astral": {
+        "nebula_moth": "crawler pounce cloud blink bolt@2 rain@2 roar@3 lightning@3",
+        "constellation_knight": "spear charge leap spin slam@2 lightning@2 roar@3 beam@3",
+        "orrery_magus": "caster bolt beam blink rain@2 summon:void_mite@2 lightning@3 roar@3",
+    },
+    "grey_fold": {
+        "ash_shepherd": "spear pull leap slam summon:ashwalker blink@2 cloud@2 roar@3 summon:ash_herald@3",
+    },
+    "sunken_fire": {
+        "wreck_mother": "crab slam charge pull quake summon:lamprey_hound@2 rain@2 roar@3 summon:merrow@3",
+    },
+    "tidewrack": {
+        "lamprey_hound": "crawler pounce pull",
+        "merrow": "spear dash pull charge",
+        "reef_knight": "sword charge slam shield",
+        "net_hag": "caster pull bolt cloud",
+        "hullback": "maul slam quake charge roar",
+        "abyss_angler": "spear leap spin pull roar summon:merrow",
+    },
     "drowned_corsairs": {
         "kraken_spawn": "crawler pounce pull",
         "drowned_corsair": "dual dash pull spin",
@@ -351,6 +381,11 @@ MOVES = {
         "warg_rider": "crawler pounce charge volley roar",
         "gorrak": "greatsword slam charge leap roar summon:goblin_cutthroat@2 quake@2 spin@2 rain@3 volley@3",
     },
+    "ashwalkers": {
+        "ashwalker": "claw pounce dash",
+        "cinder_hulk": "fist slam charge quake",
+        "ash_herald": "caster bolt rain cloud",
+    },
     "wyrms_hoard": {
         "kobold": "tool dash pounce",
         "hoard_golem": "fist slam charge quake",
@@ -361,7 +396,7 @@ MOVES = {
     },
 }
 
-STANCES = {"sword", "dual", "greatsword", "longsword", "rapier", "sabre", "spear", "dagger", "twin_daggers", "axe",
+STANCES = {"sword", "crab", "dual", "greatsword", "longsword", "rapier", "sabre", "spear", "dagger", "twin_daggers", "axe",
            "twin_axes", "maul", "fist", "claw", "caster", "tool", "crawler"}
 SKILLS = {"leap", "slam", "charge", "spin", "quake", "roar", "pull", "blink", "dash", "pounce", "burrow", "bolt", "volley",
           "rain", "lightning", "cloud", "breath", "beam", "summon", "heal"}
@@ -377,7 +412,7 @@ def main():
             assert stance in STANCES, (mid, stance)
             assert mid in kinds, mid
             spider = kinds[mid]["rig"] == "spider"
-            assert (stance == "crawler") == spider, (mid, "crawler stance must match the spider rig")
+            assert (stance in ("crawler", "crab")) == spider, (mid, "crawler/crab stance must match the spider rig")
             skills = []
             for w in rest:
                 if w == "shield":

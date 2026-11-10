@@ -1,0 +1,62 @@
+{
+ "id": "adv_a_60",
+ "seed": 4113060,
+ "recipe": "adventurer",
+ "role": "tank",
+ "rank": "A",
+ "name": "Gideon Nine-Lives",
+ "title": "A-rank Shieldbearer",
+ "age": "adult",
+ "sex": "m",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "brown",
+ "hair": {
+  "style": "shaggy",
+  "color": "black"
+ },
+ "headwear": "helm",
+ "beard": null,
+ "face": {
+  "eye": "round",
+  "iris": "steel",
+  "brows": null,
+  "mouth": "flat",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "cuirass",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "cape",
+   "gauntlets",
+   "greaves",
+   "pauldrons",
+   "tassets"
+  ],
+  "colors": {
+   "top": "charcoal",
+   "bottom": "olive",
+   "accent": "wine",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "axe",
+ "offhand": "shield",
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "A",
+  "role": "tank"
+ },
+ "party": "The Last Lanterns"
+}

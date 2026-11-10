@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/lion_tamer_lance.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.442,
-     -0.442,
+     -0.592,
+     -0.592,
      -0.0
     ],
     "scale": [
-     0.3052,
-     0.3052,
-     0.3052
+     0.279,
+     0.279,
+     0.279
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.442,
-     -0.442,
+     -0.592,
+     -0.592,
      -0.0
     ],
     "scale": [
-     0.3052,
-     0.3052,
-     0.3052
+     0.279,
+     0.279,
+     0.279
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.243,
-     -0.243,
+     -0.326,
+     -0.326,
      0
     ],
     "scale": [
-     0.1679,
-     0.1679,
-     0.1679
+     0.1535,
+     0.1535,
+     0.1535
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/lion_tamer_lance"
+   }
+  }
+ }
 }

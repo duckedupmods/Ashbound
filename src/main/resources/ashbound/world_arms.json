@@ -7,7 +7,7 @@
   "rank": "D",
   "about": "a wandering knight's honest blade, a red tassel",
   "home": "brigands_gorge",
-  "damage": 7.0,
+  "damage": 11.8,
   "speed": 1.6
  },
  {
@@ -18,7 +18,7 @@
   "rank": "C",
   "about": "wolf fangs set along one edge, a fur grip",
   "home": "frost",
-  "damage": 7.6,
+  "damage": 16.5,
   "speed": 1.6
  },
  {
@@ -29,7 +29,7 @@
   "rank": "B",
   "about": "black steel cracked over a molten heart",
   "home": "foundry",
-  "damage": 8.2,
+  "damage": 23.0,
   "speed": 1.6
  },
  {
@@ -40,7 +40,7 @@
   "rank": "A",
   "about": "a night sky forged into a blade, stars burning in it",
   "home": "temple",
-  "damage": 9.5,
+  "damage": 34.9,
   "speed": 1.6
  },
  {
@@ -51,7 +51,7 @@
   "rank": "D",
   "about": "a thief's short bronze knife",
   "home": "brigands_gorge",
-  "damage": 4.3,
+  "damage": 7.2,
   "speed": 2.4
  },
  {
@@ -62,7 +62,7 @@
   "rank": "C",
   "about": "a curved green blade that weeps venom",
   "home": "plague",
-  "damage": 4.6,
+  "damage": 10.1,
   "speed": 2.4
  },
  {
@@ -73,7 +73,7 @@
   "rank": "B",
   "about": "a fang of night, void runes down it",
   "home": "silk",
-  "damage": 5.0,
+  "damage": 14.1,
   "speed": 2.4
  },
  {
@@ -84,7 +84,7 @@
   "rank": "A",
   "about": "a waved crimson kris under a blood-red moon",
   "home": "bloodmoon_court",
-  "damage": 5.8,
+  "damage": 21.4,
   "speed": 2.4
  },
  {
@@ -95,7 +95,7 @@
   "rank": "D",
   "about": "a blacksmith's hammer taken to war",
   "home": "brigands_gorge",
-  "damage": 16.8,
+  "damage": 28.2,
   "speed": 0.85
  },
  {
@@ -106,7 +106,7 @@
   "rank": "C",
   "about": "a head of never-melting ice",
   "home": "frost",
-  "damage": 18.1,
+  "damage": 39.5,
   "speed": 0.85
  },
  {
@@ -117,7 +117,7 @@
   "rank": "B",
   "about": "a storm cloud caught in iron, lightning crawling on it",
   "home": "storm_bastion",
-  "damage": 19.6,
+  "damage": 55.3,
   "speed": 0.85
  },
  {
@@ -128,7 +128,7 @@
   "rank": "A",
   "about": "a mountain of obsidian with magma in its veins",
   "home": "foundry",
-  "damage": 22.8,
+  "damage": 83.7,
   "speed": 0.85
  },
  {
@@ -139,7 +139,7 @@
   "rank": "D",
   "about": "a hunter's leaf blade on ash",
   "home": "brigands_gorge",
-  "damage": 7.9,
+  "damage": 13.3,
   "speed": 1.2
  },
  {
@@ -150,7 +150,7 @@
   "rank": "C",
   "about": "a palace guard's partisan, gold worked up the head",
   "home": "crypt",
-  "damage": 8.6,
+  "damage": 18.7,
   "speed": 1.2
  },
  {
@@ -161,7 +161,7 @@
   "rank": "B",
   "about": "a wyrm's forked tongue on a black haft",
   "home": "silk",
-  "damage": 9.2,
+  "damage": 26.1,
   "speed": 1.2
  },
  {
@@ -172,7 +172,7 @@
   "rank": "A",
   "about": "a lance of light with white-gold wings",
   "home": "crypt",
-  "damage": 10.8,
+  "damage": 39.5,
   "speed": 1.2
  },
  {
@@ -183,7 +183,7 @@
   "rank": "D",
   "about": "a sellsword's long blade, plain and honest",
   "home": "brigands_gorge",
-  "damage": 18.7,
+  "damage": 31.4,
   "speed": 0.85
  },
  {
@@ -194,7 +194,7 @@
   "rank": "C",
   "about": "a broad executioner's cleaver, never cleaned",
   "home": "bloodmoon_court",
-  "damage": 20.2,
+  "damage": 43.9,
   "speed": 0.85
  },
  {
@@ -205,7 +205,7 @@
   "rank": "B",
   "about": "a blade of bone with the dead's green fire in it",
   "home": "ossuary",
-  "damage": 21.8,
+  "damage": 61.5,
   "speed": 0.85
  },
  {
@@ -216,7 +216,7 @@
   "rank": "A",
   "about": "a dragon's spine pulled out still burning",
   "home": "obsidian_labyrinth",
-  "damage": 25.4,
+  "damage": 92.9,
   "speed": 0.85
  },
  {
@@ -423,7 +423,7 @@
   "rank": "D",
   "about": "a hill bandit's chopping blade, more rust than steel",
   "home": "brigands_gorge",
-  "damage": 7.0,
+  "damage": 11.8,
   "speed": 1.6
  },
  {
@@ -434,7 +434,7 @@
   "rank": "C",
   "about": "a drowned captain's cutlass, the sea still in its guard",
   "home": "tide_chapel",
-  "damage": 7.6,
+  "damage": 16.5,
   "speed": 1.6
  },
  {
@@ -445,7 +445,7 @@
   "rank": "B",
   "about": "a blade of braided briar with a rose blooming at its heart",
   "home": "rotwood",
-  "damage": 8.2,
+  "damage": 23.0,
   "speed": 1.6
  },
  {
@@ -456,7 +456,7 @@
   "rank": "A",
   "about": "the Fallen Order's oath-blade, bound in chains, a knight's soul in its reliquary",
   "home": "crypt",
-  "damage": 9.5,
+  "damage": 34.9,
   "speed": 1.6
  },
  {
@@ -467,7 +467,7 @@
   "rank": "D",
   "about": "a sharpened drill bit on a rag grip",
   "home": "brigands_gorge",
-  "damage": 4.3,
+  "damage": 7.2,
   "speed": 2.4
  },
  {
@@ -478,7 +478,7 @@
   "rank": "C",
   "about": "a sporefolk sickle, gills under its edge breathing spores",
   "home": "mirefen_coven",
-  "damage": 4.6,
+  "damage": 10.1,
   "speed": 2.4
  },
  {
@@ -489,7 +489,7 @@
   "rank": "B",
   "about": "a brood reaper's foreleg, its hooked edge saw-toothed",
   "home": "plague",
-  "damage": 5.0,
+  "damage": 14.1,
   "speed": 2.4
  },
  {
@@ -500,7 +500,7 @@
   "rank": "A",
   "about": "a blade of the void, broken into shards that float in line",
   "home": "silk",
-  "damage": 5.8,
+  "damage": 21.4,
   "speed": 2.4
  },
  {
@@ -511,7 +511,7 @@
   "rank": "D",
   "about": "a delver's sledge, a lamp-hook still on its haft",
   "home": "foundry",
-  "damage": 16.8,
+  "damage": 28.2,
   "speed": 0.85
  },
  {
@@ -522,7 +522,7 @@
   "rank": "C",
   "about": "a ship's capstan, crusted with barnacles, on a mast-spar",
   "home": "tide_chapel",
-  "damage": 18.1,
+  "damage": 39.5,
   "speed": 0.85
  },
  {
@@ -533,7 +533,7 @@
   "rank": "B",
   "about": "a steam driller's engine: a drill for a face, a boiler for a heart",
   "home": "foundry",
-  "damage": 19.6,
+  "damage": 55.3,
   "speed": 0.85
  },
  {
@@ -544,7 +544,7 @@
   "rank": "A",
   "about": "a basalt column torn from the Ash Legion's gate, teal fire in its joins",
   "home": "obsidian_labyrinth",
-  "damage": 22.8,
+  "damage": 83.7,
   "speed": 0.85
  },
  {
@@ -555,7 +555,7 @@
   "rank": "D",
   "about": "a barbed iron harpoon, its line still knotted on",
   "home": "brigands_gorge",
-  "damage": 7.9,
+  "damage": 13.3,
   "speed": 1.2
  },
  {
@@ -566,7 +566,7 @@
   "rank": "C",
   "about": "a salt legionary's javelin, bronze bright from the sand",
   "home": "sandsunk_tomb",
-  "damage": 8.6,
+  "damage": 18.7,
   "speed": 1.2
  },
  {
@@ -577,7 +577,7 @@
   "rank": "B",
   "about": "the Rime Warden's bardiche: a black crescent rimed in ice, the cell keys still hung on it",
   "home": "frost",
-  "damage": 9.2,
+  "damage": 26.1,
   "speed": 1.2
  },
  {
@@ -588,7 +588,7 @@
   "rank": "A",
   "about": "a drowned god's trident, a whirlpool turning round its tines",
   "home": "tide_chapel",
-  "damage": 10.8,
+  "damage": 39.5,
   "speed": 1.2
  },
  {
@@ -599,7 +599,7 @@
   "rank": "D",
   "about": "an old warrior's greatsword, dug out of a barrow mound",
   "home": "ossuary",
-  "damage": 18.7,
+  "damage": 31.4,
   "speed": 0.85
  },
  {
@@ -610,7 +610,7 @@
   "rank": "C",
   "about": "a broad bronze cleaver of the Salt Khan's riders",
   "home": "sandsunk_tomb",
-  "damage": 20.2,
+  "damage": 43.9,
   "speed": 0.85
  },
  {
@@ -621,7 +621,7 @@
   "rank": "B",
   "about": "a vat-grown beast's jawbone, teeth down both edges, acid between them",
   "home": "plague",
-  "damage": 21.8,
+  "damage": 61.5,
   "speed": 0.85
  },
  {
@@ -632,7 +632,7 @@
   "rank": "A",
   "about": "the Barrow King's greatsword, his crowned dead still riding its edge",
   "home": "crypt",
-  "damage": 25.4,
+  "damage": 92.9,
   "speed": 0.85
  },
  {

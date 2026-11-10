@@ -1,0 +1,34 @@
+{
+ "type": "minecraft:block",
+ "pools": [
+  {
+   "rolls": 1,
+   "entries": [
+    {
+     "type": "minecraft:alternatives",
+     "children": [
+      {
+       "type": "minecraft:item",
+       "name": "ashbound:shardglass",
+       "conditions": [
+        {
+         "condition": "minecraft:random_chance",
+         "chance": 0.35
+        }
+       ]
+      },
+      {
+       "type": "minecraft:item",
+       "name": "ashbound:scorched_earth"
+      }
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "condition": "minecraft:survives_explosion"
+    }
+   ]
+  }
+ ]
+}

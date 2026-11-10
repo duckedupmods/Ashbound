@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "PBP",
+  "BDB",
+  "PBP"
+ ],
+ "key": {
+  "P": {
+   "item": "minecraft:prismarine_shard"
+  },
+  "B": {
+   "item": "minecraft:bone_block"
+  },
+  "D": {
+   "item": "minecraft:diamond"
+  }
+ },
+ "result": {
+  "id": "ashbound:brine_lure",
+  "count": 1
+ }
+}

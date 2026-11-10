@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/ember_fang.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.724,
-     -1.959,
-     -0.067
+     -2.196,
+     -2.196,
+     -0.0
     ],
     "scale": [
-     0.6508,
-     0.6508,
-     0.6508
+     0.57,
+     0.57,
+     0.57
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.724,
-     -1.959,
-     -0.067
+     -2.196,
+     -2.196,
+     -0.0
     ],
     "scale": [
-     0.6508,
-     0.6508,
-     0.6508
+     0.57,
+     0.57,
+     0.57
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.948,
-     -1.077,
+     -1.208,
+     -1.208,
      0
     ],
     "scale": [
-     0.3579,
-     0.3579,
-     0.3579
+     0.3135,
+     0.3135,
+     0.3135
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/ember_fang"
+   }
+  }
+ }
 }

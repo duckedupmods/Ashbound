@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/riftcaller.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.126,
-     -0.229,
-     -0.029
+     -0.982,
+     -0.982,
+     -0.0
     ],
     "scale": [
-     0.2964,
-     0.2964,
-     0.2964
+     0.2696,
+     0.2696,
+     0.2696
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.126,
-     -0.229,
-     -0.029
+     -0.982,
+     -0.982,
+     -0.0
     ],
     "scale": [
-     0.2964,
-     0.2964,
-     0.2964
+     0.2696,
+     0.2696,
+     0.2696
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.069,
-     -0.126,
+     -0.54,
+     -0.54,
      0
     ],
     "scale": [
-     0.163,
-     0.163,
-     0.163
+     0.1483,
+     0.1483,
+     0.1483
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/riftcaller"
+   }
+  }
+ }
 }

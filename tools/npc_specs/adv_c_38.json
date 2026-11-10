@@ -1,0 +1,60 @@
+{
+ "id": "adv_c_38",
+ "seed": 4120957,
+ "recipe": "adventurer",
+ "role": "breaker",
+ "rank": "C",
+ "name": "Kestra Coldwell",
+ "title": "C-rank Breaker",
+ "age": "adult",
+ "sex": "f",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "brown",
+ "hair": {
+  "style": "braid",
+  "color": "silver"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "round",
+  "iris": "amber",
+  "brows": "stern",
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": true,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "mail",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "bracers",
+   "pauldrons",
+   "tassets"
+  ],
+  "colors": {
+   "top": "grey",
+   "bottom": "grey",
+   "accent": "red",
+   "leather": "black"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "hammer",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "C",
+  "role": "breaker"
+ },
+ "party": "The Red Hounds"
+}

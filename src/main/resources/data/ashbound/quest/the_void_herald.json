@@ -1,0 +1,10 @@
+{
+ "title": "The Void Herald",
+ "rank": "A",
+ "text": "Something speaks for the voidborn, and it's been heard on the edges of the map, calling more of them through. The Guild Master wants it silenced.",
+ "kill": "ashbound:void_herald",
+ "count": 1,
+ "points": 560,
+ "coins": 900,
+ "repeat": true
+}

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/hags_nail.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.795,
-     -1.522,
-     0.078
+     -3.048,
+     -1.436,
+     0.46
     ],
     "scale": [
-     0.6152,
-     0.6152,
-     0.6152
+     0.4916,
+     0.4916,
+     0.4916
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.795,
-     -1.522,
-     0.078
+     -3.048,
+     -1.436,
+     0.46
     ],
     "scale": [
-     0.6152,
-     0.6152,
-     0.6152
+     0.4916,
+     0.4916,
+     0.4916
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.987,
-     -0.837,
+     -1.676,
+     -0.79,
      0
     ],
     "scale": [
-     0.3383,
-     0.3383,
-     0.3383
+     0.2704,
+     0.2704,
+     0.2704
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/hags_nail"
+   }
+  }
+ }
 }

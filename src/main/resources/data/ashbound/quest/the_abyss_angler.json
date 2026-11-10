@@ -1,0 +1,10 @@
+{
+ "title": "The Light Over the Water",
+ "rank": "C",
+ "text": "In the worst storms, the fishers swear a light walks out of the sea on legs, with the merrow following it. The Guild wants that light put out.",
+ "kill": "ashbound:abyss_angler",
+ "count": 1,
+ "points": 180,
+ "coins": 300,
+ "repeat": true
+}

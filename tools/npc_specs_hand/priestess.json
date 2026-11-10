@@ -1,0 +1,51 @@
+{
+ "name": "Mother Ysolde",
+ "age": "adult",
+ "sex": "f",
+ "skin": "fair",
+ "build": "slim",
+ "hair": {
+  "style": "long",
+  "color": "white"
+ },
+ "headwear": "candles",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "ice",
+  "brows": "soft",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "blindfold"
+  ],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "tabard",
+   "mantle"
+  ],
+  "colors": {
+   "top": "white",
+   "bottom": "white",
+   "accent": "oxblood",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "clasp",
+  "l": "clasp"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "role": "acolyte",
+ "id": "priestess"
+}

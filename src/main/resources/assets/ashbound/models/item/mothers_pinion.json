@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/mothers_pinion.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.821,
-     -2.821,
-     -0.0
+     -2.264,
+     -2.844,
+     -0.166
     ],
     "scale": [
-     0.429,
-     0.429,
-     0.429
+     0.3541,
+     0.3541,
+     0.3541
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.821,
-     -2.821,
-     -0.0
+     -2.264,
+     -2.844,
+     -0.166
     ],
     "scale": [
-     0.429,
-     0.429,
-     0.429
+     0.3541,
+     0.3541,
+     0.3541
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.552,
-     -1.552,
+     -1.245,
+     -1.564,
      0
     ],
     "scale": [
-     0.236,
-     0.236,
-     0.236
+     0.1947,
+     0.1947,
+     0.1947
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/mothers_pinion"
+   }
+  }
+ }
 }

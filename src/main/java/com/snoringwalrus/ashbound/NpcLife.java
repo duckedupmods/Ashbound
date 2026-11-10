@@ -83,7 +83,7 @@ final class NpcLife {
 		BlockPos best = null;
 		double bestD = Double.MAX_VALUE;
 		for (BlockPos p : BlockPos.betweenClosed(at.offset(-r, -2, -r), at.offset(r, 2, r))) {
-			if (TAKEN.contains(p.asLong())) continue;
+			if (TAKEN.contains(p.asLong()) || Stations.inHomestead(level, p)) continue;
 			BlockState st = level.getBlockState(p);
 			BlockState over = level.getBlockState(p.above());
 			if (seatTop(st) < 0 || !(over.is(st.getBlock()) || over.getCollisionShape(level, p.above()).isEmpty())) continue;

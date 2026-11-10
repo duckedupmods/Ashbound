@@ -1,0 +1,10 @@
+{
+ "title": "What Comes Out of the Vats",
+ "rank": "D",
+ "text": "The blightkin labs are leaking. Things stitched out of three animals at once are walking out of the vats. Burn the stalkers before they reach the pastures.",
+ "kill": "ashbound:stitched_stalker",
+ "count": 5,
+ "points": 70,
+ "coins": 120,
+ "repeat": true
+}

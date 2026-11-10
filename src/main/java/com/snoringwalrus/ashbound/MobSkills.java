@@ -3,6 +3,7 @@ package com.snoringwalrus.ashbound;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -46,6 +47,8 @@ import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
 /**
  * The gate monsters' own skills (mob_moves.json lists who has which), their bosses' phases, the elites' and bosses'
@@ -56,6 +59,14 @@ import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
  */
 public final class MobSkills {
 	private MobSkills() {}
+
+	/** every bar that's up and whose it is, looked over each BAR_SWEEP ticks */
+	private static final Map<ServerBossEvent, Mob> BARS = new HashMap<>();
+	private static final int BAR_SWEEP = 20;
+
+	static void register() {
+		NeoForge.EVENT_BUS.addListener(MobSkills::sweepBars);
+	}
 
 	/** What a monster that fights with skills shows the rest of the code. */
 	public interface User {
@@ -155,7 +166,10 @@ public final class MobSkills {
 		GateMobs.Kind k = u.kind();
 		if (s.invulnerable > 0) s.invulnerable--;
 		if (!s.gripped || m.tickCount % 40 == 0) MobMoves.grip(m, k);
-		if (k.key() && !m.hasGlowingTag()) m.setGlowingTag(true);
+		// they used to glow, and saved worlds still hold ones that do: it showed them through walls
+		if (m.hasGlowingTag()) m.setGlowingTag(false);
+		// on your side it fights, and that's all: no bar, no calling up more of its kind against you
+		if (Spells.isThrall(m)) return;
 		bar(m, level, s, k);
 		hazards(m, level, s);
 		if (k.boss()) phases(m, level, s, k);
@@ -579,12 +593,13 @@ public final class MobSkills {
 					: Component.literal("").append(m.getDisplayName()).append(Component.literal("  -  Elite, holds the key").withStyle(ChatFormatting.GOLD));
 			s.bar = new ServerBossEvent(title, k.boss() ? (s.phase == 1 ? BossEvent.BossBarColor.RED : s.phase == 2 ? BossEvent.BossBarColor.PURPLE : BossEvent.BossBarColor.WHITE)
 					: BossEvent.BossBarColor.YELLOW, k.boss() ? BossEvent.BossBarOverlay.NOTCHED_10 : BossEvent.BossBarOverlay.NOTCHED_6);
+			BARS.put(s.bar, m);
 		}
 		s.bar.setProgress(Mth.clamp(m.getHealth() / m.getMaxHealth(), 0, 1));
 		if (m.tickCount % 10 != 0) return;
 		double near = k.boss() ? 56 : 36;
 		for (ServerPlayer p : level.players()) {
-			boolean in = m.isAlive() && p.distanceToSqr(m) < near * near;
+			boolean in = m.isAlive() && p.isAlive() && p.distanceToSqr(m) < near * near;
 			if (in && !s.bar.getPlayers().contains(p)) s.bar.addPlayer(p);
 			else if (!in && s.bar.getPlayers().contains(p)) s.bar.removePlayer(p);
 		}
@@ -592,6 +607,25 @@ public final class MobSkills {
 
 	static void gone(Mob m) {
 		if (m instanceof User u && u.state().bar != null) u.state().bar.removeAllPlayers();
+	}
+
+	/**
+	 * What the mob's own tick can't see. A dead player's old object keeps the connection after the respawn, so a bar it's still on stays
+	 * on screen; a mob stops ticking when its dimension empties, and a mob unloaded with its chunk never reaches gone().
+	 */
+	private static void sweepBars(ServerTickEvent.Post e) {
+		if (e.getServer().getTickCount() % BAR_SWEEP != 0) return;
+		for (Iterator<Map.Entry<ServerBossEvent, Mob>> it = BARS.entrySet().iterator(); it.hasNext();) {
+			var bar = it.next();
+			Mob m = bar.getValue();
+			if (m.isRemoved() || !m.isAlive()) {
+				bar.getKey().removeAllPlayers();
+				it.remove();
+				continue;
+			}
+			for (ServerPlayer p : List.copyOf(bar.getKey().getPlayers()))
+				if (p.isRemoved() || !p.isAlive() || p.level() != m.level()) bar.getKey().removePlayer(p);
+		}
 	}
 
 	// ---------------------------------------------------------------- the pieces skills are made of
@@ -683,6 +717,8 @@ public final class MobSkills {
 	/** A spider's body has no hands: a swing meant for a biped comes out as its bite. */
 	static AnimationAccessor<? extends StaticAnimation> fits(Mob m, AnimationAccessor<? extends StaticAnimation> a) {
 		boolean bite = a == Animations.SPIDER_ATTACK || a == Animations.SPIDER_JUMP_ATTACK;
+		if (m instanceof User u && MobMoves.crab(u.kind()) && (bite || a.get() instanceof yesman.epicfight.api.animation.types.AttackAnimation))
+			return CrabClips.CLAW;
 		return m instanceof net.minecraft.world.entity.monster.Spider && !bite && a.get() instanceof yesman.epicfight.api.animation.types.AttackAnimation ? Animations.SPIDER_ATTACK : a;
 	}
 

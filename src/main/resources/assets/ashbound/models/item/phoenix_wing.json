@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/phoenix_wing.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.25,
-     -0.858,
-     0.22
+     1.601,
+     -1.423,
+     0.282
     ],
     "scale": [
-     0.7897,
-     0.7897,
-     0.7897
+     0.813,
+     0.813,
+     0.813
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.25,
-     -0.858,
-     0.22
+     1.601,
+     -1.423,
+     0.282
     ],
     "scale": [
-     0.7897,
-     0.7897,
-     0.7897
+     0.813,
+     0.813,
+     0.813
     ]
    },
    "ground": {
@@ -115,19 +115,26 @@
      0.0
     ],
     "translation": [
-     0.688,
-     -0.472,
+     0.881,
+     -0.783,
      0
     ],
     "scale": [
-     0.4343,
-     0.4343,
-     0.4343
+     0.4471,
+     0.4471,
+     0.4471
     ]
    }
   }
  },
- "perspectives": {},
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/phoenix_wing"
+   }
+  }
+ },
  "overrides": [
   {
    "predicate": {

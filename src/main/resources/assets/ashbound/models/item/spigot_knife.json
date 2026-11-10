@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/spigot_knife.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.124,
-     -1.124,
-     -0.0
+     -2.091,
+     -0.652,
+     0.411
     ],
     "scale": [
-     0.6921,
-     0.6921,
-     0.6921
+     0.7318,
+     0.7318,
+     0.7318
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.124,
-     -1.124,
-     -0.0
+     -2.091,
+     -0.652,
+     0.411
     ],
     "scale": [
-     0.6921,
-     0.6921,
-     0.6921
+     0.7318,
+     0.7318,
+     0.7318
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.618,
-     -0.618,
+     -1.15,
+     -0.359,
      0
     ],
     "scale": [
-     0.3807,
-     0.3807,
-     0.3807
+     0.4025,
+     0.4025,
+     0.4025
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/spigot_knife"
+   }
+  }
+ }
 }

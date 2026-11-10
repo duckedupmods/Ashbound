@@ -1,0 +1,10 @@
+{
+ "title": "The Brood Queen",
+ "rank": "B",
+ "text": "The hive is swelling. Scouts counted a thousand mites leaving it in a single night. At the heart of it sits the Brood Queen. Kill her and the hive dies.",
+ "kill": "ashbound:brood_queen",
+ "count": 1,
+ "points": 320,
+ "coins": 520,
+ "repeat": true
+}

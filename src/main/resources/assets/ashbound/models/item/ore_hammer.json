@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/ore_hammer.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     0.059,
-     -0.028,
-     -0.025
+     -0.846,
+     -0.846,
+     -0.0
     ],
     "scale": [
-     0.4413,
-     0.4413,
-     0.4413
+     0.357,
+     0.357,
+     0.357
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     0.059,
-     -0.028,
-     -0.025
+     -0.846,
+     -0.846,
+     -0.0
     ],
     "scale": [
-     0.4413,
-     0.4413,
-     0.4413
+     0.357,
+     0.357,
+     0.357
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.032,
-     -0.015,
+     -0.465,
+     -0.465,
      0
     ],
     "scale": [
-     0.2427,
-     0.2427,
-     0.2427
+     0.1963,
+     0.1963,
+     0.1963
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/ore_hammer"
+   }
+  }
+ }
 }

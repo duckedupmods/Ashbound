@@ -1,0 +1,220 @@
+{
+ "name": "Veyra",
+ "title": "the Ringkeeper",
+ "start": "start",
+ "nodes": {
+  "start": {
+   "go_if": [
+    [
+     "flag:ring_proved",
+     "menu"
+    ],
+    [
+     "flag:ring_mark",
+     "proof"
+    ],
+    [
+     "flag:ring_asked",
+     "waiting"
+    ]
+   ],
+   "text": [
+    "You have the look of someone who's been through a gate or two. Not enough of them, maybe.",
+    "I keep the Ashen Ring. A colosseum that hangs over the clouds, somewhere that isn't anywhere. The whole city goes to watch."
+   ],
+   "options": [
+    {
+     "text": "Wendel says you can send us to the Kiln-Father.",
+     "if": "cold_brand",
+     "do": "bossarena:enter:hearth"
+    },
+    {
+     "text": "The Archmage gave me the Drowned Sigil. Send us to the Wreck-Mother.",
+     "if": "has:ashbound:drowned_sigil:1",
+     "do": "bossarena:enter:wreck"
+    },
+    {
+     "text": "I have the Ashen Sigil. Send us to the Ash Shepherd.",
+     "if": "has:ashbound:ashen_sigil:1",
+     "do": "bossarena:enter:fold"
+    },
+    {
+     "text": "Open the Moth's Ring.",
+     "if": "has:ashbound:sigil_moth:1",
+     "do": "bossarena:enter:moth"
+    },
+    {
+     "text": "Open the Knight's Ring.",
+     "if": "has:ashbound:sigil_knight:1",
+     "do": "bossarena:enter:knight"
+    },
+    {
+     "text": "Open the Magus's Ring.",
+     "if": "has:ashbound:sigil_magus:1",
+     "do": "bossarena:enter:magus"
+    },
+    {
+     "text": "What happens in the Ring?",
+     "go": "about"
+    },
+    {
+     "text": "I want to fight there.",
+     "go": "ask"
+    },
+    {
+     "text": "Who's gone deepest?",
+     "do": "arena:records"
+    },
+    {
+     "text": "Another time.",
+     "do": "close"
+    }
+   ]
+  },
+  "about": {
+   "text": [
+    "Monsters come through its four gates, wave after wave, out of every dungeon the Guild has charted. Each wave harder than the last. Every tenth, something that rules a gate.",
+    "Every five waves I give you a breath, and the crowd throws down what you've earned. Then you choose: on, or out with it. Reach the tenth, the twentieth, the thirtieth, and I'll remember. Next time you can start from there."
+   ],
+   "options": [
+    {
+     "text": "I want to fight there.",
+     "go": "ask",
+     "if": "!ring_asked"
+    },
+    {
+     "text": "Goodbye.",
+     "do": "close"
+    }
+   ]
+  },
+  "ask": {
+   "text": [
+    "Not yet. The crowd wants to see blood that means something.",
+    "Go through a gate of E rank or worse. Kill what rules it. Come back to me with its blood still on you, and I'll open the Ring for you and anyone who fights at your side."
+   ],
+   "options": [
+    {
+     "text": "I'll be back.",
+     "do": "flag:ring_asked"
+    }
+   ]
+  },
+  "waiting": {
+   "text": [
+    "No blood on you yet. An E-rank gate or worse, and what rules it. I'll be here."
+   ],
+   "options": [
+    {
+     "text": "Wendel says you can send us to the Kiln-Father.",
+     "if": "cold_brand",
+     "do": "bossarena:enter:hearth"
+    },
+    {
+     "text": "The Archmage gave me the Drowned Sigil. Send us to the Wreck-Mother.",
+     "if": "has:ashbound:drowned_sigil:1",
+     "do": "bossarena:enter:wreck"
+    },
+    {
+     "text": "I have the Ashen Sigil. Send us to the Ash Shepherd.",
+     "if": "has:ashbound:ashen_sigil:1",
+     "do": "bossarena:enter:fold"
+    },
+    {
+     "text": "Open the Moth's Ring.",
+     "if": "has:ashbound:sigil_moth:1",
+     "do": "bossarena:enter:moth"
+    },
+    {
+     "text": "Open the Knight's Ring.",
+     "if": "has:ashbound:sigil_knight:1",
+     "do": "bossarena:enter:knight"
+    },
+    {
+     "text": "Open the Magus's Ring.",
+     "if": "has:ashbound:sigil_magus:1",
+     "do": "bossarena:enter:magus"
+    },
+    {
+     "text": "Who's gone deepest?",
+     "do": "arena:records"
+    },
+    {
+     "text": "I'm going.",
+     "do": "close"
+    }
+   ]
+  },
+  "proof": {
+   "text": [
+    "There it is. I can smell the gate on you.",
+    "Good. The Ring is open to you now, and to your party. Bring them here when you're ready: I send everyone standing near you."
+   ],
+   "options": [
+    {
+     "text": "Then send us.",
+     "go": "menu",
+     "do": "flag:ring_proved"
+    }
+   ]
+  },
+  "menu": {
+   "text": [
+    "The stands are already full. They've heard about you.",
+    "Everyone of your party standing near you goes in with you. Ready?"
+   ],
+   "options": [
+    {
+     "text": "Send us in, from the first wave.",
+     "do": "arena:start"
+    },
+    {
+     "text": "Send us in from our milestone.",
+     "if": "ring_m10",
+     "do": "arena:best"
+    },
+    {
+     "text": "Wendel says you can send us to the Kiln-Father.",
+     "if": "cold_brand",
+     "do": "bossarena:enter:hearth"
+    },
+    {
+     "text": "The Archmage gave me the Drowned Sigil. Send us to the Wreck-Mother.",
+     "if": "has:ashbound:drowned_sigil:1",
+     "do": "bossarena:enter:wreck"
+    },
+    {
+     "text": "I have the Ashen Sigil. Send us to the Ash Shepherd.",
+     "if": "has:ashbound:ashen_sigil:1",
+     "do": "bossarena:enter:fold"
+    },
+    {
+     "text": "Open the Moth's Ring.",
+     "if": "has:ashbound:sigil_moth:1",
+     "do": "bossarena:enter:moth"
+    },
+    {
+     "text": "Open the Knight's Ring.",
+     "if": "has:ashbound:sigil_knight:1",
+     "do": "bossarena:enter:knight"
+    },
+    {
+     "text": "Open the Magus's Ring.",
+     "if": "has:ashbound:sigil_magus:1",
+     "do": "bossarena:enter:magus"
+    },
+    {
+     "text": "Who's gone deepest?",
+     "do": "arena:records"
+    },
+    {
+     "text": "Not yet.",
+     "do": "close"
+    }
+   ]
+  }
+ },
+ "tags": [
+  "lead"
+ ]
+}

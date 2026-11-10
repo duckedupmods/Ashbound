@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/fang_of_the_titan.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.936,
-     -1.936,
-     0.0
+     -2.356,
+     -2.507,
+     -0.043
     ],
     "scale": [
-     0.6475,
-     0.6475,
-     0.6475
+     0.4615,
+     0.4615,
+     0.4615
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.936,
-     -1.936,
-     0.0
+     -2.356,
+     -2.507,
+     -0.043
     ],
     "scale": [
-     0.6475,
-     0.6475,
-     0.6475
+     0.4615,
+     0.4615,
+     0.4615
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.065,
-     -1.065,
+     -1.296,
+     -1.379,
      0
     ],
     "scale": [
-     0.3561,
-     0.3561,
-     0.3561
+     0.2538,
+     0.2538,
+     0.2538
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/fang_of_the_titan"
+   }
+  }
+ }
 }

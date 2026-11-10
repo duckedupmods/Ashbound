@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/marshals_sabre.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -3.259,
-     -2.861,
-     0.114
+     -2.398,
+     -2.733,
+     -0.096
     ],
     "scale": [
-     0.4399,
-     0.4399,
-     0.4399
+     0.3407,
+     0.3407,
+     0.3407
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -3.259,
-     -2.861,
-     0.114
+     -2.398,
+     -2.733,
+     -0.096
     ],
     "scale": [
-     0.4399,
-     0.4399,
-     0.4399
+     0.3407,
+     0.3407,
+     0.3407
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.792,
-     -1.574,
+     -1.319,
+     -1.503,
      0
     ],
     "scale": [
-     0.242,
-     0.242,
-     0.242
+     0.1874,
+     0.1874,
+     0.1874
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/marshals_sabre"
+   }
+  }
+ }
 }

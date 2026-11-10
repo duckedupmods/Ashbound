@@ -274,6 +274,7 @@ public final class Guild {
 		if (c.registered()) return;
 		set(p, new Card(true, 0, c.points(), c.active(), c.done()));
 		p.getInventory().placeItemBackInInventory(new ItemStack(CARD_ITEM.get()));
+		BeltPouch.tuck(p);
 		p.level().playSound(null, p.blockPosition(), SoundEvents.BOOK_PAGE_TURN, SoundSource.PLAYERS, 1f, 1f);
 		title(p, Component.literal("F").withStyle(ChatFormatting.GRAY, ChatFormatting.BOLD), Component.literal("Registered with the Adventurers' Guild"));
 	}
@@ -495,6 +496,23 @@ public final class Guild {
 		if (holder == null) return null;
 		var found = level.getChunkSource().getGenerator().findNearestMapStructure(level, HolderSet.direct(holder), p.blockPosition(), LOCATE, false);
 		return found == null ? null : new int[] {found.getFirst().getX(), found.getFirst().getZ()};
+	}
+
+	/** The ids of the requests on your card: those the Journal can give up. */
+	static List<String> taken(ServerPlayer p) {
+		return of(p).active().stream().map(Active::id).toList();
+	}
+
+	/** Given up from the Journal: off your card, as at the desk. */
+	static void abandon(ServerPlayer p, String id) {
+		Card c = of(p);
+		Active a = c.active(id);
+		if (a == null) return;
+		List<Active> active = new ArrayList<>(c.active());
+		active.remove(a);
+		set(p, new Card(true, c.rank(), c.points(), List.copyOf(active), c.done()));
+		Quest q = quest(id);
+		p.sendSystemMessage(Component.literal("Request given up: ").withStyle(ChatFormatting.GRAY).append(Component.literal(q == null ? id : q.title()).withStyle(ChatFormatting.GOLD)));
 	}
 
 	/** Your requests, then what's out there you haven't taken: for the Journal and the compass. */

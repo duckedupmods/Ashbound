@@ -11,8 +11,8 @@ in vec2 texCoord0;
 out vec4 fragColor;
 
 void main() {
-    vec3 c = texture(Sampler0, texCoord0).rgb * 0.227027;
-    c += (texture(Sampler0, texCoord0 + Step * 1.384615).rgb + texture(Sampler0, texCoord0 - Step * 1.384615).rgb) * 0.316216;
-    c += (texture(Sampler0, texCoord0 + Step * 3.230769).rgb + texture(Sampler0, texCoord0 - Step * 3.230769).rgb) * 0.070270;
-    fragColor = vec4(c * Gain, 1.0);
+    vec4 c = texture(Sampler0, texCoord0) * 0.227027;
+    c += (texture(Sampler0, texCoord0 + Step * 1.384615) + texture(Sampler0, texCoord0 - Step * 1.384615)) * 0.316216;
+    c += (texture(Sampler0, texCoord0 + Step * 3.230769) + texture(Sampler0, texCoord0 - Step * 3.230769)) * 0.070270;
+    fragColor = c * Gain;
 }

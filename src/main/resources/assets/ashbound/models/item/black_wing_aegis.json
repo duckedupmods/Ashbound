@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/black_wing_aegis.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.589,
-     2.809,
-     7.095
+     1.144,
+     2.498,
+     5.817
     ],
     "scale": [
-     0.5484,
-     0.5484,
-     0.5484
+     0.4297,
+     0.4297,
+     0.4297
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.589,
-     2.809,
-     7.095
+     1.144,
+     2.498,
+     5.817
     ],
     "scale": [
-     0.5484,
-     0.5484,
-     0.5484
+     0.4297,
+     0.4297,
+     0.4297
     ]
    },
    "ground": {
@@ -115,15 +115,23 @@
      0.0
     ],
     "translation": [
-     0.874,
-     1.545,
+     0.629,
+     1.374,
      0
     ],
     "scale": [
-     0.3016,
-     0.3016,
-     0.3016
+     0.2363,
+     0.2363,
+     0.2363
     ]
+   }
+  }
+ },
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/black_wing_aegis"
    }
   }
  },
@@ -134,6 +142,5 @@
    },
    "model": "ashbound:item/black_wing_aegis_blocking"
   }
- ],
- "perspectives": {}
+ ]
 }

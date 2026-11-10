@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/hearth_staff.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.268,
-     -0.249,
-     0.006
+     -1.123,
+     -1.083,
+     -0.07
     ],
     "scale": [
-     0.3621,
-     0.3621,
-     0.3621
+     0.3028,
+     0.3028,
+     0.3028
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.268,
-     -0.249,
-     0.006
+     -1.123,
+     -1.083,
+     -0.07
     ],
     "scale": [
-     0.3621,
-     0.3621,
-     0.3621
+     0.3028,
+     0.3028,
+     0.3028
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.147,
-     -0.137,
+     -0.618,
+     -0.596,
      0
     ],
     "scale": [
-     0.1991,
-     0.1991,
-     0.1991
+     0.1665,
+     0.1665,
+     0.1665
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/hearth_staff"
+   }
+  }
+ }
 }

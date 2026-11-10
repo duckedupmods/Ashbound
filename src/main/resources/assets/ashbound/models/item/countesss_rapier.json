@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/countesss_rapier.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.899,
-     -2.899,
+     -2.446,
+     -2.446,
      -0.0
     ],
     "scale": [
-     0.4266,
-     0.4266,
-     0.4266
+     0.3021,
+     0.3021,
+     0.3021
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.899,
-     -2.899,
+     -2.446,
+     -2.446,
      -0.0
     ],
     "scale": [
-     0.4266,
-     0.4266,
-     0.4266
+     0.3021,
+     0.3021,
+     0.3021
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.594,
-     -1.594,
+     -1.345,
+     -1.345,
      0
     ],
     "scale": [
-     0.2346,
-     0.2346,
-     0.2346
+     0.1661,
+     0.1661,
+     0.1661
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/countesss_rapier"
+   }
+  }
+ }
 }

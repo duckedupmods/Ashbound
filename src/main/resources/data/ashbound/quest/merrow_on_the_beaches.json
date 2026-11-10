@@ -1,0 +1,16 @@
+{
+ "title": "Merrow on the Beaches",
+ "rank": "D",
+ "text": "The fishing villages say the shark-headed things walk out of the surf after dark and drag the nets back in with them. Thin them out before the boats stop going out.",
+ "kill": "ashbound:merrow",
+ "count": 6,
+ "points": 70,
+ "coins": 110,
+ "items": [
+  [
+   "minecraft:cooked_cod",
+   8
+  ]
+ ],
+ "repeat": true
+}

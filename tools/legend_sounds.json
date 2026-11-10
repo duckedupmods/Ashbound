@@ -1,0 +1,475 @@
+[
+ {
+  "id": "rime_penitent_idle",
+  "kind": "monster",
+  "seconds": 2.5,
+  "takes": 2,
+  "level": -22,
+  "prompt": "slow deep groaning breath through cracking ice and creaking frozen armour, a faint chime of a distant iron bell, a colossal frozen penitent knight made of glacier ice, a hollow armoured giant"
+ },
+ {
+  "id": "rime_penitent_roar",
+  "kind": "monster",
+  "seconds": 3.0,
+  "prompt": "enormous furious roar echoing out of a hollow ice-armoured chest, cracking ice, rattling chain, a colossal frozen penitent knight made of glacier ice, a hollow armoured giant"
+ },
+ {
+  "id": "rime_penitent_hurt",
+  "kind": "monster",
+  "seconds": 1.0,
+  "takes": 2,
+  "level": -18,
+  "prompt": "ice cracking and a pained deep grunt from a hollow armoured giant"
+ },
+ {
+  "id": "rime_penitent_death",
+  "kind": "monster",
+  "seconds": 3.5,
+  "prompt": "a colossal ice giant collapsing, a long dying groan, armour and ice shattering and crashing to the ground, a bell clangs once"
+ },
+ {
+  "id": "rime_penitent_step",
+  "kind": "impact",
+  "seconds": 0.6,
+  "takes": 2,
+  "level": -22,
+  "max": 0.6,
+  "prompt": "one heavy armoured footstep crunching into packed snow and ice"
+ },
+ {
+  "id": "rime_penitent_toll",
+  "kind": "impact",
+  "seconds": 3.5,
+  "prompt": "a huge cracked iron bell tolling once, deep and ominous, long ringing decay, a little ice cracking"
+ },
+ {
+  "id": "old_blackbriar_idle",
+  "kind": "monster",
+  "seconds": 2.5,
+  "takes": 2,
+  "level": -22,
+  "prompt": "slow deep creaking of old wood and branches, low rumbling breath through hollow bark, a crow caws faintly, an ancient walking tree monster with antlers, made of black wood and thorns"
+ },
+ {
+  "id": "old_blackbriar_roar",
+  "kind": "monster",
+  "seconds": 3.0,
+  "prompt": "massive bellowing roar from a hollow tree trunk, splintering wood, branches thrashing, leaves rustling violently, an ancient walking tree monster with antlers, made of black wood and thorns"
+ },
+ {
+  "id": "old_blackbriar_hurt",
+  "kind": "monster",
+  "seconds": 1.0,
+  "takes": 2,
+  "level": -18,
+  "prompt": "wood cracking and splintering with a low pained groan"
+ },
+ {
+  "id": "old_blackbriar_death",
+  "kind": "monster",
+  "seconds": 3.5,
+  "prompt": "a giant ancient tree monster crashing down, trunk splitting, branches snapping, a long dying wooden groan"
+ },
+ {
+  "id": "old_blackbriar_step",
+  "kind": "impact",
+  "seconds": 0.6,
+  "takes": 2,
+  "level": -22,
+  "max": 0.6,
+  "prompt": "one heavy footstep of huge wooden roots stomping into soft forest earth with twigs snapping"
+ },
+ {
+  "id": "old_blackbriar_crows",
+  "kind": "foley",
+  "seconds": 3.0,
+  "prompt": "a sudden swarm of many crows bursting into the air, loud cawing and wings flapping"
+ },
+ {
+  "id": "red_plough_idle",
+  "kind": "monster",
+  "seconds": 2.5,
+  "takes": 2,
+  "level": -22,
+  "prompt": "slow heavy breathing through an iron helmet, creaking rusty metal joints, a low grinding hum, a giant rusted iron golem dragging a huge plough"
+ },
+ {
+  "id": "red_plough_roar",
+  "kind": "monster",
+  "seconds": 3.0,
+  "prompt": "enormous metallic bellow echoing inside an iron helmet, rusty metal groaning and clanging, a giant rusted iron golem dragging a huge plough"
+ },
+ {
+  "id": "red_plough_hurt",
+  "kind": "monster",
+  "seconds": 1.0,
+  "takes": 2,
+  "level": -18,
+  "prompt": "a heavy clang on thick rusted iron armour and a deep metallic grunt"
+ },
+ {
+  "id": "red_plough_death",
+  "kind": "monster",
+  "seconds": 3.5,
+  "prompt": "a giant rusted iron golem collapsing, metal plates crashing and clanging, a long groaning metallic exhale"
+ },
+ {
+  "id": "red_plough_step",
+  "kind": "impact",
+  "seconds": 0.6,
+  "takes": 2,
+  "level": -22,
+  "max": 0.6,
+  "prompt": "one very heavy iron boot stomping onto dirt with a metal clank"
+ },
+ {
+  "id": "red_plough_scrape",
+  "kind": "impact",
+  "seconds": 2.5,
+  "prompt": "a huge rusty iron plough blade dragged and scraping hard through rocky soil, grinding metal and stone"
+ },
+ {
+  "id": "sunbreaker_idle",
+  "kind": "monster",
+  "seconds": 2.5,
+  "takes": 2,
+  "level": -22,
+  "prompt": "low resonant hum of a golden sun mirror, sand trickling from cracked sandstone, a deep stony rumble, a colossal sandstone golem with a golden sun mirror for a face"
+ },
+ {
+  "id": "sunbreaker_roar",
+  "kind": "monster",
+  "seconds": 3.0,
+  "prompt": "a colossal stone giant roaring, deep grinding stone and a blazing resonant golden tone, sand blasting, a colossal sandstone golem with a golden sun mirror for a face"
+ },
+ {
+  "id": "sunbreaker_hurt",
+  "kind": "monster",
+  "seconds": 1.0,
+  "takes": 2,
+  "level": -18,
+  "prompt": "sandstone cracking and crumbling with a deep stony grunt"
+ },
+ {
+  "id": "sunbreaker_death",
+  "kind": "monster",
+  "seconds": 3.5,
+  "prompt": "a colossal sandstone golem crumbling apart, huge stone blocks falling, sand pouring, a fading golden hum"
+ },
+ {
+  "id": "sunbreaker_step",
+  "kind": "impact",
+  "seconds": 0.6,
+  "takes": 2,
+  "level": -22,
+  "max": 0.6,
+  "prompt": "one massive sandstone foot stomping onto sand, a heavy thud with sand spray"
+ },
+ {
+  "id": "sunbreaker_beam",
+  "kind": "impact",
+  "seconds": 3.0,
+  "prompt": "a searing beam of concentrated sunlight firing, rising bright electric hum and burning crackle"
+ },
+ {
+  "id": "grandmother_mire_idle",
+  "kind": "monster",
+  "seconds": 2.5,
+  "takes": 2,
+  "level": -22,
+  "prompt": "wet gurgling breath and bubbling swamp mud, a raspy ancient witch murmur, glass lanterns clinking, a monstrous ancient swamp hag, huge and hunched, with a staff of soul lanterns"
+ },
+ {
+  "id": "grandmother_mire_roar",
+  "kind": "monster",
+  "seconds": 3.0,
+  "prompt": "a terrifying wet shriek from a monstrous old swamp hag, mud splattering, a monstrous ancient swamp hag, huge and hunched, with a staff of soul lanterns"
+ },
+ {
+  "id": "grandmother_mire_hurt",
+  "kind": "monster",
+  "seconds": 1.0,
+  "takes": 2,
+  "level": -18,
+  "prompt": "a wet raspy pained hiss from a monstrous old swamp hag"
+ },
+ {
+  "id": "grandmother_mire_death",
+  "kind": "monster",
+  "seconds": 3.5,
+  "prompt": "a monstrous swamp hag's long wailing death shriek, collapsing into bubbling mud, glass lanterns shattering"
+ },
+ {
+  "id": "grandmother_mire_step",
+  "kind": "impact",
+  "seconds": 0.6,
+  "takes": 2,
+  "level": -22,
+  "max": 0.6,
+  "prompt": "one heavy wet squelching footstep in deep swamp mud"
+ },
+ {
+  "id": "grandmother_mire_cackle",
+  "kind": "monster",
+  "seconds": 3.0,
+  "prompt": "a horrifying deep cackle of a monstrous ancient swamp witch, evil and echoing"
+ },
+ {
+  "id": "hollow_smile_idle",
+  "kind": "monster",
+  "seconds": 2.5,
+  "takes": 2,
+  "level": -22,
+  "prompt": "quiet unsettling clicking and soft distorted whispering behind a mask, long bony fingers tapping, a tall thin creature with four long arms and a white smiling mask"
+ },
+ {
+  "id": "hollow_smile_roar",
+  "kind": "monster",
+  "seconds": 3.0,
+  "prompt": "a piercing distorted shriek from behind a porcelain mask, unnatural and inhuman, a tall thin creature with four long arms and a white smiling mask"
+ },
+ {
+  "id": "hollow_smile_hurt",
+  "kind": "monster",
+  "seconds": 1.0,
+  "takes": 2,
+  "level": -18,
+  "prompt": "a sharp glitchy distorted hiss and a crack of porcelain"
+ },
+ {
+  "id": "hollow_smile_death",
+  "kind": "monster",
+  "seconds": 3.5,
+  "prompt": "an inhuman distorted death shriek fading, a porcelain mask cracking and shattering"
+ },
+ {
+  "id": "hollow_smile_step",
+  "kind": "impact",
+  "seconds": 0.6,
+  "takes": 2,
+  "level": -22,
+  "max": 0.6,
+  "prompt": "one quick light skittering footstep of long bony clawed feet on leaves"
+ },
+ {
+  "id": "hollow_smile_giggle",
+  "kind": "monster",
+  "seconds": 2.5,
+  "prompt": "a creepy distorted inhuman giggle from behind a mask, unsettling and echoing"
+ },
+ {
+  "id": "old_harpoon_idle",
+  "kind": "monster",
+  "seconds": 2.5,
+  "takes": 2,
+  "level": -22,
+  "prompt": "deep gurgling waterlogged breath, dripping water, a heavy chain rattling slowly, a giant drowned whaler, a bloated sea undead with an anchor and a harpoon in his back"
+ },
+ {
+  "id": "old_harpoon_roar",
+  "kind": "monster",
+  "seconds": 3.0,
+  "prompt": "a colossal drowned giant roaring, waterlogged gurgling bellow, splashing water, chains rattling, a giant drowned whaler, a bloated sea undead with an anchor and a harpoon in his back"
+ },
+ {
+  "id": "old_harpoon_hurt",
+  "kind": "monster",
+  "seconds": 1.0,
+  "takes": 2,
+  "level": -18,
+  "prompt": "a wet heavy thud and a gurgling pained grunt from a drowned giant"
+ },
+ {
+  "id": "old_harpoon_death",
+  "kind": "monster",
+  "seconds": 3.5,
+  "prompt": "a drowned giant collapsing with a huge splash, a long gurgling dying moan, chains clattering"
+ },
+ {
+  "id": "old_harpoon_step",
+  "kind": "impact",
+  "seconds": 0.6,
+  "takes": 2,
+  "level": -22,
+  "max": 0.6,
+  "prompt": "one heavy waterlogged boot stomping, a wet slap and squelch"
+ },
+ {
+  "id": "old_harpoon_chain",
+  "kind": "impact",
+  "seconds": 2.5,
+  "prompt": "a heavy iron harpoon thrown with a long rusty chain whipping and rattling after it"
+ },
+ {
+  "id": "walking_mountain_idle",
+  "kind": "monster",
+  "seconds": 2.5,
+  "takes": 2,
+  "level": -22,
+  "prompt": "slow deep rumbling of shifting rock, pebbles tumbling, a deep tectonic groan, a colossal living mountain golem made of red rock with a small fort on its back"
+ },
+ {
+  "id": "walking_mountain_roar",
+  "kind": "monster",
+  "seconds": 3.0,
+  "prompt": "an earth-shaking roar of a colossal living mountain, rocks grinding, rumbling like an earthquake, a colossal living mountain golem made of red rock with a small fort on its back"
+ },
+ {
+  "id": "walking_mountain_hurt",
+  "kind": "monster",
+  "seconds": 1.0,
+  "takes": 2,
+  "level": -18,
+  "prompt": "big rocks cracking and breaking off with a deep rumbling grunt"
+ },
+ {
+  "id": "walking_mountain_death",
+  "kind": "monster",
+  "seconds": 3.5,
+  "prompt": "a colossal mountain golem collapsing in a rockslide, boulders crashing, a long fading tectonic rumble"
+ },
+ {
+  "id": "walking_mountain_step",
+  "kind": "impact",
+  "seconds": 0.6,
+  "takes": 2,
+  "level": -22,
+  "max": 0.6,
+  "prompt": "one enormous earth-shaking footstep of a stone colossus, a deep boom with rocks rattling"
+ },
+ {
+  "id": "walking_mountain_quake",
+  "kind": "impact",
+  "seconds": 3.5,
+  "prompt": "a violent earthquake rumble, ground cracking and rocks falling"
+ },
+ {
+  "id": "ashwalker_idle",
+  "kind": "monster",
+  "seconds": 2.5,
+  "takes": 3,
+  "level": -22,
+  "prompt": "a dry rasping breath through a throat choked with ash, crust crumbling, faint crackle of embers inside, a hunched corpse cast in grey ash with embers glowing inside it"
+ },
+ {
+  "id": "ashwalker_roar",
+  "kind": "monster",
+  "seconds": 2.5,
+  "prompt": "a hollow choked scream rising out of a shell of ash, cracking crust and crackling embers, a hunched corpse cast in grey ash with embers glowing inside it"
+ },
+ {
+  "id": "ashwalker_hurt",
+  "kind": "monster",
+  "seconds": 1.0,
+  "takes": 2,
+  "level": -18,
+  "prompt": "ash crust cracking and crumbling and a choked rasping gasp"
+ },
+ {
+  "id": "ashwalker_death",
+  "kind": "monster",
+  "seconds": 2.5,
+  "prompt": "a shell of ash collapsing into dust with a last fading rasp and dying embers hissing out"
+ },
+ {
+  "id": "ashwalker_step",
+  "kind": "impact",
+  "seconds": 0.6,
+  "takes": 2,
+  "level": -24,
+  "max": 0.6,
+  "prompt": "one dragging footstep in soft ash and gravel"
+ },
+ {
+  "id": "ashwalker_rise",
+  "kind": "monster",
+  "seconds": 2.5,
+  "prompt": "ash and earth crumbling as something claws up out of the ground, a burst of embers, then a choked gasping scream"
+ },
+ {
+  "id": "cinder_hulk_idle",
+  "kind": "monster",
+  "seconds": 3.0,
+  "takes": 2,
+  "level": -20,
+  "prompt": "a deep grinding rumble of heavy stone, magma bubbling inside a rocky chest, a steam vent hissing, a huge hulk of black burning cinder rock with a molten heart"
+ },
+ {
+  "id": "cinder_hulk_roar",
+  "kind": "monster",
+  "seconds": 3.0,
+  "prompt": "a huge deep bellow from a chest of rock, grinding stone and a burst of hissing magma, a huge hulk of black burning cinder rock with a molten heart"
+ },
+ {
+  "id": "cinder_hulk_hurt",
+  "kind": "monster",
+  "seconds": 1.0,
+  "takes": 2,
+  "level": -18,
+  "prompt": "heavy rock cracking and a deep stony grunt with a hiss of magma"
+ },
+ {
+  "id": "cinder_hulk_death",
+  "kind": "monster",
+  "seconds": 3.5,
+  "prompt": "a giant of rock crumbling apart into a pile of rubble, magma hissing as it cools"
+ },
+ {
+  "id": "cinder_hulk_step",
+  "kind": "impact",
+  "seconds": 0.7,
+  "takes": 2,
+  "level": -18,
+  "max": 0.7,
+  "prompt": "one massive heavy stone footstep thudding into the ground, rubble shifting"
+ },
+ {
+  "id": "cinder_hulk_erupt",
+  "kind": "monster",
+  "seconds": 2.5,
+  "prompt": "magma bursting out of a rock vent with a deep whoosh, spattering lava and hissing steam"
+ },
+ {
+  "id": "ash_herald_idle",
+  "kind": "monster",
+  "seconds": 3.0,
+  "takes": 2,
+  "level": -22,
+  "prompt": "one slow muffled toll of a deep cracked iron bell, small bells jingling on chains, a censer creaking as it swings, a tall robed herald with a cracked black iron bell for a head"
+ },
+ {
+  "id": "ash_herald_roar",
+  "kind": "monster",
+  "seconds": 3.0,
+  "prompt": "a deep cracked iron bell tolling loudly with a hollow ghostly drone humming underneath, a tall robed herald with a cracked black iron bell for a head"
+ },
+ {
+  "id": "ash_herald_hurt",
+  "kind": "monster",
+  "seconds": 1.0,
+  "takes": 2,
+  "level": -18,
+  "prompt": "a dull clang of a cracked iron bell struck hard and a dry hiss"
+ },
+ {
+  "id": "ash_herald_death",
+  "kind": "monster",
+  "seconds": 3.5,
+  "prompt": "a cracked iron bell falling and clanging onto stone, ringing out and fading, embers scattering"
+ },
+ {
+  "id": "ash_herald_step",
+  "kind": "impact",
+  "seconds": 0.6,
+  "takes": 2,
+  "level": -24,
+  "max": 0.6,
+  "prompt": "one soft step of a long robe dragging through ash with tiny bells tinkling"
+ },
+ {
+  "id": "ash_herald_toll",
+  "kind": "monster",
+  "seconds": 3.0,
+  "prompt": "a single great toll of a deep cracked iron bell echoing across a valley at night, long ringing decay"
+ }
+]

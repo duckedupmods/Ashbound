@@ -11,12 +11,15 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -105,7 +108,7 @@ public final class Armors {
 				p = p.durability(type.getDurability(wear(rank) + kind.durability)).rarity(Rarity.RARE);
 				if (found != null)
 					p = p.component(DataComponents.ITEM_NAME, Component.translatable("item.ashbound." + id).withStyle(found.tier().colour));
-				return new Piece(mat, type, kind, p);
+				return new Piece(name, mat, type, kind, p);
 			});
 			ALL.add(it);
 			if (found != null) WorldArms.GARB_ITEMS.put(id, new WorldArms.Found(it, found));
@@ -114,12 +117,23 @@ public final class Armors {
 
 	/** an armour piece that also changes how fast its wearer moves and swings, by its kind */
 	static final class Piece extends ArmorItem {
+		private final String set;
 		private final Kind kind;
 		private ItemAttributeModifiers modifiers;
 
-		Piece(Holder<ArmorMaterial> mat, Type type, Kind kind, Properties p) {
+		Piece(String set, Holder<ArmorMaterial> mat, Type type, Kind kind, Properties p) {
 			super(mat, type, p);
+			this.set = set;
 			this.kind = kind;
+		}
+
+		@Override
+		public ResourceLocation getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, ArmorMaterial.Layer layer, boolean inner) {
+			return ArmorFx.sheet(set);
+		}
+
+		boolean designed() {
+			return ArmorFx.sheet(set) != null;
 		}
 
 		@Override

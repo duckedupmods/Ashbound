@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/gillblade.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.627,
-     -1.165,
-     0.132
+     -2.014,
+     -1.053,
+     0.275
     ],
     "scale": [
-     0.7347,
-     0.7347,
-     0.7347
+     0.5862,
+     0.5862,
+     0.5862
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.627,
-     -1.165,
-     0.132
+     -2.014,
+     -1.053,
+     0.275
     ],
     "scale": [
-     0.7347,
-     0.7347,
-     0.7347
+     0.5862,
+     0.5862,
+     0.5862
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.895,
-     -0.641,
+     -1.108,
+     -0.579,
      0
     ],
     "scale": [
-     0.4041,
-     0.4041,
-     0.4041
+     0.3224,
+     0.3224,
+     0.3224
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/gillblade"
+   }
+  }
+ }
 }

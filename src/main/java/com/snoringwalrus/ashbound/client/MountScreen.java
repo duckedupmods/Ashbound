@@ -93,10 +93,29 @@ public class MountScreen extends Screen {
 			Mounts.Kind k = Mounts.ALL.get(i);
 			int cy = cardY(i);
 			AshUi.row(g, x + PAD, cy, CARD_W, CARD_H, i == picked, in(mx, my, x + PAD, cy, CARD_W, CARD_H));
-			g.drawString(font, k.name(), x + PAD + 7, cy + 7, i == picked ? AshUi.TEXT : AshUi.BODY, true);
-			g.drawString(font, k.title(), x + PAD + 7, cy + 20, AshUi.MUTED, false);
+			g.drawString(font, k.name(), x + PAD + (CARD_W - font.width(k.name())) / 2, cy + 7, i == picked ? AshUi.TEXT : AshUi.BODY, true);
+			fitted(g, k.title(), x + PAD, CARD_W, cy + 20, AshUi.MUTED);
 		}
 		info(g, mx, my, pt);
+	}
+
+	private void centred(GuiGraphics g, String s, int x, int w, int y, int colour) {
+		g.drawString(font, s, x + (w - font.width(s)) / 2, y, colour, false);
+	}
+
+	/** Centred, and shrunk to the card if it's wider than it: no line runs off its card. */
+	private void fitted(GuiGraphics g, String s, int x, int w, int y, int colour) {
+		int room = w - 8, sw = font.width(s);
+		if (sw <= room) {
+			centred(g, s, x, w, y, colour);
+			return;
+		}
+		float k = room / (float) sw;
+		g.pose().pushPose();
+		g.pose().translate(x + 4, y + (1 - k) * 4, 0);
+		g.pose().scale(k, k, 1);
+		g.drawString(font, s, 0, 0, colour, false);
+		g.pose().popPose();
 	}
 
 	private void stat(GuiGraphics g, int x, int y, int w, String name, float k) {
@@ -135,16 +154,17 @@ public class MountScreen extends Screen {
 		if (MountRender.ready(k.id())) preview(g, mount(k), opened, x, y, w, ph);
 		int ty = y + ph + 2;
 		g.pose().pushPose();
-		g.pose().translate(x, ty, 0);
+		Component name = Component.literal(k.name()).withStyle(ChatFormatting.BOLD);
+		g.pose().translate(x + (w - font.width(name) * 1.3f) / 2, ty, 0);
 		g.pose().scale(1.3f, 1.3f, 1f);
-		g.drawString(font, Component.literal(k.name()).withStyle(ChatFormatting.BOLD), 0, 0, AshUi.TEXT, true);
+		g.drawString(font, name, 0, 0, AshUi.TEXT, true);
 		g.pose().popPose();
 		ty += 13;
 		for (FormattedCharSequence l : font.split(Component.literal(k.blurb()), w)) {
-			g.drawString(font, l, x, ty, AshUi.BODY, false);
+			g.drawString(font, l, x + (w - font.width(l)) / 2, ty, AshUi.BODY, false);
 			ty += 10;
 		}
-		g.drawString(font, k.special(), x, ty + 1, AshUi.EMBER_LT, false);
+		centred(g, k.special(), x, w, ty + 1, AshUi.EMBER_LT);
 		ty += 13;
 		int half = (w - 8) / 2;
 		stat(g, x, ty, half, "Speed", (float) (k.speed() / FASTEST));

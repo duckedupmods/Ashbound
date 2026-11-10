@@ -26,7 +26,9 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 /**
@@ -39,9 +41,14 @@ import net.minecraft.world.phys.Vec3;
  * through, carried along that arc by getPassengerAttachmentPoint, so nobody jumps from one place to another.
  *
  * A mount with Wings (Mounts.TRACKS) takes to the air: jump, then jump again up there. Hold jump to climb; forward goes where you
- * look. Its wind runs out after a while and it comes down in a long glide, and fills again on the ground. A Stormdrake glides down
- * like that from the start. At the last rank of Wings the wind never runs out, on any mount. A second person climbs up behind by right-clicking the
- * mount or whoever's riding it; the one in front steers.
+ * look. Its wind runs out after a while and it comes down in a glide, and fills again on the ground. A Stormdrake glides down like
+ * that from the start, once it's high enough to open up: a glide comes down quickly and no faster than a run, it's for getting off a
+ * cliff, not across a sea. At the last rank of Wings the wind never runs out, on any mount. A second person climbs up behind by
+ * right-clicking the mount or whoever's riding it; the one in front steers.
+ *
+ * Steps are ridden, not climbed: it keeps to the ground going down them, and on the rider's screen mount and rider ease up or down
+ * a step (sag) instead of jumping to it, camera and all. Everything that moves it happens on the client that drives it; the server
+ * only follows.
  */
 public class Mount extends Mob {
 	/** ticks a new mount waits for its rider, how long it grows in, the vault up, the hop down, the fade, and how long it rears */
@@ -52,8 +59,10 @@ public class Mount extends Mob {
 	private static final EntityDataAccessor<Boolean> LEAVING = SynchedEntityData.defineId(Mount.class, EntityDataSerializers.BOOLEAN);
 	/** which side the rider gets on or off: 1 its left, -1 its right, 0 straight up and down */
 	private static final EntityDataAccessor<Integer> SIDE = SynchedEntityData.defineId(Mount.class, EntityDataSerializers.INT);
-	/** in the air: blocks a tick forward, the drake's and the others', climbing, hanging still, and the fall with no wind left */
-	private static final double SOAR = 1.0, FLY = 0.72, CLIMB = 0.4, HANG = -0.03, SINK = -0.1;
+	/** in the air: blocks a tick forward, the drake's and the others', climbing, and hanging still */
+	private static final double SOAR = 1.0, FLY = 0.72, CLIMB = 0.4, HANG = -0.03;
+	/** a glide with no wind behind it: blocks a tick forward and down, and how much clear air it needs under it to open up */
+	private static final double GLIDE = 0.55, SINK = -0.18, GLIDE_FROM = 4;
 	/** how many ticks on the ground fill the wind; how many it holds depends on Wings */
 	private static final float FILL_TICKS = 300;
 	/** the rider's wind, kept here because the mount itself is gone each time they get off */
@@ -67,19 +76,24 @@ public class Mount extends Mob {
 	private static final double CHARGE_DAMAGE = 1.5, CHARGE_SHOVE = 1.6;
 	/** It builds up through its gaits: the share of top speed from a standstill, how much it gains a tick, and its top turn in degrees a tick. */
 	private static final float FROM_REST = 0.35f, BUILD_UP = 0.03f, TURN_FAST = 16, TURN_FLAT_OUT = 9;
-	/** Off the ground this many ticks before the legs tuck, so a step down isn't a leap. */
-	private static final int AIRBORNE = 3;
+	/** Off the ground this many ticks before the legs tuck, so a step down isn't a leap; this many and someone else's mount looks to be flying. */
+	private static final int AIRBORNE = 3, SOARING = 12;
+	/** Stepping off an edge it pulls down to ground this close (blocks). */
+	private static final double STICK = 1.05;
+	/** A rise or a drop bigger than this in a tick is a step; how much of the sag is left a tick later, and the most there can be (blocks). */
+	private static final double SAG_FROM = 0.2, SAG_KEEP = 0.55, SAG_MOST = 0.45;
 
 	public final Mounts.Kind kind;
 	private final Map<Integer, Integer> charged = new HashMap<>();
 	private double lastX, lastZ;
 	private int left, faded;
-	private boolean jumpHeld;
+	private boolean jumpHeld, footed, wasDown, lifting;
 	private float pace;
 	private int offGround;
 
 	// the client's own stride, see the class comment: stride counts leg cycles, gait goes 0 to 1 with speed, turn and look in radians
-	public float stride, strideO, gait, gaitO, air, airO, turn, turnO, look, lookO;
+	public float stride, strideO, gait, gaitO, air, airO, turn, turnO, look, lookO, flap, flapO;
+	public double sag, sagO;
 	public boolean gliding;
 
 	public Mount(EntityType<Mount> type, Level level) {
@@ -190,6 +204,11 @@ public class Mount extends Mob {
 		return Mth.sin(in * Mth.PI) + (faded > 0 ? Mth.sin(out * Mth.PI) * 0.6f : 0);
 	}
 
+	/** In the air on purpose. Nothing tells the other clients, so to them it's just up here a while. */
+	public boolean soaring() {
+		return gliding || offGround > SOARING;
+	}
+
 	private ParticleOptions trail() {
 		return switch (kind.id()) {
 			case "ashmane" -> ParticleTypes.FLAME;
@@ -213,6 +232,13 @@ public class Mount extends Mob {
 			airO = air;
 			turnO = turn;
 			lookO = look;
+			flapO = flap;
+			sagO = sag;
+			double rose = getY() - yo;
+			if (wasDown && onGround() && Math.abs(rose) > SAG_FROM) sag -= rose;
+			sag = Mth.clamp(sag * SAG_KEEP, -SAG_MOST, SAG_MOST);
+			wasDown = onGround();
+			flap += ((gliding && lifting ? 1 : 0) - flap) * 0.15f;
 			double moved = Math.hypot(getX() - xo, getZ() - zo);
 			gait += ((float) Math.min(1, moved / (kind.speed() * 2.2)) - gait) * 0.2f;
 			stride += (float) moved / Mth.lerp(gait, kind.strideWalk(), kind.strideRun());
@@ -281,6 +307,7 @@ public class Mount extends Mob {
 		setRot(getYRot() + Mth.clamp(Mth.wrapDegrees(p.getYRot() - getYRot()), -most, most), 0);
 		yBodyRot = yHeadRot = getYRot();
 		pace = p.zza > 0 ? Math.min(1, pace + BUILD_UP) : Math.max(0, pace - BUILD_UP * 4);
+		if (!isControlledByLocalInstance()) return;
 		boolean jump = ((JumpingAccessor) p).ashbound$jumping();
 		Vec3 v = getDeltaMovement();
 		if (isInWater()) {
@@ -288,16 +315,29 @@ public class Mount extends Mob {
 			gliding = false;
 		} else if (onGround()) {
 			gliding = false;
+			footed = true;
 			wind = Math.min(1, wind + 1 / FILL_TICKS);
 			if (jump && !jumpHeld) {
 				setDeltaMovement(v.x, kind.jump() * Mounts.jumpFor(p), v.z);
 				hasImpulse = true;
 			}
 		} else {
-			if (jump && !jumpHeld && (kind.glides() || Mounts.airTicks(p) > 0)) gliding = true;
+			if (jump && !jumpHeld && (kind.glides() || Mounts.airTicks(p) > 0) && (lift(p) || openAir())) gliding = true;
 			if (gliding) fly(p, jump);
+			else if (footed && v.y <= 0 && !level().noCollision(this, getBoundingBox().move(0, -STICK, 0))) setDeltaMovement(v.x, -STICK, v.z);
+			footed = false;
 		}
 		jumpHeld = jump;
+	}
+
+	/** Has it the wind to hold itself up? */
+	private boolean lift(Player p) {
+		return Mounts.airTicks(p) > 0 && (Mounts.tireless(p) || wind > 0);
+	}
+
+	/** Enough room under it to open up: water counts as ground, so it can't skip across a sea. */
+	private boolean openAir() {
+		return level().clip(new ClipContext(position(), position().add(0, -GLIDE_FROM, 0), ClipContext.Block.COLLIDER, ClipContext.Fluid.ANY, this)).getType() == HitResult.Type.MISS;
 	}
 
 	/** Up here it goes at the rider's word, not by what its legs last did. */
@@ -305,8 +345,9 @@ public class Mount extends Mob {
 		int air = Mounts.airTicks(p);
 		boolean tireless = Mounts.tireless(p), forward = p.zza > 0;
 		if (!tireless && air > 0) wind = Math.max(0, wind - 1f / air);
-		boolean lift = air > 0 && (tireless || wind > 0);
-		double speed = (kind.glides() ? SOAR : FLY) * Mth.lerp(pace, FROM_REST, 1);
+		boolean lift = lift(p);
+		lifting = lift;
+		double speed = (!lift ? GLIDE : kind.glides() ? SOAR : FLY) * Mth.lerp(pace, FROM_REST, 1);
 		Vec3 f = Vec3.directionFromRotation(0, getYRot()), look = Vec3.directionFromRotation(p.getXRot(), getYRot());
 		double up = !lift ? SINK : climbing ? CLIMB : forward ? look.y * speed : HANG;
 		double ahead = forward ? (lift ? Math.hypot(look.x, look.z) : 1) * speed : 0;
@@ -329,10 +370,10 @@ public class Mount extends Mob {
 	@Override
 	protected Vec3 getPassengerAttachmentPoint(Entity rider, EntityDimensions size, float scale) {
 		if (getPassengers().indexOf(rider) > 0)   // the seat behind: no vault, they just climb up
-			return new Vec3(0, kind.seatY() * kind.scale() + 0.05, (kind.seatZ() * kind.scale() - BEHIND)).yRot(-getYRot() * Mth.DEG_TO_RAD);
+			return new Vec3(0, kind.seatY() * kind.scale() + 0.05 + sag, (kind.seatZ() * kind.scale() - BEHIND)).yRot(-getYRot() * Mth.DEG_TO_RAD);
 		float a = seated(), e = a * a * (3 - 2 * a);
 		double foot = rider.getVehicleAttachmentPoint(this).y, seat = kind.seatY() * kind.scale() + 0.1;
-		double y = Mth.lerp(e, foot, seat) + Math.sin(a * Math.PI) * OVER;
+		double y = Mth.lerp(e, foot, seat) + Math.sin(a * Math.PI) * OVER + sag;
 		return new Vec3((1 - e) * entityData.get(SIDE) * BESIDE, y, kind.seatZ() * kind.scale() * e).yRot(-getYRot() * Mth.DEG_TO_RAD);
 	}
 

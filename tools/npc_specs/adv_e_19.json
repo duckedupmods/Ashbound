@@ -1,0 +1,63 @@
+{
+ "id": "adv_e_19",
+ "seed": 4113019,
+ "recipe": "adventurer",
+ "role": "ranger",
+ "rank": "E",
+ "name": "Faelis Lumenvale",
+ "title": "E-rank Ranger",
+ "age": "adult",
+ "sex": "f",
+ "build": "average",
+ "hunch": 0,
+ "skin": "porcelain",
+ "hair": {
+  "style": "long",
+  "color": "ash_blonde"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "sharp",
+  "iris": "violet",
+  "brows": "thin",
+  "mouth": "smirk",
+  "blush": true,
+  "freckles": false,
+  "marks": [
+   "scar"
+  ],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "bracers",
+   "gloves"
+  ],
+  "colors": {
+   "top": "brown",
+   "bottom": "brown",
+   "accent": "forest",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": "bow_quiver",
+ "hip": "knife",
+ "prop": null,
+ "_filters": {
+  "rank": "E",
+  "role": "ranger"
+ },
+ "race": "elf",
+ "recipe_race": "elf",
+ "party": "The Thornbacks"
+}

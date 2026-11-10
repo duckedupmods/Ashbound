@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/twinfang.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.971,
-     -1.971,
+     -1.755,
+     -1.755,
      -0.0
     ],
     "scale": [
-     0.656,
-     0.656,
-     0.656
+     0.5066,
+     0.5066,
+     0.5066
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.971,
-     -1.971,
+     -1.755,
+     -1.755,
      -0.0
     ],
     "scale": [
-     0.656,
-     0.656,
-     0.656
+     0.5066,
+     0.5066,
+     0.5066
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.084,
-     -1.084,
+     -0.965,
+     -0.965,
      0
     ],
     "scale": [
-     0.3608,
-     0.3608,
-     0.3608
+     0.2787,
+     0.2787,
+     0.2787
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/twinfang"
+   }
+  }
+ }
 }

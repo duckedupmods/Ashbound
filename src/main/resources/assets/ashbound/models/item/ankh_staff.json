@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/ankh_staff.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.231,
-     -0.211,
-     0.006
+     -1.158,
+     -1.158,
+     0.0
     ],
     "scale": [
-     0.3639,
-     0.3639,
-     0.3639
+     0.2899,
+     0.2899,
+     0.2899
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.231,
-     -0.211,
-     0.006
+     -1.158,
+     -1.158,
+     0.0
     ],
     "scale": [
-     0.3639,
-     0.3639,
-     0.3639
+     0.2899,
+     0.2899,
+     0.2899
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.127,
-     -0.116,
+     -0.637,
+     -0.637,
      0
     ],
     "scale": [
-     0.2002,
-     0.2002,
-     0.2002
+     0.1594,
+     0.1594,
+     0.1594
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/ankh_staff"
+   }
+  }
+ }
 }

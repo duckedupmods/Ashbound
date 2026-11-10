@@ -1,0 +1,61 @@
+{
+ "id": "adv_b_49",
+ "seed": 4128887,
+ "recipe": "adventurer",
+ "role": "striker",
+ "rank": "B",
+ "name": "Lucan the Quiet",
+ "title": "B-rank Blade",
+ "age": "adult",
+ "sex": "m",
+ "build": "average",
+ "hunch": 0,
+ "skin": "deep",
+ "hair": {
+  "style": "topknot",
+  "color": "auburn"
+ },
+ "headwear": "bandana",
+ "beard": "stubble",
+ "face": {
+  "eye": "sharp",
+  "iris": "steel",
+  "brows": "stern",
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "mail",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "gloves",
+   "greaves",
+   "pauldrons",
+   "tabard"
+  ],
+  "colors": {
+   "top": "oxblood",
+   "bottom": "charcoal",
+   "accent": "teal",
+   "leather": "black"
+  }
+ },
+ "pose": {
+  "r": "fold",
+  "l": "fold"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": "greatsword",
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "B",
+  "role": "striker"
+ },
+ "party": "Silver Thistle"
+}

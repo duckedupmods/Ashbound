@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/concord.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.563,
-     -1.486,
-     -0.136
+     -1.209,
+     -1.209,
+     -0.0
     ],
     "scale": [
-     0.385,
-     0.385,
-     0.385
+     0.3321,
+     0.3321,
+     0.3321
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.563,
-     -1.486,
-     -0.136
+     -1.209,
+     -1.209,
+     -0.0
     ],
     "scale": [
-     0.385,
-     0.385,
-     0.385
+     0.3321,
+     0.3321,
+     0.3321
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.86,
-     -0.817,
+     -0.665,
+     -0.665,
      0
     ],
     "scale": [
-     0.2118,
-     0.2118,
-     0.2118
+     0.1827,
+     0.1827,
+     0.1827
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/concord"
+   }
+  }
+ }
 }

@@ -1,0 +1,62 @@
+{
+ "id": "adv_f_03",
+ "seed": 4113003,
+ "recipe": "adventurer",
+ "role": "striker",
+ "rank": "F",
+ "name": "Liesel Stroud",
+ "title": "F-rank Blade",
+ "age": "adult",
+ "sex": "f",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "weathered",
+ "hair": {
+  "style": "bob",
+  "color": "auburn"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "sharp",
+  "iris": "amber",
+  "brows": "soft",
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "patch_r",
+   "warpaint"
+  ],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "shirt",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "belt",
+   "strap"
+  ],
+  "colors": {
+   "top": "oxblood",
+   "bottom": "olive",
+   "accent": "mustard",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": "greatsword",
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "F",
+  "role": "striker"
+ },
+ "party": "The Mudlarks"
+}

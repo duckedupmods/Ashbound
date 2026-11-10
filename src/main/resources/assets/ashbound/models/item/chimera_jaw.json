@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/chimera_jaw.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.432,
-     -2.129,
-     -0.199
+     -2.607,
+     -2.607,
+     -0.0
     ],
     "scale": [
-     0.3208,
-     0.3208,
-     0.3208
+     0.3322,
+     0.3322,
+     0.3322
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.432,
-     -2.129,
-     -0.199
+     -2.607,
+     -2.607,
+     -0.0
     ],
     "scale": [
-     0.3208,
-     0.3208,
-     0.3208
+     0.3322,
+     0.3322,
+     0.3322
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.788,
-     -1.171,
+     -1.434,
+     -1.434,
      0
     ],
     "scale": [
-     0.1765,
-     0.1765,
-     0.1765
+     0.1827,
+     0.1827,
+     0.1827
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/chimera_jaw"
+   }
+  }
+ }
 }

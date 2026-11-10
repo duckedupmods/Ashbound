@@ -42,47 +42,58 @@
   [
    "minecraft:zombie",
    "minecraft:skeleton",
-   "minecraft:spider"
+   "minecraft:spider",
+   "ashbound:capguard"
   ],
   [
    "minecraft:zombie",
-   "minecraft:creeper",
+   "minecraft:husk",
    "minecraft:skeleton",
-   "minecraft:husk"
+   "ashbound:banner_hound",
+   "ashbound:barrow_wight"
   ],
   [
    "minecraft:drowned",
    "minecraft:witch",
-   "minecraft:creeper",
-   "minecraft:stray"
+   "minecraft:stray",
+   "ashbound:drowned_corsair",
+   "ashbound:jailer"
   ],
   [
    "minecraft:pillager",
-   "minecraft:phantom",
-   "ashbound:cinderhusk"
+   "ashbound:cinderhusk",
+   "ashbound:hoplite",
+   "ashbound:salt_legionary"
   ],
   [
-   "minecraft:enderman",
    "minecraft:pillager",
-   "minecraft:blaze"
+   "ashbound:hive_soldier",
+   "ashbound:hollow_knight",
+   "ashbound:ash_legionary"
   ],
   [
-   "minecraft:wither_skeleton",
    "minecraft:evoker",
-   "minecraft:enderman"
-  ],
-  [
-   "minecraft:wither_skeleton",
    "minecraft:ravager",
-   "minecraft:evoker"
+   "ashbound:void_sentinel",
+   "ashbound:ash_lictor"
   ],
   [
    "minecraft:ravager",
-   "minecraft:wither_skeleton"
+   "ashbound:siege_knight",
+   "ashbound:basalt_brute",
+   "ashbound:phase_blade"
   ],
   [
    "minecraft:ravager",
-   "minecraft:wither_skeleton"
+   "ashbound:siege_knight",
+   "ashbound:basalt_brute",
+   "ashbound:phase_blade"
+  ],
+  [
+   "minecraft:ravager",
+   "ashbound:siege_knight",
+   "ashbound:basalt_brute",
+   "ashbound:phase_blade"
   ]
  ],
  "list": [

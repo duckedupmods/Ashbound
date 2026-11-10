@@ -553,6 +553,7 @@ public final class Roads {
 					sign.setChanged();
 					level.sendBlockUpdated(at.above(2), sign.getBlockState(), sign.getBlockState(), Block.UPDATE_CLIENTS);
 				}
+				Bounties.roadSign(level, at.above(2));   // and a wanted poster on its post
 			}
 			case "lamp" -> {
 				set(level, at.above(), block("hearthstone_bricks"));

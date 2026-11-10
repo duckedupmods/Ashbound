@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "IBI",
+  "BDB",
+  "IBI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:spider_eye"
+  },
+  "B": {
+   "item": "minecraft:bone_block"
+  },
+  "D": {
+   "item": "minecraft:diamond"
+  }
+ },
+ "result": {
+  "id": "ashbound:rusted_stinger",
+  "count": 1
+ }
+}

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/obsidian_longbow.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.038,
-     -0.892,
-     0.183
+     0.76,
+     -0.578,
+     0.134
     ],
     "scale": [
-     1.0402,
-     1.0402,
-     1.0402
+     0.7713,
+     0.7713,
+     0.7713
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.038,
-     -0.892,
-     0.183
+     0.76,
+     -0.578,
+     0.134
     ],
     "scale": [
-     1.0402,
-     1.0402,
-     1.0402
+     0.7713,
+     0.7713,
+     0.7713
     ]
    },
    "ground": {
@@ -115,19 +115,26 @@
      0.0
     ],
     "translation": [
-     0.571,
-     -0.491,
+     0.418,
+     -0.318,
      0
     ],
     "scale": [
-     0.5721,
-     0.5721,
-     0.5721
+     0.4242,
+     0.4242,
+     0.4242
     ]
    }
   }
  },
- "perspectives": {},
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/obsidian_longbow"
+   }
+  }
+ },
  "overrides": [
   {
    "predicate": {

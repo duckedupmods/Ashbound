@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/eclipse_greatsword.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.747,
-     -2.336,
-     0.117
+     -2.438,
+     -2.438,
+     0.0
     ],
     "scale": [
-     0.3492,
-     0.3492,
-     0.3492
+     0.3299,
+     0.3299,
+     0.3299
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.747,
-     -2.336,
-     0.117
+     -2.438,
+     -2.438,
+     0.0
     ],
     "scale": [
-     0.3492,
-     0.3492,
-     0.3492
+     0.3299,
+     0.3299,
+     0.3299
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.511,
-     -1.285,
+     -1.341,
+     -1.341,
      0
     ],
     "scale": [
-     0.192,
-     0.192,
-     0.192
+     0.1814,
+     0.1814,
+     0.1814
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/eclipse_greatsword"
+   }
+  }
+ }
 }

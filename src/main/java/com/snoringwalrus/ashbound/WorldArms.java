@@ -174,16 +174,16 @@ public final class WorldArms {
 
 	/** rolls sized by tools/balance.py pass 5: one uncommon affix is worth 2-4% (docs/BALANCE.md power scale) */
 	private static final List<Affix> AFFIXES = List.of(
-			new Affix("Keen", Attributes.ATTACK_DAMAGE, AttributeModifier.Operation.ADD_MULTIPLIED_BASE, 0.04, 0.08, "melee"),
-			new Affix("Swift", Attributes.ATTACK_SPEED, AttributeModifier.Operation.ADD_MULTIPLIED_BASE, 0.03, 0.06, "melee"),
-			new Affix("Brutal", Attributes.ATTACK_DAMAGE, AttributeModifier.Operation.ADD_VALUE, 0.15, 0.35, "melee"),
+			new Affix("Keen", Attributes.ATTACK_DAMAGE, AttributeModifier.Operation.ADD_MULTIPLIED_BASE, 0.025, 0.045, "melee"),
+			new Affix("Swift", Attributes.ATTACK_SPEED, AttributeModifier.Operation.ADD_MULTIPLIED_BASE, 0.02, 0.04, "melee"),
+			new Affix("Brutal", Attributes.ATTACK_DAMAGE, AttributeModifier.Operation.ADD_VALUE, 0.35, 0.65, "melee"),
 			new Affix("Hale", Attributes.MAX_HEALTH, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, 0.025, 0.045, "any"),
-			new Affix("Fleet", Attributes.MOVEMENT_SPEED, AttributeModifier.Operation.ADD_MULTIPLIED_BASE, 0.015, 0.03, "any"),
-			new Affix("Warded", Attributes.ARMOR, AttributeModifier.Operation.ADD_VALUE, 0.3, 0.6, "any"),
-			new Affix("Steadfast", Attributes.KNOCKBACK_RESISTANCE, AttributeModifier.Operation.ADD_VALUE, 0.03, 0.06, "guard"),
-			new Affix("Tempered", Attributes.ARMOR_TOUGHNESS, AttributeModifier.Operation.ADD_VALUE, 0.4, 0.9, "guard"),
-			new Affix("Lucky", Attributes.LUCK, AttributeModifier.Operation.ADD_VALUE, 0.4, 0.8, "any"),
-			new Affix("Arcane", Spells.SPELL_POWER, AttributeModifier.Operation.ADD_MULTIPLIED_BASE, 0.04, 0.08, "staff"),
+			new Affix("Fleet", Attributes.MOVEMENT_SPEED, AttributeModifier.Operation.ADD_MULTIPLIED_BASE, 0.04, 0.06, "any"),
+			new Affix("Warded", Attributes.ARMOR, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, 0.03, 0.05, "any"),
+			new Affix("Steadfast", Attributes.KNOCKBACK_RESISTANCE, AttributeModifier.Operation.ADD_VALUE, 0.09, 0.15, "guard"),
+			new Affix("Tempered", Attributes.ARMOR_TOUGHNESS, AttributeModifier.Operation.ADD_VALUE, 1.1, 1.9, "guard"),
+			new Affix("Lucky", Attributes.LUCK, AttributeModifier.Operation.ADD_VALUE, 1.1, 1.7, "any"),
+			new Affix("Arcane", Spells.SPELL_POWER, AttributeModifier.Operation.ADD_MULTIPLIED_BASE, 0.025, 0.045, "staff"),
 			new Affix("Deep", Spells.MAX_MANA, AttributeModifier.Operation.ADD_VALUE, 2, 4, "staff"),
 			new Affix("Flowing", Spells.MANA_REGEN, AttributeModifier.Operation.ADD_MULTIPLIED_BASE, 0.03, 0.05, "staff"));
 
@@ -232,6 +232,7 @@ public final class WorldArms {
 		var inv = p.getInventory();
 		for (int i = 0; i < inv.getContainerSize(); i++) {
 			ItemStack s = inv.getItem(i);
+			Smithing.relevel(s);
 			Arm a = of(s);
 			if (a == null || identified(s)) continue;
 			roll(s, a, p.getRandom());
@@ -308,10 +309,6 @@ public final class WorldArms {
 		return null;
 	}
 
-	private static void spill(LivingEntity e, int luck, @org.jetbrains.annotations.Nullable Player owner) {
-		spill(e, pick(e.getRandom(), luck), owner);
-	}
-
 	/** owner: only they can pick it up (each player in a fight rolls their own) */
 	static void spill(LivingEntity e, Item it, @org.jetbrains.annotations.Nullable Player owner) {
 		if (it == null) return;
@@ -321,6 +318,9 @@ public final class WorldArms {
 		if (owner != null) ie.setTarget(owner.getUUID());
 		e.level().addFreshEntity(ie);
 	}
+
+	/** A piece of gear at the party's rank (Ranks.find), each player rolling their own: about .6 a clear a head, on top of what they forge. A vanilla zombie isn't a farm. */
+	private static final float FIND_BOSS = 0.35f, FIND_FOREMAN = 0.09f, FIND_ELITE = 0.07f, FIND_MONSTER = 0.006f, FIND_OTHER = 0.002f;
 
 	/** any monster now and then; ours (elites, foremen, bosses) more often */
 	private static void died(LivingDeathEvent e) {
@@ -337,16 +337,9 @@ public final class WorldArms {
 		near.addAll(Party.alongside(near, Party.SHARE));
 		for (Player p : near) {
 			Player own = near.size() > 1 ? p : null;
-			if (boss) {
-				if (r.nextFloat() < 0.15f) spill(d, 2, own);
-				if (r.nextFloat() < 0.07f) spill(d, pickGarb(r, 2), own);
-			} else if (foreman) {
-				if (r.nextFloat() < 0.06f) spill(d, 1, own);
-				if (r.nextFloat() < 0.03f) spill(d, pickGarb(r, 1), own);
-			} else if (elite) {
-				if (r.nextFloat() < 0.05f) spill(d, 1, own);
-				if (r.nextFloat() < 0.02f) spill(d, pickGarb(r, 1), own);
-			} else if (d instanceof Enemy && r.nextFloat() < 0.003f) spill(d, 0, own);
+			float odds = boss ? FIND_BOSS : foreman ? FIND_FOREMAN : elite ? FIND_ELITE : !(d instanceof Enemy) ? 0
+					: BuiltInRegistries.ENTITY_TYPE.getKey(d.getType()).getNamespace().equals(Ashbound.ID) ? FIND_MONSTER : FIND_OTHER;
+			if (p instanceof ServerPlayer sp && r.nextFloat() < odds) spill(d, Ranks.find(sp, r), own);
 		}
 	}
 
@@ -364,14 +357,12 @@ public final class WorldArms {
 		boolean stash = path.contains("chest") || ns.equals("kaisyn") && (path.startsWith("village/") || path.startsWith("outpost/"));
 		if ((ns.equals(Ashbound.ID) && !path.equals("chests/wayside")) || !stash || path.contains("entities/") || path.contains("archeology") || path.contains("archaeology")) return;
 		float chance = BIG_DUNGEONS.contains(ns) || path.contains("end_city") || path.contains("ancient_city") || path.contains("bastion")
-				|| path.contains("boss") || path.contains("treasure") ? 0.15f
-				: path.contains("village") || path.contains("house") || path.contains("tavern") ? 0.04f : 0.07f;
-		LootPool.Builder pool = LootPool.lootPool().setRolls(ConstantValue.exactly(1)).when(LootItemRandomChanceCondition.randomChance(chance));
-		for (Arm a : ARMS) {
-			Item it = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(Ashbound.ID, a.id()));
-			pool.add(LootItem.lootTableItem(it).setWeight(a.tier().weight));
-		}
-		e.getTable().addPool(pool.name("ashbound_world_arms").build());
+				|| path.contains("boss") || path.contains("treasure") ? 0.22f
+				: path.contains("shipwreck") || path.contains("underwater_ruin") || path.contains("ocean") ? 0.16f   // you dove for it
+				: path.contains("village") || path.contains("house") || path.contains("tavern") ? 0.06f : 0.1f;
+		// what's in it is rolled for whoever opens it, at their party's rank (Ranks.ChestFind)
+		e.getTable().addPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(net.minecraft.world.item.Items.STICK)
+				.apply(() -> new Ranks.ChestFind(chance))).name("ashbound_world_arms").build());
 		// the first gates' drops, so a chest on the road is worth a look to a new player too
 		if (!ns.equals(Ashbound.ID)) {
 			LootPool.Builder road = LootPool.lootPool().setRolls(ConstantValue.exactly(1)).when(LootItemRandomChanceCondition.randomChance(0.35f));
@@ -381,10 +372,5 @@ public final class WorldArms {
 								net.minecraft.world.level.storage.loot.providers.number.UniformGenerator.between(1, 4))));
 			e.getTable().addPool(road.name("ashbound_road").build());
 		}
-		if (GARB_ITEMS.isEmpty()) return;
-		// and a found armour piece, half as often
-		LootPool.Builder garb = LootPool.lootPool().setRolls(ConstantValue.exactly(1)).when(LootItemRandomChanceCondition.randomChance(chance * 0.5f));
-		for (Found f : GARB_ITEMS.values()) garb.add(LootItem.lootTableItem(f.item().get()).setWeight(f.garb().tier().weight));
-		e.getTable().addPool(garb.name("ashbound_world_armour").build());
 	}
 }

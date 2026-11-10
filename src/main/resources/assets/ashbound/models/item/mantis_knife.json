@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/mantis_knife.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.659,
-     -1.48,
-     0.051
+     -2.329,
+     -1.866,
+     0.132
     ],
     "scale": [
-     0.7154,
-     0.7154,
-     0.7154
+     0.7064,
+     0.7064,
+     0.7064
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.659,
-     -1.48,
-     0.051
+     -2.329,
+     -1.866,
+     0.132
     ],
     "scale": [
-     0.7154,
-     0.7154,
-     0.7154
+     0.7064,
+     0.7064,
+     0.7064
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.912,
-     -0.814,
+     -1.281,
+     -1.026,
      0
     ],
     "scale": [
-     0.3935,
-     0.3935,
-     0.3935
+     0.3885,
+     0.3885,
+     0.3885
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/mantis_knife"
+   }
+  }
+ }
 }

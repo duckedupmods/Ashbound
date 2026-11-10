@@ -1,0 +1,59 @@
+{
+ "id": "adv_e_13",
+ "seed": 4113013,
+ "recipe": "adventurer",
+ "role": "ranger",
+ "rank": "E",
+ "name": "Vela Gale",
+ "title": "E-rank Ranger",
+ "age": "adult",
+ "sex": "f",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "brown",
+ "hair": {
+  "style": "bob",
+  "color": "auburn"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "sharp",
+  "iris": "brown",
+  "brows": "thin",
+  "mouth": "flat",
+  "blush": false,
+  "freckles": true,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "bracers",
+   "gloves"
+  ],
+  "colors": {
+   "top": "grey",
+   "bottom": "black",
+   "accent": "ochre",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": "bow_quiver",
+ "hip": "daggers",
+ "prop": null,
+ "_filters": {
+  "rank": "E",
+  "role": "ranger"
+ },
+ "party": "Copper Bell Company"
+}

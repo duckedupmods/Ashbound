@@ -1,0 +1,59 @@
+{
+ "id": "adv_a_62",
+ "seed": 4120981,
+ "recipe": "adventurer",
+ "role": "white_mage",
+ "rank": "A",
+ "name": "Aud Half-Ear",
+ "title": "A-rank White Mage",
+ "age": "adult",
+ "sex": "f",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "fair",
+ "hair": {
+  "style": "bob",
+  "color": "dark_brown"
+ },
+ "headwear": "hood",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "brown",
+  "brows": "stern",
+  "mouth": "flat",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "cape",
+   "mantle"
+  ],
+  "colors": {
+   "top": "white",
+   "bottom": "cream",
+   "accent": "wine",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "book",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "A",
+  "role": "white_mage"
+ },
+ "party": "The Last Lanterns"
+}

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/burl_maul.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     0.13,
-     0.13,
-     -0.0
+     -0.635,
+     -0.747,
+     -0.032
     ],
     "scale": [
-     0.4595,
-     0.4595,
-     0.4595
+     0.3427,
+     0.3427,
+     0.3427
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     0.13,
-     0.13,
-     -0.0
+     -0.635,
+     -0.747,
+     -0.032
     ],
     "scale": [
-     0.4595,
-     0.4595,
-     0.4595
+     0.3427,
+     0.3427,
+     0.3427
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.072,
-     0.072,
+     -0.349,
+     -0.411,
      0
     ],
     "scale": [
-     0.2527,
-     0.2527,
-     0.2527
+     0.1885,
+     0.1885,
+     0.1885
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/burl_maul"
+   }
+  }
+ }
 }

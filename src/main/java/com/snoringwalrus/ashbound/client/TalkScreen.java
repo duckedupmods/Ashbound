@@ -1,5 +1,6 @@
 package com.snoringwalrus.ashbound.client;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.mojang.blaze3d.platform.InputConstants;
@@ -11,24 +12,30 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.FormattedText;
+import net.minecraft.network.chat.Style;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 /**
  * Talking to a townsperson, in the ash look: the world stays in view, an ash panel along the bottom with their name
  * on a plate over its edge, what they say typed out a few letters a tick (click or Space shows it all), your answers
- * as rows down its right side (click, or keys 1-9). Closing it (Esc) ends it.
+ * as rows down its right side (click, or keys 1-9). Closing it (Esc) ends it. The panel grows to fit what's said and the words sit
+ * in the middle of it; something too long for the window scrolls, following the typing.
  */
 public class TalkScreen extends Screen {
-	private static final int OPT = 18, OPT_GAP = 3;
+	private static final int OPT = 18, OPT_GAP = 3, LINE = 11, PARAGRAPH = 4, MAX_W = 600, TEXT_TOP = 12, TEXT_FOOT = 24, ROOM_ABOVE = 70;
+
+	/** A wrapped line, and any extra gap under it. */
+	private record Line(String text, int after) {}
 
 	private int entity;
 	private String name, title, text;
 	private List<String> options;
+	private List<Line> lines = List.of();
 	private float shown;
-	private int ticks;
+	private int ticks, textH, scroll;
 	private boolean sentClose;
 
 	public TalkScreen(Net.NpcTalk msg) {
@@ -45,6 +52,29 @@ public class TalkScreen extends Screen {
 		options = msg.options();
 		shown = 0;
 		ticks = 0;
+		scroll = 0;
+		wrap();
+	}
+
+	@Override
+	protected void init() {
+		wrap();
+	}
+
+	/** All of it, up front, so nothing moves about as it types. */
+	private void wrap() {
+		if (font == null) return;
+		List<Line> out = new ArrayList<>();
+		int tall = 0;
+		for (String para : text.split("\n", -1)) {
+			List<FormattedText> parts = font.getSplitter().splitLines(para, textW(), Style.EMPTY);
+			for (int i = 0; i < parts.size(); i++) out.add(new Line(parts.get(i).getString().stripTrailing(), i == parts.size() - 1 ? PARAGRAPH : 0));
+			if (parts.isEmpty()) out.add(new Line("", PARAGRAPH));
+		}
+		for (Line l : out) tall += LINE + l.after;
+		lines = out;
+		textH = tall - PARAGRAPH;
+		scroll = Mth.clamp(scroll, 0, Math.max(0, textH - textRoom()));
 	}
 
 	public int entity() {
@@ -54,15 +84,26 @@ public class TalkScreen extends Screen {
 	// ---------------------------------------------------------------- layout
 
 	private int boxW() {
-		return Math.min(width - 24, 520);
+		return Math.min(width - 24, MAX_W);
 	}
 
+	/** As wide as the longest answer, so short ones leave the words more room. */
 	private int answersW() {
-		return Math.min(200, boxW() * 2 / 5);
+		int most = 0;
+		for (String o : options) most = Math.max(most, font.width(o));
+		return Mth.clamp(most + 28, 110, Math.min(220, boxW() * 2 / 5));
+	}
+
+	private int textW() {
+		return boxW() - answersW() - 40;
 	}
 
 	private int boxH() {
-		return Math.max(84, 22 + options.size() * (OPT + OPT_GAP));
+		return Math.min(height - ROOM_ABOVE, Math.max(84, Math.max(22 + options.size() * (OPT + OPT_GAP), textH + TEXT_TOP + TEXT_FOOT)));
+	}
+
+	private int textRoom() {
+		return boxH() - TEXT_TOP - TEXT_FOOT;
 	}
 
 	private int boxX() {
@@ -105,9 +146,28 @@ public class TalkScreen extends Screen {
 		ticks++;
 		if (typing()) {
 			shown = Math.min(text.length(), shown + 1.8f);
+			scroll = Math.max(0, typedH() - textRoom());
 			// a soft tick of the pen now and then while it types
 			if (ticks % 3 == 0) Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.BOOK_PAGE_TURN, 1.8f, 0.06f));
 		}
+	}
+
+	/** How far down the typing has got. */
+	private int typedH() {
+		int left = Mth.floor(shown), down = 0;
+		for (Line l : lines) {
+			if (left <= 0) break;
+			down += LINE + l.after;
+			left -= l.text.length() + 1;
+		}
+		return down;
+	}
+
+	@Override
+	public boolean mouseScrolled(double mx, double my, double dx, double dy) {
+		if (typing()) return false;
+		scroll = Mth.clamp(scroll - (int) (dy * LINE * 2), 0, Math.max(0, textH - textRoom()));
+		return true;
 	}
 
 	@Override
@@ -173,25 +233,25 @@ public class TalkScreen extends Screen {
 		int x = boxX(), y = boxY(), w = boxW(), h = boxH();
 		// the name plate, a small panel of its own standing on the box's edge
 		Component nm = Component.literal(name.toUpperCase()).withStyle(ChatFormatting.BOLD);
-		int nw = Math.max(font.width(nm), font.width(title)) + 26;
+		int nw = Math.max(font.width(nm), font.width(title.toUpperCase())) + 30;   // the title is drawn in capitals, which are wider
 		int nh = title.isEmpty() ? 22 : 30;
 		AshUi.panel(g, x + 12, y - nh + 4, nw, nh);
 		g.drawString(font, nm, x + 25, y - nh + 11, AshUi.TEXT, true);
 		if (!title.isEmpty()) g.drawString(font, title.toUpperCase(), x + 25, y - nh + 21, AshUi.EMBER_LT, false);
 		AshUi.panel(g, x, y, w, h);
-		// what they say, typed out
-		int tw = w - answersW() - 40;
-		String part = text.substring(0, Mth.floor(shown));
-		int ty = y + 14;
-		for (String para : part.split("\n", -1)) {
-			for (FormattedCharSequence line : font.split(Component.literal(para), tw)) {
-				g.drawString(font, line, x + 14, ty, AshUi.TEXT, true);
-				ty += 11;
-			}
-			ty += 4;
+		// what they say, typed out, in the middle of the room there is
+		int mid = x + 14 + textW() / 2, top = y + TEXT_TOP, room = textRoom();
+		int ty = textH <= room ? top + (room - textH) / 2 : top - scroll, left = Mth.floor(shown);
+		g.enableScissor(x, top, x + w, top + room);
+		for (Line l : lines) {
+			int n = typing() ? Math.min(l.text.length(), left) : l.text.length();
+			if (n > 0) g.drawString(font, l.text.substring(0, n), mid - font.width(l.text) / 2, ty, AshUi.TEXT, true);
+			left -= l.text.length() + 1;
+			ty += LINE + l.after;
 		}
-		String hint = typing() ? "Space  show all     Esc  leave" : "1-" + Math.max(1, options.size()) + "  answer     Esc  leave";
-		g.drawString(font, hint, x + 14, y + h - 16, AshUi.DIM, false);
+		g.disableScissor();
+		String hint = typing() ? "Space  show all     Esc  leave" : (textH > room ? "Wheel  read on     " : "") + "1-" + Math.max(1, options.size()) + "  answer     Esc  leave";
+		g.drawString(font, hint, mid - font.width(hint) / 2, y + h - 16, AshUi.DIM, false);
 		// the line between the words and the answers
 		int lx = optX() - 8;
 		for (int i = y + 10; i < y + h - 10; i += 2) {

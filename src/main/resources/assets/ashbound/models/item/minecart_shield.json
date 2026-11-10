@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/minecart_shield.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.451,
-     2.624,
-     6.749
+     1.478,
+     3.675,
+     7.322
     ],
     "scale": [
-     0.5155,
-     0.5155,
-     0.5155
+     0.5386,
+     0.5386,
+     0.5386
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.451,
-     2.624,
-     6.749
+     1.478,
+     3.675,
+     7.322
     ],
     "scale": [
-     0.5155,
-     0.5155,
-     0.5155
+     0.5386,
+     0.5386,
+     0.5386
     ]
    },
    "ground": {
@@ -115,15 +115,23 @@
      0.0
     ],
     "translation": [
-     0.798,
-     1.443,
+     0.813,
+     2.021,
      0
     ],
     "scale": [
-     0.2836,
-     0.2836,
-     0.2836
+     0.2962,
+     0.2962,
+     0.2962
     ]
+   }
+  }
+ },
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/minecart_shield"
    }
   }
  },
@@ -134,6 +142,5 @@
    },
    "model": "ashbound:item/minecart_shield_blocking"
   }
- ],
- "perspectives": {}
+ ]
 }

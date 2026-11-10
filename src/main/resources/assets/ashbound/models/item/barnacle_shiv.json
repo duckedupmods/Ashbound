@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/barnacle_shiv.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.384,
-     -1.384,
-     0.0
+     -1.669,
+     -1.669,
+     -0.0
     ],
     "scale": [
-     0.6857,
-     0.6857,
-     0.6857
+     0.6942,
+     0.6942,
+     0.6942
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.384,
-     -1.384,
-     0.0
+     -1.669,
+     -1.669,
+     -0.0
     ],
     "scale": [
-     0.6857,
-     0.6857,
-     0.6857
+     0.6942,
+     0.6942,
+     0.6942
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.761,
-     -0.761,
+     -0.918,
+     -0.918,
      0
     ],
     "scale": [
-     0.3771,
-     0.3771,
-     0.3771
+     0.3818,
+     0.3818,
+     0.3818
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/barnacle_shiv"
+   }
+  }
+ }
 }

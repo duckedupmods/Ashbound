@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/executioners_claymore.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.374,
-     -2.362,
-     0.003
+     -1.997,
+     -1.997,
+     -0.0
     ],
     "scale": [
-     0.3709,
-     0.3709,
-     0.3709
+     0.2769,
+     0.2769,
+     0.2769
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.374,
-     -2.362,
-     0.003
+     -1.997,
+     -1.997,
+     -0.0
     ],
     "scale": [
-     0.3709,
-     0.3709,
-     0.3709
+     0.2769,
+     0.2769,
+     0.2769
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.306,
-     -1.299,
+     -1.098,
+     -1.098,
      0
     ],
     "scale": [
-     0.204,
-     0.204,
-     0.204
+     0.1523,
+     0.1523,
+     0.1523
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/executioners_claymore"
+   }
+  }
+ }
 }

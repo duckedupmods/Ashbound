@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/talon_knife.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.603,
-     -1.245,
-     0.102
+     -1.971,
+     -1.333,
+     0.182
     ],
     "scale": [
-     0.6659,
-     0.6659,
-     0.6659
+     0.6489,
+     0.6489,
+     0.6489
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.603,
-     -1.245,
-     0.102
+     -1.971,
+     -1.333,
+     0.182
     ],
     "scale": [
-     0.6659,
-     0.6659,
-     0.6659
+     0.6489,
+     0.6489,
+     0.6489
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.882,
-     -0.685,
+     -1.084,
+     -0.733,
      0
     ],
     "scale": [
-     0.3663,
-     0.3663,
-     0.3663
+     0.3569,
+     0.3569,
+     0.3569
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/talon_knife"
+   }
+  }
+ }
 }

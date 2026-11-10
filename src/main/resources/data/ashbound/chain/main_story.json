@@ -1,0 +1,323 @@
+[
+  {
+    "id": "act2_drowned_fire",
+    "title": "The Five Fires II: The Drowned Fire",
+    "type": "main",
+    "auto": true,
+    "after": "flag:cold_proved",
+    "rank": "C",
+    "coins": 400,
+    "points": 60,
+    "steps": [
+      {
+        "do": "talk",
+        "to": "kind:archmage",
+        "where": "capital",
+        "text": "The Cold Forge burns again. The Archmage at the Arcanum has sent for you.",
+        "reply": "You sent for me?",
+        "say": "I did. Sit. No, don't sit, there's no time. The Kiln-Father kept the first Fire. There were five, lit by the first smiths to hold the seal shut, and the gates are where the seal is cracking. The second Fire went under the sea when the coast drowned. To find it I need three things: the clapper of the Drowned Bell, a lens from the heart of a fallen star, and the harpoon of the thing that hunts the shallows. Bring them, and I'll show you where the Fire sleeps."
+      },
+      {
+        "do": "find",
+        "in": "dungeon:tide_chapel",
+        "item": "minecraft:bell",
+        "name": "Clapper of the Drowned Bell",
+        "lore": "It rings underwater. Only underwater.",
+        "where": "gate:E",
+        "text": "Silence the Drowned Bell in a Tide Chapel gate and take its clapper."
+      },
+      {
+        "do": "event",
+        "in": "meteor",
+        "item": "ashbound:shardglass",
+        "name": "Lens of a Fallen Star",
+        "lore": "Look through it at the sea, and the sea looks back.",
+        "text": "Be there when a falling gate-shard bursts, and take the lens from its heart."
+      },
+      {
+        "do": "find",
+        "in": "legend:old_harpoon",
+        "item": "minecraft:trident",
+        "name": "Old Harpoon's Harpoon",
+        "lore": "Barnacled. Heavier than it should be.",
+        "text": "Hunt Old Harpoon, the Legend of the coasts, and take its harpoon."
+      },
+      {
+        "do": "deliver",
+        "to": "kind:archmage",
+        "where": "capital",
+        "n": 1,
+        "item": "minecraft:trident",
+        "name": "Old Harpoon's Harpoon",
+        "text": "Bring the three pieces to the Archmage.",
+        "reply": "The clapper, the lens and the harpoon. All three.",
+        "say": "All three. (The Archmage lays them in a triangle on the table and looks through the lens. Something deep and blue moves in it.) There. Far out, past the shelf, where the old coast road goes under the water. The Second Fire. And curled round it, something that made a shell of every ship that sank there. (The Archmage presses a cold disc of sea-glass into your hand.) The Drowned Sigil. Take it to Veyra; she can send you where no ship can sail."
+      },
+      {
+        "do": "boss",
+        "what": "ashbound:wreck_mother",
+        "item": "ashbound:drowned_sigil",
+        "give": true,
+        "text": "Take the Drowned Sigil to Veyra in the guild hall, and kill the Wreck-Mother in the Graveyard of Ships."
+      },
+      {
+        "do": "talk",
+        "to": "kind:archmage",
+        "where": "capital",
+        "reply": "The Wreck-Mother is dead.",
+        "text": "Tell the Archmage the Wreck-Mother is dead.",
+        "say": "I know. I felt it from here: the Second Fire caught the moment she let go of it. Two Fires burn again. (The Archmage turns the lens over.) The third won't be under anything. It's up in the ash itself, in the grey that comes down at night. Rest, while you can."
+      }
+    ]
+  },
+  {
+    "id": "act3_ash_in_the_wind",
+    "title": "The Five Fires III: Ash in the Wind",
+    "type": "main",
+    "auto": true,
+    "after": "flag:ch:act2_drowned_fire",
+    "rank": "B",
+    "coins": 600,
+    "points": 90,
+    "steps": [
+      {
+        "do": "talk",
+        "to": "kind:archmage",
+        "where": "capital",
+        "reply": "You said the third Fire is in the ash.",
+        "text": "The Archmage has worked out where the third Fire went.",
+        "say": "I did. Every ashfall night, something walks in front of the grey. The things that come down in the ash follow it the way sheep follow a bell. The old smiths called it the Shepherd, and it carries the third Fire inside it like a coal in a lantern. To reach it I need a lantern of my own: five ash-marks from the things that walk in the ash, a glass from a gate storm's eye, the escapement out of the Grand Horologe to keep time in the grey, and the Jarl's horn from Rimeholt, to call across it. Bring me those."
+      },
+      {
+        "do": "event",
+        "in": "ashfall",
+        "chance": 0.2,
+        "n": 5,
+        "item": "minecraft:gunpowder",
+        "name": "Ash-Mark",
+        "lore": "Grey grit that won't blow away. It's warm.",
+        "text": "On ashfall nights, slay what walks in the ash and gather five Ash-Marks."
+      },
+      {
+        "do": "event",
+        "in": "storm",
+        "item": "minecraft:glass_pane",
+        "name": "Eye-Glass of the Storm",
+        "lore": "The storm's last thought, frozen.",
+        "text": "Survive a gate storm to its end and take the glass from its eye."
+      },
+      {
+        "do": "find",
+        "in": "kill:ashbound:grand_horologe",
+        "item": "minecraft:clock",
+        "name": "The Horologe's Escapement",
+        "lore": "Still ticking. Faster when the ash is near.",
+        "where": "structure:ashbound:clockwork_spire",
+        "text": "Climb the Clockwork Spire, stop the Grand Horologe, and take its escapement."
+      },
+      {
+        "do": "find",
+        "in": "kill:ashbound:jarl_hrimgar",
+        "item": "minecraft:goat_horn",
+        "name": "The Jarl's Horn",
+        "lore": "Blow it, and the snow listens.",
+        "where": "structure:ashbound:rimeholt",
+        "text": "Go up to Rimeholt, bring down Jarl Hrimgar, and take his horn."
+      },
+      {
+        "do": "deliver",
+        "to": "kind:archmage",
+        "where": "capital",
+        "item": "minecraft:goat_horn",
+        "name": "The Jarl's Horn",
+        "text": "Bring everything to the Archmage.",
+        "reply": "The marks, the glass, the escapement and the horn.",
+        "say": "(The Archmage sets the escapement ticking inside the storm-glass, packs the ash-marks round it and sounds the horn once, softly. The glass fills with grey, and somewhere in the grey a bell answers.) There it is. Here: the Ashen Sigil. Veyra can send you into the Fold, where the Shepherd keeps what it takes. Bring the third Fire home."
+      },
+      {
+        "do": "boss",
+        "what": "ashbound:ash_shepherd",
+        "item": "ashbound:ashen_sigil",
+        "give": true,
+        "text": "Take the Ashen Sigil to Veyra in the guild hall, and kill the Ash Shepherd in the Grey Fold."
+      },
+      {
+        "do": "talk",
+        "to": "kind:archmage",
+        "where": "capital",
+        "reply": "The Shepherd's gone. Its bell's quiet.",
+        "text": "Tell the Archmage the Ash Shepherd is dead.",
+        "say": "Three Fires. (The Archmage looks very tired, and very pleased.) The last two weren't hidden in the world at all. They were carried out of it, up past the sky. I can't follow them there. But I know someone who keeps doors to places that aren't anywhere. Go and see Veyra."
+      }
+    ]
+  },
+  {
+    "id": "act4_mages_road",
+    "title": "The Five Fires IV: The Mage's Road",
+    "type": "main",
+    "auto": true,
+    "after": "flag:ch:act3_ash_in_the_wind",
+    "rank": "A",
+    "coins": 1200,
+    "points": 160,
+    "steps": [
+      {
+        "do": "talk",
+        "to": "kind:veyra",
+        "where": "capital",
+        "reply": "The Archmage sent me. The last Fires were taken past the sky.",
+        "text": "The Archmage has sent you to Veyra, in the guild hall.",
+        "say": "Past the sky. Yes. (Veyra doesn't look surprised.) I keep doors to places that aren't anywhere: the Ring is only the nearest. Further out there are three more, the Astral Rings, and in each one sits a thing that came down and took a star-ember from the Fires and went back up with it. I can open their doors, but each door wants a key from this world: something the strongest things in the gates have kept close. The Countess's ring first. Bloodmoon Court."
+      },
+      {
+        "do": "find",
+        "in": "dungeon:bloodmoon_court",
+        "item": "minecraft:gold_nugget",
+        "name": "The Countess's Ring",
+        "lore": "A red stone that turns to follow the moon.",
+        "where": "gate:A",
+        "text": "Kill Countess Vael in a Bloodmoon Court gate and take her ring."
+      },
+      {
+        "do": "deliver",
+        "to": "kind:veyra",
+        "where": "capital",
+        "item": "minecraft:gold_nugget",
+        "name": "The Countess's Ring",
+        "reply": "The Countess's ring.",
+        "text": "Bring the Countess's ring to Veyra.",
+        "say": "(Veyra closes her hand round it, and when she opens it there's a sigil there instead, black marble ringed in cold gold.) The Moth's Ring. It's drawn to light. So are you, I think. Go when you're ready."
+      },
+      {
+        "do": "boss",
+        "what": "ashbound:nebula_moth",
+        "item": "ashbound:sigil_moth",
+        "give": true,
+        "text": "Ask Veyra to open the Moth's Ring, and kill the Nebula Moth."
+      },
+      {
+        "do": "find",
+        "in": "dungeon:obsidian_labyrinth",
+        "item": "minecraft:goat_horn",
+        "name": "The Minotaur's Horn",
+        "lore": "Black glass, and warm.",
+        "where": "gate:A",
+        "text": "Kill the Minotaur in an Obsidian Labyrinth gate and take its horn."
+      },
+      {
+        "do": "deliver",
+        "to": "kind:veyra",
+        "where": "capital",
+        "item": "minecraft:goat_horn",
+        "name": "The Minotaur's Horn",
+        "reply": "The Minotaur's horn.",
+        "text": "Bring the Minotaur's horn to Veyra.",
+        "say": "The Knight's Ring. Halcyr was a man once, they say, before he climbed into the sky to be a constellation. He won't remember. Don't remind him."
+      },
+      {
+        "do": "boss",
+        "what": "ashbound:constellation_knight",
+        "item": "ashbound:sigil_knight",
+        "give": true,
+        "text": "Ask Veyra to open the Knight's Ring, and kill Halcyr."
+      },
+      {
+        "do": "find",
+        "in": "dungeon:abyssal_lighthouse",
+        "item": "minecraft:lantern",
+        "name": "The Keeper's Lamp",
+        "lore": "Its light points the way home, wherever home is.",
+        "where": "gate:S",
+        "text": "Kill the Keeper in an Abyssal Lighthouse gate and take its lamp."
+      },
+      {
+        "do": "deliver",
+        "to": "kind:veyra",
+        "where": "capital",
+        "item": "minecraft:lantern",
+        "name": "The Keeper's Lamp",
+        "reply": "The Keeper's lamp.",
+        "text": "Bring the Keeper's lamp to Veyra.",
+        "say": "The last one. The Magus's Ring, where the planets turn. Whatever sits at their middle took the oldest ember of all. Bring it back."
+      },
+      {
+        "do": "boss",
+        "what": "ashbound:orrery_magus",
+        "item": "ashbound:sigil_magus",
+        "give": true,
+        "text": "Ask Veyra to open the Magus's Ring, and kill the Orrery Magus."
+      },
+      {
+        "do": "talk",
+        "to": "kind:veyra",
+        "where": "capital",
+        "reply": "Three star-embers. The Fires can be lit.",
+        "text": "Bring the three star-embers back to Veyra.",
+        "say": "Five Fires. (For once, Veyra smiles.) And now somebody very important wants to meet you. A rider came from the keep this morning, with the King's own seal. Go up to the Lord's Keep. Don't keep him waiting; I don't think he has long."
+      }
+    ]
+  },
+  {
+    "id": "act5_crown_gate",
+    "title": "The Five Fires V: The Crown Gate",
+    "type": "main",
+    "auto": true,
+    "after": "flag:ch:act4_mages_road",
+    "rank": "S",
+    "coins": 3000,
+    "points": 400,
+    "items": [
+      "ashbound:shardglass 8"
+    ],
+    "steps": [
+      {
+        "do": "talk",
+        "to": "kind:king",
+        "where": "at:-72,-166",
+        "reply": "You sent for me, Your Majesty.",
+        "text": "The King has sent for you. Go up to the Lord's Keep.",
+        "say": "I did. Sit. (He doesn't, himself; he walks to the window.) Everyone knows the story. The first smiths lit five Fires to seal the gates, and the first of them, the Founder, became the first king, and my family has kept the city ever since. Here is the part nobody knows. The Founder didn't light the Fires to keep the gates shut. He found the oldest crack in the world, under this hill, and he went into it, because there was power on the other side and he wanted it. The others lit the Fires to shut him in. Every crack that's opened since, every gate, every storm, every night of ash: that's him, pushing. And now that you've lit the Fires again, he's awake."
+      },
+      {
+        "do": "choice",
+        "to": "kind:king",
+        "where": "at:-72,-166",
+        "reply": "Why tell me now?",
+        "text": "Hear the King out.",
+        "say": "Because my family kept his secret for three hundred years, and kept his crown, and I'm the last of us. Because there's a door under this keep that only my blood can open, and behind it is the man who made every monster you've ever killed. Will you go through it?",
+        "choices": [
+          {
+            "text": "For the people he's hurt.",
+            "flag": "people",
+            "say": "Then go for them. I'll have their names read in the square when you come back."
+          },
+          {
+            "text": "For you, Your Majesty.",
+            "flag": "king",
+            "say": "For me. (He laughs, a little.) Nobody's done anything for me in a long time. Thank you."
+          },
+          {
+            "text": "For what's on the other side.",
+            "flag": "power",
+            "say": "(He looks at you for a long moment.) That's what he said, too. Be careful you come back out."
+          }
+        ]
+      },
+      {
+        "do": "boss",
+        "what": "ashbound:founder_king",
+        "item": "ashbound:crown_key",
+        "give": true,
+        "text": "The King has given you the key. Ask him to open the Crown Gate, and end the Founder-King."
+      },
+      {
+        "do": "talk",
+        "to": "kind:king",
+        "where": "at:-72,-166",
+        "reply": "It's done. The Founder-King is dead.",
+        "text": "Go back to the King.",
+        "say": "I felt it. The whole keep did; every bell in the city rang by itself. (He sits down at last.) The gates won't stop opening; there's too much crack in the world for that. But they're only gates now, not a prison door with something behind it. Highmourn will remember who did this. So will I."
+      }
+    ]
+  }
+]

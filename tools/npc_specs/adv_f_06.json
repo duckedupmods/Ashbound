@@ -1,0 +1,60 @@
+{
+ "id": "adv_f_06",
+ "seed": 4113006,
+ "recipe": "adventurer",
+ "role": "lancer",
+ "rank": "F",
+ "name": "Elrian Thistledown",
+ "title": "F-rank Lancer",
+ "age": "adult",
+ "sex": "m",
+ "build": "average",
+ "hunch": 0,
+ "skin": "olive",
+ "hair": {
+  "style": "ponytail",
+  "color": "copper"
+ },
+ "headwear": "helm",
+ "beard": null,
+ "face": {
+  "eye": "sharp",
+  "iris": "green",
+  "brows": "worried",
+  "mouth": "smile",
+  "blush": true,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "gambeson",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "belt"
+  ],
+  "colors": {
+   "top": "brown",
+   "bottom": "black",
+   "accent": "rust",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "spear",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "F",
+  "role": "lancer"
+ },
+ "race": "elf",
+ "recipe_race": "elf",
+ "party": "Lantern Hounds"
+}

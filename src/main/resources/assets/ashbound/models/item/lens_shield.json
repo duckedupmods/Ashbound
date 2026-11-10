@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/lens_shield.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.618,
-     3.676,
-     7.712
+     1.645,
+     3.126,
+     7.6
     ],
     "scale": [
-     0.5774,
-     0.5774,
-     0.5774
+     0.5797,
+     0.5797,
+     0.5797
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.618,
-     3.676,
-     7.712
+     1.645,
+     3.126,
+     7.6
     ],
     "scale": [
-     0.5774,
-     0.5774,
-     0.5774
+     0.5797,
+     0.5797,
+     0.5797
     ]
    },
    "ground": {
@@ -115,15 +115,23 @@
      0.0
     ],
     "translation": [
-     0.89,
-     2.022,
+     0.905,
+     1.719,
      0
     ],
     "scale": [
-     0.3176,
-     0.3176,
-     0.3176
+     0.3188,
+     0.3188,
+     0.3188
     ]
+   }
+  }
+ },
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/lens_shield"
    }
   }
  },
@@ -134,6 +142,5 @@
    },
    "model": "ashbound:item/lens_shield_blocking"
   }
- ],
- "perspectives": {}
+ ]
 }

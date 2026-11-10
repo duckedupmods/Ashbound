@@ -36,6 +36,12 @@ public final class CurioKeys {
 	/** Who it's on; the party HUD marks them. */
 	public static String healTarget = "";
 
+	/** Lock-on for the party: Epic Fight's own key finds only monsters (mixin/LockOnMixin), this one only your party. */
+	public static final KeyMapping LOCK_PARTY = new KeyMapping("key.ashbound.lock_party", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_COMMA, "key.categories.ashbound");
+	public static final KeyMapping PARTY = new KeyMapping("key.ashbound.party", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_PERIOD, "key.categories.ashbound");
+	/** Who lock-on is looking for right now. */
+	public static boolean partyLock;
+
 	public static final KeyMapping JOURNAL = new KeyMapping("key.ashbound.journal", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_J,
 			"key.categories.ashbound");
 
@@ -62,6 +68,7 @@ public final class CurioKeys {
 	public static void skillHud(net.neoforged.bus.api.IEventBus bus) {
 		SkillHud.hooks(bus);
 		SkillFx.hooks(bus);
+		FoodHud.hooks(bus);
 	}
 
 	private static boolean jumpWas, jumped;
@@ -70,6 +77,8 @@ public final class CurioKeys {
 		e.register(SKILL);
 		e.register(JOURNAL);
 		e.register(HEAL_TARGET);
+		e.register(LOCK_PARTY);
+		e.register(PARTY);
 		e.register(POWER);
 		e.register(MOUNT);
 		e.register(BAG);
@@ -85,7 +94,7 @@ public final class CurioKeys {
 		NeoForge.EVENT_BUS.addListener((ClientPlayerNetworkEvent.LoggingIn e) -> Minecraft.getInstance().options.setCameraType(CameraType.THIRD_PERSON_BACK));
 	}
 
-	private static final String KEYS_DONE = "ashbound-keys-2.done";
+	private static final String KEYS_DONE = "ashbound-keys-3.done";
 	/** How far you can pick someone by looking at them, and how true: {@link com.snoringwalrus.ashbound.Spells} reaches as far. */
 	private static final double PICK_REACH = 32, PICK_AIM = 0.985;
 	private static boolean keysChecked;
@@ -99,7 +108,10 @@ public final class CurioKeys {
 		// Epic Fight's lock-on and the Curios screen both sit on G out of the box
 		var lock = yesman.epicfight.client.input.EpicFightKeyMappings.LOCK_ON;
 		if (lock.same(HEAL_TARGET)) mc.options.setKey(lock, InputConstants.Type.KEYSYM.getOrCreate(GLFW.GLFW_KEY_O));
-		for (KeyMapping mine : java.util.List.of(SLOTS[1], SLOTS[2], SLOTS[3], FORM, SKILLS, HEAL_TARGET))
+		// and Iris's reload on our skill key, its pack list on the lock-on
+		for (KeyMapping k : mc.options.keyMappings)
+			if (k.getName().startsWith("iris.keybind.") && (k.same(SKILL) || k.same(lock))) mc.options.setKey(k, InputConstants.UNKNOWN);
+		for (KeyMapping mine : java.util.List.of(SLOTS[1], SLOTS[2], SLOTS[3], FORM, SKILLS, HEAL_TARGET, LOCK_PARTY))
 			for (KeyMapping k : mc.options.keyMappings)
 				if (k != mine && !k.isUnbound() && k.same(mine) && !k.getCategory().equals(mine.getCategory())) mc.options.setKey(k, InputConstants.UNKNOWN);
 		KeyMapping.resetMapping();
@@ -152,6 +164,20 @@ public final class CurioKeys {
 		p.displayClientMessage(net.minecraft.network.chat.Component.literal(healTarget.isEmpty() ? "Heal target: none" : "Heal target: " + healTarget), true);
 	}
 
+	/** On to whichever of the party you're facing, and off again. Off a monster, it goes straight over. */
+	private static void lockParty(LocalPlayer p) {
+		var camera = yesman.epicfight.api.client.camera.EpicFightCameraAPI.getInstance();
+		boolean locked = camera.isLockingOnTarget(), off = locked && partyLock;
+		if (locked) camera.setLockOn(false);
+		partyLock = !off;
+		if (off) return;
+		camera.setLockOn(true);
+		if (!camera.isLockingOnTarget()) {
+			partyLock = false;
+			p.displayClientMessage(net.minecraft.network.chat.Component.literal(Net.clientParty.isEmpty() ? "You're not in a party" : "No one from your party in sight"), true);
+		}
+	}
+
 	private static boolean stillHere(LocalPlayer p) {
 		return Net.clientParty.stream().anyMatch(m -> m.name().equals(healTarget)) || p.clientLevel.players().stream().anyMatch(o -> o.getName().getString().equals(healTarget));
 	}
@@ -164,6 +190,9 @@ public final class CurioKeys {
 		while (PING.consumeClick()) Pings.send();
 		while (BAG.consumeClick()) PacketDistributor.sendToServer(new Net.BagAct(com.snoringwalrus.ashbound.Bag.OPEN, net.minecraft.world.item.ItemStack.EMPTY));
 		while (HEAL_TARGET.consumeClick()) stepHealTarget(p);
+		while (LOCK_PARTY.consumeClick()) lockParty(p);
+		// let go of them, and the lock-on key's back to monsters
+		if (partyLock && !yesman.epicfight.api.client.camera.EpicFightCameraAPI.getInstance().isLockingOnTarget()) partyLock = false;
 		// they've gone
 		if (!healTarget.isEmpty() && !stillHere(p)) setHealTarget("");
 		while (POWER.consumeClick()) PacketDistributor.sendToServer(new Net.CurioKey(p.isShiftKeyDown() ? 2 : 0));
@@ -182,8 +211,9 @@ public final class CurioKeys {
 			else PacketDistributor.sendToServer(new Net.CurioKey(Net.MOUNT));
 		}
 		while (JOURNAL.consumeClick()) if (mc.screen == null) QuestScreen.open();
+		while (PARTY.consumeClick()) if (mc.screen == null) PartyScreen.open();
 		boolean jump = mc.options.keyJump.isDown();
-		if (p.onGround() || p.isInWater() || p.getAbilities().flying) jumped = false;
+		if (p.onGround() || p.isInWater() || p.getAbilities().flying || p.isPassenger()) jumped = false;
 		else if (wears(p, "gryphon_plume")) {
 			if (jump && !jumpWas && !jumped && p.tickCount > 5) {
 				Vec3 v = p.getDeltaMovement();

@@ -1,0 +1,61 @@
+{
+ "id": "adv_b_53",
+ "seed": 4144729,
+ "recipe": "adventurer",
+ "role": "white_mage",
+ "rank": "B",
+ "name": "Ivo Corrin",
+ "title": "B-rank White Mage",
+ "age": "teen",
+ "sex": "m",
+ "build": "average",
+ "hunch": 0,
+ "skin": "fair",
+ "hair": {
+  "style": "shaggy",
+  "color": "auburn"
+ },
+ "headwear": "hood",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "green",
+  "brows": "stern",
+  "mouth": "flat",
+  "blush": true,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "bracers",
+   "mantle",
+   "sash",
+   "vials"
+  ],
+  "colors": {
+   "top": "white",
+   "bottom": "cream",
+   "accent": "plum",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "staff",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "B",
+  "role": "white_mage"
+ },
+ "party": "The Ashen Vow"
+}

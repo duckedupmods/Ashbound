@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/solar_aegis.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.525,
-     3.38,
-     6.976
+     1.124,
+     2.548,
+     5.704
     ],
     "scale": [
-     0.5283,
-     0.5283,
-     0.5283
+     0.4204,
+     0.4204,
+     0.4204
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.525,
-     3.38,
-     6.976
+     1.124,
+     2.548,
+     5.704
     ],
     "scale": [
-     0.5283,
-     0.5283,
-     0.5283
+     0.4204,
+     0.4204,
+     0.4204
     ]
    },
    "ground": {
@@ -115,15 +115,23 @@
      0.0
     ],
     "translation": [
-     0.839,
-     1.859,
+     0.618,
+     1.401,
      0
     ],
     "scale": [
-     0.2905,
-     0.2905,
-     0.2905
+     0.2312,
+     0.2312,
+     0.2312
     ]
+   }
+  }
+ },
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/solar_aegis"
    }
   }
  },
@@ -134,6 +142,5 @@
    },
    "model": "ashbound:item/solar_aegis_blocking"
   }
- ],
- "perspectives": {}
+ ]
 }

@@ -1,0 +1,52 @@
+{
+ "name": "Hesta Kell",
+ "age": "adult",
+ "sex": "f",
+ "skin": "tan",
+ "build": "broad",
+ "hair": {
+  "style": "ponytail",
+  "color": "auburn"
+ },
+ "headwear": "goggles",
+ "beard": null,
+ "face": {
+  "eye": "sharp",
+  "iris": "amber",
+  "brows": "stern",
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "soot"
+  ],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "shirt",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "leather_apron",
+   "gloves",
+   "belt"
+  ],
+  "colors": {
+   "top": "grey",
+   "bottom": "brown",
+   "accent": "charcoal",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "hammer",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "role": "smith",
+ "id": "smith"
+}

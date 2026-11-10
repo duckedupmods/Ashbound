@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/drill_lance.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.442,
-     -0.442,
-     -0.0
+     -1.085,
+     -0.223,
+     0.246
     ],
     "scale": [
-     0.3052,
-     0.3052,
-     0.3052
+     0.2885,
+     0.2885,
+     0.2885
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.442,
-     -0.442,
-     -0.0
+     -1.085,
+     -0.223,
+     0.246
     ],
     "scale": [
-     0.3052,
-     0.3052,
-     0.3052
+     0.2885,
+     0.2885,
+     0.2885
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.243,
-     -0.243,
+     -0.597,
+     -0.123,
      0
     ],
     "scale": [
-     0.1679,
-     0.1679,
-     0.1679
+     0.1587,
+     0.1587,
+     0.1587
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/drill_lance"
+   }
+  }
+ }
 }

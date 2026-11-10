@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/murder.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.47,
-     -0.454,
-     -0.55
+     -1.23,
+     -1.02,
+     0.072
     ],
     "scale": [
-     0.3834,
-     0.3834,
-     0.3834
+     0.2307,
+     0.2307,
+     0.2307
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.47,
-     -0.454,
-     -0.55
+     -1.23,
+     -1.02,
+     0.072
     ],
     "scale": [
-     0.3834,
-     0.3834,
-     0.3834
+     0.2307,
+     0.2307,
+     0.2307
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.808,
-     -0.25,
+     -0.676,
+     -0.561,
      0
     ],
     "scale": [
-     0.2109,
-     0.2109,
-     0.2109
+     0.1269,
+     0.1269,
+     0.1269
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/murder"
+   }
+  }
+ }
 }

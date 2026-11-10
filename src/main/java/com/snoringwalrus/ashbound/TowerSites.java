@@ -368,7 +368,6 @@ public final class TowerSites {
 		if (floor != null && floor >= 0) {
 			mob.addTag("ashbound_tower_key:" + floor);
 			mob.setCustomName(Component.literal("Foreman of the " + ordinal(floor + 1) + " Floor"));
-			mob.setGlowingTag(true);
 			var hp = mob.getAttribute(Attributes.MAX_HEALTH);
 			if (hp != null) {
 				hp.setBaseValue(Balance.foreman(s.kind(), hp.getBaseValue()));

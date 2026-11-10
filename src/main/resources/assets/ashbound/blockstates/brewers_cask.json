@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "ashbound:block/brewers_cask"
+  },
+  "facing=east": {
+   "model": "ashbound:block/brewers_cask",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "ashbound:block/brewers_cask",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "ashbound:block/brewers_cask",
+   "y": 270
+  }
+ }
+}

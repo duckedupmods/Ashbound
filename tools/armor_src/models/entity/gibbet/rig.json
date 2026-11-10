@@ -1,0 +1,237 @@
+{
+ "ground": 0.0,
+ "bones": [
+  {
+   "name": "helm_head",
+   "parent": null,
+   "pivot": [
+    0.0,
+    1.5,
+    0.0
+   ],
+   "offset": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rest": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "mesh": true
+  },
+  {
+   "name": "chest_body",
+   "parent": null,
+   "pivot": [
+    0.0,
+    1.5,
+    0.0
+   ],
+   "offset": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rest": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "mesh": true
+  },
+  {
+   "name": "chest_arm_r",
+   "parent": null,
+   "pivot": [
+    -0.3125,
+    1.375,
+    0.0
+   ],
+   "offset": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rest": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "mesh": true
+  },
+  {
+   "name": "chest_arm_l",
+   "parent": null,
+   "pivot": [
+    0.3125,
+    1.375,
+    0.0
+   ],
+   "offset": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rest": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "mesh": true
+  },
+  {
+   "name": "legs_leg_r",
+   "parent": null,
+   "pivot": [
+    -0.11875,
+    0.75,
+    0.0
+   ],
+   "offset": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rest": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "mesh": true
+  },
+  {
+   "name": "legs_leg_l",
+   "parent": null,
+   "pivot": [
+    0.11875,
+    0.75,
+    0.0
+   ],
+   "offset": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rest": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "mesh": true
+  },
+  {
+   "name": "boots_leg_r",
+   "parent": null,
+   "pivot": [
+    -0.11875,
+    0.75,
+    0.0
+   ],
+   "offset": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rest": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "mesh": true
+  },
+  {
+   "name": "boots_leg_l",
+   "parent": null,
+   "pivot": [
+    0.11875,
+    0.75,
+    0.0
+   ],
+   "offset": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rest": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "mesh": true
+  },
+  {
+   "name": "chest_back",
+   "parent": null,
+   "pivot": [
+    0.0,
+    1.5,
+    0.0
+   ],
+   "offset": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rest": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "mesh": true
+  },
+  {
+   "name": "chest_shoulder_r",
+   "parent": null,
+   "pivot": [
+    -0.3125,
+    1.375,
+    0.0
+   ],
+   "offset": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rest": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "mesh": false
+  },
+  {
+   "name": "chest_shoulder_l",
+   "parent": null,
+   "pivot": [
+    0.3125,
+    1.375,
+    0.0
+   ],
+   "offset": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rest": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "mesh": true
+  }
+ ],
+ "points": {}
+}

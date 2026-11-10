@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/two_hearted.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -3.164,
-     -3.164,
+     -2.271,
+     -2.271,
      -0.0
     ],
     "scale": [
-     0.3254,
-     0.3254,
-     0.3254
+     0.2868,
+     0.2868,
+     0.2868
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -3.164,
-     -3.164,
+     -2.271,
+     -2.271,
      -0.0
     ],
     "scale": [
-     0.3254,
-     0.3254,
-     0.3254
+     0.2868,
+     0.2868,
+     0.2868
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.74,
-     -1.74,
+     -1.249,
+     -1.249,
      0
     ],
     "scale": [
-     0.179,
-     0.179,
-     0.179
+     0.1577,
+     0.1577,
+     0.1577
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/two_hearted"
+   }
+  }
+ }
 }

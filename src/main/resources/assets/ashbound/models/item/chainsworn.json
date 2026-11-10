@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/chainsworn.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.657,
-     -2.657,
+     -2.539,
+     -2.539,
      -0.0
     ],
     "scale": [
-     0.3914,
-     0.3914,
-     0.3914
+     0.3702,
+     0.3702,
+     0.3702
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.657,
-     -2.657,
+     -2.539,
+     -2.539,
      -0.0
     ],
     "scale": [
-     0.3914,
-     0.3914,
-     0.3914
+     0.3702,
+     0.3702,
+     0.3702
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.461,
-     -1.461,
+     -1.396,
+     -1.396,
      0
     ],
     "scale": [
-     0.2153,
-     0.2153,
-     0.2153
+     0.2036,
+     0.2036,
+     0.2036
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/chainsworn"
+   }
+  }
+ }
 }

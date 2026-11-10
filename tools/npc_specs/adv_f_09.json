@@ -1,0 +1,59 @@
+{
+ "id": "adv_f_09",
+ "seed": 4113009,
+ "recipe": "adventurer",
+ "role": "tank",
+ "rank": "F",
+ "name": "Wendel Ember",
+ "title": "F-rank Shieldbearer",
+ "age": "adult",
+ "sex": "m",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "olive",
+ "hair": {
+  "style": "short",
+  "color": "dark_brown"
+ },
+ "headwear": "bandana",
+ "beard": "stubble",
+ "face": {
+  "eye": "mid",
+  "iris": "ice",
+  "brows": null,
+  "mouth": "frown",
+  "blush": false,
+  "freckles": true,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "tunic",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "belt",
+   "bracers"
+  ],
+  "colors": {
+   "top": "linen",
+   "bottom": "brown",
+   "accent": "moss",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "sword",
+ "offhand": "shield",
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "F",
+  "role": "tank"
+ },
+ "party": "The Greenhorns"
+}

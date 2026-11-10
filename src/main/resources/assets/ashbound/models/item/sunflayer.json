@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/sunflayer.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.932,
-     -2.932,
-     0.0
+     -2.658,
+     -2.437,
+     0.063
     ],
     "scale": [
-     0.4172,
-     0.4172,
-     0.4172
+     0.3367,
+     0.3367,
+     0.3367
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.932,
-     -2.932,
-     0.0
+     -2.658,
+     -2.437,
+     0.063
     ],
     "scale": [
-     0.4172,
-     0.4172,
-     0.4172
+     0.3367,
+     0.3367,
+     0.3367
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.613,
-     -1.613,
+     -1.462,
+     -1.34,
      0
     ],
     "scale": [
-     0.2294,
-     0.2294,
-     0.2294
+     0.1852,
+     0.1852,
+     0.1852
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/sunflayer"
+   }
+  }
+ }
 }

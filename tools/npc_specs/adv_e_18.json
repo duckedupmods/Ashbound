@@ -1,0 +1,63 @@
+{
+ "id": "adv_e_18",
+ "seed": 4128856,
+ "recipe": "adventurer",
+ "role": "striker",
+ "rank": "E",
+ "name": "Elaria Starbark",
+ "title": "E-rank Blade",
+ "age": "adult",
+ "sex": "f",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "fair",
+ "hair": {
+  "style": "braid",
+  "color": "silver"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "sleepy",
+  "iris": "gold",
+  "brows": "bushy",
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "scar"
+  ],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "bracers",
+   "strap"
+  ],
+  "colors": {
+   "top": "grey",
+   "bottom": "charcoal",
+   "accent": "forest",
+   "leather": "black"
+  }
+ },
+ "pose": {
+  "r": "fold",
+  "l": "fold"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": "greatsword",
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "E",
+  "role": "striker"
+ },
+ "race": "elf",
+ "recipe_race": "elf",
+ "party": "The Thornbacks"
+}

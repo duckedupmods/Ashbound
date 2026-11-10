@@ -1,0 +1,18 @@
+{
+ "type": "ashbound:ashen_ring",
+ "generator": {
+  "type": "minecraft:flat",
+  "settings": {
+   "biome": "ashbound:ashen_ring",
+   "features": false,
+   "lakes": false,
+   "layers": [
+    {
+     "block": "minecraft:air",
+     "height": 1
+    }
+   ],
+   "structure_overrides": []
+  }
+ }
+}

@@ -49,7 +49,7 @@ public final class JoinedSkills {
 		NeoForge.EVENT_BUS.addListener((ServerTickEvent.Post e) -> {
 			List<Later> now = SOON.remove(0);
 			SOON.add(new ArrayList<>());
-			for (Later l : now) if (l.p.isAlive()) l.then.run();
+			for (Later l : now) if (l.p.isAlive()) Spells.as(l.p, l.then);
 		});
 	}
 
@@ -127,10 +127,16 @@ public final class JoinedSkills {
 		e.hurt(p.damageSources().playerAttack(p), amount);
 	}
 
+	/** The dungeon the weapon in hand came out of, for its skill to look like that place: nothing, for one from no dungeon. */
+	private static String gate(ServerPlayer p) {
+		Gear.Dungeon d = Smithing.home(p.getMainHandItem().getItem());
+		return d == null ? "" : d.gate();
+	}
+
 	/** A blow along where you're looking, through everything in it. */
 	static void line(ServerPlayer p, double length, double width, double mult) {
 		ServerLevel l = p.serverLevel();
-		Spells.skillFx(l, "line", p.position().add(0, 0.6, 0), p.getLookAngle(), (float) length, p);
+		Spells.skillFx(l, "style_line:" + gate(p), p.position().add(0, 0.6, 0), p.getLookAngle(), (float) length, null);
 		lineHit(p, length, width, mult);
 		l.playSound(null, p.blockPosition(), SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 1.2f, 0.6f);
 	}
@@ -155,7 +161,7 @@ public final class JoinedSkills {
 	/** A ring going out round a spot; lift throws them up. */
 	static void ring(ServerPlayer p, Vec3 at, double radius, double mult, double lift) {
 		ServerLevel l = p.serverLevel();
-		Spells.skillFx(l, "ring", at, Vec3.ZERO, (float) radius, null);
+		Spells.skillFx(l, "style_ring:" + gate(p), at, Vec3.ZERO, (float) radius, null);
 		ringHit(p, at, radius, mult, lift);
 		l.playSound(null, p.blockPosition(), SoundEvents.ANVIL_LAND, SoundSource.PLAYERS, 0.9f, 0.5f);
 	}

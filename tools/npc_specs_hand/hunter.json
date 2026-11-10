@@ -1,0 +1,51 @@
+{
+ "name": "Garrick",
+ "age": "adult",
+ "sex": "m",
+ "skin": "tan",
+ "build": "broad",
+ "hair": {
+  "style": "shaggy",
+  "color": "dark_brown"
+ },
+ "headwear": "fur_hood",
+ "beard": "beard",
+ "face": {
+  "eye": "sharp",
+  "iris": "hazel",
+  "brows": "stern",
+  "mouth": "frown",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "bracers",
+   "strap",
+   "belt",
+   "pouches"
+  ],
+  "colors": {
+   "top": "brown",
+   "bottom": "brown",
+   "accent": "moss",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "fold",
+  "l": "fold"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": "bow_quiver",
+ "hip": "knife",
+ "prop": null,
+ "role": "ranger",
+ "id": "hunter"
+}

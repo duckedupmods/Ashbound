@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/crimson_chalice.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.771,
-     -0.736,
-     -0.716
+     -1.092,
+     -1.0,
+     0.026
     ],
     "scale": [
-     0.3906,
-     0.3906,
-     0.3906
+     0.2818,
+     0.2818,
+     0.2818
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.771,
-     -0.736,
-     -0.716
+     -1.092,
+     -1.0,
+     0.026
     ],
     "scale": [
-     0.3906,
-     0.3906,
-     0.3906
+     0.2818,
+     0.2818,
+     0.2818
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.974,
-     -0.405,
+     -0.601,
+     -0.55,
      0
     ],
     "scale": [
-     0.2148,
-     0.2148,
-     0.2148
+     0.155,
+     0.155,
+     0.155
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/crimson_chalice"
+   }
+  }
+ }
 }

@@ -73,23 +73,62 @@
      0.496,
      0.496
     ]
+   },
+   "gui": {
+    "rotation": [
+     15.94,
+     15.36,
+     -47.16
+    ],
+    "translation": [
+     0.057,
+     -0.057,
+     -0.033
+    ],
+    "scale": [
+     0.4355,
+     0.4355,
+     0.4355
+    ]
+   },
+   "fixed": {
+    "rotation": [
+     15.94,
+     15.36,
+     -47.16
+    ],
+    "translation": [
+     0.057,
+     -0.057,
+     -0.033
+    ],
+    "scale": [
+     0.4355,
+     0.4355,
+     0.4355
+    ]
+   },
+   "ground": {
+    "rotation": [
+     15.94,
+     15.36,
+     -47.16
+    ],
+    "translation": [
+     0.031,
+     -0.031,
+     0
+    ],
+    "scale": [
+     0.2395,
+     0.2395,
+     0.2395
+    ]
    }
   }
  },
  "perspectives": {
   "gui": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/apprentice_white_staff"
-   }
-  },
-  "ground": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/apprentice_white_staff"
-   }
-  },
-  "fixed": {
    "parent": "minecraft:item/generated",
    "textures": {
     "layer0": "ashbound:item/apprentice_white_staff"

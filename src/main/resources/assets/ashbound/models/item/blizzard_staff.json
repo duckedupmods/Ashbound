@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/blizzard_staff.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     0.407,
-     0.407,
-     -0.0
+     -0.771,
+     -0.931,
+     -0.046
     ],
     "scale": [
-     0.4265,
-     0.4265,
-     0.4265
+     0.3037,
+     0.3037,
+     0.3037
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     0.407,
-     0.407,
-     -0.0
+     -0.771,
+     -0.931,
+     -0.046
     ],
     "scale": [
-     0.4265,
-     0.4265,
-     0.4265
+     0.3037,
+     0.3037,
+     0.3037
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.224,
-     0.224,
+     -0.424,
+     -0.512,
      0
     ],
     "scale": [
-     0.2346,
-     0.2346,
-     0.2346
+     0.167,
+     0.167,
+     0.167
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/blizzard_staff"
+   }
+  }
+ }
 }

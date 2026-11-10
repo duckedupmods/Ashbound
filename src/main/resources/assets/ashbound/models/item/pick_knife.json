@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/pick_knife.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.428,
-     -1.428,
-     0.0
+     -1.462,
+     -1.803,
+     -0.097
     ],
     "scale": [
-     0.6893,
-     0.6893,
-     0.6893
+     0.6503,
+     0.6503,
+     0.6503
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.428,
-     -1.428,
-     0.0
+     -1.462,
+     -1.803,
+     -0.097
     ],
     "scale": [
-     0.6893,
-     0.6893,
-     0.6893
+     0.6503,
+     0.6503,
+     0.6503
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.785,
-     -0.785,
+     -0.804,
+     -0.992,
      0
     ],
     "scale": [
-     0.3791,
-     0.3791,
-     0.3791
+     0.3577,
+     0.3577,
+     0.3577
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/pick_knife"
+   }
+  }
+ }
 }

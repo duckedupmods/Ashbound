@@ -1,0 +1,55 @@
+{
+ "name": "Brann Holt",
+ "age": "adult",
+ "sex": "m",
+ "skin": "weathered",
+ "build": "broad",
+ "hair": {
+  "style": "bald",
+  "color": "grey"
+ },
+ "headwear": null,
+ "beard": "beard",
+ "face": {
+  "eye": "sharp",
+  "iris": "steel",
+  "brows": "thick",
+  "mouth": "frown",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "patch_r",
+   "scar_cheek"
+  ],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "pauldron_l",
+   "belt",
+   "pouches",
+   "bracers",
+   "gloves"
+  ],
+  "colors": {
+   "top": "brown",
+   "bottom": "charcoal",
+   "accent": "mustard",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "fold",
+  "l": "fold"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "role": "quartermaster",
+ "id": "quartermaster"
+}

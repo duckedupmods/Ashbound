@@ -1,0 +1,53 @@
+{
+ "name": "Rook",
+ "age": "adult",
+ "sex": "m",
+ "skin": "olive",
+ "build": "slim",
+ "hair": {
+  "style": "short",
+  "color": "black"
+ },
+ "headwear": "hood",
+ "beard": "stubble",
+ "face": {
+  "eye": "sharp",
+  "iris": "steel",
+  "brows": "stern",
+  "mouth": "smirk",
+  "blush": false,
+  "freckles": false,
+  "marks": [
+   "scar_cheek"
+  ],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "belt",
+   "strap",
+   "pouches",
+   "cloak"
+  ],
+  "colors": {
+   "top": "black",
+   "bottom": "charcoal",
+   "accent": "oxblood",
+   "leather": "black"
+  }
+ },
+ "pose": {
+  "r": "fold",
+  "l": "fold"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": null,
+ "hip": "daggers",
+ "prop": null,
+ "role": "fence",
+ "id": "fence"
+}

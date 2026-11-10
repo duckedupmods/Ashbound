@@ -24,12 +24,13 @@ PR.S, PR.put, PR.pick = S, S.put, S.pick
 CY.S, CY.put, CY.pick = S, S.put, S.pick
 
 
-def ground_box(x0, z0, x1, z1):
-    """The land's surface in the box as blocks (grass, stone up the slopes, water already laid by the builders)."""
+def ground_box(x0, z0, x1, z1, deep=2, shaped=None):
+    """The land's surface in the box as blocks (grass, stone up the slopes, water already laid by the builders);
+    shaped: (x, z) -> height where a builder reshaped the land (the homestead's GROUND)."""
     for x in range(x0, x1 + 1):
         for z in range(z0, z1 + 1):
-            h = L.ground(x, z)[0]
-            for y in range(h - 2, h + 1):
+            h = (shaped or {}).get((x, z), L.ground(x, z)[0])
+            for y in range(h - deep, h + 1):
                 if (x, y, z) not in S.B:
                     S.put(x, y, z, "grass_block[snowy=false]" if y == h else "dirt")
 
@@ -131,6 +132,32 @@ SHOTS = {
         "hand": ((-10, 100, 372), (-71, 100, 335), 22),
         "high": ((10, 140, 520), (10, 40, 300), 26),
     },
+    "ctrees": {
+        "front": ((24, 92, -46), (24, 64, 40), 40),
+        "back": ((24, 92, 170), (24, 64, 80), 40),
+        "street": ((-6, 62.6, -14), (24, 66, 12), 55),
+        "willow": ((84, 68, 88), (24, 66, 88), 30),
+        "linden": ((84, 68, 0), (24, 66, 0), 30),
+    },
+    "home": {
+        "front": ((-196, 44, -16), (-248, 14, -106), 30),
+        "aerial": ((-170, 100, 10), (-250, 10, -104), 30),
+        "west": ((-246, 42, -70), (-272, 18, -112), 30),
+        "yard": ((-200, 21, -82), (-228, 16, -110), 26),
+        "side": ((-268, 30, -62), (-226, 14, -108), 26),
+        "road": ((-180, 22, -70), (-220, 4, -95), 30),
+    },
+    "home_g": {"g": ((-206, 48, -82), (-228, 12, -113), 34), "gk": ((-252, 46, -84), (-230, 12, -114), 34),
+               "gstair": ((-226, 30, -96), (-237, 12, -110), 34), "gcellar": ((-232, 30, -98), (-225, 10, -116), 34)},
+    "home_1": {"f1": ((-206, 52, -82), (-228, 16, -113), 34), "f1b": ((-252, 50, -84), (-230, 16, -114), 34),
+               "f1stair": ((-226, 34, -100), (-231, 16, -116), 34)},
+    "home_2": {"f2": ((-206, 56, -82), (-230, 20, -112), 34)},
+    "home_c": {"c": ((-208, 40, -84), (-230, 6, -114), 34)},
+    "home_farm": {"farm": ((-236, 50, -84), (-260, 18, -116), 34)},
+    "trees": {
+        "row": ((45, 95, -70), (45, 66, 30), 40),
+        "close": ((16, 72, -26), (16, 68, 8), 40),
+    },
 }
 
 if __name__ == "__main__":
@@ -178,6 +205,46 @@ if __name__ == "__main__":
     elif what == "pair":
         PR.build(lambda x, z: L.ground(x, z)[0])
         ground_box(-260, 220, 290, 680)
+    elif what == "trees":
+        # the city's street and waterside templates in a row (tools/capital_green.py plants these), medium then small
+        import capital_green as G
+        kinds = ("oak", "pale", "blood", "birch", "willow")
+        for i, k in enumerate(kinds):
+            for j, sz in enumerate(("medium", "small")):
+                for v in range(3):
+                    name = "%s_%s_%d" % (k, sz, v)
+                    if name not in G.OFFSETS:
+                        continue
+                    bx, bz = v * 16 + j * 50, i * 16
+                    for x, y, z, st in G.template(name)[0]:
+                        S.put(bx + x, 60 + y, bz + z, st)
+        for x in range(-10, 100):
+            for z in range(-10, 76):
+                if (x, 60, z) not in S.B: S.put(x, 60, z, "grass_block[snowy=false]")
+                S.put(x, 59, z, "dirt")
+    elif what == "ctrees":
+        # tools/city_trees.py: a row of each kind, small / medium / large
+        import city_trees as CT
+        for i, k in enumerate(CT.KINDS):
+            for j, sz in enumerate(("small", "medium", "large")):
+                for x, y, z, st in CT.grow(k, sz, 0)[0]:
+                    S.put(j * 24 + x, 60 + y, i * 22 + z, st)
+        for x in range(-14, 66):
+            for z in range(-14, 126):
+                if (x, 60, z) not in S.B: S.put(x, 60, z, "grass_block[snowy=false]")
+                S.put(x, 59, z, "dirt")
+    elif what.startswith("home"):
+        import capital_home as HM
+        HS_ = __import__("houses")
+        HS_.K = K
+        # the manor's fittings drawn from their own models
+        HM.build(S, lambda x, z: L.ground(x, z)[0])
+        ground_box(-320, -150, -180, -60, deep=14, shaped=HM.GROUND)
+        # the cutaways: everything over a storey's floor lifted off the house, to look in from above
+        cut = {"home_g": HM.PAD + 5, "home_1": HM.PAD + 9, "home_2": HM.PAD + 13, "home_c": HM.PAD}.get(what)
+        if cut is not None:
+            for k in [k for k in S.B if HM.HX - 1 <= k[0] <= HM.HX + HM.W + 9 and HM.HZ - 1 <= k[2] <= HM.HZ + HM.D and k[1] >= cut]:
+                del S.B[k]
     elif what == "kings":
         KG.build(lambda x, z: L.ground(x, z)[0])
         ground_box(-110, 260, 140, 520)

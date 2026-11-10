@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/gilded_mace.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.39,
-     -0.39,
-     0.0
+     -1.248,
+     -1.248,
+     -0.0
     ],
     "scale": [
-     0.3803,
-     0.3803,
-     0.3803
+     0.33,
+     0.33,
+     0.33
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.39,
-     -0.39,
-     0.0
+     -1.248,
+     -1.248,
+     -0.0
     ],
     "scale": [
-     0.3803,
-     0.3803,
-     0.3803
+     0.33,
+     0.33,
+     0.33
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.215,
-     -0.215,
+     -0.686,
+     -0.686,
      0
     ],
     "scale": [
-     0.2092,
-     0.2092,
-     0.2092
+     0.1815,
+     0.1815,
+     0.1815
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/gilded_mace"
+   }
+  }
+ }
 }

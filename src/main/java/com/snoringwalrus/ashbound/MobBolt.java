@@ -21,6 +21,8 @@ public class MobBolt extends Spells.Bolt {
 
 	@Override
 	protected boolean canHitEntity(Entity e) {
+		// an adventurer mage's bolt is for monsters only
+		if (getOwner() instanceof Adventurer) return e != getOwner() && e.isAlive() && e instanceof Enemy;
 		return e != getOwner() && e.isAlive() && e instanceof LivingEntity && !(e instanceof Enemy) && !(e instanceof Player p && (p.isSpectator() || p.isCreative()));
 	}
 }

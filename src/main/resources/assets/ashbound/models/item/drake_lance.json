@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/drake_lance.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.442,
-     -0.442,
+     -0.937,
+     -0.937,
      -0.0
     ],
     "scale": [
-     0.3047,
-     0.3047,
-     0.3047
+     0.2651,
+     0.2651,
+     0.2651
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.442,
-     -0.442,
+     -0.937,
+     -0.937,
      -0.0
     ],
     "scale": [
-     0.3047,
-     0.3047,
-     0.3047
+     0.2651,
+     0.2651,
+     0.2651
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.243,
-     -0.243,
+     -0.515,
+     -0.515,
      0
     ],
     "scale": [
-     0.1676,
-     0.1676,
-     0.1676
+     0.1458,
+     0.1458,
+     0.1458
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/drake_lance"
+   }
+  }
+ }
 }

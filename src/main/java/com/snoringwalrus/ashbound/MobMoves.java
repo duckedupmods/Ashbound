@@ -105,6 +105,7 @@ public final class MobMoves {
 				c(Animations.TOOL_AUTO1, Animations.TOOL_AUTO2), c(Animations.BIPED_MOB_ONEHAND1, Animations.BIPED_MOB_ONEHAND2));
 		stance("crawler", null, false, 1.9, null,
 				c(Animations.SPIDER_ATTACK), c(Animations.SPIDER_JUMP_ATTACK));
+		stance("crab", null, false, 2.2, null, c(CrabClips.CLAW));          // claws, low: never rears like a spider
 	}
 
 	private static Map<String, Spec> load() {
@@ -128,6 +129,11 @@ public final class MobMoves {
 
 	static Spec of(GateMobs.Kind k) {
 		return SPECS.getOrDefault(k.id(), PLAIN);
+	}
+
+	/** A crab: it swings its claws where a spider would bite or leap. */
+	static boolean crab(GateMobs.Kind k) {
+		return "crab".equals(of(k).stance());
 	}
 
 	static String gate(GateMobs.Kind k) {
@@ -247,6 +253,33 @@ public final class MobMoves {
 					.nextBehavior(Behavior.<T>builder().behavior(p -> MobSkills.cast(mob, sk))
 							.custom(p -> MobSkills.ready(mob, sk) && within(mob, rg[0], rg[1]))));
 		}
+		return b;
+	}
+
+	/** How far a stance's swings reach, for someone of a player's size (an adventurer). */
+	static double reach(String stance) {
+		stances();
+		return STANCES.get(stance).reach() + 0.3;
+	}
+
+	/** An adventurer's attacks (Adventurers): the combos and dash of the stance their weapon is swung in, and a step back for the light ones. */
+	static <T extends MobPatch<?>> CombatBehaviors.Builder<T> behaviours(Mob mob, String stance) {
+		stances();
+		Stance st = STANCES.get(stance);
+		double r = reach(stance);
+		CombatBehaviors.Builder<T> b = CombatBehaviors.builder();
+		for (AnimationAccessor<? extends StaticAnimation>[] combo : st.combos()) {
+			BehaviorSeries.Builder<T> series = BehaviorSeries.<T>builder().weight(100f / st.combos().length).canBeInterrupted(false).looping(false);
+			for (AnimationAccessor<? extends StaticAnimation> a : combo)
+				series.nextBehavior(Behavior.<T>builder().animationBehavior(a).custom(p -> within(mob, 0, r)));
+			b.newBehaviorSeries(series);
+		}
+		if (st.dash() != null)
+			b.newBehaviorSeries(BehaviorSeries.<T>builder().weight(18).cooldown(90).canBeInterrupted(false).looping(false)
+					.nextBehavior(Behavior.<T>builder().animationBehavior(st.dash()).custom(p -> within(mob, r * 0.9, r * 2.0))));
+		if (stance.equals("dagger"))
+			b.newBehaviorSeries(BehaviorSeries.<T>builder().weight(30).cooldown(80).canBeInterrupted(false).looping(false)
+					.nextBehavior(Behavior.<T>builder().animationBehavior(Animations.BIPED_STEP_BACKWARD).custom(p -> within(mob, 0, r * 0.8))));
 		return b;
 	}
 

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/lepers_bell.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.541,
-     0.088,
-     -0.415
+     -0.499,
+     -0.499,
+     -0.0
     ],
     "scale": [
-     0.4268,
-     0.4268,
-     0.4268
+     0.3139,
+     0.3139,
+     0.3139
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.541,
-     0.088,
-     -0.415
+     -0.499,
+     -0.499,
+     -0.0
     ],
     "scale": [
-     0.4268,
-     0.4268,
-     0.4268
+     0.3139,
+     0.3139,
+     0.3139
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.848,
-     0.048,
+     -0.274,
+     -0.274,
      0
     ],
     "scale": [
-     0.2347,
-     0.2347,
-     0.2347
+     0.1727,
+     0.1727,
+     0.1727
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/lepers_bell"
+   }
+  }
+ }
 }

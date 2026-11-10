@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "ashbound:cinder"
+  },
+  {
+   "item": "ashbound:cinder"
+  },
+  {
+   "item": "ashbound:cinder"
+  },
+  {
+   "item": "ashbound:cinder"
+  },
+  {
+   "item": "ashbound:cinder"
+  },
+  {
+   "item": "ashbound:cinder"
+  }
+ ],
+ "result": {
+  "id": "ashbound:temper_ember",
+  "count": 1
+ }
+}

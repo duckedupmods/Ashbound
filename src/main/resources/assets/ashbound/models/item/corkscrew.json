@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/corkscrew.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.067,
-     -1.067,
-     0.0
+     -1.583,
+     -1.571,
+     -0.021
     ],
     "scale": [
-     0.6829,
-     0.6829,
-     0.6829
+     0.5576,
+     0.5576,
+     0.5576
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.067,
-     -1.067,
-     0.0
+     -1.583,
+     -1.571,
+     -0.021
     ],
     "scale": [
-     0.6829,
-     0.6829,
-     0.6829
+     0.5576,
+     0.5576,
+     0.5576
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.587,
-     -0.587,
+     -0.871,
+     -0.864,
      0
     ],
     "scale": [
-     0.3756,
-     0.3756,
-     0.3756
+     0.3067,
+     0.3067,
+     0.3067
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/corkscrew"
+   }
+  }
+ }
 }

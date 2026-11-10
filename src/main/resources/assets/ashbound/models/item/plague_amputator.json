@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/plague_amputator.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.261,
-     -2.267,
-     -0.002
+     -2.787,
+     -1.557,
+     0.352
     ],
     "scale": [
-     0.3462,
-     0.3462,
-     0.3462
+     0.3413,
+     0.3413,
+     0.3413
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.261,
-     -2.267,
-     -0.002
+     -2.787,
+     -1.557,
+     0.352
     ],
     "scale": [
-     0.3462,
-     0.3462,
-     0.3462
+     0.3413,
+     0.3413,
+     0.3413
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.244,
-     -1.247,
+     -1.533,
+     -0.856,
      0
     ],
     "scale": [
-     0.1904,
-     0.1904,
-     0.1904
+     0.1877,
+     0.1877,
+     0.1877
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/plague_amputator"
+   }
+  }
+ }
 }

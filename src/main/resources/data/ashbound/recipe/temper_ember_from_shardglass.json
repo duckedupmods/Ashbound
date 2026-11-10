@@ -1,0 +1,22 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "ashbound:shardglass"
+  },
+  {
+   "item": "ashbound:shardglass"
+  },
+  {
+   "item": "ashbound:shardglass"
+  },
+  {
+   "item": "ashbound:shardglass"
+  }
+ ],
+ "result": {
+  "id": "ashbound:temper_ember",
+  "count": 1
+ }
+}

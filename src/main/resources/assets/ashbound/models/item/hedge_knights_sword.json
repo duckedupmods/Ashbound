@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/hedge_knights_sword.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.695,
-     -2.695,
-     -0.0
+     -2.54,
+     -2.54,
+     0.0
     ],
     "scale": [
-     0.4598,
-     0.4598,
-     0.4598
+     0.4252,
+     0.4252,
+     0.4252
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.695,
-     -2.695,
-     -0.0
+     -2.54,
+     -2.54,
+     0.0
     ],
     "scale": [
-     0.4598,
-     0.4598,
-     0.4598
+     0.4252,
+     0.4252,
+     0.4252
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.482,
-     -1.482,
+     -1.397,
+     -1.397,
      0
     ],
     "scale": [
-     0.2529,
-     0.2529,
-     0.2529
+     0.2338,
+     0.2338,
+     0.2338
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/hedge_knights_sword"
+   }
+  }
+ }
 }

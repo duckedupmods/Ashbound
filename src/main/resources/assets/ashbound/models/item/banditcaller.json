@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/banditcaller.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.571,
-     0.031,
-     -0.44
+     -1.781,
+     -0.639,
+     0.305
     ],
     "scale": [
-     0.4197,
-     0.4197,
-     0.4197
+     0.2653,
+     0.2653,
+     0.2653
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.571,
-     0.031,
-     -0.44
+     -1.781,
+     -0.639,
+     0.305
     ],
     "scale": [
-     0.4197,
-     0.4197,
-     0.4197
+     0.2653,
+     0.2653,
+     0.2653
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.864,
-     0.017,
+     -0.98,
+     -0.351,
      0
     ],
     "scale": [
-     0.2309,
-     0.2309,
-     0.2309
+     0.1459,
+     0.1459,
+     0.1459
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/banditcaller"
+   }
+  }
+ }
 }

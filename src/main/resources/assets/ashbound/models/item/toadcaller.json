@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/toadcaller.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.566,
-     0.049,
-     -0.434
+     -0.784,
+     -0.784,
+     -0.0
     ],
     "scale": [
-     0.423,
-     0.423,
-     0.423
+     0.2844,
+     0.2844,
+     0.2844
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.566,
-     0.049,
-     -0.434
+     -0.784,
+     -0.784,
+     -0.0
     ],
     "scale": [
-     0.423,
-     0.423,
-     0.423
+     0.2844,
+     0.2844,
+     0.2844
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.861,
-     0.027,
+     -0.431,
+     -0.431,
      0
     ],
     "scale": [
-     0.2326,
-     0.2326,
-     0.2326
+     0.1564,
+     0.1564,
+     0.1564
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/toadcaller"
+   }
+  }
+ }
 }

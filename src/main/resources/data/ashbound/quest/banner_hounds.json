@@ -1,0 +1,10 @@
+{
+ "title": "The Black Banner's Dogs",
+ "rank": "E",
+ "text": "Deserters from the Black Banner have set up in the old forts, and they've brought their hounds. Shepherds are losing whole flocks. Put the dogs down.",
+ "kill": "ashbound:banner_hound",
+ "count": 6,
+ "points": 45,
+ "coins": 70,
+ "repeat": true
+}

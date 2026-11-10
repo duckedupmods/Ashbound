@@ -12,6 +12,8 @@ import com.snoringwalrus.ashbound.Spells;
 
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.ResourceLocation;
@@ -27,20 +29,23 @@ import yesman.epicfight.client.world.capabilites.entitypatch.player.LocalPlayerP
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 
 /**
- * Health, stamina and mana, above the hotbar in place of the hearts, the hunger row and Epic Fight's stamina bar: your
+ * Health, stamina, mana and, once you're getting hungry, food, above the hotbar in place of the hearts, the hunger row and Epic Fight's stamina bar: your
  * level in an iron crest, a blade each side of it for health and mana, stamina running out from under it, armour and
  * food above. They grow as their maximum does; a hit leaves a pale chunk that drains after a moment. Hold the player
- * list key (TAB) for the stamina number. Your party goes top left, a name and a thin bar each. Also wires up the compass
+ * list key (TAB) for the stamina number. Your party goes top left, a card each. Also wires up the compass
  * and the screens the server asks for.
  */
 public final class VitalsHud {
 	private VitalsHud() {}
 
-	private static final int X = 6, Y = 6, SOCKET = 28, WING_H = 10, BAR_H = 3, MEMBER_W = 80, MEMBER_H = 3, NOTCHES = 10, TIP = 5;
+	private static final int X = 6, Y = 6, SOCKET = 28, WING_H = 10, BAR_H = 3, MEMBER_FACE = 24, MEMBER_STEP = 30, MEMBER_ROW = 36, MEMBER_H = 5, NOTCHES = 10, TIP = 5;
 	/** up from the bottom of the screen */
 	private static final int XP_UP = 25, STAMINA_UP = 32, WING_UP = 46, ROW_UP = 13, WIND_UP = 66;
 	/** how far the held item's name and the action bar rise to clear them */
 	private static final int LIFT = 14, TOP_OF_ROW = 30;
+	/** Up from the bottom of the screen, and the food level the bar comes up at and it starts to warn at. */
+	private static final int HUNGER_UP = 28, HUNGER_SHOWS = 14, HUNGER_WARNS = 6;
+	private static int fedLast = 20;
 	private static final float HOLD_MS = 500, DRAIN = 0.4f, FOLLOW = 14;
 	private static final ResourceLocation ARMOUR = ResourceLocation.withDefaultNamespace("hud/armor_full"),
 			FOOD = ResourceLocation.withDefaultNamespace("hud/food_full");
@@ -105,6 +110,7 @@ public final class VitalsHud {
 		MenuTabs.hooks();
 		BossHud.hooks();
 		SpellFx.hooks();
+		TradeFx.hooks();
 		NeoForge.EVENT_BUS.addListener((ClientPlayerNetworkEvent.LoggingOut e) -> Net.clientParty = java.util.List.of());
 	}
 
@@ -137,7 +143,7 @@ public final class VitalsHud {
 		Minecraft mc = Minecraft.getInstance();
 		LocalPlayer p = mc.player;
 		if (p == null || mc.options.hideGui || mc.gameMode == null) return;
-		if (!Net.clientParty.isEmpty()) party(g, mc, X, Y);
+		if (!Net.clientParty.isEmpty()) party(g, mc, X, Y, mc.options.keyPlayerList.isDown());
 		wind(g, p);
 		if (!mc.gameMode.canHurtPlayer()) return;
 		long now = System.currentTimeMillis();
@@ -176,6 +182,7 @@ public final class VitalsHud {
 			g.fill(cx - fs, staminaY, cx + fs, staminaY + 1, 0xFFE8F4A0);
 		}
 		if (numbers) g.drawString(mc.font, Math.round(patch == null ? maxSt : patch.getStamina()) + " / " + Math.round(maxSt), cx + sw + 8, staminaY - 2, 0xFFC8DC8A, true);
+		hunger(g, cx, bottom - HUNGER_UP, sw, p.getFoodData().getFoodLevel(), now);
 
 		// health and mana, a blade each side of the crest
 		boolean poison = p.hasEffect(MobEffects.POISON), wither = p.hasEffect(MobEffects.WITHER);
@@ -197,6 +204,7 @@ public final class VitalsHud {
 		g.drawString(mc.font, magic, cx + inner + (mw - mc.font.width(magic)) / 2, wingY + 1, AshUi.TEXT, true);
 
 		crest(g, mc, cx, wingY + WING_H / 2, now);
+		hungry(g, mc, cx, wingY + WING_H / 2, p.getFoodData().getFoodLevel(), now);
 
 		// armour on the left, food on the right, breath past the food while it's running out
 		int y = wingY - ROW_UP;
@@ -207,6 +215,7 @@ public final class VitalsHud {
 			g.drawString(mc.font, a, ax, y + 1, AshUi.BODY, true);
 			g.blitSprite(ARMOUR, ax - 11, y, 9, 9);
 		}
+		toxicity(g, p, cx - inner - 3 - (armour > 0 ? mc.font.width(String.valueOf(armour)) + 18 : 0), y + 2, now);
 		int tx = cx + inner + 3, food = p.getFoodData().getFoodLevel();
 		g.blitSprite(FOOD, tx, y, 9, 9);
 		String f = String.valueOf(food);
@@ -219,6 +228,36 @@ public final class VitalsHud {
 			g.fill(tx, ay, tx + w, ay + 4, 0xFF102028);
 			g.fill(tx, ay, tx + Math.round(w * Math.max(0, air) / (float) maxAir), ay + 4, 0xFF7ADCF0);
 		}
+	}
+
+	/** Elixir toxicity left of the armour, ending at right: only while there's some in you, beating once it's over your limit. */
+	private static void toxicity(GuiGraphics g, LocalPlayer p, int right, int y, long now) {
+		double tox = com.snoringwalrus.ashbound.Trades.toxicity(p), limit = com.snoringwalrus.ashbound.Trades.toxLimit(p);
+		if (tox <= 0.5) return;
+		int w = 40, x = right - w;
+		frame(g, x, y, w, 4);
+		g.fill(x, y, x + w, y + 4, 0xFF0E1A0A);
+		g.fill(x, y, x + Math.round(w * (float) Math.min(1, tox / limit)), y + 4, 0xFF7AC03A);
+		if (tox > limit) g.renderOutline(x - 1, y - 1, w + 2, 6, (int) (0x70 + 0x60 * Math.sin(now / 160.0)) << 24 | 0x9AE040);
+	}
+
+	/** Under the stamina it comes up with, running out from the middle the same way: nothing to see while you're fed. */
+	private static void hunger(GuiGraphics g, int cx, int y, int half, int food, long now) {
+		if (food > HUNGER_SHOWS) return;
+		g.fill(cx - half, y, cx + half, y + 2, 0xE0140C04);
+		int w = Math.round(half * food / 20f), pulse = (int) (0x90 + 0x6F * Math.sin(now / 180.0));
+		if (w > 0) g.fill(cx - w, y, cx + w, y + 2, food > HUNGER_WARNS ? 0xFFE8A82C : pulse << 24 | 0xF06A20);
+	}
+
+	/** Over the crest while it's getting serious, with one low rumble when it first does. */
+	private static void hungry(GuiGraphics g, Minecraft mc, int cx, int cy, int food, long now) {
+		if (food <= HUNGER_WARNS && fedLast > HUNGER_WARNS) mc.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.PLAYER_BURP, 0.45f, 0.7f));
+		fedLast = food;
+		if (food > HUNGER_WARNS) return;
+		String s = food == 0 ? "Starving" : "Hungry";
+		int w = mc.font.width(s) + 11, x = cx - w / 2, y = cy - TOP_OF_ROW - (Forms.clientReady ? 11 : 0);
+		g.blitSprite(FOOD, x, y - 1, 9, 9);
+		g.drawString(mc.font, s, x + 11, y, (int) (0xC0 + 0x3F * Math.sin(now / 180.0)) << 24 | 0xF08A40, true);
 	}
 
 	/** One blade: fills from the crest outward, a pale chunk where a hit landed, notches every tenth, a point at the far end. */
@@ -274,21 +313,40 @@ public final class VitalsHud {
 		}
 	}
 
-	/** The others in your party: dim when they're far off, grey when they're offline, an ember by the leader. */
-	private static void party(GuiGraphics g, Minecraft mc, int x, int y) {
+	/**
+	 * The others in your party, a card each along the top: a big face on a dark plate so it reads over anything, health under it going
+	 * from green through amber to red, and the plate's rim beating red when they're nearly dead. Dimmed when they're far off, dark when
+	 * they're offline, an ember on the leader's corner, a lit rim round your heal target. Holding the player list key names them.
+	 */
+	private static void party(GuiGraphics g, Minecraft mc, int x, int y, boolean named) {
+		// as many across as fit before the compass, the rest on a row under them
+		int across = Math.max(1, (g.guiWidth() / 2 - QuestHud.W / 2 - x) / MEMBER_STEP), rows = (Net.clientParty.size() + across - 1) / across;
+		int top = y, ty = y + rows * MEMBER_ROW + 2, i = 0;
+		long now = System.currentTimeMillis();
 		for (Net.PartyMember m : Net.clientParty) {
-			int tx = x;
-			if (m.leader()) {
-				g.fill(tx, y + 2, tx + 3, y + 5, AshUi.EMBER_C);
-				tx += 6;
-			}
+			int fx = x + i % across * MEMBER_STEP;
+			y = top + i / across * MEMBER_ROW;
+			i++;
 			boolean aimed = m.name().equals(CurioKeys.healTarget);
-			g.drawString(mc.font, aimed ? "> " + m.name() : m.name(), tx, y, aimed ? AshUi.EMBER_LT : !m.online() ? 0xFF6F685D : m.near() ? AshUi.TEXT : AshUi.BODY, true);
-			y += 10;
-			frame(g, x, y, MEMBER_W, MEMBER_H);
-			g.fill(x, y, x + MEMBER_W, y + MEMBER_H, 0xFF1E0E0C);
-			if (m.online()) g.fill(x, y, x + Math.round(MEMBER_W * Mth.clamp(m.health() / Math.max(1, m.max()), 0, 1)), y + MEMBER_H, 0xFFD8402C);
-			y += MEMBER_H + 7;
+			float hp = m.online() ? Mth.clamp(m.health() / Math.max(1, m.max()), 0, 1) : 0;
+			boolean dying = m.online() && hp < 0.3f;
+			g.fill(fx - 2, y - 2, fx + MEMBER_FACE + 2, y + MEMBER_FACE + MEMBER_H + 3, 0xE0050404);
+			int beat = (int) (0xA0 + 0x5F * Math.sin(now / 160.0)) << 24 | 0xE0301C;
+			g.renderOutline(fx - 2, y - 2, MEMBER_FACE + 4, MEMBER_FACE + MEMBER_H + 5, aimed ? AshUi.EMBER_LT : dying ? beat : 0xFF3D3833);
+			PartyScreen.face(g, mc, m.name(), fx, y, MEMBER_FACE);
+			if (!m.online() || !m.near()) g.fill(fx, y, fx + MEMBER_FACE, y + MEMBER_FACE, m.online() ? 0x40000000 : 0xB0000000);
+			if (m.leader()) {
+				g.fill(fx + MEMBER_FACE - 6, y, fx + MEMBER_FACE, y + 6, 0xFF050404);
+				g.fill(fx + MEMBER_FACE - 5, y, fx + MEMBER_FACE, y + 5, AshUi.EMBER_C);
+			}
+			int by = y + MEMBER_FACE + 1;
+			g.fill(fx, by, fx + MEMBER_FACE, by + MEMBER_H, 0xFF2A1210);
+			if (hp > 0) g.fill(fx, by, fx + Math.max(1, Math.round(MEMBER_FACE * hp)), by + MEMBER_H, hp > 0.6f ? 0xFF58C848 : hp > 0.3f ? 0xFFE8A82C : 0xFFE8402C);
+			if (named) {
+				String life = m.online() ? "  " + Math.round(m.health()) + " / " + Math.round(m.max()) : "  offline";
+				g.drawString(mc.font, m.name() + life, x, ty, aimed ? AshUi.EMBER_LT : !m.online() ? 0xFF6F685D : AshUi.TEXT, true);
+				ty += 10;
+			}
 		}
 	}
 }

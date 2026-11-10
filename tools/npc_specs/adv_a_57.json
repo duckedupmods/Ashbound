@@ -1,0 +1,63 @@
+{
+ "id": "adv_a_57",
+ "seed": 4113057,
+ "recipe": "adventurer",
+ "role": "white_mage",
+ "rank": "A",
+ "name": "Thrain Emberfist",
+ "title": "A-rank White Mage",
+ "age": "adult",
+ "sex": "m",
+ "build": "broad",
+ "hunch": 0,
+ "skin": "tan",
+ "hair": {
+  "style": "shaggy",
+  "color": "copper"
+ },
+ "headwear": "hood",
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "green",
+  "brows": "stern",
+  "mouth": "smile",
+  "blush": true,
+  "freckles": false,
+  "marks": [
+   "warpaint"
+  ],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "cape",
+   "mantle"
+  ],
+  "colors": {
+   "top": "white",
+   "bottom": "cream",
+   "accent": "black",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "staff",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "A",
+  "role": "white_mage"
+ },
+ "race": "dwarf",
+ "recipe_race": "dwarf",
+ "party": "Ironwake"
+}

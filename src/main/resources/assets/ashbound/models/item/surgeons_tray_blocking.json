@@ -82,18 +82,6 @@
    "textures": {
     "layer0": "ashbound:item/surgeons_tray"
    }
-  },
-  "ground": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/surgeons_tray"
-   }
-  },
-  "fixed": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/surgeons_tray"
-   }
   }
  }
 }

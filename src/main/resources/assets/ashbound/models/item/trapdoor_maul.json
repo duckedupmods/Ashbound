@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/trapdoor_maul.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.04,
-     -0.126,
-     -0.024
+     -0.502,
+     -0.986,
+     -0.138
     ],
     "scale": [
-     0.4355,
-     0.4355,
-     0.4355
+     0.3692,
+     0.3692,
+     0.3692
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.04,
-     -0.126,
-     -0.024
+     -0.502,
+     -0.986,
+     -0.138
     ],
     "scale": [
-     0.4355,
-     0.4355,
-     0.4355
+     0.3692,
+     0.3692,
+     0.3692
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.022,
-     -0.069,
+     -0.276,
+     -0.542,
      0
     ],
     "scale": [
-     0.2395,
-     0.2395,
-     0.2395
+     0.2031,
+     0.2031,
+     0.2031
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/trapdoor_maul"
+   }
+  }
+ }
 }

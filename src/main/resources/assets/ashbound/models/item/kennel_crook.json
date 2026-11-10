@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/kennel_crook.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.724,
-     -0.091,
-     -0.519
+     -2.371,
+     0.753,
+     0.892
     ],
     "scale": [
-     0.4277,
-     0.4277,
-     0.4277
+     0.2932,
+     0.2932,
+     0.2932
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.724,
-     -0.091,
-     -0.519
+     -2.371,
+     0.753,
+     0.892
     ],
     "scale": [
-     0.4277,
-     0.4277,
-     0.4277
+     0.2932,
+     0.2932,
+     0.2932
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.948,
-     -0.05,
+     -1.304,
+     0.414,
      0
     ],
     "scale": [
-     0.2352,
-     0.2352,
-     0.2352
+     0.1613,
+     0.1613,
+     0.1613
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/kennel_crook"
+   }
+  }
+ }
 }

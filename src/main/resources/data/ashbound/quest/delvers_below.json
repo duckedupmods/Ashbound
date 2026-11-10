@@ -1,0 +1,10 @@
+{
+ "title": "Drills Under the Farms",
+ "rank": "E",
+ "text": "The deep delvers are tunnelling under the hill farms. Wells are going dry and a barn fell into the ground last week. Go down and stop the digging.",
+ "kill": "ashbound:delver",
+ "count": 6,
+ "points": 45,
+ "coins": 80,
+ "repeat": true
+}

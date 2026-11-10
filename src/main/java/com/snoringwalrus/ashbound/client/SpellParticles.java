@@ -49,7 +49,7 @@ final class SpellParticles {
 			RenderSystem.setShader(() -> GateShaders.spell);
 			RenderSystem.setShaderTexture(0, ATLAS);
 			Bloom.begin();
-			return tesselator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
+			return ShaderPacks.sheet(tesselator);
 		}
 
 		@Override
@@ -59,15 +59,44 @@ final class SpellParticles {
 	};
 
 	/** Anything of ours: its colour, no collision unless it asks, and never culled for being large. */
+	/** Whose effects are being made right now (SpellFx/SkillFx.play): the share of them drawn. */
+	static float from = 1;
+
+	/** The share drawn of what this player makes: yours (or a monster's, or nobody's) all of it, another player's the allies' setting. */
+	static float share(int by) {
+		var mc = net.minecraft.client.Minecraft.getInstance();
+		if (by < 0 || mc.player == null || by == mc.player.getId()) return 1;
+		return mc.level != null && mc.level.getEntity(by) instanceof net.minecraft.world.entity.player.Player ? HudPrefs.fxAlly() : 1;
+	}
+
+	/** Makes what run makes as by's (thinned out, or not at all if allies' effects are off). */
+	static void as(float share, Runnable run) {
+		if (share <= 0) return;
+		float was = from;
+		from = share;
+		try {
+			run.run();
+		} finally {
+			from = was;
+		}
+	}
+
 	abstract static class Fx extends Particle {
+		/** How close to the eye an effect is gone, and from how far it starts to go, so your own spell isn't a white wall in first person. */
+		private static final float EYE_GONE = 0.6f, EYE_FADE = 2.6f;
 		/** What the shader's second lightmap slot gets: {@link #param(float)}. */
 		int param;
+		/** How much of it is left at its middle, from here(): a big quad round the eye has its corners far away. */
+		private float clear = 1;
 		final int seed = random.nextInt(127);
 
 		/** How far through its life it is, for the modes that burn away, and its seed. */
 		final int param(float k) {
 			return Math.round(Mth.clamp(k, 0, 1) * 255) + seed * 256;
 		}
+
+		/** How much of it is drawn for whose it is: 1 for yours and the world's, the allies' setting for another player's. */
+		final float who = from;
 
 		Fx(ClientLevel level, Vec3 at, int rgb) {
 			super(level, at.x, at.y, at.z);
@@ -79,14 +108,22 @@ final class SpellParticles {
 			friction = 0.96f;
 		}
 
+		private static float clearOf(Vector3f p) {
+			float k = Mth.clamp((p.length() - EYE_GONE) / (EYE_FADE - EYE_GONE), 0, 1);
+			return k * k * (3 - 2 * k);
+		}
+
 		final void corner(VertexConsumer b, Vector3f p, float u, float v, float a, int mode) {
+			a *= clear * clearOf(p) * HudPrefs.fxAlpha() * who;
 			b.addVertex(p.x, p.y, p.z).setUv(u, v).setColor(rCol, gCol, bCol, a).setLight(mode | param << 16);
 			Bloom.vertex(p, u, v, rCol, gCol, bCol, a, mode | param << 16);
 		}
 
 		final Vector3f here(Camera cam, float partial) {
 			Vec3 c = cam.getPosition();
-			return new Vector3f((float) (Mth.lerp(partial, xo, x) - c.x), (float) (Mth.lerp(partial, yo, y) - c.y), (float) (Mth.lerp(partial, zo, z) - c.z));
+			Vector3f at = new Vector3f((float) (Mth.lerp(partial, xo, x) - c.x), (float) (Mth.lerp(partial, yo, y) - c.y), (float) (Mth.lerp(partial, zo, z) - c.z));
+			clear = clearOf(at);
+			return at;
 		}
 
 		/** A quad round a centre, spanned by two half-axes. */

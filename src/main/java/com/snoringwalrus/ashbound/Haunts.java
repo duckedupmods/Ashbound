@@ -202,6 +202,13 @@ public final class Haunts {
 		}
 	}
 
+	/** one of this faction's rank and file (never its elite), or null if there's no such faction */
+	static String roamer(String faction, RandomSource r) {
+		load();
+		Faction f = factions.get(faction);
+		return f == null ? null : pick(f, r);
+	}
+
 	private static String pick(Faction f, RandomSource r) {
 		int total = 0;
 		for (int w : f.mobs().values()) total += w;
@@ -292,7 +299,24 @@ public final class Haunts {
 		return false;
 	}
 
+	/** other mods' monsters kept out of the wild: Weapons of Miracles' Hollow can't be hurt by a player (it hurts you, you do it
+	 * nothing). An egg or a command still brings one. */
+	private static final java.util.Set<String> NOT_IN_THE_WILD = java.util.Set.of("wom:hollow");
+	private static final String LET_IN = "ashbound_let_in";
+
 	static void register() {
+		// it comes by other ways than the natural spawner (its mod adds them itself), so it's stopped at the door: only one
+		// an egg or a command brought (marked as it's made) gets in
+		NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.event.entity.living.FinalizeSpawnEvent e) -> {
+			var t = e.getSpawnType();
+			if ((t == net.minecraft.world.entity.MobSpawnType.SPAWN_EGG || t == net.minecraft.world.entity.MobSpawnType.COMMAND)
+					&& NOT_IN_THE_WILD.contains(BuiltInRegistries.ENTITY_TYPE.getKey(e.getEntity().getType()).toString()))
+				e.getEntity().addTag(LET_IN);
+		});
+		NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.event.entity.EntityJoinLevelEvent e) -> {
+			if (e.getLevel().isClientSide() || e.getEntity().getTags().contains(LET_IN)) return;
+			if (NOT_IN_THE_WILD.contains(BuiltInRegistries.ENTITY_TYPE.getKey(e.getEntity().getType()).toString())) e.setCanceled(true);
+		});
 		NeoForge.EVENT_BUS.addListener(Haunts::tick);
 		// a garrison doesn't hurt its own (the breaker's swing catching a deserter)
 		NeoForge.EVENT_BUS.addListener((LivingIncomingDamageEvent e) -> {

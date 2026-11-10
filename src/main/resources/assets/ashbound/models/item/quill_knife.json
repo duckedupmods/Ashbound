@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/quill_knife.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.354,
-     -0.919,
-     0.124
+     -0.948,
+     1.769,
+     0.776
     ],
     "scale": [
-     0.7149,
-     0.7149,
-     0.7149
+     0.5527,
+     0.5527,
+     0.5527
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.354,
-     -0.919,
-     0.124
+     -0.948,
+     1.769,
+     0.776
     ],
     "scale": [
-     0.7149,
-     0.7149,
-     0.7149
+     0.5527,
+     0.5527,
+     0.5527
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.745,
-     -0.505,
+     -0.521,
+     0.973,
      0
     ],
     "scale": [
-     0.3932,
-     0.3932,
-     0.3932
+     0.304,
+     0.304,
+     0.304
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/quill_knife"
+   }
+  }
+ }
 }

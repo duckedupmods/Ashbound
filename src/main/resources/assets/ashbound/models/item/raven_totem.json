@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/raven_totem.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.859,
-     -0.264,
-     -0.607
+     -1.07,
+     -1.07,
+     0.0
     ],
     "scale": [
-     0.4178,
-     0.4178,
-     0.4178
+     0.2461,
+     0.2461,
+     0.2461
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.859,
-     -0.264,
-     -0.607
+     -1.07,
+     -1.07,
+     0.0
     ],
     "scale": [
-     0.4178,
-     0.4178,
-     0.4178
+     0.2461,
+     0.2461,
+     0.2461
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     1.022,
-     -0.145,
+     -0.589,
+     -0.589,
      0
     ],
     "scale": [
-     0.2298,
-     0.2298,
-     0.2298
+     0.1353,
+     0.1353,
+     0.1353
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/raven_totem"
+   }
+  }
+ }
 }

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/impcaller.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.802,
-     -0.192,
-     -0.57
+     -1.348,
+     -1.164,
+     -0.322
     ],
     "scale": [
-     0.4219,
-     0.4219,
-     0.4219
+     0.2776,
+     0.2776,
+     0.2776
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.802,
-     -0.192,
-     -0.57
+     -1.348,
+     -1.164,
+     -0.322
     ],
     "scale": [
-     0.4219,
-     0.4219,
-     0.4219
+     0.2776,
+     0.2776,
+     0.2776
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.991,
-     -0.106,
+     -0.741,
+     -0.64,
      0
     ],
     "scale": [
-     0.2321,
-     0.2321,
-     0.2321
+     0.1527,
+     0.1527,
+     0.1527
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/impcaller"
+   }
+  }
+ }
 }

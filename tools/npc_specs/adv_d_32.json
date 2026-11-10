@@ -1,0 +1,60 @@
+{
+ "id": "adv_d_32",
+ "seed": 4113032,
+ "recipe": "adventurer",
+ "role": "white_mage",
+ "rank": "D",
+ "name": "Tilda Dunmore",
+ "title": "D-rank White Mage",
+ "age": "adult",
+ "sex": "f",
+ "build": "average",
+ "hunch": 0,
+ "skin": "olive",
+ "hair": {
+  "style": "ponytail",
+  "color": "chestnut"
+ },
+ "headwear": "hood",
+ "beard": null,
+ "face": {
+  "eye": "round",
+  "iris": "steel",
+  "brows": "stern",
+  "mouth": "flat",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "mantle",
+   "sash",
+   "vials"
+  ],
+  "colors": {
+   "top": "cream",
+   "bottom": "cream",
+   "accent": "rust",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "book",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "D",
+  "role": "white_mage"
+ },
+ "party": "The Stonejaws"
+}

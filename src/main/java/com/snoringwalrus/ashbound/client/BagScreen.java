@@ -77,7 +77,7 @@ public class BagScreen extends AbstractContainerScreen<Bag.Menu> implements Menu
 		px = leftPos;
 		py = topPos;
 		topPos = gridY() + rows * CELL + 6;
-		search = new EditBox(font, px + 16, py + 29, W - 90, 10, Component.literal("Search"));
+		search = new EditBox(font, px + 16, py + 29, W - 134, 10, Component.literal("Search"));
 		search.setBordered(false);
 		search.setMaxLength(50);
 		search.setTextColor(0xFFFFFFFF);
@@ -278,8 +278,9 @@ public class BagScreen extends AbstractContainerScreen<Bag.Menu> implements Menu
 			g.drawString(font, t, tabX(i), y, i == tab ? 0xFFF2EADC : 0xFF8A8076, true);
 			if (i == tab) g.fill(tabX(i), y + 10, tabX(i) + font.width(t), y + 11, AshUi.EMBER_C);
 		}
+		// at the end of the search box: past the last tab there's no room for it
 		String n = shown.size() == Net.clientBag.lines().size() ? "" : shown.size() + " found";
-		g.drawString(font, n, px + W - 10 - font.width(n), y, AshUi.MUTED, false);
+		g.drawString(font, n, px + W - 74 - font.width(n), py + 29, AshUi.MUTED, false);
 	}
 
 	private void grid(GuiGraphics g, int mx, int my) {
@@ -295,6 +296,8 @@ public class BagScreen extends AbstractContainerScreen<Bag.Menu> implements Menu
 				}
 				Net.BagLine l = shown.get(i);
 				AshUi.tile(g, x, y, CELL, AshUi.rarity(l.stack(), 0));
+				int edge = AshUi.edge(l.stack());
+				if ((edge & 0xFFFFFF) != 0xFFFFFF) g.renderOutline(x + 1, y + 1, CELL - 2, CELL - 2, edge);
 				if (l == hover) g.renderOutline(x, y, CELL, CELL, AshUi.EMBER_LT);
 				g.renderItem(l.stack(), x + 2, y + 2);
 				if (l.count() > 1) {

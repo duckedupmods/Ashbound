@@ -1,0 +1,59 @@
+{
+ "id": "adv_f_05",
+ "seed": 4113005,
+ "recipe": "adventurer",
+ "role": "breaker",
+ "rank": "F",
+ "name": "Edda the Quiet",
+ "title": "F-rank Breaker",
+ "age": "adult",
+ "sex": "f",
+ "build": "stout",
+ "hunch": 0,
+ "skin": "deep",
+ "hair": {
+  "style": "long",
+  "color": "chestnut"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "hazel",
+  "brows": "thin",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "shirt",
+  "bottom": "trousers",
+  "sleeves": "rolled",
+  "overs": [
+   "belt",
+   "leather_apron"
+  ],
+  "colors": {
+   "top": "charcoal",
+   "bottom": "charcoal",
+   "accent": "rust",
+   "leather": "dark"
+  }
+ },
+ "pose": {
+  "r": "hang",
+  "l": "hang"
+ },
+ "weapon": "axe",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "F",
+  "role": "breaker"
+ },
+ "party": "Lantern Hounds"
+}

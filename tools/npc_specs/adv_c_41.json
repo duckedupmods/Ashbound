@@ -1,0 +1,59 @@
+{
+ "id": "adv_c_41",
+ "seed": 4113041,
+ "recipe": "adventurer",
+ "role": "white_mage",
+ "rank": "C",
+ "name": "Bram Blackwood",
+ "title": "C-rank White Mage",
+ "age": "adult",
+ "sex": "m",
+ "build": "average",
+ "hunch": 0,
+ "skin": "brown",
+ "hair": {
+  "style": "spiky",
+  "color": "ash_blonde"
+ },
+ "headwear": null,
+ "beard": "beard",
+ "face": {
+  "eye": "mid",
+  "iris": "green",
+  "brows": "stern",
+  "mouth": "smile",
+  "blush": false,
+  "freckles": false,
+  "marks": [],
+  "nose_box": true
+ },
+ "outfit": {
+  "top": "robe",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "mantle",
+   "sash"
+  ],
+  "colors": {
+   "top": "white",
+   "bottom": "cream",
+   "accent": "red",
+   "leather": "tan"
+  }
+ },
+ "pose": {
+  "r": "hold",
+  "l": "hang"
+ },
+ "weapon": "staff",
+ "offhand": null,
+ "back": null,
+ "hip": null,
+ "prop": null,
+ "_filters": {
+  "rank": "C",
+  "role": "white_mage"
+ },
+ "party": "The Red Hounds"
+}

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/target_shield.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.618,
-     3.676,
-     7.712
+     1.967,
+     2.851,
+     5.999
     ],
     "scale": [
-     0.5774,
-     0.5774,
-     0.5774
+     0.4498,
+     0.4498,
+     0.4498
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.618,
-     3.676,
-     7.712
+     1.967,
+     2.851,
+     5.999
     ],
     "scale": [
-     0.5774,
-     0.5774,
-     0.5774
+     0.4498,
+     0.4498,
+     0.4498
     ]
    },
    "ground": {
@@ -115,15 +115,23 @@
      0.0
     ],
     "translation": [
-     0.89,
-     2.022,
+     1.082,
+     1.568,
      0
     ],
     "scale": [
-     0.3176,
-     0.3176,
-     0.3176
+     0.2474,
+     0.2474,
+     0.2474
     ]
+   }
+  }
+ },
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/target_shield"
    }
   }
  },
@@ -134,6 +142,5 @@
    },
    "model": "ashbound:item/target_shield_blocking"
   }
- ],
- "perspectives": {}
+ ]
 }

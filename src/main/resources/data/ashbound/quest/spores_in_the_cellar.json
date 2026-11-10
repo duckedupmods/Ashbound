@@ -1,0 +1,16 @@
+{
+ "title": "Spores in the Root Cellar",
+ "rank": "F",
+ "text": "The mushroom-folk are walking out of the old caves again and tracking spores into every larder in the lower town. Thin them out.",
+ "kill": "ashbound:capguard",
+ "count": 6,
+ "points": 30,
+ "coins": 45,
+ "items": [
+  [
+   "minecraft:bread",
+   4
+  ]
+ ],
+ "repeat": true
+}

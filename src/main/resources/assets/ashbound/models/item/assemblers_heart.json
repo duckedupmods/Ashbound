@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/assemblers_heart.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.73,
-     -0.687,
-     -0.691
+     -1.321,
+     -1.321,
+     -0.0
     ],
     "scale": [
-     0.3934,
-     0.3934,
-     0.3934
+     0.2809,
+     0.2809,
+     0.2809
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.73,
-     -0.687,
-     -0.691
+     -1.321,
+     -1.321,
+     -0.0
     ],
     "scale": [
-     0.3934,
-     0.3934,
-     0.3934
+     0.2809,
+     0.2809,
+     0.2809
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.952,
-     -0.378,
+     -0.727,
+     -0.727,
      0
     ],
     "scale": [
-     0.2164,
-     0.2164,
-     0.2164
+     0.1545,
+     0.1545,
+     0.1545
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/assemblers_heart"
+   }
+  }
+ }
 }

@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "LBL",
+  "BDB",
+  "LBL"
+ ],
+ "key": {
+  "L": {
+   "item": "minecraft:leather"
+  },
+  "B": {
+   "item": "minecraft:bone_block"
+  },
+  "D": {
+   "item": "minecraft:diamond"
+  }
+ },
+ "result": {
+  "id": "ashbound:harts_horn",
+  "count": 1
+ }
+}

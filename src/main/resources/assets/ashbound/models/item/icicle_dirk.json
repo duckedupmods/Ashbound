@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/icicle_dirk.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.98,
-     -0.98,
-     -0.0
+     -1.952,
+     -2.18,
+     -0.065
     ],
     "scale": [
-     0.6798,
-     0.6798,
-     0.6798
+     0.6957,
+     0.6957,
+     0.6957
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.98,
-     -0.98,
-     -0.0
+     -1.952,
+     -2.18,
+     -0.065
     ],
     "scale": [
-     0.6798,
-     0.6798,
-     0.6798
+     0.6957,
+     0.6957,
+     0.6957
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.539,
-     -0.539,
+     -1.074,
+     -1.199,
      0
     ],
     "scale": [
-     0.3739,
-     0.3739,
-     0.3739
+     0.3826,
+     0.3826,
+     0.3826
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/icicle_dirk"
+   }
+  }
+ }
 }

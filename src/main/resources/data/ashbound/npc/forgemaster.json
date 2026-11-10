@@ -192,8 +192,8 @@
   "cold_brand": {
    "text": [
     "No, it wouldn't. My father's notes end on this: the forge tests the hand before it lends its own.",
-    "This was in the Forgemaster's strongbox, and in his father's. The Founder's Brand. Press it to the altar and the forge calls up the worst thing that ever worked at it. Ossric, the Kiln-Father. Yes, that one. Don't ask how.",
-    "Put him down, down there, in front of it. Take friends, and take it seriously. I've only the one Brand."
+    "This was in the Forgemaster's strongbox, and in his father's. The Founder's Brand. It's a sigil: the worst thing that ever worked at this forge answers to it. Ossric, the Kiln-Father. Yes, that one.",
+    "He's far too big for the vault. Take it to Veyra at the guild hall; she'll send you and your friends to his own hearth, out past everything. Put him down there and the forge is yours. And the Brand stays yours: you can go back."
    ],
    "options": [
     {
@@ -204,7 +204,7 @@
   },
   "cold_brand_again": {
    "text": [
-    "Hold it in your hand and press it to the altar. Then stand well back from wherever the floor starts to burn."
+    "Take the Brand to Veyra, at the guild hall's second desk. She sends everyone standing with you. Stay out of the slag."
    ],
    "options": [
     {

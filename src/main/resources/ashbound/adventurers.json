@@ -1,0 +1,576 @@
+[
+ {
+  "name": "The Mudlarks",
+  "rank": "F",
+  "colour": "mustard",
+  "members": [
+   {
+    "kind": "adv_f_01",
+    "name": "Tobin Greaves",
+    "role": "tank",
+    "race": "human",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_f_02",
+    "name": "Hollis Lantern",
+    "role": "white_mage",
+    "race": "human",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_f_03",
+    "name": "Liesel Stroud",
+    "role": "striker",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_f_04",
+    "name": "Gisla the Mute",
+    "role": "ranger",
+    "race": "human",
+    "sex": "f"
+   }
+  ]
+ },
+ {
+  "name": "Lantern Hounds",
+  "rank": "F",
+  "colour": "rust",
+  "members": [
+   {
+    "kind": "adv_f_05",
+    "name": "Edda the Quiet",
+    "role": "breaker",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_f_06",
+    "name": "Elrian Thistledown",
+    "role": "lancer",
+    "race": "elf",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_f_07",
+    "name": "Ada Blackwood",
+    "role": "ranger",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_f_08",
+    "name": "Talia Morrow",
+    "role": "white_mage",
+    "race": "human",
+    "sex": "f"
+   }
+  ]
+ },
+ {
+  "name": "The Greenhorns",
+  "rank": "F",
+  "colour": "moss",
+  "members": [
+   {
+    "kind": "adv_f_09",
+    "name": "Wendel Ember",
+    "role": "tank",
+    "race": "human",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_f_10",
+    "name": "Sorcha Corrin",
+    "role": "breaker",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_f_11",
+    "name": "Valandil Dawnpetal",
+    "role": "white_mage",
+    "race": "elf",
+    "sex": "m"
+   }
+  ]
+ },
+ {
+  "name": "Copper Bell Company",
+  "rank": "E",
+  "colour": "ochre",
+  "members": [
+   {
+    "kind": "adv_e_12",
+    "name": "Roderick Grist",
+    "role": "tank",
+    "race": "human",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_e_13",
+    "name": "Vela Gale",
+    "role": "ranger",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_e_14",
+    "name": "Joss Thorne",
+    "role": "black_mage",
+    "race": "human",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_e_15",
+    "name": "Promise of the Drains",
+    "role": "white_mage",
+    "race": "demon",
+    "sex": "f"
+   }
+  ]
+ },
+ {
+  "name": "The Thornbacks",
+  "rank": "E",
+  "colour": "forest",
+  "members": [
+   {
+    "kind": "adv_e_16",
+    "name": "Nimue Moonbough",
+    "role": "tank",
+    "race": "elf",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_e_17",
+    "name": "Miriel Lilacshade",
+    "role": "white_mage",
+    "race": "elf",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_e_18",
+    "name": "Elaria Starbark",
+    "role": "striker",
+    "race": "elf",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_e_19",
+    "name": "Faelis Lumenvale",
+    "role": "ranger",
+    "race": "elf",
+    "sex": "f"
+   }
+  ]
+ },
+ {
+  "name": "Low Road Five",
+  "rank": "E",
+  "colour": "brown",
+  "members": [
+   {
+    "kind": "adv_e_20",
+    "name": "Fenn Brack",
+    "role": "tank",
+    "race": "human",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_e_21",
+    "name": "Kael the Grey",
+    "role": "striker",
+    "race": "human",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_e_22",
+    "name": "Hanne Crane",
+    "role": "rogue",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_e_23",
+    "name": "Silas Wexley",
+    "role": "black_mage",
+    "race": "human",
+    "sex": "m"
+   }
+  ]
+ },
+ {
+  "name": "Ninth Lantern",
+  "rank": "D",
+  "colour": "navy",
+  "members": [
+   {
+    "kind": "adv_d_24",
+    "name": "Ines Dregg",
+    "role": "tank",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_d_25",
+    "name": "Maren Blackwood",
+    "role": "striker",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_d_26",
+    "name": "Jory Barrow",
+    "role": "striker",
+    "race": "human",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_d_27",
+    "name": "Hild Two-Blades",
+    "role": "white_mage",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_d_28",
+    "name": "Marta Greaves",
+    "role": "black_mage",
+    "race": "human",
+    "sex": "f"
+   }
+  ]
+ },
+ {
+  "name": "The Stonejaws",
+  "rank": "D",
+  "colour": "rust",
+  "members": [
+   {
+    "kind": "adv_d_29",
+    "name": "Svala Emberfist",
+    "role": "tank",
+    "race": "dwarf",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_d_30",
+    "name": "Velka Emberfist",
+    "role": "striker",
+    "race": "dwarf",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_d_31",
+    "name": "Torvald Emberfist",
+    "role": "striker",
+    "race": "dwarf",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_d_32",
+    "name": "Tilda Dunmore",
+    "role": "white_mage",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_d_33",
+    "name": "Brokk Copperkettle",
+    "role": "black_mage",
+    "race": "dwarf",
+    "sex": "m"
+   }
+  ]
+ },
+ {
+  "name": "Gallows Crows",
+  "rank": "D",
+  "colour": "charcoal",
+  "members": [
+   {
+    "kind": "adv_d_34",
+    "name": "Lorne Gale",
+    "role": "tank",
+    "race": "human",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_d_35",
+    "name": "Caspar Rook",
+    "role": "white_mage",
+    "race": "human",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_d_36",
+    "name": "Elske Fenwick",
+    "role": "striker",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_d_37",
+    "name": "Charity Underwall",
+    "role": "ranger",
+    "race": "demon",
+    "sex": "f"
+   }
+  ]
+ },
+ {
+  "name": "The Red Hounds",
+  "rank": "C",
+  "colour": "red",
+  "members": [
+   {
+    "kind": "adv_c_38",
+    "name": "Kestra Coldwell",
+    "role": "breaker",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_c_39",
+    "name": "Petra Lantern",
+    "role": "lancer",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_c_40",
+    "name": "Sylvar Lilacshade",
+    "role": "ranger",
+    "race": "elf",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_c_41",
+    "name": "Bram Blackwood",
+    "role": "white_mage",
+    "race": "human",
+    "sex": "m"
+   }
+  ]
+ },
+ {
+  "name": "Ember Wake",
+  "rank": "C",
+  "colour": "oxblood",
+  "members": [
+   {
+    "kind": "adv_c_42",
+    "name": "Amends Lastgate",
+    "role": "tank",
+    "race": "demon",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_c_43",
+    "name": "Patience of the Drains",
+    "role": "striker",
+    "race": "demon",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_c_44",
+    "name": "Prudence Lastgate",
+    "role": "striker",
+    "race": "demon",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_c_45",
+    "name": "Mercy Coldhearth",
+    "role": "white_mage",
+    "race": "demon",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_c_46",
+    "name": "Vesper Stepdown",
+    "role": "black_mage",
+    "race": "demon",
+    "sex": "f"
+   }
+  ]
+ },
+ {
+  "name": "Silver Thistle",
+  "rank": "B",
+  "colour": "teal",
+  "members": [
+   {
+    "kind": "adv_b_47",
+    "name": "Piet Ember",
+    "role": "tank",
+    "race": "human",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_b_48",
+    "name": "Abel Redcap",
+    "role": "striker",
+    "race": "human",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_b_49",
+    "name": "Lucan the Quiet",
+    "role": "striker",
+    "race": "human",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_b_50",
+    "name": "Greta Kettle",
+    "role": "white_mage",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_b_51",
+    "name": "Ilse Dunmore",
+    "role": "black_mage",
+    "race": "human",
+    "sex": "f"
+   }
+  ]
+ },
+ {
+  "name": "The Ashen Vow",
+  "rank": "B",
+  "colour": "plum",
+  "members": [
+   {
+    "kind": "adv_b_52",
+    "name": "Senna Morrow",
+    "role": "tank",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_b_53",
+    "name": "Ivo Corrin",
+    "role": "white_mage",
+    "race": "human",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_b_54",
+    "name": "Wren the Lucky",
+    "role": "striker",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_b_55",
+    "name": "Corra Hask",
+    "role": "ranger",
+    "race": "human",
+    "sex": "f"
+   }
+  ]
+ },
+ {
+  "name": "Ironwake",
+  "rank": "A",
+  "colour": "black",
+  "members": [
+   {
+    "kind": "adv_a_56",
+    "name": "Grenda Deepdelve",
+    "role": "tank",
+    "race": "dwarf",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_a_57",
+    "name": "Thrain Emberfist",
+    "role": "white_mage",
+    "race": "dwarf",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_a_58",
+    "name": "Dagni Brightvein",
+    "role": "striker",
+    "race": "dwarf",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_a_59",
+    "name": "Marga Emberfist",
+    "role": "ranger",
+    "race": "dwarf",
+    "sex": "f"
+   }
+  ]
+ },
+ {
+  "name": "The Last Lanterns",
+  "rank": "A",
+  "colour": "wine",
+  "members": [
+   {
+    "kind": "adv_a_60",
+    "name": "Gideon Nine-Lives",
+    "role": "tank",
+    "race": "human",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_a_61",
+    "name": "Aelar Mistwhisper",
+    "role": "breaker",
+    "race": "elf",
+    "sex": "m"
+   },
+   {
+    "kind": "adv_a_62",
+    "name": "Aud Half-Ear",
+    "role": "white_mage",
+    "race": "human",
+    "sex": "f"
+   }
+  ]
+ },
+ {
+  "name": "Crownless",
+  "rank": "S",
+  "colour": "white",
+  "members": [
+   {
+    "kind": "adv_s_63",
+    "name": "Sabeth Underhill",
+    "role": "tank",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_s_64",
+    "name": "Ottilie Cooper",
+    "role": "striker",
+    "race": "human",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_s_65",
+    "name": "Quiet Hornsend",
+    "role": "rogue",
+    "race": "demon",
+    "sex": "f"
+   },
+   {
+    "kind": "adv_s_66",
+    "name": "Corvin Half-Ear",
+    "role": "black_mage",
+    "race": "human",
+    "sex": "m"
+   }
+  ]
+ }
+]

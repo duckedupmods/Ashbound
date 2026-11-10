@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/keel_greatblade.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.353,
-     -2.353,
-     0.0
+     -1.313,
+     -2.592,
+     -0.365
     ],
     "scale": [
-     0.3364,
-     0.3364,
-     0.3364
+     0.3002,
+     0.3002,
+     0.3002
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.353,
-     -2.353,
-     0.0
+     -1.313,
+     -2.592,
+     -0.365
     ],
     "scale": [
-     0.3364,
-     0.3364,
-     0.3364
+     0.3002,
+     0.3002,
+     0.3002
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.294,
-     -1.294,
+     -0.722,
+     -1.426,
      0
     ],
     "scale": [
-     0.185,
-     0.185,
-     0.185
+     0.1651,
+     0.1651,
+     0.1651
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/keel_greatblade"
+   }
+  }
+ }
 }

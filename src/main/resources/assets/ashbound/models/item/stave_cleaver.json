@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/stave_cleaver.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.442,
-     -2.116,
-     0.093
+     -2.377,
+     -2.353,
+     0.007
     ],
     "scale": [
-     0.3634,
-     0.3634,
-     0.3634
+     0.3616,
+     0.3616,
+     0.3616
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.442,
-     -2.116,
-     0.093
+     -2.377,
+     -2.353,
+     0.007
     ],
     "scale": [
-     0.3634,
-     0.3634,
-     0.3634
+     0.3616,
+     0.3616,
+     0.3616
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.343,
-     -1.164,
+     -1.307,
+     -1.294,
      0
     ],
     "scale": [
-     0.1999,
-     0.1999,
-     0.1999
+     0.1989,
+     0.1989,
+     0.1989
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/stave_cleaver"
+   }
+  }
+ }
 }

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/koboldcaller.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.696,
-     -0.055,
-     -0.5
+     -1.195,
+     -0.546,
+     0.17
     ],
     "scale": [
-     0.4298,
-     0.4298,
-     0.4298
+     0.2967,
+     0.2967,
+     0.2967
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.696,
-     -0.055,
-     -0.5
+     -1.195,
+     -0.546,
+     0.17
     ],
     "scale": [
-     0.4298,
-     0.4298,
-     0.4298
+     0.2967,
+     0.2967,
+     0.2967
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.933,
-     -0.03,
+     -0.657,
+     -0.3,
      0
     ],
     "scale": [
-     0.2364,
-     0.2364,
-     0.2364
+     0.1632,
+     0.1632,
+     0.1632
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/koboldcaller"
+   }
+  }
+ }
 }

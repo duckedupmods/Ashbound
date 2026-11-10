@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/mosscrown.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.838,
-     -0.838,
+     -0.765,
+     -0.765,
      -0.0
     ],
     "scale": [
-     0.3178,
-     0.3178,
-     0.3178
+     0.2606,
+     0.2606,
+     0.2606
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.838,
-     -0.838,
+     -0.765,
+     -0.765,
      -0.0
     ],
     "scale": [
-     0.3178,
-     0.3178,
-     0.3178
+     0.2606,
+     0.2606,
+     0.2606
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.461,
-     -0.461,
+     -0.421,
+     -0.421,
      0
     ],
     "scale": [
-     0.1748,
-     0.1748,
-     0.1748
+     0.1433,
+     0.1433,
+     0.1433
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/mosscrown"
+   }
+  }
+ }
 }

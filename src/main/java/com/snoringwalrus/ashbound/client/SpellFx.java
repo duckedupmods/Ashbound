@@ -119,6 +119,11 @@ public final class SpellFx {
 
 	/** Every tick of a bolt, on each client. */
 	private static void trail(Spells.Bolt b) {
+		Entity o = b.getOwner();
+		SpellParticles.as(o == null ? 1 : SpellParticles.share(o.getId()), () -> trailOf(b));
+	}
+
+	private static void trailOf(Spells.Bolt b) {
 		ClientLevel l = (ClientLevel) b.level();
 		SpellLook.Family fam = SpellLook.of(b.gate());
 		int c = SpellLook.colour(b.gate());
@@ -131,19 +136,24 @@ public final class SpellFx {
 			if (fam == SpellLook.Family.THREAD && b.getOwner() != null)
 				for (int i = 0; i < 4; i++) add(new Silk(l, b.getOwner(), b, c, 0.9f - i * 0.1f, i * Mth.HALF_PI, 0.3f + i * 0.04f));
 		}
-		if (b.tickCount % 3 == 0) add(new FxKit.Decal(l, at.subtract(v.scale(0.4)), mix(c, 0xFFFFFF, 0.5f), FxKit.RING, 1.1f, 8, 0.55f).across(v));
 		switch (fam) {
-			case FLAME, ROT -> {
+			case FLAME -> {   // a burning point dragging soot
 				for (int i = 0; i < 2; i++) {
 					Vec3 p = at.subtract(v.scale(i * 0.5 + 0.2)).add(rand(r, 0).scale(0.1));
 					flip(l, FLAME, FIRE, c, p, v.scale(0.12).add(rand(r, 0).scale(0.012)), 0.5f, 0.2f, 10).stretched(1.9f);
 				}
-				if (b.tickCount % 2 == 0) flip(l, ROLL, SMOKE, fam == SpellLook.Family.ROT ? mix(c, SMOKE_DARK, 0.6f) : SMOKE_DARK, at.subtract(v.scale(0.8)), new Vec3(0, 0.02, 0), 0.4f, 1f, 22);
-				sparks(l, at, c, fam == SpellLook.Family.ROT ? 3 : 2, 0.05, fam == SpellLook.Family.ROT ? -0.02f : 0.04f);
+				if (b.tickCount % 2 == 0) flip(l, ROLL, SMOKE, SMOKE_DARK, at.subtract(v.scale(0.8)), new Vec3(0, 0.02, 0), 0.4f, 1f, 22);
+				sparks(l, at, c, 2, 0.05, 0.04f);
 			}
-			case SHARD -> {
-				flip(l, ROLL, SMOKE, mix(c, 0xFFFFFF, 0.5f), at.subtract(v.scale(0.5)), Vec3.ZERO, 0.25f, 0.7f, 12);
-				sparks(l, at.subtract(v.scale(0.3)), mix(c, 0xFFFFFF, 0.5f), 2, 0.05, 0.03f);
+			case ROT -> {   // something heavy and wet that sheds as it goes: black drips falling away, sick spores left hanging
+				if (b.tickCount % 2 == 0) flip(l, 0, SpellParticles.STREAK, b.tickCount % 4 == 0 ? 0 : c, at, new Vec3(0, -0.05, 0).add(v.scale(0.1)), 0.09f, 0.03f, 14).stretched(4).falls(0.7f);
+				flip(l, ROLL, INK, c, at.subtract(v.scale(0.5)), Vec3.ZERO, 0.3f, 0.6f, 12);
+				if (b.tickCount % 2 == 0) flip(l, ROLL, SMOKE, mix(c, SMOKE_DARK, 0.6f), at.subtract(v.scale(0.8)), new Vec3(0, 0.01, 0), 0.5f, 1.1f, 26);
+				sparks(l, at, c, 2, 0.04, -0.02f);
+			}
+			case SHARD -> {   // a splinter that sheds splinters: they hang in its wake and go
+				if (b.tickCount % 2 == 0) add(new Spike(l, at.subtract(v.scale(0.5)).add(rand(r, 0).scale(0.2)), v.normalize().add(rand(r, 0).scale(0.3)).normalize().scale(0.7), mix(c, 0xFFFFFF, 0.2f), 0.05f, 9));
+				flip(l, ROLL, SMOKE, mix(c, 0xFFFFFF, 0.3f), at.subtract(v.scale(0.5)), Vec3.ZERO, 0.25f, 0.6f, 12);
 			}
 			case LIGHTNING -> {
 				Vfx.Opt arc = new Vfx.Opt(c, 0.03f, 3, 0, Vfx.GLOW | Vfx.BOLT);
@@ -151,7 +161,7 @@ public final class SpellFx {
 					Vec3 d = rand(r, 0).scale(0.8 + r.nextDouble() * 0.9);
 					l.addParticle(arc, true, at.x, at.y, at.z, d.x, d.y, d.z);
 				}
-				if (b.getOwner() != null && b.tickCount % 2 == 0) {
+				if (b.getOwner() != null && b.tickCount % 5 == 0) {
 					Vec3 from = tip(b.getOwner()), d = at.subtract(from);
 					if (d.lengthSqr() < 400) l.addParticle(new Vfx.Opt(c, 0.04f, 3, 0, Vfx.GLOW | Vfx.BOLT), true, from.x, from.y, from.z, d.x, d.y, d.z);
 				}
@@ -159,7 +169,7 @@ public final class SpellFx {
 			}
 			case LIQUID -> {
 				flip(l, ROLL, SMOKE, mix(c, 0xFFFFFF, 0.3f), at.subtract(v.scale(0.6)), Vec3.ZERO, 0.3f, 0.9f, 14);
-				FxKit.streaks(l, at.subtract(v.scale(0.4)), mix(c, 0xFFFFFF, 0.5f), 2, 0.12, 0.05f, 5, 6, 0);
+				flip(l, 0, SpellParticles.STREAK, mix(c, 0xFFFFFF, 0.2f), at, v.scale(0.2).add(rand(r, 0).scale(0.06)), 0.08f, 0.03f, 12).stretched(4).falls(0.6f);
 			}
 			case HEX -> {
 				for (int i = 0; i < 3; i++) {
@@ -171,6 +181,7 @@ public final class SpellFx {
 			}
 			case VOID -> {
 				if (b.tickCount % 3 == 0) add(new Orbit(l, at, 0.75f, r.nextFloat() * Mth.TWO_PI, 0.5f, c, 0.3f, 9));
+				if (b.tickCount % 4 == 0) add(new FxKit.Decal(l, at.subtract(v.scale(0.3)), c, FxKit.RING, 1.4f, 7, 0.6f).across(v).inward());
 				flip(l, FLAME, FIRE, c, at.subtract(v.scale(0.6)), v.scale(0.1), 0.24f, 0.1f, 9).stretched(1.8f);
 				Vfx.Opt in = Vfx.mote(c, 0.03f, 9, 0);
 				for (int i = 0; i < 3; i++) {
@@ -218,22 +229,21 @@ public final class SpellFx {
 					Vec3 axis = new Vec3(Math.cos(a) * 0.5, 1, Math.sin(a) * 0.5).normalize().scale((2.8 - d) * (0.8 + r.nextDouble() * 0.7) + 0.4);
 					add(new Spike(l, foot, axis, c, 0.12f + 0.16f * (float) (2.4 - d) / 2.4f, 24 + r.nextInt(14)));
 				}
-				for (int i = 0; i < 6; i++) flip(l, ROLL, SMOKE, mix(c, 0xFFFFFF, 0.6f), f.add(rand(r, 0).multiply(1.2, 0, 1.2)).add(0, 0.3, 0), Vec3.ZERO, 0.6f, 1.2f, 22);
+				for (int i = 0; i < 6; i++) flip(l, ROLL, SMOKE, mix(c, 0xFFFFFF, 0.3f), f.add(rand(r, 0).multiply(1.2, 0, 1.2)).add(0, 0.3, 0), Vec3.ZERO, 0.6f, 1.2f, 22);
 				shock(l, at, c, 1.2f, 0.12f, 12);
 				pool(l, at, c, 2.8f, 22, 0.55f);
 				FxKit.later(l, 22, () -> {   // and it all breaks
-					add(new FxKit.Pop(l, f.add(0, 1, 0), mix(c, 0xFFFFFF, 0.5f), SpellParticles.STAR, 1.8f, 1.2f, 3, r.nextFloat() * Mth.TWO_PI, 0));
-					FxKit.streaks(l, f.add(0, 1, 0), mix(c, 0xFFFFFF, 0.6f), 22, 0.8, 0.06f, 4, 8, 0.6);
+					add(new FxKit.Pop(l, f.add(0, 1, 0), mix(c, 0xFFFFFF, 0.3f), SpellParticles.STAR, 1.8f, 1.2f, 3, r.nextFloat() * Mth.TWO_PI, 0));
+					FxKit.streaks(l, f.add(0, 1, 0), mix(c, 0xFFFFFF, 0.3f), 22, 0.8, 0.06f, 4, 8, 0.6);
 				});
 			}
 			case LIGHTNING -> {
 				FxKit.impact(l, at, c, 1);
 				Vec3 f = floor(l, at);
 				for (int i = 0; i < 3; i++)   // it strikes three times
-					FxKit.later(l, i * 2, () -> {
+					FxKit.later(l, i * 4, () -> {
 						Vec3 sky = at.add(r.nextDouble() - 0.5, 12, r.nextDouble() - 0.5);
-						add(new Beam(l, sky, at.subtract(sky), mix(c, 0xFFFFFF, 0.5f), 0.55f, 5, 1, null, 1).lightning());
-						FxKit.flare(l, at, c, 2.8f, 3);
+						add(new Beam(l, sky, at.subtract(sky), mix(c, 0xFFFFFF, 0.3f), 0.4f, 6, 0.85f, null, 1).lightning());
 					});
 				for (int i = 0; i < 7; i++) {
 					double a = r.nextDouble() * Mth.TWO_PI;
@@ -267,7 +277,7 @@ public final class SpellFx {
 					double a = i * Mth.TWO_PI / 12;
 					flip(l, ROLL, INK, c, at.add(0, 2.2, 0), new Vec3(Math.cos(a) * 0.075, 0.035, Math.sin(a) * 0.075), 0.7f, 1.6f, 34);
 				}
-				Vfx.Opt spore = Vfx.mote(mix(c, 0xFFFFFF, 0.5f), 0.02f, 40, -0.01f);
+				Vfx.Opt spore = Vfx.mote(mix(c, 0xFFFFFF, 0.3f), 0.02f, 40, -0.01f);
 				for (int i = 0; i < 40; i++) {
 					Vec3 v = rand(r, 0.8).scale(0.04 + r.nextDouble() * 0.08);
 					l.addParticle(spore, true, at.x, at.y + 0.6, at.z, v.x, v.y, v.z);
@@ -350,11 +360,11 @@ public final class SpellFx {
 		Vec3 f = floor(l, at);
 		int pale = mix(c, 0xFFFFFF, 0.25f);
 		add(new Flat(l, f, c, CIRCLE, reach, life, 0.012f, 0.6f));
-		add(new Flat(l, f, c, GLOW, reach * 1.2f, life, 0, 0.12f));
-		add(new FxKit.Tube(l, f, new Vec3(0, 1, 0), c, 2.2f, reach, reach, 0.6f, Math.min(life, 40), 0.09f));
+		add(new Flat(l, f, c, GLOW, reach * 1.2f, life, 0, 0.1f));
+		add(new FxKit.Crown(l, f, pale, reach * 0.3f, reach * 0.8f, 1.3f, 24, 0.5f));
+		add(new FxKit.Tube(l, f, new Vec3(0, 1, 0), c, 3, reach * 0.5f, reach * 0.5f, 0.6f, Math.min(life, 40), 0.08f));
 		for (int i = 0; i * 12 < life; i++)   // it breathes out in rings for as long as it stands
 			FxKit.later(l, i * 12, () -> add(new FxKit.Decal(l, f.add(0, 0.03, 0), pale, FxKit.RING, reach, 18, 0.4f)));
-		FxKit.flare(l, f.add(0, 0.6, 0), c, reach * 0.25f, 8);
 		FxKit.rising(l, at, pale, reach, 18 + (int) reach * 4, 18);
 		sparks(l, f.add(0, 0.3, 0), pale, 16, 0.12, -0.02f);
 	}
@@ -391,7 +401,7 @@ public final class SpellFx {
 			tongues(l, f.add(0, 0.3, 0), c, INK, 10, 0.2);
 			FxKit.ink(l, f.add(0, 0.6, 0), c, 5, 0.6f, 1.2f, 22);
 			FxKit.rocks(l, at, 10, 0.3);
-			FxKit.streaks(l, f.add(0, 0.3, 0), mix(c, 0xFFFFFF, 0.4f), 12, 0.7, 0.06f, 7, 9, 3);
+			FxKit.streaks(l, f.add(0, 0.3, 0), mix(c, 0xFFFFFF, 0.3f), 12, 0.7, 0.06f, 7, 9, 3);
 			shock(l, at, c, 0.85f, 0.1f, 14);
 		});
 		pool(l, at, c, 2.2f, 28, 0.8f);
@@ -405,12 +415,20 @@ public final class SpellFx {
 		add(new FxKit.Decal(l, f, c, FxKit.SWIRL, reach * 0.9f, 46, 0.7f).spun(0.02f));
 		add(new FxKit.Tube(l, f, new Vec3(0, 1, 0), c, 2.6f, reach, reach * 0.8f, 1.4f, 40, 0.3f));
 		FxKit.ink(l, f.add(0, 0.5, 0), c, 8, reach * 0.5f, 1.3f, 26);
-		for (int i = 0; i < 3; i++) FxKit.later(l, i * 8, () -> FxKit.ring(l, at, mix(c, 0xFFFFFF, 0.5f), reach * 1.1f, 14));
+		for (int i = 0; i < 3; i++) FxKit.later(l, i * 8, () -> FxKit.ring(l, at, mix(c, 0xFFFFFF, 0.3f), reach * 1.1f, 14));
 	}
 
 	// ---------------------------------------------------------------- from the server
 
+	/** One streak of a healing rain. */
+	private static final float RAIN_TALL = 7, RAIN_WIDE = 0.2f;
+	private static final int RAIN_LIFE = 12;
+
 	private static void play(Net.SpellFx m) {
+		SpellParticles.as(SpellParticles.share(m.by()), () -> draw(m));
+	}
+
+	private static void draw(Net.SpellFx m) {
 		ClientLevel l = mc().level;
 		if (l == null) return;
 		Vec3 at = new Vec3(m.at());
@@ -423,7 +441,7 @@ public final class SpellFx {
 				add(new Flip(l, tip, Vec3.ZERO, c, 0, GLOW, 1.1f * m.r(), 1.2f * m.r(), 7, 0.6f));
 				FxKit.flare(l, tip, c, 1.3f * m.r(), 5);
 				add(new FxKit.Pop(l, tip, c, SpellParticles.STAR, 0.8f * m.r(), 0.4f * m.r(), 3, l.getRandom().nextFloat() * Mth.TWO_PI, 0));
-				if (e != null) add(new FxKit.Decal(l, tip, mix(c, 0xFFFFFF, 0.5f), FxKit.RING, 1.2f * m.r(), 7, 0.8f).across(e.getLookAngle()));
+				if (e != null) add(new FxKit.Decal(l, tip, mix(c, 0xFFFFFF, 0.3f), FxKit.RING, 1.2f * m.r(), 7, 0.8f).across(e.getLookAngle()));
 				sparks(l, tip, c, (int) (8 * m.r()), 0.14, 0.03f);
 			}
 			case Spells.FX_HIT -> hit(l, SpellLook.of(m.gate()), c, at, e);
@@ -439,7 +457,7 @@ public final class SpellFx {
 			case Spells.FX_GUARD -> {
 				if (e != null) {
 					add(new Dome(l, e.position(), c, 1.6f, 16));
-					FxKit.halo(l, e.position(), mix(c, 0xFFFFFF, 0.5f), e.getBbWidth() + 1, e.getBbHeight(), 3);
+					FxKit.halo(l, e.position(), mix(c, 0xFFFFFF, 0.3f), e.getBbWidth() + 1, e.getBbHeight(), 3);
 					FxKit.flare(l, e.position().add(0, 1, 0), c, 1.6f, 6);
 				}
 			}
@@ -447,9 +465,10 @@ public final class SpellFx {
 			case Spells.FX_RISE -> rise(l, at, c);
 			case Spells.FX_GONE -> {
 				FxKit.ink(l, at.add(0, 0.8, 0), c, 7, 0.5f, 1.1f, 20);
-				FxKit.streaks(l, at.add(0, 0.8, 0), mix(c, 0xFFFFFF, 0.4f), 10, 0.5, 0.05f, 5, 8, 0.8);
+				FxKit.streaks(l, at.add(0, 0.8, 0), mix(c, 0xFFFFFF, 0.3f), 10, 0.5, 0.05f, 5, 8, 0.8);
 				sparks(l, at.add(0, 0.8, 0), c, 14, 0.2, -0.02f);
 			}
+			case Spells.FX_RAIN -> FxKit.column(l, at, c, RAIN_TALL, RAIN_WIDE, RAIN_LIFE, null);
 			case Spells.FX_GREAT_HEAL -> {
 				healCircle(l, at, c, m.r(), 70);
 				add(new Dome(l, floor(l, at), c, m.r(), 70));

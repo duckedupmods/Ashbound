@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/gravespike.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.442,
-     -0.442,
-     -0.0
+     -0.346,
+     -0.346,
+     0.0
     ],
     "scale": [
-     0.3052,
-     0.3052,
-     0.3052
+     0.2796,
+     0.2796,
+     0.2796
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.442,
-     -0.442,
-     -0.0
+     -0.346,
+     -0.346,
+     0.0
     ],
     "scale": [
-     0.3052,
-     0.3052,
-     0.3052
+     0.2796,
+     0.2796,
+     0.2796
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.243,
-     -0.243,
+     -0.19,
+     -0.19,
      0
     ],
     "scale": [
-     0.1679,
-     0.1679,
-     0.1679
+     0.1538,
+     0.1538,
+     0.1538
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/gravespike"
+   }
+  }
+ }
 }

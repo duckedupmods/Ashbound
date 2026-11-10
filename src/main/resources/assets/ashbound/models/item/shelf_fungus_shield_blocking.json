@@ -82,18 +82,6 @@
    "textures": {
     "layer0": "ashbound:item/shelf_fungus_shield"
    }
-  },
-  "ground": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/shelf_fungus_shield"
-   }
-  },
-  "fixed": {
-   "parent": "minecraft:item/generated",
-   "textures": {
-    "layer0": "ashbound:item/shelf_fungus_shield"
-   }
   }
  }
 }

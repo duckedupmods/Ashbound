@@ -1,0 +1,7 @@
+newmtl prop
+Ka 0 0 0
+map_Kd ashbound:block/cooks_fire
+
+newmtl glow
+Ka 1 1 1
+map_Kd ashbound:block/cooks_fire

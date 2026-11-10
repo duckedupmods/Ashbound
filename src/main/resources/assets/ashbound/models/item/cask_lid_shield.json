@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/cask_lid_shield.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.618,
-     3.676,
-     7.712
+     1.541,
+     3.05,
+     7.639
     ],
     "scale": [
-     0.5774,
-     0.5774,
-     0.5774
+     0.5714,
+     0.5714,
+     0.5714
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.618,
-     3.676,
-     7.712
+     1.541,
+     3.05,
+     7.639
     ],
     "scale": [
-     0.5774,
-     0.5774,
-     0.5774
+     0.5714,
+     0.5714,
+     0.5714
     ]
    },
    "ground": {
@@ -115,15 +115,23 @@
      0.0
     ],
     "translation": [
-     0.89,
-     2.022,
+     0.848,
+     1.677,
      0
     ],
     "scale": [
-     0.3176,
-     0.3176,
-     0.3176
+     0.3143,
+     0.3143,
+     0.3143
     ]
+   }
+  }
+ },
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/cask_lid_shield"
    }
   }
  },
@@ -134,6 +142,5 @@
    },
    "model": "ashbound:item/cask_lid_shield_blocking"
   }
- ],
- "perspectives": {}
+ ]
 }

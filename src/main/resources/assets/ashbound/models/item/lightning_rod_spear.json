@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/lightning_rod_spear.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.575,
-     -0.575,
+     -0.412,
+     -0.412,
      -0.0
     ],
     "scale": [
-     0.3188,
-     0.3188,
-     0.3188
+     0.2842,
+     0.2842,
+     0.2842
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.575,
-     -0.575,
+     -0.412,
+     -0.412,
      -0.0
     ],
     "scale": [
-     0.3188,
-     0.3188,
-     0.3188
+     0.2842,
+     0.2842,
+     0.2842
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.316,
-     -0.316,
+     -0.227,
+     -0.227,
      0
     ],
     "scale": [
-     0.1754,
-     0.1754,
-     0.1754
+     0.1563,
+     0.1563,
+     0.1563
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/lightning_rod_spear"
+   }
+  }
+ }
 }

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/beak_hammer.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.39,
-     -0.39,
-     0.0
+     -1.208,
+     0.532,
+     0.497
     ],
     "scale": [
-     0.3803,
-     0.3803,
-     0.3803
+     0.354,
+     0.354,
+     0.354
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.39,
-     -0.39,
-     0.0
+     -1.208,
+     0.532,
+     0.497
     ],
     "scale": [
-     0.3803,
-     0.3803,
-     0.3803
+     0.354,
+     0.354,
+     0.354
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.215,
-     -0.215,
+     -0.664,
+     0.293,
      0
     ],
     "scale": [
-     0.2092,
-     0.2092,
-     0.2092
+     0.1947,
+     0.1947,
+     0.1947
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/beak_hammer"
+   }
+  }
+ }
 }

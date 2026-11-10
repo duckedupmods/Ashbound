@@ -1,0 +1,429 @@
+{
+	"_comment": "What adventurers say (AdventurerTalk). Over their heads (barks) and in the talk screen. {player} who they're talking to or about, {name} the speaker, {party} their party, {rank} theirs, {who} someone else, {dir} {far} {what} for rumours.",
+	"taunt": [
+		"On me!",
+		"Eyes here, ugly!",
+		"Hold the line!",
+		"I've got it, go round!",
+		"Come on then!",
+		"Behind my shield!"
+	],
+	"fight": [
+		"Contact!",
+		"Here they come!",
+		"Flank it!",
+		"Watch the left!",
+		"Go for the legs!",
+		"Keep moving!",
+		"Don't let it breathe!"
+	],
+	"heal": [
+		"Hold still, {who}!",
+		"I've got you, {who}.",
+		"Mending!",
+		"Stay up, {who}!",
+		"Breathe. You're fine."
+	],
+	"hurt": [
+		"I'm hurt, cover me!",
+		"Need a mend here!",
+		"That one bit deep...",
+		"Fall back a step!",
+		"Can't take many more of those!"
+	],
+	"won": [
+		"That's the last of them.",
+		"Clear.",
+		"Anyone hurt?",
+		"Check your gear and move.",
+		"Not bad. Not good either.",
+		"Pick it up, we're moving."
+	],
+	"thanks": [
+		"Thanks, {player}. We owe you one.",
+		"{player}! Good timing.",
+		"Didn't need the help. ...Thanks, though.",
+		"The Guild'll hear you pulled your weight, {player}."
+	],
+	"mate_down": [
+		"{who}! No!",
+		"{who}'s down!",
+		"Get {who} out of there!",
+		"Damn it, {who}..."
+	],
+	"busy": [
+		"Not now!",
+		"Kind of busy!",
+		"Talk later!"
+	],
+	"walk_low": [
+		"My boots are done. Third pair this season.",
+		"If the pay doesn't go up, I'm going back to the farm.",
+		"Was that a road? I think that was a road.",
+		"Who's got the map? ...Who had the map?",
+		"One more gate and we can afford a proper tent.",
+		"My mum thinks I'm a clerk.",
+		"I hate bogs. I hate every bog."
+	],
+	"walk_mid": [
+		"Keep it tight. These hills have eyes.",
+		"The D-rank board's been thin lately.",
+		"Heard the guild's raising the bounty on breakouts.",
+		"I'd kill for a bath.",
+		"Somebody's going to have to sharpen that thing properly.",
+		"Two more and we sit the C trial."
+	],
+	"walk_high": [
+		"The gate last week was worse than they said.",
+		"Quiet out here. I don't trust quiet.",
+		"Another breakout up north, they say.",
+		"Don't stop. Not here.",
+		"We close one, two more open. Every year.",
+		"You feel that? Something big's awake."
+	],
+	"camp_low": [
+		"Who's on first watch? Not me.",
+		"Is it meant to be this smoky?",
+		"Pass the bread. The other bread.",
+		"I keep hearing things.",
+		"Tomorrow we find a proper job."
+	],
+	"camp_mid": [
+		"Get some sleep. We move at first light.",
+		"Remember the cellar run? Never again.",
+		"Fire low. No need to call them in.",
+		"Another cup and I'm out."
+	],
+	"camp_high": [
+		"Rest while you can.",
+		"Keep your blade where you can reach it.",
+		"I've seen worse nights. Not many.",
+		"Wake me if the dark starts moving."
+	],
+	"town": [
+		"Board's got nothing good today.",
+		"First round's on whoever got hit least.",
+		"I need that armour fixed by morning.",
+		"The guild clerk owes me coin.",
+		"Market's dear this week.",
+		"Anyone seen the healer? The proper one?"
+	],
+	"see_higher": [
+		"That's a rank {player_rank}. Don't stare.",
+		"Make way.",
+		"...Is that {player}? The {player_rank}?",
+		"Wish I had gear like that."
+	],
+	"see_lower": [
+		"New blood. Stay off the hills at night.",
+		"Careful out here, rookie.",
+		"Fresh tags. Good luck to you.",
+		"Keep your head down, {player}."
+	],
+	"see_same": [
+		"Morning.",
+		"Hunting too?",
+		"Watch yourself out there.",
+		"{party}. You?",
+		"Safe roads."
+	],
+	"greet_low": [
+		"Oh! Hello. Are you lost too?",
+		"Hi. Sorry, we're a bit of a mess right now.",
+		"You're with the Guild? Us too. Sort of."
+	],
+	"greet_mid": [
+		"Hunter. What can we do for you?",
+		"You've got the look of the Guild about you. Need something?",
+		"Make it quick, we're losing the light."
+	],
+	"greet_high": [
+		"Speak.",
+		"We don't stop long. What is it?",
+		"{party}. You'll have heard of us."
+	],
+	"greet_owed": [
+		"{player}! The one who pulled us out of it. What do you need?",
+		"Our friend from the fight. Go on, ask."
+	],
+	"who": [
+		"{party}. Rank {rank}, {count} of us. Together {since}.",
+		"We're {party}. {count} hunters, rank {rank}, {since}. {lead} leads, when we listen."
+	],
+	"since": [
+		"since last winter",
+		"three summers now",
+		"since the gates first opened",
+		"a month, give or take",
+		"five years, if you can believe it",
+		"since the cellar job"
+	],
+	"rumour_gate": [
+		"There's a gate open {dir} of here, {far} blocks or so. Rank {what}, by the feel of it.",
+		"Saw a crack in the world {dir}. Maybe {far} blocks. Felt like a {what}."
+	],
+	"rumour_incident": [
+		"Word is: {what}. Out {dir}, {far} blocks off.",
+		"The Guild posted it this morning. {what}, {dir} of here."
+	],
+	"rumour_town": [
+		"{what} is {dir}, {far} blocks or so. They've a bed and a forge.",
+		"If you need supplies, {what} is {dir}."
+	],
+	"rumour_weapon": [
+		"They say {what} lies in some ruin out {dir}. They say a lot of things.",
+		"An old hunter swore he saw {what} in a ruin {dir} of here. He was drunk.",
+		"If you find {what}, don't sell it. Whatever they offer."
+	],
+	"rumour_none": [
+		"Quiet lately. Too quiet.",
+		"Nothing you'd want to hear."
+	],
+	"bye": [
+		"Good hunting.",
+		"Watch your back.",
+		"Don't die out there.",
+		"See you at the Guild."
+	],
+	"req_title_report": [
+		"A Sealed Report",
+		"A Report for the Guild",
+		"Word for the Guild"
+	],
+	"req_title_fetch": [
+		"Supplies for the {party}",
+		"A List from the {party}",
+		"Spoils for the {party}"
+	],
+	"req_title_camp": [
+		"The Camp in the Wilds",
+		"Smoke on the Wind",
+		"Clearing a Camp with the {party}"
+	],
+	"req_ask_report": [
+		"We've a report for the Guild, sealed, and we're heading the other way. Carry it to the desk for us? Don't break the wax.",
+		"Saw something out here the Guild needs to hear about, and it won't keep. It's all written down. Take it to the receptionist?",
+		"We cleared a gate that shouldn't have been there. The Guild wants it in writing. Run this back for us, we've got another job."
+	],
+	"req_ask_fetch": [
+		"We're short on {item}, from the {gate}. {n} would see us through. Leave them at the Guild desk, we'll pick them up.",
+		"If you're going through a gate like the {gate}, bring back {n} {item}. We'll leave your pay at the desk.",
+		"Our smith wants {n} {item} and we can't spare the days. The {gate} drops it, I hear. Leave it with the Guild?"
+	],
+	"req_ask_camp": [
+		"There's a camp of them {dir} of here, {far} blocks. {n} at least, out of the {what}. Help us clear it?",
+		"Smoke {dir}, maybe {far} blocks. Not travellers: things from the {what}. {n} of them. We'd go in with you.",
+		"Something's dug in round a fire {dir} of here, {far} out. {n} of them. We could use another blade."
+	],
+	"req_take_report": [
+		"Good. The receptionist will know what to do with it.",
+		"Thanks. Straight to the desk, yes?",
+		"That's a weight off. Mind the seal."
+	],
+	"req_take_fetch": [
+		"Leave them at the Guild. We'll settle up there.",
+		"Good. No hurry, but not too slow either.",
+		"Thanks. The desk will have your pay."
+	],
+	"req_take_camp": [
+		"Right. Follow us, and keep close.",
+		"Let's go, then. Stay behind the shield.",
+		"Good. We'll head out now, try to keep up."
+	],
+	"req_no": [
+		"Fair enough.",
+		"No harm in asking.",
+		"Another time, then."
+	],
+	"req_full": [
+		"You've your hands full already, by the look of you.",
+		"Finish what you're carrying first. Then come and find us."
+	],
+	"req_none": [
+		"Nothing right now. But thanks.",
+		"We're fine, thanks.",
+		"No, we've got it in hand."
+	],
+	"req_desk": [
+		"From the {party}? Thank you. I'll see they hear you brought it.",
+		"The {party} left word you'd come. Here's what they left for you.",
+		"Ah, this is for the {party}. They'll be pleased. Your share, as promised."
+	],
+	"camp_cleared": [
+		"That's the last of them.",
+		"Camp's clear. Good work.",
+		"Done. Let's not hang about."
+	],
+	"caravan_hear": [
+		"Steel on steel, somewhere close. And a horse screaming.",
+		"Shouting, not far off. Someone's in trouble.",
+		"A wagon's bell, ringing and ringing. Then a scream."
+	],
+	"caravan_thanks": [
+		"You saved our hides, and the wagon. Take this, and if you want anything off the cart, it's yours at a fair price.",
+		"Gods, I thought that was it. Here, for your trouble. And have a look at what I'm carrying.",
+		"Three seasons on this route and never this bad. Thank you. Take this, please."
+	],
+	"deserter_warn": [
+		"That's far enough. There's a toll on this ground: {toll} coins. Come and talk, or don't.",
+		"Easy. We're not looking for a fight. Just {toll} coins, and you walk on.",
+		"Guild, are you? We used to be. Toll's {toll}. Come here and we'll discuss it."
+	],
+	"deserter_ask": [
+		"{toll} coins and you go on your way. Nobody bleeds. That's a good deal, from where I'm standing.",
+		"We left the Guild when it left us to die in a gate. Now we eat how we can. {toll} coins.",
+		"Don't look at me like that. {toll} coins, or we do this the old way."
+	],
+	"deserter_paid": [
+		"Pleasure doing business. Off you go.",
+		"See? Nobody had to bleed.",
+		"Smart. Lads, let them through."
+	],
+	"deserter_talked": [
+		"...Not worth it. Go on, then. Before I change my mind.",
+		"Fine. You'd cost us more than you're worth. Move.",
+		"Hah. All right. Not today."
+	],
+	"deserter_failed": [
+		"Nice speech. Kill them.",
+		"Words don't fill bellies. Get them!",
+		"I've heard that one before."
+	],
+	"deserter_fight": [
+		"Have it your way!",
+		"The old way, then!",
+		"Should've paid!"
+	],
+	"deserter_purse": [
+		"Their purse, and what they took off the last ones.",
+		"What they'd scraped together. Not much, but it's yours."
+	],
+	"hunter_help": [
+		"Over here... please.",
+		"Hey... you. Help.",
+		"Don't go. Please."
+	],
+	"hunter_ask": [
+		"The rest of my party... they're gone. I can't walk far, and they're still out there. {town} is {dir} of here, {far} blocks. Get me there?",
+		"Got caught out. Lost the others. If I can reach {town}, {dir}, maybe {far} blocks... Will you walk me in?"
+	],
+	"hunter_go": [
+		"Thank you. I'll keep up. I'll try.",
+		"Go. I'm right behind you.",
+		"Don't let them catch us."
+	],
+	"hunter_no": [
+		"...I understand.",
+		"Then go. Quickly.",
+		"Right. Of course."
+	],
+	"hunter_on": [
+		"Keep going. I'm here.",
+		"Don't stop, they're still out there.",
+		"Not far now. Is it?"
+	],
+	"hunter_wave": [
+		"Something's on your trail.",
+		"They've found the hunter's scent.",
+		"Movement behind you."
+	],
+	"hunter_safe": [
+		"Walls. Real walls. I... thank you. Take this. All of it.",
+		"We made it. I owe you more than this. But take it."
+	],
+	"hunter_lost": [
+		"The hunter didn't make it.",
+		"You lost the hunter."
+	],
+	"hunter_after": [
+		"I'll be all right now. Thank you.",
+		"I'll drink to you tonight."
+	],
+	"duel_call": [
+		"You. Yes, you. A word.",
+		"Hold there, {player_rank}-rank.",
+		"Finally, someone worth looking at."
+	],
+	"duel_ask": [
+		"I walk the wilds looking for one good fight. You look like you might be it. One bout, you and me, till one of us yields. Win, and my blade is yours.",
+		"{name}, {rank}-rank, no party, no guild. I'd like to test my blade against yours. To yielding, nobody dies. Win and you keep the blade."
+	],
+	"duel_start": [
+		"En garde.",
+		"Show me.",
+		"Don't hold back."
+	],
+	"duel_on": [
+		"Less talking.",
+		"Fight!",
+		"Come on, then."
+	],
+	"duel_no": [
+		"Pity.",
+		"Another day, then.",
+		"Afraid? Fair enough."
+	],
+	"duel_yield": [
+		"Enough! I yield. Take it. You earned it.",
+		"...Well fought. The blade's yours.",
+		"I yield. Gods, you're good."
+	],
+	"duel_win": [
+		"Yield! That's it. Not bad. Train, and find me again.",
+		"That's enough. You're not there yet. Close, though.",
+		"Down you go. Better luck next time."
+	],
+	"fallen_hear": [
+		"Crows. A lot of crows, circling something close by.",
+		"The smell of a cold fire, and something worse under it.",
+		"A shield, lying face-down in the grass. Then another.",
+		"Somewhere close, a camp gone quiet. Too quiet."
+	],
+	"fallen_foes": [
+		"Not with those things still about. Deal with them first.",
+		"Whatever did this is still close. Clear it out first.",
+		"No time for that. They're still here."
+	],
+	"fallen_search": [
+		"You turn {who} over, gently. One of {party}.",
+		"{who} of {party}. Whatever got them, it didn't run.",
+		"You close {who}'s eyes and go through their pack.",
+		"{who} of {party}, still gripping their weapon."
+	],
+	"fallen_map": [
+		"Folded inside {who}'s coat: a map, torn at one edge, with an X inked on it.",
+		"{who} died holding it: a map, blood on one corner, an X circled twice.",
+		"Sewn into {who}'s belt: a map with an X on it, and a few scrawled words."
+	],
+	"stash_scrawl": [
+		"\"Buried it all. Back for it after the gate.\" - {party}",
+		"\"Under the dead tree. Nobody tells the Guild.\"",
+		"\"Our share. Ours. Dig two down.\"",
+		"\"If you're reading this, we didn't come back.\""
+	],
+	"stash_near": [
+		"The X is close. A dead tree with a banner at its foot marks it.",
+		"There: a dead tree, a banner, a skull on a stake. The X is right by them.",
+		"You're close. Look for the dead tree and the turned earth."
+	],
+	"stash_wake": [
+		"Something comes out of the trees as you dig. It was waiting here. It killed {party}: {bane}!",
+		"The ground's barely turned when you hear it: {bane}. The thing that killed {party} never left.",
+		"You're not the first to dig here. {bane} is back for what's left of {party}."
+	],
+	"diary_out": [
+		"We took the request at the Guild this morning: a {rank}-rank clearing, {gate}, good pay. {Party} in high spirits. The leader swears we will be home in a week.",
+		"Day three out. {gate} broke open on its own and the things in it came out with it. We cleared what we could and kept what we found.",
+		"The Guild calls it a {rank}-rank job. It's not. We should have turned back at the first gate."
+	],
+	"diary_stash": [
+		"Too much to carry and too far from town. We buried it all under the X, by the dead tree, two down. Back for it when this is done.",
+		"Buried our share where the dead tree stands. Drew the map twice in case one of us doesn't make it. Hope we don't need the second.",
+		"Hid the haul. If the Guild hears about it they'll want their cut. It's ours. We bled for it."
+	],
+	"diary_end": [
+		"It followed us. {foe}. It found the camp at night. If anyone finds this: don't dig without a full party.",
+		"The others are gone. {foe} is still out there, by the stash. I can hear it. I'm sorry.",
+		"Couldn't hold it. {foe} took the line, then the fire. Whoever reads this, finish it for us."
+	]
+}

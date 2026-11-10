@@ -47,6 +47,8 @@ final class Waypoints {
 	private static final int COME_NEAR = 80, SEARCH_FROM = 5, SEARCH_TO = 22, FLOOR_SLACK = 4, EVERY = 40;
 	private static final String GIVEN = "warp_given", BAG_GIVEN = "bag_given";
 	private static final int SHARE_EVERY = 100;
+	/** Which town each player is in now. */
+	private static final java.util.Map<java.util.UUID, String> IN_TOWN = new java.util.HashMap<>();
 	private static final ResourceLocation STONE = ResourceLocation.fromNamespaceAndPath("waystones", "warp_stone");
 
 	private static final class State extends SavedData {
@@ -72,7 +74,7 @@ final class Waypoints {
 	}
 
 	/** Where in a place the stone's looked for: x, the height of a floor there, z. */
-	private static int[] anchor(Capital.Site s) {
+	static int[] anchor(Capital.Site s) {
 		if (s == Capital.site) return new int[] {s.x + PLAZA_X, Capital.FLOOR + 1, s.z + PLAZA_Z};
 		double[] g = s.d.points.getOrDefault("centre", new double[] {0, 1, 0});
 		return new int[] {s.x + (int) g[0], s.floor + (int) g[1], s.z + (int) g[2]};
@@ -121,7 +123,19 @@ final class Waypoints {
 		return true;
 	}
 
+	/** Says where you are as you walk in, once. */
+	private static void arriving(ServerLevel level, ServerPlayer p) {
+		String here = null;
+		for (Capital.Site s : Capital.near(p.getBlockX(), p.getBlockZ())) {
+			int[] a = anchor(s);
+			if (p.distanceToSqr(a[0], p.getY(), a[2]) < COME_NEAR * COME_NEAR) here = s.title;
+		}
+		if (here == null) IN_TOWN.remove(p.getUUID());
+		else if (!here.equals(IN_TOWN.put(p.getUUID(), here))) p.displayClientMessage(Component.literal(here).withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD), true);
+	}
+
 	private static void comeNear(ServerLevel level, ServerPlayer p) {
+		arriving(level, p);
 		State st = state(level);
 		for (Capital.Site s : Capital.near(p.getBlockX(), p.getBlockZ())) {
 			String key = s.x + "," + s.z;
@@ -135,6 +149,19 @@ final class Waypoints {
 			st.up.add(key);
 			st.setDirty();
 		}
+	}
+
+	static boolean stone(ItemStack s) {
+		return BuiltInRegistries.ITEM.getKey(s.getItem()).equals(STONE);
+	}
+
+	/** What holding the stone comes to, from the belt pouch, where there's no holding it. */
+	static void warp(ServerPlayer p, ItemStack stone) {
+		if (p.level().dimension() == Lairs.GATES) {
+			p.displayClientMessage(Component.literal("Nothing answers in here. A gate has only the one way out.").withStyle(ChatFormatting.RED), true);
+			return;
+		}
+		stone.getItem().finishUsingItem(stone, p.level(), p);
 	}
 
 	/** Everyone carries a Warp Stone, whenever they started, once they've their class: it takes you to any waystone you've found. */
@@ -182,7 +209,10 @@ final class Waypoints {
 			if (e.getServer().getTickCount() % EVERY != 0) return;
 			ServerLevel level = e.getServer().overworld();
 			for (ServerPlayer p : level.players()) comeNear(level, p);
-			for (ServerPlayer p : e.getServer().getPlayerList().getPlayers()) handOut(p);
+			for (ServerPlayer p : e.getServer().getPlayerList().getPlayers()) {
+				handOut(p);
+				BeltPouch.settle(p);
+			}
 		});
 		NeoForge.EVENT_BUS.addListener((PlayerInteractEvent.RightClickItem e) -> {
 			if (e.getLevel().dimension() != Lairs.GATES || !BuiltInRegistries.ITEM.getKey(e.getItemStack().getItem()).equals(STONE)) return;

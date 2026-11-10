@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/shardfang.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -1.474,
-     -1.301,
-     0.049
+     -1.966,
+     -1.79,
+     0.05
     ],
     "scale": [
-     0.6486,
-     0.6486,
-     0.6486
+     0.5366,
+     0.5366,
+     0.5366
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -1.474,
-     -1.301,
-     0.049
+     -1.966,
+     -1.79,
+     0.05
     ],
     "scale": [
-     0.6486,
-     0.6486,
-     0.6486
+     0.5366,
+     0.5366,
+     0.5366
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.811,
-     -0.716,
+     -1.081,
+     -0.985,
      0
     ],
     "scale": [
-     0.3567,
-     0.3567,
-     0.3567
+     0.2951,
+     0.2951,
+     0.2951
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/shardfang"
+   }
+  }
+ }
 }

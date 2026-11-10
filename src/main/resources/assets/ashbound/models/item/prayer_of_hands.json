@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/prayer_of_hands.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.7,
-     -0.653,
-     -0.672
+     -1.132,
+     -1.132,
+     -0.0
     ],
     "scale": [
-     0.3954,
-     0.3954,
-     0.3954
+     0.2604,
+     0.2604,
+     0.2604
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.7,
-     -0.653,
-     -0.672
+     -1.132,
+     -1.132,
+     -0.0
     ],
     "scale": [
-     0.3954,
-     0.3954,
-     0.3954
+     0.2604,
+     0.2604,
+     0.2604
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.935,
-     -0.359,
+     -0.623,
+     -0.623,
      0
     ],
     "scale": [
-     0.2175,
-     0.2175,
-     0.2175
+     0.1432,
+     0.1432,
+     0.1432
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/prayer_of_hands"
+   }
+  }
+ }
 }

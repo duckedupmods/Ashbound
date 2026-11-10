@@ -1,0 +1,29 @@
+{
+ "id": "veyra",
+ "name": "Veyra",
+ "title": "the Ringkeeper",
+ "race": "elf",
+ "rank": "S",
+ "role": "black_mage",
+ "age": "adult",
+ "sex": "f",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "porcelain",
+ "hair": {"style": "long", "color": "silver"},
+ "headwear": null,
+ "beard": null,
+ "glasses": false,
+ "face": {"eye": "sharp", "iris": "ice", "brows": "stern", "mouth": "smirk", "blush": false, "freckles": false, "marks": [], "nose_box": false},
+ "outfit": {
+  "top": "robe", "bottom": "trousers", "sleeves": "long",
+  "overs": ["cape", "pauldrons", "sash", "bracers"],
+  "colors": {"top": "teal", "bottom": "black", "accent": "white", "leather": "black"}
+ },
+ "pose": {"r": "hold", "l": "hang"},
+ "weapon": "staff",
+ "offhand": null,
+ "back": null,
+ "hip": "tome",
+ "prop": null
+}

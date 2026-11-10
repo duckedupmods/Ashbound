@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/cinder_oracle_staff.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     0.407,
-     0.407,
+     -1.007,
+     -1.007,
      -0.0
     ],
     "scale": [
-     0.4265,
-     0.4265,
-     0.4265
+     0.3064,
+     0.3064,
+     0.3064
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     0.407,
-     0.407,
+     -1.007,
+     -1.007,
      -0.0
     ],
     "scale": [
-     0.4265,
-     0.4265,
-     0.4265
+     0.3064,
+     0.3064,
+     0.3064
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.224,
-     0.224,
+     -0.554,
+     -0.554,
      0
     ],
     "scale": [
-     0.2346,
-     0.2346,
-     0.2346
+     0.1685,
+     0.1685,
+     0.1685
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/cinder_oracle_staff"
+   }
+  }
+ }
 }

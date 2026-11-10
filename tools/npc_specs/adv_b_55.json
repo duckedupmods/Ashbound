@@ -1,0 +1,61 @@
+{
+ "id": "adv_b_55",
+ "seed": 4128893,
+ "recipe": "adventurer",
+ "role": "ranger",
+ "rank": "B",
+ "name": "Corra Hask",
+ "title": "B-rank Ranger",
+ "age": "teen",
+ "sex": "f",
+ "build": "slim",
+ "hunch": 0,
+ "skin": "tan",
+ "hair": {
+  "style": "twintails",
+  "color": "ash_blonde"
+ },
+ "headwear": null,
+ "beard": null,
+ "face": {
+  "eye": "mid",
+  "iris": "brown",
+  "brows": "thin",
+  "mouth": "frown",
+  "blush": true,
+  "freckles": false,
+  "marks": [],
+  "nose_box": false
+ },
+ "outfit": {
+  "top": "jerkin",
+  "bottom": "trousers",
+  "sleeves": "long",
+  "overs": [
+   "bracers",
+   "cloak",
+   "pauldron_r",
+   "tassets"
+  ],
+  "colors": {
+   "top": "grey",
+   "bottom": "brown",
+   "accent": "plum",
+   "leather": "red"
+  }
+ },
+ "pose": {
+  "r": "fold",
+  "l": "fold"
+ },
+ "weapon": null,
+ "offhand": null,
+ "back": "bow_quiver",
+ "hip": "knife",
+ "prop": null,
+ "_filters": {
+  "rank": "B",
+  "role": "ranger"
+ },
+ "party": "The Ashen Vow"
+}

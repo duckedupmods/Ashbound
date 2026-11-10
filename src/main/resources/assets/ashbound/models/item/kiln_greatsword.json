@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/kiln_greatsword.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.266,
-     -2.442,
-     -0.08
+     -2.198,
+     -2.198,
+     0.0
     ],
     "scale": [
-     0.3674,
-     0.3674,
-     0.3674
+     0.3124,
+     0.3124,
+     0.3124
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.266,
-     -2.442,
-     -0.08
+     -2.198,
+     -2.198,
+     0.0
     ],
     "scale": [
-     0.3674,
-     0.3674,
-     0.3674
+     0.3124,
+     0.3124,
+     0.3124
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.246,
-     -1.343,
+     -1.209,
+     -1.209,
      0
     ],
     "scale": [
-     0.2021,
-     0.2021,
-     0.2021
+     0.1718,
+     0.1718,
+     0.1718
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/kiln_greatsword"
+   }
+  }
+ }
 }

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/veinsplitter.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.966,
-     -2.966,
-     -0.0
+     -2.351,
+     -2.351,
+     0.0
     ],
     "scale": [
-     0.4178,
-     0.4178,
-     0.4178
+     0.3715,
+     0.3715,
+     0.3715
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.966,
-     -2.966,
-     -0.0
+     -2.351,
+     -2.351,
+     0.0
     ],
     "scale": [
-     0.4178,
-     0.4178,
-     0.4178
+     0.3715,
+     0.3715,
+     0.3715
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.631,
-     -1.631,
+     -1.293,
+     -1.293,
      0
     ],
     "scale": [
-     0.2298,
-     0.2298,
-     0.2298
+     0.2043,
+     0.2043,
+     0.2043
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/veinsplitter"
+   }
+  }
+ }
 }

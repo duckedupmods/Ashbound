@@ -22,7 +22,7 @@ ITEMS = [("oathbinder", "Oathbinder", "sword"), ("twinfang", "Twinfang", "dagger
          ("unison", "Unison", "spear"), ("two_hearted", "Two-Hearted", "twohander"), ("the_closed_hand", "The Closed Hand", "shield"),
          ("twinstring", "Twinstring", "bow"), ("black_accord", "Black Accord", "black"), ("white_accord", "White Accord", "white"),
          ("bound_accord", "Bound Accord", "summon")]
-LADDER = 1.08   # a rank, as every boss weapon climbs it
+LADDER = 1.4   # a rank (Joined.mult takes it from there)
 RANKS = "DCBAS"
 
 
@@ -51,11 +51,11 @@ class Joined(Theme):
 
 
 def base(kind):
-    """What the kind's boss weapon hits for at rank D, from the highest rank that has one, and its speed."""
+    """What the kind's weapon hits for at rank F, from the first boss weapon of it, a rank above its dungeon's, and its speed."""
     for d in GEAR:
         for w in d["weapons"]:
             if w["boss"] and w["kind"] == kind and w.get("damage"):
-                return round(w["damage"] / LADDER ** RANKS.index(w["rank"]), 2), w["speed"], w
+                return round(w["damage"] / LADDER ** ("FEDCBAS".index(d["rank"]) + 1), 1), w["speed"], w
     for d in GEAR:
         for w in d["weapons"]:
             if w["boss"] and w["kind"] == kind:

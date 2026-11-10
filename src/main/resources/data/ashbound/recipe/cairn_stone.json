@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "SBS",
+  "BDB",
+  "SBS"
+ ],
+ "key": {
+  "S": {
+   "item": "minecraft:mossy_cobblestone"
+  },
+  "B": {
+   "item": "minecraft:bone_block"
+  },
+  "D": {
+   "item": "minecraft:diamond"
+  }
+ },
+ "result": {
+  "id": "ashbound:cairn_stone",
+  "count": 1
+ }
+}

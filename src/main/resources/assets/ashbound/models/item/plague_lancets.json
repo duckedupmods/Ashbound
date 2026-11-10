@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/plague_lancets.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.283,
-     -0.97,
-     -0.196
+     -1.527,
+     -1.527,
+     -0.0
     ],
     "scale": [
-     0.6069,
-     0.6069,
-     0.6069
+     0.6747,
+     0.6747,
+     0.6747
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.283,
-     -0.97,
-     -0.196
+     -1.527,
+     -1.527,
+     -0.0
     ],
     "scale": [
-     0.6069,
-     0.6069,
-     0.6069
+     0.6747,
+     0.6747,
+     0.6747
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.156,
-     -0.533,
+     -0.84,
+     -0.84,
      0
     ],
     "scale": [
-     0.3338,
-     0.3338,
-     0.3338
+     0.3711,
+     0.3711,
+     0.3711
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/plague_lancets"
+   }
+  }
+ }
 }

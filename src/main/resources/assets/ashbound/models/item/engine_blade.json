@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/engine_blade.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.693,
-     -2.693,
+     -2.615,
+     -2.615,
      -0.0
     ],
     "scale": [
-     0.4055,
-     0.4055,
-     0.4055
+     0.425,
+     0.425,
+     0.425
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.693,
-     -2.693,
+     -2.615,
+     -2.615,
      -0.0
     ],
     "scale": [
-     0.4055,
-     0.4055,
-     0.4055
+     0.425,
+     0.425,
+     0.425
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.481,
-     -1.481,
+     -1.438,
+     -1.438,
      0
     ],
     "scale": [
-     0.223,
-     0.223,
-     0.223
+     0.2338,
+     0.2338,
+     0.2338
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/engine_blade"
+   }
+  }
+ }
 }

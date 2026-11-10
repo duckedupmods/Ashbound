@@ -1,7 +1,10 @@
 package com.snoringwalrus.ashbound;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
@@ -12,45 +15,66 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.stats.Stats;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.animal.horse.Horse;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.server.ServerStartedEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 /**
- * Hob Tarrant's wagon, by the world's spawn: a hay cart and its two horses, turned to face the capital, and the wagoner
- * who pulled you off the road. He asks whether everyone's here, then IntroScene plays for you and whoever's stood with
- * you and hasn't seen it: what the gates' colours mean, and where Highmourn is. Nobody can be hurt while they watch.
+ * Hob Tarrant's wagon by the world's spawn: his cube wagon with Bramble in the shafts (Wagon), turned to face the capital,
+ * and the wagoner who pulled you off the road. It's put down as the server starts, before anyone's in: the ground
+ * levelled, every tree that stands in the way felled whole, the world's spawn set beside Hob, and a new player stood
+ * there facing him. He asks whether everyone's here, then IntroScene plays for you and whoever's stood with you and
+ * hasn't seen it: gates tearing open on the road, what their colours mean, a few of the things that come out of them,
+ * and his good luck. Nobody can be hurt while they watch.
  */
 public final class Intro {
 	private Intro() {}
 
 	static final String KIND = "wagoner";
 	/** IntroScene's length in ticks. */
-	public static final int LENGTH = 1010;
-	private static final String SEEN = "saw_intro", HINT = "intro_hint", TAG = "ashbound_wagon";
-	private static final ResourceLocation CART = ResourceLocation.fromNamespaceAndPath(Ashbound.ID, "hay_cart");
+	public static final int LENGTH = 880;
+	private static final String SEEN = "saw_intro", HINT = "intro_hint", ARRIVED = "arrived_at_wagon", TAG = "ashbound_wagon";
 	private static final int NEAR = 48, CLEARING = 20, TREE_TOP = 40, SEARCH = 24, FORCE_CHUNKS = 4, LATE = 100;
+	/** how far a tree reaching into the clearing is followed, how big a tree may be, how far its crown spreads */
+	private static final int FELL_REACH = 14, MAX_LOGS = 4000, LEAF_REACH = 7;
+	/** where new players stand: this far across from the wagon, Hob between you and it */
+	private static final double STAND = 6.2, HOB = 2.8;
+
+	static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, Ashbound.ID);
+	public static final DeferredHolder<EntityType<?>, EntityType<Wagon>> WAGON = ENTITIES.register("hob_wagon",
+			() -> EntityType.Builder.<Wagon>of(Wagon::new, MobCategory.MISC).sized(1.8f, 2.6f).fireImmune().clientTrackingRange(12).updateInterval(100)
+					.build(Ashbound.ID + ":hob_wagon"));
+
+	static void register(IEventBus bus) {
+		ENTITIES.register(bus);
+	}
 	private static final Map<UUID, Long> WATCHING = new HashMap<>();
 
 	// ---------------------------------------------------------------- where it stands, kept with the world
@@ -96,6 +120,8 @@ public final class Intro {
 		int[] c = Capital.centre();
 		Vec3 way = c == null ? new Vec3(0, 0, 1) : new Vec3(c[0] - at.getX(), 0, c[1] - at.getZ()).normalize();
 		place(level, at, way);
+		Vec3 stand = stand(at, way, 0);
+		level.setDefaultSpawnPos(BlockPos.containing(stand), yaw(side(way).reverse()));
 		st.placed = true;
 		st.x = at.getX();
 		st.y = at.getY();
@@ -106,6 +132,22 @@ public final class Intro {
 
 	private static float yaw(Vec3 way) {
 		return (float) (Mth.atan2(-way.x, way.z) * Mth.RAD_TO_DEG);
+	}
+
+	private static Vec3 side(Vec3 way) {
+		return new Vec3(-way.z, 0, way.x);
+	}
+
+	/** where the n-th new player stands: across from the wagon facing Hob, the others either side along the road */
+	private static Vec3 stand(BlockPos at, Vec3 way, int n) {
+		Vec3 foot = Vec3.atBottomCenterOf(at.above());
+		double along = 0.6 + (n == 0 ? 0 : ((n + 1) / 2) * 1.4 * (n % 2 == 0 ? 1 : -1));
+		return foot.add(side(way).scale(STAND + (n == 0 ? 0 : 0.8))).add(way.scale(along));
+	}
+
+	private static Vec3 way(State st) {
+		float a = st.yaw * Mth.DEG_TO_RAD;
+		return new Vec3(-Mth.sin(a), 0, Mth.cos(a));
 	}
 
 	/** The ground near spawn that's flattest and dry, a little off the spot itself; `at` is the block the cart stands on. */
@@ -139,15 +181,20 @@ public final class Intro {
 	}
 
 	static void place(ServerLevel level, BlockPos at, Vec3 way) {
-		Vec3 side = new Vec3(-way.z, 0, way.x);
+		Vec3 side = side(way);
 		Vec3 foot = Vec3.atBottomCenterOf(at.above());
+		fell(level, BlockPos.containing(foot.add(way.scale(8))).atY(at.getY()));
 		flatten(level, at, 5);
 		flatten(level, BlockPos.containing(foot.add(way.scale(4))).atY(at.getY()), 4);
-		clear(level, BlockPos.containing(foot.add(way.scale(8))).atY(at.getY()));
-		cart(level, foot, way);
-		for (int s = -1; s <= 1; s += 2) horse(level, foot.add(way.scale(3.5)).add(side.scale(s * 1.05)), way, s < 0 ? 0x101 : 0x204);
-		Vec3 him = foot.add(side.scale(2.8)).add(way.scale(0.6));
-		Talk.spawn(level, KIND, "", "stand", him.x, him.y, him.z, yaw(side.reverse()));
+		flatten(level, BlockPos.containing(stand(at, way, 0)).atY(at.getY()), 3);
+		Wagon w = WAGON.get().create(level);
+		if (w != null) {
+			w.moveTo(foot.x, foot.y, foot.z, yaw(way), 0);
+			w.addTag(TAG);
+			level.addFreshEntity(w);
+		}
+		Vec3 him = foot.add(side.scale(HOB)).add(way.scale(0.6));
+		Talk.spawn(level, KIND, "", "stand", him.x, him.y, him.z, yaw(side));
 	}
 
 	/** Ground round the wagon levelled at its own height, so nothing stands on a slope or in a bush. */
@@ -163,54 +210,100 @@ public final class Intro {
 			}
 	}
 
-	/** Trees out of the way of the road ahead: the gates of the vision stand there. */
-	private static void clear(ServerLevel level, BlockPos c) {
+	private static boolean log(BlockState s) {
+		return s.is(BlockTags.LOGS);
+	}
+
+	private static boolean leaves(BlockState s) {
+		return s.is(BlockTags.LEAVES) || s.getBlock() instanceof LeavesBlock;
+	}
+
+	/**
+	 * Every tree with a log in the clearing (the wagon, where you stand, the road ahead where the vision's gates open),
+	 * felled whole: its trunk and branches followed out past the clearing, then the leaves round them. Nothing's left
+	 * hanging in the air and nothing's cut in half; the crowns of trees outside that reach in go too.
+	 */
+	private static void fell(ServerLevel level, BlockPos c) {
+		Set<BlockPos> logs = new HashSet<>();
+		ArrayDeque<BlockPos> todo = new ArrayDeque<>();
 		for (int dx = -CLEARING; dx <= CLEARING; dx++)
 			for (int dz = -CLEARING; dz <= CLEARING; dz++) {
 				if (dx * dx + dz * dz > CLEARING * CLEARING) continue;
 				for (int y = c.getY() - 4; y <= c.getY() + TREE_TOP; y++) {
 					BlockPos p = new BlockPos(c.getX() + dx, y, c.getZ() + dz);
-					BlockState s = level.getBlockState(p);
-					if (s.is(BlockTags.LOGS) || s.is(BlockTags.LEAVES) || s.getBlock() instanceof LeavesBlock) level.setBlock(p, Blocks.AIR.defaultBlockState(), 2);
+					if (log(level.getBlockState(p)) && logs.add(p)) todo.add(p);
+				}
+			}
+		int reach = CLEARING + FELL_REACH;
+		while (!todo.isEmpty() && logs.size() < MAX_LOGS) {
+			BlockPos p = todo.poll();
+			for (int dx = -1; dx <= 1; dx++)
+				for (int dy = -1; dy <= 1; dy++)
+					for (int dz = -1; dz <= 1; dz++) {
+						BlockPos n = p.offset(dx, dy, dz);
+						int ox = n.getX() - c.getX(), oz = n.getZ() - c.getZ();
+						if (ox * ox + oz * oz > reach * reach || n.getY() < c.getY() - 6 || logs.contains(n)) continue;
+						if (log(level.getBlockState(n))) {
+							logs.add(n);
+							todo.add(n);
+						}
+					}
+		}
+		// the crowns: leaves reached from those logs, a few steps out
+		Map<BlockPos, Integer> crown = new HashMap<>();
+		ArrayDeque<BlockPos> grow = new ArrayDeque<>();
+		for (BlockPos p : logs) {
+			crown.put(p, 0);
+			grow.add(p);
+		}
+		while (!grow.isEmpty()) {
+			BlockPos p = grow.poll();
+			int d = crown.get(p);
+			if (d >= LEAF_REACH) continue;
+			for (var dir : net.minecraft.core.Direction.values()) {
+				BlockPos n = p.relative(dir);
+				if (crown.containsKey(n) || !leaves(level.getBlockState(n))) continue;
+				crown.put(n, d + 1);
+				grow.add(n);
+			}
+		}
+		for (BlockPos p : crown.keySet()) level.setBlock(p, Blocks.AIR.defaultBlockState(), 2);
+		for (int dx = -CLEARING; dx <= CLEARING; dx++)
+			for (int dz = -CLEARING; dz <= CLEARING; dz++) {
+				if (dx * dx + dz * dz > CLEARING * CLEARING) continue;
+				for (int y = c.getY() - 4; y <= c.getY() + TREE_TOP; y++) {
+					BlockPos p = new BlockPos(c.getX() + dx, y, c.getZ() + dz);
+					if (leaves(level.getBlockState(p))) level.setBlock(p, Blocks.AIR.defaultBlockState(), 2);
 				}
 			}
 	}
 
-	/** The cart's model has its shafts down -Z. */
-	private static void cart(ServerLevel level, Vec3 foot, Vec3 way) {
-		var d = EntityType.BLOCK_DISPLAY.create(level);
-		if (d == null) return;
-		float half = (float) Math.atan2(-way.x, -way.z) / 2;
-		CompoundTag t = new CompoundTag(), tr = new CompoundTag();
-		t.put("block_state", net.minecraft.nbt.NbtUtils.writeBlockState(BuiltInRegistries.BLOCK.get(CART).defaultBlockState()));
-		tr.put("left_rotation", Capital.floats(0, Mth.sin(half), 0, Mth.cos(half)));
-		tr.put("right_rotation", Capital.floats(0, 0, 0, 1));
-		tr.put("translation", Capital.floats(0, 0, 0));
-		tr.put("scale", Capital.floats(1, 1, 1));
-		t.put("transformation", tr);
-		t.putFloat("view_range", 4f);
-		d.load(t);
-		d.moveTo(foot.x, foot.y, foot.z, 0, 0);
-		d.addTag(TAG);
-		level.addFreshEntity(d);
+	/** Takes away what stands at the wagon (an old world's hay cart and horses too) and puts it all down afresh: /ashbound intro place. */
+	private static void replace(ServerLevel level) {
+		State st = State.get(level);
+		if (st.placed) {
+			Vec3 at = new Vec3(st.x, st.y, st.z);
+			for (Entity e : level.getAllEntities()) {
+				if (e.position().distanceTo(at) > 40) continue;
+				if (e.getTags().contains(TAG) || e instanceof Npc n && KIND.equals(n.kindId())) e.discard();
+			}
+		}
+		st.placed = false;
+		set(level);
 	}
 
-	private static void horse(ServerLevel level, Vec3 at, Vec3 way, int coat) {
-		Horse h = EntityType.HORSE.create(level);
-		if (h == null) return;
-		h.moveTo(at.x, at.y, at.z, yaw(way), 0);
-		h.setYHeadRot(yaw(way));
-		h.setYBodyRot(yaw(way));
-		h.setNoAi(true);
-		h.setSilent(true);
-		h.setInvulnerable(true);
-		h.setPersistenceRequired();
-		h.addTag(TAG);
-		CompoundTag t = new CompoundTag();
-		h.addAdditionalSaveData(t);
-		t.putInt("Variant", coat);
-		h.readAdditionalSaveData(t);
-		level.addFreshEntity(h);
+	/** A player who's never played here starts beside Hob, facing him. */
+	private static void arrive(ServerPlayer p) {
+		ServerLevel level = p.server.overworld();
+		State st = State.get(level);
+		if (!st.placed || Coins.flag(p, ARRIVED)) return;
+		Coins.setFlag(p, ARRIVED);
+		if (p.getStats().getValue(Stats.CUSTOM.get(Stats.PLAY_TIME)) > 200 || p.level() != level) return;
+		int n = 0;
+		for (ServerPlayer q : level.players()) if (q != p && Coins.flag(q, ARRIVED) && q.distanceToSqr(st.x, st.y, st.z) < 16 * 16) n++;
+		Vec3 way = way(st);
+		Vec3 at = stand(new BlockPos(st.x, st.y, st.z), way, n);
+		p.teleportTo(level, at.x, at.y, at.z, yaw(side(way).reverse()), 0);
 	}
 
 	// ---------------------------------------------------------------- watching
@@ -231,12 +324,35 @@ public final class Intro {
 		}
 	}
 
-	/** The scene's over on their screen, or it was skipped. */
+	/** Hob's photographs of an F, an E and a D gate, given in the telling: use them to look again (client/Photos). */
+	public static final net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.Item> PHOTOS = Weapons.ITEMS.registerItem("hob_photos",
+			p -> new net.minecraft.world.item.Item(p.stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON)) {
+				@Override
+				public net.minecraft.world.InteractionResultHolder<net.minecraft.world.item.ItemStack> use(net.minecraft.world.level.Level level, net.minecraft.world.entity.player.Player who,
+						net.minecraft.world.InteractionHand hand) {
+					if (level.isClientSide) Net.onPhotos.run();
+					return net.minecraft.world.InteractionResultHolder.sidedSuccess(who.getItemInHand(hand), level.isClientSide);
+				}
+			});
+	private static final String GOT_PHOTOS = "got_hob_photos";
+
+	/** The scene's over on their screen, or it was skipped: the photographs are theirs either way. */
 	public static void done(ServerPlayer p) {
 		if (WATCHING.remove(p.getUUID()) == null) return;
 		Coins.setFlag(p, SEEN);
+		if (!Coins.flag(p, GOT_PHOTOS)) {
+			Coins.setFlag(p, GOT_PHOTOS);
+			p.getInventory().placeItemBackInInventory(new net.minecraft.world.item.ItemStack(PHOTOS.get()));
+			p.sendSystemMessage(Component.literal("Hob gave you his photographs. Use them to see which gate is which.").withStyle(ChatFormatting.GRAY));
+		}
 		int[] c = Capital.centre();
 		if (c != null) p.sendSystemMessage(Component.literal("Highmourn lies at X " + c[0] + ", Z " + c[1] + ". The compass points the way.").withStyle(ChatFormatting.GOLD));
+	}
+
+	private static void started(ServerStartedEvent e) {
+		if (e.getServer() instanceof net.minecraft.gametest.framework.GameTestServer) return;
+		ServerLevel level = e.getServer().overworld();
+		if (!State.get(level).placed) set(level);
 	}
 
 	private static void tick(ServerTickEvent.Post e) {
@@ -255,11 +371,15 @@ public final class Intro {
 
 	static void init() {
 		NeoForge.EVENT_BUS.addListener(Intro::tick);
+		NeoForge.EVENT_BUS.addListener(Intro::started);
+		NeoForge.EVENT_BUS.addListener((PlayerEvent.PlayerLoggedInEvent e) -> {
+			if (e.getEntity() instanceof ServerPlayer p) arrive(p);
+		});
 		NeoForge.EVENT_BUS.addListener((LivingIncomingDamageEvent e) -> {
 			if (WATCHING.containsKey(e.getEntity().getUUID())) e.setCanceled(true);
 		});
 		NeoForge.EVENT_BUS.addListener((PlayerEvent.PlayerLoggedOutEvent e) -> WATCHING.remove(e.getEntity().getUUID()));
-		// the horses stay in harness
+		// an old world's horses stay in harness
 		NeoForge.EVENT_BUS.addListener((PlayerInteractEvent.EntityInteract e) -> {
 			if (e.getTarget().getTags().contains(TAG)) {
 				e.setCancellationResult(InteractionResult.SUCCESS);
@@ -271,6 +391,14 @@ public final class Intro {
 				.then(Commands.literal("intro").executes(c -> {
 					start(c.getSource().getPlayerOrException(), null);
 					return Command.SINGLE_SUCCESS;
-				}))));
+				}).then(Commands.literal("place").executes(c -> {
+					ServerPlayer p = c.getSource().getPlayerOrException();
+					ServerLevel level = p.server.overworld();
+					replace(level);
+					State st = State.get(level);
+					Vec3 at = stand(new BlockPos(st.x, st.y, st.z), way(st), 0);
+					p.teleportTo(level, at.x, at.y, at.z, yaw(side(way(st)).reverse()), 0);
+					return Command.SINGLE_SUCCESS;
+				})))));
 	}
 }

@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/frostbound_pike.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -0.443,
-     -0.443,
-     -0.0
+     -0.658,
+     -0.563,
+     0.027
     ],
     "scale": [
-     0.3055,
-     0.3055,
-     0.3055
+     0.2878,
+     0.2878,
+     0.2878
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -0.443,
-     -0.443,
-     -0.0
+     -0.658,
+     -0.563,
+     0.027
     ],
     "scale": [
-     0.3055,
-     0.3055,
-     0.3055
+     0.2878,
+     0.2878,
+     0.2878
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -0.244,
-     -0.244,
+     -0.362,
+     -0.31,
      0
     ],
     "scale": [
-     0.168,
-     0.168,
-     0.168
+     0.1583,
+     0.1583,
+     0.1583
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/frostbound_pike"
+   }
+  }
+ }
 }

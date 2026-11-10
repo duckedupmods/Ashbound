@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/jade_jian.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     -2.805,
-     -2.805,
+     -1.869,
+     -1.869,
      -0.0
     ],
     "scale": [
-     0.4626,
-     0.4626,
-     0.4626
+     0.3548,
+     0.3548,
+     0.3548
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     -2.805,
-     -2.805,
+     -1.869,
+     -1.869,
      -0.0
     ],
     "scale": [
-     0.4626,
-     0.4626,
-     0.4626
+     0.3548,
+     0.3548,
+     0.3548
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     -1.543,
-     -1.543,
+     -1.028,
+     -1.028,
      0
     ],
     "scale": [
-     0.2544,
-     0.2544,
-     0.2544
+     0.1951,
+     0.1951,
+     0.1951
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/jade_jian"
+   }
+  }
+ }
 }

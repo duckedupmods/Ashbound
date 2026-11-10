@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/brood_carapace.obj",
@@ -81,14 +81,14 @@
      0.0
     ],
     "translation": [
-     1.273,
-     1.986,
-     5.854
+     1.05,
+     0.935,
+     4.96
     ],
     "scale": [
-     0.4523,
-     0.4523,
-     0.4523
+     0.3892,
+     0.3892,
+     0.3892
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      0.0
     ],
     "translation": [
-     1.273,
-     1.986,
-     5.854
+     1.05,
+     0.935,
+     4.96
     ],
     "scale": [
-     0.4523,
-     0.4523,
-     0.4523
+     0.3892,
+     0.3892,
+     0.3892
     ]
    },
    "ground": {
@@ -115,19 +115,26 @@
      0.0
     ],
     "translation": [
-     0.7,
-     1.092,
+     0.578,
+     0.514,
      0
     ],
     "scale": [
-     0.2488,
-     0.2488,
-     0.2488
+     0.214,
+     0.214,
+     0.214
     ]
    }
   }
  },
- "perspectives": {},
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/brood_carapace"
+   }
+  }
+ },
  "overrides": [
   {
    "predicate": {

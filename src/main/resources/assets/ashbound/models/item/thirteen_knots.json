@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/thirteen_knots.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.639,
-     -0.58,
-     -0.634
+     -1.264,
+     -1.264,
+     -0.0
     ],
     "scale": [
-     0.3996,
-     0.3996,
-     0.3996
+     0.2907,
+     0.2907,
+     0.2907
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.639,
-     -0.58,
-     -0.634
+     -1.264,
+     -1.264,
+     -0.0
     ],
     "scale": [
-     0.3996,
-     0.3996,
-     0.3996
+     0.2907,
+     0.2907,
+     0.2907
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.901,
-     -0.319,
+     -0.695,
+     -0.695,
      0
     ],
     "scale": [
-     0.2198,
-     0.2198,
-     0.2198
+     0.1599,
+     0.1599,
+     0.1599
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/thirteen_knots"
+   }
+  }
+ }
 }

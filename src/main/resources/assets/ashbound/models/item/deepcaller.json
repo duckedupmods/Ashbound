@@ -1,6 +1,6 @@
 {
  "loader": "neoforge:separate_transforms",
- "gui_light": "side",
+ "gui_light": "front",
  "base": {
   "loader": "neoforge:obj",
   "model": "ashbound:models/mesh/deepcaller.obj",
@@ -81,14 +81,14 @@
      -47.16
     ],
     "translation": [
-     1.669,
-     -0.044,
-     -0.49
+     -1.956,
+     -0.208,
+     0.499
     ],
     "scale": [
-     0.4256,
-     0.4256,
-     0.4256
+     0.3043,
+     0.3043,
+     0.3043
     ]
    },
    "fixed": {
@@ -98,14 +98,14 @@
      -47.16
     ],
     "translation": [
-     1.669,
-     -0.044,
-     -0.49
+     -1.956,
+     -0.208,
+     0.499
     ],
     "scale": [
-     0.4256,
-     0.4256,
-     0.4256
+     0.3043,
+     0.3043,
+     0.3043
     ]
    },
    "ground": {
@@ -115,17 +115,24 @@
      -47.16
     ],
     "translation": [
-     0.918,
-     -0.024,
+     -1.076,
+     -0.114,
      0
     ],
     "scale": [
-     0.2341,
-     0.2341,
-     0.2341
+     0.1674,
+     0.1674,
+     0.1674
     ]
    }
   }
  },
- "perspectives": {}
+ "perspectives": {
+  "gui": {
+   "parent": "minecraft:item/generated",
+   "textures": {
+    "layer0": "ashbound:item/deepcaller"
+   }
+  }
+ }
 }

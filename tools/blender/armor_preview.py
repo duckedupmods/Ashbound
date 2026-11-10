@@ -120,22 +120,28 @@ only = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
 sets = [s for s in efarmor.SETS if not only or s[0] in only]
 GAP = 1.6
 YAW = float(os.environ.get("YAW", 25))
+STAND = "STAND" in os.environ          # one row, standing, filling the picture (and OUT says where it goes)
 for i, (name, _, _, _, items) in enumerate(sets):
     mat = texture(name)
-    for row, bent in ((0, False), (1, True), (2, "swing")):
+    for row, bent in ((0, False),) if STAND else ((0, False), (1, True), (2, "swing")):
         at = Vector((-i * GAP, 0, -row * 2.6))
-        body(at, bent, grey)
+        if "NOBODY" not in os.environ:      # in game the body is hidden under designed sets
+            body(at, bent, grey)
         for it in items:
+            if "NOHELM" in os.environ and it == items[0]:
+                continue
             piece(os.path.join(A, "animmodels/armor/%s_%s.json" % (name, it)), mat, at, bent)
 
 w = (len(sets) - 1) * GAP
 cam = bpy.data.objects.new("cam", bpy.data.cameras.new("cam"))
 sc.collection.objects.link(cam)
 cam.data.type = "ORTHO"
-cam.data.ortho_scale = max(w + 1.9, 8.4)
+cam.data.ortho_scale = max(w + 1.9, 8.4) if not STAND else max(w + 2.2, 3.2)
 cam.data.shift_y = 0.0
-cam.location = (-w / 2 - 9 * math.sin(math.radians(YAW)), 9 * math.cos(math.radians(YAW)), -1.6)
-cam.rotation_euler = (math.radians(90), 0, math.radians(180 + YAW))
+PITCH = math.radians(float(os.environ.get("PITCH", 0)))   # looking down at it
+cam.location = (-w / 2 - 9 * math.cos(PITCH) * math.sin(math.radians(YAW)), 9 * math.cos(PITCH) * math.cos(math.radians(YAW)),
+                (1.2 if STAND else -1.6) + 9 * math.sin(PITCH))
+cam.rotation_euler = (math.radians(90) - PITCH, 0, math.radians(180 + YAW))
 sc.camera = cam
 for rot, e in (((50, 0, 160), 3.5), ((70, 0, -30), 1.2)):
     L = bpy.data.objects.new("sun", bpy.data.lights.new("sun", "SUN"))
@@ -147,8 +153,12 @@ sc.world.use_nodes = True
 sc.world.node_tree.nodes["Background"].inputs[0].default_value = (0.05, 0.05, 0.06, 1)
 sc.world.node_tree.nodes["Background"].inputs[1].default_value = 1.0
 sc.render.engine = "BLENDER_EEVEE_NEXT" if "BLENDER_EEVEE_NEXT" in [i.identifier for i in bpy.types.RenderSettings.bl_rna.properties["engine"].enum_items] else "BLENDER_EEVEE"
-sc.render.resolution_x, sc.render.resolution_y = 2400, int(2400 * 8.4 / max(w + 1.9, 8.4))
+sc.render.resolution_x, sc.render.resolution_y = (2000, int(2000 * 3.2 / max(w + 2.2, 3.2))) if STAND else (2400, int(2400 * 8.4 / max(w + 1.9, 8.4)))
 sc.view_settings.view_transform = "AgX" if "AgX" in [i.identifier for i in bpy.types.ColorManagedViewSettings.bl_rna.properties["view_transform"].enum_items] else "Filmic"
-sc.render.filepath = os.path.join(GAME, "tools/renders/armor_sets.png")
+if STAND:          # the game's flat, unfiltered colours
+    sc.view_settings.view_transform = "Standard"
+    sc.world.node_tree.nodes["Background"].inputs[0].default_value = (0.5, 0.5, 0.55, 1)
+    sc.world.node_tree.nodes["Background"].inputs[1].default_value = 0.8
+sc.render.filepath = os.environ.get("OUT", os.path.join(GAME, "tools/renders/armor_sets.png"))
 bpy.ops.render.render(write_still=True)
 print("wrote", sc.render.filepath)
